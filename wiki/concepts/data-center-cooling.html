@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data-Center Cooling</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Data-Center Cooling
+type: concept
+trend: true
+tags: [investing, trend, ai-infrastructure, liquid-cooling, thermal-management, hvac, data-centers]
+sources: []
+date: 2026-06-01
+conviction: 4
+stage: accelerating
+horizon: 2-5y</div>
+<article>
+<h1 id="data-center-cooling">Data-Center Cooling</h1>
+<p><strong>Definition:</strong> The thesis that <strong>thermal management</strong> is a structural bottleneck and high-growth<br />
+"pick-and-shovel" layer of the AI buildout. As GPU rack power densities blow past what air cooling<br />
+can handle, <strong>liquid cooling</strong> (direct-to-chip, immersion), CDUs, advanced <strong>HVAC</strong>, and power-and-<br />
+cooling infrastructure become mandatory — not optional. Insight only — not advice (<a href="../syntheses/trend-radar.html">trend-radar</a>).</p>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<ul>
+<li><strong>Liquid cooling</strong> — direct-to-chip cold plates, rear-door heat exchangers, immersion; <strong>coolant<br />
+  distribution units (CDUs)</strong>, manifolds, fluids. Now the <strong>default for new AI data-center designs</strong><br />
+  (fact, Vertiv Q1 2026 commentary).</li>
+<li><strong>Thermal management / HVAC</strong> — chillers, CRAH/CRAC units, air handling, building thermal systems<br />
+  for the white-space + grey-space.</li>
+<li><strong>Mechanical / electrical install</strong> — specialty contractors building and fitting out the rooms<br />
+  (comfort-systems-usa).</li>
+<li><strong>Power + cooling integration</strong> — rack PDUs, busways, enclosures bundled with cooling<br />
+  (nvent-electric, vertiv).</li>
+</ul>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<ul>
+<li><strong>Data-center liquid-cooling market:</strong> estimates cluster around <strong>~$4.7–6.8B in 2026</strong>, scaling to<br />
+<strong>~$18–28B by 2031–2035</strong>, at <strong>~18–31% CAGR</strong> depending on scope (est., multiple market-research<br />
+  firms — Grand View, MarketsandMarkets, GMInsights, Mordor, 2026). Wide spread = methodology<br />
+  differences; directionally all show high-teens-to-30% CAGR.</li>
+<li>Example point: $4.07B (2026) → $27.65B (2033) @ <strong>31.5% CAGR</strong> (est., one 2026 forecast).</li>
+<li>Example point: $6B (2026) → $27.1B (2035) @ <strong>18.2% CAGR</strong> (est., GMInsights).</li>
+<li><strong>Demand evidence (hard order data):</strong> vertiv backlog <strong>$12.45B at Q1'26, +80.8% YoY</strong> (fact);<br />
+  nvent-electric entered 2026 with <strong>$2.3B backlog, ~3x prior year</strong>, built mostly from large<br />
+  hyperscale <strong>liquid-cooling</strong> orders (fact); comfort-systems-usa backlog <strong>$12.5B</strong> record<br />
+  (fact); johnson-controls backlog <strong>$13.3B, +22% YoY</strong> on data-center demand (fact).</li>
+</ul>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand side:</strong><br />
+- <strong>Rack power density</strong> — AI/GPU racks (e.g. NVIDIA GB-class) exceed air-cooling limits, forcing<br />
+  liquid cooling as default (<a href="ai-infrastructure.html">ai-infrastructure</a>, <a href="semiconductors.html">semiconductors</a>).<br />
+- <strong>Hyperscale capex super-cycle</strong> — orders/backlogs up 50–80% YoY across the group (Q1 2026).<br />
+- <strong>Efficiency / PUE + water</strong> pressure pushes liquid and closed-loop designs.</p>
+<p><strong>Supply side:</strong><br />
+- <strong>Engineering + integration scarcity</strong> — full thermal-chain integration (chip-to-chiller) is hard;<br />
+  incumbents with reference designs win share.<br />
+- <strong>Skilled-labor bottleneck</strong> for mechanical install (comfort-systems-usa flags labor as the<br />
+  constraint, not demand).<br />
+- <strong>Margin expansion</strong> as mix shifts to higher-value liquid systems (Vertiv adj. op margin <strong>20.8%,<br />
+  +430bps</strong>; Comfort Systems gross margin <strong>26.3%</strong> record).</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<ul>
+<li><strong>→ <a href="ai-infrastructure.html">ai-infrastructure</a>:</strong> cooling is a direct enabler of GPU compute density; gates how many<br />
+  chips fit per rack/room.</li>
+<li><strong>→ <a href="semiconductors.html">semiconductors</a>:</strong> higher TDP chips (<a href="ai-infrastructure.html">ai-infrastructure</a> GPUs/HBM) <em>create</em> the thermal<br />
+  problem — cooling demand is downstream of chip roadmaps.</li>
+<li><strong>→ <a href="power-grid-electrification.html">power-grid-electrification</a> / <a href="natural-gas-lng.html">natural-gas-lng</a> / <a href="energy-transition.html">energy-transition</a>:</strong> cooling + power<br />
+  are the two "physical layer" bottlenecks; both ride the same data-center capex.</li>
+<li><strong>Chain:</strong> chip TDP → server/rack design → liquid cooling (cold plate/CDU/manifold) → room HVAC /<br />
+  chillers → building → grid power.</li>
+</ul>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<ul>
+<li><strong>Power-and-cooling platforms:</strong> vertiv is the closest <strong>pure-play</strong> scale leader (full thermal</li>
+<li>power stack, reference designs with chipmakers); schneider-electric the diversified European<br />
+  giant (bought Motivair for liquid cooling); nvent-electric strong in liquid-cooling enclosures</li>
+<li>PDUs.</li>
+<li><strong>Thermal components / coils:</strong> modine-manufacturing — coils/CDUs, fast-growing Climate<br />
+  Solutions segment.</li>
+<li><strong>HVAC OEM:</strong> johnson-controls — chillers + thermal systems, large installed base.</li>
+<li><strong>Specialty install (services):</strong> comfort-systems-usa — mechanical/electrical contractor;<br />
+  capacity-/labor-constrained, not demand-constrained.</li>
+<li><strong>Servers (adjacent):</strong> super-micro-computer — liquid-cooled rack-scale systems (DLC), but a<br />
+  server OEM with thin margins, not a cooling pure-play.</li>
+<li><strong>Structure:</strong> fragmented across components/install but consolidating around a few integrated<br />
+  platforms; moats sit in <strong>system integration + reference-design lock-in + backlog</strong>.</li>
+</ul>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — COMPARATIVE TABLE</h2>
+<p><em>Caps as of ~late May 2026; financials Q1 2026 (CY) or latest fiscal quarter. "NRFF" = no reliable<br />
+figure found.</em></p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment / role</th>
+<th>Market cap (as-of)</th>
+<th>Revenue (period)</th>
+<th>Rev growth YoY</th>
+<th>Margin</th>
+<th>Backlog / orders</th>
+<th>Net cash/(debt)</th>
+<th>Valuation</th>
+<th>Moat &amp; positioning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vertiv</td>
+<td>VRT</td>
+<td>US</td>
+<td>Power + thermal pure-play</td>
+<td>~$113–121B (May 29'26) (fact)</td>
+<td>$2.65B (Q1'26) (fact); FY26 guide $13.5–14.0B (fact)</td>
+<td>NRFF (rev %)</td>
+<td>Adj. op margin 20.8%, +430bps (Q1'26) (fact)</td>
+<td>Backlog $12.45B, +80.8% YoY (fact)</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>Scale leader; full power+cooling stack; chipmaker reference designs</td>
+</tr>
+<tr>
+<td>Super Micro</td>
+<td>SMCI</td>
+<td>US</td>
+<td>Liquid-cooled servers / racks</td>
+<td>NRFF</td>
+<td>$10.2B (Q3 FY26); FY26 guide ≥$40B (fact)</td>
+<td>NRFF (lumpy: Q2 $12.7B→Q3 $10.2B) (fact)</td>
+<td>NRFF (thin)</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>DLC rack-scale systems; server OEM (low margin), accounting history</td>
+</tr>
+<tr>
+<td>Schneider Electric</td>
+<td>SU.PA / SBGSY</td>
+<td>France</td>
+<td>Energy mgmt + cooling</td>
+<td>NRFF</td>
+<td>€11.4B (Q1'26), +11.2% organic (fact)</td>
+<td>+11.2% organic (Q1'26) (fact)</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>Diversified electrification giant; Motivair ($850M, 75%) adds liquid cooling</td>
+</tr>
+<tr>
+<td>Modine Mfg</td>
+<td>MOD</td>
+<td>US</td>
+<td>Thermal coils / CDUs</td>
+<td>~$13.7B (2026) (fact)</td>
+<td>$954.4M (Q4 FY26), +47% (fact); Data Centers &gt;$400M/qtr (fact)</td>
+<td>+47% (Q4 FY26) (fact)</td>
+<td>NRFF</td>
+<td>$4B data-center deal thru 2029 (fact)</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>Climate Solutions / data-center coils; legacy auto in transition</td>
+</tr>
+<tr>
+<td>nVent Electric</td>
+<td>NVT</td>
+<td>US/Ire</td>
+<td>Liquid-cooling enclosures, PDUs</td>
+<td>NRFF</td>
+<td>$1.24B (Q1'26), +53% (fact)</td>
+<td>+53% (Q1'26) (fact)</td>
+<td>NRFF</td>
+<td>Backlog $2.3B, ~3x prior yr (fact)</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>Liquid-cooling white-space + power distribution; hyperscale orders</td>
+</tr>
+<tr>
+<td>Comfort Systems USA</td>
+<td>FIX</td>
+<td>US</td>
+<td>Mechanical/electrical install</td>
+<td>NRFF</td>
+<td>$2.9B (Q1'26), +56% (fact)</td>
+<td>+56% (Q1'26) (fact)</td>
+<td>Gross margin 26.3% record (fact)</td>
+<td>Backlog $12.5B record (fact)</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>Specialty-contractor scale; labor-constrained; data-center build</td>
+</tr>
+<tr>
+<td>Johnson Controls</td>
+<td>JCI</td>
+<td>US/Ire</td>
+<td>HVAC / chillers / thermal</td>
+<td>NRFF</td>
+<td>$5.8B (Q1 FY26), +7% (+6% organic) (fact)</td>
+<td>+7% (Q1 FY26) (fact)</td>
+<td>NRFF</td>
+<td>Backlog $13.3B, +22%; orders +56% (fact)</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>Large HVAC installed base; chillers for data-center thermal mgmt</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p>vertiv is the clearest quality compounder of the group: an integrated <strong>power + thermal</strong><br />
+platform with a <strong>$12.45B backlog (+80.8% YoY)</strong>, expanding margins (adj. op margin 20.8%, +430 bps),<br />
+and reference-design partnerships that lock it into hyperscale GPU rollouts. Its valuation (cap<br />
+~$113–121B on ~$13.5–14B FY26 sales) prices in years of that growth, so it carries the most<br />
+multiple-compression risk if AI capex digests. The <strong>component + HVAC names</strong> (modine-manufacturing<br />
++47% with data-center revenue &gt;$400M/qtr, nvent-electric +53% with a 3x backlog,<br />
+johnson-controls $13.3B backlog) offer cheaper, more diversified exposure — they participate in<br />
+the same demand without being priced as pure AI plays.</p>
+<p>The <strong>install layer</strong> (comfort-systems-usa, +56% revenue, record 26.3% gross margin, $12.5B<br />
+backlog) is striking for margin expansion, but management explicitly flags <strong>skilled labor as the<br />
+binding constraint</strong> — a reminder the bottleneck is physical execution, not orders. schneider-electric<br />
+and super-micro-computer are partial expressions: Schneider is a diversified electrification giant<br />
+where cooling is one growth vector (Motivair), while Super Micro is a thin-margin server OEM riding<br />
+liquid-cooled racks rather than a cooling-IP owner.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>AI capex digestion / air-pocket</strong> — orders are the most cyclical part of the AI stack; a hyperscale<br />
+  capex pause hits backlogs fast (<a href="ai-infrastructure.html">ai-infrastructure</a> digestion risk).</li>
+<li><strong>Valuation</strong> — vertiv (and the group) re-rated hard; high bar already priced.</li>
+<li><strong>Commoditization</strong> of liquid-cooling hardware as competitors and chipmakers in-source designs.</li>
+<li><strong>Labor / supply-chain</strong> constraints cap conversion of backlog to revenue.</li>
+<li><strong>Technology shift</strong> — if chip efficiency or alternative cooling reduces liquid intensity.</li>
+<li><strong>Customer concentration</strong> — exposure to a handful of hyperscalers.</li>
+</ul>
+<h2 id="9-investable-instruments">9. Investable instruments</h2>
+<ul>
+<li><strong>No clean pure-play cooling ETF.</strong> Exposure comes via <strong>AI-infrastructure / data-center</strong> and<br />
+<strong>industrials</strong> ETFs:</li>
+<li><strong>PAVE</strong> — Global X US Infrastructure Development ETF (electrical/industrials, indirect).</li>
+<li>Data-center / digital-infrastructure thematic ETFs hold vertiv, schneider-electric.</li>
+<li>Broad industrials (XLI) for johnson-controls, modine-manufacturing, nvent-electric.</li>
+<li>ER/AUM/holdings for these: NRFF this pass (verify on next scan).</li>
+<li><strong>Representative securities:</strong> vertiv (VRT), modine-manufacturing (MOD),<br />
+  nvent-electric (NVT), comfort-systems-usa (FIX), johnson-controls (JCI),<br />
+  schneider-electric (SU.PA), super-micro-computer (SMCI).</li>
+</ul>
+<h2 id="10-conviction-stage-horizon">10. Conviction, stage, horizon</h2>
+<ul>
+<li><strong>Conviction: 4/5</strong> (inference) — demand visibility is exceptional (backlogs +20–80% YoY across the<br />
+  group; liquid cooling is now default). Held below 5 by stretched valuations and the segment's high<br />
+  beta to AI-capex cyclicality (it sits inside the correlated-AI-engine cluster, <a href="../syntheses/trend-radar.html">trend-radar</a>).</li>
+<li><strong>Stage:</strong> accelerating (early-to-mid; liquid-cooling adoption inflecting).</li>
+<li><strong>Horizon:</strong> 2–5 years (tracks the data-center build cycle closely).</li>
+<li><strong>Invalidation:</strong> hyperscale capex orders roll over / backlog growth turns negative for 2+ quarters<br />
+  → step down to 2–3.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PAVE</strong></td>
+<td>Infra (indirect)</td>
+<td style="text-align: right;">$56.61</td>
+<td style="text-align: right;">$15B</td>
+<td style="text-align: right;">+23.5%</td>
+<td style="text-align: right;">0.7%</td>
+<td style="text-align: right;">n/f · 1.24</td>
+<td style="text-align: right;">-6.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>XLI</strong></td>
+<td>Industrials (indirect)</td>
+<td style="text-align: right;">$180.37</td>
+<td style="text-align: right;">$34B</td>
+<td style="text-align: right;">+20.1%</td>
+<td style="text-align: right;">1.1%</td>
+<td style="text-align: right;">n/f · 1.01</td>
+<td style="text-align: right;">-3.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VRT</strong></td>
+<td>DC power + cooling leader</td>
+<td style="text-align: right;">$290.33</td>
+<td style="text-align: right;">$112B</td>
+<td style="text-align: right;">32.7x</td>
+<td style="text-align: right;">30.1%</td>
+<td style="text-align: right;">14.4% · 2.03</td>
+<td style="text-align: right;">-23.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SMCI</strong></td>
+<td>Liquid-cooled servers</td>
+<td style="text-align: right;">$24.23</td>
+<td style="text-align: right;">$16B</td>
+<td style="text-align: right;">7.8x</td>
+<td style="text-align: right;">1.23%</td>
+<td style="text-align: right;">3.7% · 1.94</td>
+<td style="text-align: right;">-61.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MOD</strong></td>
+<td>Thermal management</td>
+<td style="text-align: right;">$226.44</td>
+<td style="text-align: right;">$12B</td>
+<td style="text-align: right;">20.0x</td>
+<td style="text-align: right;">47.5%</td>
+<td style="text-align: right;">3.8% · 1.67</td>
+<td style="text-align: right;">-29.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NVT</strong></td>
+<td>nVent (DC cooling)</td>
+<td style="text-align: right;">$153.75</td>
+<td style="text-align: right;">$25B</td>
+<td style="text-align: right;">26.8x</td>
+<td style="text-align: right;">53.5%</td>
+<td style="text-align: right;">11.4% · 1.35</td>
+<td style="text-align: right;">-16.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FIX</strong></td>
+<td>Mechanical installer</td>
+<td style="text-align: right;">$1,639.02</td>
+<td style="text-align: right;">$58B</td>
+<td style="text-align: right;">30.3x</td>
+<td style="text-align: right;">1.0%</td>
+<td style="text-align: right;">12.1% · 1.66</td>
+<td style="text-align: right;">-21.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>JCI</strong></td>
+<td>Building/cooling</td>
+<td style="text-align: right;">$141.55</td>
+<td style="text-align: right;">$86B</td>
+<td style="text-align: right;">24.6x</td>
+<td style="text-align: right;">8.2%</td>
+<td style="text-align: right;">14.5% · 1.32</td>
+<td style="text-align: right;">-6.4%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Related: <a href="ai-infrastructure.html">ai-infrastructure</a>, <a href="semiconductors.html">semiconductors</a>, <a href="natural-gas-lng.html">natural-gas-lng</a>, <a href="power-grid-electrification.html">power-grid-electrification</a>,<br />
+<a href="energy-transition.html">energy-transition</a>, <a href="critical-minerals.html">critical-minerals</a>, <a href="../syntheses/trend-radar.html">trend-radar</a>, <a href="../syntheses/watchlist.html">watchlist</a>.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

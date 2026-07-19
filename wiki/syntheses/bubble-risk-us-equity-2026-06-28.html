@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bubble-Risk Analysis — US Equity Market (with AI/Tech sub-read)</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;Bubble-Risk Analysis — US Equity Market (with AI/Tech sub-read)&quot;
+type: synthesis
+tags: [investing, bubble-risk, valuation, sentiment, leverage, ai-capex, macro]
+sources: []
+date: 2026-06-28
+target: us-equity
+operation: bubble-watch</div>
+<article>
+<h1 id="bubble-risk-analysis-us-equity-market-with-aitech-sub-read">Bubble-Risk Analysis — US Equity Market (with AI/Tech sub-read)</h1>
+<p><strong>As-of (UTC anchor):</strong> 2026-06-28T14:12:01Z · <strong>Target:</strong> US equity market (S&amp;P 500), focused<br />
+sub-read on the largest AI / technology names. Descriptive risk analysis only — <strong>not investment<br />
+advice.</strong> Framework <em>definitions</em> are from established literature; all <em>readings</em> were fetched live<br />
+this session (see Data Freshness Log).</p>
+<blockquote>
+<p><strong>Bottom line:</strong> The market scores <strong>extreme on structural gauges</strong> (valuation, leverage,<br />
+concentration) — Shiller CAPE is at its <strong>second-highest level in history</strong> behind only the<br />
+Dec-1999 peak, the Buffett Indicator is "strongly overvalued," margin debt is up <strong>~54% YoY</strong>, and<br />
+the equity risk premium is <strong>negative</strong>. But the classic <strong>euphoric sentiment</strong> that usually<br />
+accompanies a blow-off top is <strong>absent</strong>: CNN Fear &amp; Greed reads <strong>Extreme Fear (25)</strong>, the VIX is<br />
+a moderate ~18, and HY credit spreads are tight. Read: a <strong>stretched, AI-capex-reflexive,<br />
+concentration-driven market that is expensive and leveraged but not in a final mania</strong>. High<br />
+vulnerability to a de-rating; <strong>no acute timing signal</strong>. Confidence: <strong>moderate</strong> (several<br />
+headline figures are secondary/search-sourced because primary feeds blocked automated fetch).</p>
+</blockquote>
+<hr />
+<h2 id="1-live-data-table-provenance">1. Live data table (provenance)</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>As-of</th>
+<th>Source</th>
+<th>Provenance note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Shiller CAPE</strong></td>
+<td><strong>40.70</strong> (mean 17.39, median 16.10, all-time max 44.19 Dec-1999)</td>
+<td>Fri 2026-06-26 16:00 EDT</td>
+<td>multpl.com/shiller-pe</td>
+<td>Direct fetch ✓</td>
+</tr>
+<tr>
+<td>Shiller CAPE (cross-check)</td>
+<td>36.4 (1.9 SD above modern mean 20.7; "Overvalued")</td>
+<td>2026-03-31</td>
+<td>currentmarketvaluation.com</td>
+<td>Direct fetch ✓ — <strong>older as-of (quarterly), differs &gt;5%; see flag</strong></td>
+</tr>
+<tr>
+<td><strong>S&amp;P 500 trailing P/E</strong></td>
+<td><strong>31.45</strong></td>
+<td>Fri 2026-06-26 16:00 EDT</td>
+<td>multpl.com/s-p-500-pe-ratio</td>
+<td>Direct fetch ✓</td>
+</tr>
+<tr>
+<td>S&amp;P 500 <strong>forward</strong> P/E</td>
+<td><code>UNAVAILABLE — not retrieved</code></td>
+<td>—</td>
+<td>—</td>
+<td>Not obtained this session</td>
+</tr>
+<tr>
+<td><strong>Buffett Indicator</strong> (mkt cap/GDP)</td>
+<td><strong>219%</strong> — "Strongly Overvalued", ~2.1 SD above trend</td>
+<td>2026-03-31</td>
+<td>currentmarketvaluation.com/models/buffett-indicator</td>
+<td>Direct fetch ✓ (quarterly GDP lag)</td>
+</tr>
+<tr>
+<td><strong>10Y Treasury yield</strong></td>
+<td><strong>4.38%</strong> (−2.0 bps)</td>
+<td>Fri 2026-06-26 close</td>
+<td>multpl.com/10-year-treasury-rate</td>
+<td>Direct fetch ✓ (Treasury.gov timed out)</td>
+</tr>
+<tr>
+<td><strong>Implied equity risk premium</strong></td>
+<td><strong>≈ −1.20%</strong> (earnings yield 3.18% − 10Y 4.38%)</td>
+<td>2026-06-26</td>
+<td>derived</td>
+<td><strong>(inference)</strong> from trailing P/E + 10Y</td>
+</tr>
+<tr>
+<td><strong>FINRA margin debt</strong></td>
+<td><strong>$1,415,557 M ($1.42T)</strong>; May-25 $920,960M → <strong>YoY ≈ +53.7%</strong></td>
+<td>May 2026 (monthly)</td>
+<td>finra.org margin-statistics</td>
+<td>Direct fetch ✓</td>
+</tr>
+<tr>
+<td><strong>VIX</strong></td>
+<td><strong>18.41</strong> (−2.5%)</td>
+<td>2026-06-26 close</td>
+<td>WebSearch citing CBOE/Yahoo/TradingEconomics</td>
+<td><strong>Secondary</strong> — CBOE direct fetch blocked</td>
+</tr>
+<tr>
+<td>Equity <strong>put/call ratio</strong></td>
+<td><strong>0.67</strong> — low (complacent / bullish)</td>
+<td>2026-06-25</td>
+<td>WebSearch citing CBOE/YCharts</td>
+<td><strong>Secondary</strong> — CBOE direct fetch blocked</td>
+</tr>
+<tr>
+<td><strong>CNN Fear &amp; Greed</strong></td>
+<td><strong>25 — Extreme Fear</strong></td>
+<td>2026-06-26</td>
+<td>WebSearch citing CNN via MacroMicro</td>
+<td><strong>Secondary</strong> — CNN API returned HTTP 418</td>
+</tr>
+<tr>
+<td><strong>AAII sentiment</strong></td>
+<td>Bullish <strong>44.9%</strong> (above 37.5% avg; +8.4pp); bearish/neutral n/f → <strong>spread incomplete</strong></td>
+<td>week ending 2026-06-25</td>
+<td>WebSearch citing aaii.com</td>
+<td><strong>Partial/secondary</strong> — aaii.com blocked (403)</td>
+</tr>
+<tr>
+<td><strong>10Y breakeven inflation</strong></td>
+<td><strong>2.29%</strong> → real 10Y ≈ <strong>2.09%</strong></td>
+<td>June 2026</td>
+<td>WebSearch citing FRED T10YIE</td>
+<td><strong>Secondary</strong> — FRED direct fetch blocked</td>
+</tr>
+<tr>
+<td><strong>Excess CAPE Yield (ECY)</strong></td>
+<td><strong>≈ +0.4%</strong> (CAPE earnings yld 2.46% − real 10Y 2.09%)</td>
+<td>2026-06-26</td>
+<td>derived</td>
+<td><strong>(inference)</strong> — Shiller's ECY refinement; ~3–4% historical avg</td>
+</tr>
+<tr>
+<td><strong>Mag-7 share of S&amp;P 500</strong></td>
+<td><strong>≈ 32.7%</strong> (combined mkt cap ≈ $22T)</td>
+<td>mid-June 2026</td>
+<td>WebSearch citing Motley Fool / MacroMicro</td>
+<td><strong>Secondary</strong> — Slickcharts blocked (403)</td>
+</tr>
+<tr>
+<td><strong>HY credit spread</strong> (BAMLH0A0HYM2, OAS)</td>
+<td><strong>≈ 2.63–2.76% (≈263–276 bps)</strong> — historically <strong>tight</strong></td>
+<td>2026-06-24</td>
+<td>WebSearch citing FRED via TradingEconomics/govspending</td>
+<td><strong>Secondary</strong> — FRED direct fetch blocked (403)</td>
+</tr>
+<tr>
+<td><strong>Hyperscaler AI capex (2026)</strong></td>
+<td><strong>≈ $725B</strong> (MSFT+GOOGL+AMZN+META, <strong>+77% YoY</strong>); ≈$660–690B incl. Oracle</td>
+<td>2026 guidance</td>
+<td>WebSearch citing CNBC/Tom's Hardware/Futurum</td>
+<td><strong>Secondary/context</strong> — forward guidance, not a market reading</td>
+</tr>
+<tr>
+<td>IPO / SPAC volume; retail-inflow proxy</td>
+<td><code>UNAVAILABLE — not retrieved</code></td>
+<td>—</td>
+<td>—</td>
+<td>Not obtained this session</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Discrepancy flag (rule 5):</strong> CAPE reads <strong>40.70</strong> (multpl, as-of 2026-06-26) vs <strong>36.4</strong><br />
+(currentmarketvaluation, as-of 2026-03-31) — a ~12% gap. The difference is primarily the <strong>as-of<br />
+date</strong> (CMV updates on quarterly earnings; multpl is near-current) and a different earnings basis.<br />
+The current/near-real-time figure (40.70) is used for the primary read; both are reported.</p>
+<p><strong>Coverage check (guardrail):</strong> Of ~15 target metrics, ~9 fully retrieved/derived, ~4<br />
+partial/secondary, ~2 <code>UNAVAILABLE</code> (forward P/E, IPO-SPAC/retail flows). <strong>Unavailable share ≈ 13%<br />
+— well below the 30% threshold.</strong> Put/call (0.67) and breakeven inflation (2.29%) were added in a<br />
+follow-up pull, closing the earlier options-sentiment and real-yield gaps. Confidence held at<br />
+<strong>moderate</strong> (several headline figures remain secondary/search-sourced).</p>
+<hr />
+<h2 id="2-per-framework-readings-leading-indicators-framework-guideline-actual-now">2. Per-framework readings — leading indicators (framework · guideline · actual now)</h2>
+<p>Each framework below lists its <strong>leading indicators</strong>, the <strong>guideline / threshold</strong> that defines a<br />
+warning (from established literature — <em>definition</em>), and the <strong>actual reading now</strong> (<em>live data</em>).<br />
+Signal scale: <strong>EXTREME &gt; ELEVATED &gt; MIXED &gt; LOW</strong>. Definitions are knowledge; every "actual" traces<br />
+to §1 / §4.</p>
+<h3 id="dalio-bubble-6-gauge-composite-is-proprietary-this-is-an-approximation">Dalio — "bubble" 6-gauge (composite is proprietary; this is an approximation)</h3>
+<table>
+<thead>
+<tr>
+<th>Leading indicator</th>
+<th>Guideline (warning threshold)</th>
+<th>Actual now</th>
+<th>Signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Prices vs traditional measures</td>
+<td>CAPE &gt;25 rich, &gt;2× mean extreme; P/E &gt;25 rich</td>
+<td>CAPE 40.7 (2.34× mean); P/E 31.5; Buffett 219%</td>
+<td><strong>EXTREME</strong></td>
+</tr>
+<tr>
+<td>2. New / inexperienced buyers</td>
+<td>surging new accounts, IPO/SPAC volume, rising retail share</td>
+<td>margin surge implies yes; IPO/SPAC &amp; retail-share <code>UNAVAILABLE</code></td>
+<td><strong>ELEVATED</strong> (low conf.)</td>
+</tr>
+<tr>
+<td>3. Broadly bullish sentiment</td>
+<td>AAII bulls &gt;50%, CNN F&amp;G &gt;75, put/call &lt;0.7</td>
+<td>F&amp;G <strong>25 (Extreme Fear)</strong>; AAII bulls 44.9%; put/call 0.67 — <strong>conflicting</strong></td>
+<td><strong>MIXED</strong></td>
+</tr>
+<tr>
+<td>4. Leverage funding purchases</td>
+<td>margin debt YoY &gt;+25% = hot; rising = speculative</td>
+<td><strong>+54% YoY</strong>, record $1.42T</td>
+<td><strong>EXTREME</strong></td>
+</tr>
+<tr>
+<td>5. Forward purchases (over-buying ahead)</td>
+<td>capex/inventory built well ahead of end-demand</td>
+<td>hyperscaler capex <strong>$725B, +77% YoY</strong></td>
+<td><strong>EXTREME</strong></td>
+</tr>
+<tr>
+<td>6. Prices high + bonds competitive</td>
+<td>ERP &lt;0 → bonds out-yield stocks (sell signal)</td>
+<td><strong>ERP −1.2%</strong></td>
+<td><strong>ELEVATED</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Composite:</strong> 4 of 6 gauges elevated-to-extreme, but <strong>gauge 3 (sentiment) is conspicuously NOT<br />
+euphoric</strong> — the single biggest divergence from a textbook top. Note put/call 0.67 is the one<br />
+mildly-complacent sentiment reading against fearful F&amp;G. Approximate only.</p>
+<h3 id="shiller-cape-feedback">Shiller CAPE / feedback</h3>
+<table>
+<thead>
+<tr>
+<th>Leading indicator</th>
+<th>Guideline</th>
+<th>Actual now</th>
+<th>Signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAPE level</td>
+<td>mean ~17.4; &gt;30 high; 38–44 = prior bubble peaks (2000 = 44.2)</td>
+<td><strong>40.70 — 2nd-highest ever</strong></td>
+<td><strong>EXTREME</strong></td>
+</tr>
+<tr>
+<td>Excess CAPE Yield (ECY)</td>
+<td>CAPE earnings-yld − real 10Y; ~3–4% avg, &lt;1% very stretched</td>
+<td>2.46% − 2.09% real ≈ <strong>+0.4%</strong> (near record-low)</td>
+<td><strong>EXTREME</strong></td>
+</tr>
+<tr>
+<td>"New-era" narrative</td>
+<td>pervasive "this-time-different" = reflexive feedback</td>
+<td>AI-productivity narrative pervasive</td>
+<td><strong>ELEVATED</strong></td>
+</tr>
+</tbody>
+</table>
+<p>High unconditional drag on forward-10y returns; historically a <strong>poor short-term timing tool</strong>.</p>
+<h3 id="minsky-financial-instability-hypothesis">Minsky — Financial Instability Hypothesis</h3>
+<table>
+<thead>
+<tr>
+<th>Leading indicator</th>
+<th>Guideline</th>
+<th>Actual now</th>
+<th>Signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Leverage / margin debt</td>
+<td>rapid credit growth + rising margin = speculative→Ponzi</td>
+<td><strong>+54% YoY</strong>, record $1.42T</td>
+<td><strong>EXTREME</strong></td>
+</tr>
+<tr>
+<td>HY credit spread (OAS)</td>
+<td>tight/falling = complacency; <strong>&gt;400–500 bps = stress / turn</strong></td>
+<td>≈260–280 bps (tight, near cycle lows)</td>
+<td><strong>LOW</strong> (complacent)</td>
+</tr>
+<tr>
+<td>Financing-mix tilt</td>
+<td>hedge → speculative → Ponzi</td>
+<td>speculative &amp; rising; no Ponzi blow-off yet</td>
+<td><strong>ELEVATED</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The <strong>tight-spread complacency alongside record leverage</strong> is itself the classic late-cycle<br />
+vulnerability — the credit market is not pricing the equity-side stretch.</p>
+<h3 id="kindlebergerminsky-5-stages">Kindleberger–Minsky 5 stages</h3>
+<table>
+<thead>
+<tr>
+<th>Stage indicator</th>
+<th>Guideline</th>
+<th>Actual now</th>
+<th>Met?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Displacement</td>
+<td>new tech / cheap-credit shock</td>
+<td>AI + ample liquidity</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Boom (credit + price)</td>
+<td>rising prices on rising credit</td>
+<td>prices + margin debt rising</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Euphoria</td>
+<td>broad retail mania, record leverage, new-era talk, parabolic</td>
+<td>leverage✔ narrative✔; <strong>sentiment fearful, not parabolic</strong></td>
+<td>◐ partial</td>
+</tr>
+<tr>
+<td>Distress / revulsion</td>
+<td>insider selling, credit tightening, panic</td>
+<td>not present</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Best fit: late boom / threshold of euphoria</strong> — evidence mixed.</p>
+<h3 id="rodrigue-4-phases">Rodrigue 4 phases</h3>
+<table>
+<thead>
+<tr>
+<th>Phase marker</th>
+<th>Guideline</th>
+<th>Actual now</th>
+<th>Signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Stealth + Awareness</td>
+<td>smart money → institutions + first sell-offs</td>
+<td>complete</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Mania</td>
+<td>media saturation, retail FOMO, "new paradigm", parabolic</td>
+<td>media + institutions + concentration <strong>yes</strong>; parabolic/retail-FOMO <strong>not at climax</strong></td>
+<td><strong>ELEVATED</strong></td>
+</tr>
+<tr>
+<td>Blow-off / volatility</td>
+<td>vertical move then crack; VIX spikes</td>
+<td>VIX ≈18.4 (moderate); no blow-off</td>
+<td><strong>LOW</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Placement: <strong>mania phase (mid), not its final leg.</strong></p>
+<h3 id="soros-reflexivity">Soros — reflexivity</h3>
+<table>
+<thead>
+<tr>
+<th>Leading indicator</th>
+<th>Guideline</th>
+<th>Actual now</th>
+<th>Signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reflexive loop</td>
+<td>price gains alter the fundamentals that justify them (circularity)</td>
+<td>capex $725B funded by rich valns/cheap capital, incl. circular/vendor financing</td>
+<td><strong>EXTREME</strong></td>
+</tr>
+<tr>
+<td>Prevailing misconception</td>
+<td>identify the consensus bias driving the loop</td>
+<td>that AI ROIC justifies capex at this scale/speed</td>
+<td><strong>ELEVATED</strong></td>
+</tr>
+<tr>
+<td>Dependence on capital access</td>
+<td>loop breaks if prices / funding stall</td>
+<td>high dependence → fragile if capex guidance cut</td>
+<td><strong>ELEVATED</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The reflexive AI-capex engine is the core risk</strong> — it reverses through the same concentrated channel.</p>
+<h3 id="sornette-lppl-log-periodic-power-law">Sornette — LPPL (log-periodic power law)</h3>
+<table>
+<thead>
+<tr>
+<th>Leading indicator</th>
+<th>Guideline</th>
+<th>Actual now</th>
+<th>Signal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LPPL fit to price series</td>
+<td>fit log-periodic power-law → probabilistic critical time (tc)</td>
+<td><strong>NOT RUN</strong> — no in-session series fit</td>
+<td>n/a</td>
+</tr>
+<tr>
+<td>Faster-oscillation / super-exponential</td>
+<td>accelerating gains + shrinking pullback intervals</td>
+<td>not measured</td>
+<td>n/a</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOT RUN.</strong> A genuine LPPL fit needs a real daily price series fitted this session; the tools did<br />
+not permit it. <strong>No critical-time is asserted</strong> (doing so from memory would violate the data rules).</p>
+<hr />
+<h2 id="3-synthesis">3. Synthesis</h2>
+<p><strong>Where are we (with explicit uncertainty):</strong> The US market is <strong>structurally late-cycle and richly<br />
+priced</strong> — valuation (CAPE 2nd-highest ever, Buffett 219%, negative ERP), leverage (margin debt +54%<br />
+YoY), and concentration (Mag-7 ≈ 32.7%) all sit in their historical top decile. Yet the <strong>emotional<br />
+signature of a top is missing</strong>: Extreme-Fear sentiment, a moderate VIX, and tight credit point to a<br />
+market that is <strong>stretched and fragile rather than euphoric and blowing off</strong>. The most coherent<br />
+characterization: a <strong>concentration-driven, AI-capex-reflexive bull market that is expensive and<br />
+leveraged, in a mania <em>phase</em> but not a mania <em>climax</em>.</strong> Uncertainty is high and <strong>no framework<br />
+reliably times tops</strong> — this is a vulnerability assessment, not a date.</p>
+<p><strong>The 3–4 indicators most worth watching (and what flips the read):</strong><br />
+1. <strong>HY credit spreads (FRED BAMLH0A0HYM2)</strong> — now ~260–280 bps (complacent). A sustained move<br />
+<strong>&gt;400–450 bps</strong> would mark the Minsky turn from speculative to stress.<br />
+2. <strong>FINRA margin debt trajectory</strong> — +54% YoY now; a <strong>sharp MoM reversal</strong> historically coincides<br />
+   with/precedes equity tops. Watch the monthly print.<br />
+3. <strong>ERP / 10Y</strong> — ERP ≈ −1.2%. Either <strong>higher 10Y</strong> or <strong>earnings disappointment</strong> would force a<br />
+   de-rating from extreme multiples.<br />
+4. <strong>Sentiment flip + capex guidance</strong> — CNN F&amp;G turning to <strong>Extreme Greed</strong> would supply the<br />
+   missing euphoria; conversely, <strong>a cut to hyperscaler capex guidance</strong> would break the reflexive<br />
+   loop. Either is a regime-change tell.</p>
+<p><strong>Steelman — bull case:</strong> AI is a genuine productivity displacement; capex is <strong>largely self-funded<br />
+from record operating cash flow</strong>, not debt; <strong>fearful sentiment is a "wall of worry,"</strong> not a top;<br />
+<strong>tight HY spreads signal healthy credit</strong>; earnings can grow into the multiple. High valuation alone<br />
+has never timed a top.</p>
+<p><strong>Steelman — bear case:</strong> CAPE is <strong>2nd-highest in 150 years</strong>, Buffett 219% (2.1 SD), ERP negative —<br />
+<strong>every historical analog (1929, 2000) de-rated hard</strong>; margin debt +54% is fragility fuel; <strong>32.7%<br />
+concentration</strong> makes the index a single-theme (AI) bet; the reflexive capex loop can reverse<br />
+violently if AI ROIC disappoints, and tight spreads mean <strong>credit is not pricing any of this risk.</strong></p>
+<hr />
+<h2 id="4-data-freshness-log-every-url-utc-retrieval">4. Data Freshness Log (every URL + UTC retrieval)</h2>
+<p>All retrievals on <strong>2026-06-28</strong>, batch window <strong>≈14:12–14:20Z</strong>:<br />
+- https://www.multpl.com/shiller-pe — CAPE 40.70 (as-of 2026-06-26) — <strong>direct fetch</strong><br />
+- https://www.multpl.com/s-p-500-pe-ratio — trailing P/E 31.45 (2026-06-26) — direct fetch<br />
+- https://www.currentmarketvaluation.com/models/buffett-indicator.php — 219% (2026-03-31) — direct<br />
+- https://www.currentmarketvaluation.com/models/price-earnings.php — CAPE 36.4 (2026-03-31) — direct<br />
+- https://www.multpl.com/10-year-treasury-rate — 4.38% (2026-06-26) — direct fetch<br />
+- https://www.finra.org/investors/learn-to-invest/advanced-investing/margin-statistics — May-26<br />
+  $1,415,557M; May-25 $920,960M — direct fetch<br />
+- VIX 18.41 (2026-06-26) — WebSearch (CBOE direct blocked); pages incl.<br />
+  https://finance.yahoo.com/quote/%5EVIX/history/ , https://tradingeconomics.com/united-states/cboe-volatility-index-vix-fed-data.html<br />
+- CNN Fear &amp; Greed 25 / Extreme Fear (2026-06-26) — WebSearch (CNN HTTP 418); via<br />
+  https://en.macromicro.me/charts/50108/cnn-fear-and-greed<br />
+- AAII bullish 44.9% (wk ending 2026-06-25) — WebSearch (aaii.com 403); https://www.aaii.com/sentimentsurvey<br />
+- Equity put/call 0.67 (2026-06-25) — WebSearch (CBOE blocked); https://ycharts.com/indicators/cboe_equity_put_call_ratio<br />
+- 10Y breakeven inflation 2.29% (Jun 2026) → real 10Y ≈2.09%; ECY ≈+0.4% derived — WebSearch (FRED blocked); https://fred.stlouisfed.org/series/T10YIE , https://tradingeconomics.com/united-states/10-year-breakeven-inflation-rate-fed-data.html<br />
+- Mag-7 ≈32.7% / ≈$22T (mid-June 2026) — WebSearch (Slickcharts 403); https://www.fool.com/research/magnificent-seven-sp-500/ , https://en.macromicro.me/charts/123469/us-magnificent-seven-total-market-cap-and-share-of-sp-500<br />
+- HY OAS ≈2.63–2.76% (2026-06-24) — WebSearch (FRED 403); https://tradingeconomics.com/united-states/bofa-merrill-lynch-us-high-yield-option-adjusted-spread-fed-data.html , https://govspending.org/series/BAMLH0A0HYM2/<br />
+- Hyperscaler capex ≈$725B 2026 (+77% YoY) — WebSearch; https://www.cnbc.com/2026/02/06/google-microsoft-meta-amazon-ai-cash.html , https://www.tomshardware.com/tech-industry/big-tech/big-techs-ai-spending-plans-reach-725-billion , https://futurumgroup.com/insights/ai-capex-2026-the-690b-infrastructure-sprint/<br />
+- <strong>Blocked this session (no value or secondary only):</strong> FRED (403 on /series/ and fredgraph.csv),<br />
+  CBOE VIX dashboard (403/empty), CNN F&amp;G API (418), aaii.com (403), Slickcharts (403),<br />
+  Treasury.gov yield-curve (timeout).</p>
+<hr />
+<h2 id="connections">Connections</h2>
+<ul>
+<li><strong>Most-exposed themes</strong> (the bubble read bears directly on these): <a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>,<br />
+<a href="../concepts/semiconductors.html">semiconductors</a>, <a href="../concepts/ai-software-agents.html">ai-software-agents</a>, <a href="../concepts/power-grid-electrification.html">power-grid-electrification</a>, <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a><br />
+  — the AI-capex / concentration complex this analysis centres on.</li>
+<li><strong>Macro &amp; structure:</strong> conditioned by <a href="macro-regime.html">macro-regime</a>; the correlated-de-rating channel is<br />
+  mapped in <a href="theme-linkage-map.html">theme-linkage-map</a>.</li>
+<li><strong>Engine hubs:</strong> convictions in <a href="trend-radar.html">trend-radar</a>; instruments/triggers in <a href="watchlist.html">watchlist</a>; the<br />
+  falsifiable calls this run logged (P17 HY-spread, P18 S&amp;P-drawdown) live in <a href="prediction-ledger.html">prediction-ledger</a>.</li>
+<li><strong>Positioning implications:</strong> per-theme stance in <a href="bubble-implications-by-theme.html">bubble-implications-by-theme</a>; top-5<br />
+  bubble-aware themes with winners in <a href="top5-themes-deep-dive-2026-06-28.html">top5-themes-deep-dive-2026-06-28</a>.</li>
+<li><strong>What happens after / when:</strong> agent-based forecast in <a href="post-bubble-multi-agent-sim-2026-06-28.html">post-bubble-multi-agent-sim-2026-06-28</a><br />
+  (euphoria completes 2026 → reflexive break 2027 → multi-year rotation).</li>
+<li><strong>Single-name overlay:</strong> entry discipline via <a href="../concepts/mdaem-framework.html">mdaem-framework</a>; shortlist scoring in<br />
+<a href="dual-model-shortlist-scorecard-2026-06-03.html">dual-model-shortlist-scorecard-2026-06-03</a> and ranking in <a href="cross-theme-idea-ranking.html">cross-theme-idea-ranking</a>.</li>
+<li><strong>Diversifiers</strong> (low AI-capex correlation, if the reflexive loop reverses): <a href="../concepts/defense-security.html">defense-security</a>,<br />
+<a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a>, <a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a>, <a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a>.</li>
+</ul>
+<h2 id="5-limitations">5. Limitations</h2>
+<ul>
+<li><strong>Reporting lag:</strong> FINRA margin debt is <strong>monthly</strong> (latest May 2026); Buffett Indicator/CMV-CAPE<br />
+  use <strong>quarterly</strong> inputs (as-of 2026-03-31) and lag the near-real-time multpl figures.</li>
+<li><strong>Provenance quality:</strong> VIX, CNN F&amp;G, AAII, Mag-7 concentration, and the HY spread are<br />
+<strong>secondary/search-sourced</strong> because the primary feeds (FRED, CBOE, CNN, AAII, Slickcharts) blocked<br />
+  automated fetch. They cite primary sources but were not read directly — <strong>verify against a live<br />
+  primary feed before relying on them.</strong></li>
+<li><strong>Gaps:</strong> forward P/E and IPO/SPAC/retail-flow proxies remain <code>UNAVAILABLE</code>, weakening the "new<br />
+  buyers" gauge. (Put/call 0.67 and 10Y breakeven 2.29% were retrieved in a follow-up pull.)</li>
+<li><strong>CAPE percentile</strong> is described qualitatively (near all-time high) rather than as a fabricated<br />
+  exact percentile.</li>
+<li><strong>LPPL not run</strong> (no in-session price-series fit) — no critical-time claim.</li>
+<li><strong>No framework reliably times tops.</strong> This is a descriptive risk read, not a forecast, and <strong>not<br />
+  investment advice.</strong></li>
+</ul>
+<p><strong>Optional inputs that would upgrade this (not blocking):</strong> (1) a <strong>FRED API key</strong> → direct HY-spread<br />
++ 10Y + VIXCLS series; (2) a current <strong>forward P/E</strong> with date; (3) <strong>IPO/SPAC 2026 YTD volume</strong>.<br />
+Provide any and they'll be recorded as <code>user-provided, &lt;date&gt;</code>.</p>
+<hr />
+<p><em>All figures retrieved live on 2026-06-28; no values drawn from model training.</em></p>
+</article>
+</div>
+</body>
+</html>

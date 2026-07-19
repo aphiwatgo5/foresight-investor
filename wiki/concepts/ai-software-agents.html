@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Software &amp; Agents</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: AI Software &amp; Agents
+type: concept
+trend: true
+tags: [investing, trend, ai-software, agentic-ai, llm, saas, application-layer]
+sources: []
+date: 2026-06-01
+conviction: 4
+stage: accelerating
+horizon: 3-7y</div>
+<article>
+<h1 id="ai-software-agents">AI Software &amp; Agents</h1>
+<p><strong>Definition:</strong> The <strong>application and agent layer</strong> of the AI stack — software where AI/LLMs are<br />
+the product or a core feature, sitting <em>above</em> compute/foundation-model infrastructure. Spans<br />
+LLM/AI platforms embedded in incumbent SaaS (Microsoft Copilot, Salesforce Agentforce, ServiceNow<br />
+AI), AI-native SaaS (Palantir AIP), and agentic software (autonomous multi-step "AI agents").<br />
+The <strong>monetization endpoint</strong> of <a href="ai-infrastructure.html">ai-infrastructure</a>. Conviction 4 on the <a href="../syntheses/trend-radar.html">trend-radar</a>.</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Figures tagged (fact)/(est.)/(inference) with<br />
+period + source. "n/f" = no reliable figure found.</p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>The layer above GPUs/foundation models: (a) AI embedded in incumbent SaaS seats, (b) AI-native<br />
+SaaS, (c) agentic software that plans and executes tasks across enterprise apps. Excludes pure<br />
+infrastructure (<a href="ai-infrastructure.html">ai-infrastructure</a>, <a href="semiconductors.html">semiconductors</a>).</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Worldwide AI spending (all layers)</td>
+<td><strong>~$1.5T → ~$2.59T, +47% YoY</strong></td>
+<td>2025 → 2026E</td>
+<td>Gartner (2026-05-19)</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>AI agent software spend</td>
+<td><strong>$86.4B → $206.5B → $376.3B</strong></td>
+<td>2025 → 2026E → 2027E</td>
+<td>Gartner</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Agentic AI market (narrow)</td>
+<td><strong>~$7.3–7.6B → ~$9.1–10.8B; ~40% CAGR to ~$139–196B by 2034</strong></td>
+<td>2025 → 2026E → 2034</td>
+<td>Fortune Business Insights / multiple</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Enterprise apps with task-specific AI agents</td>
+<td><strong>&lt;5% → 40%</strong></td>
+<td>2025 → end-2026</td>
+<td>Gartner</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Agentic share of enterprise-app SW revenue</td>
+<td><strong>~2% → ~30% (&gt;$450B)</strong></td>
+<td>2025 → 2035</td>
+<td>Gartner best-case</td>
+<td>(est.)</td>
+</tr>
+</tbody>
+</table>
+<p>Caveat: Gartner (2026-05-05) warns autonomous-business/AI layoffs "may create budget room but do<br />
+not deliver returns" yet — a real adoption-vs-ROI gap (fact).</p>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand side:</strong> enterprise productivity/automation mandate; labor-cost substitution; the<br />
+40%-by-2026 agent-embedding wave (Gartner); data-gravity pulling AI workloads to where enterprise<br />
+data lives (Snowflake, Databricks, Datadog). <strong>Supply side:</strong> falling inference cost per token;<br />
+foundation-model commoditization pushing value to the application/orchestration layer; incumbents<br />
+bundling AI into existing seats (Microsoft 365 Copilot, Agentforce) to monetize without new sales<br />
+motion.</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p>Foundation models (OpenAI/Anthropic/Google) → cloud compute &amp; GPUs (<a href="ai-infrastructure.html">ai-infrastructure</a>,<br />
+<a href="semiconductors.html">semiconductors</a>) → <strong>AI software/agents (this theme)</strong> → enterprise workflows. App-layer demand<br />
+pulls inference compute; conversely infra cost deflation expands app-layer margins. Cross-link to<br />
+<a href="cybersecurity.html">cybersecurity</a>: AI agents create a new attack surface and a new identity class ("agent<br />
+identities") — driving identity-security demand (the Palo Alto–CyberArk rationale).</p>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<p>Two camps: <strong>incumbent platforms</strong> (Microsoft, Salesforce, ServiceNow, Adobe, Snowflake) embedding<br />
+AI to defend/expand existing seats — moats from data, distribution, switching costs; and<br />
+<strong>AI-native / disruptors</strong> (Palantir, agent startups) winning greenfield workloads. Consolidation<br />
+is via bundling rather than mega-M&amp;A. Margins highest where data + distribution coincide (Microsoft;<br />
+Adobe ~38% op margin; Palantir ~60% adj. op margin). Key tension: whether AI <em>commoditizes</em><br />
+seat-based SaaS (the "is Salesforce/Adobe disrupted?" debate — note 2026 underperformance of<br />
+CRM/ADBE/NOW vs AI-natives).</p>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps as-of late-May/Jun-2026 (est.). Other figures (fact) unless tagged. "n/f" = none found.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of)</th>
+<th>Revenue (period)</th>
+<th>Rev YoY</th>
+<th>Op margin</th>
+<th>Valuation</th>
+<th>Moat / positioning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microsoft</td>
+<td>MSFT</td>
+<td>US</td>
+<td>Platform + Copilot, cloud</td>
+<td>$3.34T (May 26)</td>
+<td>$82.9B (Q3 FY26)</td>
+<td>+18%</td>
+<td>~44% (co.)</td>
+<td>premium</td>
+<td>Distribution + Azure + OpenAI; AI bundled into 365 seats</td>
+</tr>
+<tr>
+<td>Palantir</td>
+<td>PLTR</td>
+<td>US</td>
+<td>AI-native (AIP), gov+commercial</td>
+<td>$375B (Jun 26)</td>
+<td>$1.63B (Q1 26)</td>
+<td><strong>+85%</strong></td>
+<td>46% GAAP / 60% adj</td>
+<td>extreme (~49x sales)</td>
+<td>AIP ontology + gov moat; US rev &gt;+100%; FY26 guide ~$7.66B (+71%)</td>
+</tr>
+<tr>
+<td>ServiceNow</td>
+<td>NOW</td>
+<td>US</td>
+<td>Workflow platform + AI agents</td>
+<td>$128B (May 26)</td>
+<td>~$15.7B FY26 guide</td>
+<td>~21% cc</td>
+<td>~32% non-GAAP</td>
+<td>high</td>
+<td>Workflow system-of-record; agent layer on install base</td>
+</tr>
+<tr>
+<td>Salesforce</td>
+<td>CRM</td>
+<td>US</td>
+<td>CRM + Agentforce</td>
+<td>$157B (Jun 26)</td>
+<td>~$4.06–4.10B/qtr guide</td>
+<td>+18–20%</td>
+<td>20% GAAP / 34% non-GAAP</td>
+<td>de-rated 2026</td>
+<td>CRM data; Agentforce monetization unproven</td>
+</tr>
+<tr>
+<td>Adobe</td>
+<td>ADBE</td>
+<td>US</td>
+<td>Creative/doc SaaS + Firefly AI</td>
+<td>$105B (May 26)</td>
+<td>n/f (TTM)</td>
+<td>n/f</td>
+<td>~38% op</td>
+<td>de-rated</td>
+<td>Creative moat vs GenAI disruption fear</td>
+</tr>
+<tr>
+<td>Snowflake</td>
+<td>SNOW</td>
+<td>US</td>
+<td>Data cloud (AI data gravity)</td>
+<td>$88.6B (May 26)</td>
+<td>$1.23B product rev (Q4 FY26)</td>
+<td>+30%</td>
+<td>12.5% adj</td>
+<td>~7.9x NTM EV/Rev</td>
+<td>Data-gravity for AI workloads</td>
+</tr>
+<tr>
+<td>Datadog</td>
+<td>DDOG</td>
+<td>US</td>
+<td>Observability + AI monitoring</td>
+<td>$88.1B (May 26)</td>
+<td>$1.006B (Q1 26)</td>
+<td>+32%</td>
+<td>1% GAAP / 22% non-GAAP</td>
+<td>~11.4x NTM EV/Rev</td>
+<td>Observability land-and-expand; LLM-observability tailwind</td>
+</tr>
+<tr>
+<td>CrowdStrike</td>
+<td>CRWD</td>
+<td>US</td>
+<td>Security platform (cross-listed, see <a href="cybersecurity.html">cybersecurity</a>)</td>
+<td>$132B (May 26)</td>
+<td>$1.17B (Q2 FY26)</td>
+<td>+21%</td>
+<td>non-GAAP NI $237M</td>
+<td>~20.6x EV/Sales</td>
+<td>Falcon platform w/ AI; bridges both themes</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p><strong>Winning:</strong> AI-native and data-gravity names — <strong>Palantir</strong> (+85% rev, 60% adj op margin, US<br />
+commercial inflection) and <strong>Snowflake/Datadog</strong> (30%+ growth, AI-workload pull) take the<br />
+narrative and the multiple. <strong>Microsoft</strong> remains the structural winner on distribution: it can<br />
+attach AI to billions of existing seats at near-zero CAC. <strong>Pressured:</strong> seat-based incumbents<br />
+whose value-add is the UI layer AI may erode — <strong>Adobe</strong> and <strong>Salesforce</strong> both de-rated in 2026<br />
+on "is the moat AI-proof?" fears; both still grow 18–20% with fat margins, so the debate is<br />
+multiple, not fundamentals. The decisive question: does agentic AI <em>expand</em> incumbents' TAM (more<br />
+automation = more usage) or <em>collapse</em> it (one agent replaces many seats)? Evidence is mixed;<br />
+Gartner's ROI-gap warning favors caution.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Valuation extremes:</strong> Palantir at ~49x sales is priced for multi-year flawless execution<br />
+  (inference); any deceleration de-rates hard.</li>
+<li><strong>AI disruption of incumbent SaaS:</strong> if agents collapse seat counts, CRM/ADBE/NOW TAMs shrink —<br />
+  the core bear case.</li>
+<li><strong>ROI gap / "agent winter":</strong> Gartner (2026-05-05) — deployments not yet delivering measurable<br />
+  returns; risk of a budget pullback if 2026–27 pilots disappoint.</li>
+<li><strong>Foundation-model commoditization</strong> could help (cheaper inference) or hurt (app layer becomes a<br />
+  thin wrapper over commodity models).</li>
+<li><strong>Correlated AI-cyclical de-rating</strong> with <a href="ai-infrastructure.html">ai-infrastructure</a>/<a href="semiconductors.html">semiconductors</a> — same engine.</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li><strong>IGV</strong> (iShares Expanded Tech-Software) — ER 0.39%; top holdings (2026-05-27): Oracle 9.2%, MSFT<br />
+  8.0%, Palo Alto 7.3%, Palantir 6.9%, Salesforce 6.1%, CrowdStrike 6.0%, AppLovin 5.6%. Best broad<br />
+  app-layer + software proxy.</li>
+<li><strong>WCLD</strong> (WisdomTree Cloud Computing) — ER 0.45%, AUM ~$247M; equal-weight cloud/SaaS, higher<br />
+  beta to growth names.</li>
+<li>Representative securities: MSFT (quality/distribution), PLTR (high-beta AI-native), NOW/CRM/ADBE<br />
+  (incumbent-AI), SNOW/DDOG (data/observability).</li>
+<li>No dedicated pure "agentic-AI" ETF with credible AUM identified as of 2026-06-01.</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 4/5</strong> (calibrated — not 5: extreme valuations + unproven agent ROI cap risk/reward).</li>
+<li><strong>Stage: accelerating</strong> (40%-by-2026 agent embedding; spend +47% YoY).</li>
+<li><strong>Horizon: 3–7 years</strong> (multi-year secular; near-term de-rating risk high).</li>
+<li><strong>Invalidation:</strong> AI agent software spend growth decelerating below ~25% YoY in 2027, OR clear<br />
+  evidence agents collapse rather than expand incumbent seat counts, OR a broad "agent winter."</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IGV</strong></td>
+<td>Software ETF</td>
+<td style="text-align: right;">$92.50</td>
+<td style="text-align: right;">$14B</td>
+<td style="text-align: right;">-14.3%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f · 1.17</td>
+<td style="text-align: right;">-21.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>WCLD</strong></td>
+<td>Cloud ETF</td>
+<td style="text-align: right;">$34.52</td>
+<td style="text-align: right;">$245M</td>
+<td style="text-align: right;">-8.5%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f · 1.20</td>
+<td style="text-align: right;">-6.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MSFT</strong></td>
+<td>Copilot</td>
+<td style="text-align: right;">$392.18</td>
+<td style="text-align: right;">$2.91T</td>
+<td style="text-align: right;">20.2x</td>
+<td style="text-align: right;">18.3%</td>
+<td style="text-align: right;">39.3% · 1.13</td>
+<td style="text-align: right;">-29.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PLTR</strong></td>
+<td>Foundry/AIP</td>
+<td style="text-align: right;">$131.11</td>
+<td style="text-align: right;">$314B</td>
+<td style="text-align: right;">62.6x</td>
+<td style="text-align: right;">84.7%</td>
+<td style="text-align: right;">43.7% · 1.56</td>
+<td style="text-align: right;">-36.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NOW</strong></td>
+<td>Now Assist</td>
+<td style="text-align: right;">$103.04</td>
+<td style="text-align: right;">$106B</td>
+<td style="text-align: right;">20.5x</td>
+<td style="text-align: right;">22.1%</td>
+<td style="text-align: right;">12.6% · 0.96</td>
+<td style="text-align: right;">-51.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CRM</strong></td>
+<td>Agentforce</td>
+<td style="text-align: right;">$170.48</td>
+<td style="text-align: right;">$140B</td>
+<td style="text-align: right;">11.0x</td>
+<td style="text-align: right;">13.3%</td>
+<td style="text-align: right;">18.7% · 1.18</td>
+<td style="text-align: right;">-37.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ADBE</strong></td>
+<td>Firefly</td>
+<td style="text-align: right;">$233.69</td>
+<td style="text-align: right;">$93B</td>
+<td style="text-align: right;">8.5x</td>
+<td style="text-align: right;">12.7%</td>
+<td style="text-align: right;">28.7% · 1.43</td>
+<td style="text-align: right;">-37.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SNOW</strong></td>
+<td>Data cloud</td>
+<td style="text-align: right;">$264.74</td>
+<td style="text-align: right;">$92B</td>
+<td style="text-align: right;">98.5x</td>
+<td style="text-align: right;">33.5%</td>
+<td style="text-align: right;">-23.8% · 1.35</td>
+<td style="text-align: right;">-7.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>DDOG</strong></td>
+<td>Observability</td>
+<td style="text-align: right;">$256.54</td>
+<td style="text-align: right;">$91B</td>
+<td style="text-align: right;">89.0x</td>
+<td style="text-align: right;">32.2%</td>
+<td style="text-align: right;">3.7% · 1.54</td>
+<td style="text-align: right;">-8.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CRWD</strong></td>
+<td>Security AI (Charlotte)</td>
+<td style="text-align: right;">$204.55</td>
+<td style="text-align: right;">$208B</td>
+<td style="text-align: right;">131.0x</td>
+<td style="text-align: right;">25.6%</td>
+<td style="text-align: right;">-0.6% · 1.24</td>
+<td style="text-align: right;">-6.0%</td>
+<td>🔴 REJECT (Gate 9)</td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Compute below it: <a href="ai-infrastructure.html">ai-infrastructure</a>, <a href="semiconductors.html">semiconductors</a>. New attack surface: <a href="cybersecurity.html">cybersecurity</a>.</li>
+<li>Master table: <a href="../syntheses/trend-radar.html">trend-radar</a>. Linkage: <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>. Watchlist: <a href="../syntheses/watchlist.html">watchlist</a>.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Does agentic AI expand or collapse incumbent SaaS seat counts (the central bull/bear fork)?</li>
+<li>Where does durable value accrue — orchestration layer, data layer, or distribution?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>Gartner press releases (2026-05-19 AI spend; 2025-08-26 agent embedding; 2026-05-05 ROI gap);<br />
+Palantir Q1 2026 (CNBC); MSFT FY26 Q3 10-Q (SEC); Salesforce/Snowflake/Datadog FY2026 8-Ks (SEC);<br />
+IGV fact sheet (iShares); EV/Sales multiples (TIKR / Channel Futures), 2026.</p>
+</article>
+</div>
+</body>
+</html>

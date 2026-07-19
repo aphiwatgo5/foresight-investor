@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nuclear &amp; Uranium</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Nuclear &amp; Uranium
+type: concept
+trend: true
+tags: [investing, trend, energy, nuclear, uranium, smr, baseload, ai-power, utilities]
+sources: []
+date: 2026-06-01
+conviction: 3
+stage: accelerating-emerging
+horizon: 3-10y</div>
+<article>
+<h1 id="nuclear-uranium">Nuclear &amp; Uranium</h1>
+<p><strong>Definition:</strong> The nuclear fuel cycle and reactor build-out — uranium miners, enrichment/<br />
+conversion, utilities with nuclear fleets, and the emerging <strong>small modular reactor (SMR)</strong> vendors.<br />
+The "clean baseload" answer to AI data-center power demand (<a href="ai-infrastructure.html">ai-infrastructure</a>,<br />
+<a href="power-grid-electrification.html">power-grid-electrification</a>). A meaningful but <strong>longer-dated, execution-heavy</strong> sub-theme of<br />
+<a href="energy-transition.html">energy-transition</a>. Conviction 3 on the <a href="../syntheses/trend-radar.html">trend-radar</a> — real demand inflection, but timelines<br />
+and SMR commercialization remain speculative.</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Figures tagged (fact)/(est.)/(inference) with<br />
+period + source. "n/f" = no reliable figure found.</p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>Two distinct layers: (a) the <strong>fuel cycle</strong> — uranium mining (Cameco, Kazatomprom), conversion,<br />
+enrichment (Centrus), and physical-uranium holders (Sprott SPUT); and (b) the <strong>reactor layer</strong> —<br />
+utilities operating existing fleets (Constellation, Vistra) and <strong>SMR developers</strong> (NuScale, Oklo,<br />
+X-energy). Links to <a href="power-grid-electrification.html">power-grid-electrification</a> (the grid that nuclear feeds),<br />
+<a href="ai-infrastructure.html">ai-infrastructure</a> (hyperscaler PPAs/restarts), <a href="critical-minerals.html">critical-minerals</a> (uranium as a strategic<br />
+mineral), and <a href="natural-gas-lng.html">natural-gas-lng</a> (the competing dispatchable baseload).</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Uranium spot price</td>
+<td><strong>peaked ~$101.41/lb; ~$85.05/lb</strong></td>
+<td>2026-01-29 peak → 2026-05-29</td>
+<td>UxC / Numerco spot</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>World uranium demand</td>
+<td><strong>~77,000 t U3O8 (~67,000 tU)</strong></td>
+<td>2025</td>
+<td>World Nuclear Association</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Operational SMRs (commercial)</td>
+<td><strong>only ~2 operational; ~127 designs in development/planned</strong></td>
+<td>2026</td>
+<td>IAEA / WNA SMR dashboard</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Global nuclear capacity</td>
+<td><strong>~395 GWe operable; ~70 GWe under construction</strong></td>
+<td>2026</td>
+<td>World Nuclear Association</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Cameco 2025 production</td>
+<td><strong>21.0 Mlb U3O8 (−10% YoY)</strong></td>
+<td>FY2025</td>
+<td>Cameco</td>
+<td>(fact)</td>
+</tr>
+</tbody>
+</table>
+<p>Demand is structurally rising (life extensions, restarts, new builds, AI PPAs) against a<br />
+supply-constrained mine base — but the supply response is slow (5–10+ year mine lead times).</p>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand:</strong> AI/data-center baseload appetite (hyperscaler nuclear PPAs — Microsoft–Constellation<br />
+Three Mile Island restart, Amazon–Talen/Vistra, Google–Kairos); government pro-nuclear policy<br />
+(COP28 "triple nuclear by 2050" pledge, US ADVANCE Act, restarts in Japan); electrification.<br />
+<strong>Supply (bullish for uranium price):</strong> Kazatomprom/Cameco production discipline and misses; thin<br />
+secondary supply; Russian enrichment dependence pushing Western enrichment build-out (Centrus).<br />
+<strong>Headwinds:</strong> spot pulled back from the Jan-2026 ~$101 peak to ~$85; SMR commercialization is<br />
+years out and capital-intensive.</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p>Uranium mining (CCJ, KAP) → conversion → enrichment (LEU/Centrus, Urenco) → fuel fabrication →<br />
+reactors (utility fleets CEG/VST; SMR vendors OKLO/SMR/X-energy) → baseload power →<br />
+<a href="power-grid-electrification.html">power-grid-electrification</a> → <a href="ai-infrastructure.html">ai-infrastructure</a> (data-center load). Competes with<br />
+<a href="natural-gas-lng.html">natural-gas-lng</a> as dispatchable baseload; complements <a href="renewables-storage.html">renewables-storage</a> (24/7 vs<br />
+intermittent). Uranium itself is a <a href="critical-minerals.html">critical-minerals</a> strategic input.</p>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<p><strong>Uranium mining</strong> is a concentrated oligopoly — Kazatomprom (largest, lowest-cost ISR) and Cameco<br />
+(largest Western, tier-1 Athabasca assets: McArthur River, Cigar Lake) dominate, giving real<br />
+pricing leverage in a deficit. <strong>Enrichment</strong> is even more concentrated (Urenco, Orano, Rosatom,<br />
+Centrus) with high Western-supply-security value post-Russia. <strong>SMR vendors</strong> are pre-revenue /<br />
+early-revenue with binary outcomes — first-mover design wins and regulatory approval (NRC) are the<br />
+moats, but commercialization risk is high. <strong>Utilities</strong> with existing nuclear fleets (CEG, VST)<br />
+hold the scarcest asset: operating 24/7 clean baseload that hyperscalers will pay premiums for.</p>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps point-in-time (~late May 2026, est.). Other figures (fact) unless tagged. "n/f" = none found.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of)</th>
+<th>Revenue (period)</th>
+<th>Rev YoY</th>
+<th>Profitability</th>
+<th>Other</th>
+<th>Moat note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cameco</td>
+<td>CCJ</td>
+<td>CA</td>
+<td>Uranium miner + fuel (Westinghouse stake)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>profitable</td>
+<td>2025 output 21.0 Mlb (−10%); 49% Westinghouse</td>
+<td>Largest Western miner; tier-1 Athabasca grades</td>
+</tr>
+<tr>
+<td>Kazatomprom</td>
+<td>KAP.L</td>
+<td>KZ</td>
+<td>Largest uranium miner (ISR)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>low-cost leader</td>
+<td>~20%+ of world primary supply</td>
+<td>Lowest-cost ISR; swing producer</td>
+</tr>
+<tr>
+<td>Constellation Energy</td>
+<td>CEG</td>
+<td>US</td>
+<td>Largest US nuclear fleet operator</td>
+<td>$89.8B (22 May 26)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>adj op EPS $9.39 (FY25)</td>
+<td>TMI restart (Microsoft PPA); closed Calpine</td>
+<td>Largest US nuclear = scarce 24/7 clean power</td>
+</tr>
+<tr>
+<td>Vistra</td>
+<td>VST</td>
+<td>US</td>
+<td>IPP, nuclear+gas</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>2026 adj EBITDA guide $6.8–7.6B</td>
+<td>~3,800 MW AWS nuclear PPA</td>
+<td>Dispatchable + nuclear, AI PPAs</td>
+</tr>
+<tr>
+<td>Oklo</td>
+<td>OKLO</td>
+<td>US</td>
+<td>SMR/microreactor developer (pre-rev)</td>
+<td>n/f</td>
+<td>~$0 (pre-revenue)</td>
+<td>n/a</td>
+<td>pre-revenue (loss)</td>
+<td>Aurora powerhouse; DOE site</td>
+<td>Sam Altman-backed; binary design bet</td>
+</tr>
+<tr>
+<td>NuScale Power</td>
+<td>SMR</td>
+<td>US</td>
+<td>SMR developer (NRC-approved design)</td>
+<td>n/f</td>
+<td>minimal</td>
+<td>n/f</td>
+<td>loss-making</td>
+<td>only US NRC-certified SMR design</td>
+<td>First NRC design approval = regulatory moat</td>
+</tr>
+<tr>
+<td>Centrus Energy</td>
+<td>LEU</td>
+<td>US</td>
+<td>Enrichment (HALEU)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>profitable</td>
+<td>only US-owned HALEU producer</td>
+<td>Western enrichment security; HALEU scarcity</td>
+</tr>
+<tr>
+<td>Uranium Energy</td>
+<td>UEC</td>
+<td>US</td>
+<td>US ISR uranium developer</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>US-focused ISR; physical U holdings</td>
+<td>US domestic supply leverage</td>
+</tr>
+<tr>
+<td>Denison Mines</td>
+<td>DNN</td>
+<td>CA</td>
+<td>Athabasca uranium developer (Wheeler River)</td>
+<td>n/f</td>
+<td>n/f (developer)</td>
+<td>n/a</td>
+<td>pre-production</td>
+<td>Wheeler River ISR project</td>
+<td>Tier-1 jurisdiction development optionality</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p><strong>Winning / highest quality:</strong> the <strong>utilities with existing fleets</strong> — Constellation (largest US<br />
+nuclear, TMI restart, Microsoft PPA) and Vistra (AWS PPA) — monetize scarce 24/7 clean baseload<br />
+today, with the least technology risk; they overlap with <a href="power-grid-electrification.html">power-grid-electrification</a>. Among<br />
+<strong>miners</strong>, Cameco (Western tier-1 grades + Westinghouse optionality) and Kazatomprom (low-cost<br />
+swing producer) have the cleanest leverage to a structurally tight uranium market. <strong>Centrus</strong><br />
+(LEU) is a focused way to play Western enrichment security / HALEU scarcity.</p>
+<p><strong>Speculative / watch:</strong> <strong>SMR vendors (Oklo, NuScale)</strong> are the highest-beta, most narrative-driven<br />
+names — large addressable prize but pre-/minimal-revenue, capital-hungry, and dependent on<br />
+multi-year NRC licensing and first-of-a-kind construction. They can re-rate violently in both<br />
+directions. Uranium equities also pulled back with spot from the ~$101 Jan-2026 peak.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Spot price reversal:</strong> uranium already fell from ~$101 (Jan'26) to ~$85 (May'26); a demand<br />
+  air-pocket or Kazatomprom supply surge compresses miner margins.</li>
+<li><strong>SMR disappointment:</strong> licensing delays, cost overruns, or a high-profile project cancellation<br />
+  (NuScale's UAMPS termination precedent) de-rates the whole SMR cohort.</li>
+<li><strong>AI-capex correlation:</strong> the data-center-PPA demand leg is correlated with the broader<br />
+<a href="ai-infrastructure.html">ai-infrastructure</a> complex (see <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>).</li>
+<li><strong>Accident / sentiment risk:</strong> any nuclear safety event re-freezes policy and public support.</li>
+<li><strong>Long timelines:</strong> new builds and SMRs are 5–10+ year stories — capital is tied up with<br />
+  execution risk before payoff.</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li><strong>URA</strong> (Global X Uranium) — miners + nuclear-fuel-cycle equities; largest uranium ETF.</li>
+<li><strong>URNM</strong> (Sprott Uranium Miners) — purer miner/physical tilt.</li>
+<li><strong>NLR</strong> (VanEck Uranium &amp; Nuclear) — broader utility/reactor tilt.</li>
+<li><strong>SPUT</strong> (Sprott Physical Uranium Trust) — direct physical-uranium exposure (spot proxy).</li>
+<li>Representative securities: CCJ, KAP.L, CEG, VST, LEU, OKLO, SMR, UEC, DNN.</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 3/5</strong> — genuine structural demand inflection (AI baseload + policy + restarts) and a<br />
+  supply-constrained uranium market, but held below the AI-equipment themes by (a) SMR<br />
+  commercialization risk and long timelines, (b) uranium-spot volatility, and (c) the cleanest<br />
+  "AI power" expression arguably being grid/equipment (<a href="power-grid-electrification.html">power-grid-electrification</a>) rather than<br />
+  the fuel cycle.</li>
+<li><strong>Stage: accelerating (utilities/fuel) to emerging (SMRs). Horizon: 3–10 years.</strong></li>
+<li><strong>Invalidation:</strong> uranium spot breaks back below ~$70/lb on supply normalization, OR a flagship<br />
+  SMR program is cancelled/slips multi-year, OR hyperscaler nuclear PPAs stall.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>URA</strong></td>
+<td>Uranium miners</td>
+<td style="text-align: right;">$38.77</td>
+<td style="text-align: right;">$6B</td>
+<td style="text-align: right;">+1.5%</td>
+<td style="text-align: right;">4.8%</td>
+<td style="text-align: right;">n/f · 1.41</td>
+<td style="text-align: right;">-37.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>URNM</strong></td>
+<td>Sprott uranium</td>
+<td style="text-align: right;">$48.35</td>
+<td style="text-align: right;">$2B</td>
+<td style="text-align: right;">-4.6%</td>
+<td style="text-align: right;">3.3%</td>
+<td style="text-align: right;">n/f · 0.90</td>
+<td style="text-align: right;">-43.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NLR</strong></td>
+<td>Nuclear utilities</td>
+<td style="text-align: right;">$104.47</td>
+<td style="text-align: right;">$4B</td>
+<td style="text-align: right;">-6.3%</td>
+<td style="text-align: right;">2.7%</td>
+<td style="text-align: right;">n/f · 1.13</td>
+<td style="text-align: right;">-37.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CCJ</strong></td>
+<td>Uranium incumbent</td>
+<td style="text-align: right;">$85.62</td>
+<td style="text-align: right;">$37B</td>
+<td style="text-align: right;">45.0x</td>
+<td style="text-align: right;">7.1%</td>
+<td style="text-align: right;">18.4% · 1.00</td>
+<td style="text-align: right;">-36.7%</td>
+<td>⚪ PENDING (uranium)</td>
+</tr>
+<tr>
+<td><strong>CEG</strong></td>
+<td>Nuclear utility</td>
+<td style="text-align: right;">$252.71</td>
+<td style="text-align: right;">$90B</td>
+<td style="text-align: right;">18.6x</td>
+<td style="text-align: right;">63.8%</td>
+<td style="text-align: right;">12.7% · 1.12</td>
+<td style="text-align: right;">-38.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VST</strong></td>
+<td>Nuclear-DC PPA</td>
+<td style="text-align: right;">$155.00</td>
+<td style="text-align: right;">$52B</td>
+<td style="text-align: right;">14.3x</td>
+<td style="text-align: right;">43.4%</td>
+<td style="text-align: right;">11.5% · 1.41</td>
+<td style="text-align: right;">-29.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>OKLO</strong></td>
+<td>SMR (pre-rev)</td>
+<td style="text-align: right;">$41.10</td>
+<td style="text-align: right;">$7B</td>
+<td style="text-align: right;">-48.9x</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0% · 1.16</td>
+<td style="text-align: right;">-78.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SMR</strong></td>
+<td>NuScale SMR (pre-rev)</td>
+<td style="text-align: right;">$7.62</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">-10.6x</td>
+<td style="text-align: right;">-95.8%</td>
+<td style="text-align: right;">0.0% · 2.25</td>
+<td style="text-align: right;">-86.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>LEU</strong></td>
+<td>HALEU enrichment</td>
+<td style="text-align: right;">$151.82</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">38.5x</td>
+<td style="text-align: right;">4.9%</td>
+<td style="text-align: right;">13.4% · 1.36</td>
+<td style="text-align: right;">-67.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>UEC</strong></td>
+<td>Uranium explorer</td>
+<td style="text-align: right;">$9.15</td>
+<td style="text-align: right;">$5B</td>
+<td style="text-align: right;">-91.5x</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0% · 1.19</td>
+<td style="text-align: right;">-55.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>DNN</strong></td>
+<td>Uranium explorer</td>
+<td style="text-align: right;">$2.82</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">-69.8x</td>
+<td style="text-align: right;">-19.6%</td>
+<td style="text-align: right;">0.0% · 1.62</td>
+<td style="text-align: right;">-36.3%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Demand/grid: <a href="power-grid-electrification.html">power-grid-electrification</a>, <a href="ai-infrastructure.html">ai-infrastructure</a>. Meta-force: <a href="energy-transition.html">energy-transition</a>.<br />
+  Competing baseload: <a href="natural-gas-lng.html">natural-gas-lng</a>. Complement: <a href="renewables-storage.html">renewables-storage</a>. Fuel as material:<br />
+<a href="critical-minerals.html">critical-minerals</a>. Master: <a href="../syntheses/trend-radar.html">trend-radar</a>. Linkage: <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>. Calls:<br />
+<a href="../syntheses/prediction-ledger.html">prediction-ledger</a>.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Is the cleaner AI-power expression the <em>utilities/fuel cycle</em> (CEG, CCJ) rather than the volatile<br />
+  pre-revenue SMRs?</li>
+<li>Does uranium spot find a floor above the marginal cost of incentive supply (~$80/lb), or<br />
+  re-rate lower as Kazatomprom restores output?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>World Nuclear Association (demand, capacity, SMR dashboard); IAEA (SMR status); UxC/Numerco<br />
+(uranium spot); Cameco FY2025 production release; company IR (Constellation, Vistra, Centrus,<br />
+Oklo, NuScale); COP28 nuclear pledge; US ADVANCE Act; ETF data (Global X, Sprott, VanEck), 2026.</p>
+</article>
+</div>
+</body>
+</html>

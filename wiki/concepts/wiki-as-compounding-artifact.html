@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wiki as a compounding artifact</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Wiki as a compounding artifact
+type: concept
+tags: [methodology, knowledge-management, core-thesis]
+sources: [[[the-llm-wiki-pattern]]]</div>
+<article>
+<h1 id="wiki-as-a-compounding-artifact">Wiki as a compounding artifact</h1>
+<p><strong>Definition:</strong> The core thesis of this system — knowledge is <strong>compiled once at ingest and<br />
+kept current</strong>, rather than rediscovered from scratch on every query (as in RAG).</p>
+<h2 id="summary">Summary</h2>
+<p>In standard RAG, every question re-retrieves chunks and re-derives an answer; nothing<br />
+accumulates. Here, the LLM integrates each new source into a persistent, interlinked wiki.<br />
+Because cross-references already exist, contradictions are already flagged, and the<br />
+synthesis already reflects everything read, the wiki <strong>gets richer with every source and<br />
+every question</strong> (<a href="../sources/the-llm-wiki-pattern.html">the-llm-wiki-pattern</a>).</p>
+<h2 id="key-facts">Key facts</h2>
+<ul>
+<li>Contrast: RAG = retrieve-and-re-derive per query; this = compile-once, maintain-current. (<a href="../sources/the-llm-wiki-pattern.html">the-llm-wiki-pattern</a>)</li>
+<li>The compounding works because maintenance/bookkeeping cost is near-zero for an LLM. (<a href="../sources/the-llm-wiki-pattern.html">the-llm-wiki-pattern</a>)</li>
+<li>Good query answers can be <strong>filed back</strong> as synthesis pages, so explorations compound too. (<a href="../sources/the-llm-wiki-pattern.html">the-llm-wiki-pattern</a>)</li>
+</ul>
+<h2 id="relationships">Relationships</h2>
+<ul>
+<li>Realized through the <a href="ingest-query-lint.html">ingest-query-lint</a> operations.</li>
+<li>Browsed and visualized in <a href="../entities/obsidian.html">obsidian</a>.</li>
+<li>Descends conceptually from the <a href="memex.html">memex</a>.</li>
+</ul>
+<h2 id="notes-tensions">Notes &amp; tensions</h2>
+<ul>
+<li>Open question: the scale at which <code>index.md</code>-based navigation stops sufficing and search<br />
+  tooling is needed. (<a href="../sources/the-llm-wiki-pattern.html">the-llm-wiki-pattern</a>)</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

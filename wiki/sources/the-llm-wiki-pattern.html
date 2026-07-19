@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The LLM Wiki pattern</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: The LLM Wiki pattern
+type: source
+source_file: raw/the-llm-wiki-pattern.md
+source_kind: article
+author: unknown
+date_published: unknown
+date_ingested: 2026-05-30
+tags: [knowledge-management, llm, wiki, methodology]</div>
+<article>
+<h1 id="the-llm-wiki-pattern">The LLM Wiki pattern</h1>
+<p><strong>One-line:</strong> The founding idea — instead of RAG re-deriving knowledge per query, an LLM<br />
+incrementally builds and maintains a persistent, interlinked markdown wiki between you and<br />
+your raw sources.</p>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>RAG rediscovers knowledge from scratch on every question; a wiki is a<br />
+<a href="../concepts/wiki-as-compounding-artifact.html">compounding artifact</a> where cross-references and synthesis are built once and kept current.</li>
+<li>The architecture is three layers: immutable <strong>raw sources</strong>, the LLM-owned <strong>wiki</strong>, and a <strong>schema</strong> that encodes conventions and workflows.</li>
+<li>Three operations keep it alive — <a href="../concepts/ingest-query-lint.html">ingest-query-lint</a>.</li>
+<li>The human curates and questions; the LLM does all bookkeeping (the part that kills human-run wikis).</li>
+<li>Workflow in practice: LLM agent + <a href="../entities/obsidian.html">obsidian</a> side by side — Obsidian is the IDE, the LLM the programmer, the wiki the codebase.</li>
+<li>Conceptually descends from the <a href="../concepts/memex.html">memex</a> (<a href="../entities/vannevar-bush.html">vannevar-bush</a>, 1945); the LLM solves the "who maintains it" problem Bush couldn't.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>The pattern reframes LLM-plus-documents away from retrieval-at-query-time toward<br />
+<strong>compilation-at-ingest-time</strong>. When a source arrives, the LLM reads it, extracts the<br />
+salient information, and integrates it into existing pages — revising summaries, updating<br />
+entity pages, and explicitly flagging where new data contradicts old claims. The result is<br />
+a structured artifact that gets richer with every source and every question.</p>
+<p>It separates concerns into three layers. <code>raw/</code> holds curated, immutable sources (the<br />
+source of truth). <code>wiki/</code> holds everything the LLM generates and owns. A schema file<br />
+(<code>CLAUDE.md</code>) encodes structure, conventions, and workflows so the LLM behaves as a<br />
+disciplined maintainer rather than a generic chatbot — and the human co-evolves it.</p>
+<p>Two navigation files support scale without embedding-based infrastructure: a<br />
+content-oriented <code>index.md</code> (catalog of pages, read first on queries) and a chronological,<br />
+append-only <code>log.md</code> (parseable activity record). Optional tooling — a local markdown<br />
+search engine like qmd — helps once the wiki outgrows the index file.</p>
+<p>The argument for why it works: the binding constraint on knowledge bases is bookkeeping,<br />
+not reading or thinking. Humans abandon wikis because maintenance grows faster than value.<br />
+An LLM touches fifteen files in one pass without boredom, driving maintenance cost toward<br />
+zero — so the human is freed to curate, direct, and interpret.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Foundational to: this entire wiki (every page descends from it).</li>
+<li>Conceptual ancestor: <a href="../concepts/memex.html">memex</a> / <a href="../entities/vannevar-bush.html">vannevar-bush</a>.</li>
+<li>Tooling: <a href="../entities/obsidian.html">obsidian</a>.</li>
+<li>Core mechanism: <a href="../concepts/wiki-as-compounding-artifact.html">wiki-as-compounding-artifact</a>, <a href="../concepts/ingest-query-lint.html">ingest-query-lint</a>.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>At what scale does the <code>index.md</code>-only approach break and a search engine (qmd) become necessary?</li>
+<li>How should batch-ingest (low supervision) differ in quality from one-at-a-time supervised ingest?</li>
+<li>What lint cadence keeps a fast-growing wiki healthy without over-churning pages?</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

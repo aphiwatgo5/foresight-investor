@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotcache</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="home.html">🏠 Home</a> ·
+    <a href="hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+
+<article>
+<h1 id="hotcache">Hotcache</h1>
+<blockquote>
+<p>Rolling ~500-word summary of recent state. <strong>Read this first.</strong></p>
+</blockquote>
+<p><strong>Last updated:</strong> 2026-07-18</p>
+<h2 id="what-this-is">What this is</h2>
+<p>A personal LLM Wiki / second brain in an Obsidian vault with a <strong>foresight-investing engine</strong>.<br />
+v3 (2026-07-18): quantitative backtest + MDAEM v4.0. Decisions for the operator's own book, never<br />
+advice to others. Git local, no remote. Public webapp: <strong>https://aphiwatgo5.github.io/foresight-investor/</strong>.</p>
+<h2 id="current-state-2026-07-18">Current state (2026-07-18)</h2>
+<ul>
+<li><strong>Pages:</strong> sources 3 · entities 9 · concepts 38 (+mdaem-framework-v4) · syntheses 27 (+5 v3).</li>
+<li><strong>Universe:</strong> 272 instruments (added REITs, commodities, FX/vol/crypto, cash — meta-force M8).</li>
+<li><strong>History cache:</strong> <code>scripts/_hist/prices.parquet</code> (348,924 rows × 268 tickers, 5y) + macro + signals + backtest.</li>
+<li><strong>Live site:</strong> dashboard (index) + per-theme instrument tables (click ▶ to expand) + Strategy Sleeves + Backtest v4 tabs.</li>
+</ul>
+<h2 id="hot-topic-engine-v3-mdaem-v40-quantitative-layer-2026-07-18">Hot topic — Engine v3: MDAEM v4.0 quantitative layer (2026-07-18)</h2>
+<p><a href="wiki/syntheses/backtest-results-2026-07-18.html">backtest-results-2026-07-18</a>: 5y walk-forward, monthly rebalance, top-20 per sleeve.<br />
+| Sleeve | CAGR | Sharpe | MaxDD | α vs VOO |<br />
+|---|---:|---:|---:|---:|<br />
+| Momentum | +29.4% | 1.04 | -40.5% | +20.7pts |<br />
+| Macro-rotation | +22.7% | 0.91 | -37.4% | +14.0pts |<br />
+| Quality | +11.2% | <strong>0.97</strong> | <strong>-21.7%</strong> | +2.5pts |<br />
+| Value | +10.5% | 0.62 | -39.9% | +1.8pts |<br />
+| <strong>Ensemble</strong> | <strong>+19.1%</strong> | <strong>1.02</strong> | -30.6% | <strong>+10.4pts</strong> |<br />
+| <em>VOO</em> | <em>+8.7%</em> | <em>0.66</em> | <em>-24.5%</em> | — |</p>
+<p><strong>Regime split (key read):</strong> Momentum +100%/yr bull, <strong>−46%/yr bear</strong>. Macro-rotation exists to<br />
+cap momentum in bear regimes. Quality = all-weather spine (Sharpe 0.97 with VOO-like DD).</p>
+<p><strong>H-resolution (8 weeks of data since May-24):</strong> H1/H3/H6/H7/H8/H9/H10/H14 ✅ · H5 NBIS ❌ · H-CN5 ❌.<br />
+Two v3.4 leaks → v4.0 fixes: starter tranche for high-momentum megatrends (H5); require revisions<br />
+turn for contrarian-at-lows (H-CN5).</p>
+<h2 id="what-v40-adds-vs-v34">What v4.0 adds (vs v3.4)</h2>
+<ul>
+<li><strong>Quant signals</strong> automate Dim 3/5/6/7/9 (Valuation/Growth/Technical/Sentiment/Macro-fit). Gates,<br />
+  weights, tiers, SA-overlay, 21 refinements all UNCHANGED.</li>
+<li><strong>4 strategy sleeves</strong> each backtested with measured alpha — see <a href="wiki/syntheses/strategy-sleeves.html">strategy-sleeves</a>.</li>
+<li><strong>Daily universe screen</strong> — <code>signals.py</code> ranks all 272 names; top decile per sleeve surfaced.<br />
+  Replaces manual one-name-at-a-time workflow → 10× coverage with same decision quality.</li>
+</ul>
+<h2 id="new-ops-claudemd-10">New ops (CLAUDE.md §10)</h2>
+<ul>
+<li><strong>SOURCE</strong> — daily: run signals.py → shortlist top-decile per sleeve → MDAEM v4 verdict → tag sleeve.</li>
+<li><strong>BACKTEST</strong> — quarterly: re-fetch history → re-run signals + backtest → tune ensemble weights.</li>
+</ul>
+<h2 id="pipeline-how-to-refresh">Pipeline (how to refresh)</h2>
+<ul>
+<li>Weekly (launchd Sun 06:00): <code>weekly_refresh.sh</code> → refresh.py + refresh_instruments + tables + dashboard.</li>
+<li>Monthly: <code>signals.py</code> + <code>mdaem_v4.py</code> re-score.</li>
+<li>Quarterly: <code>fetch_history.py --inc</code> → <code>signals.py</code> → <code>backtest.py</code>.</li>
+<li>Publish: <code>scripts/deploy_web.sh</code> (pre-flight secret/confidential scan, isolated /tmp repo, force-push).</li>
+</ul>
+<h2 id="open-offered">Open / offered</h2>
+<ul>
+<li>Wire <code>upgrades_downgrades</code> history → improve Dim 7 sentiment (currently inverse-momentum proxy).</li>
+<li>Point-in-time fundamentals (SEC EDGAR) — the value sleeve's #1 bias.</li>
+<li>Extend backtest window to 7y (capture COVID crash).</li>
+<li>Add bonds sleeve (skipped this round per user choice; SGOV/BIL cash proxy included).</li>
+<li>MDAEM 2026-08-24 review + dual-model 2026-09-03 reconciliation still on calendar.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

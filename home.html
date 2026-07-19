@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home — Start Here</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="home.html">🏠 Home</a> ·
+    <a href="hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Home — Start Here
+type: home
+date_updated: 2026-07-14</div>
+<article>
+<h1 id="home-start-here">🏠 Home — Start Here</h1>
+<p><strong>A personal, LLM-maintained knowledge wiki (an Obsidian vault) with a foresight-investing engine on<br />
+top.</strong> The human curates sources and asks questions; the <strong>agent does all the writing, filing,<br />
+analysis, and bookkeeping</strong>. This page is the human entry point — read it to understand <em>what's<br />
+inside</em> and <em>how to trace any claim back to its source</em>.</p>
+<blockquote>
+<p>🔒 <strong>Local &amp; confidential</strong> — committed to git locally, <strong>no remote</strong>.<br />
+📈 <strong>Decisions for the operator's own book (v2, 2026-07-14)</strong> — sized ADD/EXIT calls for the<br />
+operator's own account; <strong>never personalized advice to others</strong>. Every decision accountable via<br />
+falsifiable P-calls + a track-record ledger.</p>
+</blockquote>
+<hr />
+<h2 id="quick-links">⚡ Quick links</h2>
+<table>
+<thead>
+<tr>
+<th>You want to…</th>
+<th>Go to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The fast current-state summary (read first)</td>
+<td><code>hotcache.md</code></td>
+</tr>
+<tr>
+<td>The full catalog of every page</td>
+<td><code>index.md</code></td>
+</tr>
+<tr>
+<td>The "state of knowledge" narrative</td>
+<td><a href="wiki/overview.html">overview</a></td>
+</tr>
+<tr>
+<td><strong>What to buy/hold/exit + sizing (v2)</strong></td>
+<td><a href="wiki/syntheses/decision-register.html">decision-register</a></td>
+</tr>
+<tr>
+<td><strong>Live sensors (what moved this week)</strong></td>
+<td><a href="wiki/syntheses/signal-monitor.html">signal-monitor</a></td>
+</tr>
+<tr>
+<td><strong>Where we are in the cycle</strong></td>
+<td><a href="wiki/syntheses/regime-monitor.html">regime-monitor</a></td>
+</tr>
+<tr>
+<td>A visual, interactive read of everything</td>
+<td><strong><code>outlook-dashboard.html</code></strong> (open in a browser)</td>
+</tr>
+<tr>
+<td>The rules the agent follows</td>
+<td><code>CLAUDE.md</code> · cadence: <code>CADENCE.md</code></td>
+</tr>
+<tr>
+<td>Refresh the live data</td>
+<td><code>scripts/refresh.py</code> (see <code>scripts/README.md</code>)</td>
+</tr>
+<tr>
+<td>What happened, when (history)</td>
+<td><code>log.md</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="how-its-built-three-layers-this-is-how-you-trace-anything">🧱 How it's built — three layers (this is how you trace anything)</h2>
+<ol>
+<li><strong><code>raw/</code></strong> — <em>Source of truth.</em> Immutable original documents (articles, frameworks, notes).<br />
+   Never edited. <strong>Every claim in the wiki traces back to a file here</strong> (or a dated web lookup).</li>
+<li><strong><code>wiki/</code></strong> — <em>Generated knowledge</em>, owned entirely by the agent:<br />
+   - <code>wiki/sources/</code> — one summary per ingested source<br />
+   - <code>wiki/entities/</code> — people, orgs, products, tools, ETFs, securities<br />
+   - <code>wiki/concepts/</code> — ideas, methods, and <strong>investment themes</strong><br />
+   - <code>wiki/syntheses/</code> — cross-source analysis, comparisons, answers worth keeping</li>
+<li><strong>Schema &amp; navigation</strong> — <code>CLAUDE.md</code> (operating manual) · <code>index.md</code> (catalog) · <code>log.md</code><br />
+   (timeline) · <code>hotcache.md</code> (rolling state) · this <code>home.md</code>.</li>
+</ol>
+<p><strong>Citations tell you the provenance of every line:</strong> <code>(source-page)</code> = from a source ·<br />
+<code>(web: …, date)</code> = web lookup · <code>(inference)</code> = the agent's reasoning · <code>(fact)/(est.)</code> on figures.</p>
+<hr />
+<h2 id="features-skills-everything-the-engine-can-do">🛠️ Features &amp; skills (everything the engine can do)</h2>
+<h3 id="core-wiki-operations-claudemd-5">Core wiki operations (<code>CLAUDE.md</code> §5)</h3>
+<ul>
+<li><strong>Ingest</strong> — read a new source → summarize, create/update ~10–15 entity &amp; concept pages,<br />
+  cross-link, flag contradictions, log.</li>
+<li><strong>Query</strong> — answer questions from the wiki with citations; file good answers as durable syntheses.</li>
+<li><strong>Lint / health-check</strong> — scan for contradictions, stale claims, orphans, dead links, missing<br />
+  cross-references; propose fixes before applying.</li>
+</ul>
+<h3 id="investing-engine-the-futurist-investor-claudemd-10-cadence-cadencemd">Investing engine — the "Futurist Investor" (<code>CLAUDE.md</code> §10; cadence <code>CADENCE.md</code>)</h3>
+<ul>
+<li><strong>Scan</strong> (monthly) — radar refresh: update conviction &amp; stage, adjust the watchlist, score<br />
+  matured predictions.</li>
+<li><strong>Monitor</strong> (weekly, <em>v2</em>) — light sensor sweep via <a href="wiki/syntheses/signal-monitor.html">signal-monitor</a>: catch regime shifts<br />
+  between scans; score any matured P-call. Powered by <code>scripts/refresh.py</code>.</li>
+<li><strong>Decide</strong> (on demand, <em>v2</em>) — issue/exit sized calls (ADD/TRIM/HOLD/EXIT) in <a href="wiki/syntheses/decision-register.html">decision-register</a><br />
+  for the operator's own book, via the <a href="wiki/concepts/mdaem-framework.html">mdaem-framework</a> methodology + <a href="wiki/syntheses/portfolio-blueprint.html">portfolio-blueprint</a> caps.<br />
+  Each decision filed as a falsifiable P-call + scored in <a href="wiki/syntheses/track-record.html">track-record</a>.</li>
+<li><strong>Refresh</strong> (<em>v2</em>) — run <code>scripts/refresh.py</code> to pull live data (prices/CAPE/F&amp;G/yields/fundamentals)<br />
+  with full provenance; feeds signal-monitor, theme pages, and the dashboard.</li>
+<li><strong>Bubble-watch</strong> — on-demand bubble-risk analysis of any target from <strong>live-verified</strong> data run<br />
+  through <strong>7 frameworks</strong>. First run: <a href="wiki/syntheses/bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a>.</li>
+<li><strong>The radar</strong> — <strong>7 meta-forces → 30 themes</strong>, each an analyst-grade page. Master table: <a href="wiki/syntheses/trend-radar.html">trend-radar</a>.</li>
+<li><strong>Living hubs</strong> — <a href="wiki/syntheses/trend-radar.html">trend-radar</a> · <a href="wiki/syntheses/watchlist.html">watchlist</a> · <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a> (the original three) +<br />
+<strong>v2: <a href="wiki/syntheses/signal-monitor.html">signal-monitor</a> · <a href="wiki/syntheses/decision-register.html">decision-register</a> · <a href="wiki/syntheses/portfolio-blueprint.html">portfolio-blueprint</a> · <a href="wiki/syntheses/regime-monitor.html">regime-monitor</a> ·<br />
+<a href="wiki/syntheses/track-record.html">track-record</a> · <a href="wiki/syntheses/frontier-watch.html">frontier-watch</a></strong>.</li>
+<li><strong>Single-name methodology</strong> — <a href="wiki/concepts/mdaem-framework.html">mdaem-framework</a> (10 gates / 10 dimensions) + <a href="wiki/entities/seeking-alpha-quant.html">seeking-alpha-quant</a><br />
+  calibration; promoted in v2 from external-only into the vault's <a href="wiki/syntheses/decision-register.html">decision-register</a>.</li>
+</ul>
+<h3 id="the-dashboard">The dashboard</h3>
+<ul>
+<li><strong><code>outlook-dashboard.html</code></strong> — a single, offline, interactive dashboard fusing all the above:<br />
+  bubble frameworks, the 30-theme radar (sortable/filterable), quarterly indicator charts, and a<br />
+<strong>Features &amp; Map</strong> tab. Edit its one <code>DATA</code> block (via Claude Code or <code>scripts/refresh.py</code>) to<br />
+  refresh; no online link. <em>(Signal/Decision/Portfolio/Regime tabs are the next enhancement.)</em></li>
+</ul>
+<hr />
+<h2 id="knowledge-inside-whats-currently-here">📚 Knowledge inside (what's currently here)</h2>
+<p><strong>Domain 1 — Knowledge systems &amp; multi-agent simulation.</strong> The founding theme: <em>LLMs doing labor<br />
+humans won't</em>. The wiki pattern itself (<a href="wiki/sources/the-llm-wiki-pattern.html">the-llm-wiki-pattern</a>, ancestor <a href="wiki/concepts/memex.html">memex</a> /<br />
+<a href="wiki/entities/vannevar-bush.html">vannevar-bush</a>) <em>compiles &amp; maintains</em> knowledge; <a href="wiki/sources/mirofish.html">mirofish</a> uses many agents to <em>simulate<br />
+worlds and predict</em> (how-to: <a href="wiki/syntheses/mirofish-how-to-use-and-applications.html">mirofish-how-to-use-and-applications</a>). Methods: <a href="wiki/concepts/graphrag.html">graphrag</a>,<br />
+<a href="wiki/concepts/swarm-intelligence.html">swarm-intelligence</a>, <a href="wiki/concepts/multi-agent-simulation.html">multi-agent-simulation</a>. Tooling: <a href="wiki/entities/obsidian.html">obsidian</a>.</p>
+<p><strong>Domain 2 — The Futurist Investor radar.</strong> 7 meta-forces — Compute &amp; AI · Energy, power &amp;<br />
+materials · Reindustrialization &amp; defense · Health &amp; demographics · Financial transformation ·<br />
+Geographies · Cross-cutting / real assets — broken into <strong>30 conviction-scored themes</strong>.<br />
+Cross-theme dependencies: <a href="wiki/syntheses/theme-linkage-map.html">theme-linkage-map</a>; macro overlay: <a href="wiki/syntheses/macro-regime.html">macro-regime</a>. <em>Nothing earns<br />
+conviction 5 — high trend conviction ≠ attractive entry.</em></p>
+<p><strong>Single-name discipline.</strong> <a href="wiki/concepts/mdaem-framework.html">mdaem-framework</a> + its live record <a href="wiki/syntheses/mdaem-validation-database.html">mdaem-validation-database</a><br />
+(review <strong>2026-08-24</strong>); the <a href="wiki/syntheses/dual-model-shortlist-scorecard-2026-06-03.html">dual-model-shortlist-scorecard-2026-06-03</a> (validate<br />
+<strong>2026-09-03</strong>) — the two engines agree only on <strong>TSM + LLY</strong>. See <a href="wiki/syntheses/mdaem-vs-futurist-investor.html">mdaem-vs-futurist-investor</a>.</p>
+<p><strong>Accountability.</strong> <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a> holds <strong>22 dated, falsifiable predictions (P1–P22)</strong>, each<br />
+scored to a verdict so the engine's hit-rate is measurable. <strong>P12 (SIPRI defense spending) resolved<br />
+✅ 2026-07-14</strong>; P1 (hyperscaler capex) effectively confirmed early. The <a href="wiki/syntheses/track-record.html">track-record</a> ledger<br />
+extends this to sized decisions.</p>
+<p><strong>By the numbers (2026-07-14):</strong> 3 sources · 9 entities · 37 concepts · 22 syntheses · 30 investment<br />
+themes · 22 open/resolving predictions · 6 active sized decisions (D1–D6).</p>
+<hr />
+<h2 id="current-read-2026-07-14">🧭 Current read (2026-07-14)</h2>
+<p><strong>Regime: late-Act-1</strong> (<a href="wiki/syntheses/regime-monitor.html">regime-monitor</a>). Structural extreme holds (CAPE <strong>41.85</strong> vs 17.39 mean;<br />
+VIX 16.4 calm; 10Y 4.57%) but sentiment is normalizing off fear (F&amp;G <strong>43.6</strong>, up from 25) — <em>not<br />
+yet euphoria</em>. No Act-2 sensor flashing (HY ~2.6%, AI capex +60–77%). <strong>Cross-asset wobble: BTC<br />
+$64.7K, warn-breach</strong> (tested $58–60K, record ETF outflows) — the kind of move the new<br />
+<a href="wiki/syntheses/signal-monitor.html">signal-monitor</a> exists to catch. <strong>2026 hyperscaler capex ~$600–725B (+60–77% YoY) → P1 effectively<br />
+confirmed early.</strong> Active decisions: <a href="wiki/syntheses/decision-register.html">decision-register</a>. Full bubble read:<br />
+<a href="wiki/syntheses/bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a>; thematic lean: <a href="wiki/syntheses/cross-theme-idea-ranking.html">cross-theme-idea-ranking</a>.</p>
+<hr />
+<p><em>Maintained by the agent under the rules in <code>CLAUDE.md</code> and cadence in <code>CADENCE.md</code>. If a fast answer<br />
+is needed, <code>hotcache.md</code> usually has it. Decisions for the operator's own book — not personalized<br />
+advice to others.</em></p>
+</article>
+</div>
+</body>
+</html>

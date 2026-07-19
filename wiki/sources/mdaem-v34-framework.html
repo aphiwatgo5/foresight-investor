@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MDAEM v3.4 Framework Documentation Package</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: MDAEM v3.4 Framework Documentation Package
+type: source
+source_file: raw/mdaem-v34/
+source_kind: note
+author: Aphiwat (with Claude)
+date_published: 2026-05-25
+date_ingested: 2026-06-03
+tags: [investing, framework, methodology, mdaem, decision-system]</div>
+<article>
+<h1 id="mdaem-v34-framework-documentation-package">MDAEM v3.4 Framework Documentation Package</h1>
+<p><strong>One-line:</strong> Aphiwat's personal <strong>Multi-Dimensional Asset Evaluation Matrix v3.4</strong> — a disciplined, empirically-iterated decision system for evaluating <em>individual securities</em> against a MAX-RETURN / asymmetric-risk-reward mandate, distinct from this vault's thematic <a href="../syntheses/trend-radar.html">Futurist Investor</a> engine.</p>
+<h2 id="what-this-source-is">What this source is</h2>
+<p>A 6-file documentation set built in a separate Claude chat (extracted to <code>raw/mdaem-v34/</code>):</p>
+<ol>
+<li><strong><code>MDAEM_v34_Master_Index.md</code></strong> — navigation hub for the package; one-sentence summary, refinements index, test-case index, version log.</li>
+<li><strong><code>MDAEM_v34_Framework_Manual.md</code></strong> — authoritative reference (~500 lines): 10 parts + 4 appendices covering theory, scoring, refinements, decision workflows, test cases.</li>
+<li><strong><code>MDAEM_v34_QuickReference_Card.md</code></strong> — daily-use cheat sheet: hard-gate checklist, tier→sizing lookup, refinement-pattern lookup, decoder tables, red flags.</li>
+<li><strong><code>MDAEM_v34_Decision_Worksheet.md</code></strong> — fill-in-the-blank per-ticker template (sections A–M, triage → validation entry).</li>
+<li><strong><code>MDAEM_v34_Validation_Database_Template.md</code></strong> — the empirical-iteration infrastructure: entry template, pattern-analysis sections, refinement-evolution log, calibration trajectory.</li>
+<li><strong><code>v34_validation_database_May24_2026.md</code></strong> — the <em>live</em> tracking log: every May 2026 recommendation (book, rejects, watchlist, hypotheses) with measurable success/failure criteria; review due <strong>2026-08-24</strong>.</li>
+</ol>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>The framework is a <strong>gated, weighted, scenario-driven</strong> decision pipeline for single names — see <a href="../concepts/mdaem-framework.html">mdaem-framework</a> for the full methodology.</li>
+<li>It calibrates against <strong>Seeking Alpha Quant</strong> ratings (<a href="../entities/seeking-alpha-quant.html">seeking-alpha-quant</a>) and takes the <em>lower</em> of its own vs SA's signal when they conflict.</li>
+<li>Its distinguishing feature is the <strong>validation loop</strong>: dated, falsifiable predictions reviewed every 3 months, with misses codified as numbered <strong>refinements</strong> (21 so far). Captured in <a href="../syntheses/mdaem-validation-database.html">mdaem-validation-database</a>.</li>
+<li>Mandate and capital are concrete: <strong>~$83.2K US book + ~$40K China/HK book</strong> on the Dime! app (Thai retail investor). MAX RETURN, asymmetric preference.</li>
+<li><strong>Critical distinction:</strong> MDAEM <em>does position sizing and explicit ADD/REJECT verdicts</em> — the opposite of this vault's insight-only guardrail. Documented here as Aphiwat's own decision tool, not adopted as wiki behavior. See <a href="../syntheses/mdaem-vs-futurist-investor.html">mdaem-vs-futurist-investor</a>.</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>MDAEM v3.4 reached maturity through "a catastrophic v1 failure" and successive iterations. The core engine: a 60-second <strong>triage</strong>, then <strong>10 hard gates</strong> (any fail → reject), then <strong>10 weighted dimensions</strong> scored 1–10 to a /100 total mapping to tiers (T1 85+ down to REJECT &lt;40). A <strong>Seeking Alpha Quant overlay</strong> caps sizing. <strong>Scenario math</strong> (explicit bull/base/bear probabilities → expected value + asymmetry ratio) is mandatory before sizing. Every decision is logged with measurable 3-month success/failure criteria.</p>
+<p>The framework's "nervous system" is the validation database: it treats every call as a falsifiable prediction and reviews outcomes quarterly, converting patterns-in-misses into new <strong>refinements</strong> (A–O plus 16–21). Refinements 16–21 came from real 2026 cases — DDD reflexive bias, KALV M&amp;A ceiling, ONDS/TNGX late-cycle, QBTS/RGTI extreme valuation, VKTX pre-catalyst dilution.</p>
+<p>Its stated ethos: <em>"You cannot have selective discipline"</em> and <em>"Discipline matters more than insight."</em></p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Methodology detail: <a href="../concepts/mdaem-framework.html">mdaem-framework</a></li>
+<li>The calibration anchor: <a href="../entities/seeking-alpha-quant.html">seeking-alpha-quant</a></li>
+<li>The live empirical record: <a href="../syntheses/mdaem-validation-database.html">mdaem-validation-database</a></li>
+<li>How it relates to the vault's thematic engine: <a href="../syntheses/mdaem-vs-futurist-investor.html">mdaem-vs-futurist-investor</a></li>
+<li>Thematic overlap with vault themes: <a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="../concepts/nuclear-uranium.html">nuclear-uranium</a>, <a href="../concepts/quantum-computing.html">quantum-computing</a>, <a href="../concepts/space-economy.html">space-economy</a>, <a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a></li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>How did the <strong>2026-08-24</strong> validation review resolve? (Hit-rate, which refinements survived, what v3.5 changes followed.)</li>
+<li>The vault's <a href="../syntheses/prediction-ledger.html">prediction-ledger</a> and MDAEM's validation DB are parallel falsifiable-prediction systems — should they cross-reference scored outcomes?</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

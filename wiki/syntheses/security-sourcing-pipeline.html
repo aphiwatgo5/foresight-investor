@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security Sourcing Pipeline</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Security Sourcing Pipeline — v4.0 workflow
+type: synthesis
+tags: [investing, sourcing, workflow, v4, screening, decisions]
+sources: [[[mdaem-framework-v4], [strategy-sleeves], [decision-register], [portfolio-blueprint]]
+date: 2026-07-18
+last_scan: 2026-07-18</div>
+<article>
+<h1 id="security-sourcing-pipeline-v40-workflow">Security Sourcing Pipeline — v4.0 workflow</h1>
+<p><strong>Bottom line:</strong> The day-to-day workflow that turns the quantitative signal engine into investment<br />
+decisions. Replaces v3.4's "evaluate one name at a time" approach with a <strong>daily universe screen →<br />
+shortlist → MDAEM verdict</strong> flow that scales across all 280 instruments. For the operator's own<br />
+book; not advice.</p>
+<h2 id="the-5-step-workflow">The 5-step workflow</h2>
+<h3 id="step-1-universe-screen-automated-daily">Step 1 — Universe screen (automated, daily)</h3>
+<p><code>scripts/signals.py</code> ranks every instrument across the 4 sleeve composites; the <strong>top decile per<br />
+sleeve</strong> (top ~28 names) is flagged for review. Output: <code>scripts/_hist/sleeves.json</code> (live percentile<br />
+scores). The dashboard's Strategy Sleeves tab surfaces these visually.</p>
+<p><strong>What changes from v3.4:</strong> instead of the operator deciding <em>which names to evaluate</em>, the screen<br />
+surfaces candidates by quantifiable edge. The operator's judgment moves to Step 2.</p>
+<h3 id="step-2-mdaem-v40-pass-semi-automated">Step 2 — MDAEM v4.0 pass (semi-automated)</h3>
+<p>For each flagged candidate, run <code>scripts/mdaem_v4.py</code> → returns quant Dim 3/5/6/7/9 scores +<br />
+<code>composite_quant_only</code> + tier. Then <strong>complete the 5 qualitative dims manually</strong> (Quality, Fin<br />
+Health, Earn Quality, Catalysts, Asymmetry) — these need judgment.</p>
+<p>Apply the <strong>10 hard gates</strong> unchanged from v3.4:<br />
+- Gate 1 Asymmetry (bull:bear ≥1.5:1) · Gate 2 Catalyst (&lt;36mo) · Gate 3 Liquidity ·<br />
+  Gate 4 Accounting · Gate 5 Bear case articulable · Gate 6 SA-Quant (not Sell) ·<br />
+  Gate 7 Revisions (≥0.2) · Gate 8 M&amp;A ceiling · Gate 9 Multiple (&lt;50x sector) ·<br />
+  Gate 10 Financing (runway past catalyst).</p>
+<p>Any gate fail → <strong>REJECT</strong> (documented reason, mapped to a Ref).</p>
+<h3 id="step-3-style-fit-which-sleeve">Step 3 — Style fit (which sleeve?)</h3>
+<p>Tag the name with its <strong>best-fit sleeve</strong> (a name can be in 2):<br />
+- <strong>Quality</strong> — high margins, low debt, stable growth (V, MA, NVDA, LLY, TSM, ISRG).<br />
+- <strong>Momentum</strong> — strong relative strength, SMA golden cross, RSI 50-70 (the AI/cyber trade).<br />
+- <strong>Macro-rotation</strong> — regime-conditioned fit (high-beta in bull; low-vol in bear).<br />
+- <strong>Value/contrarian</strong> — beaten-down with a revisions/momentum inflection (CVS, UNH, BABA).</p>
+<p>Sizing is constrained by the sleeve's target weight (<a href="strategy-sleeves.html">strategy-sleeves</a>) AND the meta-force caps<br />
+in <a href="portfolio-blueprint.html">portfolio-blueprint</a>.</p>
+<h3 id="step-4-portfolio-construction-the-barbell-sleeves">Step 4 — Portfolio construction (the barbell + sleeves)</h3>
+<ul>
+<li>Check <a href="portfolio-blueprint.html">portfolio-blueprint</a> concentration caps: no ticker &gt;8%, AI-capex cluster ≤25%, cash ≥3%.</li>
+<li>Confirm the position fits the <a href="regime-monitor.html">regime-monitor</a> stance (e.g., new momentum adds paused in bear).</li>
+<li>Confirm <a href="theme-linkage-map.html">theme-linkage-map</a> correlation budget not breached.</li>
+</ul>
+<h3 id="step-5-file-the-decision-accountability">Step 5 — File the decision + accountability</h3>
+<ul>
+<li>Add a row to <a href="decision-register.html">decision-register</a> (D-series): ticker · action · conv · target wt · entry · invalidation.</li>
+<li>File a falsifiable P-call in <a href="prediction-ledger.html">prediction-ledger</a> (success/failure thresholds + resolve-by date).</li>
+<li>Open a D-series row in <a href="track-record.html">track-record</a> for mark-to-market.</li>
+<li>Log the decision in <code>log.md</code> with op <code>decide</code>.</li>
+</ul>
+<h2 id="the-monthly-review-backtest-op">The monthly review (BACKTEST op)</h2>
+<p>At each monthly SCAN per CADENCE.md:<br />
+1. Re-run <code>scripts/signals.py</code> + <code>scripts/mdaem_v4.py</code> on fresh data.<br />
+2. Score last month's decisions in <a href="track-record.html">track-record</a> — hit rate by conviction + by sleeve.<br />
+3. Re-balance sleeve weights if any sleeve is &gt;5pts off target.<br />
+4. Score any matured P-calls.<br />
+5. Surface new candidates from the daily screen that weren't yet reviewed.</p>
+<h2 id="the-quarterly-backtest-refresh-backtest-op">The quarterly backtest refresh (BACKTEST op)</h2>
+<ul>
+<li>Re-run <code>scripts/fetch_history.py --inc</code> → <code>scripts/signals.py</code> → <code>scripts/backtest.py</code>.</li>
+<li>Compare this quarter's sleeve metrics to last; flag any decay.</li>
+<li>Tune ensemble weights (e.g., if momentum Sharpe drops, raise Quality weight).</li>
+</ul>
+<h2 id="how-this-differs-from-v34-the-upgrade-in-one-paragraph">How this differs from v3.4 (the upgrade in one paragraph)</h2>
+<p>v3.4 was <em>manual name-by-name</em> — the operator heard about a name, ran MDAEM, decided. v4.0 is<br />
+<em>screen-first</em> — the quant layer surfaces the top decile daily, the operator runs MDAEM only on<br />
+the shortlist, and every decision carries a sleeve tag + measured historical alpha. The gates,<br />
+weights, refinements, and accountability are all unchanged. <strong>Net effect:</strong> the same decision<br />
+quality with 10× the coverage and a built-in "does this style actually work?" loop.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Engine: <a href="../concepts/mdaem-framework-v4.html">mdaem-framework-v4</a> · <a href="strategy-sleeves.html">strategy-sleeves</a> · <a href="backtest-results-2026-07-18.html">backtest-results-2026-07-18</a>.</li>
+<li>Construction: <a href="portfolio-blueprint.html">portfolio-blueprint</a> · <a href="theme-linkage-map.html">theme-linkage-map</a> · <a href="regime-monitor.html">regime-monitor</a>.</li>
+<li>Accountability: <a href="decision-register.html">decision-register</a> · <a href="prediction-ledger.html">prediction-ledger</a> · <a href="track-record.html">track-record</a>.</li>
+<li>Operations: <code>CLAUDE.md §10</code> (BACKTEST/SOURCE ops) · <code>CADENCE.md</code> (monthly/quarterly).</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Blueprint</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Portfolio Blueprint
+type: synthesis
+tags: [investing, portfolio, allocation, construction, correlation, barbell, operator]
+sources: [[[theme-linkage-map]], [bubble-implications-by-theme], [mdaem-framework], [decision-register]]
+date: 2026-07-14
+last_scan: 2026-07-14</div>
+<article>
+<h1 id="portfolio-blueprint">Portfolio Blueprint</h1>
+<p><strong>Bottom line:</strong> How the engine's decisions assemble into a <em>whole</em> — correlation-aware allocation,<br />
+not just a theme list. The central insight from <a href="theme-linkage-map.html">theme-linkage-map</a>: <strong>diversified across themes<br />
+can still be one bet</strong> if everything hangs off the AI-capex demand engine. This page sets the<br />
+target allocation per meta-force, the position-category buckets, and the concentration caps that<br />
+prevent single-cluster blowup. For the operator's own book; not advice to others.</p>
+<blockquote>
+<p><strong>Scope.</strong> Allocation targets at the <em>meta-force / theme</em> level. Specific tickers + sizing live in<br />
+<a href="decision-register.html">decision-register</a>; the MDAEM methodology in <a href="../concepts/mdaem-framework.html">mdaem-framework</a>. This page is the construction<br />
+layer between them.</p>
+</blockquote>
+<hr />
+<h2 id="the-barbell-the-core-construction-idea">The barbell (the core construction idea)</h2>
+<p>The bubble read (<a href="bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a>) and <a href="bubble-implications-by-theme.html">bubble-implications-by-theme</a> point to<br />
+one stance: <strong>own the reflexive AI engine, but cap it and hedge with genuine diversifiers.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Side</th>
+<th>Purpose</th>
+<th>Themes</th>
+<th style="text-align: right;">Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offensive core</strong></td>
+<td>Capture the dominant force (AI capex +60–77% YoY, P1 ✓)</td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a> · <a href="../concepts/ai-infrastructure.html">ai-infrastructure</a> · <a href="../concepts/power-grid-electrification.html">power-grid-electrification</a> · <a href="../concepts/cybersecurity.html">cybersecurity</a> · <a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td style="text-align: right;">35–45%</td>
+</tr>
+<tr>
+<td><strong>Defensive diversifiers</strong></td>
+<td>Low-correlation compounders that hold up in an AI de-rate</td>
+<td><a href="../concepts/defense-security.html">defense-security</a> · <a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a> · <a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a> · <a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a> · <a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a></td>
+<td style="text-align: right;">25–35%</td>
+</tr>
+<tr>
+<td><strong>Foundation / ballast</strong></td>
+<td>Market beta + real-asset hedge</td>
+<td>VOO / QQQM (foundation) · gold (YLG/NEM)</td>
+<td style="text-align: right;">15–25%</td>
+</tr>
+<tr>
+<td><strong>Cash buffer</strong></td>
+<td>Dry powder for digestion-dip adds (SMH especially)</td>
+<td>SGOV / cash</td>
+<td style="text-align: right;">3–10%</td>
+</tr>
+</tbody>
+</table>
+<p>The barbell is <em>intentionally lopsided toward offense</em> while the bubble's structural extreme has not<br />
+flipped to euphoria (F&amp;G 43.6, not &gt;75 — <a href="signal-monitor.html">signal-monitor</a>). As <a href="regime-monitor.html">regime-monitor</a> shifts acts, the<br />
+barbell rebalances: trim offense, raise diversifiers + cash.</p>
+<h2 id="target-allocation-by-meta-force-7-forces">Target allocation by meta-force (7 forces)</h2>
+<table>
+<thead>
+<tr>
+<th>Meta-force</th>
+<th style="text-align: right;">Target wt</th>
+<th>Cluster</th>
+<th>Correlation-risk</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Compute &amp; AI stack</strong></td>
+<td style="text-align: right;"><strong>20–25%</strong></td>
+<td>AI-capex complex</td>
+<td><strong>Highest</strong> — ~10 themes de-rate together</td>
+<td>Cap the <em>cluster</em>, not just names. SMH/GRID/CIBR + TSM single-name</td>
+</tr>
+<tr>
+<td><strong>2. Energy, power &amp; materials</strong></td>
+<td style="text-align: right;"><strong>10–12%</strong></td>
+<td>AI-capex (power) + real-asset</td>
+<td>High (power rides AI), Low (minerals/gold)</td>
+<td>GRID/CCJ/UNG + gold hedge; the AI-power link is the bridge</td>
+</tr>
+<tr>
+<td><strong>3. Reindustrialization &amp; defense</strong></td>
+<td style="text-align: right;"><strong>8–10%</strong></td>
+<td>Fiscal/geopolitical capex</td>
+<td><strong>Lowest</strong> — the intentional diversifier</td>
+<td>ITA/LMT/RTX; NATO 5%-GDP re-rating (P12 ✅)</td>
+</tr>
+<tr>
+<td><strong>4. Health &amp; demographics</strong></td>
+<td style="text-align: right;"><strong>8–10%</strong></td>
+<td>Genuine diversifier</td>
+<td>Low</td>
+<td>LLY (GLP-1) + IDNA basket; P8 (LLY ≥+30%)</td>
+</tr>
+<tr>
+<td><strong>5. Financial transformation</strong></td>
+<td style="text-align: right;"><strong>2–4%</strong></td>
+<td>Speculative</td>
+<td>Moderate</td>
+<td>watch only; tokenization conv-3, post-GENIUS</td>
+</tr>
+<tr>
+<td><strong>6. Geographies</strong></td>
+<td style="text-align: right;"><strong>10–12%</strong></td>
+<td>EM/USD-flow</td>
+<td>Moderate (USD-driven)</td>
+<td>DXJ (Japan, P7) + INDA on P5 trigger; Asean light</td>
+</tr>
+<tr>
+<td><strong>7. Cross-cutting / real assets</strong></td>
+<td style="text-align: right;"><strong>5–8%</strong></td>
+<td>Real-asset diversifier</td>
+<td>Low</td>
+<td>PHO (water) + NEM/gold; debasement hedge</td>
+</tr>
+<tr>
+<td><strong>Foundation + cash</strong></td>
+<td style="text-align: right;"><strong>15–25%</strong></td>
+<td>—</td>
+<td>—</td>
+<td>VOO 15–19% + SGOV/cash 3–10%</td>
+</tr>
+</tbody>
+</table>
+<p><em>Targets sum to ~100% with the cash buffer flexible inside its band. Rebalance when any meta-force<br />
+drifts &gt;5 points from target, or when <a href="regime-monitor.html">regime-monitor</a> flips acts.</em></p>
+<h2 id="position-category-buckets-mdaem-framework-sizing">Position-category buckets (<a href="../concepts/mdaem-framework.html">mdaem-framework</a> §sizing)</h2>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th style="text-align: right;">Target wt</th>
+<th>What goes here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Foundation</strong> (market beta)</td>
+<td style="text-align: right;">15–19%</td>
+<td>VOO / QQQM</td>
+</tr>
+<tr>
+<td><strong>Core compounder</strong></td>
+<td style="text-align: right;">8% each</td>
+<td>TSM, LLY — the both-models-agree names</td>
+</tr>
+<tr>
+<td><strong>Conviction satellite</strong></td>
+<td style="text-align: right;">5–7% each</td>
+<td>GRID, DXJ, ITA, CIBR</td>
+</tr>
+<tr>
+<td><strong>Scarcity / hedge</strong></td>
+<td style="text-align: right;">8–12%</td>
+<td>Gold (YLG/NEM)</td>
+</tr>
+<tr>
+<td><strong>STARTER</strong></td>
+<td style="text-align: right;">3–4% each</td>
+<td>New positions being scaled (CCJ, PHO)</td>
+</tr>
+<tr>
+<td><strong>Speculative</strong></td>
+<td style="text-align: right;">1–2% cap</td>
+<td>Binary themes (SMR, quantum) — strict cap</td>
+</tr>
+<tr>
+<td><strong>Cash</strong></td>
+<td style="text-align: right;">3–10%</td>
+<td>SGOV; raised toward 10% if HY OAS warns</td>
+</tr>
+</tbody>
+</table>
+<h2 id="concentration-caps-the-hard-rules">Concentration caps (the hard rules)</h2>
+<p>These are non-negotiable — they are what survives the correlated de-rating the <a href="theme-linkage-map.html">theme-linkage-map</a><br />
+warns about.</p>
+<ul>
+<li><strong>No single ticker &gt;8%</strong> (TSM/LLY cap at 8% even at conv-4; STARTERs 3–4%).</li>
+<li><strong>No single theme &gt;12%</strong> (cybersecurity basket caps at 5–6%; semis via SMH + TSM ≤12% combined).</li>
+<li><strong>AI-capex complex ≤25% total</strong> — this is the diversification-killer cluster. Even if every name<br />
+  is conv-4, the cluster is the bet. Hard ceiling.</li>
+<li><strong>Cash never &lt;3%</strong> — dry powder discipline for the <a href="watchlist.html">watchlist</a> trigger adds.</li>
+<li><strong>HY OAS &gt;3.5% → freeze new AI-cluster adds</strong>; &gt;4.0% monthly close → trim offense by 5 points<br />
+  (P17/P21 regime logic, see <a href="regime-monitor.html">regime-monitor</a>).</li>
+</ul>
+<h2 id="rebalance-logic">Rebalance logic</h2>
+<ol>
+<li><strong>Drift rebalance</strong> — any meta-force &gt;5 points off target → trim the overweight, add the under.</li>
+<li><strong>Signal rebalance</strong> — a <a href="signal-monitor.html">signal-monitor</a> flip → act per <a href="regime-monitor.html">regime-monitor</a> (e.g., F&amp;G&gt;75 trim<br />
+   offense 5pts; HY&gt;4% trim offense 5pts + raise cash).</li>
+<li><strong>Decision-led rebalance</strong> — new ADD/EXIT in <a href="decision-register.html">decision-register</a> → reflects here automatically.</li>
+<li><strong>Quarterly REVIEW</strong> (<code>CADENCE.md</code>) — full re-weight; check the correlation clusters still hold.</li>
+</ol>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<ul>
+<li><strong>Allocation logic: high confidence</strong> — directly extends <a href="bubble-implications-by-theme.html">bubble-implications-by-theme</a> and<br />
+<a href="theme-linkage-map.html">theme-linkage-map</a>, both analyst-grade.</li>
+<li><strong>Live position values: pending</strong> — the current book (from <a href="mdaem-validation-database.html">mdaem-validation-database</a>, May-24<br />
+  snapshot) needs a live re-valuation against these targets at the next REVIEW. Drift vs target<br />
+  unmeasured until then.</li>
+<li><strong>Correlation estimates are structural, not statistical</strong> — <a href="theme-linkage-map.html">theme-linkage-map</a> is inference from<br />
+  theme economics, not realized betas. A future enhancement: compute realized 90d correlations from<br />
+  the <code>scripts/refresh.py</code> price history.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Drives: <a href="decision-register.html">decision-register</a> (the ticker-level rows must fit these caps)</li>
+<li>Inputs: <a href="theme-linkage-map.html">theme-linkage-map</a> (correlation) · <a href="bubble-implications-by-theme.html">bubble-implications-by-theme</a> (stance) ·<br />
+<a href="regime-monitor.html">regime-monitor</a> (cycle-dependent rebalancing) · <a href="signal-monitor.html">signal-monitor</a> (flip triggers)</li>
+<li>Method: <a href="../concepts/mdaem-framework.html">mdaem-framework</a> (sizing buckets) · <a href="mdaem-validation-database.html">mdaem-validation-database</a> (current book)</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

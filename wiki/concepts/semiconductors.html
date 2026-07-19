@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Semiconductors</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Semiconductors
+type: concept
+trend: true
+tags: [investing, trend, semiconductors, ai, foundry, memory, hbm, semicap, equipment]
+sources: []
+date: 2026-06-01
+conviction: 4
+stage: accelerating
+horizon: 3-7y</div>
+<article>
+<h1 id="semiconductors">Semiconductors</h1>
+<p><strong>Definition:</strong> The chip value chain — designing and manufacturing the integrated circuits that<br />
+power all computing. A conviction-4, accelerating megatrend on the <a href="../syntheses/trend-radar.html">trend-radar</a>, inseparable<br />
+from <a href="ai-infrastructure.html">ai-infrastructure</a> (the demand engine) and <a href="energy-transition.html">energy-transition</a> (the power constraint).<br />
+This page treats the theme as <strong>four sub-segments</strong>: (a) foundry/manufacturing, (b) semicap<br />
+equipment, (c) logic/compute design, (d) memory (HBM focus).</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Every figure is tagged (fact)/(est.)/(inference)<br />
+with period and source. "No reliable figure found" used where data is unverified.</p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>Semiconductors are the foundational layer of modern electronics. The investable theme spans the<br />
+whole chain: raw materials and wafers → <strong>semicap equipment</strong> that builds fabs → <strong>foundries</strong><br />
+that manufacture chips → <strong>fabless designers</strong> of logic/compute → <strong>memory</strong> makers → packaging<br />
+and test → the AI-infrastructure buildout downstream. The 2024–2026 cycle is unusual: it is a<br />
+<strong>single-end-market boom</strong> (AI data-center compute) rather than a broad consumer/industrial<br />
+recovery — concentrating gains in leading-edge logic, HBM memory, and advanced packaging while<br />
+mature/trailing-edge and consumer-exposed segments lag.</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total semiconductor sales</td>
+<td><strong>$772B</strong>, +~22% YoY</td>
+<td>2025 actual</td>
+<td>WSTS Nov-2025 forecast release</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Total semiconductor sales</td>
+<td><strong>$975.4B</strong>, "approaches $1T"</td>
+<td>2026E</td>
+<td>WSTS Nov-2025 (revised up from $760.7B spring est.)</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>HBM market TAM</td>
+<td><strong>~$35B</strong></td>
+<td>2025</td>
+<td>Introl / secondary citing TrendForce</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>HBM market TAM</td>
+<td><strong>~$100B by 2028</strong> (~40% CAGR from 2025)</td>
+<td>2028E</td>
+<td>Introl / secondary</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Total semi equipment sales</td>
+<td><strong>$133B</strong></td>
+<td>2025E</td>
+<td>SEMI (year-end 2025 forecast)</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Total semi equipment sales</td>
+<td><strong>$139–145B</strong></td>
+<td>2026E</td>
+<td>SEMI ($139B headline; $145B in one release)</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Total semi equipment sales</td>
+<td><strong>$156B (record)</strong></td>
+<td>2027E</td>
+<td>SEMI</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>WFE — foundry/logic</td>
+<td><strong>$66.6B</strong>, +9.8% YoY</td>
+<td>2025E</td>
+<td>SEMI</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Foundry market — TSMC share</td>
+<td><strong>~69.9%</strong> of global foundry revenue</td>
+<td>2025 (full year)</td>
+<td>TrendForce via Taipei Times 2026-03-14</td>
+<td>(fact)</td>
+</tr>
+</tbody>
+</table>
+<p>Notes: WSTS 2026 upward revision driven by <strong>Logic and Memory</strong>, boosted by AI/data-center<br />
+demand. WFE point-estimates vary by vendor scope ($78–92B range from market-research firms vs<br />
+SEMI's foundry/logic WFE slice); SEMI's total-equipment figure is the more authoritative primary<br />
+series. HBM dollar TAM figures are from secondary trade analysis (TrendForce-derived) — treat as<br />
+(est.).</p>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand side</strong><br />
+- <strong>AI accelerators.</strong> NVIDIA Data Center revenue <strong>$75.2B in Q1 FY2027</strong> (quarter ended ~Apr-2026),<br />
+  +92% YoY; data-center compute $60.4B, networking $14.8B (fact, NVIDIA 8-K). This single line item<br />
+  pulls foundry, HBM, advanced packaging, and networking silicon.<br />
+- <strong>HBM supercycle.</strong> Memory is the tightest link. Micron sold out 2026 HBM capacity; SK Hynix and<br />
+  Samsung scaling capacity ~50% in 2026; HBM4 mass production begins across all three in 2026<br />
+  (web: Astute Group / DCD, 2026). HBM carries far higher margins than commodity DRAM.<br />
+- <strong>Custom silicon (ASIC).</strong> Hyperscaler in-house accelerators — Broadcom AI semi revenue guided<br />
+  to <strong>~$8.2B for Q1 FY2026, ~+100% YoY</strong> (web: Futurum, 2026); Marvell custom compute. Diversifies<br />
+  demand beyond merchant GPUs.</p>
+<p><strong>Supply side</strong><br />
+- <strong>Capacity concentration.</strong> TSMC ~70% of foundry revenue and the overwhelming majority of<br />
+  leading-edge (≤5nm) capacity → single point of dependence (fact).<br />
+- <strong>Geographic concentration.</strong> Leading-edge logic concentrated in Taiwan; advanced lithography in<br />
+  the Netherlands (ASML); HBM/DRAM in South Korea. Reshoring (US CHIPS-funded fabs, Intel Foundry,<br />
+  TSMC Arizona) is slow and costly.<br />
+- <strong>Export controls.</strong> US restrictions on advanced chips/tools to China. Tokyo Electron expected<br />
+  China sales to fall toward ~30% of mix in 2025 amid tightening curbs (web: TrendForce, 2025-06).<br />
+  Controls protect Western leading-edge moats but cap China-exposed revenue and spur domestic<br />
+  Chinese capacity buildout (long-run competitive risk).</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<pre><code>Upstream                 Midstream            Downstream
+materials, wafers   →    foundry / IDM   →    fabless logic + memory   →   AI infrastructure
++ SEMICAP EQUIPMENT       (TSMC, Samsung,      (NVIDIA, AMD, Broadcom,        (data centers,
+ (ASML EUV, AMAT,          Intel Foundry,       Qualcomm, Arm, Marvell)        hyperscaler capex)
+  LRCX, KLAC, TEL)         GlobalFoundries)     + memory (SK Hynix,
+                                                 Samsung, Micron — HBM)
+</code></pre>
+<ul>
+<li><strong>Upstream → midstream:</strong> ASML's EUV is the gating tool for leading-edge; without it no &lt;7nm.<br />
+  AMAT/LRCX/KLA/TEL supply deposition, etch, process-control, and (increasingly) advanced-packaging<br />
+  tooling — the latter critical for stacking HBM and chiplets.</li>
+<li><strong>Midstream → downstream:</strong> TSMC manufactures for NVIDIA, AMD, Broadcom, Apple, Qualcomm; its<br />
+  CoWoS advanced packaging is the bottleneck for AI accelerators. Memory makers feed HBM directly<br />
+  onto accelerator packages.</li>
+<li><strong>Cross-theme links:</strong> demand engine = <a href="ai-infrastructure.html">ai-infrastructure</a>; power constraint = <a href="energy-transition.html">energy-transition</a>;<br />
+  networking silicon (Broadcom, Marvell, NVIDIA NVLink) bridges to the networking theme; gallium,<br />
+  germanium, rare earths, copper link to critical-minerals (export-control flashpoint).</li>
+</ul>
+<h2 id="5-competitive-landscape-per-sub-segment">5. Competitive landscape per sub-segment</h2>
+<ul>
+<li><strong>(a) Foundry/manufacturing — high concentration, TSMC dominant.</strong> TSMC ~70% revenue share and<br />
+  near-monopoly at leading edge; gross margin guided <strong>63–65% (Q1 2026)</strong> (web). Samsung Foundry<br />
+  a distant #2; Intel Foundry burning cash (<strong>$11.7B FY2025 operating loss</strong>, web: Intel 8-K /<br />
+  Tom's Hardware) while ramping 18A; GlobalFoundries focused on mature/specialty nodes. <strong>Moat:</strong><br />
+  capital intensity + process leadership + CoWoS packaging.</li>
+<li><strong>(b) Semicap equipment — oligopoly with one monopoly.</strong> <strong>ASML = EUV lithography monopoly</strong><br />
+  (100% of EUV) — the single most defensible position in the chain. AMAT and Lam lead<br />
+  deposition/etch; KLA dominates process-control/metrology (~50%+ margins). TEL strong in coat/<br />
+  develop/etch. <strong>Moat:</strong> IP, decades of process know-how, installed-base service revenue.</li>
+<li><strong>(c) Logic/compute design — NVIDIA dominant in merchant AI GPU.</strong> NVIDIA ~75% gross margin and<br />
+  the platform/CUDA moat; AMD the credible #2 (Instinct ramping); Broadcom/Marvell win on custom<br />
+  ASIC; Arm owns the CPU instruction-set royalty model; Qualcomm mobile-centric (memory-cost<br />
+  headwind). <strong>Moat:</strong> software ecosystem (NVIDIA), IP/royalty (Arm), design wins (Broadcom).</li>
+<li><strong>(d) Memory — oligopoly, HBM the prize.</strong> Three players. HBM share Q3 2025: <strong>SK Hynix ~53–62%,<br />
+  Samsung ~35%, Micron ~11%</strong> (web: Astute/Silicon Analysts — sources vary on exact split). SK<br />
+  Hynix the HBM leader; Micron overtook Samsung in some 2025 reads; Samsung pushing HBM4 to<br />
+  recover. <strong>Moat:</strong> consolidated structure + HBM technical lead + capacity allocation.</li>
+</ul>
+<h2 id="6-major-global-players-comparative-table-core-deliverable">6. Major global players — comparative table (core deliverable)</h2>
+<p>Market caps as of <strong>~May–Jun 2026</strong> (web, companiesmarketcap/Statista/Fool) — tag (est.), they<br />
+move daily. Revenue/margins from company filings/earnings (FY periods noted). Valuation multiples<br />
+not reliably sourced for all names → marked "No reliable figure found." Net cash/debt not<br />
+separately sourced this pass.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Sub-segment</th>
+<th>Mkt cap (~May–Jun 2026)</th>
+<th>Revenue (period)</th>
+<th>Rev growth YoY</th>
+<th>Gross margin</th>
+<th>Op margin / profitability</th>
+<th>Moat &amp; positioning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TSMC</td>
+<td>TSM</td>
+<td>Taiwan</td>
+<td>Foundry</td>
+<td>~$2.10T (est.)</td>
+<td>$122.5B (FY2025, fact)</td>
+<td>+36.1% (fact)</td>
+<td>63–65% guide Q1'26 (web)</td>
+<td>High (foundry-leading)</td>
+<td>Leading-edge near-monopoly + CoWoS packaging; ~70% foundry share</td>
+</tr>
+<tr>
+<td>ASML</td>
+<td>ASML</td>
+<td>Netherlands</td>
+<td>Semicap (litho)</td>
+<td>top-4 semi (est.; ~$0.4T order-of-mag, est.)</td>
+<td>€32.7B (FY2025, fact)</td>
+<td>(not stated)</td>
+<td>52.8% (FY2025, fact)</td>
+<td>Net income €9.6B (fact)</td>
+<td><strong>EUV monopoly</strong> — most defensible link; €38.8B backlog</td>
+</tr>
+<tr>
+<td>Applied Materials</td>
+<td>AMAT</td>
+<td>USA</td>
+<td>Semicap (depo/etch)</td>
+<td>top-10 semi (est.)</td>
+<td>~$28–29B (FY2025 run-rate; quarters ~$7.1–7.3B, fact)</td>
+<td>mid-single % (inference)</td>
+<td>~48.8–49.1% (FY2025 qtrs, fact)</td>
+<td>GAAP op margin ~30.4–30.6% (fact)</td>
+<td>Broadest tool portfolio; advanced-packaging leverage</td>
+</tr>
+<tr>
+<td>Lam Research</td>
+<td>LRCX</td>
+<td>USA</td>
+<td>Semicap (etch/depo)</td>
+<td>top-10 semi (est.)</td>
+<td>~$20B+ (FY2025; qtrs $5.17–5.32B, fact)</td>
+<td>growing (fact)</td>
+<td>48.7% FY2025; ~50% recent qtrs (fact)</td>
+<td>Op income ~33.7–34.4% rev (fact)</td>
+<td>Etch/deposition leader; memory + HBM TSV exposure</td>
+</tr>
+<tr>
+<td>KLA</td>
+<td>KLAC</td>
+<td>USA</td>
+<td>Semicap (metrology)</td>
+<td>top-10 semi (est.)</td>
+<td>$12.16B (FY end Jun-2025, fact)</td>
+<td>growing (fact)</td>
+<td>~60%+ (inference, high)</td>
+<td>Net income $4.06B; EPS $30.37 (fact)</td>
+<td><strong>Process-control near-monopoly</strong>; highest semicap margins</td>
+</tr>
+<tr>
+<td>Tokyo Electron</td>
+<td>8035 / TOELY</td>
+<td>Japan</td>
+<td>Semicap</td>
+<td>No reliable figure found</td>
+<td>$16.0B (~¥2.45T, FY2025, fact)</td>
+<td>+32.7% (fact)</td>
+<td>(not stated)</td>
+<td>(not stated)</td>
+<td>Coat/develop, etch; HBM/AI-server lift; China-exposed</td>
+</tr>
+<tr>
+<td>NVIDIA</td>
+<td>NVDA</td>
+<td>USA</td>
+<td>Logic/compute</td>
+<td><strong>~$5.1T</strong> (Jun-2026, est.)</td>
+<td>$81.6B rev Q1 FY27 (qtr, fact); ~$200B+ TTM (inference)</td>
+<td>+85% (qtr YoY, fact)</td>
+<td>74.9% GAAP Q1 FY27 (fact)</td>
+<td>Highest in sector (inference)</td>
+<td>CUDA software moat; ~dominant AI GPU; DC rev $75.2B/qtr</td>
+</tr>
+<tr>
+<td>AMD</td>
+<td>AMD</td>
+<td>USA</td>
+<td>Logic/compute</td>
+<td>~$762B (May-2026, est.)</td>
+<td>$34.6B (FY2025, fact)</td>
+<td>(not stated; DC +32%)</td>
+<td>50% (FY2025, fact)</td>
+<td>Op income $3.7B (fact)</td>
+<td>Credible #2 GPU/CPU; Instinct + EPYC share gains</td>
+</tr>
+<tr>
+<td>Broadcom</td>
+<td>AVGO</td>
+<td>USA</td>
+<td>Logic/compute (ASIC+SW)</td>
+<td>~$1.96T (May-2026, est.)</td>
+<td>$15.0B rev Q2 FY25 (qtr, fact)</td>
+<td>+20% (qtr YoY, fact)</td>
+<td>high (incl. software; inference)</td>
+<td>~67% adj. EBITDA guide (web)</td>
+<td>Custom AI ASIC + VMware software; AI semi ~$8.2B/qtr guide</td>
+</tr>
+<tr>
+<td>Qualcomm</td>
+<td>QCOM</td>
+<td>USA</td>
+<td>Logic/compute (mobile)</td>
+<td>top-10 semi (est.)</td>
+<td>$44.3B (FY2025 GAAP, fact)</td>
+<td>growth (fact)</td>
+<td>No reliable figure found</td>
+<td>No reliable figure found</td>
+<td>Mobile/modem leader; auto+IoT growth; memory-cost headwind</td>
+</tr>
+<tr>
+<td>Arm</td>
+<td>ARM</td>
+<td>UK</td>
+<td>Logic/compute (IP)</td>
+<td>No reliable figure found</td>
+<td>$4.0B (FY2025, fact)</td>
+<td>+23.9% (fact)</td>
+<td>very high (IP royalty model; inference)</td>
+<td>No reliable figure found</td>
+<td>CPU ISA royalty moat; &gt;$1B first $1B+ qtr</td>
+</tr>
+<tr>
+<td>Marvell</td>
+<td>MRVL</td>
+<td>USA</td>
+<td>Logic/compute (custom)</td>
+<td>No reliable figure found</td>
+<td>$5.77B (FY2025, fact)</td>
+<td>growing (fact)</td>
+<td>50.5% GAAP / 60.1% non-GAAP Q4 (fact)</td>
+<td>No reliable figure found</td>
+<td>Custom silicon + optical/networking DSP</td>
+</tr>
+<tr>
+<td>Micron</td>
+<td>MU</td>
+<td>USA</td>
+<td>Memory (HBM)</td>
+<td>~$853B (May-2026, est.)</td>
+<td>$37.4B (FY2025, fact)</td>
+<td>+~50% (fact)</td>
+<td>41% (FY2025, +17pp YoY, fact)</td>
+<td>No reliable figure found</td>
+<td>#3 HBM (~11%); HBM+ run-rate ~$8B; sold out 2026</td>
+</tr>
+<tr>
+<td>SK Hynix</td>
+<td>000660</td>
+<td>S. Korea</td>
+<td>Memory (HBM)</td>
+<td>No reliable figure found</td>
+<td>₩97.1T (FY2025, fact)</td>
+<td>+~30T won abs (fact)</td>
+<td>(not stated)</td>
+<td>Op profit ₩47.2T, op margin <strong>49%</strong> (fact); net ₩42.9T</td>
+<td><strong>HBM leader (~53–62%)</strong>; beat Samsung on op profit 2025</td>
+</tr>
+<tr>
+<td>Samsung</td>
+<td>005930</td>
+<td>S. Korea</td>
+<td>Memory + Foundry</td>
+<td>No reliable figure found</td>
+<td>No reliable figure found (this pass)</td>
+<td>(not stated)</td>
+<td>(not stated)</td>
+<td>(not stated)</td>
+<td>#2 memory + #2 foundry; HBM4 push to recover share</td>
+</tr>
+<tr>
+<td>Intel</td>
+<td>INTC</td>
+<td>USA</td>
+<td>Foundry + Logic (IDM)</td>
+<td>top-10 (est.)</td>
+<td>$53.1B (FY2025, fact)</td>
+<td>weakest since 2010 (web)</td>
+<td>(not stated)</td>
+<td><strong>Foundry op loss $11.7B FY2025</strong> (web)</td>
+<td>Turnaround bet; 18A ramp; foundry cash-burn the key risk</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p><strong>Winning.</strong> The clearest winners sit where capital intensity and IP create durable<br />
+near-monopolies. <strong>ASML</strong> is the single best-positioned company in the chain — EUV is irreplaceable<br />
+and a €38.8B backlog locks in years of revenue (fact). <strong>TSMC</strong> wins on leading-edge + CoWoS,<br />
+compounding share to ~70% with 60%+ gross margins (fact). <strong>NVIDIA</strong> dominates merchant AI compute<br />
+on the CUDA moat with ~75% gross margin and DC revenue still +92% YoY (fact). In memory, <strong>SK Hynix</strong><br />
+is the HBM winner — record 2025 with a 49% operating margin, out-earning Samsung (fact). <strong>KLA</strong><br />
+quietly owns process-control at the sector's highest margins. These five capture the bulk of the<br />
+AI-cycle economics.</p>
+<p><strong>Losing / pressured.</strong> <strong>Intel</strong> is the clear laggard — $11.7B FY2025 foundry operating loss,<br />
+weakest revenue since 2010, betting the company on the 18A ramp (web). <strong>Samsung</strong> is losing the<br />
+HBM race it once led (overtaken by Micron in some 2025 reads), now playing catch-up via HBM4.<br />
+<strong>Qualcomm</strong> faces a memory-cost squeeze and limited AI-accelerator exposure. Among designers,<br />
+merchant-GPU challengers (AMD) are gaining but remain a distant #2, while <strong>custom-ASIC</strong> players<br />
+(Broadcom, Marvell) are structurally winning hyperscaler in-house silicon — a real medium-term<br />
+threat to merchant GPU share. Net: the chain's profits are concentrating in leading-edge logic,<br />
+EUV equipment, and HBM memory; mature-node, consumer-exposed, and sub-scale players are squeezed.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Cyclicality.</strong> Semis are historically boom-bust; the current up-cycle is driven by one end<br />
+  market (AI capex). If <a href="ai-infrastructure.html">ai-infrastructure</a> capex digests (see that page's circular-financing and<br />
+  capex-vs-revenue risks), the whole chain de-rates together (inference).</li>
+<li><strong>China / export controls.</strong> Tighter curbs cap China-exposed equipment revenue (TEL toward ~30%<br />
+  China mix, 2025) and accelerate Chinese domestic capacity → long-run share erosion at trailing<br />
+  edge; retaliation risk on critical minerals (gallium/germanium) (web/inference).</li>
+<li><strong>Capex digestion.</strong> SEMI sees equipment growing through 2027, but a hyperscaler capex pause would<br />
+  hit WFE first and hardest (inference).</li>
+<li><strong>Memory oversupply.</strong> HBM is tight now, but DRAM/NAND are commodity and prone to glut; SK Hynix +<br />
+  Samsung + Micron all expanding capacity ~50% in 2026 → 2027 oversupply risk if AI demand cools<br />
+  (inference). Memory is the most cyclical sub-segment.</li>
+<li><strong>Single-point-of-failure geography.</strong> Taiwan (TSMC) leading-edge concentration = geopolitical<br />
+  tail risk that would hit the entire downstream (inference).</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<table>
+<thead>
+<tr>
+<th>Instrument</th>
+<th>ER</th>
+<th>AUM</th>
+<th>Character / top holdings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SMH</strong> (VanEck Semiconductor)</td>
+<td>0.35%</td>
+<td>~$22–63B (web; figures vary by source/date — re-verify)</td>
+<td>25 names, concentrated; TSM + ASML near top; NVDA large; top-10 ~60–65%</td>
+</tr>
+<tr>
+<td><strong>SOXX</strong> (iShares Semiconductor)</td>
+<td>0.35%</td>
+<td>~$12B (web)</td>
+<td>30 names, US-centric, capped weights; less ASML at top</td>
+</tr>
+<tr>
+<td><strong>SOXQ</strong> (iShares, sibling)</td>
+<td>0.19%</td>
+<td>(not stated)</td>
+<td>Lower-cost SOXX alternative</td>
+</tr>
+</tbody>
+</table>
+<p>Representative securities by sub-segment: foundry — TSM; semicap — ASML, AMAT, LRCX, KLAC; logic —<br />
+NVDA, AMD, AVGO, ARM, MRVL, QCOM; memory — MU, SK Hynix (000660.KS), Samsung (005930.KS).<br />
+(SMH already on <a href="../syntheses/watchlist.html">watchlist</a>.)</p>
+<h2 id="10-suggested-conviction-per-sub-segment-stage-horizon">10. Suggested conviction per sub-segment, stage, horizon</h2>
+<p>Calibrated (5 is rare; nothing here earns a 5 given rich valuations). All (inference).</p>
+<table>
+<thead>
+<tr>
+<th>Sub-segment</th>
+<th>Conviction (1–5)</th>
+<th>Stage</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Semicap equipment</td>
+<td><strong>4</strong></td>
+<td>accelerating</td>
+<td>ASML EUV monopoly + KLA/AMAT/LRCX oligopoly; backlog visibility; cyclical but most-moated</td>
+</tr>
+<tr>
+<td>Foundry/manufacturing</td>
+<td><strong>4</strong></td>
+<td>accelerating</td>
+<td>TSMC near-monopoly at leading edge; CoWoS bottleneck; rich valuation</td>
+</tr>
+<tr>
+<td>Logic/compute design</td>
+<td><strong>4</strong></td>
+<td>accelerating</td>
+<td>NVIDIA dominance real but valuation extreme + ASIC threat; mixed within segment</td>
+</tr>
+<tr>
+<td>Memory (HBM)</td>
+<td><strong>3</strong></td>
+<td>accelerating</td>
+<td>HBM supercycle real and high-margin, but memory is the most cyclical link — oversupply risk by 2027 caps conviction</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Overall trend:</strong> conviction <strong>4</strong>, stage <strong>accelerating</strong>, horizon <strong>3–7y</strong>. Inseparable from<br />
+<a href="ai-infrastructure.html">ai-infrastructure</a> — shares its upside and its correlated de-rating risk.</p>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SMH</strong></td>
+<td>VanEck semis</td>
+<td style="text-align: right;">$558.33</td>
+<td style="text-align: right;">$77B</td>
+<td style="text-align: right;">+82.3%</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;">n/f · 1.98</td>
+<td style="text-align: right;">-16.9%</td>
+<td>🟡 SCALE ON DIP</td>
+</tr>
+<tr>
+<td><strong>SOXX</strong></td>
+<td>iShares semis</td>
+<td style="text-align: right;">$522.22</td>
+<td style="text-align: right;">$48B</td>
+<td style="text-align: right;">+113.0%</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;">n/f · 2.24</td>
+<td style="text-align: right;">-20.4%</td>
+<td>🟡 SCALE ON DIP</td>
+</tr>
+<tr>
+<td><strong>SOXQ</strong></td>
+<td>Nasdaq semis</td>
+<td style="text-align: right;">$92.11</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">+101.5%</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;">n/f · 2.19</td>
+<td style="text-align: right;">-20.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NVDA</strong></td>
+<td>GPU leader</td>
+<td style="text-align: right;">$204.70</td>
+<td style="text-align: right;">$4.96T</td>
+<td style="text-align: right;">16.0x</td>
+<td style="text-align: right;">85.2%</td>
+<td style="text-align: right;">63.0% · 2.21</td>
+<td style="text-align: right;">-13.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AMD</strong></td>
+<td>CPU+GPU challenger</td>
+<td style="text-align: right;">$494.03</td>
+<td style="text-align: right;">$806B</td>
+<td style="text-align: right;">36.7x</td>
+<td style="text-align: right;">37.8%</td>
+<td style="text-align: right;">13.4% · 2.47</td>
+<td style="text-align: right;">-15.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AVGO</strong></td>
+<td>Networking+custom silicon</td>
+<td style="text-align: right;">$370.77</td>
+<td style="text-align: right;">$1.76T</td>
+<td style="text-align: right;">19.1x</td>
+<td style="text-align: right;">47.9%</td>
+<td style="text-align: right;">38.8% · 1.46</td>
+<td style="text-align: right;">-25.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>TSM</strong></td>
+<td>Foundry</td>
+<td style="text-align: right;">$399.78</td>
+<td style="text-align: right;">$2.07T</td>
+<td style="text-align: right;">18.9x</td>
+<td style="text-align: right;">35.1%</td>
+<td style="text-align: right;">46.5% · 1.25</td>
+<td style="text-align: right;">-16.5%</td>
+<td>🟢 ADD 6–8%</td>
+</tr>
+<tr>
+<td><strong>ASML</strong></td>
+<td>EUV monopoly</td>
+<td style="text-align: right;">$1,765.61</td>
+<td style="text-align: right;">$678B</td>
+<td style="text-align: right;">30.6x</td>
+<td style="text-align: right;">13.2%</td>
+<td style="text-align: right;">29.7% · 1.39</td>
+<td style="text-align: right;">-11.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AMAT</strong></td>
+<td>Equipment</td>
+<td style="text-align: right;">$541.42</td>
+<td style="text-align: right;">$430B</td>
+<td style="text-align: right;">32.3x</td>
+<td style="text-align: right;">11.4%</td>
+<td style="text-align: right;">29.3% · 1.57</td>
+<td style="text-align: right;">-26.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>LRCX</strong></td>
+<td>Equipment</td>
+<td style="text-align: right;">$316.96</td>
+<td style="text-align: right;">$396B</td>
+<td style="text-align: right;">39.2x</td>
+<td style="text-align: right;">23.8%</td>
+<td style="text-align: right;">30.9% · 1.80</td>
+<td style="text-align: right;">-27.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>KLAC</strong></td>
+<td>Equipment</td>
+<td style="text-align: right;">$214.30</td>
+<td style="text-align: right;">$280B</td>
+<td style="text-align: right;">41.8x</td>
+<td style="text-align: right;">11.5%</td>
+<td style="text-align: right;">35.7% · 1.41</td>
+<td style="text-align: right;">-30.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MRVL</strong></td>
+<td>Networking silicon</td>
+<td style="text-align: right;">$187.38</td>
+<td style="text-align: right;">$168B</td>
+<td style="text-align: right;">30.2x</td>
+<td style="text-align: right;">27.6%</td>
+<td style="text-align: right;">29.0% · 2.20</td>
+<td style="text-align: right;">-43.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>QCOM</strong></td>
+<td>Mobile/auto</td>
+<td style="text-align: right;">$167.95</td>
+<td style="text-align: right;">$177B</td>
+<td style="text-align: right;">15.2x</td>
+<td style="text-align: right;">-3.5%</td>
+<td style="text-align: right;">22.3% · 1.64</td>
+<td style="text-align: right;">-35.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ARM</strong></td>
+<td>IP licensing</td>
+<td style="text-align: right;">$261.80</td>
+<td style="text-align: right;">$280B</td>
+<td style="text-align: right;">85.0x</td>
+<td style="text-align: right;">20.1%</td>
+<td style="text-align: right;">18.4% · 3.77</td>
+<td style="text-align: right;">-42.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MU</strong></td>
+<td>Memory (HBM)</td>
+<td style="text-align: right;">$869.32</td>
+<td style="text-align: right;">$982B</td>
+<td style="text-align: right;">5.8x</td>
+<td style="text-align: right;">3.46%</td>
+<td style="text-align: right;">55.9% · 2.14</td>
+<td style="text-align: right;">-30.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>INTC</strong></td>
+<td>Foundry turnaround bet</td>
+<td style="text-align: right;">$94.45</td>
+<td style="text-align: right;">$475B</td>
+<td style="text-align: right;">58.5x</td>
+<td style="text-align: right;">7.2%</td>
+<td style="text-align: right;">-5.9% · 2.19</td>
+<td style="text-align: right;">-33.6%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Demand engine: <a href="ai-infrastructure.html">ai-infrastructure</a>. Power constraint: <a href="energy-transition.html">energy-transition</a>.</li>
+<li>Master table: <a href="../syntheses/trend-radar.html">trend-radar</a>. Watchlist: <a href="../syntheses/watchlist.html">watchlist</a> (SMH, TSM). Calls: <a href="../syntheses/prediction-ledger.html">prediction-ledger</a>.</li>
+<li>Wanted pages: etf-smh, etf-soxx, TSM/NVDA/ASML entity pages, hbm, advanced-packaging.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Is 2026 the last clean up-year before a 2027 memory/equipment digestion?</li>
+<li>Does custom ASIC (Broadcom/Marvell) erode NVIDIA merchant-GPU share enough to matter to the thesis?</li>
+<li>How fast does Chinese domestic capacity threaten trailing-edge and (eventually) leading-edge?</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

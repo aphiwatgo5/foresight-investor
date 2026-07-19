@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LLM Wiki — Schema &amp; Operating Manual</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="home.html">🏠 Home</a> ·
+    <a href="hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+
+<article>
+<h1 id="llm-wiki-schema-operating-manual">LLM Wiki — Schema &amp; Operating Manual</h1>
+<p>This repository is a <strong>personal knowledge wiki</strong> maintained by you, the LLM agent.<br />
+The human curates sources and asks questions; <strong>you do all the writing, filing, and<br />
+bookkeeping.</strong> This file is your operating manual. Read it at the start of every<br />
+session and follow it exactly.</p>
+<hr />
+<h2 id="0-session-start-read-hotcachemd-first">0. Session start — READ <code>hotcache.md</code> FIRST</h2>
+<p>Before any other file access, <strong>read <code>hotcache.md</code></strong>. It's a rolling ~500-word summary of the<br />
+wiki's current state and the recent conversation, designed so that <strong>most quick questions can<br />
+be answered from it alone</strong> — without browsing <code>index.md</code>, the wiki pages, or <code>raw/</code>.</p>
+<ul>
+<li>If <code>hotcache.md</code> already contains the answer, <strong>answer from it directly</strong> and stop. Don't<br />
+  crawl further just to confirm.</li>
+<li>Only drill into <code>index.md</code> → wiki pages → <code>raw/</code> when the hotcache is insufficient, stale,<br />
+  or the task requires editing/creating pages.</li>
+<li><strong>Keep it fresh:</strong> after every operation (ingest / query that's filed / lint / maintenance),<br />
+  rewrite <code>hotcache.md</code> to reflect the new state. It is regenerated, not appended — always<br />
+  ≤ 500 words. See §9 for its format.</li>
+</ul>
+<hr />
+<h2 id="1-the-three-layers">1. The three layers</h2>
+<ol>
+<li><strong><code>raw/</code></strong> — Immutable source documents (articles, papers, notes, transcripts,<br />
+   images). You <strong>read</strong> from here but <strong>never edit or delete</strong> these files. This is<br />
+   the source of truth. Images live in <code>raw/assets/</code>.</li>
+<li><strong><code>wiki/</code></strong> — Everything you generate: source summaries, entity pages, concept<br />
+   pages, syntheses. You own this layer entirely.</li>
+<li><strong>This schema (<code>CLAUDE.md</code>) + <code>index.md</code> + <code>log.md</code></strong> — Navigation and rules.</li>
+</ol>
+<p><strong>Golden rule:</strong> Never modify anything in <code>raw/</code>. Every claim in <code>wiki/</code> must trace<br />
+back to a source in <code>raw/</code> (or a clearly-labelled web lookup / inference).</p>
+<hr />
+<h2 id="2-directory-layout">2. Directory layout</h2>
+<pre><code>/
+├── CLAUDE.md            ← this file (schema)
+├── hotcache.md         ← ROLLING ≤500-word state summary — READ THIS FIRST (see §0, §9)
+├── index.md            ← content catalog (what exists, with one-line summaries)
+├── log.md              ← chronological append-only activity log
+├── raw/                ← immutable sources
+│   └── assets/         ← downloaded images &amp; attachments
+└── wiki/
+    ├── overview.md     ← top-level orientation: the current &quot;state of knowledge&quot;
+    ├── sources/        ← ONE summary page per ingested source
+    ├── entities/       ← people, orgs, products, places, tools — concrete things
+    ├── concepts/       ← ideas, topics, themes, methods — abstract things
+    └── syntheses/      ← cross-source analysis: comparisons, theses, answers worth keeping
+</code></pre>
+<hr />
+<h2 id="3-file-link-conventions">3. File &amp; link conventions</h2>
+<ul>
+<li><strong>Filenames:</strong> lowercase <code>kebab-case.md</code>. Entity/concept filename = the canonical<br />
+  name (e.g. <code>wiki/entities/vannevar-bush.md</code>, <code>wiki/concepts/associative-trails.md</code>).</li>
+<li><strong>Links:</strong> use Obsidian wiki-links <code>page-name</code> (filename without <code>.md</code>). Link<br />
+<strong>liberally</strong> — a link to a page that doesn't exist yet is fine; it's a TODO marker,<br />
+  not an error. Surface these as "wanted pages" during lint.</li>
+<li><strong>Citations:</strong> when a wiki claim comes from a source, cite it inline as<br />
+<code>(source-page-name)</code>. When it comes from the web, write <code>(web: &lt;short desc&gt;, &lt;date&gt;)</code>.<br />
+  When it's your inference, write <code>(inference)</code>.</li>
+<li><strong>Every page starts with YAML frontmatter</strong> (see §4) so Obsidian Dataview can query it.</li>
+<li><strong>Headings:</strong> one <code>#</code> H1 per page matching the title. Use <code>##</code>/<code>###</code> below.</li>
+</ul>
+<hr />
+<h2 id="4-page-templates">4. Page templates</h2>
+<h3 id="source-summary-wikisourcesslugmd">Source summary — <code>wiki/sources/&lt;slug&gt;.md</code></h3>
+<pre><code class="language-markdown">---
+title: &lt;Source title&gt;
+type: source
+source_file: raw/&lt;filename&gt;
+source_kind: article | paper | transcript | book-chapter | note | image | web
+author: &lt;author or unknown&gt;
+date_published: &lt;YYYY-MM-DD or unknown&gt;
+date_ingested: &lt;YYYY-MM-DD&gt;
+tags: [&lt;topic&gt;, &lt;topic&gt;]
+---
+
+# &lt;Source title&gt;
+
+**One-line:** &lt;single sentence — what this source is and why it matters&gt;
+
+## Key takeaways
+- &lt;bullet&gt; (supporting-entity-or-concept)
+- &lt;bullet&gt;
+
+## Summary
+&lt;2–5 paragraph faithful summary of the source's actual content&gt;
+
+## Connections
+- Supports / extends: ...
+- Contradicts / tensions with: ...
+- Related: ...
+
+## Open questions
+- &lt;questions this source raised but didn't answer&gt;
+</code></pre>
+<h3 id="entity-wikientitiesslugmd">Entity — <code>wiki/entities/&lt;slug&gt;.md</code></h3>
+<pre><code class="language-markdown">---
+title: &lt;Entity name&gt;
+type: entity
+entity_kind: person | organization | product | place | tool | event
+tags: [...]
+sources: [source-a, source-b]
+---
+
+# &lt;Entity name&gt;
+
+**What it is:** &lt;one line&gt;
+
+## Summary
+&lt;synthesized across all sources — not a copy of any single one&gt;
+
+## Key facts
+- &lt;fact&gt; (source)
+
+## Relationships
+- &lt;how it connects to other entities/concepts&gt; ...
+
+## Notes &amp; tensions
+- &lt;where sources disagree, or open uncertainty&gt;
+</code></pre>
+<h3 id="concept-wikiconceptsslugmd">Concept — <code>wiki/concepts/&lt;slug&gt;.md</code></h3>
+<p>Same shape as entity, with <code>type: concept</code> and a <code>**Definition:**</code> line instead of<br />
+<code>**What it is:**</code>.</p>
+<h3 id="synthesis-wikisynthesesslugmd">Synthesis — <code>wiki/syntheses/&lt;slug&gt;.md</code></h3>
+<pre><code class="language-markdown">---
+title: &lt;Question or thesis&gt;
+type: synthesis
+tags: [...]
+sources: [..., ...]
+date: &lt;YYYY-MM-DD&gt;
+---
+
+# &lt;Question or thesis&gt;
+
+**Bottom line:** &lt;the answer, up front&gt;
+
+## Analysis
+&lt;the actual reasoning, with inline citations&gt;
+
+## Evidence for / against
+&lt;table or bullets&gt;
+
+## Confidence &amp; gaps
+&lt;what would change this conclusion; what's missing&gt;
+</code></pre>
+<hr />
+<h2 id="5-operations">5. Operations</h2>
+<h3 id="ingest-when-the-human-adds-a-source-to-raw-and-says-ingest">INGEST — when the human adds a source to <code>raw/</code> and says "ingest"</h3>
+<ol>
+<li><strong>Read</strong> the source fully. If it references images in <code>raw/assets/</code>, read the text<br />
+   first, then view the key images for additional context.</li>
+<li><strong>Discuss first (default workflow):</strong> before writing, give the human a short<br />
+   read-back — 3–5 key takeaways and which pages you intend to create/update — and let<br />
+   them steer emphasis. (To switch to "file then summarize," see §8.)</li>
+<li><strong>Write the source summary page</strong> in <code>wiki/sources/</code>.</li>
+<li><strong>Create or update entity &amp; concept pages</strong> for every notable thing the source<br />
+   names. A single source typically touches <strong>10–15 pages</strong>. When updating an existing<br />
+   page, <em>integrate</em> — revise the synthesis, add the new fact, and <strong>flag contradictions<br />
+   explicitly</strong> under "Notes &amp; tensions" rather than silently overwriting.</li>
+<li><strong>Update <code>wiki/overview.md</code></strong> if the source shifts the big picture.</li>
+<li><strong>Update <code>index.md</code></strong> — add new pages, refresh changed one-liners.</li>
+<li><strong>Append to <code>log.md</code></strong> (see §6 format).</li>
+<li><strong>Refresh <code>hotcache.md</code></strong> (see §0/§9) to reflect the new state.</li>
+<li>Tell the human exactly which pages you created vs. updated.</li>
+</ol>
+<h3 id="query-when-the-human-asks-a-question">QUERY — when the human asks a question</h3>
+<ol>
+<li>Read <code>index.md</code> first to locate relevant pages, then drill into them. Use the<br />
+   wiki as primary source; fall back to <code>raw/</code> or web only when needed.</li>
+<li>Answer <strong>with citations</strong> (<code>...</code> / <code>(web: ...)</code> / <code>(inference)</code>).</li>
+<li><strong>Offer to file good answers back</strong> as a <code>wiki/syntheses/</code> page — explorations<br />
+   should compound, not vanish into chat. If the human agrees, write it, update<br />
+<code>index.md</code>, and log it.</li>
+<li>If anything material changed (a synthesis filed, the hot topic shifted),<br />
+<strong>refresh <code>hotcache.md</code></strong>.</li>
+</ol>
+<h3 id="lint-when-the-human-says-lint-health-check">LINT — when the human says "lint" / "health-check"</h3>
+<p>Scan the whole <code>wiki/</code> and report:<br />
+- Contradictions between pages.<br />
+- Stale claims a newer source has superseded.<br />
+- Orphan pages (no inbound links) and dead/wanted links (<code>...</code> with no page).<br />
+- Important things mentioned but lacking their own page.<br />
+- Missing cross-references that should exist.<br />
+- Data gaps fillable by a web search, plus suggested next questions/sources.<br />
+Propose fixes; apply them after the human confirms. Log the pass, then refresh <code>hotcache.md</code>.</p>
+<hr />
+<h2 id="6-logmd-format-append-only">6. <code>log.md</code> format (append-only)</h2>
+<p>Every entry starts with a parseable header so <code>grep "^## \[" log.md | tail -5</code> works:</p>
+<pre><code>## [YYYY-MM-DD] &lt;ingest|query|lint|maintenance&gt; | &lt;short title&gt;
+- &lt;what happened, pages touched, decisions made&gt;
+</code></pre>
+<p>Newest entries go at the <strong>bottom</strong> (append). Never rewrite past entries.</p>
+<hr />
+<h2 id="7-indexmd-format">7. <code>index.md</code> format</h2>
+<p>Content-oriented catalog, grouped by category. One line per page:<br />
+<code>- page-name — one-line summary</code><br />
+Keep it current on every ingest. This is the human's and your map of the wiki.</p>
+<hr />
+<h2 id="8-conventions-preferences-co-evolve-this-section">8. Conventions &amp; preferences (co-evolve this section)</h2>
+<ul>
+<li><strong>Workflow mode:</strong> <code>discuss-first</code> (default). Switch to <code>file-then-summarize</code> by<br />
+  changing this line and §5 step 2.</li>
+<li><strong>Tone of wiki pages:</strong> neutral, factual, synthesized. No filler. Cite everything.</li>
+<li><strong>When sources conflict:</strong> never silently pick a winner — record both and flag the<br />
+  tension.</li>
+<li><strong>Dates:</strong> always absolute <code>YYYY-MM-DD</code>, never "yesterday"/"last week".</li>
+<li><strong>Scope discipline:</strong> don't invent pages for trivial mentions; a page earns its<br />
+  existence by being referenced or by carrying real synthesized content.</li>
+</ul>
+<p><em>Add new rules here as we discover what works for this wiki.</em></p>
+<hr />
+<h2 id="9-hotcachemd-format">9. <code>hotcache.md</code> format</h2>
+<p>A <strong>regenerated</strong> (not appended) summary, <strong>≤ 500 words</strong>, kept at the repo root. Its job is to<br />
+answer most quick questions without further browsing. Always rewrite the whole file so it stays<br />
+current and under the word cap — drop the least-relevant older detail as new state arrives.</p>
+<p>Include, concisely:<br />
+- <strong>Last updated</strong> date and one line on what the wiki is + current workflow mode/domain.<br />
+- <strong>Current state:</strong> source count, page counts, where the map/catalog/log live.<br />
+- <strong>Hot topic:</strong> a tight brief on the most recently/most-discussed subject (the thing most<br />
+  likely to be asked about next), with <code>links</code> to drill-down pages.<br />
+- <strong>Cross-themes:</strong> any synthesis spanning multiple sources.<br />
+- <strong>Recent activity:</strong> the last few operations this session.<br />
+- <strong>Open / offered:</strong> pending items and things you proposed but haven't done.</p>
+<p>Rules: stay ≤ 500 words (trim aggressively); use <code>links</code> so the human/you can drill in; if<br />
+it conflicts with a wiki page, the wiki page wins — fix the cache.</p>
+<hr />
+<h2 id="10-investing-mode-the-futurist-investor-engine">10. Investing mode — the "Futurist Investor" engine</h2>
+<p>A specialized vertical for tracking investment <strong>trends, ETFs, and securities</strong>. Runs the same<br />
+ingest→query→lint loop plus a periodic <strong>SCAN</strong> and an on-demand <strong>BUBBLE-WATCH</strong> (rigorous<br />
+bubble-risk analysis from live-verified data). All §1–§9 rules still apply.</p>
+<ul>
+<li><strong>Universe:</strong> US/global ETFs · individual securities · Thai SET / regional.</li>
+<li><strong>Style:</strong> long-term <strong>thematic</strong> — multi-year, megatrend-driven conviction (not day-trading).</li>
+<li><strong>Cadence:</strong> <strong>weekly autonomous scan</strong> + on-demand deep-dives.</li>
+</ul>
+<h3 id="guardrails-non-negotiable">Guardrails (non-negotiable)</h3>
+<ul>
+<li><strong>Decisions for the operator's own book only — NEVER personalized advice to others.</strong> The engine<br />
+  issues sized ADD/TRIM/HOLD/EXIT calls (see DECIDE op + <a href="wiki/syntheses/decision-register.html">decision-register</a>), but only for the<br />
+  operator's own account (documented in <a href="wiki/syntheses/mdaem-validation-database.html">mdaem-validation-database</a>). The vault cannot see anyone<br />
+  else's circumstances, risk tolerance, or existing positions. Always frame output accordingly.</li>
+<li>Cite every claim (<code>source</code> / <code>(web: …, date)</code> / <code>(inference)</code>). Date every call (absolute <code>YYYY-MM-DD</code>).</li>
+<li>Always record <strong>conviction (1–5)</strong> and an explicit <strong>invalidation condition</strong> for each thesis.</li>
+<li>Actively seek <strong>disconfirming</strong> evidence; flag hype. When sources conflict, record both (§8).</li>
+<li>Past performance ≠ future results. Note data quality, recency, and gaps. No fabricated figures.</li>
+<li><strong>Every decision is accountable:</strong> filed as a falsifiable P-call in <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a> and<br />
+  scored in <a href="wiki/syntheses/track-record.html">track-record</a>. The engine measures its own hit-rate honestly; wrong calls are kept,<br />
+  not hidden.</li>
+</ul>
+<h3 id="investing-page-types">Investing page types</h3>
+<ul>
+<li><strong>Trend</strong> — <code>wiki/concepts/&lt;trend&gt;.md</code> (<code>type: concept</code>, add <code>trend: true</code>): definition,<br />
+<em>why now</em>, drivers, risks / what-kills-it, time horizon, instruments, evidence.</li>
+<li><strong>ETF</strong> — <code>wiki/entities/etf-&lt;ticker&gt;.md</code> (<code>entity_kind: etf</code>): mandate, holdings character,<br />
+  expense ratio, trend(s) expressed, our view + conviction.</li>
+<li><strong>Security</strong> — <code>wiki/entities/&lt;slug&gt;.md</code> (<code>entity_kind: security</code>).</li>
+<li><strong>Source</strong> — <code>wiki/sources/&lt;slug&gt;.md</code> (research report, earnings, filing, news).</li>
+</ul>
+<h3 id="the-three-hub-documents-living-rewritten-every-scan">The three hub documents (living — rewritten every scan)</h3>
+<ul>
+<li><strong><a href="wiki/syntheses/trend-radar.html">trend-radar</a></strong> — master table: <em>trend · conviction (1–5) · stage<br />
+  (emerging→accelerating→mature→fading) · horizon · instruments · last-updated · evidence.</em></li>
+<li><strong><a href="wiki/syntheses/watchlist.html">watchlist</a></strong> — instruments under watch: thesis one-liner, entry trigger,<br />
+<strong>invalidation condition</strong>, key metric to watch.</li>
+<li><strong><a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a></strong> — dated, falsifiable calls + a later-scored verdict column;<br />
+  tracks the engine's own hit-rate over time.</li>
+</ul>
+<h3 id="the-v2-decision-support-hubs-living-added-2026-07-14">The v2 decision-support hubs (living — added 2026-07-14)</h3>
+<p>The "Futurist Investor" engine was promoted from insight-only to <strong>full decision output for the<br />
+operator's own book</strong> (see guardrails + DECIDE op above). Four new hubs carry the load:<br />
+- <strong><a href="wiki/syntheses/signal-monitor.html">signal-monitor</a></strong> — the rolling sensor panel (weekly MONITOR). One row per watched metric<br />
+  with warn/flip thresholds; flags regime shifts between scans. The early-warning layer.<br />
+- <strong><a href="wiki/syntheses/decision-register.html">decision-register</a></strong> — the sized-decision output. Ticker · Action · Conviction · Target<br />
+  weight · Entry zone · Scale-in · Invalidation · Status. Each row filed as a P-call + D-series entry.<br />
+- <strong><a href="wiki/syntheses/portfolio-blueprint.html">portfolio-blueprint</a></strong> — correlation-aware construction: meta-force target allocations,<br />
+  the barbell (offense + diversifiers), position-category buckets, concentration caps.<br />
+- <strong><a href="wiki/syntheses/regime-monitor.html">regime-monitor</a></strong> — current cycle-act verdict (late-Act-1 etc.) from <a href="wiki/syntheses/post-bubble-multi-agent-sim-2026-06-28.html">post-bubble-multi-agent-sim-2026-06-28</a>,<br />
+  with the sensor thresholds that mark each transition and the per-regime stance.<br />
+Plus two accountability/foresight hubs:<br />
+- <strong><a href="wiki/syntheses/track-record.html">track-record</a></strong> — P&amp;L ledger for D-series decisions + inherited MDAEM back-test; calibration<br />
+  read (does conviction predict outcomes?).<br />
+- <strong><a href="wiki/syntheses/frontier-watch.html">frontier-watch</a></strong> — the foresight/trend-capture skill: 4-axis scoring of emerging themes<br />
+  (the next AI/bitcoin/clean-energy) with a promotion threshold to the radar.</p>
+<h3 id="the-v3-quantitative-layer-added-2026-07-18-mdaem-v40">The v3 quantitative layer (added 2026-07-18 — MDAEM v4.0)</h3>
+<p>v3 promotes MDAEM from manual-single-name to <strong>quantitative-universe-screening</strong> with backtested<br />
+strategy sleeves. See <a href="wiki/concepts/mdaem-framework-v4.html">mdaem-framework-v4</a> for the full framework; the engine pieces:<br />
+- <strong><a href="wiki/concepts/mdaem-framework-v4.html">mdaem-framework-v4</a></strong> — extends v3.4 with a quant signal layer automating Dim 3/5/6/7/9.<br />
+  Gates, weights, tiers, SA-overlay, and the 21 refinements are UNCHANGED.<br />
+- <strong><a href="wiki/syntheses/backtest-results-2026-07-18.html">backtest-results-2026-07-18</a></strong> — the 5y walk-forward backtest: 4 sleeves each beat VOO;<br />
+  ensemble +19.1% CAGR / Sharpe 1.02 / +10.4 pts alpha. Includes H1–H14 + H-CN5 resolution.<br />
+- <strong><a href="wiki/syntheses/strategy-sleeves.html">strategy-sleeves</a></strong> — the 4 sleeves (Quality / Momentum / Macro-rotation / Value) with<br />
+  target weights, current top holdings, and entry/exit rules.<br />
+- <strong><a href="wiki/syntheses/security-sourcing-pipeline.html">security-sourcing-pipeline</a></strong> — the daily workflow: signal screen → shortlist → MDAEM<br />
+  verdict → sleeve tag → file decision.<br />
+- <strong><a href="wiki/syntheses/instrument-universe.html">instrument-universe</a></strong> — the master table, now expanded to ~280 names (added REITs,<br />
+  commodities, FX/vol/crypto, cash proxies — meta-force M8 "Cross-asset / hedging").</p>
+<p>The <strong>cadence</strong> (weekly MONITOR · monthly SCAN · quarterly REVIEW) is defined in <strong><code>CADENCE.md</code></strong> —<br />
+the staleness contract that prevents the engine going dark. The <strong>live-data pipeline</strong> is<br />
+<strong><code>scripts/refresh.py</code></strong> (point-in-time) and <strong><code>scripts/fetch_history.py</code></strong> (5y cache for backtest);<br />
+both feed the wiki and <code>outlook-dashboard.html</code>.</p>
+<h3 id="scan-operation-weekly-or-on-demand">SCAN operation (weekly or on demand)</h3>
+<ol>
+<li>Gather fresh signals (news, market data, filings) for radar trends + watchlist names.</li>
+<li>Update <strong>conviction &amp; stage</strong> on <a href="wiki/syntheses/trend-radar.html">trend-radar</a>; note what changed and why.</li>
+<li>Adjust <a href="wiki/syntheses/watchlist.html">watchlist</a> (add/remove names; update triggers/invalidators).</li>
+<li>Log any <strong>new dated predictions</strong>; <strong>score</strong> any that have matured, in <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a>.</li>
+<li>Create/update trend &amp; instrument pages for anything material (cite sources).</li>
+<li>Append to <code>log.md</code> (op = <code>scan</code>); refresh <code>hotcache.md</code>.</li>
+<li>Report: what moved, what's new, what to watch — decisions for the operator's own book, never<br />
+   personalized advice to others.</li>
+</ol>
+<h3 id="monitor-operation-weekly-the-lightest-touch-see-cadencemd">MONITOR operation (weekly — the lightest touch; see <code>CADENCE.md</code>)</h3>
+<p>The early-warning layer that catches regime shifts <em>between</em> scans. <strong>Run <code>scripts/refresh.py</code><br />
+first</strong>, then:<br />
+1. Update <a href="wiki/syntheses/signal-monitor.html">signal-monitor</a> — pull current readings for every sensor metric; flag anything that<br />
+   crossed a warn/flip threshold since last week (🔴 = act, 🟡 = watch, 🟢 = calm).<br />
+2. If a flip-level breach → escalate to <a href="wiki/syntheses/regime-monitor.html">regime-monitor</a> (cycle-act verdict) and review the<br />
+   affected theme page; note in <a href="wiki/syntheses/decision-register.html">decision-register</a> if it triggers an action.<br />
+3. Check <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a> for any call whose <code>resolve-by</code> passed → score it (✅/❌/◐) in the<br />
+   resolved table + scorecard; record a <code>What we learned</code> note.<br />
+4. Append <code>## [date] monitor | &lt;headline&gt;</code> to <code>log.md</code>; refresh <code>hotcache.md</code>.<br />
+5. Report: which sensors moved, any threshold crossings, any resolved predictions.</p>
+<h3 id="decide-operation-on-demand-when-a-signal-flips-or-a-name-clears-an-entryinvalidation">DECIDE operation (on demand — when a signal flips or a name clears an entry/invalidation)</h3>
+<p>The sized-decision output for the operator's own book — <em>what to buy, how much, when to add, when<br />
+to exit.</em> Promotes the <a href="wiki/concepts/mdaem-framework.html">mdaem-framework</a> methodology (10 gates → 10 dimensions → tier → SA-Quant<br />
+overlay → scenario math → sizing) into a vault-maintained register.<br />
+1. Confirm the trigger: a <a href="wiki/syntheses/signal-monitor.html">signal-monitor</a> flip, a <a href="wiki/syntheses/watchlist.html">watchlist</a> entry condition met, or an<br />
+   invalidation fired.<br />
+2. Run the MDAEM pipeline on the name: 10 gates (any fail → REJECT, recorded with reason) →<br />
+   10 weighted dimensions → tier (T1 85+/MED-HIGH 70–84/STARTER 55–69) → SA-Quant overlay cap →<br />
+   Bull/Base/Bear scenario EV + asymmetry ratio (≥1.5:1 or Gate 1 fails).<br />
+3. Apply the <a href="wiki/syntheses/portfolio-blueprint.html">portfolio-blueprint</a> concentration caps: no single ticker &gt;8%, no theme &gt;12%,<br />
+   AI-capex cluster ≤25%, cash ≥3%.<br />
+4. <strong>File the row in <a href="wiki/syntheses/decision-register.html">decision-register</a></strong>: Ticker · Action (ADD/START/TRIM/HOLD/EXIT) · Conviction ·<br />
+   Target weight · Entry zone · Scale-in plan · Invalidation · Theme · Status · Opened date · Source.<br />
+5. <strong>File a falsifiable P-call</strong> in <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a> (success/failure thresholds + resolve-by).<br />
+6. Open a row in <a href="wiki/syntheses/track-record.html">track-record</a> (D-series) for mark-to-market.<br />
+7. Append <code>## [date] decide | &lt;ticker&gt; &lt;action&gt;</code> to <code>log.md</code>; refresh <code>hotcache.md</code>.<br />
+8. Report: the decision, the MDAEM gates/dimensions that produced it, the invalidation, and the<br />
+   sizing — for the operator's own book, never advice to others.</p>
+<h3 id="refresh-operation-on-demand-weekly-via-monitor-the-live-data-pipeline">REFRESH operation (on demand / weekly via MONITOR — the live-data pipeline)</h3>
+<ol>
+<li>Run <code>scripts/refresh.py</code> (<code>scripts/.venv/bin/python scripts/refresh.py</code>). Optionally <code>--macro</code><br />
+   or <code>--themes</code> for a partial pull; <code>--check</code> for a drift report vs the last snapshot.</li>
+<li>The script writes <code>scripts/_snapshot.json</code> + <code>scripts/_provenance.csv</code> — every figure carries<br />
+<code>value | source | url | as_of | retrieved_utc</code>. No training-data values; failed fetches are<br />
+<code>UNAVAILABLE</code>, never guessed.</li>
+<li>Apply the snapshot: update <a href="wiki/syntheses/signal-monitor.html">signal-monitor</a> readings, theme-page Section 6 player tables (market<br />
+   caps/rev/margins), and per-ticker decision data in <a href="wiki/syntheses/decision-register.html">decision-register</a>.</li>
+<li>For FRED-dependent sensors (HY OAS P17/P21, margin debt), a <code>scripts/.fred_key</code> is required —<br />
+   without it those fields stay <code>UNAVAILABLE</code> (never fabricated).</li>
+<li>Append <code>## [date] refresh | &lt;scope&gt;</code> to <code>log.md</code> if run standalone (otherwise it folds into MONITOR).</li>
+</ol>
+<h3 id="source-operation-daily-on-demand-v40-quantitative-screening">SOURCE operation (daily / on demand — v4.0 quantitative screening)</h3>
+<p>The v4.0 workflow that turns the signal engine into a candidate shortlist. See<br />
+<a href="wiki/syntheses/security-sourcing-pipeline.html">security-sourcing-pipeline</a> for the full 5-step flow.<br />
+1. Run <code>scripts/signals.py</code> → daily signal panel + 4 sleeve percentile scores for ~280 names.<br />
+2. The <strong>top decile per sleeve</strong> (momentum/value/quality/macro-rotation) is surfaced as candidates.<br />
+3. Run <code>scripts/mdaem_v4.py</code> → quant Dim 3/5/6/7/9 scores + composite per candidate.<br />
+4. Operator completes the 5 qualitative dims (Quality, Fin Health, Earn Quality, Catalysts, Asymmetry)<br />
+   and applies the 10 hard gates from <a href="wiki/concepts/mdaem-framework.html">MDAEM v3.4</a>.<br />
+5. Tag with best-fit sleeve; check <a href="wiki/syntheses/portfolio-blueprint.html">portfolio-blueprint</a> caps; file in <a href="wiki/syntheses/decision-register.html">decision-register</a>.<br />
+6. Append <code>## [date] source | &lt;headline&gt;</code> to <code>log.md</code>; refresh <code>hotcache.md</code>.</p>
+<h3 id="backtest-operation-quarterly-review-the-quantitative-walk-forward">BACKTEST operation (quarterly REVIEW — the quantitative walk-forward)</h3>
+<p>Re-runs the full backtest pipeline and reports whether the 4 sleeves still outperform. See<br />
+<a href="wiki/syntheses/backtest-results-2026-07-18.html">backtest-results-2026-07-18</a> for the most recent run.<br />
+1. <code>scripts/fetch_history.py --inc</code> — incremental refresh of the 5y price/macro cache.<br />
+2. <code>scripts/signals.py</code> — regenerate the daily signal panel.<br />
+3. <code>scripts/backtest.py</code> — walk-forward backtest (top-20 per sleeve, monthly rebalance, regime-split).<br />
+4. Compare this quarter's sleeve metrics to last; flag decay (any sleeve Sharpe drop &gt;0.2).<br />
+5. Tune ensemble weights in <a href="wiki/syntheses/strategy-sleeves.html">strategy-sleeves</a> if a sleeve is structurally weaker.<br />
+6. Append <code>## [date] backtest | &lt;headline&gt;</code> to <code>log.md</code>; refresh <code>hotcache.md</code>.</p>
+<h3 id="bubble-watch-operation-on-demand-rigorous-bubble-risk-analysis-of-a-target">BUBBLE-WATCH operation (on demand — rigorous bubble-risk analysis of a target)</h3>
+<p>A markets-analyst routine that applies established <strong>bubble frameworks</strong> to <strong>current,<br />
+independently-verified</strong> market data for a <code>&lt;TARGET&gt;</code>. <strong>Default <code>&lt;TARGET&gt;</code> = the US equity<br />
+market</strong>, with a focused sub-read on the largest AI/tech names. Swap in any asset (crypto, a<br />
+single stock, gold, housing, an index). Output is a <strong>dated synthesis</strong>; insight only, never advice.</p>
+<p><strong>Non-negotiable data rules (read before doing anything):</strong><br />
+1. Run <code>date -u +"%Y-%m-%dT%H:%M:%SZ"</code> FIRST; anchor every "current/today" statement to it.<br />
+2. <strong>Treat training data as STALE.</strong> Output NO price, ratio, level, percentile, or "current"<br />
+   reading from memory. Every quantitative value is fetched <strong>live this session</strong>.<br />
+3. Per figure, record provenance: <em>value | as-of date | source name | full URL | retrieval<br />
+   timestamp (UTC)</em>. No provenance → the number does not appear.<br />
+4. Can't retrieve it this session → mark <code>UNAVAILABLE — not retrieved</code> and move on. <strong>Never</strong><br />
+   estimate, interpolate, or recall a "typical" value.<br />
+5. Prefer primary/official sources. Cross-check every headline figure against ≥2 independent<br />
+   sources; if they differ by &gt;5%, report both and flag the discrepancy.<br />
+6. Framework <em>definitions</em> may come from knowledge; only the <em>readings</em> must be live. Keep<br />
+   definitions and live readings visibly separate. Never present inference as reported fact.</p>
+<p><strong>Approved sources (cite the actual page read, not the homepage):</strong> Valuation — multpl.com,<br />
+currentmarketvaluation.com, Shiller's Yale dataset, gurufocus. Macro/rates/credit — FRED, US<br />
+Treasury, BEA. Leverage — FINRA margin-debt. Sentiment — CNN Fear &amp; Greed, AAII, CBOE (VIX,<br />
+put/call). Concentration/flows — S&amp;P DJI, exchange data; Reuters/FT/Bloomberg/WSJ for <strong>context<br />
+only, never the sole source of a number</strong>. Dalio — Bridgewater/Dalio's own posts. <strong>AVOID:</strong><br />
+forums, undated blogs, AI-generated summaries, anything undateable. <strong>Never fabricate a URL.</strong></p>
+<p><strong>Steps:</strong> (1) Establish "now" via <code>date -u</code>. (2) Build a live data table — <em>Metric | Value |<br />
+As-of | Source | URL | Retrieved-UTC</em> — covering: Shiller CAPE (current + mean + percentile);<br />
+trailing &amp; forward S&amp;P 500 P/E; Buffett Indicator; 10Y yield + implied ERP; FINRA margin debt<br />
+(+YoY); VIX &amp; put/call; AAII bull-bear + CNN F&G; top-10 / Mag-7 share of S&amp;P cap; IPO/SPAC volume<br />
++ retail-inflow proxies; hyperscaler AI/data-center capex trend; HY credit spreads (FRED<br />
+BAMLH0A0HYM2). (3) Apply each framework to the live data — reading, which signals are/aren't<br />
+flashing, confidence given data quality: <strong>Dalio 6-gauge</strong> (score each gauge low/elevated/extreme;<br />
+his composite is proprietary — approximation only), <strong>Shiller CAPE/feedback</strong>, <strong>Minsky FIH</strong><br />
+(hedge/speculative/Ponzi tilt), <strong>Kindleberger–Minsky 5 stages</strong>, <strong>Rodrigue 4 phases</strong>, <strong>Soros<br />
+reflexivity</strong>, <strong>Sornette LPPL</strong> (ONLY if actually fit to a real price series this session; else<br />
+state not-run + why). (4) Synthesize — one "where are we" judgment with explicit uncertainty; the<br />
+3–4 indicators most worth watching + the level that flips the read; steelman <strong>both</strong> bull and bear;<br />
+limitations (data gaps, reporting lag, no framework reliably times tops).</p>
+<p><strong>Output &amp; filing:</strong> write the report to <code>wiki/syntheses/bubble-risk-&lt;TARGET-slug&gt;-&lt;YYYY-MM-DD&gt;.md</code><br />
+(<code>type: synthesis</code>; default slug <code>us-equity</code>). Order: <strong>Header (as-of date) → Data Table w/<br />
+provenance → Per-framework readings → Synthesis → Data Freshness Log (every URL + UTC) →<br />
+Limitations.</strong> Final line, verbatim: <code>All figures retrieved live on &lt;date&gt;; no values drawn from
+model training.</code> Then: log any falsifiable calls in <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a>; update <a href="wiki/syntheses/watchlist.html">watchlist</a> if<br />
+triggers shift; append to <code>log.md</code> (op = <code>bubble-watch</code>); refresh <code>hotcache.md</code>; add to <code>index.md</code>.<br />
+Bubble frameworks earn standing concept pages as wanted-links (e.g. dalio-6-gauge,<br />
+shiller-cape, minsky-financial-instability, kindleberger-minsky-stages,<br />
+rodrigue-bubble-phases, soros-reflexivity, sornette-lppl).</p>
+<p><strong>Handling gaps — ask, don't guess:</strong> exhaust live retrieval (alternate approved sources +<br />
+reformulated search) before declaring a figure unobtainable. Then <strong>batch</strong> the still-missing items<br />
+into one numbered list; per item state <em>what you need | why (which framework/metric) | the source<br />
+tried | the exact answer format wanted</em>. Continue the rest with what you have; mark blocked items<br />
+<code>PENDING — awaiting user input</code> in the data table. User answers are recorded with provenance<br />
+<code>user-provided, &lt;date&gt;</code>. Only ask for what genuinely blocks the analysis or that only the user can<br />
+supply — don't offload retrievable work. <strong>If &gt;30% of target metrics are UNAVAILABLE, say so<br />
+prominently and lower overall confidence.</strong> Descriptive risk analysis only — not investment advice.</p>
+<h3 id="meta-force-taxonomy-the-radars-structure-established-2026-06-01-analyst-grade-rebuild">Meta-force taxonomy (the radar's structure — established 2026-06-01 analyst-grade rebuild)</h3>
+<p>Themes are grouped under <strong>7 meta-forces</strong> on <a href="wiki/syntheses/trend-radar.html">trend-radar</a>. Each theme = one<br />
+<code>wiki/concepts/&lt;slug&gt;.md</code> (<code>type: concept</code>, <code>trend: true</code>). Cross-theme dependencies live in<br />
+<a href="wiki/syntheses/theme-linkage-map.html">theme-linkage-map</a>; the macro overlay in <a href="wiki/syntheses/macro-regime.html">macro-regime</a>.<br />
+1. <strong>Compute &amp; AI stack</strong> — <a href="wiki/concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="wiki/concepts/semiconductors.html">semiconductors</a>, <a href="wiki/concepts/ai-software-agents.html">ai-software-agents</a>,<br />
+<a href="wiki/concepts/networking-optical.html">networking-optical</a>, <a href="wiki/concepts/cybersecurity.html">cybersecurity</a><br />
+2. <strong>Energy, power &amp; materials</strong> — <a href="wiki/concepts/power-grid-electrification.html">power-grid-electrification</a>, <a href="wiki/concepts/nuclear-uranium.html">nuclear-uranium</a>,<br />
+<a href="wiki/concepts/renewables-storage.html">renewables-storage</a>, <a href="wiki/concepts/natural-gas-lng.html">natural-gas-lng</a>, <a href="wiki/concepts/data-center-cooling.html">data-center-cooling</a>, <a href="wiki/concepts/critical-minerals.html">critical-minerals</a><br />
+   (overview hub: <a href="wiki/concepts/energy-transition.html">energy-transition</a>)<br />
+3. <strong>Reindustrialization &amp; defense</strong> — <a href="wiki/concepts/defense-security.html">defense-security</a>, <a href="wiki/concepts/automation-robotics.html">automation-robotics</a>,<br />
+<a href="wiki/concepts/reshoring-supply-chain.html">reshoring-supply-chain</a>, <a href="wiki/concepts/infrastructure-capex.html">infrastructure-capex</a><br />
+4. <strong>Health &amp; demographics</strong> — <a href="wiki/concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a>, <a href="wiki/concepts/biotech-genomics.html">biotech-genomics</a>,<br />
+<a href="wiki/concepts/medtech-devices.html">medtech-devices</a>, <a href="wiki/concepts/healthcare-aging-services.html">healthcare-aging-services</a><br />
+5. <strong>Financial transformation</strong> — <a href="wiki/concepts/fintech-payments.html">fintech-payments</a>, <a href="wiki/concepts/tokenization-digital-assets.html">tokenization-digital-assets</a><br />
+6. <strong>Geographies</strong> — <a href="wiki/concepts/us-megacap-quality.html">us-megacap-quality</a>, <a href="wiki/concepts/india-em-growth.html">india-em-growth</a>, <a href="wiki/concepts/japan-corporate-reform.html">japan-corporate-reform</a>,<br />
+<a href="wiki/concepts/asean-thailand.html">asean-thailand</a>, <a href="wiki/concepts/china-contrarian.html">china-contrarian</a><br />
+7. <strong>Cross-cutting / real assets</strong> — <a href="wiki/concepts/water-resource-scarcity.html">water-resource-scarcity</a>,<br />
+<a href="wiki/concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a>, <a href="wiki/concepts/space-economy.html">space-economy</a>, <a href="wiki/concepts/quantum-computing.html">quantum-computing</a></p>
+<h3 id="analyst-grade-theme-page-template-the-10-standard-for-wikiconceptstrendmd">Analyst-grade theme-page template (the §10 standard for <code>wiki/concepts/&lt;trend&gt;.md</code>)</h3>
+<p>Every theme page carries these sections, with <strong>sourced figures (value + unit + period/as-of +<br />
+source) tagged <code>(fact)</code>/<code>(est.)</code>/<code>(inference)</code></strong>; <code>n/f</code> = no reliable figure found (never fabricate):<br />
+1. <strong>Definition &amp; scope</strong> · 2. <strong>Market size &amp; growth</strong> (TAM/CAGR table, source + base year) ·<br />
+3. <strong>Key structural drivers</strong> (demand &amp; supply) · 4. <strong>Value-chain / linkage</strong> (upstream→downstream<br />
++ <code>links</code>) · 5. <strong>Competitive landscape</strong> (concentration / Porter forces / where moats sit) ·<br />
+6. <strong>Major global players — comparative table</strong> (the core deliverable:<br />
+<code>Company · Ticker · Geo · Segment · Mkt cap (as-of) · Revenue (period) · Rev YoY · Profitability ·
+Other · Moat note</code>) · 7. <strong>Competitiveness read</strong> (who's winning/losing, 1–2 paras) · 8. <strong>Risks /<br />
+what kills the thesis</strong> · 9. <strong>Investable instruments</strong> (ETFs + representative securities) ·<br />
+10. <strong>Our view</strong> (conviction 1–5 + stage + horizon + invalidation) · 11. <strong>Sources</strong>.<br />
+Plus <strong>Connections</strong> and <strong>Open questions</strong> in practice.<br />
+- <strong>Conviction is risk-adjusted</strong> (5 = highest; <strong>nothing earns a 5</strong> — high trend conviction ≠<br />
+  attractive entry). Capped/flagged for valuation, cyclicality, and crowding.<br />
+- <strong>Comparative tables only</strong> this era — no per-company entity pages unless separately ingested.</p>
+</article>
+</div>
+</body>
+</html>

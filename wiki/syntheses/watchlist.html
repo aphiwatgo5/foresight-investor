@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Watchlist</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Watchlist
+type: synthesis
+tags: [investing, watchlist, etf, securities]
+sources: []
+date: 2026-06-01
+last_scan: 2026-07-14</div>
+<article>
+<h1 id="watchlist">Watchlist</h1>
+<p><strong>Bottom line:</strong> Instruments under active observation across all 7 meta-forces, each with a<br />
+one-line thesis, an entry trigger (analytical watch-for), an explicit invalidation condition, and<br />
+the single metric that matters most. Updated every <strong>scan</strong>. <strong>Insight only — not buy/sell advice;<br />
+nothing here is a recommendation.</strong> ETF facts/figures are research-aggregated ~2026 — <strong>re-verify<br />
+ER/AUM/holdings before acting</strong>; no verified live (June-2026) snapshots.</p>
+<blockquote>
+<p>Organized by <a href="trend-radar.html">trend-radar</a> meta-force. "Key metric" is the number to watch to confirm/break<br />
+the thesis. Entry triggers / invalidations are <strong>analytical thesis markers, not trading signals.</strong></p>
+</blockquote>
+<h2 id="meta-force-1-compute-ai-stack">Meta-force 1 — Compute &amp; AI stack</h2>
+<table>
+<thead>
+<tr>
+<th>Instrument</th>
+<th>Theme</th>
+<th>Thesis (one line)</th>
+<th>Entry trigger (watch-for)</th>
+<th>Invalidation</th>
+<th>Key metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SMH / SOXX</strong></td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a> / <a href="../concepts/ai-infrastructure.html">ai-infrastructure</a></td>
+<td>Picks-&amp;-shovels of AI compute</td>
+<td>Digestion drawdown (≥20% off highs)</td>
+<td>Sustained hyperscaler capex <em>cuts</em> (YoY decline)</td>
+<td>Hyperscaler aggregate capex guidance YoY</td>
+</tr>
+<tr>
+<td><strong>QQQ</strong></td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a></td>
+<td>Broad AI/mega-cap compute exposure</td>
+<td>Concentration-driven pullback</td>
+<td>AI-capex air-pocket + megacap de-rating</td>
+<td>Mag-7 earnings + capex</td>
+</tr>
+<tr>
+<td><strong>CIBR / BUG</strong></td>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td>Non-discretionary security spend ~11% CAGR</td>
+<td>Valuation reset after a leader's miss</td>
+<td>Security budgets turn discretionary</td>
+<td>CRWD/PANW/ZS ARR growth</td>
+</tr>
+<tr>
+<td><strong>IGV / WCLD</strong></td>
+<td><a href="../concepts/ai-software-agents.html">ai-software-agents</a></td>
+<td>AI monetization / agentic inflection</td>
+<td>Evidence agents lift seat economics (not cannibalize)</td>
+<td>Per-seat SaaS disruption outpaces AI upsell</td>
+<td>Software net-revenue-retention + AI attach</td>
+</tr>
+<tr>
+<td>(no clean ETF) <strong>ANET</strong></td>
+<td><a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td>AI back-end bandwidth + co-packaged optics</td>
+<td>Optical-cycle inflection confirmation</td>
+<td>Hyperscaler network capex slows</td>
+<td>AI back-end switching/optics revenue</td>
+</tr>
+</tbody>
+</table>
+<h2 id="meta-force-2-energy-power-materials">Meta-force 2 — Energy, power &amp; materials</h2>
+<table>
+<thead>
+<tr>
+<th>Instrument</th>
+<th>Theme</th>
+<th>Thesis (one line)</th>
+<th>Entry trigger (watch-for)</th>
+<th>Invalidation</th>
+<th>Key metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GRID / XLU</strong></td>
+<td><a href="../concepts/power-grid-electrification.html">power-grid-electrification</a></td>
+<td>Cleanest "AI needs power" play</td>
+<td>Pullback in grid/genco names</td>
+<td>DC load forecasts cut; PPAs stall</td>
+<td>US DC electricity-load growth; PPA signings</td>
+</tr>
+<tr>
+<td><strong>URA / URNM / SPUT</strong></td>
+<td><a href="../concepts/nuclear-uranium.html">nuclear-uranium</a></td>
+<td>AI power + 13yrs utility under-contracting</td>
+<td>Uranium spot <em>consolidation</em> (stretched)</td>
+<td>PPA signings stall / restart reversals</td>
+<td>Long-term U3O8 contract price; new PPAs</td>
+</tr>
+<tr>
+<td><strong>ICLN / TAN / GRID</strong></td>
+<td><a href="../concepts/renewables-storage.html">renewables-storage</a></td>
+<td><strong>Storage</strong> structural; solar/wind cyclical</td>
+<td>Battery-cost-down + storage backlog growth</td>
+<td>IRA-credit rollback; rate spike</td>
+<td>Battery $/kWh; storage deployment GW</td>
+</tr>
+<tr>
+<td><strong>REMX / COPX / LIT</strong></td>
+<td><a href="../concepts/critical-minerals.html">critical-minerals</a></td>
+<td>Electrification inputs + China supply weaponization</td>
+<td>Copper deficit confirmation / China export curbs</td>
+<td>Demand slump; new supply floods</td>
+<td>Copper price; rare-earth supply concentration</td>
+</tr>
+<tr>
+<td>(gas E&amp;P) <strong>LNG / EQT</strong></td>
+<td><a href="../concepts/natural-gas-lng.html">natural-gas-lng</a></td>
+<td>Bridge fuel + DC baseload + LNG export</td>
+<td>Datacenter gas-PPA signings</td>
+<td>Renewables/nuclear displace gas baseload</td>
+<td>LNG export volumes; DC gas contracts</td>
+</tr>
+<tr>
+<td>(thermal) <strong>VRT</strong></td>
+<td><a href="../concepts/data-center-cooling.html">data-center-cooling</a></td>
+<td>Liquid-cooling inflection</td>
+<td>Liquid-cooling attach-rate ramp</td>
+<td>AI-capex slowdown (direct beta)</td>
+<td>Liquid-cooling % of new DC builds</td>
+</tr>
+</tbody>
+</table>
+<h2 id="meta-force-3-reindustrialization-defense">Meta-force 3 — Reindustrialization &amp; defense</h2>
+<table>
+<thead>
+<tr>
+<th>Instrument</th>
+<th>Theme</th>
+<th>Thesis (one line)</th>
+<th>Entry trigger (watch-for)</th>
+<th>Invalidation</th>
+<th>Key metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ITA / PPA / SHLD</strong></td>
+<td><a href="../concepts/defense-security.html">defense-security</a></td>
+<td>NATO 5%-GDP re-rating; low AI-correlation diversifier</td>
+<td>Valuation pullback (sector priced-in)</td>
+<td>Budget execution slips / broad ceasefires</td>
+<td>European defense budget <em>execution</em> (not pledges)</td>
+</tr>
+<tr>
+<td><strong>PAVE / IGF</strong></td>
+<td><a href="../concepts/infrastructure-capex.html">infrastructure-capex</a></td>
+<td>IIJA + electrification; aggregates duopoly</td>
+<td>Pullback in CAT/VMC/MLM</td>
+<td>Infrastructure funding stalls</td>
+<td>US construction spend; aggregates pricing</td>
+</tr>
+<tr>
+<td><strong>ROBO / BOTZ / ARKQ</strong></td>
+<td><a href="../concepts/automation-robotics.html">automation-robotics</a></td>
+<td>Humanoid optionality on industrial base</td>
+<td><em>Real</em> humanoid shipments + capex recovery</td>
+<td>Humanoid timelines slip; industrial recession</td>
+<td>Robot installs/yr; humanoid units shipped</td>
+</tr>
+<tr>
+<td><strong>PAVE / XLI</strong></td>
+<td><a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a></td>
+<td>US mfg construction ~2x since 2021</td>
+<td>Reshoring capex re-acceleration</td>
+<td>China+1 underdelivers; capex rolls over</td>
+<td>US mfg construction spend</td>
+</tr>
+</tbody>
+</table>
+<h2 id="meta-force-4-health-demographics">Meta-force 4 — Health &amp; demographics</h2>
+<table>
+<thead>
+<tr>
+<th>Instrument</th>
+<th>Theme</th>
+<th>Thesis (one line)</th>
+<th>Entry trigger (watch-for)</th>
+<th>Invalidation</th>
+<th>Key metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LLY / NVO</strong> (direct)</td>
+<td><a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a></td>
+<td>Obesity TAM ~$95–200B; oral inflection</td>
+<td>Pullback on 2027 Medicare-pricing fear</td>
+<td>Oral-pill efficacy/share loss; price cuts &gt; expected</td>
+<td>Incretin franchise revenue growth</td>
+</tr>
+<tr>
+<td><strong>IHI / XHE</strong></td>
+<td><a href="../concepts/medtech-devices.html">medtech-devices</a></td>
+<td>Razor-and-blade franchises; ~85% recurring</td>
+<td>Pullback on GLP-1-procedure fear</td>
+<td>GLP-1 structurally shrinks high-margin volumes</td>
+<td>Intuitive procedure growth; CGM share</td>
+</tr>
+<tr>
+<td><strong>XBI / IBB / ARKG</strong></td>
+<td><a href="../concepts/biotech-genomics.html">biotech-genomics</a></td>
+<td>~$300B patent cliff drives M&amp;A</td>
+<td>XBI base + M&amp;A premium capture</td>
+<td>Frozen funding window + failed pivotal readouts</td>
+<td>XBI level; biotech M&amp;A deal flow</td>
+</tr>
+<tr>
+<td><strong>XLV / IHF / WELL</strong></td>
+<td><a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a></td>
+<td>Senior-housing (WELL) clean demographic winner</td>
+<td>Rate-driven REIT pullback</td>
+<td>Medicare-Advantage reset; high-rate regime breaks REIT spreads</td>
+<td>WELL same-store NOI; UNH MCR</td>
+</tr>
+</tbody>
+</table>
+<h2 id="meta-force-5-financial-transformation">Meta-force 5 — Financial transformation</h2>
+<table>
+<thead>
+<tr>
+<th>Instrument</th>
+<th>Theme</th>
+<th>Thesis (one line)</th>
+<th>Entry trigger (watch-for)</th>
+<th>Invalidation</th>
+<th>Key metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IPAY / FINX</strong></td>
+<td><a href="../concepts/fintech-payments.html">fintech-payments</a></td>
+<td>Visa/MA duopoly (4) + contested periphery</td>
+<td>Pullback in V/MA quality core</td>
+<td>Stablecoin/A2A migrates off card rails; interchange ruling</td>
+<td>V/MA payment volume; interchange regulation</td>
+</tr>
+<tr>
+<td><strong>IBIT / BITQ / BLOK</strong></td>
+<td><a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a></td>
+<td>GENIUS-Act inflection; RWA + stablecoins</td>
+<td>Crypto cyclical reset stabilizes</td>
+<td>Adverse final GENIUS rules; ETF outflows; RWA stalls</td>
+<td>Stablecoin cap; RWA tokenization total; IBIT AUM</td>
+</tr>
+</tbody>
+</table>
+<h2 id="meta-force-6-geographies">Meta-force 6 — Geographies</h2>
+<table>
+<thead>
+<tr>
+<th>Instrument</th>
+<th>Theme</th>
+<th>Thesis (one line)</th>
+<th>Entry trigger (watch-for)</th>
+<th>Invalidation</th>
+<th>Key metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INDA / SMIN / INDY</strong></td>
+<td><a href="../concepts/india-em-growth.html">india-em-growth</a></td>
+<td>Cleanest multi-decade EM grower</td>
+<td>FPI flows turn net-positive; valuation reset</td>
+<td>GDP sustainably &lt;5%; bank asset-quality blowup</td>
+<td>Monthly FPI flows; Nifty earnings revisions</td>
+</tr>
+<tr>
+<td><strong>EWJ / DXJ</strong> (hedged)</td>
+<td><a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a></td>
+<td>Governance + reflation regime change</td>
+<td>Buyback/PBR campaign continues</td>
+<td>Reform fatigue; sharp yen appreciation + BOJ error</td>
+<td>TSE PBR/ROE; buyback pace; USD/JPY</td>
+</tr>
+<tr>
+<td><strong>SPY / RSP / QUAL</strong></td>
+<td><a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td>Quality core vs concentration risk</td>
+<td>Broadening beyond Mag-7 (equal-weight leads)</td>
+<td>AI-capex air-pocket; sustained ex-US leadership</td>
+<td>Mag-7 % of S&P; S&amp;P fwd P/E</td>
+</tr>
+<tr>
+<td><strong>MCHI / KWEB / FXI</strong></td>
+<td><a href="../concepts/china-contrarian.html">china-contrarian</a></td>
+<td>Deep value + AI re-rating + stimulus</td>
+<td>Stimulus follow-through + AI-earnings beat</td>
+<td>Deflation/property spiral; geopolitical escalation</td>
+<td>MSCI China fwd P/E; HS Tech; stimulus measures</td>
+</tr>
+<tr>
+<td><strong>ASEA / VNM / EIDO / THD</strong></td>
+<td><a href="../concepts/asean-thailand.html">asean-thailand</a></td>
+<td>VN/ID growth + Indonesia banks (TH ~2 laggard)</td>
+<td>Sustained foreign net buying</td>
+<td>China+1 underdelivers; Thai structural drag persists</td>
+<td>Regional GDP; foreign net flows; Delta (TH) growth</td>
+</tr>
+</tbody>
+</table>
+<h2 id="meta-force-7-cross-cutting-real-assets">Meta-force 7 — Cross-cutting / real assets</h2>
+<table>
+<thead>
+<tr>
+<th>Instrument</th>
+<th>Theme</th>
+<th>Thesis (one line)</th>
+<th>Entry trigger (watch-for)</th>
+<th>Invalidation</th>
+<th>Key metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PHO / FIW / CGW</strong></td>
+<td><a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a></td>
+<td>Defensive compounder + DC cooling-water kicker</td>
+<td>Rate-driven utility pullback</td>
+<td>High-rate regime de-rates utilities; rate-case reversals</td>
+<td>DC water demand; utility rate-base growth</td>
+</tr>
+<tr>
+<td><strong>GLD / GDX</strong></td>
+<td><a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a></td>
+<td>Debasement hedge + low AI-correlation diversifier</td>
+<td>Post-parabolic consolidation</td>
+<td>Real-rate/USD reversal; CB buying stops</td>
+<td>Gold (verify live); CB gold purchases; real yields</td>
+</tr>
+<tr>
+<td><strong>ARKX / UFO</strong> (unverified)</td>
+<td><a href="../concepts/space-economy.html">space-economy</a></td>
+<td>~$1T TAM; RKLB/PL investable core</td>
+<td>RKLB profitability path / contract wins</td>
+<td>Launch/program failures + closed funding window</td>
+<td>RKLB revenue/backlog; ASTS milestones</td>
+</tr>
+<tr>
+<td><strong>QTUM</strong></td>
+<td><a href="../concepts/quantum-computing.html">quantum-computing</a></td>
+<td>Frontier optionality; big-tech the safer hold</td>
+<td>Error-correction breakthrough</td>
+<td>Funding freeze + repeated science setbacks</td>
+<td>Qubit/error-correction progress; pure-play P/S</td>
+</tr>
+</tbody>
+</table>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<ul>
+<li>Seeded/expanded from the 2026-06-01 analyst-grade scan; instruments map to <a href="trend-radar.html">trend-radar</a><br />
+  convictions and per-theme comparative tables. ETF ER/AUM/holdings are research-aggregated and<br />
+  should be re-verified. Gold levels and momentum-priced space/quantum caps are the most likely stale.</li>
+<li>Entry triggers / invalidations are <strong>analytical thesis markers</strong>, not trading signals.</li>
+<li>Macro conditions sit above all of these — see <a href="macro-regime.html">macro-regime</a>; dependencies in <a href="theme-linkage-map.html">theme-linkage-map</a>.</li>
+<li>Bottom-up single-name scoring of representative tickers lives in<br />
+<a href="dual-model-shortlist-scorecard-2026-06-03.html">dual-model-shortlist-scorecard-2026-06-03</a> (validate 2026-09-03).</li>
+</ul>
+<blockquote>
+<p><strong>2026-07-14 scan note.</strong> Entry triggers / invalidations unchanged in structure; live price reads<br />
+now flow via <a href="signal-monitor.html">signal-monitor</a> and <code>scripts/refresh.py</code> rather than search-aggregated figures.<br />
+Sized actions on the watchlist names live in <a href="decision-register.html">decision-register</a> (D1–D6 opened 2026-07-14):<br />
+TSM / LLY / GRID / ITA-RTX / DXJ / PHO. CRWD (132x fwdPE) and GEV (43x) reaffirmed as basket/<br />
+wait — single-name fails MDAEM Gate 9. Re-verifies still owed: uranium spot (P4), S&amp;P top-10<br />
+weight (P15, scrape broken), HY OAS (P17, pending FRED key).</p>
+</blockquote>
+</article>
+</div>
+</body>
+</html>

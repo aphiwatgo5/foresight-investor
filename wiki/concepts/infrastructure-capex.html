@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Infrastructure &amp; Capex Super-Cycle</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Infrastructure &amp; Capex Super-Cycle
+type: concept
+trend: true
+tags: [investing, trend, infrastructure, construction, aggregates, capex, industrials, engineering]
+sources: []
+date: 2026-06-01
+conviction: 4
+stage: accelerating
+horizon: 3-10y</div>
+<article>
+<h1 id="infrastructure-capex-super-cycle">Infrastructure &amp; Capex Super-Cycle</h1>
+<p><strong>Definition:</strong> The broad physical build-out — data centers, grid, transport, water, and federally-<br />
+funded infrastructure (IIJA) — and the building-products, aggregates, engineering, and equipment<br />
+companies that supply it. The "picks-and-shovels of everything physical": where the AI build-out<br />
+(<a href="ai-infrastructure.html">ai-infrastructure</a>, <a href="power-grid-electrification.html">power-grid-electrification</a>), reshoring (<a href="reshoring-supply-chain.html">reshoring-supply-chain</a>), and<br />
+public-infrastructure spending all converge into one capex wave. Conviction 4 on the <a href="../syntheses/trend-radar.html">trend-radar</a><br />
+— multiple stacked, durable demand sources hitting supply-constrained, high-moat building inputs.</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Figures tagged (fact)/(est.)/(inference) with<br />
+period + source. "n/f" = no reliable figure found.</p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>(a) <strong>Aggregates &amp; building materials</strong> — Vulcan, Martin Marietta, CRH, Eagle Materials (the most<br />
+moat-rich layer: local quarry monopolies, pricing power); (b) <strong>engineering &amp; construction / EPC</strong> —<br />
+Quanta, Jacobs, AECOM, Fluor (overlap <a href="reshoring-supply-chain.html">reshoring-supply-chain</a>); (c) <strong>building products / HVAC /<br />
+electrical</strong> — Trane, Johnson Controls, Eaton, Comfort Systems (overlap <a href="data-center-cooling.html">data-center-cooling</a>,<br />
+<a href="power-grid-electrification.html">power-grid-electrification</a>); (d) <strong>equipment &amp; rental</strong> — Caterpillar, United Rentals, Deere.<br />
+The convergence of AI-DC + grid + reshoring + public infra is what makes this a <em>super-cycle</em>.</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>US IIJA infrastructure law</td>
+<td><strong>~$1.2T (incl. ~$550B new) federal infrastructure spend</strong></td>
+<td>2021→2026 (deploying)</td>
+<td>US Gov (IIJA)</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>US construction spending (total)</td>
+<td><strong>~$2.1–2.2T annualized (near record)</strong></td>
+<td>2025</td>
+<td>US Census</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>US data-center construction</td>
+<td><strong>record, fastest-growing non-residential category</strong></td>
+<td>2025</td>
+<td>US Census / industry</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Aggregates pricing</td>
+<td><strong>mid-to-high single-digit annual price increases (multi-year)</strong></td>
+<td>2024–26</td>
+<td>Vulcan/MLM IR</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>US manufacturing construction</td>
+<td><strong>~$230B+ (≈2x pre-2021)</strong></td>
+<td>2025</td>
+<td>US Census</td>
+<td>(fact)</td>
+</tr>
+</tbody>
+</table>
+<p>Three stacked demand waves — AI/data-center, grid, and federal infrastructure — hitting supply-<br />
+constrained materials at the same time.</p>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand (stacked):</strong> AI data-center construction (<a href="ai-infrastructure.html">ai-infrastructure</a>, <a href="data-center-cooling.html">data-center-cooling</a>);<br />
+grid build-out (<a href="power-grid-electrification.html">power-grid-electrification</a>); federal IIJA deployment (roads, bridges, broadband,<br />
+water); reshoring factory construction (<a href="reshoring-supply-chain.html">reshoring-supply-chain</a>). <strong>Supply (bullish for materials<br />
+pricing):</strong> aggregates are local, permitting-constrained, and effectively un-importable → durable<br />
+pricing power; skilled-labor scarcity limits EPC capacity. <strong>Headwinds:</strong> rate sensitivity of<br />
+private construction, residential-construction softness, and federal-funding/political timing.</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p>Demand sources (AI-DC + grid + IIJA + reshoring) → engineering/design (Jacobs, AECOM) → EPC/construct<br />
+(Quanta, Fluor) using <strong>aggregates/cement</strong> (Vulcan, Martin Marietta, CRH) + <strong>equipment</strong> (Caterpillar,<br />
+United Rentals) + <strong>building products/HVAC/electrical</strong> (Trane, JCI, Eaton). Overlaps<br />
+<a href="power-grid-electrification.html">power-grid-electrification</a>, <a href="data-center-cooling.html">data-center-cooling</a>, <a href="reshoring-supply-chain.html">reshoring-supply-chain</a>. Conditioned by<br />
+<a href="../syntheses/macro-regime.html">macro-regime</a> (rates, fiscal policy). The aggregates layer is the highest-moat node in the chain.</p>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<p><strong>Aggregates</strong> is the standout structure — <strong>local quarry monopolies</strong> (high weight-to-value makes<br />
+hauling uneconomic beyond ~50 miles), giving Vulcan and Martin Marietta near-unassailable regional<br />
+pricing power and decades of reserves. This is one of the best moat structures in all of industrials.<br />
+<strong>Building products / HVAC</strong> (Trane, Carrier, JCI) benefit from data-center thermal + electrification<br />
+demand with strong brands and installed bases. <strong>Equipment</strong> (Caterpillar, Deere, United Rentals) is<br />
+more cyclical but consolidated. <strong>EPC</strong> (Quanta, Jacobs, Fluor) is backlog-rich but more competitive/<br />
+execution-risk-prone. Moats and margins concentrate in <strong>aggregates and equipment/building products</strong>,<br />
+less in EPC.</p>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps point-in-time (~late May 2026, est.). Other figures (fact) unless tagged. "n/f" = none found.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of)</th>
+<th>Revenue (period)</th>
+<th>Rev YoY</th>
+<th>Profitability</th>
+<th>Other</th>
+<th>Moat note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Caterpillar</td>
+<td>CAT</td>
+<td>US</td>
+<td>Construction/mining equipment</td>
+<td>n/f</td>
+<td>~$65B (FY25)</td>
+<td>mixed/cyclical</td>
+<td>strong op margin</td>
+<td>dealer network; backlog</td>
+<td>Equipment scale + dealer moat</td>
+</tr>
+<tr>
+<td>Vulcan Materials</td>
+<td>VMC</td>
+<td>US</td>
+<td>Aggregates (largest US)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>mid-single % vol; price +</td>
+<td>strong, expanding</td>
+<td>multi-yr price increases</td>
+<td>Local quarry monopoly; pricing power</td>
+</tr>
+<tr>
+<td>Martin Marietta</td>
+<td>MLM</td>
+<td>US</td>
+<td>Aggregates / building materials</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>price-led growth</td>
+<td>strong</td>
+<td>reserves moat</td>
+<td>Aggregates pricing power; #2 US</td>
+</tr>
+<tr>
+<td>Trane Technologies</td>
+<td>TT</td>
+<td>US/IE</td>
+<td>HVAC / climate (data centers)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>high-single/double %</td>
+<td>expanding</td>
+<td>DC + electrification demand</td>
+<td>HVAC brand + data-center thermal</td>
+</tr>
+<tr>
+<td>Eaton</td>
+<td>ETN</td>
+<td>US/IE</td>
+<td>Electrical equipment</td>
+<td>~$148B (22 May 26)</td>
+<td>$7.5B (Q1 26, record)</td>
+<td>+17%</td>
+<td>Electrical Americas 25.6%</td>
+<td>backlog +44%</td>
+<td>Electrical content of build-out</td>
+</tr>
+<tr>
+<td>Quanta Services</td>
+<td>PWR</td>
+<td>US</td>
+<td>Infrastructure/grid EPC</td>
+<td>~$108.6B (25 May 26)</td>
+<td>$7.87B (Q1 26)</td>
+<td>+26.3%</td>
+<td>n/f</td>
+<td>record backlog $48.5B</td>
+<td>Skilled-labor EPC scarcity</td>
+</tr>
+<tr>
+<td>United Rentals</td>
+<td>URI</td>
+<td>US</td>
+<td>Equipment rental</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>mid-single %</td>
+<td>high margin</td>
+<td>largest US rental fleet</td>
+<td>Scale + fleet density moat</td>
+</tr>
+<tr>
+<td>CRH</td>
+<td>CRH</td>
+<td>IE/US</td>
+<td>Building materials (global)</td>
+<td>n/f</td>
+<td>large</td>
+<td>mid-single %</td>
+<td>solid</td>
+<td>US-heavy mix</td>
+<td>Vertically integrated materials scale</td>
+</tr>
+<tr>
+<td>Comfort Systems USA</td>
+<td>FIX</td>
+<td>US</td>
+<td>Mechanical/electrical install</td>
+<td>n/f</td>
+<td>$2.9B (Q1'26)</td>
+<td>+56%</td>
+<td>26.3% GM record</td>
+<td>backlog $12.5B</td>
+<td>Data-center install (overlaps <a href="data-center-cooling.html">data-center-cooling</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p>The <strong>aggregates duopoly (Vulcan, Martin Marietta)</strong> is the highest-quality way to own the<br />
+super-cycle — local-monopoly pricing power, decades of reserves, and exposure to <em>all</em> the demand<br />
+waves at once (DC + grid + IIJA + reshoring) with no AI-specific concentration risk. <strong>Eaton</strong> and<br />
+<strong>Trane</strong> capture the electrical/thermal content of every data center and electrification project<br />
+(overlapping <a href="power-grid-electrification.html">power-grid-electrification</a> / <a href="data-center-cooling.html">data-center-cooling</a>). <strong>Caterpillar</strong> and <strong>United<br />
+Rentals</strong> are the equipment beneficiaries (more cyclical). <strong>Quanta</strong> and <strong>Comfort Systems</strong> ride<br />
+record EPC/install backlogs but are labor-constrained.</p>
+<p><strong>Why conviction 4:</strong> the <em>stacking</em> of multiple durable demand sources onto supply-constrained,<br />
+high-moat inputs (especially aggregates) is unusually robust, and parts of it (IIJA, aggregates<br />
+pricing) are <strong>less AI-cyclical</strong> than the pure Compute themes — giving partial diversification. Held<br />
+below 5 by rate sensitivity, residential-construction drag, and the fact that the AI-linked portions<br />
+share the same de-rating risk as the rest of the capex complex (<a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>).</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Rates / recession:</strong> higher-for-longer rates cut private construction and equipment capex<br />
+  (<a href="../syntheses/macro-regime.html">macro-regime</a>).</li>
+<li><strong>AI-capex digestion:</strong> the data-center-construction portion correlates with <a href="ai-infrastructure.html">ai-infrastructure</a>.</li>
+<li><strong>Federal funding timing:</strong> IIJA deployment delays or post-election policy shifts.</li>
+<li><strong>Residential drag:</strong> housing weakness offsets non-residential strength for materials/equipment.</li>
+<li><strong>Valuation:</strong> Quanta, Eaton, aggregates names have re-rated; rich multiples carry compression risk.</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li><strong>PAVE</strong> (Global X US Infrastructure Development) — the cleanest broad proxy (Quanta, Eaton, Vulcan, Trane).</li>
+<li><strong>XLI</strong> (Industrial Select Sector SPDR) — broad industrials.</li>
+<li><strong>IGF</strong> (iShares Global Infrastructure) — global infra tilt.</li>
+<li>Representative securities: CAT, VMC, MLM, TT, ETN, PWR, URI, CRH.</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 4/5</strong> — multiple stacked, durable demand waves (AI-DC + grid + IIJA + reshoring)<br />
+  hitting supply-constrained, high-moat inputs (aggregates), with partial diversification from the<br />
+  pure-AI cycle. Held below 5 by rate sensitivity and the AI-linked portion's de-rating correlation.</li>
+<li><strong>Stage: accelerating. Horizon: 3–10 years.</strong></li>
+<li><strong>Invalidation:</strong> US total construction spend and aggregates pricing both roll over for 2+ quarters,<br />
+  OR IIJA funding is materially clawed back, OR a rate shock freezes private construction.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PAVE</strong></td>
+<td>US infra</td>
+<td style="text-align: right;">$56.61</td>
+<td style="text-align: right;">$15B</td>
+<td style="text-align: right;">+23.5%</td>
+<td style="text-align: right;">0.7%</td>
+<td style="text-align: right;">n/f · 1.24</td>
+<td style="text-align: right;">-6.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>XLI</strong></td>
+<td>Industrials</td>
+<td style="text-align: right;">$180.37</td>
+<td style="text-align: right;">$34B</td>
+<td style="text-align: right;">+20.1%</td>
+<td style="text-align: right;">1.1%</td>
+<td style="text-align: right;">n/f · 1.01</td>
+<td style="text-align: right;">-3.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IGF</strong></td>
+<td>Global infra</td>
+<td style="text-align: right;">$67.15</td>
+<td style="text-align: right;">$11B</td>
+<td style="text-align: right;">+9.7%</td>
+<td style="text-align: right;">2.9%</td>
+<td style="text-align: right;">n/f · 0.59</td>
+<td style="text-align: right;">-3.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CAT</strong></td>
+<td>Construction equipment</td>
+<td style="text-align: right;">$884.03</td>
+<td style="text-align: right;">$407B</td>
+<td style="text-align: right;">29.0x</td>
+<td style="text-align: right;">22.2%</td>
+<td style="text-align: right;">13.3% · 1.56</td>
+<td style="text-align: right;">-17.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VMC</strong></td>
+<td>Aggregates</td>
+<td style="text-align: right;">$291.64</td>
+<td style="text-align: right;">$38B</td>
+<td style="text-align: right;">27.1x</td>
+<td style="text-align: right;">7.4%</td>
+<td style="text-align: right;">13.8% · 1.05</td>
+<td style="text-align: right;">-11.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MLM</strong></td>
+<td>Aggregates</td>
+<td style="text-align: right;">$570.79</td>
+<td style="text-align: right;">$34B</td>
+<td style="text-align: right;">24.9x</td>
+<td style="text-align: right;">17.2%</td>
+<td style="text-align: right;">39.9% · 1.10</td>
+<td style="text-align: right;">-19.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>TT</strong></td>
+<td>Trane/HVAC</td>
+<td style="text-align: right;">$472.21</td>
+<td style="text-align: right;">$104B</td>
+<td style="text-align: right;">27.6x</td>
+<td style="text-align: right;">6.0%</td>
+<td style="text-align: right;">13.4% · 1.20</td>
+<td style="text-align: right;">-6.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ETN</strong></td>
+<td>Electrical</td>
+<td style="text-align: right;">$401.12</td>
+<td style="text-align: right;">$156B</td>
+<td style="text-align: right;">25.4x</td>
+<td style="text-align: right;">16.8%</td>
+<td style="text-align: right;">14.0% · 1.18</td>
+<td style="text-align: right;">-8.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PWR</strong></td>
+<td>EPC builder</td>
+<td style="text-align: right;">$631.96</td>
+<td style="text-align: right;">$95B</td>
+<td style="text-align: right;">38.4x</td>
+<td style="text-align: right;">26.3%</td>
+<td style="text-align: right;">3.7% · 1.22</td>
+<td style="text-align: right;">-19.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>URI</strong></td>
+<td>Equipment rental</td>
+<td style="text-align: right;">$1,058.85</td>
+<td style="text-align: right;">$66B</td>
+<td style="text-align: right;">19.5x</td>
+<td style="text-align: right;">7.2%</td>
+<td style="text-align: right;">15.3% · 1.79</td>
+<td style="text-align: right;">-7.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CRH</strong></td>
+<td>Building materials</td>
+<td style="text-align: right;">$103.94</td>
+<td style="text-align: right;">$69B</td>
+<td style="text-align: right;">15.6x</td>
+<td style="text-align: right;">9.1%</td>
+<td style="text-align: right;">9.6% · 1.19</td>
+<td style="text-align: right;">-21.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FIX</strong></td>
+<td>Mechanical</td>
+<td style="text-align: right;">$1,639.02</td>
+<td style="text-align: right;">$58B</td>
+<td style="text-align: right;">30.3x</td>
+<td style="text-align: right;">1.0%</td>
+<td style="text-align: right;">12.1% · 1.66</td>
+<td style="text-align: right;">-21.0%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Demand sources: <a href="ai-infrastructure.html">ai-infrastructure</a>, <a href="power-grid-electrification.html">power-grid-electrification</a>, <a href="reshoring-supply-chain.html">reshoring-supply-chain</a>,<br />
+<a href="data-center-cooling.html">data-center-cooling</a>. Materials: <a href="critical-minerals.html">critical-minerals</a>. Peers: <a href="automation-robotics.html">automation-robotics</a>,<br />
+<a href="defense-security.html">defense-security</a>. Master: <a href="../syntheses/trend-radar.html">trend-radar</a>. Linkage: <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>. Macro: <a href="../syntheses/macro-regime.html">macro-regime</a>.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Is the aggregates duopoly the single best risk-adjusted expression of the whole physical-build-out<br />
+  super-cycle?</li>
+<li>How much of "infrastructure" upside is genuinely independent of the AI-capex cycle vs correlated?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>US Gov (IIJA); US Census (construction spending, manufacturing construction); company IR/10-K<br />
+(Caterpillar, Vulcan, Martin Marietta, Trane, Eaton, Quanta, United Rentals, CRH, Comfort Systems);<br />
+ETF data (Global X, SPDR, iShares), 2026.</p>
+</article>
+</div>
+</body>
+</html>

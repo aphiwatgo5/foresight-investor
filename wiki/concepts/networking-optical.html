@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Networking &amp; Optical (AI-cluster interconnect)</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Networking &amp; Optical (AI-cluster interconnect)
+type: concept
+trend: true
+tags: [investing, trend, networking, optical, transceivers, ethernet, co-packaged-optics, ai-interconnect]
+sources: []
+date: 2026-06-01
+conviction: 4
+stage: early-accelerating
+horizon: 3-6y</div>
+<article>
+<h1 id="networking-optical-ai-cluster-interconnect">Networking &amp; Optical (AI-cluster interconnect)</h1>
+<p><strong>Definition:</strong> The interconnect fabric that wires AI accelerators into a single training/<br />
+inference cluster — high-radix switches (Ethernet/InfiniBand), optical transceivers (800G→1.6T),<br />
+DSP/retimer silicon, and emerging co-packaged optics (CPO). As GPU counts per cluster explode,<br />
+interconnect bandwidth becomes the binding scaling constraint, making this the highest-growth<br />
+sub-layer <em>within</em> the AI buildout. The <strong>higher-beta expression of <a href="ai-infrastructure.html">ai-infrastructure</a></strong>.<br />
+Conviction 4 on the <a href="../syntheses/trend-radar.html">trend-radar</a>.</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Figures tagged (fact)/(est.)/(inference) with<br />
+period + source. "n/f" = no reliable figure found.</p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>Switch systems, switch/connectivity silicon, and optical components/modules connecting AI<br />
+accelerators. Scope spans the GPU-attached fabric (NVIDIA NVLink/InfiniBand/Spectrum-X), merchant<br />
+switch ASICs (Broadcom), optical modules (Coherent, Lumentum, InnoLight), DSP/retimers (Marvell,<br />
+Credo), and contract optical manufacturing (Fabrinet, Celestica).</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NVIDIA DC networking revenue</td>
+<td><strong>~$14.8B/qtr, +199% YoY, +35% QoQ</strong></td>
+<td>Q1 FY27 (qtr ended Apr 26 2026)</td>
+<td>NVIDIA 8-K</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>NVIDIA DC networking (annual)</td>
+<td><strong>+142% YoY</strong></td>
+<td>FY2026</td>
+<td>NVIDIA</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>800G+ transceiver shipments</td>
+<td><strong>~24M → ~63M units (~2.6x)</strong></td>
+<td>2025 → 2026</td>
+<td>TrendForce</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Arista AI-fabric revenue</td>
+<td><strong>target raised to $3.5B</strong> (from $3.25B)</td>
+<td>FY2026</td>
+<td>ANET Q1 2026</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Arista total revenue</td>
+<td><strong>~$11.5B guide, +27.7%</strong></td>
+<td>FY2026</td>
+<td>ANET Q1 2026</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Cumulative hyperscaler capex</td>
+<td><strong>~$1.15T</strong> (&gt;2x 2022–24's $477B)</td>
+<td>2025–2027</td>
+<td>Goldman</td>
+<td>(est.)</td>
+</tr>
+</tbody>
+</table>
+<p>Networking is growing <em>faster</em> than compute: DC networking +199% YoY vs DC compute +~77% YoY (Q1<br />
+FY27). The 1.6T transition is the named near-term catalyst (Lumentum, fact).</p>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand side</strong><br />
+- GPU cluster scale-up: each NVIDIA rack needs InfiniBand/Spectrum-X Ethernet + NVLink (fact).<br />
+- Cisco AI-infrastructure orders from hyperscalers raised to <strong>$9B FY2026</strong> (from $5B); $5.3B<br />
+  booked YTD; DC switching orders +40% YoY (fact, Q3 FY26).<br />
+- Arista AI-fabric demand doubling annually (fact).</p>
+<p><strong>Supply side</strong><br />
+- Optical-component ramp: Coherent Datacenter &amp; Comms rev $1.2B/qtr +33.6% YoY (fact, Q2 FY26);<br />
+  Lumentum +58% YoY, GM rising 28%→34%, targeting &gt;$600M/qtr by Jun 2026 (fact).<br />
+- Fabrinet (contract optical mfg) Q1 FY26 rev $978M vs $804M YoY (fact).<br />
+- Marvell custom DSP/interconnect + <strong>Celestial AI acquisition (~$3.25B upfront, up to +$2.25B<br />
+  contingent)</strong> to accelerate scale-up/optical roadmap (fact, Dec 2025).<br />
+- Credo (active electrical cables/retimers) + DustPhotonics → &gt;$500M optical revenue guided<br />
+  FY2027 (fact). CPO and optical circuit switches the next leg (still early).</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p>Upstream lasers/photonic chips + DSP/SerDes IP + foundry → <strong>connectivity silicon</strong> (Broadcom<br />
+Tomahawk/Jericho switch ASICs, Marvell DSPs, Credo retimers) → <strong>optical components/modules</strong><br />
+(Coherent, Lumentum, InnoLight) → <strong>contract manufacturing</strong> (Fabrinet, Celestica) → <strong>switch<br />
+systems</strong> (Arista, Cisco, NVIDIA) → <strong>AI clusters</strong>. Adjacent: <a href="ai-infrastructure.html">ai-infrastructure</a> (the compute<br />
+it connects), <a href="semiconductors.html">semiconductors</a> (switch ASICs, DSP/SerDes), <a href="critical-minerals.html">critical-minerals</a> (China optical<br />
+supply concentration / geopolitics).</p>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<ul>
+<li><strong>Switch silicon: concentrated</strong> — Broadcom (merchant switch ASICs) dominant; NVIDIA captures<br />
+  the GPU-attached fabric (InfiniBand + Spectrum-X) by bundling; Marvell in custom/DSP.</li>
+<li><strong>Switch systems:</strong> Arista + Cisco + NVIDIA the leaders; Arista the AI-Ethernet share winner at<br />
+  hyperscalers, Cisco re-accelerating via hyperscaler orders.</li>
+<li><strong>Optical components: fragmenting &amp; competitive</strong> — Western names (Coherent, Lumentum) compete<br />
+  with Chinese module makers (InnoLight et al., reportedly 7 of top-10 module seats), but<br />
+  chip/silicon vendors capture the durable margin ("Chinese modules own the seats, chip companies<br />
+  make the money" — est.).</li>
+<li><strong>Moats:</strong> switch ASIC IP + software (Broadcom, Arista EOS); laser/photonics process know-how<br />
+  (Coherent, Lumentum); DSP/SerDes IP at advancing speeds (Marvell, Credo).</li>
+<li><strong>Margin map:</strong> software-rich switch systems ~62% GM (Arista); merchant connectivity silicon high<br />
+  (~78% Broadcom); optical modules structurally lower but rising (Lumentum GM ~34% and climbing).</li>
+</ul>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps late-May/1-Jun-2026 (est.). Other figures (fact) unless tagged. "n/f" = none found.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of)</th>
+<th>Revenue (period)</th>
+<th>Rev YoY</th>
+<th>Gross margin</th>
+<th>Profitability</th>
+<th>Valuation (fwd)</th>
+<th>Moat note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Arista Networks</td>
+<td>ANET</td>
+<td>US</td>
+<td>AI-Ethernet switches/systems</td>
+<td>$185.2B (4 May 26)</td>
+<td>$2.71B (Q1 26); ~$11.5B FY26</td>
+<td>+35.1%</td>
+<td>62.4% non-GAAP</td>
+<td>net inc $1.02B (Q1)</td>
+<td>P/E ~42–44</td>
+<td>EOS software + AI-fabric share at hyperscalers</td>
+</tr>
+<tr>
+<td>Broadcom</td>
+<td>AVGO</td>
+<td>US</td>
+<td>Switch ASICs + optical DSP</td>
+<td>~$2.1T (May 26)</td>
+<td>$64B (FY25)</td>
+<td>+24%</td>
+<td>77.9% (Q4)</td>
+<td>net debt (inf.)</td>
+<td>P/E ~37–60</td>
+<td>Merchant switch-silicon dominance</td>
+</tr>
+<tr>
+<td>Cisco</td>
+<td>CSCO</td>
+<td>US</td>
+<td>Networking systems + AI infra</td>
+<td>n/f</td>
+<td>$15.8B (Q3 FY26)</td>
+<td>+12%</td>
+<td>66.0% non-GAAP</td>
+<td>net cash (inf.)</td>
+<td>n/f</td>
+<td>Installed base; $9B FY26 AI-order guide</td>
+</tr>
+<tr>
+<td>Marvell</td>
+<td>MRVL</td>
+<td>US</td>
+<td>Optical DSP + custom interconnect</td>
+<td>$112.4B (28 May 26)</td>
+<td>$2.1B (Q3 FY26); $7.2B FY26</td>
+<td>+37%</td>
+<td>high (inf.)</td>
+<td>net debt (inf.)</td>
+<td>premium</td>
+<td>DSP/SerDes IP; Celestial AI scale-up buy</td>
+</tr>
+<tr>
+<td>Coherent</td>
+<td>COHR</td>
+<td>US</td>
+<td>Optical transceivers/components</td>
+<td>$57.7B (28 May 26)</td>
+<td>$1.7B (Q2 FY26); DC&amp;C $1.2B</td>
+<td>+17.5% (DC&amp;C +33.6%)</td>
+<td>rising (inf.)</td>
+<td>non-GAAP NI $248M</td>
+<td>net debt (inf.)</td>
+<td>Vertically integrated photonics/lasers</td>
+</tr>
+<tr>
+<td>Lumentum</td>
+<td>LITE</td>
+<td>US</td>
+<td>Optical transceivers/components</td>
+<td>$64.1B (28 May 26)</td>
+<td>$533.8M (Q1 FY26); &gt;$600M/qtr target</td>
+<td>+58%</td>
+<td>34% GAAP (↑ from 28%)</td>
+<td>GAAP NI $4.2M (thin)</td>
+<td>net debt (inf.)</td>
+<td>800G/1.6T ramp; CPO optionality</td>
+</tr>
+<tr>
+<td>Ciena</td>
+<td>CIEN</td>
+<td>US</td>
+<td>Optical transport / DCI</td>
+<td>$81.1B (May 26)</td>
+<td>n/f (Q1 FY26)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>Coherent optical transport / DCI</td>
+</tr>
+<tr>
+<td>Credo Tech</td>
+<td>CRDO</td>
+<td>US</td>
+<td>AECs / retimers / connectivity</td>
+<td>$43.5B (May 26)</td>
+<td>&gt;$500M optical guide FY27</td>
+<td>high (inf.)</td>
+<td>high (inf.)</td>
+<td>net cash (inf.)</td>
+<td>P/E ~45</td>
+<td>Active electrical cables + retimer niche</td>
+</tr>
+<tr>
+<td>Celestica</td>
+<td>CLS</td>
+<td>Canada</td>
+<td>Contract mfg (switches/hardware)</td>
+<td>$40.4B (May 26)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>thin (inf.)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>Hyperscaler ODM/JDM hardware</td>
+</tr>
+<tr>
+<td>Fabrinet</td>
+<td>FN</td>
+<td>Thailand/US</td>
+<td>Contract optical manufacturing</td>
+<td>n/f</td>
+<td>$978M (Q1 FY26 vs $804M)</td>
+<td>+21.6%</td>
+<td>thin (inf.)</td>
+<td>net cash (inf.)</td>
+<td>n/f</td>
+<td>Dominant outsourced optical assembly</td>
+</tr>
+<tr>
+<td>InnoLight</td>
+<td>300308.SZ</td>
+<td>China</td>
+<td>Optical modules (800G/1.6T)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>Leading Chinese module volume leader</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p><strong>Winning:</strong> Arista is the standout system winner — AI-fabric revenue doubling annually, FY26 guide<br />
+raised to ~$11.5B, with software-rich 62%+ gross margins pure-hardware peers can't match. Broadcom<br />
+wins twice (merchant switch ASICs <em>and</em> optical DSP), capturing silicon-layer margin regardless of<br />
+which system vendor or module maker ships. Lumentum and Coherent are clear cyclical winners on the<br />
+800G→1.6T transition (Lumentum +58% YoY, GM +600bps; Coherent DC&amp;C +33.6%); Marvell is positioning<br />
+for the <em>next</em> leg via Celestial AI. NVIDIA quietly wins the attached fabric (DC networking +199%<br />
+YoY) by bundling Spectrum-X/InfiniBand with GPUs.</p>
+<p><strong>Pressured:</strong> Pure optical-module makers — especially Chinese volume leaders (InnoLight et al.) —<br />
+"own the seats but the chip companies make the money": they ship the units at thin, competitive<br />
+margins while DSP/laser-IP vendors keep the economics. Contract manufacturers (Fabrinet,<br />
+Celestica) ride the volume with structurally thin margins. Cisco is re-accelerating but its<br />
+non-GAAP GM slipped 260bps YoY on mix and memory costs.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Tightest coupling to AI capex:</strong> higher beta to hyperscaler spend than compute (networking<br />
+  growing faster) — a capex digestion or circular-financing unwind (see <a href="ai-infrastructure.html">ai-infrastructure</a> §8)<br />
+  hits interconnect hardest.</li>
+<li><strong>Architecture risk:</strong> copper-to-optical and CPO transitions could reshuffle winners; a slower<br />
+  CPO ramp, or NVIDIA bundling more fabric in-house, compresses the merchant opportunity.</li>
+<li><strong>Margin fragility in optical modules:</strong> thin GMs (Lumentum GAAP NI only $4.2M on $534M rev)<br />
+  leave little cushion; memory/component cost inflation flagged by Arista and Cisco.</li>
+<li><strong>China supply concentration / geopolitics:</strong> module supply chain heavily Chinese; tariffs/<br />
+  export controls cut both ways.</li>
+<li><strong>Valuation:</strong> ANET, COHR, LITE, CRDO trade at 42–60x forward — priced for sustained hypergrowth;<br />
+  any deceleration de-rates sharply (ANET "punished for perfection" despite +35%).</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li>No clean pure-play optical/networking ETF identified with reliable figures; closest exposure via<br />
+<strong>SMH</strong> (holds AVGO ~7%, MRVL) and <strong>XSD</strong> (equal-weight incl. MRVL). DTCR is REIT/facility, not<br />
+  interconnect.</li>
+<li>Representative securities: ANET (system leader), AVGO (switch+DSP silicon), MRVL (DSP/custom),<br />
+  COHR &amp; LITE (optical components), CRDO (connectivity), FN &amp; CLS (manufacturing), CIEN<br />
+  (transport), InnoLight (300308.SZ — direct China module exposure).</li>
+<li>Single-name expression dominates this theme; an ETF wrapper dilutes the interconnect thesis.</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 4/5</strong> (calibrated — arguably better risk/reward <em>within</em> AI than raw compute because<br />
+  it's earlier on its S-curve, but it inherits all of <a href="ai-infrastructure.html">ai-infrastructure</a>'s capex-dependency risk<br />
+  plus richer valuations; not a 5).</li>
+<li><strong>Stage: early→accelerating</strong> (800G ramping, 1.6T/CPO ahead — more runway than compute).</li>
+<li><strong>Horizon: 3–6 years.</strong></li>
+<li><strong>Invalidation:</strong> NVIDIA DC-networking or Arista AI-fabric growth decelerating to sub-20% YoY for<br />
+  2+ quarters, OR a hyperscaler 2027 capex cut, OR a CPO/architecture shift that disintermediates<br />
+  merchant optical/switch vendors.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SMH</strong></td>
+<td>Indirect (semis)</td>
+<td style="text-align: right;">$558.33</td>
+<td style="text-align: right;">$77B</td>
+<td style="text-align: right;">+82.3%</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;">n/f · 1.98</td>
+<td style="text-align: right;">-16.9%</td>
+<td>🟡 SCALE ON DIP</td>
+</tr>
+<tr>
+<td><strong>XSD</strong></td>
+<td>Indirect (semis equip.)</td>
+<td style="text-align: right;">$497.13</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">+94.1%</td>
+<td style="text-align: right;">0.1%</td>
+<td style="text-align: right;">n/f · 2.68</td>
+<td style="text-align: right;">-24.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ANET</strong></td>
+<td>Ethernet switching leader</td>
+<td style="text-align: right;">$166.20</td>
+<td style="text-align: right;">$209B</td>
+<td style="text-align: right;">37.2x</td>
+<td style="text-align: right;">35.1%</td>
+<td style="text-align: right;">38.3% · 1.60</td>
+<td style="text-align: right;">-12.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AVGO</strong></td>
+<td>Tomahawk/Switch</td>
+<td style="text-align: right;">$370.77</td>
+<td style="text-align: right;">$1.76T</td>
+<td style="text-align: right;">19.1x</td>
+<td style="text-align: right;">47.9%</td>
+<td style="text-align: right;">38.8% · 1.46</td>
+<td style="text-align: right;">-25.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CSCO</strong></td>
+<td>Networking incumbent</td>
+<td style="text-align: right;">$111.87</td>
+<td style="text-align: right;">$441B</td>
+<td style="text-align: right;">23.3x</td>
+<td style="text-align: right;">12.0%</td>
+<td style="text-align: right;">19.7% · 1.01</td>
+<td style="text-align: right;">-14.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MRVL</strong></td>
+<td>Switching silicon</td>
+<td style="text-align: right;">$187.38</td>
+<td style="text-align: right;">$168B</td>
+<td style="text-align: right;">30.2x</td>
+<td style="text-align: right;">27.6%</td>
+<td style="text-align: right;">29.0% · 2.20</td>
+<td style="text-align: right;">-43.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>COHR</strong></td>
+<td>Optics/lasers</td>
+<td style="text-align: right;">$277.27</td>
+<td style="text-align: right;">$54B</td>
+<td style="text-align: right;">33.6x</td>
+<td style="text-align: right;">20.5%</td>
+<td style="text-align: right;">7.1% · 2.04</td>
+<td style="text-align: right;">-37.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CIEN</strong></td>
+<td>Optical networking</td>
+<td style="text-align: right;">$378.75</td>
+<td style="text-align: right;">$54B</td>
+<td style="text-align: right;">39.3x</td>
+<td style="text-align: right;">39.5%</td>
+<td style="text-align: right;">7.9% · 1.27</td>
+<td style="text-align: right;">-40.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CRDO</strong></td>
+<td>Optical DSP</td>
+<td style="text-align: right;">$197.18</td>
+<td style="text-align: right;">$37B</td>
+<td style="text-align: right;">22.0x</td>
+<td style="text-align: right;">1.57%</td>
+<td style="text-align: right;">35.4% · 3.20</td>
+<td style="text-align: right;">-36.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CLS</strong></td>
+<td>Optical modules/custom Mfg</td>
+<td style="text-align: right;">$295.02</td>
+<td style="text-align: right;">$34B</td>
+<td style="text-align: right;">19.6x</td>
+<td style="text-align: right;">52.8%</td>
+<td style="text-align: right;">7.0% · 1.51</td>
+<td style="text-align: right;">-37.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FN</strong></td>
+<td>Optical components</td>
+<td style="text-align: right;">$467.99</td>
+<td style="text-align: right;">$17B</td>
+<td style="text-align: right;">27.1x</td>
+<td style="text-align: right;">39.3%</td>
+<td style="text-align: right;">9.9% · 1.20</td>
+<td style="text-align: right;">-37.5%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>The compute it connects: <a href="ai-infrastructure.html">ai-infrastructure</a>. Silicon: <a href="semiconductors.html">semiconductors</a>. China supply chain:<br />
+<a href="critical-minerals.html">critical-minerals</a>. Master table: <a href="../syntheses/trend-radar.html">trend-radar</a>. Linkage: <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Does CPO arrive fast enough to reshuffle the optical-module winners before the 800G cohort peaks?</li>
+<li>Does NVIDIA in-source more fabric, compressing the merchant switch/optical opportunity?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>NVIDIA Q1 FY27 8-K; Arista Q1 2026 (TradingView/Seeking Alpha); Cisco Q3 FY26 (Value The<br />
+Markets/GuruFocus); Coherent Q2 FY26 (Futurum); Lumentum Q1 FY26 8-K (SEC); Marvell Q3 FY26 +<br />
+Celestial AI (CNBC); Fabrinet Q1 FY26 8-K (SEC); Credo Apr 2026 8-K (SEC); market caps<br />
+(stockanalysis/companiesmarketcap/Macrotrends); Chinese-module margin dynamic (PhotonCap/BEP<br />
+Research); Goldman capex (secondary), 2026.</p>
+</article>
+</div>
+</body>
+</html>

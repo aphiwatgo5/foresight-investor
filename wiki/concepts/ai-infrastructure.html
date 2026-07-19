@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Infrastructure</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: AI Infrastructure
+type: concept
+trend: true
+tags: [investing, trend, ai, datacenters, compute, accelerators, hyperscalers, capex, power]
+sources: []
+date: 2026-06-01
+conviction: 4
+stage: accelerating
+horizon: 3-7y</div>
+<article>
+<h1 id="ai-infrastructure">AI Infrastructure</h1>
+<p><strong>Definition:</strong> The physical and silicon build-out enabling large-scale AI training and<br />
+inference — hyperscale data centers, accelerator compute (GPUs/custom ASICs), the servers/racks<br />
+that house them, and the capital and power behind them. The <strong>flagship megatrend</strong> on the<br />
+<a href="../syntheses/trend-radar.html">trend-radar</a> (conviction 4, accelerating) and the demand engine that pulls<br />
+<a href="semiconductors.html">semiconductors</a>, <a href="networking-optical.html">networking-optical</a>, and <a href="energy-transition.html">energy-transition</a>. Interconnect is split out<br />
+to <a href="networking-optical.html">networking-optical</a>; power to <a href="energy-transition.html">energy-transition</a>.</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Figures tagged (fact)/(est.)/(inference) with<br />
+period + source. "n/f" = no reliable figure found.</p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>Spans the demand source (hyperscaler capex) down through compute silicon (NVIDIA GPUs, AMD<br />
+Instinct, Broadcom/Marvell custom ASICs), systems integration (Super Micro, Dell, server ODMs),<br />
+and the facility layer (Vertiv power/cooling, data-center REITs). Excludes the interconnect<br />
+fabric (<a href="networking-optical.html">networking-optical</a>) and the power/grid constraint (<a href="energy-transition.html">energy-transition</a>), which have<br />
+their own pages.</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Big-4 hyperscaler capex</td>
+<td><strong>~$388–410B</strong></td>
+<td>2025 actual</td>
+<td>Analyst tallies (Substack/IEEE ComSoc/Tom's Hardware)</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Big-4 hyperscaler capex</td>
+<td><strong>~$630–725B, +62–77% YoY</strong></td>
+<td>2026 guided</td>
+<td>Same; spread reflects definition differences</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>— share AI-specific</td>
+<td><strong>~75% (~$450B)</strong></td>
+<td>2026E</td>
+<td>Analyst tallies, Dec 2025</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Data-center semiconductor TAM</td>
+<td><strong>~$209B → ~$500B</strong></td>
+<td>2024 → 2030</td>
+<td>Yole / industry analysis</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Compute-semis segment</td>
+<td><strong>+36% to ~$349B; ~12% 5-yr CAGR</strong></td>
+<td>2025 / to 2030</td>
+<td>IDC</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>AI data-center market</td>
+<td><strong>~$344B → $2.0T (27.5% CAGR)</strong> <em>or</em> ~$147B → $811B (23.9%)</td>
+<td>2025 → 2032/33</td>
+<td>Multiple firms — methodology-dependent</td>
+<td>(est.)</td>
+</tr>
+</tbody>
+</table>
+<p>Per-company 2026 capex guidance (fact, Q1-CY2026 earnings, reported Apr–May 2026): Amazon ~$200B<br />
+(vs ~$125B 2025); Google $175–185B (vs ~$91B); Meta $115–135B (vs ~$72B); Microsoft $110–140B<br />
+(vs ~$90B). AI-ready DC capacity ~+33%/yr 2023–2030 midrange (McKinsey est., Oct 2024).</p>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand side</strong><br />
+- Hyperscaler capex inflecting <strong>+62–77% YoY</strong> into 2026 (§2); operators repeatedly state they<br />
+  cannot keep pace with AI capacity demand (fact, earnings commentary 2025–26).<br />
+- Azure +40% YoY; AWS +28% to $37.6B; Alphabet GenAI-product revenue +~800% YoY with demand<br />
+  outstripping supply (fact, Q1-CY2026). Microsoft AI run-rate ~$37B, +123% YoY (fact, Q3 FY26).<br />
+- <strong>Oracle RPO (backlog) ~$553B</strong> (fact, early 2026); OCI rev +84% YoY to $4.9B — contracted<br />
+  demand visibility.</p>
+<p><strong>Supply side</strong><br />
+- NVIDIA Blackwell ramp: FY2026 revenue <strong>$215.9B (+65%)</strong>, Data Center <strong>$193.7B (+68%)</strong>; Q1<br />
+  FY2027 (qtr ended Apr 26 2026) revenue <strong>$81.6B (+85%)</strong>, DC <strong>$75.2B (+92%)</strong> (fact, NVIDIA).<br />
+- Custom-ASIC supply expanding: Broadcom AI revenue +65% YoY; multi-year deals with Google,<br />
+  OpenAI, Oracle, Microsoft, Anthropic (fact, AVGO Q4 FY2025).<br />
+- Liquid cooling: &gt;30% of new DCs expected to adopt direct-liquid-cooling within 12 months (est.,<br />
+  Super Micro commentary).</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p>Upstream foundry (TSMC) + HBM memory + EDA → <strong>compute silicon</strong> (NVIDIA, AMD, Broadcom/Marvell<br />
+ASICs) → <strong>systems &amp; integration</strong> (Super Micro, Dell, ODMs) → <strong>facility layer</strong> (Vertiv<br />
+power/cooling, REITs Equinix/Digital Realty) → <strong>hyperscalers/neoclouds</strong> (MSFT, GOOGL, AMZN,<br />
+META, Oracle, CoreWeave) → <strong>AI software/apps</strong> (<a href="ai-software-agents.html">ai-software-agents</a>, the monetization layer<br />
+that must eventually justify the capex). Adjacent: <a href="semiconductors.html">semiconductors</a> (foundry/HBM),<br />
+<a href="energy-transition.html">energy-transition</a> (the binding power constraint), <a href="networking-optical.html">networking-optical</a> (interconnect),<br />
+<a href="cybersecurity.html">cybersecurity</a> (securing AI/cloud workloads).</p>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<ul>
+<li><strong>Accelerator compute: highly concentrated.</strong> NVIDIA dominant (~$5.11T mkt cap, 1 Jun 2026),<br />
+  71% gross margins; AMD a credible #2 (DC $5.8B/qtr, +57% YoY) but far smaller; custom ASICs<br />
+  (Broadcom, Marvell) capturing hyperscaler in-house silicon spend.</li>
+<li><strong>Moats sit in:</strong> CUDA software ecosystem + networking (NVIDIA); custom-ASIC design + IP +<br />
+  hyperscaler relationships (Broadcom, Marvell); power/thermal know-how + installed base (Vertiv).</li>
+<li><strong>Margin map:</strong> silicon designers earn the fattest margins (NVDA ~71% GM, AVGO ~78% GM);<br />
+  integrators (Super Micro, Dell) thin-margin/high-volume; facilities (Vertiv) mid-margin but high<br />
+  backlog visibility.</li>
+</ul>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps as-of late-May/1-Jun-2026 (est.; move daily). Other figures (fact) unless tagged.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of)</th>
+<th>Revenue (period)</th>
+<th>Rev YoY</th>
+<th>Gross margin</th>
+<th>Profitability</th>
+<th>Valuation (fwd)</th>
+<th>Moat note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NVIDIA</td>
+<td>NVDA</td>
+<td>US</td>
+<td>AI GPUs + networking</td>
+<td>$5.11T (1 Jun 26)</td>
+<td>$215.9B (FY26)</td>
+<td>+65%</td>
+<td>71.1% GAAP</td>
+<td>op margin ~60%+ (inf.)</td>
+<td>P/E ~21</td>
+<td>CUDA + full-stack; ~50% DC from hyperscalers</td>
+</tr>
+<tr>
+<td>Broadcom</td>
+<td>AVGO</td>
+<td>US</td>
+<td>Custom AI ASICs + networking + SW</td>
+<td>~$2.1T (May 26)</td>
+<td>$64B (FY25)</td>
+<td>+24%</td>
+<td>77.9% (Q4)</td>
+<td>net debt post-VMware (inf.)</td>
+<td>P/E ~37–60</td>
+<td>Custom-silicon design + hyperscaler ASIC deals</td>
+</tr>
+<tr>
+<td>AMD</td>
+<td>AMD</td>
+<td>US</td>
+<td>GPUs (Instinct) + server CPUs</td>
+<td>~$762B (May 26, est.)</td>
+<td>$10.3B (Q1 CY26)</td>
+<td>+38%</td>
+<td>53%</td>
+<td>op income positive</td>
+<td>P/E ~35–45 (est.)</td>
+<td>#2 accelerator; EPYC share gains</td>
+</tr>
+<tr>
+<td>Microsoft</td>
+<td>MSFT</td>
+<td>US</td>
+<td>Hyperscaler (Azure)</td>
+<td>$3.34T (May 26)</td>
+<td>$82.9B (Q3 FY26)</td>
+<td>+18%</td>
+<td>n/f</td>
+<td>net inc +23% ($31.8B)</td>
+<td>premium</td>
+<td>Azure +40%; $37B AI run-rate; ~27% of OpenAI</td>
+</tr>
+<tr>
+<td>Alphabet</td>
+<td>GOOGL</td>
+<td>US</td>
+<td>Hyperscaler + custom TPU</td>
+<td>n/f</td>
+<td>n/f (Q1 CY26)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>net cash</td>
+<td>n/f</td>
+<td>TPU custom silicon; GenAI rev +~800% YoY</td>
+</tr>
+<tr>
+<td>Amazon</td>
+<td>AMZN</td>
+<td>US</td>
+<td>Hyperscaler (AWS) + Trainium</td>
+<td>n/f</td>
+<td>$181.5B total (Q1 CY26)</td>
+<td>+17% (AWS +28%)</td>
+<td>n/f</td>
+<td>net inc ~$30.3B</td>
+<td>n/f</td>
+<td>Largest cloud; custom silicon; ~$200B 2026 capex</td>
+</tr>
+<tr>
+<td>Meta</td>
+<td>META</td>
+<td>US</td>
+<td>Hyperscaler (internal AI)</td>
+<td>n/f</td>
+<td>$56.3B (Q1 CY26)</td>
+<td>+33%</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>Highest capex/revenue ratio; internal demand</td>
+</tr>
+<tr>
+<td>Oracle</td>
+<td>ORCL</td>
+<td>US</td>
+<td>Neo-hyperscaler (OCI)</td>
+<td>n/f</td>
+<td>OCI $4.9B/qtr</td>
+<td>OCI +84%</td>
+<td>n/f</td>
+<td>FCF ~ -$10B (est.)</td>
+<td>n/f</td>
+<td>$553B RPO backlog; aggressive AI capex</td>
+</tr>
+<tr>
+<td>Vertiv</td>
+<td>VRT</td>
+<td>US</td>
+<td>DC power &amp; thermal/cooling</td>
+<td>n/f</td>
+<td>$2.65B (Q1 CY26)</td>
+<td>+30%</td>
+<td>n/f</td>
+<td>adj. EPS +83%</td>
+<td>n/f</td>
+<td>Power/cooling installed base; orders +252% Q4'25</td>
+</tr>
+<tr>
+<td>Super Micro</td>
+<td>SMCI</td>
+<td>US</td>
+<td>AI servers / DLC</td>
+<td>n/f</td>
+<td>~$40B FY26 guide</td>
+<td>high (inf.)</td>
+<td>thin (inf.)</td>
+<td>thin</td>
+<td>n/f</td>
+<td>DLC leadership; thin-margin volume integrator</td>
+</tr>
+<tr>
+<td>Dell</td>
+<td>DELL</td>
+<td>US</td>
+<td>AI servers / infra</td>
+<td>$296.2B (1 Jun 26)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>thin (inf.)</td>
+<td>net debt (inf.)</td>
+<td>n/f</td>
+<td>Enterprise reach; ISG AI-server backlog</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p><strong>Winning:</strong> NVIDIA is the structural winner — FY2026 DC revenue $193.7B (+68%) at 71% gross<br />
+margin is an extraordinary scale-plus-pricing-power combination anchored by CUDA lock-in and the<br />
+bundling of compute + networking. Broadcom is the clearest secondary winner: as hyperscalers<br />
+internalize silicon, AVGO captures custom-ASIC design spend at ~78% GM without competing head-on<br />
+with NVIDIA. Vertiv wins the "picks-and-shovels" facility layer — power/cooling is the physical<br />
+bottleneck (orders +252% YoY). AMD is winning <em>share</em> (DC +57%) but from a small base and at lower<br />
+margin per dollar.</p>
+<p><strong>Pressured:</strong> Pure integrators (Super Micro, Dell) carry the capex volume but capture thin<br />
+margins and bear inventory/component-cost risk. Hyperscalers are simultaneously the demand engine<br />
+<em>and</em> the entities absorbing capital risk — FCF compresses (Oracle ~ -$10B FCF est.) as they front<br />
+the buildout ahead of monetization.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Circular financing:</strong> analysts identify &gt;$800B of interlinked arrangements (NVIDIA→OpenAI<br />
+  ~$100B; NVIDIA stake in CoreWeave; Oracle/Stargate→OpenAI; MSFT ~27% of OpenAI) where chip/cloud<br />
+  vendors fund customers who buy back their own products (est., 2026). A confidence break cascades.</li>
+<li><strong>AI-revenue gap / capex digestion:</strong> OpenAI reportedly on track to lose ~$14B in 2026 (est.).<br />
+  If end-demand monetization lags the ~$630–725B 2026 capex, a digestion air-pocket de-rates the<br />
+  whole chain. First cracks already shown (Alphabet capex-guide sell-off; AI-infra selloff<br />
+  2026-04-28).</li>
+<li><strong>Correlation risk:</strong> five of six conviction-4 radar trends share this one demand engine — a<br />
+  single AI-capex disappointment de-rates them together (see <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>).</li>
+<li><strong>Power constraint:</strong> grid/power availability is the gating factor (<a href="energy-transition.html">energy-transition</a>).</li>
+<li><strong>Single-name dependence:</strong> the thesis leans heavily on NVIDIA execution + continued hyperscaler<br />
+  willingness to spend.</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li><strong>SMH</strong> (VanEck Semiconductor) — ER 0.35%, AUM &gt;$60B; NVDA ~16%, TSM ~10%, AVGO ~7%, AMD ~7%.</li>
+<li><strong>XSD</strong> (SPDR S&amp;P Semiconductor) — ER 0.35%, AUM ~$3.1B; equal-weight → less mega-cap concentration.</li>
+<li><strong>DTCR</strong> (Global X Data Center &amp; Digital Infra) — ER 0.50%; REIT-heavy (Equinix/Digital Realty/<br />
+  American Tower) — facility-layer exposure.</li>
+<li><strong>AIQ</strong> (Global X AI &amp; Technology) — broad AI basket.</li>
+<li>Representative securities: NVDA, AVGO, AMD, VRT; hyperscalers MSFT/GOOGL/AMZN/META, ORCL.</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 4/5</strong> (calibrated — not a 5: richest-valued cohort with circular-financing and<br />
+  digestion overhangs).</li>
+<li><strong>Stage: accelerating</strong> (capex still inflecting +60–77% YoY into 2026).</li>
+<li><strong>Horizon: 3–7 years</strong> (multi-year, power-constrained buildout; near-term volatility high).</li>
+<li><strong>Invalidation:</strong> a hyperscaler cutting 2027 capex guidance YoY, OR a public AI-monetization<br />
+  shortfall forcing order cancellations, OR NVIDIA DC revenue declining sequentially 2+ quarters.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SMH</strong></td>
+<td>Semis proxy (flagship)</td>
+<td style="text-align: right;">$558.33</td>
+<td style="text-align: right;">$77B</td>
+<td style="text-align: right;">+82.3%</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;">n/f · 1.98</td>
+<td style="text-align: right;">-16.9%</td>
+<td>🟡 SCALE ON DIP</td>
+</tr>
+<tr>
+<td><strong>AIQ</strong></td>
+<td>AI thematic</td>
+<td style="text-align: right;">$58.74</td>
+<td style="text-align: right;">$10B</td>
+<td style="text-align: right;">+28.3%</td>
+<td style="text-align: right;">0.1%</td>
+<td style="text-align: right;">n/f · 1.63</td>
+<td style="text-align: right;">-16.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NVDA</strong></td>
+<td>GPU monopoly · bellwether</td>
+<td style="text-align: right;">$204.70</td>
+<td style="text-align: right;">$4.96T</td>
+<td style="text-align: right;">16.0x</td>
+<td style="text-align: right;">85.2%</td>
+<td style="text-align: right;">63.0% · 2.21</td>
+<td style="text-align: right;">-13.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AVGO</strong></td>
+<td>Custom AI silicon + networking</td>
+<td style="text-align: right;">$370.77</td>
+<td style="text-align: right;">$1.76T</td>
+<td style="text-align: right;">19.1x</td>
+<td style="text-align: right;">47.9%</td>
+<td style="text-align: right;">38.8% · 1.46</td>
+<td style="text-align: right;">-25.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AMD</strong></td>
+<td>MI300 GPU challenger</td>
+<td style="text-align: right;">$494.03</td>
+<td style="text-align: right;">$806B</td>
+<td style="text-align: right;">36.7x</td>
+<td style="text-align: right;">37.8%</td>
+<td style="text-align: right;">13.4% · 2.47</td>
+<td style="text-align: right;">-15.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MSFT</strong></td>
+<td>Azure + capex leader</td>
+<td style="text-align: right;">$392.18</td>
+<td style="text-align: right;">$2.91T</td>
+<td style="text-align: right;">20.2x</td>
+<td style="text-align: right;">18.3%</td>
+<td style="text-align: right;">39.3% · 1.13</td>
+<td style="text-align: right;">-29.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GOOGL</strong></td>
+<td>TPU + Gemini monetization</td>
+<td style="text-align: right;">$347.43</td>
+<td style="text-align: right;">$4.24T</td>
+<td style="text-align: right;">23.7x</td>
+<td style="text-align: right;">21.8%</td>
+<td style="text-align: right;">37.9% · 1.25</td>
+<td style="text-align: right;">-15.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AMZN</strong></td>
+<td>AWS + largest capex</td>
+<td style="text-align: right;">$248.27</td>
+<td style="text-align: right;">$2.67T</td>
+<td style="text-align: right;">25.1x</td>
+<td style="text-align: right;">16.6%</td>
+<td style="text-align: right;">12.2% · 1.46</td>
+<td style="text-align: right;">-10.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>META</strong></td>
+<td>Llama + ad-AI flywheel</td>
+<td style="text-align: right;">$629.68</td>
+<td style="text-align: right;">$1.60T</td>
+<td style="text-align: right;">17.3x</td>
+<td style="text-align: right;">33.1%</td>
+<td style="text-align: right;">32.8% · 1.25</td>
+<td style="text-align: right;">-20.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ORCL</strong></td>
+<td>OCI + Stargate (stealth capex)</td>
+<td style="text-align: right;">$126.18</td>
+<td style="text-align: right;">$363B</td>
+<td style="text-align: right;">11.6x</td>
+<td style="text-align: right;">20.6%</td>
+<td style="text-align: right;">25.4% · 1.71</td>
+<td style="text-align: right;">-63.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VRT</strong></td>
+<td>DC power/cooling</td>
+<td style="text-align: right;">$290.33</td>
+<td style="text-align: right;">$112B</td>
+<td style="text-align: right;">32.7x</td>
+<td style="text-align: right;">30.1%</td>
+<td style="text-align: right;">14.4% · 2.03</td>
+<td style="text-align: right;">-23.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SMCI</strong></td>
+<td>AI compute servers</td>
+<td style="text-align: right;">$24.23</td>
+<td style="text-align: right;">$16B</td>
+<td style="text-align: right;">7.8x</td>
+<td style="text-align: right;">1.23%</td>
+<td style="text-align: right;">3.7% · 1.94</td>
+<td style="text-align: right;">-61.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>DELL</strong></td>
+<td>AI servers + storage</td>
+<td style="text-align: right;">$394.02</td>
+<td style="text-align: right;">$255B</td>
+<td style="text-align: right;">18.3x</td>
+<td style="text-align: right;">87.5%</td>
+<td style="text-align: right;">6.3% · 1.38</td>
+<td style="text-align: right;">-16.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>TSM</strong></td>
+<td>Foundry (picks-&amp;-shovels)</td>
+<td style="text-align: right;">$399.78</td>
+<td style="text-align: right;">$2.07T</td>
+<td style="text-align: right;">18.9x</td>
+<td style="text-align: right;">35.1%</td>
+<td style="text-align: right;">46.5% · 1.25</td>
+<td style="text-align: right;">-16.5%</td>
+<td>🟢 ADD 6–8%</td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Upstream silicon: <a href="semiconductors.html">semiconductors</a>. Interconnect: <a href="networking-optical.html">networking-optical</a>. Power constraint:<br />
+<a href="energy-transition.html">energy-transition</a>. Monetization layer: <a href="ai-software-agents.html">ai-software-agents</a>. Security: <a href="cybersecurity.html">cybersecurity</a>.</li>
+<li>Master table: <a href="../syntheses/trend-radar.html">trend-radar</a>. Linkage: <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>. Watchlist: <a href="../syntheses/watchlist.html">watchlist</a> (SMH,<br />
+  TSM). Calls: P1, P2 (<a href="../syntheses/prediction-ledger.html">prediction-ledger</a>).</li>
+<li>Bubble-risk read of the AI-capex/concentration complex: <a href="../syntheses/bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a><br />
+  (the Soros reflexive-loop core risk).</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Does 2026 mark the first capex <em>digestion</em> year, or does inference demand keep it accelerating?</li>
+<li>How much AI revenue must materialize by 2027 to justify the spend?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>NVIDIA FY26 + Q1 FY27 press releases (SEC); hyperscaler Q1-CY2026 earnings (MSFT/GOOGL/AMZN/META,<br />
+Motley Fool tally); Oracle Q2 FY26 (Futurum, Fierce Network); Vertiv Q1 2026 (IR); Broadcom Q4<br />
+FY25 (Motley Fool); IDC/Yole semiconductor TAM; capex tallies (Substack/IEEE ComSoc/Tom's<br />
+Hardware/Futurum); circular-financing analysis (Alatirok/Longyield/HeyGoTrade), 2026.</p>
+</article>
+</div>
+</body>
+</html>

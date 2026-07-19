@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foresight Factor Model</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Foresight Factor Model (FFM)
+type: concept
+tags: [investing, framework, ffm, quant, factor, independent, sa-alternative]
+sources: [[[mdaem-framework-v4], [backtest-results-2026-07-18]]
+date: 2026-07-19
+last_scan: 2026-07-19</div>
+<article>
+<h1 id="foresight-factor-model-ffm">Foresight Factor Model (FFM)</h1>
+<p><strong>Definition:</strong> An independent 6-factor rating engine that produces A+/A/B+/.../F grades<br />
+and Strong Buy → Strong Sell ratings — WITHOUT using Seeking Alpha data as input. Built<br />
+specifically to address SA's documented blind spots using peer-reviewed factor research.<br />
+The "edge over SA" lives in the 6 upgrades (below).</p>
+<blockquote>
+<p><strong>Scope.</strong> Decisions for the operator's own book — not personalized advice. Independent<br />
+from SA (SA data is used only for benchmarking, never as input). All figures from<br />
+yfinance + macro + analyst events.</p>
+</blockquote>
+<h2 id="the-6-factors-and-how-each-beats-sa">The 6 factors (and how each beats SA)</h2>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>What it measures</th>
+<th>SA equivalent</th>
+<th>FFM upgrade</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Momentum</strong></td>
+<td>Vol-scaled + idiosyncratic momentum</td>
+<td>SA Momentum (double-weighted, no vol scaling)</td>
+<td>Vol scaler cuts exposure to crash-prone names; idiosyncratic strips market beta</td>
+<td>Daniel-Moskowitz 2016: ~24% Sharpe lift</td>
+</tr>
+<tr>
+<td><strong>Value</strong></td>
+<td>Sector-relative (70%) + absolute (30%), quality-gated</td>
+<td>SA Valuation (pure cheapness percentile)</td>
+<td>Quality gate: if GM &lt; sector median → value score capped (kills value traps)</td>
+<td>Piotroski-style overlay</td>
+</tr>
+<tr>
+<td><strong>Quality</strong></td>
+<td>Full QMJ: profitability + safety + payout</td>
+<td>SA Profitability (thin slice)</td>
+<td>Adds safety (low beta/leverage/vol) + payout dimensions SA omits</td>
+<td>Asness 2014 AQR QMJ</td>
+</tr>
+<tr>
+<td><strong>Growth</strong></td>
+<td>Rev + EPS + margin trajectory + acceleration</td>
+<td>SA Growth</td>
+<td>Multi-period growth + acceleration bonus from quarterly fundamentals</td>
+<td>Standard growth factor</td>
+</tr>
+<tr>
+<td><strong>CMA</strong></td>
+<td>Low asset-growth (Fama-French investment factor)</td>
+<td><strong>NOT IN SA</strong></td>
+<td>Low asset-growth = disciplined capital allocation; catches over-investment risk</td>
+<td>Fama-French 2015: ~27% explanatory power</td>
+</tr>
+<tr>
+<td><strong>Revisions</strong></td>
+<td>90d net-upgrade ratio + price-target delta</td>
+<td>SA Revisions</td>
+<td>Uses yfinance <code>upgrades_downgrades</code> (10y event log) — independent of SA</td>
+<td>Standard revisions factor</td>
+</tr>
+</tbody>
+</table>
+<h2 id="composite-rating-engine">Composite rating engine</h2>
+<ul>
+<li><strong>Regime-aware weights</strong> (the key structural advantage):</li>
+<li><strong>Bull:</strong> Momentum ×1.5, Value ×0.75 (ride the trend)</li>
+<li><strong>Bear:</strong> Value ×1.5, Quality ×1.25, Momentum ×0.5 (defensive)</li>
+<li><strong>Panic:</strong> Momentum ×0.25, Quality ×1.5 (crash protection)</li>
+<li><strong>Knockout gates</strong> (mirror SA's hard disqualifiers):</li>
+<li>D+ or worse in Growth/Momentum/Revisions → cap at Hold</li>
+<li>D- or worse in Value/Quality → cap at Sell</li>
+<li><strong>Output:</strong> 0-100 composite → Strong Buy (75+) / Buy (60+) / Hold (45+) / Sell (30+) / Strong Sell (&lt;30)</li>
+</ul>
+<h2 id="head-to-head-vs-sa-as-of-2026-07-19">Head-to-head vs SA (as of 2026-07-19)</h2>
+<ul>
+<li><strong>43 tickers</strong> with both FFM + SA grades</li>
+<li><strong>70% rating agreement</strong> (within 1 level)</li>
+<li><strong>30% major disagreements</strong> (2+ levels apart) — the research edge</li>
+<li><strong>FFM wins on:</strong> CCJ (−29%, FFM Sell vs SA Buy), LEU (−23%), IONQ (−22%), JNJ (+9%, FFM Strong Buy vs SA Hold), PANW (+115%, FFM Strong Buy vs SA Hold)</li>
+<li><strong>SA wins on:</strong> FTNT (+96%), INTC (+39%), DDOG (+110%), NET (+41%), OKTA (+107%) — momentum-driven runs FFM's vol-scaling undervalued</li>
+</ul>
+<h2 id="current-rating-distribution-268-tickers">Current rating distribution (268 tickers)</h2>
+<p>Strong Buy: 14 · Buy: 46 · Hold: 89 · Sell: 111 · Strong Sell: 8</p>
+<h2 id="known-limitations">Known limitations</h2>
+<ul>
+<li><strong>Revisions factor</strong> uses <code>upgrades_downgrades</code> (analyst actions), not EPS estimate revisions (paywalled at SA). Close proxy but not identical.</li>
+<li><strong>Growth factor</strong> uses point-in-time fundamentals for some inputs (quarterly history is only ~5 quarters deep from yfinance).</li>
+<li><strong>Momentum vol-scaling</strong> can be too conservative in strong bull runs (the SA wins above are mostly momentum runners FFM's vol-scaler dampened).</li>
+<li><strong>CMA</strong> penalizes capex-heavy growers (NVDA/MU get D-) — correct for asset-growth anomaly but misses the AI capex thesis rationale.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Parent: <a href="mdaem-framework-v4.html">mdaem-framework-v4</a> (FFM feeds the quant dimension scores)</li>
+<li>Comparison: <a href="../syntheses/backtest-results-2026-07-18.html">backtest-results-2026-07-18</a> (v4 backtest results)</li>
+<li>Data: <code>scripts/_hist/{ffm_factors.json, ffm_ratings.json, ffm_vs_sa.json}</code></li>
+<li>Skill: <code>.zcode/skills/foresight-factor/SKILL.md</code></li>
+</ul>
+</article>
+</div>
+</body>
+</html>

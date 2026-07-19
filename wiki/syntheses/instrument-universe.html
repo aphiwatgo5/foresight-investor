@@ -1,0 +1,3856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instrument Universe — Master Table</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Instrument Universe — Master Table
+type: synthesis
+tags: [investing, instruments, universe, table, dashboard, live-data]
+sources: []
+date: 2026-07-17
+last_scan: 2026-07-17</div>
+<article>
+<h1 id="instrument-universe-master-table">Instrument Universe — Master Table</h1>
+<p><strong>Bottom line:</strong> Every US-listed instrument across the 28-theme radar, with the live decision-relevant figures — market cap (or AUM for ETFs), valuation, growth, margins, yield, beta, and where each sits vs its 52-week high. The sortable master view; per-theme tables live on each <a href="trend-radar.html">theme page</a>. <em>Insight &amp; decisions for the operator's own book — not personalized advice to others.</em></p>
+<blockquote>
+<p><strong>As-of 2026-07-17 · 245/249 instruments live</strong> (source: yfinance; 4 unavailable). <code>n/f</code> = no reliable figure. Refreshed by <code>scripts/refresh_instruments.py</code> on the weekly MONITOR cadence (<code>CADENCE.md</code>). Past performance ≠ future results.</p>
+</blockquote>
+<h2 id="how-to-read">How to read</h2>
+<ul>
+<li><strong>Conv tag</strong> — links to <a href="decision-register.html">decision-register</a>: 🟢 ADD/START · 🟢 HOLD · 🟡 WAIT/WATCH · 🔴 REJECT · ⚪ PENDING data. Blank = no active decision (not a recommendation).</li>
+<li><strong>Size</strong> — securities show market cap; ETFs show AUM.</li>
+<li><strong>Val</strong> — securities: fwd P/E; ETFs: YTD return.</li>
+<li><strong>Growth</strong> — securities: revenue YoY; ETFs: yield.</li>
+<li><strong>Off 52wHi</strong> — % below the 52-week high (where the price sits).</li>
+</ul>
+<h2 id="master-table">Master table</h2>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th style="text-align: center;">Kind</th>
+<th>Themes</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Size</th>
+<th style="text-align: right;">Val</th>
+<th style="text-align: right;">Growth</th>
+<th style="text-align: right;">Gross</th>
+<th style="text-align: right;">Profit</th>
+<th style="text-align: right;">Yield</th>
+<th style="text-align: right;">Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AAPL</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: right;">$332.96</td>
+<td style="text-align: right;">$4.89T</td>
+<td style="text-align: right;">34.5x</td>
+<td style="text-align: right;">16.6%</td>
+<td style="text-align: right;">47.9%</td>
+<td style="text-align: right;">27.2%</td>
+<td style="text-align: right;">32.0%</td>
+<td style="text-align: right;">1.10</td>
+<td style="text-align: right;">-0.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ABT</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/medtech-devices.html">medtech-devices</a></td>
+<td style="text-align: right;">$100.65</td>
+<td style="text-align: right;">$175B</td>
+<td style="text-align: right;">16.6x</td>
+<td style="text-align: right;">7.8%</td>
+<td style="text-align: right;">56.5%</td>
+<td style="text-align: right;">13.9%</td>
+<td style="text-align: right;">2.82%</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">-26.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ACM</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a></td>
+<td style="text-align: right;">$67.99</td>
+<td style="text-align: right;">$9B</td>
+<td style="text-align: right;">10.1x</td>
+<td style="text-align: right;">0.8%</td>
+<td style="text-align: right;">7.7%</td>
+<td style="text-align: right;">3.2%</td>
+<td style="text-align: right;">1.70%</td>
+<td style="text-align: right;">0.93</td>
+<td style="text-align: right;">-49.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ADBE</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-software-agents.html">ai-software-agents</a></td>
+<td style="text-align: right;">$233.69</td>
+<td style="text-align: right;">$93B</td>
+<td style="text-align: right;">8.5x</td>
+<td style="text-align: right;">12.7%</td>
+<td style="text-align: right;">89.4%</td>
+<td style="text-align: right;">28.7%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.43</td>
+<td style="text-align: right;">-37.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AEM</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a></td>
+<td style="text-align: right;">$137.57</td>
+<td style="text-align: right;">$69B</td>
+<td style="text-align: right;">10.4x</td>
+<td style="text-align: right;">66.1%</td>
+<td style="text-align: right;">73.9%</td>
+<td style="text-align: right;">39.5%</td>
+<td style="text-align: right;">1.31%</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">-46.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AFRM</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/fintech-payments.html">fintech-payments</a></td>
+<td style="text-align: right;">$76.28</td>
+<td style="text-align: right;">$26B</td>
+<td style="text-align: right;">20.2x</td>
+<td style="text-align: right;">32.6%</td>
+<td style="text-align: right;">48.4%</td>
+<td style="text-align: right;">9.6%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">3.67</td>
+<td style="text-align: right;">-23.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AIQ</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a></td>
+<td style="text-align: right;">$58.74</td>
+<td style="text-align: right;">$10B AUM</td>
+<td style="text-align: right;">+28.3% YTD</td>
+<td style="text-align: right;">0.1% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.1%</td>
+<td style="text-align: right;">1.63</td>
+<td style="text-align: right;">-16.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ALB</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/critical-minerals.html">critical-minerals</a></td>
+<td style="text-align: right;">$120.28</td>
+<td style="text-align: right;">$14B</td>
+<td style="text-align: right;">9.2x</td>
+<td style="text-align: right;">32.7%</td>
+<td style="text-align: right;">18.5%</td>
+<td style="text-align: right;">-4.2%</td>
+<td style="text-align: right;">1.36%</td>
+<td style="text-align: right;">1.35</td>
+<td style="text-align: right;">-45.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AMAT</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: right;">$541.42</td>
+<td style="text-align: right;">$430B</td>
+<td style="text-align: right;">32.3x</td>
+<td style="text-align: right;">11.4%</td>
+<td style="text-align: right;">49.0%</td>
+<td style="text-align: right;">29.3%</td>
+<td style="text-align: right;">38.0%</td>
+<td style="text-align: right;">1.57</td>
+<td style="text-align: right;">-26.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AMD</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: right;">$494.03</td>
+<td style="text-align: right;">$806B</td>
+<td style="text-align: right;">36.7x</td>
+<td style="text-align: right;">37.8%</td>
+<td style="text-align: right;">53.1%</td>
+<td style="text-align: right;">13.4%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.47</td>
+<td style="text-align: right;">-15.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AMGN</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a>, <a href="../concepts/biotech-genomics.html">biotech-genomics</a></td>
+<td style="text-align: right;">$369.82</td>
+<td style="text-align: right;">$200B</td>
+<td style="text-align: right;">15.8x</td>
+<td style="text-align: right;">5.8%</td>
+<td style="text-align: right;">71.4%</td>
+<td style="text-align: right;">21.0%</td>
+<td style="text-align: right;">2.71%</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">-5.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AMLP</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/natural-gas-lng.html">natural-gas-lng</a></td>
+<td style="text-align: right;">$54.12</td>
+<td style="text-align: right;">$12B AUM</td>
+<td style="text-align: right;">+14.4% YTD</td>
+<td style="text-align: right;">7.8% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">7.8%</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">-2.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AMZN</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: right;">$248.27</td>
+<td style="text-align: right;">$2.67T</td>
+<td style="text-align: right;">25.1x</td>
+<td style="text-align: right;">16.6%</td>
+<td style="text-align: right;">50.6%</td>
+<td style="text-align: right;">12.2%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.46</td>
+<td style="text-align: right;">-10.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ANET</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td style="text-align: right;">$166.20</td>
+<td style="text-align: right;">$209B</td>
+<td style="text-align: right;">37.2x</td>
+<td style="text-align: right;">35.1%</td>
+<td style="text-align: right;">63.5%</td>
+<td style="text-align: right;">38.3%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.60</td>
+<td style="text-align: right;">-12.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AOT</strong></td>
+<td style="text-align: center;">?</td>
+<td><a href="../concepts/asean-thailand.html">asean-thailand</a></td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ARKF</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/fintech-payments.html">fintech-payments</a></td>
+<td style="text-align: right;">$40.40</td>
+<td style="text-align: right;">$724M AUM</td>
+<td style="text-align: right;">-17.4% YTD</td>
+<td style="text-align: right;">0.1% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.1%</td>
+<td style="text-align: right;">2.16</td>
+<td style="text-align: right;">-31.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ARKG</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/biotech-genomics.html">biotech-genomics</a></td>
+<td style="text-align: right;">$39.50</td>
+<td style="text-align: right;">$2B AUM</td>
+<td style="text-align: right;">+45.4% YTD</td>
+<td style="text-align: right;">0.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">2.38</td>
+<td style="text-align: right;">-11.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ARKQ</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/automation-robotics.html">automation-robotics</a></td>
+<td style="text-align: right;">$116.04</td>
+<td style="text-align: right;">$2B AUM</td>
+<td style="text-align: right;">+15.4% YTD</td>
+<td style="text-align: right;">0.2% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;">1.73</td>
+<td style="text-align: right;">-19.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ARKX</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/space-economy.html">space-economy</a></td>
+<td style="text-align: right;">$30.45</td>
+<td style="text-align: right;">$934M AUM</td>
+<td style="text-align: right;">+17.9% YTD</td>
+<td style="text-align: right;">0.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">1.67</td>
+<td style="text-align: right;">-19.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ARM</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: right;">$261.80</td>
+<td style="text-align: right;">$280B</td>
+<td style="text-align: right;">85.0x</td>
+<td style="text-align: right;">20.1%</td>
+<td style="text-align: right;">97.5%</td>
+<td style="text-align: right;">18.4%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">3.77</td>
+<td style="text-align: right;">-42.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ASEA</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/asean-thailand.html">asean-thailand</a></td>
+<td style="text-align: right;">$21.00</td>
+<td style="text-align: right;">$92M AUM</td>
+<td style="text-align: right;">+8.9% YTD</td>
+<td style="text-align: right;">4.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">4.0%</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">-0.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ASHR</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/china-contrarian.html">china-contrarian</a></td>
+<td style="text-align: right;">$33.60</td>
+<td style="text-align: right;">$2B AUM</td>
+<td style="text-align: right;">+11.1% YTD</td>
+<td style="text-align: right;">2.1% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.1%</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">-10.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ASML</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: right;">$1,765.61</td>
+<td style="text-align: right;">$678B</td>
+<td style="text-align: right;">30.6x</td>
+<td style="text-align: right;">13.2%</td>
+<td style="text-align: right;">52.6%</td>
+<td style="text-align: right;">29.7%</td>
+<td style="text-align: right;">51.0%</td>
+<td style="text-align: right;">1.39</td>
+<td style="text-align: right;">-11.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ASTS</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/space-economy.html">space-economy</a></td>
+<td style="text-align: right;">$59.50</td>
+<td style="text-align: right;">$23B</td>
+<td style="text-align: right;">-290.0x</td>
+<td style="text-align: right;">19.52%</td>
+<td style="text-align: right;">44.8%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.68</td>
+<td style="text-align: right;">-55.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AVAV</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/defense-security.html">defense-security</a></td>
+<td style="text-align: right;">$143.72</td>
+<td style="text-align: right;">$7B</td>
+<td style="text-align: right;">31.7x</td>
+<td style="text-align: right;">1.33%</td>
+<td style="text-align: right;">25.3%</td>
+<td style="text-align: right;">-13.4%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.40</td>
+<td style="text-align: right;">-65.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AVGO</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="../concepts/semiconductors.html">semiconductors</a>, <a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td style="text-align: right;">$370.77</td>
+<td style="text-align: right;">$1.76T</td>
+<td style="text-align: right;">19.1x</td>
+<td style="text-align: right;">47.9%</td>
+<td style="text-align: right;">76.3%</td>
+<td style="text-align: right;">38.8%</td>
+<td style="text-align: right;">69.0%</td>
+<td style="text-align: right;">1.46</td>
+<td style="text-align: right;">-25.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AWK</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a></td>
+<td style="text-align: right;">$135.61</td>
+<td style="text-align: right;">$26B</td>
+<td style="text-align: right;">20.7x</td>
+<td style="text-align: right;">5.7%</td>
+<td style="text-align: right;">60.8%</td>
+<td style="text-align: right;">21.2%</td>
+<td style="text-align: right;">2.67%</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">-8.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BABA</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/china-contrarian.html">china-contrarian</a></td>
+<td style="text-align: right;">$115.24</td>
+<td style="text-align: right;">$276B</td>
+<td style="text-align: right;">12.7x</td>
+<td style="text-align: right;">2.9%</td>
+<td style="text-align: right;">39.8%</td>
+<td style="text-align: right;">10.1%</td>
+<td style="text-align: right;">89.0%</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">-40.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BEAM</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/biotech-genomics.html">biotech-genomics</a></td>
+<td style="text-align: right;">$28.20</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">-6.0x</td>
+<td style="text-align: right;">3.25%</td>
+<td style="text-align: right;">-1.47%</td>
+<td style="text-align: right;">-40.2%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.18</td>
+<td style="text-align: right;">-26.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BEN</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a></td>
+<td style="text-align: right;">$32.65</td>
+<td style="text-align: right;">$17B</td>
+<td style="text-align: right;">10.5x</td>
+<td style="text-align: right;">8.7%</td>
+<td style="text-align: right;">37.4%</td>
+<td style="text-align: right;">8.1%</td>
+<td style="text-align: right;">3.96%</td>
+<td style="text-align: right;">1.58</td>
+<td style="text-align: right;">-6.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BHP</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/critical-minerals.html">critical-minerals</a></td>
+<td style="text-align: right;">$81.13</td>
+<td style="text-align: right;">$206B</td>
+<td style="text-align: right;">16.3x</td>
+<td style="text-align: right;">10.8%</td>
+<td style="text-align: right;">83.1%</td>
+<td style="text-align: right;">19.0%</td>
+<td style="text-align: right;">3.30%</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">-13.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BITQ</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a></td>
+<td style="text-align: right;">$22.02</td>
+<td style="text-align: right;">$411M AUM</td>
+<td style="text-align: right;">+22.9% YTD</td>
+<td style="text-align: right;">0.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">3.52</td>
+<td style="text-align: right;">-30.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BKR</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/natural-gas-lng.html">natural-gas-lng</a></td>
+<td style="text-align: right;">$55.67</td>
+<td style="text-align: right;">$55B</td>
+<td style="text-align: right;">19.6x</td>
+<td style="text-align: right;">2.5%</td>
+<td style="text-align: right;">23.6%</td>
+<td style="text-align: right;">11.2%</td>
+<td style="text-align: right;">1.63%</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">-20.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BLK</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a></td>
+<td style="text-align: right;">$1,072.09</td>
+<td style="text-align: right;">$174B</td>
+<td style="text-align: right;">16.7x</td>
+<td style="text-align: right;">27.0%</td>
+<td style="text-align: right;">46.9%</td>
+<td style="text-align: right;">24.4%</td>
+<td style="text-align: right;">2.24%</td>
+<td style="text-align: right;">1.44</td>
+<td style="text-align: right;">-12.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BLOK</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a></td>
+<td style="text-align: right;">$57.99</td>
+<td style="text-align: right;">$1B AUM</td>
+<td style="text-align: right;">+10.4% YTD</td>
+<td style="text-align: right;">0.8% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.8%</td>
+<td style="text-align: right;">2.55</td>
+<td style="text-align: right;">-23.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BOTZ</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/automation-robotics.html">automation-robotics</a></td>
+<td style="text-align: right;">$34.36</td>
+<td style="text-align: right;">$4B AUM</td>
+<td style="text-align: right;">+4.3% YTD</td>
+<td style="text-align: right;">0.5% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.5%</td>
+<td style="text-align: right;">1.81</td>
+<td style="text-align: right;">-17.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BRK.B</strong></td>
+<td style="text-align: center;">?</td>
+<td><a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BSX</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/medtech-devices.html">medtech-devices</a></td>
+<td style="text-align: right;">$43.92</td>
+<td style="text-align: right;">$65B</td>
+<td style="text-align: right;">11.8x</td>
+<td style="text-align: right;">11.6%</td>
+<td style="text-align: right;">68.9%</td>
+<td style="text-align: right;">17.3%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">-59.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BUG</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: right;">$40.60</td>
+<td style="text-align: right;">$1B AUM</td>
+<td style="text-align: right;">+25.3% YTD</td>
+<td style="text-align: right;">0.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">1.15</td>
+<td style="text-align: right;">-4.9%</td>
+<td>🟢 HOLD (basket)</td>
+</tr>
+<tr>
+<td><strong>CAT</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/infrastructure-capex.html">infrastructure-capex</a></td>
+<td style="text-align: right;">$884.03</td>
+<td style="text-align: right;">$407B</td>
+<td style="text-align: right;">29.0x</td>
+<td style="text-align: right;">22.2%</td>
+<td style="text-align: right;">28.6%</td>
+<td style="text-align: right;">13.3%</td>
+<td style="text-align: right;">74.0%</td>
+<td style="text-align: right;">1.56</td>
+<td style="text-align: right;">-17.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CCJ</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/nuclear-uranium.html">nuclear-uranium</a></td>
+<td style="text-align: right;">$85.62</td>
+<td style="text-align: right;">$37B</td>
+<td style="text-align: right;">45.0x</td>
+<td style="text-align: right;">7.1%</td>
+<td style="text-align: right;">36.8%</td>
+<td style="text-align: right;">18.4%</td>
+<td style="text-align: right;">20.0%</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-36.7%</td>
+<td>⚪ PENDING (uranium)</td>
+</tr>
+<tr>
+<td><strong>CEG</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/power-grid-electrification.html">power-grid-electrification</a>, <a href="../concepts/nuclear-uranium.html">nuclear-uranium</a></td>
+<td style="text-align: right;">$252.71</td>
+<td style="text-align: right;">$90B</td>
+<td style="text-align: right;">18.6x</td>
+<td style="text-align: right;">63.8%</td>
+<td style="text-align: right;">23.3%</td>
+<td style="text-align: right;">12.7%</td>
+<td style="text-align: right;">68.0%</td>
+<td style="text-align: right;">1.12</td>
+<td style="text-align: right;">-38.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CGNX</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/automation-robotics.html">automation-robotics</a></td>
+<td style="text-align: right;">$63.46</td>
+<td style="text-align: right;">$11B</td>
+<td style="text-align: right;">35.7x</td>
+<td style="text-align: right;">24.3%</td>
+<td style="text-align: right;">68.0%</td>
+<td style="text-align: right;">13.6%</td>
+<td style="text-align: right;">52.0%</td>
+<td style="text-align: right;">1.49</td>
+<td style="text-align: right;">-12.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CGW</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a></td>
+<td style="text-align: right;">$66.18</td>
+<td style="text-align: right;">$1B AUM</td>
+<td style="text-align: right;">+4.2% YTD</td>
+<td style="text-align: right;">1.5% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.5%</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: right;">-4.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CHKP</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: right;">$136.36</td>
+<td style="text-align: right;">$14B</td>
+<td style="text-align: right;">11.9x</td>
+<td style="text-align: right;">4.8%</td>
+<td style="text-align: right;">87.7%</td>
+<td style="text-align: right;">38.4%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.49</td>
+<td style="text-align: right;">-39.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CIBR</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: right;">$91.96</td>
+<td style="text-align: right;">$14B AUM</td>
+<td style="text-align: right;">+26.1% YTD</td>
+<td style="text-align: right;">0.4% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.4%</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-4.2%</td>
+<td>🟢 HOLD 5%</td>
+</tr>
+<tr>
+<td><strong>CIEN</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td style="text-align: right;">$378.75</td>
+<td style="text-align: right;">$54B</td>
+<td style="text-align: right;">39.3x</td>
+<td style="text-align: right;">39.5%</td>
+<td style="text-align: right;">43.0%</td>
+<td style="text-align: right;">7.9%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.27</td>
+<td style="text-align: right;">-40.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CLS</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td style="text-align: right;">$295.02</td>
+<td style="text-align: right;">$34B</td>
+<td style="text-align: right;">19.6x</td>
+<td style="text-align: right;">52.8%</td>
+<td style="text-align: right;">12.0%</td>
+<td style="text-align: right;">7.0%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.51</td>
+<td style="text-align: right;">-37.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>COHR</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td style="text-align: right;">$277.27</td>
+<td style="text-align: right;">$54B</td>
+<td style="text-align: right;">33.6x</td>
+<td style="text-align: right;">20.5%</td>
+<td style="text-align: right;">37.0%</td>
+<td style="text-align: right;">7.1%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.04</td>
+<td style="text-align: right;">-37.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>COIN</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a></td>
+<td style="text-align: right;">$155.96</td>
+<td style="text-align: right;">$41B</td>
+<td style="text-align: right;">32.9x</td>
+<td style="text-align: right;">-30.8%</td>
+<td style="text-align: right;">85.5%</td>
+<td style="text-align: right;">12.7%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">3.35</td>
+<td style="text-align: right;">-64.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>COPX</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/critical-minerals.html">critical-minerals</a></td>
+<td style="text-align: right;">$73.71</td>
+<td style="text-align: right;">$7B AUM</td>
+<td style="text-align: right;">+7.0% YTD</td>
+<td style="text-align: right;">2.5% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.5%</td>
+<td style="text-align: right;">1.49</td>
+<td style="text-align: right;">-26.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>COR</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a></td>
+<td style="text-align: right;">$311.28</td>
+<td style="text-align: right;">$61B</td>
+<td style="text-align: right;">15.7x</td>
+<td style="text-align: right;">3.8%</td>
+<td style="text-align: right;">3.8%</td>
+<td style="text-align: right;">0.8%</td>
+<td style="text-align: right;">78.0%</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">-17.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>COST</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: right;">$941.84</td>
+<td style="text-align: right;">$418B</td>
+<td style="text-align: right;">41.6x</td>
+<td style="text-align: right;">21.5%</td>
+<td style="text-align: right;">12.9%</td>
+<td style="text-align: right;">3.0%</td>
+<td style="text-align: right;">62.0%</td>
+<td style="text-align: right;">0.87</td>
+<td style="text-align: right;">-14.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CQQQ</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/china-contrarian.html">china-contrarian</a></td>
+<td style="text-align: right;">$50.07</td>
+<td style="text-align: right;">$3B AUM</td>
+<td style="text-align: right;">+9.6% YTD</td>
+<td style="text-align: right;">2.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.0%</td>
+<td style="text-align: right;">1.06</td>
+<td style="text-align: right;">-18.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CRCL</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a></td>
+<td style="text-align: right;">$59.78</td>
+<td style="text-align: right;">$16B</td>
+<td style="text-align: right;">30.9x</td>
+<td style="text-align: right;">20.0%</td>
+<td style="text-align: right;">8.1%</td>
+<td style="text-align: right;">-2.8%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">-77.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CRDO</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td style="text-align: right;">$197.18</td>
+<td style="text-align: right;">$37B</td>
+<td style="text-align: right;">22.0x</td>
+<td style="text-align: right;">1.57%</td>
+<td style="text-align: right;">68.0%</td>
+<td style="text-align: right;">35.4%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">3.20</td>
+<td style="text-align: right;">-36.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CRH</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/infrastructure-capex.html">infrastructure-capex</a></td>
+<td style="text-align: right;">$103.94</td>
+<td style="text-align: right;">$69B</td>
+<td style="text-align: right;">15.6x</td>
+<td style="text-align: right;">9.1%</td>
+<td style="text-align: right;">36.1%</td>
+<td style="text-align: right;">9.6%</td>
+<td style="text-align: right;">1.48%</td>
+<td style="text-align: right;">1.19</td>
+<td style="text-align: right;">-21.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CRM</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-software-agents.html">ai-software-agents</a></td>
+<td style="text-align: right;">$170.48</td>
+<td style="text-align: right;">$140B</td>
+<td style="text-align: right;">11.0x</td>
+<td style="text-align: right;">13.3%</td>
+<td style="text-align: right;">77.6%</td>
+<td style="text-align: right;">18.7%</td>
+<td style="text-align: right;">1.05%</td>
+<td style="text-align: right;">1.18</td>
+<td style="text-align: right;">-37.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CRSP</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/biotech-genomics.html">biotech-genomics</a></td>
+<td style="text-align: right;">$48.01</td>
+<td style="text-align: right;">$5B</td>
+<td style="text-align: right;">-12.3x</td>
+<td style="text-align: right;">68.6%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.70</td>
+<td style="text-align: right;">-38.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CRWD</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-software-agents.html">ai-software-agents</a>, <a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: right;">$204.55</td>
+<td style="text-align: right;">$208B</td>
+<td style="text-align: right;">131.0x</td>
+<td style="text-align: right;">25.6%</td>
+<td style="text-align: right;">75.1%</td>
+<td style="text-align: right;">-0.6%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.24</td>
+<td style="text-align: right;">-6.0%</td>
+<td>🔴 REJECT (Gate 9)</td>
+</tr>
+<tr>
+<td><strong>CSCO</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td style="text-align: right;">$111.87</td>
+<td style="text-align: right;">$441B</td>
+<td style="text-align: right;">23.3x</td>
+<td style="text-align: right;">12.0%</td>
+<td style="text-align: right;">64.3%</td>
+<td style="text-align: right;">19.7%</td>
+<td style="text-align: right;">1.53%</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: right;">-14.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CVS</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a></td>
+<td style="text-align: right;">$108.20</td>
+<td style="text-align: right;">$138B</td>
+<td style="text-align: right;">12.9x</td>
+<td style="text-align: right;">6.1%</td>
+<td style="text-align: right;">13.4%</td>
+<td style="text-align: right;">0.7%</td>
+<td style="text-align: right;">2.50%</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">-0.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CYBR</strong></td>
+<td style="text-align: center;">?</td>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>DBC</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a></td>
+<td style="text-align: right;">$28.89</td>
+<td style="text-align: right;">$2B AUM</td>
+<td style="text-align: right;">+18.8% YTD</td>
+<td style="text-align: right;">2.8% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.8%</td>
+<td style="text-align: right;">1.05</td>
+<td style="text-align: right;">-9.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>DDOG</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-software-agents.html">ai-software-agents</a></td>
+<td style="text-align: right;">$256.54</td>
+<td style="text-align: right;">$91B</td>
+<td style="text-align: right;">89.0x</td>
+<td style="text-align: right;">32.2%</td>
+<td style="text-align: right;">79.9%</td>
+<td style="text-align: right;">3.7%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.54</td>
+<td style="text-align: right;">-8.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>DELL</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a></td>
+<td style="text-align: right;">$394.02</td>
+<td style="text-align: right;">$255B</td>
+<td style="text-align: right;">18.3x</td>
+<td style="text-align: right;">87.5%</td>
+<td style="text-align: right;">19.2%</td>
+<td style="text-align: right;">6.3%</td>
+<td style="text-align: right;">64.0%</td>
+<td style="text-align: right;">1.38</td>
+<td style="text-align: right;">-16.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>DNN</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/nuclear-uranium.html">nuclear-uranium</a></td>
+<td style="text-align: right;">$2.82</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">-69.8x</td>
+<td style="text-align: right;">-19.6%</td>
+<td style="text-align: right;">-58.3%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.62</td>
+<td style="text-align: right;">-36.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>DXCM</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/medtech-devices.html">medtech-devices</a></td>
+<td style="text-align: right;">$76.44</td>
+<td style="text-align: right;">$29B</td>
+<td style="text-align: right;">24.8x</td>
+<td style="text-align: right;">15.0%</td>
+<td style="text-align: right;">61.5%</td>
+<td style="text-align: right;">19.3%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.45</td>
+<td style="text-align: right;">-15.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>DXJ</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a></td>
+<td style="text-align: right;">$171.54</td>
+<td style="text-align: right;">$7B AUM</td>
+<td style="text-align: right;">+21.4% YTD</td>
+<td style="text-align: right;">1.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.0%</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">-5.0%</td>
+<td>🟢 ADD 4–5%</td>
+</tr>
+<tr>
+<td><strong>ECL</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a></td>
+<td style="text-align: right;">$275.75</td>
+<td style="text-align: right;">$78B</td>
+<td style="text-align: right;">29.5x</td>
+<td style="text-align: right;">10.0%</td>
+<td style="text-align: right;">44.4%</td>
+<td style="text-align: right;">12.8%</td>
+<td style="text-align: right;">1.06%</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">-10.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>EIDO</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/asean-thailand.html">asean-thailand</a></td>
+<td style="text-align: right;">$12.50</td>
+<td style="text-align: right;">$401M AUM</td>
+<td style="text-align: right;">-38.5% YTD</td>
+<td style="text-align: right;">3.6% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">3.6%</td>
+<td style="text-align: right;">0.60</td>
+<td style="text-align: right;">-35.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ELV</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a></td>
+<td style="text-align: right;">$366.94</td>
+<td style="text-align: right;">$80B</td>
+<td style="text-align: right;">12.4x</td>
+<td style="text-align: right;">1.4%</td>
+<td style="text-align: right;">26.0%</td>
+<td style="text-align: right;">2.5%</td>
+<td style="text-align: right;">1.85%</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">-15.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>EMR</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/automation-robotics.html">automation-robotics</a></td>
+<td style="text-align: right;">$141.29</td>
+<td style="text-align: right;">$79B</td>
+<td style="text-align: right;">19.7x</td>
+<td style="text-align: right;">2.9%</td>
+<td style="text-align: right;">52.7%</td>
+<td style="text-align: right;">13.4%</td>
+<td style="text-align: right;">1.60%</td>
+<td style="text-align: right;">1.24</td>
+<td style="text-align: right;">-14.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ENPH</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/renewables-storage.html">renewables-storage</a></td>
+<td style="text-align: right;">$41.34</td>
+<td style="text-align: right;">$5B</td>
+<td style="text-align: right;">17.1x</td>
+<td style="text-align: right;">-20.6%</td>
+<td style="text-align: right;">27.2%</td>
+<td style="text-align: right;">9.6%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.61</td>
+<td style="text-align: right;">-43.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>EPHE</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/asean-thailand.html">asean-thailand</a></td>
+<td style="text-align: right;">$25.61</td>
+<td style="text-align: right;">$128M AUM</td>
+<td style="text-align: right;">+0.1% YTD</td>
+<td style="text-align: right;">2.8% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.8%</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">-9.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>EPI</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/india-em-growth.html">india-em-growth</a></td>
+<td style="text-align: right;">$42.45</td>
+<td style="text-align: right;">$2B AUM</td>
+<td style="text-align: right;">-7.9% YTD</td>
+<td style="text-align: right;">0.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">-10.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>EQT</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/natural-gas-lng.html">natural-gas-lng</a></td>
+<td style="text-align: right;">$49.69</td>
+<td style="text-align: right;">$31B</td>
+<td style="text-align: right;">11.7x</td>
+<td style="text-align: right;">49.9%</td>
+<td style="text-align: right;">81.0%</td>
+<td style="text-align: right;">35.1%</td>
+<td style="text-align: right;">1.34%</td>
+<td style="text-align: right;">0.55</td>
+<td style="text-align: right;">-27.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ETN</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/power-grid-electrification.html">power-grid-electrification</a>, <a href="../concepts/infrastructure-capex.html">infrastructure-capex</a>, <a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a></td>
+<td style="text-align: right;">$401.12</td>
+<td style="text-align: right;">$156B</td>
+<td style="text-align: right;">25.4x</td>
+<td style="text-align: right;">16.8%</td>
+<td style="text-align: right;">37.1%</td>
+<td style="text-align: right;">14.0%</td>
+<td style="text-align: right;">1.11%</td>
+<td style="text-align: right;">1.18</td>
+<td style="text-align: right;">-8.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>EW</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/medtech-devices.html">medtech-devices</a></td>
+<td style="text-align: right;">$86.00</td>
+<td style="text-align: right;">$50B</td>
+<td style="text-align: right;">25.6x</td>
+<td style="text-align: right;">16.7%</td>
+<td style="text-align: right;">77.9%</td>
+<td style="text-align: right;">17.4%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">-10.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>EWJ</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a></td>
+<td style="text-align: right;">$90.28</td>
+<td style="text-align: right;">$22B AUM</td>
+<td style="text-align: right;">+16.6% YTD</td>
+<td style="text-align: right;">3.8% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">3.8%</td>
+<td style="text-align: right;">0.83</td>
+<td style="text-align: right;">-7.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>EWM</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/asean-thailand.html">asean-thailand</a></td>
+<td style="text-align: right;">$28.18</td>
+<td style="text-align: right;">$324M AUM</td>
+<td style="text-align: right;">+0.6% YTD</td>
+<td style="text-align: right;">3.7% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">3.7%</td>
+<td style="text-align: right;">0.52</td>
+<td style="text-align: right;">-8.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FBTC</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a></td>
+<td style="text-align: right;">$55.01</td>
+<td style="text-align: right;">$10B AUM</td>
+<td style="text-align: right;">-33.0% YTD</td>
+<td style="text-align: right;">0.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">-50.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FCG</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/natural-gas-lng.html">natural-gas-lng</a></td>
+<td style="text-align: right;">$27.68</td>
+<td style="text-align: right;">$590M AUM</td>
+<td style="text-align: right;">+14.9% YTD</td>
+<td style="text-align: right;">2.4% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.4%</td>
+<td style="text-align: right;">-0.11</td>
+<td style="text-align: right;">-16.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FCX</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/critical-minerals.html">critical-minerals</a></td>
+<td style="text-align: right;">$58.78</td>
+<td style="text-align: right;">$84B</td>
+<td style="text-align: right;">14.6x</td>
+<td style="text-align: right;">8.8%</td>
+<td style="text-align: right;">38.6%</td>
+<td style="text-align: right;">10.3%</td>
+<td style="text-align: right;">1.02%</td>
+<td style="text-align: right;">1.36</td>
+<td style="text-align: right;">-18.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FI</strong></td>
+<td style="text-align: center;">?</td>
+<td><a href="../concepts/fintech-payments.html">fintech-payments</a></td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FINX</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/fintech-payments.html">fintech-payments</a></td>
+<td style="text-align: right;">$25.13</td>
+<td style="text-align: right;">$170M AUM</td>
+<td style="text-align: right;">-15.9% YTD</td>
+<td style="text-align: right;">0.9% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.9%</td>
+<td style="text-align: right;">1.72</td>
+<td style="text-align: right;">-29.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FIW</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a></td>
+<td style="text-align: right;">$108.85</td>
+<td style="text-align: right;">$2B AUM</td>
+<td style="text-align: right;">+1.2% YTD</td>
+<td style="text-align: right;">0.7% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.7%</td>
+<td style="text-align: right;">0.97</td>
+<td style="text-align: right;">-6.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FIX</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/data-center-cooling.html">data-center-cooling</a>, <a href="../concepts/infrastructure-capex.html">infrastructure-capex</a></td>
+<td style="text-align: right;">$1,639.02</td>
+<td style="text-align: right;">$58B</td>
+<td style="text-align: right;">30.3x</td>
+<td style="text-align: right;">1.0%</td>
+<td style="text-align: right;">25.1%</td>
+<td style="text-align: right;">12.1%</td>
+<td style="text-align: right;">15.0%</td>
+<td style="text-align: right;">1.66</td>
+<td style="text-align: right;">-21.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FLNC</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/renewables-storage.html">renewables-storage</a></td>
+<td style="text-align: right;">$14.12</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">72.3x</td>
+<td style="text-align: right;">7.7%</td>
+<td style="text-align: right;">11.7%</td>
+<td style="text-align: right;">-1.6%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.75</td>
+<td style="text-align: right;">-57.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FLR</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a></td>
+<td style="text-align: right;">$48.66</td>
+<td style="text-align: right;">$7B</td>
+<td style="text-align: right;">14.9x</td>
+<td style="text-align: right;">-8.0%</td>
+<td style="text-align: right;">-1.6%</td>
+<td style="text-align: right;">2.3%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.23</td>
+<td style="text-align: right;">-15.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FN</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td style="text-align: right;">$467.99</td>
+<td style="text-align: right;">$17B</td>
+<td style="text-align: right;">27.1x</td>
+<td style="text-align: right;">39.3%</td>
+<td style="text-align: right;">12.0%</td>
+<td style="text-align: right;">9.9%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.20</td>
+<td style="text-align: right;">-37.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FSLR</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/renewables-storage.html">renewables-storage</a></td>
+<td style="text-align: right;">$208.46</td>
+<td style="text-align: right;">$22B</td>
+<td style="text-align: right;">8.9x</td>
+<td style="text-align: right;">23.6%</td>
+<td style="text-align: right;">41.7%</td>
+<td style="text-align: right;">30.7%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.73</td>
+<td style="text-align: right;">-35.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FTNT</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: right;">$161.43</td>
+<td style="text-align: right;">$118B</td>
+<td style="text-align: right;">47.1x</td>
+<td style="text-align: right;">20.1%</td>
+<td style="text-align: right;">80.3%</td>
+<td style="text-align: right;">27.5%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.09</td>
+<td style="text-align: right;">-5.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FXI</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/china-contrarian.html">china-contrarian</a></td>
+<td style="text-align: right;">$34.02</td>
+<td style="text-align: right;">$5B AUM</td>
+<td style="text-align: right;">-16.9% YTD</td>
+<td style="text-align: right;">2.1% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.1%</td>
+<td style="text-align: right;">0.47</td>
+<td style="text-align: right;">-19.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GD</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/defense-security.html">defense-security</a></td>
+<td style="text-align: right;">$371.51</td>
+<td style="text-align: right;">$100B</td>
+<td style="text-align: right;">20.4x</td>
+<td style="text-align: right;">10.3%</td>
+<td style="text-align: right;">15.2%</td>
+<td style="text-align: right;">8.1%</td>
+<td style="text-align: right;">1.72%</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">-2.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GDX</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a></td>
+<td style="text-align: right;">$71.66</td>
+<td style="text-align: right;">$23B AUM</td>
+<td style="text-align: right;">-12.4% YTD</td>
+<td style="text-align: right;">0.8% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.8%</td>
+<td style="text-align: right;">0.81</td>
+<td style="text-align: right;">-38.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GDXJ</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a></td>
+<td style="text-align: right;">$92.99</td>
+<td style="text-align: right;">$7B AUM</td>
+<td style="text-align: right;">-14.0% YTD</td>
+<td style="text-align: right;">2.7% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.7%</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">-41.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GEV</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/power-grid-electrification.html">power-grid-electrification</a></td>
+<td style="text-align: right;">$1,046.80</td>
+<td style="text-align: right;">$281B</td>
+<td style="text-align: right;">42.5x</td>
+<td style="text-align: right;">16.3%</td>
+<td style="text-align: right;">20.3%</td>
+<td style="text-align: right;">23.8%</td>
+<td style="text-align: right;">19.0%</td>
+<td style="text-align: right;">0.94</td>
+<td style="text-align: right;">-12.5%</td>
+<td>🔴 REJECT / WATCH</td>
+</tr>
+<tr>
+<td><strong>GILD</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/biotech-genomics.html">biotech-genomics</a></td>
+<td style="text-align: right;">$137.36</td>
+<td style="text-align: right;">$171B</td>
+<td style="text-align: right;">14.1x</td>
+<td style="text-align: right;">4.4%</td>
+<td style="text-align: right;">79.4%</td>
+<td style="text-align: right;">31.0%</td>
+<td style="text-align: right;">2.41%</td>
+<td style="text-align: right;">0.34</td>
+<td style="text-align: right;">-12.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GLD</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a></td>
+<td style="text-align: right;">$368.82</td>
+<td style="text-align: right;">$130B AUM</td>
+<td style="text-align: right;">-6.7% YTD</td>
+<td style="text-align: right;">0.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">-27.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GOLD</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a></td>
+<td style="text-align: right;">$38.50</td>
+<td style="text-align: right;">$1B</td>
+<td style="text-align: right;">10.6x</td>
+<td style="text-align: right;">2.44%</td>
+<td style="text-align: right;">1.8%</td>
+<td style="text-align: right;">0.3%</td>
+<td style="text-align: right;">2.07%</td>
+<td style="text-align: right;">0.61</td>
+<td style="text-align: right;">-42.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GOOGL</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a>, <a href="../concepts/quantum-computing.html">quantum-computing</a></td>
+<td style="text-align: right;">$347.43</td>
+<td style="text-align: right;">$4.24T</td>
+<td style="text-align: right;">23.7x</td>
+<td style="text-align: right;">21.8%</td>
+<td style="text-align: right;">60.4%</td>
+<td style="text-align: right;">37.9%</td>
+<td style="text-align: right;">25.0%</td>
+<td style="text-align: right;">1.25</td>
+<td style="text-align: right;">-15.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GPN</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/fintech-payments.html">fintech-payments</a></td>
+<td style="text-align: right;">$78.38</td>
+<td style="text-align: right;">$21B</td>
+<td style="text-align: right;">4.9x</td>
+<td style="text-align: right;">63.1%</td>
+<td style="text-align: right;">67.4%</td>
+<td style="text-align: right;">-8.0%</td>
+<td style="text-align: right;">1.24%</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: right;">-13.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GRID</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/power-grid-electrification.html">power-grid-electrification</a></td>
+<td style="text-align: right;">$178.09</td>
+<td style="text-align: right;">$12B AUM</td>
+<td style="text-align: right;">+25.4% YTD</td>
+<td style="text-align: right;">0.8% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.8%</td>
+<td style="text-align: right;">1.41</td>
+<td style="text-align: right;">-11.0%</td>
+<td>🟢 ADD 5%</td>
+</tr>
+<tr>
+<td><strong>GSAT</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/space-economy.html">space-economy</a></td>
+<td style="text-align: right;">$79.83</td>
+<td style="text-align: right;">$10B</td>
+<td style="text-align: right;">260.6x</td>
+<td style="text-align: right;">16.7%</td>
+<td style="text-align: right;">63.7%</td>
+<td style="text-align: right;">-3.1%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.54</td>
+<td style="text-align: right;">-5.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>HACK</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: right;">$110.65</td>
+<td style="text-align: right;">$3B AUM</td>
+<td style="text-align: right;">+30.6% YTD</td>
+<td style="text-align: right;">0.1% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.1%</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">-4.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>HCA</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a></td>
+<td style="text-align: right;">$376.85</td>
+<td style="text-align: right;">$84B</td>
+<td style="text-align: right;">11.5x</td>
+<td style="text-align: right;">4.3%</td>
+<td style="text-align: right;">41.6%</td>
+<td style="text-align: right;">8.9%</td>
+<td style="text-align: right;">81.0%</td>
+<td style="text-align: right;">1.13</td>
+<td style="text-align: right;">-32.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>HDB</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/india-em-growth.html">india-em-growth</a></td>
+<td style="text-align: right;">$26.25</td>
+<td style="text-align: right;">$135B</td>
+<td style="text-align: right;">17.8x</td>
+<td style="text-align: right;">-1.8%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">26.8%</td>
+<td style="text-align: right;">1.59%</td>
+<td style="text-align: right;">0.42</td>
+<td style="text-align: right;">-34.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>HEWJ</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a></td>
+<td style="text-align: right;">$62.04</td>
+<td style="text-align: right;">$725M AUM</td>
+<td style="text-align: right;">+22.4% YTD</td>
+<td style="text-align: right;">3.7% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">3.7%</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">-7.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>HIMS</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a></td>
+<td style="text-align: right;">$32.46</td>
+<td style="text-align: right;">$8B</td>
+<td style="text-align: right;">36.5x</td>
+<td style="text-align: right;">3.8%</td>
+<td style="text-align: right;">72.9%</td>
+<td style="text-align: right;">-0.6%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.34</td>
+<td style="text-align: right;">-53.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IAU</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a></td>
+<td style="text-align: right;">$75.58</td>
+<td style="text-align: right;">$60B AUM</td>
+<td style="text-align: right;">-6.7% YTD</td>
+<td style="text-align: right;">0.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">-27.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IBB</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/biotech-genomics.html">biotech-genomics</a></td>
+<td style="text-align: right;">$189.76</td>
+<td style="text-align: right;">$9B AUM</td>
+<td style="text-align: right;">+12.7% YTD</td>
+<td style="text-align: right;">0.2% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">-4.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IBIT</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a></td>
+<td style="text-align: right;">$35.81</td>
+<td style="text-align: right;">$43B AUM</td>
+<td style="text-align: right;">-33.0% YTD</td>
+<td style="text-align: right;">0.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">-50.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IBM</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/quantum-computing.html">quantum-computing</a></td>
+<td style="text-align: right;">$210.97</td>
+<td style="text-align: right;">$198B</td>
+<td style="text-align: right;">15.9x</td>
+<td style="text-align: right;">9.5%</td>
+<td style="text-align: right;">58.4%</td>
+<td style="text-align: right;">15.6%</td>
+<td style="text-align: right;">3.09%</td>
+<td style="text-align: right;">0.68</td>
+<td style="text-align: right;">-36.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IBN</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/india-em-growth.html">india-em-growth</a></td>
+<td style="text-align: right;">$29.67</td>
+<td style="text-align: right;">$106B</td>
+<td style="text-align: right;">15.5x</td>
+<td style="text-align: right;">66.9%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">24.9%</td>
+<td style="text-align: right;">84.0%</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">-14.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ICLN</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/renewables-storage.html">renewables-storage</a></td>
+<td style="text-align: right;">$18.36</td>
+<td style="text-align: right;">$3B AUM</td>
+<td style="text-align: right;">+25.5% YTD</td>
+<td style="text-align: right;">0.9% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.9%</td>
+<td style="text-align: right;">1.43</td>
+<td style="text-align: right;">-22.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IGF</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/infrastructure-capex.html">infrastructure-capex</a></td>
+<td style="text-align: right;">$67.15</td>
+<td style="text-align: right;">$11B AUM</td>
+<td style="text-align: right;">+9.7% YTD</td>
+<td style="text-align: right;">2.9% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.9%</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">-3.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IGV</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/ai-software-agents.html">ai-software-agents</a></td>
+<td style="text-align: right;">$92.50</td>
+<td style="text-align: right;">$14B AUM</td>
+<td style="text-align: right;">-14.3% YTD</td>
+<td style="text-align: right;">0.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">1.17</td>
+<td style="text-align: right;">-21.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IHE</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a></td>
+<td style="text-align: right;">$101.08</td>
+<td style="text-align: right;">$1B AUM</td>
+<td style="text-align: right;">+17.5% YTD</td>
+<td style="text-align: right;">1.5% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.5%</td>
+<td style="text-align: right;">0.51</td>
+<td style="text-align: right;">-2.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IHF</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a></td>
+<td style="text-align: right;">$56.74</td>
+<td style="text-align: right;">$1B AUM</td>
+<td style="text-align: right;">+15.8% YTD</td>
+<td style="text-align: right;">0.9% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.9%</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">-2.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IHI</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/medtech-devices.html">medtech-devices</a></td>
+<td style="text-align: right;">$50.70</td>
+<td style="text-align: right;">$3B AUM</td>
+<td style="text-align: right;">-20.3% YTD</td>
+<td style="text-align: right;">0.5% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.5%</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">-21.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ILMN</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/biotech-genomics.html">biotech-genomics</a></td>
+<td style="text-align: right;">$184.79</td>
+<td style="text-align: right;">$28B</td>
+<td style="text-align: right;">31.1x</td>
+<td style="text-align: right;">4.8%</td>
+<td style="text-align: right;">68.3%</td>
+<td style="text-align: right;">19.4%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.47</td>
+<td style="text-align: right;">-6.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>INDA</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/india-em-growth.html">india-em-growth</a></td>
+<td style="text-align: right;">$49.01</td>
+<td style="text-align: right;">$7B AUM</td>
+<td style="text-align: right;">-9.1% YTD</td>
+<td style="text-align: right;">0.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">-11.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>INDY</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/india-em-growth.html">india-em-growth</a></td>
+<td style="text-align: right;">$43.40</td>
+<td style="text-align: right;">$558M AUM</td>
+<td style="text-align: right;">-11.5% YTD</td>
+<td style="text-align: right;">0.9% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.9%</td>
+<td style="text-align: right;">0.52</td>
+<td style="text-align: right;">-20.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>INFY</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/india-em-growth.html">india-em-growth</a></td>
+<td style="text-align: right;">$11.38</td>
+<td style="text-align: right;">$46B</td>
+<td style="text-align: right;">12.9x</td>
+<td style="text-align: right;">6.6%</td>
+<td style="text-align: right;">29.5%</td>
+<td style="text-align: right;">16.4%</td>
+<td style="text-align: right;">4.54%</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">-62.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>INTC</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: right;">$94.45</td>
+<td style="text-align: right;">$475B</td>
+<td style="text-align: right;">58.5x</td>
+<td style="text-align: right;">7.2%</td>
+<td style="text-align: right;">37.2%</td>
+<td style="text-align: right;">-5.9%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.19</td>
+<td style="text-align: right;">-33.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IONQ</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/quantum-computing.html">quantum-computing</a></td>
+<td style="text-align: right;">$34.53</td>
+<td style="text-align: right;">$13B</td>
+<td style="text-align: right;">-31.4x</td>
+<td style="text-align: right;">7.55%</td>
+<td style="text-align: right;">36.1%</td>
+<td style="text-align: right;">1.75%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">3.23</td>
+<td style="text-align: right;">-59.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IPAY</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/fintech-payments.html">fintech-payments</a></td>
+<td style="text-align: right;">$49.09</td>
+<td style="text-align: right;">$152M AUM</td>
+<td style="text-align: right;">-11.2% YTD</td>
+<td style="text-align: right;">0.9% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.9%</td>
+<td style="text-align: right;">1.39</td>
+<td style="text-align: right;">-19.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ISRG</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/medtech-devices.html">medtech-devices</a></td>
+<td style="text-align: right;">$351.86</td>
+<td style="text-align: right;">$125B</td>
+<td style="text-align: right;">29.9x</td>
+<td style="text-align: right;">18.5%</td>
+<td style="text-align: right;">66.7%</td>
+<td style="text-align: right;">28.4%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">-41.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ITA</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/defense-security.html">defense-security</a></td>
+<td style="text-align: right;">$233.46</td>
+<td style="text-align: right;">$14B AUM</td>
+<td style="text-align: right;">+13.2% YTD</td>
+<td style="text-align: right;">0.4% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.4%</td>
+<td style="text-align: right;">0.98</td>
+<td style="text-align: right;">-7.2%</td>
+<td>🟢 ADD 4–5%</td>
+</tr>
+<tr>
+<td><strong>J</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a></td>
+<td style="text-align: right;">$131.26</td>
+<td style="text-align: right;">$15B</td>
+<td style="text-align: right;">15.9x</td>
+<td style="text-align: right;">27.0%</td>
+<td style="text-align: right;">23.4%</td>
+<td style="text-align: right;">2.9%</td>
+<td style="text-align: right;">1.09%</td>
+<td style="text-align: right;">0.67</td>
+<td style="text-align: right;">-22.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>JCI</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/power-grid-electrification.html">power-grid-electrification</a>, <a href="../concepts/data-center-cooling.html">data-center-cooling</a></td>
+<td style="text-align: right;">$141.55</td>
+<td style="text-align: right;">$86B</td>
+<td style="text-align: right;">24.6x</td>
+<td style="text-align: right;">8.2%</td>
+<td style="text-align: right;">36.6%</td>
+<td style="text-align: right;">14.5%</td>
+<td style="text-align: right;">1.13%</td>
+<td style="text-align: right;">1.32</td>
+<td style="text-align: right;">-6.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>JNJ</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/medtech-devices.html">medtech-devices</a></td>
+<td style="text-align: right;">$253.52</td>
+<td style="text-align: right;">$610B</td>
+<td style="text-align: right;">19.8x</td>
+<td style="text-align: right;">6.6%</td>
+<td style="text-align: right;">68.1%</td>
+<td style="text-align: right;">21.5%</td>
+<td style="text-align: right;">2.14%</td>
+<td style="text-align: right;">0.23</td>
+<td style="text-align: right;">-5.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>KLAC</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: right;">$214.30</td>
+<td style="text-align: right;">$280B</td>
+<td style="text-align: right;">41.8x</td>
+<td style="text-align: right;">11.5%</td>
+<td style="text-align: right;">61.4%</td>
+<td style="text-align: right;">35.7%</td>
+<td style="text-align: right;">42.0%</td>
+<td style="text-align: right;">1.41</td>
+<td style="text-align: right;">-30.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>KMI</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/natural-gas-lng.html">natural-gas-lng</a></td>
+<td style="text-align: right;">$32.42</td>
+<td style="text-align: right;">$72B</td>
+<td style="text-align: right;">21.5x</td>
+<td style="text-align: right;">13.8%</td>
+<td style="text-align: right;">49.4%</td>
+<td style="text-align: right;">18.9%</td>
+<td style="text-align: right;">3.61%</td>
+<td style="text-align: right;">0.53</td>
+<td style="text-align: right;">-6.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>KWEB</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/china-contrarian.html">china-contrarian</a></td>
+<td style="text-align: right;">$26.68</td>
+<td style="text-align: right;">$5B AUM</td>
+<td style="text-align: right;">-29.0% YTD</td>
+<td style="text-align: right;">8.6% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">8.6%</td>
+<td style="text-align: right;">0.88</td>
+<td style="text-align: right;">-38.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>LEU</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/nuclear-uranium.html">nuclear-uranium</a></td>
+<td style="text-align: right;">$151.82</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">38.5x</td>
+<td style="text-align: right;">4.9%</td>
+<td style="text-align: right;">25.7%</td>
+<td style="text-align: right;">13.4%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.36</td>
+<td style="text-align: right;">-67.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>LIT</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/renewables-storage.html">renewables-storage</a>, <a href="../concepts/critical-minerals.html">critical-minerals</a></td>
+<td style="text-align: right;">$68.42</td>
+<td style="text-align: right;">$2B AUM</td>
+<td style="text-align: right;">+20.5% YTD</td>
+<td style="text-align: right;">0.6% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.6%</td>
+<td style="text-align: right;">1.37</td>
+<td style="text-align: right;">-25.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>LLY</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a></td>
+<td style="text-align: right;">$1,177.94</td>
+<td style="text-align: right;">$1.05T</td>
+<td style="text-align: right;">26.2x</td>
+<td style="text-align: right;">55.5%</td>
+<td style="text-align: right;">82.8%</td>
+<td style="text-align: right;">35.0%</td>
+<td style="text-align: right;">59.0%</td>
+<td style="text-align: right;">0.51</td>
+<td style="text-align: right;">-5.7%</td>
+<td>🟢 ADD 5–7%</td>
+</tr>
+<tr>
+<td><strong>LMT</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/defense-security.html">defense-security</a></td>
+<td style="text-align: right;">$519.31</td>
+<td style="text-align: right;">$120B</td>
+<td style="text-align: right;">16.2x</td>
+<td style="text-align: right;">0.3%</td>
+<td style="text-align: right;">9.9%</td>
+<td style="text-align: right;">6.4%</td>
+<td style="text-align: right;">2.69%</td>
+<td style="text-align: right;">0.11</td>
+<td style="text-align: right;">-25.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>LNG</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/natural-gas-lng.html">natural-gas-lng</a></td>
+<td style="text-align: right;">$259.65</td>
+<td style="text-align: right;">$54B</td>
+<td style="text-align: right;">13.3x</td>
+<td style="text-align: right;">24.2%</td>
+<td style="text-align: right;">33.0%</td>
+<td style="text-align: right;">7.1%</td>
+<td style="text-align: right;">86.0%</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">-13.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>LRCX</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: right;">$316.96</td>
+<td style="text-align: right;">$396B</td>
+<td style="text-align: right;">39.2x</td>
+<td style="text-align: right;">23.8%</td>
+<td style="text-align: right;">50.0%</td>
+<td style="text-align: right;">30.9%</td>
+<td style="text-align: right;">32.0%</td>
+<td style="text-align: right;">1.80</td>
+<td style="text-align: right;">-27.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>LUNR</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/space-economy.html">space-economy</a></td>
+<td style="text-align: right;">$13.61</td>
+<td style="text-align: right;">$2B</td>
+<td style="text-align: right;">-272.2x</td>
+<td style="text-align: right;">1.99%</td>
+<td style="text-align: right;">9.7%</td>
+<td style="text-align: right;">-32.7%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.78</td>
+<td style="text-align: right;">-70.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MA</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/fintech-payments.html">fintech-payments</a></td>
+<td style="text-align: right;">$542.61</td>
+<td style="text-align: right;">$479B</td>
+<td style="text-align: right;">23.8x</td>
+<td style="text-align: right;">15.8%</td>
+<td style="text-align: right;">100.0%</td>
+<td style="text-align: right;">45.9%</td>
+<td style="text-align: right;">63.0%</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">-9.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MAGS</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: right;">$66.76</td>
+<td style="text-align: right;">$4B AUM</td>
+<td style="text-align: right;">-2.5% YTD</td>
+<td style="text-align: right;">1.5% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.5%</td>
+<td style="text-align: right;">1.33</td>
+<td style="text-align: right;">-6.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MCHI</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/china-contrarian.html">china-contrarian</a></td>
+<td style="text-align: right;">$52.82</td>
+<td style="text-align: right;">$6B AUM</td>
+<td style="text-align: right;">-14.7% YTD</td>
+<td style="text-align: right;">2.1% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.1%</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">-21.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MCK</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a></td>
+<td style="text-align: right;">$849.69</td>
+<td style="text-align: right;">$99B</td>
+<td style="text-align: right;">16.9x</td>
+<td style="text-align: right;">6.0%</td>
+<td style="text-align: right;">3.6%</td>
+<td style="text-align: right;">1.2%</td>
+<td style="text-align: right;">39.0%</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">-14.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MDT</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/medtech-devices.html">medtech-devices</a></td>
+<td style="text-align: right;">$83.40</td>
+<td style="text-align: right;">$107B</td>
+<td style="text-align: right;">13.0x</td>
+<td style="text-align: right;">9.9%</td>
+<td style="text-align: right;">65.3%</td>
+<td style="text-align: right;">13.2%</td>
+<td style="text-align: right;">3.45%</td>
+<td style="text-align: right;">0.58</td>
+<td style="text-align: right;">-21.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>META</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: right;">$629.68</td>
+<td style="text-align: right;">$1.60T</td>
+<td style="text-align: right;">17.3x</td>
+<td style="text-align: right;">33.1%</td>
+<td style="text-align: right;">81.9%</td>
+<td style="text-align: right;">32.8%</td>
+<td style="text-align: right;">32.0%</td>
+<td style="text-align: right;">1.25</td>
+<td style="text-align: right;">-20.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MLM</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/infrastructure-capex.html">infrastructure-capex</a></td>
+<td style="text-align: right;">$570.79</td>
+<td style="text-align: right;">$34B</td>
+<td style="text-align: right;">24.9x</td>
+<td style="text-align: right;">17.2%</td>
+<td style="text-align: right;">29.7%</td>
+<td style="text-align: right;">39.9%</td>
+<td style="text-align: right;">58.0%</td>
+<td style="text-align: right;">1.10</td>
+<td style="text-align: right;">-19.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MLPX</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/natural-gas-lng.html">natural-gas-lng</a></td>
+<td style="text-align: right;">$76.36</td>
+<td style="text-align: right;">$3B AUM</td>
+<td style="text-align: right;">+24.1% YTD</td>
+<td style="text-align: right;">4.1% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">4.1%</td>
+<td style="text-align: right;">0.27</td>
+<td style="text-align: right;">-2.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MOD</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/data-center-cooling.html">data-center-cooling</a></td>
+<td style="text-align: right;">$226.44</td>
+<td style="text-align: right;">$12B</td>
+<td style="text-align: right;">20.0x</td>
+<td style="text-align: right;">47.5%</td>
+<td style="text-align: right;">23.0%</td>
+<td style="text-align: right;">3.8%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.67</td>
+<td style="text-align: right;">-29.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MP</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/critical-minerals.html">critical-minerals</a></td>
+<td style="text-align: right;">$44.70</td>
+<td style="text-align: right;">$8B</td>
+<td style="text-align: right;">44.9x</td>
+<td style="text-align: right;">1.19%</td>
+<td style="text-align: right;">37.2%</td>
+<td style="text-align: right;">-20.5%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.86</td>
+<td style="text-align: right;">-55.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MRVL</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a>, <a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td style="text-align: right;">$187.38</td>
+<td style="text-align: right;">$168B</td>
+<td style="text-align: right;">30.2x</td>
+<td style="text-align: right;">27.6%</td>
+<td style="text-align: right;">51.5%</td>
+<td style="text-align: right;">29.0%</td>
+<td style="text-align: right;">13.0%</td>
+<td style="text-align: right;">2.20</td>
+<td style="text-align: right;">-43.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MSFT</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="../concepts/ai-software-agents.html">ai-software-agents</a>, <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: right;">$392.18</td>
+<td style="text-align: right;">$2.91T</td>
+<td style="text-align: right;">20.2x</td>
+<td style="text-align: right;">18.3%</td>
+<td style="text-align: right;">68.3%</td>
+<td style="text-align: right;">39.3%</td>
+<td style="text-align: right;">91.0%</td>
+<td style="text-align: right;">1.13</td>
+<td style="text-align: right;">-29.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MSTR</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a></td>
+<td style="text-align: right;">$93.58</td>
+<td style="text-align: right;">$34B</td>
+<td style="text-align: right;">21.0x</td>
+<td style="text-align: right;">11.9%</td>
+<td style="text-align: right;">68.1%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">3.54</td>
+<td style="text-align: right;">-79.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MU</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: right;">$869.32</td>
+<td style="text-align: right;">$982B</td>
+<td style="text-align: right;">5.8x</td>
+<td style="text-align: right;">3.46%</td>
+<td style="text-align: right;">72.6%</td>
+<td style="text-align: right;">55.9%</td>
+<td style="text-align: right;">6.0%</td>
+<td style="text-align: right;">2.14</td>
+<td style="text-align: right;">-30.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MUFG</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a></td>
+<td style="text-align: right;">$21.43</td>
+<td style="text-align: right;">$242B</td>
+<td style="text-align: right;">20.8x</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">25.8%</td>
+<td style="text-align: right;">2.37%</td>
+<td style="text-align: right;">0.31</td>
+<td style="text-align: right;">-6.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NEE</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/renewables-storage.html">renewables-storage</a></td>
+<td style="text-align: right;">$89.56</td>
+<td style="text-align: right;">$187B</td>
+<td style="text-align: right;">20.3x</td>
+<td style="text-align: right;">7.3%</td>
+<td style="text-align: right;">61.4%</td>
+<td style="text-align: right;">29.4%</td>
+<td style="text-align: right;">2.79%</td>
+<td style="text-align: right;">0.67</td>
+<td style="text-align: right;">-9.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NEM</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a></td>
+<td style="text-align: right;">$90.59</td>
+<td style="text-align: right;">$97B</td>
+<td style="text-align: right;">8.4x</td>
+<td style="text-align: right;">45.8%</td>
+<td style="text-align: right;">67.4%</td>
+<td style="text-align: right;">33.9%</td>
+<td style="text-align: right;">1.14%</td>
+<td style="text-align: right;">0.48</td>
+<td style="text-align: right;">-32.8%</td>
+<td>🟡 WATCHLIST</td>
+</tr>
+<tr>
+<td><strong>NET</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: right;">$275.60</td>
+<td style="text-align: right;">$98B</td>
+<td style="text-align: right;">174.6x</td>
+<td style="text-align: right;">33.5%</td>
+<td style="text-align: right;">73.3%</td>
+<td style="text-align: right;">-3.7%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.67</td>
+<td style="text-align: right;">-5.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NLR</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/nuclear-uranium.html">nuclear-uranium</a></td>
+<td style="text-align: right;">$104.47</td>
+<td style="text-align: right;">$4B AUM</td>
+<td style="text-align: right;">-6.3% YTD</td>
+<td style="text-align: right;">2.7% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.7%</td>
+<td style="text-align: right;">1.13</td>
+<td style="text-align: right;">-37.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NOC</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/defense-security.html">defense-security</a></td>
+<td style="text-align: right;">$530.59</td>
+<td style="text-align: right;">$75B</td>
+<td style="text-align: right;">17.6x</td>
+<td style="text-align: right;">4.4%</td>
+<td style="text-align: right;">20.5%</td>
+<td style="text-align: right;">10.8%</td>
+<td style="text-align: right;">1.81%</td>
+<td style="text-align: right;">-0.10</td>
+<td style="text-align: right;">-31.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NOW</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-software-agents.html">ai-software-agents</a></td>
+<td style="text-align: right;">$103.04</td>
+<td style="text-align: right;">$106B</td>
+<td style="text-align: right;">20.5x</td>
+<td style="text-align: right;">22.1%</td>
+<td style="text-align: right;">76.6%</td>
+<td style="text-align: right;">12.6%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">-51.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NTLA</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/biotech-genomics.html">biotech-genomics</a></td>
+<td style="text-align: right;">$11.68</td>
+<td style="text-align: right;">$2B</td>
+<td style="text-align: right;">-6.8x</td>
+<td style="text-align: right;">-9.5%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.77</td>
+<td style="text-align: right;">-58.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NU</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/fintech-payments.html">fintech-payments</a></td>
+<td style="text-align: right;">$13.60</td>
+<td style="text-align: right;">$66B</td>
+<td style="text-align: right;">11.8x</td>
+<td style="text-align: right;">43.7%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">41.9%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.95</td>
+<td style="text-align: right;">-28.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NVDA</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="../concepts/semiconductors.html">semiconductors</a>, <a href="../concepts/automation-robotics.html">automation-robotics</a></td>
+<td style="text-align: right;">$204.70</td>
+<td style="text-align: right;">$4.96T</td>
+<td style="text-align: right;">16.0x</td>
+<td style="text-align: right;">85.2%</td>
+<td style="text-align: right;">74.1%</td>
+<td style="text-align: right;">63.0%</td>
+<td style="text-align: right;">48.0%</td>
+<td style="text-align: right;">2.21</td>
+<td style="text-align: right;">-13.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NVO</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a></td>
+<td style="text-align: right;">$50.46</td>
+<td style="text-align: right;">$223B</td>
+<td style="text-align: right;">14.9x</td>
+<td style="text-align: right;">24.0%</td>
+<td style="text-align: right;">83.2%</td>
+<td style="text-align: right;">37.2%</td>
+<td style="text-align: right;">3.56%</td>
+<td style="text-align: right;">0.36</td>
+<td style="text-align: right;">-29.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NVT</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/data-center-cooling.html">data-center-cooling</a></td>
+<td style="text-align: right;">$153.75</td>
+<td style="text-align: right;">$25B</td>
+<td style="text-align: right;">26.8x</td>
+<td style="text-align: right;">53.5%</td>
+<td style="text-align: right;">37.0%</td>
+<td style="text-align: right;">11.4%</td>
+<td style="text-align: right;">55.0%</td>
+<td style="text-align: right;">1.35</td>
+<td style="text-align: right;">-16.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>OKLO</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/nuclear-uranium.html">nuclear-uranium</a></td>
+<td style="text-align: right;">$41.10</td>
+<td style="text-align: right;">$7B</td>
+<td style="text-align: right;">-48.9x</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.16</td>
+<td style="text-align: right;">-78.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>OKTA</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: right;">$147.71</td>
+<td style="text-align: right;">$26B</td>
+<td style="text-align: right;">34.5x</td>
+<td style="text-align: right;">11.2%</td>
+<td style="text-align: right;">77.4%</td>
+<td style="text-align: right;">8.2%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.77</td>
+<td style="text-align: right;">-5.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ORCL</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a></td>
+<td style="text-align: right;">$126.18</td>
+<td style="text-align: right;">$363B</td>
+<td style="text-align: right;">11.6x</td>
+<td style="text-align: right;">20.6%</td>
+<td style="text-align: right;">65.8%</td>
+<td style="text-align: right;">25.4%</td>
+<td style="text-align: right;">1.61%</td>
+<td style="text-align: right;">1.71</td>
+<td style="text-align: right;">-63.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PANW</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: right;">$361.58</td>
+<td style="text-align: right;">$295B</td>
+<td style="text-align: right;">87.7x</td>
+<td style="text-align: right;">31.1%</td>
+<td style="text-align: right;">72.0%</td>
+<td style="text-align: right;">7.9%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.91</td>
+<td style="text-align: right;">-2.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PAVE</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/power-grid-electrification.html">power-grid-electrification</a>, <a href="../concepts/data-center-cooling.html">data-center-cooling</a>, <a href="../concepts/infrastructure-capex.html">infrastructure-capex</a></td>
+<td style="text-align: right;">$56.61</td>
+<td style="text-align: right;">$15B AUM</td>
+<td style="text-align: right;">+23.5% YTD</td>
+<td style="text-align: right;">0.7% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.7%</td>
+<td style="text-align: right;">1.24</td>
+<td style="text-align: right;">-6.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PDBC</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a></td>
+<td style="text-align: right;">$17.23</td>
+<td style="text-align: right;">$5B AUM</td>
+<td style="text-align: right;">+19.6% YTD</td>
+<td style="text-align: right;">3.2% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">3.2%</td>
+<td style="text-align: right;">1.06</td>
+<td style="text-align: right;">-9.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PDD</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/china-contrarian.html">china-contrarian</a></td>
+<td style="text-align: right;">$83.67</td>
+<td style="text-align: right;">$119B</td>
+<td style="text-align: right;">6.9x</td>
+<td style="text-align: right;">11.0%</td>
+<td style="text-align: right;">56.0%</td>
+<td style="text-align: right;">21.6%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">-0.01</td>
+<td style="text-align: right;">-40.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PHO</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a></td>
+<td style="text-align: right;">$69.33</td>
+<td style="text-align: right;">$2B AUM</td>
+<td style="text-align: right;">-1.5% YTD</td>
+<td style="text-align: right;">0.6% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.6%</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">-7.5%</td>
+<td>🟢 ADD 3–4%</td>
+</tr>
+<tr>
+<td><strong>PL</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/space-economy.html">space-economy</a></td>
+<td style="text-align: right;">$22.57</td>
+<td style="text-align: right;">$8B</td>
+<td style="text-align: right;">6777.8x</td>
+<td style="text-align: right;">42.1%</td>
+<td style="text-align: right;">55.6%</td>
+<td style="text-align: right;">-1.11%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.07</td>
+<td style="text-align: right;">-56.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PLD</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a></td>
+<td style="text-align: right;">$149.89</td>
+<td style="text-align: right;">$143B</td>
+<td style="text-align: right;">44.2x</td>
+<td style="text-align: right;">5.8%</td>
+<td style="text-align: right;">75.4%</td>
+<td style="text-align: right;">43.9%</td>
+<td style="text-align: right;">2.85%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">-2.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PLTR</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-software-agents.html">ai-software-agents</a>, <a href="../concepts/defense-security.html">defense-security</a></td>
+<td style="text-align: right;">$131.11</td>
+<td style="text-align: right;">$314B</td>
+<td style="text-align: right;">62.6x</td>
+<td style="text-align: right;">84.7%</td>
+<td style="text-align: right;">84.1%</td>
+<td style="text-align: right;">43.7%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.56</td>
+<td style="text-align: right;">-36.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PNR</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a></td>
+<td style="text-align: right;">$63.72</td>
+<td style="text-align: right;">$10B</td>
+<td style="text-align: right;">11.7x</td>
+<td style="text-align: right;">2.6%</td>
+<td style="text-align: right;">41.2%</td>
+<td style="text-align: right;">16.0%</td>
+<td style="text-align: right;">1.61%</td>
+<td style="text-align: right;">1.03</td>
+<td style="text-align: right;">-44.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PPA</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/defense-security.html">defense-security</a></td>
+<td style="text-align: right;">$170.02</td>
+<td style="text-align: right;">$8B AUM</td>
+<td style="text-align: right;">+13.0% YTD</td>
+<td style="text-align: right;">0.4% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.4%</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">-8.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PWR</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/power-grid-electrification.html">power-grid-electrification</a>, <a href="../concepts/infrastructure-capex.html">infrastructure-capex</a>, <a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a></td>
+<td style="text-align: right;">$631.96</td>
+<td style="text-align: right;">$95B</td>
+<td style="text-align: right;">38.4x</td>
+<td style="text-align: right;">26.3%</td>
+<td style="text-align: right;">15.1%</td>
+<td style="text-align: right;">3.7%</td>
+<td style="text-align: right;">7.0%</td>
+<td style="text-align: right;">1.22</td>
+<td style="text-align: right;">-19.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PYPL</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/fintech-payments.html">fintech-payments</a></td>
+<td style="text-align: right;">$56.37</td>
+<td style="text-align: right;">$50B</td>
+<td style="text-align: right;">9.8x</td>
+<td style="text-align: right;">7.2%</td>
+<td style="text-align: right;">40.9%</td>
+<td style="text-align: right;">15.0%</td>
+<td style="text-align: right;">99.0%</td>
+<td style="text-align: right;">1.33</td>
+<td style="text-align: right;">-29.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>QBTS</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/quantum-computing.html">quantum-computing</a></td>
+<td style="text-align: right;">$16.77</td>
+<td style="text-align: right;">$6B</td>
+<td style="text-align: right;">-42.4x</td>
+<td style="text-align: right;">-80.9%</td>
+<td style="text-align: right;">66.3%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.10</td>
+<td style="text-align: right;">-64.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>QCOM</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: right;">$167.95</td>
+<td style="text-align: right;">$177B</td>
+<td style="text-align: right;">15.2x</td>
+<td style="text-align: right;">-3.5%</td>
+<td style="text-align: right;">54.8%</td>
+<td style="text-align: right;">22.3%</td>
+<td style="text-align: right;">2.16%</td>
+<td style="text-align: right;">1.64</td>
+<td style="text-align: right;">-35.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>QQQ</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: right;">$697.77</td>
+<td style="text-align: right;">$490B AUM</td>
+<td style="text-align: right;">+20.2% YTD</td>
+<td style="text-align: right;">0.4% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.4%</td>
+<td style="text-align: right;">1.24</td>
+<td style="text-align: right;">-6.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>QTUM</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/quantum-computing.html">quantum-computing</a></td>
+<td style="text-align: right;">$141.40</td>
+<td style="text-align: right;">$6B AUM</td>
+<td style="text-align: right;">+51.2% YTD</td>
+<td style="text-align: right;">0.7% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.7%</td>
+<td style="text-align: right;">1.67</td>
+<td style="text-align: right;">-16.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>QUAL</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: right;">$218.24</td>
+<td style="text-align: right;">$46B AUM</td>
+<td style="text-align: right;">+11.1% YTD</td>
+<td style="text-align: right;">0.9% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.9%</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">-1.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>QUBT</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/quantum-computing.html">quantum-computing</a></td>
+<td style="text-align: right;">$7.78</td>
+<td style="text-align: right;">$2B</td>
+<td style="text-align: right;">-20.5x</td>
+<td style="text-align: right;">93.64%</td>
+<td style="text-align: right;">-15.4%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">3.78</td>
+<td style="text-align: right;">-69.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>REGN</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/biotech-genomics.html">biotech-genomics</a></td>
+<td style="text-align: right;">$679.51</td>
+<td style="text-align: right;">$71B</td>
+<td style="text-align: right;">12.4x</td>
+<td style="text-align: right;">19.0%</td>
+<td style="text-align: right;">43.9%</td>
+<td style="text-align: right;">29.6%</td>
+<td style="text-align: right;">55.0%</td>
+<td style="text-align: right;">0.24</td>
+<td style="text-align: right;">-17.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>REMX</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/critical-minerals.html">critical-minerals</a></td>
+<td style="text-align: right;">$72.17</td>
+<td style="text-align: right;">$3B AUM</td>
+<td style="text-align: right;">+20.1% YTD</td>
+<td style="text-align: right;">1.5% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.5%</td>
+<td style="text-align: right;">1.36</td>
+<td style="text-align: right;">-35.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>RGTI</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/quantum-computing.html">quantum-computing</a></td>
+<td style="text-align: right;">$14.08</td>
+<td style="text-align: right;">$5B</td>
+<td style="text-align: right;">-70.0x</td>
+<td style="text-align: right;">1.99%</td>
+<td style="text-align: right;">30.0%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.96</td>
+<td style="text-align: right;">-75.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>RIO</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/critical-minerals.html">critical-minerals</a></td>
+<td style="text-align: right;">$90.73</td>
+<td style="text-align: right;">$148B</td>
+<td style="text-align: right;">10.3x</td>
+<td style="text-align: right;">14.6%</td>
+<td style="text-align: right;">28.1%</td>
+<td style="text-align: right;">17.3%</td>
+<td style="text-align: right;">4.43%</td>
+<td style="text-align: right;">0.65</td>
+<td style="text-align: right;">-19.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>RKLB</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/space-economy.html">space-economy</a></td>
+<td style="text-align: right;">$68.93</td>
+<td style="text-align: right;">$43B</td>
+<td style="text-align: right;">2297.5x</td>
+<td style="text-align: right;">63.5%</td>
+<td style="text-align: right;">36.6%</td>
+<td style="text-align: right;">-26.9%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.55</td>
+<td style="text-align: right;">-54.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ROBO</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/automation-robotics.html">automation-robotics</a></td>
+<td style="text-align: right;">$77.72</td>
+<td style="text-align: right;">$2B AUM</td>
+<td style="text-align: right;">+23.0% YTD</td>
+<td style="text-align: right;">0.3% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.3%</td>
+<td style="text-align: right;">1.77</td>
+<td style="text-align: right;">-14.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ROK</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/automation-robotics.html">automation-robotics</a>, <a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a></td>
+<td style="text-align: right;">$461.08</td>
+<td style="text-align: right;">$51B</td>
+<td style="text-align: right;">31.5x</td>
+<td style="text-align: right;">11.9%</td>
+<td style="text-align: right;">48.9%</td>
+<td style="text-align: right;">12.4%</td>
+<td style="text-align: right;">1.18%</td>
+<td style="text-align: right;">1.54</td>
+<td style="text-align: right;">-7.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ROP</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a></td>
+<td style="text-align: right;">$361.17</td>
+<td style="text-align: right;">$36B</td>
+<td style="text-align: right;">15.1x</td>
+<td style="text-align: right;">11.3%</td>
+<td style="text-align: right;">69.4%</td>
+<td style="text-align: right;">21.1%</td>
+<td style="text-align: right;">100.0%</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">-36.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>RSP</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: right;">$214.07</td>
+<td style="text-align: right;">$94B AUM</td>
+<td style="text-align: right;">+12.0% YTD</td>
+<td style="text-align: right;">1.5% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.5%</td>
+<td style="text-align: right;">0.85</td>
+<td style="text-align: right;">-1.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>RTX</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/defense-security.html">defense-security</a></td>
+<td style="text-align: right;">$196.76</td>
+<td style="text-align: right;">$265B</td>
+<td style="text-align: right;">25.9x</td>
+<td style="text-align: right;">8.7%</td>
+<td style="text-align: right;">20.2%</td>
+<td style="text-align: right;">8.0%</td>
+<td style="text-align: right;">1.50%</td>
+<td style="text-align: right;">0.30</td>
+<td style="text-align: right;">-8.3%</td>
+<td>🟢 ADD (in ITA)</td>
+</tr>
+<tr>
+<td><strong>S</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: right;">$19.39</td>
+<td style="text-align: right;">$7B</td>
+<td style="text-align: right;">39.3x</td>
+<td style="text-align: right;">20.8%</td>
+<td style="text-align: right;">73.2%</td>
+<td style="text-align: right;">-30.4%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.82</td>
+<td style="text-align: right;">-9.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SCCO</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/critical-minerals.html">critical-minerals</a></td>
+<td style="text-align: right;">$175.53</td>
+<td style="text-align: right;">$146B</td>
+<td style="text-align: right;">24.4x</td>
+<td style="text-align: right;">36.2%</td>
+<td style="text-align: right;">62.7%</td>
+<td style="text-align: right;">34.1%</td>
+<td style="text-align: right;">2.28%</td>
+<td style="text-align: right;">1.12</td>
+<td style="text-align: right;">-20.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SEDG</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/renewables-storage.html">renewables-storage</a></td>
+<td style="text-align: right;">$52.44</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">33.5x</td>
+<td style="text-align: right;">41.5%</td>
+<td style="text-align: right;">18.3%</td>
+<td style="text-align: right;">-28.6%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.45</td>
+<td style="text-align: right;">-35.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SHLD</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/defense-security.html">defense-security</a></td>
+<td style="text-align: right;">$60.45</td>
+<td style="text-align: right;">$7B AUM</td>
+<td style="text-align: right;">-7.6% YTD</td>
+<td style="text-align: right;">0.7% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.7%</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">-23.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SMCI</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="../concepts/data-center-cooling.html">data-center-cooling</a></td>
+<td style="text-align: right;">$24.23</td>
+<td style="text-align: right;">$16B</td>
+<td style="text-align: right;">7.8x</td>
+<td style="text-align: right;">1.23%</td>
+<td style="text-align: right;">8.4%</td>
+<td style="text-align: right;">3.7%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.94</td>
+<td style="text-align: right;">-61.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SMH</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="../concepts/semiconductors.html">semiconductors</a>, <a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td style="text-align: right;">$558.33</td>
+<td style="text-align: right;">$77B AUM</td>
+<td style="text-align: right;">+82.3% YTD</td>
+<td style="text-align: right;">0.2% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;">1.98</td>
+<td style="text-align: right;">-16.9%</td>
+<td>🟡 SCALE ON DIP</td>
+</tr>
+<tr>
+<td><strong>SMIN</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/india-em-growth.html">india-em-growth</a></td>
+<td style="text-align: right;">$69.63</td>
+<td style="text-align: right;">$697M AUM</td>
+<td style="text-align: right;">-0.0% YTD</td>
+<td style="text-align: right;">0.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">0.50</td>
+<td style="text-align: right;">-10.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SMR</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/nuclear-uranium.html">nuclear-uranium</a></td>
+<td style="text-align: right;">$7.62</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">-10.6x</td>
+<td style="text-align: right;">-95.8%</td>
+<td style="text-align: right;">23.8%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.25</td>
+<td style="text-align: right;">-86.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SNOW</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-software-agents.html">ai-software-agents</a></td>
+<td style="text-align: right;">$264.74</td>
+<td style="text-align: right;">$92B</td>
+<td style="text-align: right;">98.5x</td>
+<td style="text-align: right;">33.5%</td>
+<td style="text-align: right;">67.1%</td>
+<td style="text-align: right;">-23.8%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.35</td>
+<td style="text-align: right;">-7.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SONY</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a></td>
+<td style="text-align: right;">$21.28</td>
+<td style="text-align: right;">$125B</td>
+<td style="text-align: right;">17.9x</td>
+<td style="text-align: right;">8.3%</td>
+<td style="text-align: right;">31.2%</td>
+<td style="text-align: right;">-2.6%</td>
+<td style="text-align: right;">74.0%</td>
+<td style="text-align: right;">0.74</td>
+<td style="text-align: right;">-29.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SOXQ</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: right;">$92.11</td>
+<td style="text-align: right;">$3B AUM</td>
+<td style="text-align: right;">+101.5% YTD</td>
+<td style="text-align: right;">0.2% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;">2.19</td>
+<td style="text-align: right;">-20.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SOXX</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: right;">$522.22</td>
+<td style="text-align: right;">$48B AUM</td>
+<td style="text-align: right;">+113.0% YTD</td>
+<td style="text-align: right;">0.2% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;">2.24</td>
+<td style="text-align: right;">-20.4%</td>
+<td>🟡 SCALE ON DIP</td>
+</tr>
+<tr>
+<td><strong>SPY</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: right;">$745.82</td>
+<td style="text-align: right;">$781B AUM</td>
+<td style="text-align: right;">+10.2% YTD</td>
+<td style="text-align: right;">1.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.0%</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-1.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SYK</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/medtech-devices.html">medtech-devices</a></td>
+<td style="text-align: right;">$320.47</td>
+<td style="text-align: right;">$123B</td>
+<td style="text-align: right;">19.2x</td>
+<td style="text-align: right;">2.6%</td>
+<td style="text-align: right;">64.7%</td>
+<td style="text-align: right;">13.2%</td>
+<td style="text-align: right;">1.06%</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: right;">-20.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>TAN</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/renewables-storage.html">renewables-storage</a></td>
+<td style="text-align: right;">$53.88</td>
+<td style="text-align: right;">$2B AUM</td>
+<td style="text-align: right;">+20.1% YTD</td>
+<td style="text-align: right;">0.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">1.85</td>
+<td style="text-align: right;">-28.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>THD</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/asean-thailand.html">asean-thailand</a></td>
+<td style="text-align: right;">$73.06</td>
+<td style="text-align: right;">$356M AUM</td>
+<td style="text-align: right;">+23.9% YTD</td>
+<td style="text-align: right;">3.5% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">3.5%</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: right;">-2.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>TM</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a></td>
+<td style="text-align: right;">$178.25</td>
+<td style="text-align: right;">$211B</td>
+<td style="text-align: right;">11.3x</td>
+<td style="text-align: right;">1.9%</td>
+<td style="text-align: right;">16.7%</td>
+<td style="text-align: right;">7.6%</td>
+<td style="text-align: right;">3.49%</td>
+<td style="text-align: right;">0.32</td>
+<td style="text-align: right;">-28.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>TOELY</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a></td>
+<td style="text-align: right;">$201.28</td>
+<td style="text-align: right;">$183B</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">8.6%</td>
+<td style="text-align: right;">45.3%</td>
+<td style="text-align: right;">23.5%</td>
+<td style="text-align: right;">94.0%</td>
+<td style="text-align: right;">1.37</td>
+<td style="text-align: right;">-19.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>TSLA</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/renewables-storage.html">renewables-storage</a>, <a href="../concepts/automation-robotics.html">automation-robotics</a>, <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: right;">$381.97</td>
+<td style="text-align: right;">$1.43T</td>
+<td style="text-align: right;">149.6x</td>
+<td style="text-align: right;">15.8%</td>
+<td style="text-align: right;">19.1%</td>
+<td style="text-align: right;">3.9%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.80</td>
+<td style="text-align: right;">-23.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>TSM</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: right;">$399.78</td>
+<td style="text-align: right;">$2.07T</td>
+<td style="text-align: right;">18.9x</td>
+<td style="text-align: right;">35.1%</td>
+<td style="text-align: right;">61.9%</td>
+<td style="text-align: right;">46.5%</td>
+<td style="text-align: right;">92.0%</td>
+<td style="text-align: right;">1.25</td>
+<td style="text-align: right;">-16.5%</td>
+<td>🟢 ADD 6–8%</td>
+</tr>
+<tr>
+<td><strong>TT</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/infrastructure-capex.html">infrastructure-capex</a></td>
+<td style="text-align: right;">$472.21</td>
+<td style="text-align: right;">$104B</td>
+<td style="text-align: right;">27.6x</td>
+<td style="text-align: right;">6.0%</td>
+<td style="text-align: right;">35.9%</td>
+<td style="text-align: right;">13.4%</td>
+<td style="text-align: right;">88.0%</td>
+<td style="text-align: right;">1.20</td>
+<td style="text-align: right;">-6.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>UEC</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/nuclear-uranium.html">nuclear-uranium</a></td>
+<td style="text-align: right;">$9.15</td>
+<td style="text-align: right;">$5B</td>
+<td style="text-align: right;">-91.5x</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.19</td>
+<td style="text-align: right;">-55.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>UFO</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/space-economy.html">space-economy</a></td>
+<td style="text-align: right;">$43.88</td>
+<td style="text-align: right;">$851M AUM</td>
+<td style="text-align: right;">+31.8% YTD</td>
+<td style="text-align: right;">0.3% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.3%</td>
+<td style="text-align: right;">1.86</td>
+<td style="text-align: right;">-35.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>UNH</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a></td>
+<td style="text-align: right;">$431.45</td>
+<td style="text-align: right;">$392B</td>
+<td style="text-align: right;">19.7x</td>
+<td style="text-align: right;">2.0%</td>
+<td style="text-align: right;">18.8%</td>
+<td style="text-align: right;">2.7%</td>
+<td style="text-align: right;">2.22%</td>
+<td style="text-align: right;">0.63</td>
+<td style="text-align: right;">-6.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>URA</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/nuclear-uranium.html">nuclear-uranium</a></td>
+<td style="text-align: right;">$38.77</td>
+<td style="text-align: right;">$6B AUM</td>
+<td style="text-align: right;">+1.5% YTD</td>
+<td style="text-align: right;">4.8% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">4.8%</td>
+<td style="text-align: right;">1.41</td>
+<td style="text-align: right;">-37.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>URI</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/infrastructure-capex.html">infrastructure-capex</a></td>
+<td style="text-align: right;">$1,058.85</td>
+<td style="text-align: right;">$66B</td>
+<td style="text-align: right;">19.5x</td>
+<td style="text-align: right;">7.2%</td>
+<td style="text-align: right;">38.4%</td>
+<td style="text-align: right;">15.3%</td>
+<td style="text-align: right;">74.0%</td>
+<td style="text-align: right;">1.79</td>
+<td style="text-align: right;">-7.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>URNM</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/nuclear-uranium.html">nuclear-uranium</a></td>
+<td style="text-align: right;">$48.35</td>
+<td style="text-align: right;">$2B AUM</td>
+<td style="text-align: right;">-4.6% YTD</td>
+<td style="text-align: right;">3.3% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">3.3%</td>
+<td style="text-align: right;">0.90</td>
+<td style="text-align: right;">-43.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>V</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/fintech-payments.html">fintech-payments</a>, <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: right;">$358.61</td>
+<td style="text-align: right;">$682B</td>
+<td style="text-align: right;">24.1x</td>
+<td style="text-align: right;">17.1%</td>
+<td style="text-align: right;">97.8%</td>
+<td style="text-align: right;">51.7%</td>
+<td style="text-align: right;">73.0%</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">-1.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VG</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/natural-gas-lng.html">natural-gas-lng</a></td>
+<td style="text-align: right;">$13.16</td>
+<td style="text-align: right;">$33B</td>
+<td style="text-align: right;">12.7x</td>
+<td style="text-align: right;">58.9%</td>
+<td style="text-align: right;">44.2%</td>
+<td style="text-align: right;">18.0%</td>
+<td style="text-align: right;">57.0%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">-25.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VKTX</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a></td>
+<td style="text-align: right;">$36.56</td>
+<td style="text-align: right;">$4B</td>
+<td style="text-align: right;">-8.0x</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.66</td>
+<td style="text-align: right;">-15.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VLTO</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a></td>
+<td style="text-align: right;">$94.01</td>
+<td style="text-align: right;">$23B</td>
+<td style="text-align: right;">20.1x</td>
+<td style="text-align: right;">6.8%</td>
+<td style="text-align: right;">59.9%</td>
+<td style="text-align: right;">17.3%</td>
+<td style="text-align: right;">55.0%</td>
+<td style="text-align: right;">0.78</td>
+<td style="text-align: right;">-14.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VMC</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/infrastructure-capex.html">infrastructure-capex</a>, <a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a></td>
+<td style="text-align: right;">$291.64</td>
+<td style="text-align: right;">$38B</td>
+<td style="text-align: right;">27.1x</td>
+<td style="text-align: right;">7.4%</td>
+<td style="text-align: right;">27.7%</td>
+<td style="text-align: right;">13.8%</td>
+<td style="text-align: right;">72.0%</td>
+<td style="text-align: right;">1.05</td>
+<td style="text-align: right;">-11.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VNM</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/asean-thailand.html">asean-thailand</a></td>
+<td style="text-align: right;">$17.41</td>
+<td style="text-align: right;">$565M AUM</td>
+<td style="text-align: right;">-1.4% YTD</td>
+<td style="text-align: right;">0.2% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;">1.07</td>
+<td style="text-align: right;">-12.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VOO</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: right;">$685.51</td>
+<td style="text-align: right;">$1.67T AUM</td>
+<td style="text-align: right;">+10.2% YTD</td>
+<td style="text-align: right;">1.1% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.1%</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">-2.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VRT</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="../concepts/power-grid-electrification.html">power-grid-electrification</a>, <a href="../concepts/data-center-cooling.html">data-center-cooling</a></td>
+<td style="text-align: right;">$290.33</td>
+<td style="text-align: right;">$112B</td>
+<td style="text-align: right;">32.7x</td>
+<td style="text-align: right;">30.1%</td>
+<td style="text-align: right;">37.2%</td>
+<td style="text-align: right;">14.4%</td>
+<td style="text-align: right;">9.0%</td>
+<td style="text-align: right;">2.03</td>
+<td style="text-align: right;">-23.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VRTX</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/biotech-genomics.html">biotech-genomics</a></td>
+<td style="text-align: right;">$485.69</td>
+<td style="text-align: right;">$123B</td>
+<td style="text-align: right;">22.8x</td>
+<td style="text-align: right;">7.8%</td>
+<td style="text-align: right;">54.4%</td>
+<td style="text-align: right;">35.5%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.29</td>
+<td style="text-align: right;">-9.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VST</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/power-grid-electrification.html">power-grid-electrification</a>, <a href="../concepts/nuclear-uranium.html">nuclear-uranium</a></td>
+<td style="text-align: right;">$155.00</td>
+<td style="text-align: right;">$52B</td>
+<td style="text-align: right;">14.3x</td>
+<td style="text-align: right;">43.4%</td>
+<td style="text-align: right;">38.6%</td>
+<td style="text-align: right;">11.5%</td>
+<td style="text-align: right;">60.0%</td>
+<td style="text-align: right;">1.41</td>
+<td style="text-align: right;">-29.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>WCLD</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/ai-software-agents.html">ai-software-agents</a></td>
+<td style="text-align: right;">$34.52</td>
+<td style="text-align: right;">$245M AUM</td>
+<td style="text-align: right;">-8.5% YTD</td>
+<td style="text-align: right;">0.0% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">1.20</td>
+<td style="text-align: right;">-6.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>WELL</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a></td>
+<td style="text-align: right;">$244.55</td>
+<td style="text-align: right;">$173B</td>
+<td style="text-align: right;">72.8x</td>
+<td style="text-align: right;">38.3%</td>
+<td style="text-align: right;">39.9%</td>
+<td style="text-align: right;">12.0%</td>
+<td style="text-align: right;">1.23%</td>
+<td style="text-align: right;">0.76</td>
+<td style="text-align: right;">-0.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>WIT</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/india-em-growth.html">india-em-growth</a></td>
+<td style="text-align: right;">$1.84</td>
+<td style="text-align: right;">$18B</td>
+<td style="text-align: right;">12.3x</td>
+<td style="text-align: right;">7.7%</td>
+<td style="text-align: right;">29.2%</td>
+<td style="text-align: right;">14.2%</td>
+<td style="text-align: right;">10.37%</td>
+<td style="text-align: right;">0.38</td>
+<td style="text-align: right;">-40.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>WMB</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/natural-gas-lng.html">natural-gas-lng</a></td>
+<td style="text-align: right;">$73.46</td>
+<td style="text-align: right;">$90B</td>
+<td style="text-align: right;">28.7x</td>
+<td style="text-align: right;">9.0%</td>
+<td style="text-align: right;">63.5%</td>
+<td style="text-align: right;">23.1%</td>
+<td style="text-align: right;">2.81%</td>
+<td style="text-align: right;">0.59</td>
+<td style="text-align: right;">-8.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>XBI</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/biotech-genomics.html">biotech-genomics</a></td>
+<td style="text-align: right;">$153.65</td>
+<td style="text-align: right;">$11B AUM</td>
+<td style="text-align: right;">+29.8% YTD</td>
+<td style="text-align: right;">0.4% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.4%</td>
+<td style="text-align: right;">1.10</td>
+<td style="text-align: right;">-7.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>XHE</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/medtech-devices.html">medtech-devices</a></td>
+<td style="text-align: right;">$87.33</td>
+<td style="text-align: right;">$151M AUM</td>
+<td style="text-align: right;">-4.5% YTD</td>
+<td style="text-align: right;">0.1% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.1%</td>
+<td style="text-align: right;">1.20</td>
+<td style="text-align: right;">-6.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>XLI</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/data-center-cooling.html">data-center-cooling</a>, <a href="../concepts/infrastructure-capex.html">infrastructure-capex</a>, <a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a></td>
+<td style="text-align: right;">$180.37</td>
+<td style="text-align: right;">$34B AUM</td>
+<td style="text-align: right;">+20.1% YTD</td>
+<td style="text-align: right;">1.1% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.1%</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: right;">-3.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>XLV</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a>, <a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a></td>
+<td style="text-align: right;">$161.95</td>
+<td style="text-align: right;">$41B AUM</td>
+<td style="text-align: right;">+3.4% YTD</td>
+<td style="text-align: right;">1.6% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">1.6%</td>
+<td style="text-align: right;">0.51</td>
+<td style="text-align: right;">-2.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>XSD</strong></td>
+<td style="text-align: center;">etf</td>
+<td><a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td style="text-align: right;">$497.13</td>
+<td style="text-align: right;">$3B AUM</td>
+<td style="text-align: right;">+94.1% YTD</td>
+<td style="text-align: right;">0.1% yld</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.1%</td>
+<td style="text-align: right;">2.68</td>
+<td style="text-align: right;">-24.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>XYL</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a></td>
+<td style="text-align: right;">$124.67</td>
+<td style="text-align: right;">$30B</td>
+<td style="text-align: right;">20.4x</td>
+<td style="text-align: right;">2.7%</td>
+<td style="text-align: right;">38.6%</td>
+<td style="text-align: right;">10.8%</td>
+<td style="text-align: right;">1.37%</td>
+<td style="text-align: right;">1.02</td>
+<td style="text-align: right;">-19.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>XYZ</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/fintech-payments.html">fintech-payments</a></td>
+<td style="text-align: right;">$79.48</td>
+<td style="text-align: right;">$47B</td>
+<td style="text-align: right;">15.7x</td>
+<td style="text-align: right;">4.9%</td>
+<td style="text-align: right;">45.1%</td>
+<td style="text-align: right;">3.3%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">2.54</td>
+<td style="text-align: right;">-5.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ZS</strong></td>
+<td style="text-align: center;">security</td>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: right;">$147.71</td>
+<td style="text-align: right;">$24B</td>
+<td style="text-align: right;">32.1x</td>
+<td style="text-align: right;">25.4%</td>
+<td style="text-align: right;">76.7%</td>
+<td style="text-align: right;">-2.4%</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">0.96</td>
+<td style="text-align: right;">-56.2%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="by-meta-force">By meta-force</h2>
+<p><strong>Compute &amp; AI stack:</strong> <a href="../concepts/ai-infrastructure.html">ai-infrastructure</a> · <a href="../concepts/semiconductors.html">semiconductors</a> · <a href="../concepts/ai-software-agents.html">ai-software-agents</a> · <a href="../concepts/networking-optical.html">networking-optical</a> · <a href="../concepts/cybersecurity.html">cybersecurity</a></p>
+<p><strong>Energy, power &amp; materials:</strong> <a href="../concepts/power-grid-electrification.html">power-grid-electrification</a> · <a href="../concepts/nuclear-uranium.html">nuclear-uranium</a> · <a href="../concepts/renewables-storage.html">renewables-storage</a> · <a href="../concepts/natural-gas-lng.html">natural-gas-lng</a> · <a href="../concepts/data-center-cooling.html">data-center-cooling</a> · <a href="../concepts/critical-minerals.html">critical-minerals</a></p>
+<p><strong>Reindustrialization &amp; defense:</strong> <a href="../concepts/defense-security.html">defense-security</a> · <a href="../concepts/infrastructure-capex.html">infrastructure-capex</a> · <a href="../concepts/automation-robotics.html">automation-robotics</a> · <a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a></p>
+<p><strong>Health &amp; demographics:</strong> <a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a> · <a href="../concepts/medtech-devices.html">medtech-devices</a> · <a href="../concepts/biotech-genomics.html">biotech-genomics</a> · <a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a></p>
+<p><strong>Financial transformation:</strong> <a href="../concepts/fintech-payments.html">fintech-payments</a> · <a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a></p>
+<p><strong>Geographies:</strong> <a href="../concepts/india-em-growth.html">india-em-growth</a> · <a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a> · <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a> · <a href="../concepts/asean-thailand.html">asean-thailand</a> · <a href="../concepts/china-contrarian.html">china-contrarian</a></p>
+<p><strong>Cross-cutting / real assets:</strong> <a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a> · <a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a> · <a href="../concepts/space-economy.html">space-economy</a> · <a href="../concepts/quantum-computing.html">quantum-computing</a></p>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<ul>
+<li><strong>Data source:</strong> yfinance <code>info</code> endpoint (single source). Market caps and ratios are point-in-time and move daily — re-run <code>refresh_instruments.py</code> before any decision.</li>
+<li><strong>Coverage:</strong> US-listed names only (foreign-listed tickers — Thai .BK, Vietnam, India .NS direct, Japan .T direct, Europe — are tracked qualitatively in the theme pages but excluded from this table for data reliability).</li>
+<li><strong>n/f cells:</strong> yfinance returns sparse data for some names (recent IPOs, small-caps, ADRs with thin coverage, SPACs). Cross-check on Yahoo Finance before acting.</li>
+<li><strong>Conviction tags</strong> are a snapshot of <a href="decision-register.html">decision-register</a>; reconcile on every DECIDE op.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<ul>
+<li><a href="decision-register.html">decision-register</a> — the sized decisions (conviction tag source)</li>
+<li><a href="signal-monitor.html">signal-monitor</a> — live macro/sentiment sensors</li>
+<li><a href="portfolio-blueprint.html">portfolio-blueprint</a> — how these assemble into a whole book</li>
+<li><a href="trend-radar.html">trend-radar</a> — the 28-theme conviction/stage table</li>
+<li>Per-theme detail: each <code>wiki/concepts/&lt;theme&gt;.md</code> page has its own live instrument table.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

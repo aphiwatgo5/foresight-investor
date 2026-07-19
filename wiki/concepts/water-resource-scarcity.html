@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Water &amp; Resource Scarcity</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Water &amp; Resource Scarcity
+type: concept
+trend: true
+tags: [investing, trend, cross-cutting, water, infrastructure, scarcity, datacenter, utilities]
+sources: []
+date: 2026-06-01
+conviction: 4
+stage: mature-accelerating
+horizon: 5-10y</div>
+<article>
+<h1 id="water-resource-scarcity">Water &amp; Resource Scarcity</h1>
+<p><strong>Definition:</strong> The investable response to freshwater scarcity — regulated water utilities<br />
+(American Water), water-technology and flow-control (Xylem, Veralto, Pentair), and water-treatment<br />
+chemicals (Ecolab) — now with an <strong>accelerating data-center cooling-water sub-theme</strong> as AI<br />
+compute drives explosive water demand. A defensive, demand-inelastic theme with a new growth<br />
+overlay. Conviction 4 on the <a href="../syntheses/trend-radar.html">trend-radar</a>.</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Figures tagged (fact)/(est.)/(inference) with<br />
+period + source. "n/f" = no reliable figure found.</p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>(a) <strong>Regulated utilities</strong> — American Water Works (AWK — rate-base compounder); (b) <strong>water tech/<br />
+flow</strong> — Xylem (XYL), Pentair (PNR), Roper (ROP — water + software); (c) <strong>treatment/analytics</strong> —<br />
+Veralto (VLTO), Ecolab (ECL — water/hygiene chemicals). Cross-cutting driver: scarcity + quality<br />
+regulation + the new AI-datacenter water-demand spike (links to <a href="data-center-cooling.html">data-center-cooling</a>).</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data-center water consumption</td>
+<td><strong>~2.97 trillion liters (2026)</strong></td>
+<td>2026</td>
+<td>industry/research est.</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>DC water-demand CAGR</td>
+<td><strong>~11.84%</strong> (to 2031)</td>
+<td>2026 → 2031</td>
+<td>research est.</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Global water/wastewater market</td>
+<td><strong>large, low-double-digit % growth in tech segments</strong></td>
+<td>2026</td>
+<td>multiple</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>US water-utility rate-base growth</td>
+<td><strong>mid-to-high single digit (regulated compounding)</strong></td>
+<td>2026</td>
+<td>utility filings</td>
+<td>(est.)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand:</strong> population growth + urbanization; aging water infrastructure needing trillions in<br />
+replacement (US esp.); tightening water-quality regulation (PFAS, lead-pipe replacement); and a<br />
+new, fast-growing <strong>data-center cooling-water</strong> demand wave (~11.84% CAGR) as AI compute scales<br />
+(<a href="data-center-cooling.html">data-center-cooling</a>, <a href="ai-infrastructure.html">ai-infrastructure</a>). <strong>Supply:</strong> scarcity itself — climate stress,<br />
+droughts, depleting aquifers — makes water rights, treatment tech, and efficiency increasingly<br />
+valuable. Regulated utilities earn allowed returns on rising rate base.</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p>Source/utilities (AWK own water rights + distribution, earn regulated returns) → equipment/flow<br />
+(Xylem, Pentair pumps/metering) → treatment/analytics (Veralto, Ecolab chemicals + monitoring) →<br />
+end users (municipal, industrial, <strong>data centers</strong>). The AI-datacenter cooling-water demand is<br />
+the key new linkage to <a href="data-center-cooling.html">data-center-cooling</a> / <a href="ai-infrastructure.html">ai-infrastructure</a> / <a href="power-grid-electrification.html">power-grid-electrification</a>.<br />
+Utility valuations are rate-sensitive (<a href="../syntheses/macro-regime.html">macro-regime</a>). Adjacent to <a href="infrastructure-capex.html">infrastructure-capex</a><br />
+(water infrastructure spend).</p>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<p>Defensive, moat-rich structure: regulated utilities (AWK) are local monopolies with rate-base<br />
+compounding and acquisition roll-up of fragmented municipal systems; water-tech (Xylem, Pentair)<br />
+has installed-base + specification moats; Ecolab/Veralto have switching-cost-heavy chemical/<br />
+service models. Moats: regulatory monopoly + rate base (utilities), installed base + service<br />
+contracts (tech/chemicals), and scale. Demand is highly inelastic — water is non-discretionary.</p>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps point-in-time (~May 2026, est.). Other figures (fact) unless tagged.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of)</th>
+<th>Rev growth</th>
+<th>Profitability</th>
+<th>Other</th>
+<th>Moat note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>American Water Works</td>
+<td>AWK</td>
+<td>US</td>
+<td>Regulated water utility</td>
+<td>n/f (large-cap)</td>
+<td>rate-base driven</td>
+<td>regulated returns</td>
+<td>largest US water utility</td>
+<td>Monopoly + rate-base roll-up moat</td>
+</tr>
+<tr>
+<td>Xylem</td>
+<td>XYL</td>
+<td>US</td>
+<td>Water tech/pumps/metering</td>
+<td>n/f (large-cap)</td>
+<td>mid-single-digit+</td>
+<td>solid margin</td>
+<td>smart-metering growth</td>
+<td>Installed base + spec moat</td>
+</tr>
+<tr>
+<td>Veralto</td>
+<td>VLTO</td>
+<td>US</td>
+<td>Water analytics/treatment</td>
+<td>n/f (large-cap)</td>
+<td>mid-single-digit</td>
+<td>high margin</td>
+<td>Danaher spinout</td>
+<td>Service/consumables model</td>
+</tr>
+<tr>
+<td>Ecolab</td>
+<td>ECL</td>
+<td>US</td>
+<td>Water/hygiene chemicals</td>
+<td>n/f (large-cap)</td>
+<td>mid-single-digit</td>
+<td>high margin</td>
+<td>water-efficiency services</td>
+<td>Switching-cost chemical moat</td>
+</tr>
+<tr>
+<td>Pentair</td>
+<td>PNR</td>
+<td>US</td>
+<td>Water flow/filtration</td>
+<td>n/f (large-cap)</td>
+<td>low-single-digit</td>
+<td>solid margin</td>
+<td>pool + filtration</td>
+<td>Brand + distribution</td>
+</tr>
+<tr>
+<td>Roper Technologies</td>
+<td>ROP</td>
+<td>US</td>
+<td>Water software + niche tech</td>
+<td>n/f (large-cap)</td>
+<td>mid-single-digit</td>
+<td>high margin</td>
+<td>software-heavy mix</td>
+<td>Niche-software compounding moat</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p>Water is a <strong>defensive compounder with a new growth kicker</strong>. The core — regulated utilities (AWK)<br />
+and water-tech/treatment (Xylem, Veralto, Ecolab) — offers inelastic demand, monopoly/installed-<br />
+base moats, and steady rate-base or service-driven compounding: classic all-weather quality. What<br />
+<em>upgrades</em> the theme to a 4 is the <strong>AI-datacenter cooling-water demand wave</strong> (~2.97T liters in<br />
+2026, ~11.84% CAGR) — a genuine, fast-growing new demand source layered onto an already-scarce<br />
+resource, directly linked to the <a href="data-center-cooling.html">data-center-cooling</a> and <a href="ai-infrastructure.html">ai-infrastructure</a> build-out.<br />
+American Water is the purest regulated compounder; Xylem and Veralto are the best ways to play<br />
+the tech/efficiency + datacenter angle. The main caution is that utilities are rate-sensitive<br />
+(valuations compress in high-rate regimes) and the tech names are not cheap. Net: high-quality,<br />
+durable, with rare defensive + AI-linked-growth characteristics — one of the cleaner cross-cutting<br />
+themes.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Interest-rate sensitivity</strong> — regulated-utility valuations compress when rates rise (<a href="../syntheses/macro-regime.html">macro-regime</a>).</li>
+<li><strong>Regulatory/rate-case risk</strong> — allowed returns can be cut by regulators.</li>
+<li><strong>Valuation</strong> — quality water names trade at premium multiples.</li>
+<li><strong>DC water-demand backlash</strong> — local opposition / regulation could curb data-center water use<br />
+  (which would also accelerate <a href="data-center-cooling.html">data-center-cooling</a> closed-loop/liquid solutions).</li>
+<li><strong>Capex/execution</strong> on infrastructure replacement; weather/drought variability.</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li><strong>PHO</strong> (Invesco Water Resources), <strong>FIW</strong> (First Trust Water), <strong>CGW</strong> (Invesco S&amp;P Global<br />
+  Water). <em>(Verify AUM/ER/holdings.)</em></li>
+<li>Representative securities: AWK (regulated compounder), XYL/VLTO (water tech + DC angle),<br />
+  ECL (treatment chemicals), PNR/ROP (flow/software).</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 4/5</strong> — a rare combination of defensive, inelastic-demand quality (utilities/<br />
+  treatment) <em>plus</em> a structural new-growth overlay (AI-datacenter cooling water). Durable moats<br />
+  and an unstoppable scarcity backdrop. Held below 5 by rate sensitivity and premium valuations.</li>
+<li><strong>Stage: mature core + accelerating data-center sub-theme. Horizon: 5–10 years.</strong></li>
+<li><strong>Invalidation:</strong> a sustained high-rate regime that structurally de-rates utilities, OR<br />
+  regulatory rate-case reversals that impair the rate-base compounding model.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PHO</strong></td>
+<td>Water (Invesco)</td>
+<td style="text-align: right;">$69.33</td>
+<td style="text-align: right;">$2B</td>
+<td style="text-align: right;">-1.5%</td>
+<td style="text-align: right;">0.6%</td>
+<td style="text-align: right;">n/f · 0.90</td>
+<td style="text-align: right;">-7.5%</td>
+<td>🟢 ADD 3–4%</td>
+</tr>
+<tr>
+<td><strong>FIW</strong></td>
+<td>Water (First Trust)</td>
+<td style="text-align: right;">$108.85</td>
+<td style="text-align: right;">$2B</td>
+<td style="text-align: right;">+1.2%</td>
+<td style="text-align: right;">0.7%</td>
+<td style="text-align: right;">n/f · 0.97</td>
+<td style="text-align: right;">-6.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CGW</strong></td>
+<td>Water (Lyxor)</td>
+<td style="text-align: right;">$66.18</td>
+<td style="text-align: right;">$1B</td>
+<td style="text-align: right;">+4.2%</td>
+<td style="text-align: right;">1.5%</td>
+<td style="text-align: right;">n/f · 0.78</td>
+<td style="text-align: right;">-4.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AWK</strong></td>
+<td>Largest US water utility</td>
+<td style="text-align: right;">$135.61</td>
+<td style="text-align: right;">$26B</td>
+<td style="text-align: right;">20.7x</td>
+<td style="text-align: right;">5.7%</td>
+<td style="text-align: right;">21.2% · 0.60</td>
+<td style="text-align: right;">-8.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>XYL</strong></td>
+<td>Water tech</td>
+<td style="text-align: right;">$124.67</td>
+<td style="text-align: right;">$30B</td>
+<td style="text-align: right;">20.4x</td>
+<td style="text-align: right;">2.7%</td>
+<td style="text-align: right;">10.8% · 1.02</td>
+<td style="text-align: right;">-19.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VLTO</strong></td>
+<td>Water quality spinoff</td>
+<td style="text-align: right;">$94.01</td>
+<td style="text-align: right;">$23B</td>
+<td style="text-align: right;">20.1x</td>
+<td style="text-align: right;">6.8%</td>
+<td style="text-align: right;">17.3% · 0.78</td>
+<td style="text-align: right;">-14.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ECL</strong></td>
+<td>Water/hygiene</td>
+<td style="text-align: right;">$275.75</td>
+<td style="text-align: right;">$78B</td>
+<td style="text-align: right;">29.5x</td>
+<td style="text-align: right;">10.0%</td>
+<td style="text-align: right;">12.8% · 0.90</td>
+<td style="text-align: right;">-10.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PNR</strong></td>
+<td>Pumps/filtration</td>
+<td style="text-align: right;">$63.72</td>
+<td style="text-align: right;">$10B</td>
+<td style="text-align: right;">11.7x</td>
+<td style="text-align: right;">2.6%</td>
+<td style="text-align: right;">16.0% · 1.03</td>
+<td style="text-align: right;">-44.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ROP</strong></td>
+<td>Diversified industrial software</td>
+<td style="text-align: right;">$361.17</td>
+<td style="text-align: right;">$36B</td>
+<td style="text-align: right;">15.1x</td>
+<td style="text-align: right;">11.3%</td>
+<td style="text-align: right;">21.1% · 0.75</td>
+<td style="text-align: right;">-36.2%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>AI-datacenter demand: <a href="data-center-cooling.html">data-center-cooling</a>, <a href="ai-infrastructure.html">ai-infrastructure</a>, <a href="power-grid-electrification.html">power-grid-electrification</a>.<br />
+  Infrastructure spend: <a href="infrastructure-capex.html">infrastructure-capex</a>. Rates: <a href="../syntheses/macro-regime.html">macro-regime</a>. Master: <a href="../syntheses/trend-radar.html">trend-radar</a>.<br />
+  Linkage: <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>How large does data-center water demand get before it triggers regulation or forces closed-loop cooling?</li>
+<li>Do premium water-quality valuations hold, or compress in a higher-rate world?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>Industry/research estimates (data-center water consumption + CAGR); US water-utility rate-base<br />
+filings; company disclosures (American Water, Xylem, Veralto, Ecolab, Pentair, Roper), 2026.</p>
+</article>
+</div>
+</body>
+</html>

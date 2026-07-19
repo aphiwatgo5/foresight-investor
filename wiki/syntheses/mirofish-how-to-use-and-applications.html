@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MiroFish — How to use &amp; applications</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: MiroFish — How to use &amp; applications
+type: synthesis
+tags: [mirofish, how-to, use-cases, multi-agent, guide]
+sources: [[[mirofish]]]
+date: 2026-05-30</div>
+<article>
+<h1 id="mirofish-how-to-use-applications">MiroFish — How to use &amp; applications</h1>
+<p><strong>Bottom line:</strong> MiroFish is a "rehearse-the-future" sandbox. You install it, plug in two API<br />
+keys (an LLM + a memory service), feed it a real-world situation, and it runs a world of<br />
+thousands of AI agents to produce a prediction report you can interrogate. Below: how to set<br />
+it up and run it, and what it's actually good for. (All from <a href="../sources/mirofish.html">mirofish</a>; claims are the<br />
+project's own.)</p>
+<hr />
+<h2 id="part-1-how-to-use-it">Part 1 — How to use it</h2>
+<h3 id="a-what-you-need-first-prerequisites">A. What you need first (prerequisites)</h3>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Version</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node.js</td>
+<td>18+</td>
+<td>Frontend (includes npm)</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>3.11–3.12</td>
+<td>Backend</td>
+</tr>
+<tr>
+<td>uv</td>
+<td>latest</td>
+<td>Python package manager</td>
+</tr>
+</tbody>
+</table>
+<p>Plus two API keys:<br />
+- <strong>LLM key</strong> — any OpenAI-SDK-compatible API. Project recommends Alibaba <strong>Qwen-plus</strong> via<br />
+  the Bailian platform. (<a href="../entities/zep.html">zep</a> is separate — see below.)<br />
+- <strong>Zep key</strong> — <a href="../entities/zep.html">zep</a> cloud, for the agents' long-term memory. Free monthly quota is<br />
+  enough for simple use.</p>
+<h3 id="b-install-start-one-time-setup">B. Install &amp; start (one-time setup)</h3>
+<ol>
+<li>Copy the config template: <code>cp .env.example .env</code></li>
+<li>Edit <code>.env</code> and fill in the keys:<br />
+   ```<br />
+   # Option A — Alibaba Qwen (DashScope)<br />
+   LLM_API_KEY=your_dashscope_api_key<br />
+   LLM_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1<br />
+   LLM_MODEL_NAME=qwen-plus</li>
+</ol>
+<p># Option B — Google Gemini<br />
+   LLM_API_KEY=your_gemini_api_key<br />
+   LLM_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai/<br />
+   LLM_MODEL_NAME=gemini-2.5-flash</p>
+<p># Zep (agent long-term memory)<br />
+   ZEP_API_KEY=your_zep_api_key<br />
+<code>``
+3. Install everything:</code>npm run setup:all<code>4. Start it:</code>npm run dev<code>- Frontend →</code>http://localhost:3000<code>- Backend API →</code>http://localhost:5001<code>5. **Or** with Docker:</code>cp .env.example .env<code>then</code>docker compose up -d` (maps ports 3000/5001).</p>
+<h3 id="c-how-you-actually-use-it-the-day-to-day-flow">C. How you actually use it (the day-to-day flow)</h3>
+<p>You only do two things; MiroFish does the rest:<br />
+1. <strong>Upload "seed" materials</strong> — a data/analysis report, a news item, a policy draft, or even<br />
+   a story.<br />
+2. <strong>Describe what you want to predict</strong> in plain natural language.</p>
+<p>Then MiroFish runs its 5-stage pipeline (<a href="../concepts/multi-agent-simulation.html">multi-agent-simulation</a>):<br />
+1. <strong>Graph Building</strong> — extracts the seed info and builds a knowledge graph (<a href="../concepts/graphrag.html">graphrag</a>).<br />
+2. <strong>Environment Setup</strong> — generates agent personas and relationships.<br />
+3. <strong>Simulation</strong> — thousands of agents interact over simulated time (<a href="../concepts/swarm-intelligence.html">swarm-intelligence</a>).<br />
+4. <strong>Report Generation</strong> — a ReportAgent writes up a detailed prediction report.<br />
+5. <strong>Deep Interaction</strong> — you can chat with any agent in the simulated world, or with the<br />
+   ReportAgent, and inject "what if" variables from a god's-eye view.</p>
+<blockquote>
+<p><strong>Cost tip:</strong> the project warns it's "high consumption." Start with simulations of <strong>fewer<br />
+than 40 rounds</strong> before scaling up. (<a href="../sources/mirofish.html">mirofish</a>)</p>
+</blockquote>
+<hr />
+<h2 id="part-2-applications-what-its-good-for">Part 2 — Applications (what it's good for)</h2>
+<p>MiroFish frames two levels of use:</p>
+<h3 id="macro-a-rehearsal-lab-for-decision-makers">Macro — a rehearsal lab for decision-makers</h3>
+<p>Test high-stakes decisions in a zero-risk virtual world <em>before</em> acting for real:<br />
+- <strong>Public-opinion / PR simulation</strong> — e.g. the project's demo simulating a university<br />
+  public-opinion event (Wuhan University). Rehearse how an announcement or crisis would land.<br />
+- <strong>Policy testing</strong> — try a policy draft and see how a simulated population reacts.<br />
+- <strong>Financial / market prediction</strong> — feed financial signals and deduce trajectories<br />
+  (listed as a coming example).</p>
+<h3 id="micro-a-creative-sandbox-for-individuals">Micro — a creative sandbox for individuals</h3>
+<p>Playful "what if" exploration:<br />
+- <strong>Story / narrative endings</strong> — the demo predicts the <em>lost</em> ending of <em>Dream of the Red<br />
+  Chamber</em> from its first 80 chapters.<br />
+- <strong>Imaginative scenarios</strong> — explore any hypothetical and watch it play out.</p>
+<h3 id="the-unifying-idea">The unifying idea</h3>
+<p>From serious forecasting to playful simulation, MiroFish's pitch is to let every "what if"<br />
+see its outcome — <em>rehearse the future in a digital sandbox, win decisions after countless<br />
+simulations.</em></p>
+<hr />
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<ul>
+<li>This is a faithful how-to/use-case extraction from the README <strong>only</strong> — no hands-on<br />
+  verification, no independent benchmark of prediction accuracy.</li>
+<li>Cost in real money/tokens is unquantified beyond the "&lt;40 rounds first" warning.</li>
+<li>"Dual-platform parallel simulation" is named but the two platforms aren't specified.</li>
+<li>Try the live demo (666ghj.github.io/mirofish-demo) to ground these steps in reality.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

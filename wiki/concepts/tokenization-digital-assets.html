@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tokenization &amp; Digital Assets</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Tokenization &amp; Digital Assets
+type: concept
+trend: true
+tags: [investing, trend, fintech, crypto, stablecoins, bitcoin, tokenization, rwa, digital-assets]
+sources: []
+date: 2026-06-01
+conviction: 3
+stage: accelerating
+horizon: 3-10y</div>
+<article>
+<h1 id="tokenization-digital-assets">Tokenization &amp; Digital Assets</h1>
+<p><strong>Definition:</strong> Three intertwined sub-themes: (a) <strong>stablecoins</strong> under the new US GENIUS Act framework;<br />
+(b) <strong>Bitcoin/crypto as an institutional asset class</strong> post-spot-ETF (IBIT) plus crypto-exposed equities<br />
+(COIN, MSTR, CRCL); (c) <strong>real-world-asset (RWA) tokenization</strong> (on-chain Treasuries/funds — BlackRock<br />
+BUIDL). The unifying thesis: traditional finance migrating onto blockchain settlement rails. Conviction<br />
+3 on the <a href="../syntheses/trend-radar.html">trend-radar</a>; crypto was in a ~45% drawdown entering mid-2026 — read metrics as cyclical.</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Figures tagged (fact)/(est.)/(inference) with<br />
+period + source. "n/f" = no reliable figure found.</p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>(a) <strong>Stablecoins</strong> — fiat-pegged tokens now under a US federal charter regime (GENIUS Act): Circle<br />
+(USDC, compliant leader), Tether (USDT, larger but offshore); (b) <strong>BTC/crypto asset class</strong> — spot ETFs<br />
+(IBIT), corporate-treasury proxies (MSTR/Strategy), exchanges/custody (Coinbase); (c) <strong>RWA<br />
+tokenization</strong> — BlackRock (BUIDL), Franklin Templeton, Securitize (infra). Regulation is now the<br />
+primary moat-creator.</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total crypto market cap</td>
+<td><strong>~$2.57T (~57% BTC dominance); ~−45% below Oct-2025 peak</strong></td>
+<td>1 Jun 2026</td>
+<td>CoinGecko/CoinMarketCap</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Bitcoin price</td>
+<td><strong>~$73,303 (2026 ATH ~$75,824 on 27 May 26)</strong></td>
+<td>1 Jun 2026</td>
+<td>Coinbase/Statista</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Stablecoin market cap</td>
+<td><strong>record ~$320–322B (~12.3% of crypto cap)</strong></td>
+<td>May 2026</td>
+<td>CoinDesk/DefiLlama</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>RWA tokenization (ex-stablecoins)</td>
+<td><strong>~$31–32B</strong> (from ~$21B Jan'26, ~+30% QoQ)</td>
+<td>2026</td>
+<td>RWA.xyz/Binance Research</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>RWA long-run forecasts</td>
+<td><strong>~$1.6T (Binance) to ~$18.9T (Ripple/BCG by 2033)</strong></td>
+<td>2030–2033</td>
+<td>multiple (wide dispersion)</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>IBIT (BlackRock spot-BTC ETF)</td>
+<td><strong>812,491 BTC held; &gt;$100B AUM &lt;2yrs post-launch</strong></td>
+<td>11 May 2026</td>
+<td>The Block</td>
+<td>(fact)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand:</strong> institutional allocation legitimized by spot ETFs (IBIT); corporate-treasury BTC adoption<br />
+(MSTR 818,334 BTC); stablecoins as dollar-access/payments rails (USDC on-chain volume +263% to $21.5T in<br />
+Q1'26); tokenized Treasuries offering on-chain yield (BUIDL). <strong>Supply:</strong> the <strong>GENIUS Act</strong> (enacted<br />
+2025-07-18) created a federal stablecoin charter — OCC conditionally granted national trust-bank charters<br />
+to Circle, Paxos + others (Dec 2025); BlackRock/JPMorgan/Franklin building tokenization infra; Securitize<br />
+providing issuance plumbing.</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p>Issuers/protocols (Circle→USDC, Tether→USDT; BlackRock+Securitize→BUIDL) mint reserve-backed tokens →<br />
+exchanges/custodians (Coinbase) provide on/off-ramps, trading, custody → ETF sponsors (BlackRock/IBIT)<br />
+wrap BTC for TradFi → treasury-proxy equities (MSTR) act as leveraged BTC beta → RWA platforms tokenize<br />
+off-chain assets. Monetizes via reserve income (Circle $694M Q1'26 rev, +20%), trading/custody fees<br />
+(Coinbase $1.41B Q1'26 rev), and management fees (IBIT, BUIDL). Direct disruption link to<br />
+<a href="fintech-payments.html">fintech-payments</a> (stablecoin settlement vs card rails).</p>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<p>Bifurcated by regulatory posture post-GENIUS. <strong>Stablecoins</strong> consolidating around regulated US issuers:<br />
+Circle (USDC) is the compliant institutional leader with a first-mover charter; Tether (USDT, larger but<br />
+offshore) faces a US-distribution question mark. <strong>Exchanges/custody</strong> dominated by Coinbase (compliant US<br />
+incumbent — regulatory moat). <strong>ETF distribution</strong> is BlackRock's to lose (IBIT scale + brand). <strong>RWA</strong><br />
+is early, led by TradFi giants (BlackRock, Franklin) + infra (Securitize) — nascent moats. <strong>Treasury<br />
+proxies</strong> (MSTR) have no operating moat — pure financial engineering. Regulation is the moat-creator.</p>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps point-in-time (~May 2026, est.); ranges where sources diverge. Other figures (fact) unless tagged.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of)</th>
+<th>Revenue (period)</th>
+<th>Rev YoY</th>
+<th>Profitability</th>
+<th>Other</th>
+<th>Moat note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BlackRock</td>
+<td>BLK</td>
+<td>US</td>
+<td>ETF sponsor (IBIT) + RWA (BUIDL)</td>
+<td>n/f (large-cap)</td>
+<td>n/f (crypto small)</td>
+<td>n/f</td>
+<td>profitable (parent)</td>
+<td>IBIT 812,491 BTC; BUIDL ~$2.5–2.85B</td>
+<td>Distribution + brand; dominant ETF moat</td>
+</tr>
+<tr>
+<td>Coinbase</td>
+<td>COIN</td>
+<td>US</td>
+<td>Exchange/custody</td>
+<td>~$44–51B (May 26)</td>
+<td>$1.41B (Q1-CY26)</td>
+<td>n/f</td>
+<td>GAAP net loss $1.49/sh (Q1)</td>
+<td>USDC partner; regulated US incumbent</td>
+<td>Compliance moat; rev volatile</td>
+</tr>
+<tr>
+<td>Circle</td>
+<td>CRCL</td>
+<td>US</td>
+<td>Stablecoin issuer (USDC)</td>
+<td>~$28.1B (2026)</td>
+<td>$694M (Q1-CY26)</td>
+<td>+20%</td>
+<td>"record margins" cited</td>
+<td>USDC on-chain vol $21.5T +263%</td>
+<td>GENIUS charter; compliant USDC leader</td>
+</tr>
+<tr>
+<td>Strategy (MicroStrategy)</td>
+<td>MSTR</td>
+<td>US</td>
+<td>BTC treasury proxy</td>
+<td>~$43–56B (May 26)</td>
+<td>n/f (software immaterial)</td>
+<td>n/f</td>
+<td>Q1'26 ~$12.5B loss (BTC mark)</td>
+<td>818,334 BTC; first BTC sale since 2022 (late May)</td>
+<td>No moat; leveraged BTC beta</td>
+</tr>
+<tr>
+<td>Tether</td>
+<td>(private)</td>
+<td>offshore</td>
+<td>Stablecoin issuer (USDT)</td>
+<td>n/f (private)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>USDT &gt;$183B cap</td>
+<td>Largest stablecoin; US-regulatory overhang</td>
+</tr>
+<tr>
+<td>Franklin Templeton</td>
+<td>BEN</td>
+<td>US</td>
+<td>RWA tokenization (BENJI)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>early tokenized-MMF player</td>
+<td>TradFi distribution</td>
+</tr>
+<tr>
+<td>Securitize</td>
+<td>(private)</td>
+<td>US</td>
+<td>RWA infra (BUIDL plumbing)</td>
+<td>n/f (private)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>BUIDL issuance partner</td>
+<td>Infra/first-mover in RWA rails</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p>GENIUS split the field into "compliant winners" and "regulatory question marks." <strong>Circle</strong> is the<br />
+cleanest stablecoin pure-play — a regulated USDC issuer with a national trust charter, surging on-chain<br />
+volume, and reserve-income economics that scale with rates/float; its risk is rate sensitivity (income<br />
+falls if rates drop) and Tether/bank competition. <strong>Coinbase</strong> is the compliant US gateway with a genuine<br />
+regulatory moat, but revenue is highly cyclical (Q1'26 GAAP loss during the drawdown). <strong>BlackRock</strong> is<br />
+the lowest-risk way to own institutional adoption (IBIT &gt;$100B, BUIDL lead) — but crypto is immaterial to<br />
+BLK earnings, diluting the thematic exposure. <strong>MSTR</strong> is leveraged BTC beta with no operating moat; its<br />
+$12.5B Q1'26 mark-to-market loss and first BTC sale since 2022 are sentiment flags. <strong>RWA tokenization</strong><br />
+is the most promising long term but smallest today (~$32B) with the widest forecast dispersion.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Regulatory execution</strong> — GENIUS final rules still pending; reserve/redemption/foreign-issuer<br />
+  treatment unsettled.</li>
+<li><strong>Crypto price cyclicality</strong> — ~45% drawdown from Oct'25 peak directly hits COIN, MSTR, IBIT fees.</li>
+<li><strong>Stablecoin rate sensitivity</strong> — Circle reserve income falls if rates decline; depeg/run risk.</li>
+<li><strong>MSTR leverage/refinancing</strong> — model depends on issuing at premiums; BTC sale may signal stress.</li>
+<li><strong>RWA adoption uncertainty</strong> — order-of-magnitude forecast dispersion; could lag badly.</li>
+<li><strong>Counterparty/custody/smart-contract</strong> risk; Tether opacity.</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li><strong>IBIT</strong> (BlackRock spot-BTC), <strong>FBTC</strong> (Fidelity), spot-ETH ETFs, crypto-equity ETFs (BITQ, BLOK). <em>(Verify AUM/ER.)</em></li>
+<li>Representative securities: CRCL (stablecoin pure-play), COIN (compliant exchange), MSTR (leveraged BTC<br />
+  proxy), BLK/BEN (diversified TradFi-on-chain). Direct BTC/ETH for asset-class exposure.</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 3/5</strong> — a structural TradFi-onto-blockchain trend with the safest wrapper (IBIT/BlackRock)<br />
+  and a genuine post-GENIUS stablecoin inflection (Circle), but capped by crypto cyclicality, rate<br />
+  sensitivity, and the speculative/early state of RWA. Sub-scores: institutional/stablecoin 3; RWA 2<br />
+  (high optionality, early); crypto-proxy equities 2 (volatile).</li>
+<li><strong>Stage: accelerating (post-GENIUS). Horizon: 3–10 years.</strong></li>
+<li><strong>Invalidation:</strong> adverse final GENIUS rules / regulatory reversal, OR sustained ETF outflows, OR<br />
+  RWA adoption stalling below ~$100B by 2028.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IBIT</strong></td>
+<td>BlackRock spot BTC</td>
+<td style="text-align: right;">$35.81</td>
+<td style="text-align: right;">$43B</td>
+<td style="text-align: right;">-33.0%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f · 0.00</td>
+<td style="text-align: right;">-50.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FBTC</strong></td>
+<td>Fidelity spot BTC</td>
+<td style="text-align: right;">$55.01</td>
+<td style="text-align: right;">$10B</td>
+<td style="text-align: right;">-33.0%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f · 0.00</td>
+<td style="text-align: right;">-50.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BITQ</strong></td>
+<td>Crypto equities</td>
+<td style="text-align: right;">$22.02</td>
+<td style="text-align: right;">$411M</td>
+<td style="text-align: right;">+22.9%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f · 3.52</td>
+<td style="text-align: right;">-30.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BLOK</strong></td>
+<td>Crypto equities</td>
+<td style="text-align: right;">$57.99</td>
+<td style="text-align: right;">$1B</td>
+<td style="text-align: right;">+10.4%</td>
+<td style="text-align: right;">0.8%</td>
+<td style="text-align: right;">n/f · 2.55</td>
+<td style="text-align: right;">-23.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BLK</strong></td>
+<td>BlackRock (IBIT issuer)</td>
+<td style="text-align: right;">$1,072.09</td>
+<td style="text-align: right;">$174B</td>
+<td style="text-align: right;">16.7x</td>
+<td style="text-align: right;">27.0%</td>
+<td style="text-align: right;">24.4% · 1.44</td>
+<td style="text-align: right;">-12.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>COIN</strong></td>
+<td>Coinbase exchange</td>
+<td style="text-align: right;">$155.96</td>
+<td style="text-align: right;">$41B</td>
+<td style="text-align: right;">32.9x</td>
+<td style="text-align: right;">-30.8%</td>
+<td style="text-align: right;">12.7% · 3.35</td>
+<td style="text-align: right;">-64.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CRCL</strong></td>
+<td>Circle stablecoin</td>
+<td style="text-align: right;">$59.78</td>
+<td style="text-align: right;">$16B</td>
+<td style="text-align: right;">30.9x</td>
+<td style="text-align: right;">20.0%</td>
+<td style="text-align: right;">-2.8% · n/f</td>
+<td style="text-align: right;">-77.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MSTR</strong></td>
+<td>Strategy/BTC proxy</td>
+<td style="text-align: right;">$93.58</td>
+<td style="text-align: right;">$34B</td>
+<td style="text-align: right;">21.0x</td>
+<td style="text-align: right;">11.9%</td>
+<td style="text-align: right;">0.0% · 3.54</td>
+<td style="text-align: right;">-79.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BEN</strong></td>
+<td>Franklin Templeton</td>
+<td style="text-align: right;">$32.65</td>
+<td style="text-align: right;">$17B</td>
+<td style="text-align: right;">10.5x</td>
+<td style="text-align: right;">8.7%</td>
+<td style="text-align: right;">8.1% · 1.58</td>
+<td style="text-align: right;">-6.5%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Disruption of: <a href="fintech-payments.html">fintech-payments</a> (stablecoin settlement). Macro/debasement link:<br />
+<a href="commodities-gold-real-assets.html">commodities-gold-real-assets</a>. Macro: <a href="../syntheses/macro-regime.html">macro-regime</a>. Master: <a href="../syntheses/trend-radar.html">trend-radar</a>. Linkage:<br />
+<a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Does the GENIUS framework make USDC the default institutional dollar-rail, or does Tether retain scale?</li>
+<li>Does RWA tokenization reach escape velocity, or stay a TradFi pilot for years?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>CoinGecko Q1 2026 report; CoinDesk/DefiLlama (stablecoins); RWA.xyz/Binance Research (tokenization);<br />
+The Block (IBIT); GENIUS Act (Congress.gov/Federal Register); Circle Q1 2026; Coinbase Q1 2026 10-Q;<br />
+MicroStrategy Q1 2026, 2026.</p>
+</article>
+</div>
+</body>
+</html>

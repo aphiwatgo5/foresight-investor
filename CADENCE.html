@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Operating Cadence</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="home.html">🏠 Home</a> ·
+    <a href="hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+
+<article>
+<h1 id="operating-cadence">Operating Cadence</h1>
+<blockquote>
+<p>The rhythm that keeps this engine from going stale. The 2026-06-28 burst followed by a 16-day<br />
+silence is the failure mode this doc exists to prevent. Pin it; follow it.</p>
+</blockquote>
+<p><strong>Insight &amp; decisions for the operator's own book — not personalized advice to others.</strong> See<br />
+<code>CLAUDE.md</code> for the full schema; this file defines <em>when</em> each operation runs.</p>
+<hr />
+<h2 id="the-three-rhythms">The three rhythms</h2>
+<h3 id="1-monitor-weekly-every-weekend-sunday">1. MONITOR — weekly (every weekend, ~Sunday)</h3>
+<p>The lightest touch. Catches regime shifts before they become surprises.</p>
+<p><strong>🤖 Auto (Sunday 06:00, no human needed):</strong> a macOS <code>launchd</code> job runs<br />
+<code>scripts/weekly_refresh.sh</code>, which chains the three refresh scripts:<br />
+1. <code>scripts/refresh.py --macro</code> — pulls live macro/sentiment indicators → <code>_snapshot.json</code><br />
+2. <code>scripts/refresh_instruments.py</code> — pulls data for all ~250 instruments → <code>_instruments.json</code><br />
+3. <code>scripts/build_instrument_tables.py</code> — regenerates <a href="wiki/syntheses/instrument-universe.html">instrument-universe</a> + the per-theme<br />
+   instrument tables on all 30 concept pages.</p>
+<p>The job auto-commits the result (no push — publishing is manual via <code>scripts/deploy_web.sh</code>).<br />
+Logs at <code>scripts/_logs/cron.log</code>. Install/uninstall commands in<br />
+<code>scripts/com.foresight-investor.weekly-refresh.plist</code>.</p>
+<p><strong>Then the human/agent MONITOR pass</strong> (review what the auto-refresh produced):<br />
+- Read <code>_snapshot.json</code> + <a href="wiki/syntheses/signal-monitor.html">signal-monitor</a> — flag anything that crossed a warn/flip threshold.<br />
+- If a threshold flipped → escalate to that theme page + <a href="wiki/syntheses/regime-monitor.html">regime-monitor</a>; note in the<br />
+<a href="wiki/syntheses/decision-register.html">decision-register</a> if it triggers an action.<br />
+- Check <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a> for any call whose <code>resolve-by</code> passed → score it (✅/❌/◐).<br />
+- Append a <code>## [date] monitor | &lt;headline&gt;</code> line to <code>log.md</code>; refresh <code>hotcache.md</code>.</p>
+<p><strong>Time budget:</strong> ~15 min of review (the data pull is now automated). This is the floor — <em>never</em><br />
+skip two weeks in a row.</p>
+<h3 id="2-scan-monthly-first-weekend-of-the-month">2. SCAN — monthly (first weekend of the month)</h3>
+<p>The radar refresh. Full <a href="wiki/syntheses/trend-radar.html">trend-radar</a> + <a href="wiki/syntheses/watchlist.html">watchlist</a> pass:<br />
+- Re-score conviction/stage on every theme (or at least the active clusters); note what moved &amp; why.<br />
+- Adjust <a href="wiki/syntheses/watchlist.html">watchlist</a> (add/remove names; update entry triggers + invalidations as data shifts).<br />
+- Update <a href="wiki/syntheses/frontier-watch.html">frontier-watch</a> — promote any emerging theme whose score now justifies a concept page.<br />
+- Reconcile <a href="wiki/syntheses/decision-register.html">decision-register</a> realized/exit decisions into <a href="wiki/syntheses/track-record.html">track-record</a>; compute rolling<br />
+  hit-rate + alpha vs VOO.<br />
+- Refresh <a href="wiki/syntheses/macro-regime.html">macro-regime</a> and <a href="wiki/syntheses/theme-linkage-map.html">theme-linkage-map</a> reads.<br />
+- Append <code>## [date] scan | &lt;headline&gt;</code> to <code>log.md</code>; refresh <code>hotcache.md</code> + <code>index.md</code>.</p>
+<p><strong>Time budget:</strong> ~1–2 hours.</p>
+<h3 id="3-review-quarterly-and-the-annual">3. REVIEW — quarterly (and the annual)</h3>
+<p>The accountability + recalibration cycle.<br />
+- Score <em>all</em> matured predictions in <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a>; update the calibration read<br />
+  (do conv-4 calls hit more than conv-2/3?).<br />
+- Full <a href="wiki/syntheses/track-record.html">track-record</a> close-out for the quarter: realized P&amp;L, win-rate, alpha, worst drawdown.<br />
+- Revisit the <a href="wiki/syntheses/portfolio-blueprint.html">portfolio-blueprint</a> target allocations; rebalance logic check.<br />
+- If a bubble-watch is warranted → run BUBBLE-WATCH (CLAUDE.md §10) on the current target.<br />
+- Propose schema/framework refinements (the MDAEM-style "lessons" loop, applied vault-wide).<br />
+- Append <code>## [date] review | &lt;quarter&gt; close</code> to <code>log.md</code>.</p>
+<p><strong>Time budget:</strong> ~2–4 hours.</p>
+<hr />
+<h2 id="ad-hoc-operations-on-demand-not-scheduled">Ad-hoc operations (on demand, not scheduled)</h2>
+<table>
+<thead>
+<tr>
+<th>Op</th>
+<th>When to run</th>
+<th>What it produces</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>INGEST</strong></td>
+<td>Human adds a source to <code>raw/</code></td>
+<td>New <code>wiki/sources/</code> + entity/concept pages (CLAUDE.md §5)</td>
+</tr>
+<tr>
+<td><strong>QUERY</strong></td>
+<td>Human asks a question</td>
+<td>Cited answer; good ones filed as <code>wiki/syntheses/</code></td>
+</tr>
+<tr>
+<td><strong>DECIDE</strong></td>
+<td>A signal flips or a name crosses an entry/invalidation</td>
+<td>New/updated row in <a href="wiki/syntheses/decision-register.html">decision-register</a> + a P-call in <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a> + <a href="wiki/syntheses/track-record.html">track-record</a> entry</td>
+</tr>
+<tr>
+<td><strong>BUBBLE-WATCH</strong></td>
+<td>Macro feels frothy or a quarterly trigger hits</td>
+<td><code>wiki/syntheses/bubble-risk-&lt;target&gt;-&lt;date&gt;.md</code> (CLAUDE.md §10)</td>
+</tr>
+<tr>
+<td><strong>DEEP-DIVE</strong></td>
+<td>A theme/security needs a refresh between scans</td>
+<td>Updated theme page + security card(s)</td>
+</tr>
+<tr>
+<td><strong>LINT</strong></td>
+<td>Roughly monthly, or when link drift is suspected</td>
+<td>Health-check pass; fixes applied after human confirms</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="the-staleness-contract">The staleness contract</h2>
+<ul>
+<li><strong>Hard rule:</strong> the gap between any two <code>log.md</code> entries must not exceed <strong>14 days</strong>. If it does,<br />
+  run at minimum a MONITOR pass before doing anything else — staleness is the engine's #1 enemy.</li>
+<li>Every page's frontmatter <code>last_scan</code> is the source of truth for its age. If a page is older than<br />
+  its rhythm allows, it carries a <strong>stale</strong> flag until refreshed.</li>
+<li><a href="wiki/syntheses/signal-monitor.html">signal-monitor</a> and <a href="wiki/syntheses/regime-monitor.html">regime-monitor</a> are the most time-sensitive — refresh weekly. Theme<br />
+  pages and the radar tolerate monthly. The prediction ledger is event-driven (score on resolve).</li>
+</ul>
+<h2 id="how-to-know-youre-behind">How to know you're behind</h2>
+<p>Run:</p>
+<pre><code class="language-bash">grep &quot;^## \[&quot; log.md | tail -5          # last 5 ops — if oldest is &gt;14d, you're behind
+grep -l &quot;last_scan: 202&quot; wiki/syntheses/*.md | xargs grep &quot;last_scan&quot;  # scan dates
+python3 scripts/refresh.py --check      # drift report vs last snapshot
+</code></pre>
+<hr />
+<p><em>Maintained alongside <code>CLAUDE.md</code>. If the cadence stops working, edit this file — it's meant to<br />
+co-evolve with how the engine is actually used.</em></p>
+</article>
+</div>
+</body>
+</html>

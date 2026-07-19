@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MiroFish</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: MiroFish
+type: entity
+entity_kind: product
+tags: [multi-agent, simulation, prediction, llm, open-source]
+sources: [[[mirofish]]]</div>
+<article>
+<h1 id="mirofish">MiroFish</h1>
+<p><strong>What it is:</strong> An open-source multi-agent "swarm intelligence" prediction engine that<br />
+constructs a high-fidelity digital world of thousands of LLM agents to rehearse and predict<br />
+how real-world events might unfold.</p>
+<h2 id="summary">Summary</h2>
+<p>MiroFish ingests "seed" information from reality (news, policy drafts, financial signals,<br />
+even fiction) and builds a parallel digital sandbox populated by autonomous agents that have<br />
+personality, long-term memory, and behavioral logic. Those agents interact and socially<br />
+evolve, and the user injects variables from an outside ("God's-eye") view to deduce future<br />
+trajectories (<a href="../sources/mirofish.html">mirofish</a> source). It serves both serious decision rehearsal and playful<br />
+creative simulation.</p>
+<h2 id="key-facts">Key facts</h2>
+<ul>
+<li>Powered by multi-agent technology; core simulation engine is <a href="oasis.html">oasis</a> (by <a href="camel-ai.html">camel-ai</a>). (<a href="../sources/mirofish.html">mirofish</a>)</li>
+<li>Uses <a href="zep.html">zep</a> for agent long-term memory; supports any OpenAI-SDK-compatible LLM, recommending Alibaba Qwen-plus. (<a href="../sources/mirofish.html">mirofish</a>)</li>
+<li>Five-stage workflow: Graph Building → Environment Setup → Simulation → Report Generation → Deep Interaction. (<a href="../sources/mirofish.html">mirofish</a>)</li>
+<li>Stack: Node 18+ frontend (:3000) + Python 3.11–3.12 backend (:5001), managed with <code>uv</code>; Docker option. (<a href="../sources/mirofish.html">mirofish</a>)</li>
+<li>Author: <a href="666ghj.html">666ghj</a>; strategically supported/incubated by <a href="shanda-group.html">shanda-group</a>. (<a href="../sources/mirofish.html">mirofish</a>)</li>
+<li>Repo: github.com/666ghj/MiroFish; live demo at 666ghj.github.io/mirofish-demo. (<a href="../sources/mirofish.html">mirofish</a>)</li>
+</ul>
+<h2 id="relationships">Relationships</h2>
+<ul>
+<li>Built on <a href="oasis.html">oasis</a>; memory via <a href="zep.html">zep</a>; backed by <a href="shanda-group.html">shanda-group</a>; created by <a href="666ghj.html">666ghj</a>.</li>
+<li>Implements <a href="../concepts/multi-agent-simulation.html">multi-agent-simulation</a>, produces <a href="../concepts/swarm-intelligence.html">collective emergence</a>, uses <a href="../concepts/graphrag.html">graphrag</a>.</li>
+<li>Practical setup &amp; use cases: <a href="../syntheses/mirofish-how-to-use-and-applications.html">mirofish-how-to-use-and-applications</a>.</li>
+</ul>
+<h2 id="notes-tensions">Notes &amp; tensions</h2>
+<ul>
+<li>Strong predictive claims ("predicting anything") with no stated accuracy evaluation. (<a href="../sources/mirofish.html">mirofish</a>)</li>
+<li>Flagged as "high consumption" — suggests keeping early simulations under 40 rounds; true cost unstated. (<a href="../sources/mirofish.html">mirofish</a>)</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quantum Computing</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Quantum Computing
+type: concept
+trend: true
+tags: [investing, trend, cross-cutting, quantum, frontier, deep-tech, speculative]
+sources: []
+date: 2026-06-01
+conviction: 2
+stage: emerging-frontier
+horizon: 7-10y</div>
+<article>
+<h1 id="quantum-computing">Quantum Computing</h1>
+<p><strong>Definition:</strong> The earliest-stage, highest-variance frontier theme — quantum-computing pure-plays<br />
+(IonQ, Rigetti, D-Wave, Quantum Computing Inc.) and big-tech quantum programs (IBM, Google,<br />
+Microsoft). Tiny revenues against extreme valuations (P/S ratios in the hundreds), defined by<br />
+science-milestone risk and a long, uncertain path to commercial utility. Conviction 2 on the<br />
+<a href="../syntheses/trend-radar.html">trend-radar</a> — genuine long-run optionality, but the most speculative theme in the radar.</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Figures tagged (fact)/(est.)/(inference) with<br />
+period + source. "n/f" = no reliable figure found.</p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>(a) <strong>Pure-plays</strong> — IonQ (IONQ, trapped-ion), Rigetti (RGTI, superconducting), D-Wave (QBTS,<br />
+annealing), Quantum Computing Inc. (QUBT, photonic); (b) <strong>big-tech programs</strong> — IBM, Google<br />
+(GOOGL — Willow chip), Microsoft (MSFT — Majorana/topological). The pure-plays offer concentrated<br />
+exposure at extreme valuations; big tech offers quantum optionality embedded in profitable<br />
+businesses (<a href="ai-software-agents.html">ai-software-agents</a>, <a href="us-megacap-quality.html">us-megacap-quality</a>).</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quantum-computing market</td>
+<td><strong>~doubles to ~$3B by 2028</strong></td>
+<td>2026 → 2028</td>
+<td>QED-C / industry est.</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>IonQ revenue</td>
+<td><strong>$64.67M (Q1'26, +755% YoY); FY26 guide $260–270M</strong></td>
+<td>Q1 2026</td>
+<td>IONQ</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>IonQ price/sales</td>
+<td><strong>~109x</strong> ("historically unsustainable")</td>
+<td>2026</td>
+<td>aggregated</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Rigetti price/sales</td>
+<td><strong>~836x</strong></td>
+<td>2026</td>
+<td>aggregated</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>D-Wave price/sales</td>
+<td><strong>~791x</strong></td>
+<td>2026</td>
+<td>aggregated</td>
+<td>(est.)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand:</strong> potential to solve classically-intractable problems (cryptography, materials/drug<br />
+discovery, optimization, logistics); government + defense funding; cloud-quantum access lowering<br />
+adoption friction; "quantum-readiness" / post-quantum-cryptography urgency (links to<br />
+<a href="cybersecurity.html">cybersecurity</a>). <strong>Supply/science:</strong> steady qubit-count + error-correction progress (Google<br />
+Willow, IBM roadmaps, Microsoft topological qubits); but <strong>fault-tolerant, commercially-useful<br />
+quantum advantage remains years away</strong> — the gating constraint on the whole theme.</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p>Hardware/qubit platforms (IonQ ions, Rigetti/Google superconducting, QBTS annealing, QUBT<br />
+photonic) → error-correction/software/middleware → cloud access (IBM, AWS Braket, Azure Quantum) →<br />
+end-use (cryptography, simulation, optimization). Key cross-link to <a href="cybersecurity.html">cybersecurity</a><br />
+(post-quantum cryptography / "harvest-now-decrypt-later" risk) and to <a href="ai-software-agents.html">ai-software-agents</a> /<br />
+<a href="us-megacap-quality.html">us-megacap-quality</a> (big-tech embeds quantum optionality). Funding/risk-appetite sensitive to<br />
+<a href="../syntheses/macro-regime.html">macro-regime</a>.</p>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<p>Pre-commercial and <strong>platform-fragmented</strong> — competing qubit modalities (trapped-ion,<br />
+superconducting, photonic, annealing, topological) with no clear winner, making it a<br />
+"which-technology-wins" bet on top of a "when-does-it-work" bet. Pure-plays (IONQ/RGTI/QBTS/QUBT)<br />
+are tiny, cash-burning, and extravagantly valued; big tech (IBM/Google/Microsoft) has vastly<br />
+deeper resources + research depth and can absorb a long R&amp;D runway. Moats are <em>prospective</em> (IP,<br />
+qubit-quality leadership); none is durable yet.</p>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps momentum-driven (~May 2026, est.). Other figures (fact) unless tagged.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of)</th>
+<th>Revenue</th>
+<th>Valuation</th>
+<th>Profitability</th>
+<th>Moat note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IonQ</td>
+<td>IONQ</td>
+<td>US</td>
+<td>Trapped-ion quantum</td>
+<td>n/f (momentum)</td>
+<td>$64.67M (Q1'26, +755%)</td>
+<td>~109x P/S</td>
+<td>cash-burning</td>
+<td>Leading pure-play revenue; trapped-ion bet</td>
+</tr>
+<tr>
+<td>Rigetti</td>
+<td>RGTI</td>
+<td>US</td>
+<td>Superconducting quantum</td>
+<td>n/f (momentum)</td>
+<td>small</td>
+<td>~836x P/S</td>
+<td>cash-burning</td>
+<td>Superconducting; extreme valuation</td>
+</tr>
+<tr>
+<td>D-Wave Quantum</td>
+<td>QBTS</td>
+<td>US</td>
+<td>Quantum annealing</td>
+<td>n/f (momentum)</td>
+<td>small</td>
+<td>~791x P/S</td>
+<td>cash-burning</td>
+<td>Annealing niche; extreme valuation</td>
+</tr>
+<tr>
+<td>Quantum Computing Inc.</td>
+<td>QUBT</td>
+<td>US</td>
+<td>Photonic quantum</td>
+<td>n/f (momentum)</td>
+<td>minimal</td>
+<td>very high</td>
+<td>cash-burning</td>
+<td>Photonic approach; pre-revenue-scale</td>
+</tr>
+<tr>
+<td>IBM</td>
+<td>IBM</td>
+<td>US</td>
+<td>Quantum program + roadmap</td>
+<td>n/f (large-cap)</td>
+<td>n/a (quantum small)</td>
+<td>n/a</td>
+<td>profitable (parent)</td>
+<td>Deep research + roadmap; embedded optionality</td>
+</tr>
+<tr>
+<td>Alphabet (Google)</td>
+<td>GOOGL</td>
+<td>US</td>
+<td>Quantum (Willow chip)</td>
+<td>n/f (mega-cap)</td>
+<td>n/a (quantum small)</td>
+<td>n/a</td>
+<td>profitable (parent)</td>
+<td>Willow error-correction lead; resources</td>
+</tr>
+<tr>
+<td>Microsoft</td>
+<td>MSFT</td>
+<td>US</td>
+<td>Quantum (Majorana/topological)</td>
+<td>n/f (mega-cap)</td>
+<td>n/a (quantum small)</td>
+<td>n/a</td>
+<td>profitable (parent)</td>
+<td>Topological-qubit bet + Azure Quantum</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p>Quantum is the <strong>most speculative theme in the radar</strong> — a genuine, potentially transformational<br />
+long-run technology priced as if commercialization were near, when fault-tolerant, useful quantum<br />
+advantage is still years away. The pure-plays illustrate the disconnect: <strong>IonQ</strong> is the revenue<br />
+leader ($64.67M, +755%, FY26 guide $260–270M) yet trades at ~109x sales, while Rigetti (~836x) and<br />
+D-Wave (~791x) carry valuations one analyst aptly called "historically unsustainable." On top of<br />
+the <em>when-does-it-work</em> risk sits a <em>which-modality-wins</em> risk (ion vs superconducting vs photonic<br />
+vs annealing vs topological), with no clear winner. The most defensible exposure is arguably the<br />
+<strong>big-tech programs (IBM, Google's Willow, Microsoft's topological bet)</strong> — quantum optionality<br />
+embedded inside profitable businesses that can fund a decade of R&amp;D without existential dilution.<br />
+Net: real optionality, but extreme valuation + binary science risk + no durable moats justify a 2<br />
+— a tiny, lottery-ticket sleeve at most, with big-tech the lower-risk way to hold the call option.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Valuation</strong> — P/S in the hundreds leaves no margin; sentiment reversals are brutal.</li>
+<li><strong>Science/timeline risk</strong> — fault-tolerant, useful quantum advantage may remain years/decades out.</li>
+<li><strong>Modality risk</strong> — backing the wrong qubit technology.</li>
+<li><strong>Cash burn + dilution</strong> — pure-plays are not self-funding; capital-access dependent.</li>
+<li><strong>Big-tech crowd-out</strong> — IBM/Google/Microsoft could dominate, marginalizing pure-plays.</li>
+<li><strong>Risk-off macro</strong> (<a href="../syntheses/macro-regime.html">macro-regime</a>) closing the speculative-funding window.</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li><strong>QTUM</strong> (Defiance Quantum ETF — diversified, includes big tech + semis, far lower risk than<br />
+  pure-plays). <em>(Verify AUM/holdings.)</em></li>
+<li>Representative securities: IONQ/RGTI/QBTS/QUBT (speculative pure-plays); IBM/GOOGL/MSFT<br />
+  (embedded optionality, lower risk).</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 2/5</strong> — a potentially transformational frontier with real long-run optionality, but<br />
+  the most speculative theme in the radar: tiny revenues, extreme (hundreds-of-x) valuations, binary<br />
+  science/timeline risk, modality uncertainty, and no durable moats. Big-tech programs are the<br />
+  lower-risk way to hold the option.</li>
+<li><strong>Stage: emerging / frontier (extreme variance). Horizon: 7–10+ years.</strong></li>
+<li><strong>Invalidation:</strong> repeated failure to progress error-correction toward useful advantage + a<br />
+  funding freeze for pure-plays; conversely, a credible fault-tolerance breakthrough would re-rate<br />
+  the theme.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>QTUM</strong></td>
+<td>Quantum computing</td>
+<td style="text-align: right;">$141.40</td>
+<td style="text-align: right;">$6B</td>
+<td style="text-align: right;">+51.2%</td>
+<td style="text-align: right;">0.7%</td>
+<td style="text-align: right;">n/f · 1.67</td>
+<td style="text-align: right;">-16.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IONQ</strong></td>
+<td>Trapped-ion QC</td>
+<td style="text-align: right;">$34.53</td>
+<td style="text-align: right;">$13B</td>
+<td style="text-align: right;">-31.4x</td>
+<td style="text-align: right;">7.55%</td>
+<td style="text-align: right;">1.75% · 3.23</td>
+<td style="text-align: right;">-59.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>RGTI</strong></td>
+<td>Superconducting QC</td>
+<td style="text-align: right;">$14.08</td>
+<td style="text-align: right;">$5B</td>
+<td style="text-align: right;">-70.0x</td>
+<td style="text-align: right;">1.99%</td>
+<td style="text-align: right;">0.0% · 1.96</td>
+<td style="text-align: right;">-75.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>QBTS</strong></td>
+<td>Annealing QC (D-Wave)</td>
+<td style="text-align: right;">$16.77</td>
+<td style="text-align: right;">$6B</td>
+<td style="text-align: right;">-42.4x</td>
+<td style="text-align: right;">-80.9%</td>
+<td style="text-align: right;">0.0% · 2.10</td>
+<td style="text-align: right;">-64.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>QUBT</strong></td>
+<td>Quantum Computing Inc.</td>
+<td style="text-align: right;">$7.78</td>
+<td style="text-align: right;">$2B</td>
+<td style="text-align: right;">-20.5x</td>
+<td style="text-align: right;">93.64%</td>
+<td style="text-align: right;">0.0% · 3.78</td>
+<td style="text-align: right;">-69.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>IBM</strong></td>
+<td>Quantum + mainframe</td>
+<td style="text-align: right;">$210.97</td>
+<td style="text-align: right;">$198B</td>
+<td style="text-align: right;">15.9x</td>
+<td style="text-align: right;">9.5%</td>
+<td style="text-align: right;">15.6% · 0.68</td>
+<td style="text-align: right;">-36.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GOOGL</strong></td>
+<td>Willow QC</td>
+<td style="text-align: right;">$347.43</td>
+<td style="text-align: right;">$4.24T</td>
+<td style="text-align: right;">23.7x</td>
+<td style="text-align: right;">21.8%</td>
+<td style="text-align: right;">37.9% · 1.25</td>
+<td style="text-align: right;">-15.0%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Crypto/security link: <a href="cybersecurity.html">cybersecurity</a> (post-quantum cryptography). Embedded optionality:<br />
+<a href="ai-software-agents.html">ai-software-agents</a>, <a href="us-megacap-quality.html">us-megacap-quality</a> (IBM/Google/Microsoft). Funding/risk: <a href="../syntheses/macro-regime.html">macro-regime</a>.<br />
+  Master: <a href="../syntheses/trend-radar.html">trend-radar</a>. Linkage: <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Which qubit modality (if any) reaches fault-tolerant commercial advantage first — and when?</li>
+<li>Do pure-plays survive to commercialization, or do the big-tech programs capture the value?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>QED-C / industry estimates (market size); company results (IonQ Q1'26; Rigetti, D-Wave, QUBT<br />
+updates); valuation multiples (aggregated); IBM/Google (Willow)/Microsoft (Majorana) roadmaps, 2026.</p>
+</article>
+</div>
+</body>
+</html>

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trend Radar</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Trend Radar
+type: synthesis
+tags: [investing, trends, etf, radar]
+sources: []
+date: 2026-06-01
+last_scan: 2026-07-14</div>
+<article>
+<h1 id="trend-radar">Trend Radar</h1>
+<p><strong>Bottom line:</strong> The master dashboard of long-term investment megatrends — now structured into<br />
+<strong>7 meta-forces → ~28 themes</strong>, each with conviction, maturity stage, horizon, and the cleanest<br />
+instruments. Rewritten every <strong>scan</strong> (<code>CLAUDE.md</code> §10). Cross-theme dependencies live in<br />
+<a href="theme-linkage-map.html">theme-linkage-map</a>; the macro overlay conditioning all of them in <a href="macro-regime.html">macro-regime</a>.<br />
+<strong>Insight only — not buy/sell advice.</strong></p>
+<blockquote>
+<p><strong>Legend.</strong> Conviction 1–5 (5 = highest <em>risk-adjusted</em> — <strong>nothing earns a 5</strong>). Stage:<br />
+emerging → accelerating → mature → fading. Horizon = years to thesis playing out. Instruments<br />
+are <strong>candidates to research</strong>, not recommendations. Figures sourced on each theme page,<br />
+tagged (fact)/(est.)/(inference).</p>
+</blockquote>
+<hr />
+<h2 id="meta-force-1-compute-ai-stack">Meta-force 1 — Compute &amp; AI stack</h2>
+<p><em>The dominant secular engine. Five conviction-4 themes sharing one demand driver (AI capex) —<br />
+strength </em><em>and</em><em> correlated de-rating risk.</em></p>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th style="text-align: center;">Conv.</th>
+<th>Stage</th>
+<th style="text-align: center;">Horizon</th>
+<th>Cleanest instruments</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">3–7y</td>
+<td>QQQ, SMH; NVDA, hyperscalers</td>
+<td>Flagship driver; digestion cracks + circular-financing risk</td>
+</tr>
+<tr>
+<td><a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">3–7y</td>
+<td>SMH, SOXX; TSM, ASML</td>
+<td>Picks-&amp;-shovels; ~$975B 2026E (WSTS); semicap/foundry strongest</td>
+</tr>
+<tr>
+<td><a href="../concepts/ai-software-agents.html">ai-software-agents</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">3–7y</td>
+<td>IGV, WCLD; MSFT, CRM</td>
+<td>Monetization layer; agentic inflection; seat-model disruption risk</td>
+</tr>
+<tr>
+<td><a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">3–7y</td>
+<td>(no clean ETF); ANET, optical</td>
+<td>AI back-end bandwidth; co-packaged optics; scarce pure-plays</td>
+</tr>
+<tr>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">3–7y</td>
+<td>CIBR, BUG; CRWD, PANW</td>
+<td>Most non-discretionary demand (~11% CAGR); best risk-adj of cluster</td>
+</tr>
+</tbody>
+</table>
+<h2 id="meta-force-2-energy-power-materials">Meta-force 2 — Energy, power &amp; materials</h2>
+<p><em>The "AI needs power" second derivative + the physical inputs. Power/gas/cooling track AI capex<br />
+(correlated); nuclear/renewables/minerals add their own cycles.</em></p>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th style="text-align: center;">Conv.</th>
+<th>Stage</th>
+<th style="text-align: center;">Horizon</th>
+<th>Cleanest instruments</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../concepts/power-grid-electrification.html">power-grid-electrification</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">5–10y</td>
+<td>GRID, XLU; GEV, ETN, VST</td>
+<td>Cleanest "AI needs power" play; grid + gencos; PPAs real</td>
+</tr>
+<tr>
+<td><a href="../concepts/natural-gas-lng.html">natural-gas-lng</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">5–10y</td>
+<td>(gas E&amp;P/midstream); LNG, EQT</td>
+<td>Bridge fuel + DC baseload; LNG export cycle</td>
+</tr>
+<tr>
+<td><a href="../concepts/data-center-cooling.html">data-center-cooling</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">3–7y</td>
+<td>(thermal names); VRT, SMCI</td>
+<td>Liquid-cooling inflection; direct AI-capex levered</td>
+</tr>
+<tr>
+<td><a href="../concepts/critical-minerals.html">critical-minerals</a></td>
+<td style="text-align: center;"><strong>3.5</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">5–10y</td>
+<td>REMX, COPX; copper, rare earths</td>
+<td>Electrification + China supply-chain weaponization</td>
+</tr>
+<tr>
+<td><a href="../concepts/nuclear-uranium.html">nuclear-uranium</a></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">3–10y</td>
+<td>URA, URNM, SPUT; CCJ, CEG</td>
+<td>SMR optionality + utility under-contracting; spot stretched/volatile</td>
+</tr>
+<tr>
+<td><a href="../concepts/renewables-storage.html">renewables-storage</a></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">3–10y</td>
+<td>ICLN, TAN, GRID; FSLR, FLNC</td>
+<td><strong>Storage</strong> is the bright spot; solar/wind policy-whipsawed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="meta-force-3-reindustrialization-defense">Meta-force 3 — Reindustrialization &amp; defense</h2>
+<p><em>Fiscal/geopolitical capex supercycle. Defense + infrastructure offer </em><em>diversification</em><em> (low<br />
+AI-capex correlation); automation/reshoring partly overlap the AI/factory build.</em></p>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th style="text-align: center;">Conv.</th>
+<th>Stage</th>
+<th style="text-align: center;">Horizon</th>
+<th>Cleanest instruments</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../concepts/defense-security.html">defense-security</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">3–10y</td>
+<td>ITA, PPA, SHLD; RTX, RHM.DE</td>
+<td>NATO 5%-GDP re-rating; low AI correlation = diversifier; priced-in</td>
+</tr>
+<tr>
+<td><a href="../concepts/infrastructure-capex.html">infrastructure-capex</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">3–10y</td>
+<td>PAVE, IGF; CAT, VMC, MLM</td>
+<td>IIJA + electrification; aggregates duopoly moat</td>
+</tr>
+<tr>
+<td><a href="../concepts/automation-robotics.html">automation-robotics</a></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">3–10y</td>
+<td>ROBO, BOTZ, ARKQ</td>
+<td>Industrial cycle soft; humanoid optionality hype-heavy</td>
+</tr>
+<tr>
+<td><a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">3–10y</td>
+<td>PAVE, XLI; ETN, PWR</td>
+<td>US mfg construction ~2x since 2021; electrical/engineering winners</td>
+</tr>
+</tbody>
+</table>
+<h2 id="meta-force-4-health-demographics">Meta-force 4 — Health &amp; demographics</h2>
+<p><em>Durable demographic tailwind; vehicle quality varies. GLP-1 + devices are the quality core.</em></p>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th style="text-align: center;">Conv.</th>
+<th>Stage</th>
+<th style="text-align: center;">Horizon</th>
+<th>Cleanest instruments</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">3–7y</td>
+<td>(LLY/NVO direct)</td>
+<td>Obesity TAM ~$95–200B by 2030; oral inflection; 2027 Medicare overhang</td>
+</tr>
+<tr>
+<td><a href="../concepts/medtech-devices.html">medtech-devices</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">5–10y</td>
+<td>IHI, XHE; ISRG, BSX</td>
+<td>Razor-and-blade franchises; ~85% recurring (Intuitive); GLP-1 overhang</td>
+</tr>
+<tr>
+<td><a href="../concepts/biotech-genomics.html">biotech-genomics</a></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>Emerging-accel</td>
+<td style="text-align: center;">3–10y</td>
+<td>XBI, IBB, ARKG</td>
+<td>~$300B patent cliff drives M&A; editors binary; large-caps safe</td>
+</tr>
+<tr>
+<td><a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>Mature-accel</td>
+<td style="text-align: center;">5–15y</td>
+<td>XLV, IHF; WELL, UNH</td>
+<td>Senior-housing (WELL) the clean winner; managed care policy-whipsawed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="meta-force-5-financial-transformation">Meta-force 5 — Financial transformation</h2>
+<p><em>TradFi migrating onto new rails. Networks = fortress; periphery contested; crypto cyclical.</em></p>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th style="text-align: center;">Conv.</th>
+<th>Stage</th>
+<th style="text-align: center;">Horizon</th>
+<th>Cleanest instruments</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../concepts/fintech-payments.html">fintech-payments</a></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>Mature-accel</td>
+<td style="text-align: center;">3–7y</td>
+<td>IPAY, FINX; V, MA</td>
+<td>Visa/MA duopoly merits 4; contested periphery pulls theme to 3</td>
+</tr>
+<tr>
+<td><a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">3–10y</td>
+<td>IBIT, BITQ; COIN, CRCL</td>
+<td>GENIUS Act inflection; crypto ~45% off peak — read as cyclical</td>
+</tr>
+</tbody>
+</table>
+<h2 id="meta-force-6-geographies">Meta-force 6 — Geographies</h2>
+<p><em>The rotation away from US concentration. India/Japan are the structural quality picks.</em></p>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th style="text-align: center;">Conv.</th>
+<th>Stage</th>
+<th style="text-align: center;">Horizon</th>
+<th>Cleanest instruments</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../concepts/india-em-growth.html">india-em-growth</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Accelerating</td>
+<td style="text-align: center;">5–10y</td>
+<td>INDA, SMIN, INDY</td>
+<td>Cleanest multi-decade EM grower; 2026 pullback = entry debate</td>
+</tr>
+<tr>
+<td><a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Accel-maturing</td>
+<td style="text-align: center;">3–7y</td>
+<td>EWJ, DXJ (hedged)</td>
+<td>Governance + reflation regime change; Berkshire-endorsed; FX is decisive</td>
+</tr>
+<tr>
+<td><a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>Mature-late</td>
+<td style="text-align: center;">3–7y</td>
+<td>SPY, QQQ, RSP, QUAL</td>
+<td>Superb businesses; ~35% S&amp;P concentration + ~27–28x cap the score</td>
+</tr>
+<tr>
+<td><a href="../concepts/asean-thailand.html">asean-thailand</a></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>Emerging-mixed</td>
+<td style="text-align: center;">5–10y</td>
+<td>ASEA, VNM, EIDO, THD</td>
+<td>VN/ID growth + Indonesia banks; <strong>Thailand standalone ~2</strong> (laggard)</td>
+</tr>
+<tr>
+<td><a href="../concepts/china-contrarian.html">china-contrarian</a></td>
+<td style="text-align: center;"><strong>3</strong></td>
+<td>Turnaround</td>
+<td style="text-align: center;">2–5y</td>
+<td>MCHI, KWEB, FXI</td>
+<td>Deep value + AI re-rating vs deflation/property/geopolitics; tactical sleeve</td>
+</tr>
+</tbody>
+</table>
+<h2 id="meta-force-7-cross-cutting-real-assets">Meta-force 7 — Cross-cutting / real assets</h2>
+<p><em>Diversifiers and frontier optionality. Water is the quality pick; space/quantum are lottery tickets.</em></p>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th style="text-align: center;">Conv.</th>
+<th>Stage</th>
+<th style="text-align: center;">Horizon</th>
+<th>Cleanest instruments</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a></td>
+<td style="text-align: center;"><strong>4</strong></td>
+<td>Mature-accel</td>
+<td style="text-align: center;">5–10y</td>
+<td>PHO, FIW, CGW; AWK, XYL</td>
+<td>Defensive compounder + AI-datacenter cooling-water growth kicker</td>
+</tr>
+<tr>
+<td><a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a></td>
+<td style="text-align: center;"><strong>3.5</strong></td>
+<td>Mature-accel</td>
+<td style="text-align: center;">3–7y</td>
+<td>GLD, GDX; NEM, AEM</td>
+<td>Debasement hedge + low AI-correlation; post-parabolic, non-cash-gen</td>
+</tr>
+<tr>
+<td><a href="../concepts/space-economy.html">space-economy</a></td>
+<td style="text-align: center;"><strong>2.5</strong></td>
+<td>Emerging</td>
+<td style="text-align: center;">7–10y</td>
+<td>ARKX, UFO (unverif.); RKLB</td>
+<td>~$1T TAM but early/binary/cash-burning; SpaceX private</td>
+</tr>
+<tr>
+<td><a href="../concepts/quantum-computing.html">quantum-computing</a></td>
+<td style="text-align: center;"><strong>2</strong></td>
+<td>Frontier</td>
+<td style="text-align: center;">7–10y</td>
+<td>QTUM</td>
+<td>Transformational optionality; extreme valns (100–800x P/S); big-tech safer</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="scan-notes-2026-06-01-analyst-grade-rebuild">Scan notes — 2026-06-01 (analyst-grade rebuild)</h2>
+<ul>
+<li><strong>The dominant structure remains one correlated complex: AI → power → semiconductors → cooling<br />
+  → gas.</strong> Most conviction-4 themes in meta-forces 1–2 draw on the same AI-capex demand engine.<br />
+  That concentration is the radar's single biggest correlated-de-rating risk — a single AI-capex<br />
+  air-pocket re-rates them together. See the <strong>shared-driver clusters</strong> in <a href="theme-linkage-map.html">theme-linkage-map</a>.</li>
+<li><strong>Deliberate diversifiers</strong> (low AI-capex correlation): <a href="../concepts/defense-security.html">defense-security</a>,<br />
+<a href="../concepts/infrastructure-capex.html">infrastructure-capex</a> (partly), <a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a>, <a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a>,<br />
+<a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a>. These are why the radar isn't a one-way AI bet.</li>
+<li><strong>Nothing earns a 5.</strong> The highest-conviction themes are also the richest-valued. High conviction<br />
+  in the <em>trend</em> ≠ attractive <em>entry</em> today. Convictions are <strong>risk-adjusted</strong>, not enthusiasm.</li>
+<li><strong>Geographic rotation is live:</strong> 2025 saw ex-US (MSCI World ex-US +31.8%) beat the S&amp;P (+17.7%)<br />
+  with a −9.5% USD — the first real crack in US exceptionalism. <a href="../concepts/india-em-growth.html">india-em-growth</a> and<br />
+<a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a> are the structural beneficiaries; <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a> held at 3 on<br />
+  concentration/valuation.</li>
+<li><strong>Speculative tail kept honest:</strong> <a href="../concepts/space-economy.html">space-economy</a> (2.5) and <a href="../concepts/quantum-computing.html">quantum-computing</a> (2) are<br />
+  small, binary, momentum-priced sleeves — included for completeness, sized accordingly.</li>
+<li><strong>Macro overlay:</strong> rates/USD/liquidity condition every theme — see <a href="macro-regime.html">macro-regime</a>. Rate-sensitive<br />
+  themes (water utilities, senior-housing REITs, gold, EM) move together on the rate axis.</li>
+</ul>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<ul>
+<li>All ~28 theme pages now carry sourced figures (source + as-of + fact/est./inference tag) and<br />
+  comparative player tables. Built from parallel analyst-research waves dated ~Jan–May 2026.</li>
+<li><strong>Most likely stale cells:</strong> uranium spot, gold levels (flagged search-aggregated on<br />
+<a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a>), and the momentum-priced caps on <a href="../concepts/space-economy.html">space-economy</a> /<br />
+<a href="../concepts/quantum-computing.html">quantum-computing</a> — re-verify before use.</li>
+<li>Linked predictions live in <a href="prediction-ledger.html">prediction-ledger</a>; instrument detail in <a href="watchlist.html">watchlist</a>; macro in<br />
+<a href="macro-regime.html">macro-regime</a>; dependencies in <a href="theme-linkage-map.html">theme-linkage-map</a>.</li>
+<li><strong>Single-name overlay:</strong> representative tickers from these themes are scored bottom-up in<br />
+<a href="dual-model-shortlist-scorecard-2026-06-03.html">dual-model-shortlist-scorecard-2026-06-03</a> (Futurist vs. <a href="../concepts/mdaem-framework.html">mdaem-framework</a>) and ranked in<br />
+<a href="cross-theme-idea-ranking.html">cross-theme-idea-ranking</a>.</li>
+</ul>
+<blockquote>
+<p><strong>2026-07-14 scan note.</strong> Structure unchanged (7 meta-forces → 28 themes; all convictions held —<br />
+no theme earned a re-rate). Three priority clusters live-refreshed with player-table data:<br />
+<a href="refresh-ai-compute-stack-2026-07-14.html">refresh-ai-compute-stack-2026-07-14</a> · <a href="refresh-energy-transition-2026-07-14.html">refresh-energy-transition-2026-07-14</a> ·<br />
+<a href="refresh-geopolitics-defense-2026-07-14.html">refresh-geopolitics-defense-2026-07-14</a>. Sized decisions now flow from <a href="decision-register.html">decision-register</a>;<br />
+live sensors from <a href="signal-monitor.html">signal-monitor</a>; the cycle stance from <a href="regime-monitor.html">regime-monitor</a>. Data via<br />
+<code>scripts/refresh.py</code> per <code>CADENCE.md</code>. P12 (defense spending) resolved ✅; P1 (capex) effectively<br />
+confirmed early.</p>
+</blockquote>
+</article>
+</div>
+</body>
+</html>

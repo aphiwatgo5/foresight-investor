@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prediction Ledger</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Prediction Ledger
+type: synthesis
+tags: [investing, predictions, accountability, scoring]
+sources: []
+date: 2026-07-14
+last_scan: 2026-07-14</div>
+<article>
+<h1 id="prediction-ledger">Prediction Ledger</h1>
+<p><strong>Bottom line:</strong> A dated, falsifiable record of the engine's calls — and how they turn out.<br />
+This is the accountability layer: it lets the "Futurist Investor" engine measure its own<br />
+hit-rate and calibration, instead of quietly forgetting wrong calls. <strong>Insight only — not advice.</strong></p>
+<blockquote>
+<p><strong>Rules.</strong> Every prediction is (1) <strong>dated</strong>, (2) <strong>falsifiable</strong> with a concrete condition +<br />
+<strong>resolve-by</strong> date, (3) tagged with <strong>conviction (1–5)</strong> at the time, (4) later <strong>scored</strong>:<br />
+✅ correct · ❌ wrong · ◐ partial · ⏳ open. Never edit the original call — add the verdict in<br />
+its own column. Score matured calls during each scan.</p>
+</blockquote>
+<h2 id="open-predictions">Open predictions</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Made</th>
+<th style="text-align: center;">Conv.</th>
+<th>Prediction (falsifiable)</th>
+<th>Resolve by</th>
+<th style="text-align: center;">Status</th>
+<th>Verdict / notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">3</td>
+<td>Aggregate 2026 hyperscaler capex (MSFT+GOOGL+AMZN+META+ORCL) comes in <strong>≥ +50% YoY</strong> — i.e. the AI-infra buildout does <strong>not</strong> stall in 2026.</td>
+<td>2027-02-28</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests <a href="../concepts/ai-infrastructure.html">ai-infrastructure</a> durability vs "digestion" fear</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">3</td>
+<td>At least one <strong>≥20% drawdown</strong> in SMH (or NVDA) from a 2026 high occurs before 2027-01-01.</td>
+<td>2027-01-01</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests the valuation/circularity risk we flagged</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">4</td>
+<td>CRWD, PANW <strong>and</strong> ZS each report <strong>≥15% YoY</strong> revenue/ARR growth in their next FY2026 results.</td>
+<td>2027-03-31</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests <a href="../concepts/cybersecurity.html">cybersecurity</a> non-discretionary demand</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">3</td>
+<td>Long-term U3O8 contract price stays <strong>≥ $80/lb</strong> through end-2026.</td>
+<td>2027-01-15</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests <a href="../concepts/energy-transition.html">energy-transition</a> (nuclear) demand strength</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">3</td>
+<td>India (INDA) monthly <strong>FPI flows turn net-positive for ≥2 consecutive months</strong> before 2026-12-31.</td>
+<td>2026-12-31</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests <a href="../concepts/india-em-growth.html">india-em-growth</a> flow-inflection thesis</td>
+</tr>
+<tr>
+<td>P6</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">2</td>
+<td>The Thai <strong>SET index ends 2026 higher</strong> than its 2026-06-01 level.</td>
+<td>2027-01-05</td>
+<td style="text-align: center;">⏳</td>
+<td>Low-conviction tactical call on thailand-set-themes</td>
+</tr>
+<tr>
+<td>P7</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">4</td>
+<td><strong>TSE Prime average PBR stays ≥ 1.3x</strong> (governance re-rating holds) through end-2026.</td>
+<td>2027-02-28</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests <a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a> governance durability</td>
+</tr>
+<tr>
+<td>P8</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">4</td>
+<td><strong>Eli Lilly's incretin franchise</strong> (Mounjaro+Zepbound) grows <strong>≥ +30% YoY</strong> in FY2026.</td>
+<td>2027-02-28</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests <a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a> demand inflection</td>
+</tr>
+<tr>
+<td>P9</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">4</td>
+<td><strong>Intuitive Surgical (ISRG) revenue grows ≥ +15%</strong> YoY in FY2026.</td>
+<td>2027-02-28</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests <a href="../concepts/medtech-devices.html">medtech-devices</a> recurring-franchise strength</td>
+</tr>
+<tr>
+<td>P10</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">4</td>
+<td><strong>Nifty 50 ends 2026 above ~23,548</strong> (its late-May-2026 level).</td>
+<td>2027-01-05</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests <a href="../concepts/india-em-growth.html">india-em-growth</a> structural-grower thesis</td>
+</tr>
+<tr>
+<td>P11</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">4</td>
+<td>At least one <strong>new ≥1 GW nuclear or gas data-center PPA</strong> is publicly announced in 2026.</td>
+<td>2027-01-15</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests <a href="../concepts/power-grid-electrification.html">power-grid-electrification</a> / <a href="../concepts/energy-transition.html">energy-transition</a> AI-power link</td>
+</tr>
+<tr>
+<td>P12</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">4</td>
+<td><strong>Global military spending for 2025 (SIPRI, pub. ~Apr 2026) exceeds 2024's ~$2.72T.</strong></td>
+<td>2026-06-30</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests <a href="../concepts/defense-security.html">defense-security</a> budget re-rating — see resolved table.</td>
+</tr>
+<tr>
+<td>P13</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">3</td>
+<td><strong>Total stablecoin market cap ends 2026 ≥ $350B</strong> (up from ~$320B May-26).</td>
+<td>2027-01-15</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests <a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a> post-GENIUS adoption</td>
+</tr>
+<tr>
+<td>P14</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">3</td>
+<td><strong>IonQ, Rigetti and D-Wave each suffer a ≥30% drawdown</strong> from a 2026 high before 2027.</td>
+<td>2027-01-01</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests <a href="../concepts/quantum-computing.html">quantum-computing</a> "valuations unsustainable" call</td>
+</tr>
+<tr>
+<td>P15</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">3</td>
+<td><strong>Mag-7 share of the S&amp;P 500 stays ≥ 30%</strong> at end-2026 (no concentration unwind yet).</td>
+<td>2027-01-05</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a> concentration persistence</td>
+</tr>
+<tr>
+<td>P16</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">3</td>
+<td><strong>Gold ends 2026 ≥ $4,000/oz</strong> (debasement bid holds despite the correction).</td>
+<td>2027-01-05</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests <a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a> structural hedge (verify levels)</td>
+</tr>
+<tr>
+<td>P17</td>
+<td>2026-06-28</td>
+<td style="text-align: center;">2</td>
+<td><strong>No credit-stress event:</strong> ICE BofA US HY OAS (FRED BAMLH0A0HYM2) does <strong>not</strong> close any month <strong>≥ 4.00%</strong> before 2027-01-01 (from ~2.6% now).</td>
+<td>2027-01-01</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests the Minsky "tight-spreads = complacency" read in <a href="bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a></td>
+</tr>
+<tr>
+<td>P18</td>
+<td>2026-06-28</td>
+<td style="text-align: center;">2</td>
+<td><strong>Rich ≠ imminent top:</strong> the S&amp;P 500 does <strong>not</strong> suffer a ≥20% drawdown (peak-to-trough, closing) before 2027-01-01 despite CAPE near a record.</td>
+<td>2027-01-01</td>
+<td style="text-align: center;">⏳</td>
+<td>Tests whether extreme valuation gauges time tops (<a href="bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a>)</td>
+</tr>
+<tr>
+<td>P19</td>
+<td>2026-06-28</td>
+<td style="text-align: center;">3</td>
+<td><strong>Euphoria completes first:</strong> CNN Fear &amp; Greed reaches <strong>Extreme Greed (&gt;75)</strong> at some point before 2027-07-01.</td>
+<td>2027-07-01</td>
+<td style="text-align: center;">⏳</td>
+<td>Multi-agent sim Act 1 (<a href="post-bubble-multi-agent-sim-2026-06-28.html">post-bubble-multi-agent-sim-2026-06-28</a>) — the missing greed-flip</td>
+</tr>
+<tr>
+<td>P20</td>
+<td>2026-06-28</td>
+<td style="text-align: center;">3</td>
+<td><strong>The trigger:</strong> ≥1 Mag-7 hyperscaler <strong>trims/guides-down forward AI capex</strong> by 2027-12-31.</td>
+<td>2028-02-28</td>
+<td style="text-align: center;">⏳</td>
+<td>Sim Act 2 trigger — breaks the reflexive loop</td>
+</tr>
+<tr>
+<td>P21</td>
+<td>2026-06-28</td>
+<td style="text-align: center;">2</td>
+<td><strong>Credit cracks:</strong> HY OAS (FRED BAMLH0A0HYM2) <strong>pierces 4.0%</strong> at some point during 2027.</td>
+<td>2028-01-15</td>
+<td style="text-align: center;">⏳</td>
+<td>Sim Act 2 — credit leads equity (regime-change level)</td>
+</tr>
+<tr>
+<td>P22</td>
+<td>2026-06-28</td>
+<td style="text-align: center;">3</td>
+<td><strong>Rotation:</strong> Ex-US (EAFE or EM) <strong>beats the S&amp;P 500 cumulatively</strong> over 2026-06-28 → 2029-06-30.</td>
+<td>2029-07-15</td>
+<td style="text-align: center;">⏳</td>
+<td>Sim Act 3 — "end of US exceptionalism" de-rate (<a href="macro-regime.html">macro-regime</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="resolved-predictions">Resolved predictions</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Made</th>
+<th style="text-align: center;">Conv.</th>
+<th>Prediction</th>
+<th>Resolved</th>
+<th style="text-align: center;">Verdict</th>
+<th>What we learned</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P12</td>
+<td>2026-06-01</td>
+<td style="text-align: center;">4</td>
+<td>Global military spending for 2025 (SIPRI, pub. ~Apr 2026) exceeds 2024's ~$2.72T.</td>
+<td>2026-07-14</td>
+<td style="text-align: center;">✅</td>
+<td>SIPRI Apr-2026 release: <strong>2025 = $2.887T</strong> (+2.9% real; 11th straight yr of growth; burden 2.5% of GDP, highest since 2009). The <a href="../concepts/defense-security.html">defense-security</a> NATO 5%-GDP re-rating thesis is intact and structural, not cyclical. (fact, sipri.org, retrieved 2026-07-14)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="scorecard-running-tally">Scorecard (running tally)</h2>
+<ul>
+<li><strong>Total calls:</strong> 22 · ✅ 1 · ❌ 0 · ◐ 0 · ⏳ 21 open</li>
+<li><strong>By conviction:</strong> conv-4: P3, P7, P8, P9, P10, P11 (6 open) · conv-3: P1, P2, P4, P5, P13, P14,<br />
+  P15, P16, P19, P20, P22 (11) · conv-2: P6, P17, P18, P21 (4). (P12 was conv-4, now resolved ✅.)</li>
+<li><strong>Hit-rate:</strong> 1/1 resolved (100%) — too thin to read calibration yet.</li>
+<li><strong>Calibration note:</strong> the real test — do conviction-4 calls resolve correct <em>more often</em> than<br />
+  conv-2/3 ones? P12 (conv-4) passed first. Next resolves: P5 (India FPI, 2026-12-31), P6 (SET,<br />
+  2027-01-05), P10 (Nifty, 2027-01-05), P14/P15/P16 (Jan-2027 cluster), P17/P18 (HY/drawdown, 2027-01-01).</li>
+</ul>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<ul>
+<li>22 calls now tracked (P1–P22); each checkable against a concrete future public data point. P16<br />
+  (gold) and P4 (uranium spot) depend on levels flagged as search-aggregated — verify against a<br />
+  live feed (<code>scripts/refresh.py</code>) at resolution. Earliest open: P5 (2026-12-31); most resolve<br />
+  ~Jan–Feb 2027; long-dated: P22 (2029-07-15).</li>
+<li><strong>Drift fixed (2026-07-14):</strong> scorecard previously said "16 calls" while the table held 22 —<br />
+  P17–P22 (added 2026-06-28) had not been tallied. Recomputed. <code>date</code>/<code>last_scan</code> bumped 06-01 → 07-14.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

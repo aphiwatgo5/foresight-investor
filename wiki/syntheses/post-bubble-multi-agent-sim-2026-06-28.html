@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Post-Bubble Multi-Agent Simulation — what happens after, and when (2026-06-28)</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;Post-Bubble Multi-Agent Simulation — what happens after, and when (2026-06-28)&quot;
+type: synthesis
+tags: [investing, bubble-risk, multi-agent-simulation, scenarios, forecast, timing]
+sources: []
+date: 2026-06-28</div>
+<article>
+<h1 id="post-bubble-multi-agent-simulation-what-happens-after-and-when">Post-Bubble Multi-Agent Simulation — what happens after, and when</h1>
+<p><strong>Bottom line (the emergent forecast):</strong> An agent-based simulation of the seven actors who drive the<br />
+AI-equity bubble produces a strikingly consistent <strong>three-act sequence</strong>, not a single crash:<br />
+- <strong>Act 1 — Euphoria completes first (now → ~2026 H2/Q4).</strong> Six of seven agents say there is <strong>no<br />
+  near-term crash</strong>: sentiment is still <em>fearful</em> (<a href="bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a>, F&amp;G 25), so the<br />
+  bubble most likely gets <strong>bigger</strong> — a melt-up to new highs as the missing greed-flip arrives.<br />
+- <strong>Act 2 — The reflexive break (~2027, esp. H2-2027 → 2028).</strong> The trigger is <strong>unanimous</strong>: a<br />
+  hyperscaler <strong>AI-capex guide-down</strong> + disappointing AI ROIC breaks the Soros loop → <strong>HY credit<br />
+  spreads widen first</strong> → vendor financing unwinds → margin cascade → a <strong>sharp 25–40% drawdown</strong>.<br />
+- <strong>Act 3 — The long de-rate / rotation (2027–2029+).</strong> Not a V-shaped recovery: a multi-year<br />
+<strong>"lost decade" de-rating</strong> of US-megacap concentration while capital rotates to <strong>ex-US / gold /<br />
+  real assets</strong> — the <a href="macro-regime.html">macro-regime</a> "end of US exceptionalism" theme, realized.</p>
+<blockquote>
+<p><strong>This is a scenario simulation — inference, not data.</strong> Reflexive systems are intrinsically<br />
+unpredictable and <strong>no framework reliably times tops.</strong> Outputs are falsifiable scenario calls with<br />
+probabilities + invalidation, logged in <a href="prediction-ledger.html">prediction-ledger</a>. <strong>Insight/research only — not advice.</strong></p>
+</blockquote>
+<hr />
+<h2 id="1-the-model-mirofish-style-agent-graph">1. The model (MiroFish-style agent graph)</h2>
+<p>Built in-Claude as the equivalent of a <a href="../sources/mirofish.html">mirofish</a> / <a href="../concepts/multi-agent-simulation.html">multi-agent-simulation</a> run (graph →<br />
+environment → simulation → report), since MiroFish's own stack can't run here. <strong>Environment</strong> = the<br />
+verified 2026-06-28 state (CAPE 40.7, Buffett 219%, ERP −1.2%, margin debt +54% YoY, Mag-7 ≈33%, F&amp;G<br />
+25, VIX 18, HY OAS ~2.6%, 10Y 4.38%, hyperscaler capex $725B/+77%). <strong>Agents &amp; the reflexive loop:</strong></p>
+<pre><code>  Hyperscaler CFO ──capex $725B──▶ AI-semis supplier ──vendor financing──▶ (circular)
+        ▲                                  │
+   stock rewards capex            chips → AI buildout
+        │                                  ▼
+  Retail (levered) ◀──wealth effect── Equity prices ──cheap capital──▶ more capex
+        │                                  ▲
+   margin / F&amp;G                    allocation flows
+        ▼                                  │
+  HY credit desk ──spreads──▶ Pension CIO ──rotation──▶ ex-US / gold
+        ▲                                  
+   Fed (liquidity put, not equity put) ; Macro short (accelerant on the break)
+</code></pre>
+<h2 id="2-the-simulation-run-agent-forecasts">2. The simulation run — agent forecasts</h2>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Behaviour now</th>
+<th>Trigger to flip</th>
+<th>Path + timing</th>
+<th>Key call (conv.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Hyperscaler CFO</strong></td>
+<td>Keep spending $725B (underbuild = worse)</td>
+<td>2 quarters of cloud-rev deceleration <strong>+</strong> GPU ROIC roll-over</td>
+<td>Rolling air-pocket → 25–35% drawdown <strong>H2'27–'28</strong></td>
+<td>A Mag-7 trims capex guidance by <strong>Q4'27</strong> (4)</td>
+</tr>
+<tr>
+<td><strong>AI-semis</strong></td>
+<td>Run flat-out; extend vendor financing</td>
+<td>First "optimizing 2027 capex" line</td>
+<td>Mania thru 2026; crack <strong>H2'27–H1'28</strong>; vendor financing unwinds violently</td>
+<td>First guide-down ~Q2'27 → <strong>&gt;30% semi drawdown</strong> (3)</td>
+</tr>
+<tr>
+<td><strong>Levered retail</strong></td>
+<td>White-knuckle long; buy dips</td>
+<td>(a) ATH breakout+greed → add; (b) fast 10–15% drop → <strong>margin-call panic</strong></td>
+<td>Blow-off into 2026H2–'27, then <strong>40–50% drawdown</strong> '27–'28</td>
+<td><strong>New ATH + greed flip by Q4'26</strong> (4)</td>
+</tr>
+<tr>
+<td><strong>Pension CIO</strong></td>
+<td>Underweight US, trim into strength</td>
+<td>Negative ERP <strong>+</strong> greed flip <strong>+</strong> HY widening</td>
+<td><strong>Rotation/de-rate, not 1929</strong> — multi-year US "lost decade", ex-US wins</td>
+<td><strong>Ex-US beats S&amp;P cumulatively 2026→2029</strong> (4)</td>
+</tr>
+<tr>
+<td><strong>HY credit desk</strong></td>
+<td>Fully invested, reaching for yield</td>
+<td>OAS <strong>&gt;3.5%</strong> or +75–100 bp/month, or an AI deal pulled</td>
+<td><strong>Credit cracks first</strong>: OAS 350→500→700; equity follows in weeks; late-'26 into '27</td>
+<td><strong>HY OAS pierces 450 bp by Q3'27</strong> (4)</td>
+</tr>
+<tr>
+<td><strong>Fed</strong></td>
+<td>On hold (real 10Y ~2.1% restrictive)</td>
+<td><strong>Funding dysfunction</strong> (repo/SOFR, HY &gt;6%) — <em>not</em> falling stocks</td>
+<td>Orderly de-rate; "Fed put" only on a ~30%+ drawdown → funding stress, ~H2'27</td>
+<td><strong>No cut to defend equities through 2027</strong> (4)</td>
+</tr>
+<tr>
+<td><strong>Macro short</strong></td>
+<td>Net long-hedged; UW US, OW ex-US/gold</td>
+<td>Greed flip <strong>+</strong> breadth divergence <strong>+</strong> failed breakout <strong>+</strong> credit widening</td>
+<td>Mania 6–18 mo more; climax late-'26/'27; rotate ex-US/gold</td>
+<td><strong>US drawdown &gt;20% + ex-US/gold outperform by end-'27</strong> (4)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-emergent-dynamics-the-deep-interaction-read">3. Emergent dynamics (the "deep interaction" read)</h2>
+<ul>
+<li><strong>Convergence on sequencing.</strong> Independently, 6/7 agents reject a near-term crash and expect the<br />
+<strong>euphoria to complete first</strong> — because the marginal buyer (fearful, still-levered retail) isn't<br />
+  exhausted and capex is still validating prices. <em>The most dangerous near-term outcome is the bubble<br />
+  getting bigger.</em></li>
+<li><strong>The trigger chain is unanimous and ordered:</strong> hyperscaler <strong>capex guide-down</strong> (demand) → <strong>AI<br />
+  ROIC disappointment</strong> (breaks the Soros loop) → <strong>HY spreads widen</strong> (credit cracks <em>first</em>) →<br />
+<strong>vendor-financing unwind</strong> + <strong>margin cascade</strong> (retail forced out on a fast drop) → drawdown.</li>
+<li><strong>No early rescue.</strong> The Fed's put is on <em>plumbing</em>, not equities — it activates only at ~30%+<br />
+  drawdown / funding stress, so nothing cushions Act 2 until it's already deep.</li>
+<li><strong>Crash vs rotation is a sequence, not a disagreement.</strong> The "sharp 25–50% drawdown" camp<br />
+  (CFO/semis/retail/short) describes <strong>Act 2</strong>; the "multi-year rotation/de-rate" camp (CIO/Fed)<br />
+  describes <strong>Act 3</strong>. Both are in the base case, in order.</li>
+</ul>
+<h2 id="4-scenario-branches-probabilities-inference">4. Scenario branches (probabilities — inference)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Scenario</th>
+<th style="text-align: center;">Prob.</th>
+<th>Shape</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S1</strong></td>
+<td><strong>Melt-up → 2027 break → multi-year rotation</strong> (base case)</td>
+<td style="text-align: center;"><strong>~45%</strong></td>
+<td>Euphoria completes 2026; capex/credit trigger breaks it 2027; then a lost-decade de-rate, ex-US/gold lead</td>
+</tr>
+<tr>
+<td><strong>S2</strong></td>
+<td>Rolling de-rate now, no blow-off</td>
+<td style="text-align: center;">~25%</td>
+<td>No greed flip; multiples grind lower via flat prices + earnings catch-up; rotation without a crash</td>
+</tr>
+<tr>
+<td><strong>S3</strong></td>
+<td>Sharp credit-triggered crash sooner (2026H2–27H1)</td>
+<td style="text-align: center;">~15%</td>
+<td>A failed AI/DC financing deal cracks spreads early → fast 30%+ drawdown</td>
+</tr>
+<tr>
+<td><strong>S4</strong></td>
+<td>Soft landing — AI ROIC delivers</td>
+<td style="text-align: center;">~15%</td>
+<td>Monetization shows up, earnings grow into valuations; the reflexive loop is validated, not broken</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-when-the-timeline-sensor-panel">5. "When" — the timeline &amp; sensor panel</h2>
+<p><strong>Timeline:</strong> <strong>2026 H2</strong> = euphoria/greed flip + possible new ATHs (bubble gets bigger) → <strong>2027 (esp.<br />
+H2)</strong> = the break (capex guide-down + HY OAS &gt;~450 bp) → <strong>2027–2029</strong> = de-rate + rotation to ex-US/<br />
+gold/real assets.</p>
+<p><strong>Leading indicators to watch (ordered by lead time) — the model's sensors:</strong><br />
+1. <strong>HY credit spread (OAS)</strong> — earliest reliable warning; <strong>&gt;350–450 bp = regime change</strong> <em>(now ~2.6%)</em>.<br />
+2. <strong>Hyperscaler capex guidance + cloud-rev growth</strong> — the demand catalyst; first guide-down = the trigger <em>(now +77% YoY)</em>.<br />
+3. <strong>CNN Fear &amp; Greed → Extreme Greed</strong> — paradoxically the <em>top</em> signal; euphoria completing <em>(now 25, fear)</em>.<br />
+4. <strong>Breadth / 200-DMA</strong> — failed breakout on narrowing leadership = the roll-over.<br />
+5. <strong>Margin-debt reversal</strong> — the cascade accelerant <em>(now +54% YoY)</em>.<br />
+6. <strong>Repo / SOFR spreads</strong> — when the Fed put finally activates.</p>
+<h2 id="6-falsifiable-predictions-logged-in-prediction-ledger">6. Falsifiable predictions (logged in <a href="prediction-ledger.html">prediction-ledger</a>)</h2>
+<ul>
+<li><strong>P19</strong> — CNN F&amp;G reaches Extreme Greed (&gt;75) at some point before 2027-07-01 (euphoria completes). <em>Conv 3.</em></li>
+<li><strong>P20</strong> — ≥1 Mag-7 hyperscaler trims/guides-down forward AI capex by 2027-12-31. <em>Conv 3.</em></li>
+<li><strong>P21</strong> — HY OAS (BAMLH0A0HYM2) pierces 4.0% at some point in 2027 (the regime-change level). <em>Conv 2.</em></li>
+<li><strong>P22</strong> — Ex-US (EAFE/EM) beats the S&amp;P 500 cumulatively over 2026-06-28 → 2029-06-30. <em>Conv 3.</em></li>
+</ul>
+<h2 id="7-caveats">7. Caveats</h2>
+<ul>
+<li><strong>Simulation = inference</strong>, not data. Agent personas are reasoning from incentives, not observed behaviour.</li>
+<li>Reflexive systems are <strong>path-dependent and unpredictable</strong>; the timing is a <em>distribution</em>, not a date. Exogenous shocks (geopolitics, an AI breakthrough, a policy error) dominate any model.</li>
+<li>The base case explicitly says the <strong>near-term risk is upside</strong> (melt-up), which is <em>harder</em> psychologically than calling a crash.</li>
+<li>Re-run after the next scan / at the 2026-08-24 review, and whenever a sensor (esp. HY spreads or a capex guide) moves.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Engine/source: <a href="../sources/mirofish.html">mirofish</a> · <a href="../concepts/multi-agent-simulation.html">multi-agent-simulation</a> · <a href="../concepts/swarm-intelligence.html">swarm-intelligence</a>.</li>
+<li>Built on: <a href="bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a> (the state) + <a href="bubble-implications-by-theme.html">bubble-implications-by-theme</a> (positioning) + <a href="macro-regime.html">macro-regime</a> (rotation) + <a href="theme-linkage-map.html">theme-linkage-map</a> (the correlated channel).</li>
+<li>Calls tracked in <a href="prediction-ledger.html">prediction-ledger</a> (P19–P22). <strong>Not advice.</strong></li>
+</ul>
+</article>
+</div>
+</body>
+</html>

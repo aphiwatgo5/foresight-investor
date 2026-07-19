@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Overview</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../home.html">🏠 Home</a> ·
+    <a href="../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Overview
+type: overview
+date_updated: 2026-06-28
+source_count: 3</div>
+<article>
+<h1 id="overview">Overview</h1>
+<p>The current state of knowledge in this wiki — your starting point. It orients you to what the wiki<br />
+is <em>about</em> and where the synthesis currently stands. Kept current as sources are ingested and scans<br />
+run. For the fast rolling summary, read <code>hotcache.md</code> first.</p>
+<h2 id="what-this-wiki-is">What this wiki is</h2>
+<p>A persistent, LLM-maintained second brain in an Obsidian vault. Sources go into <code>raw/</code> (immutable);<br />
+the LLM reads them and compiles their knowledge into interlinked pages under <code>wiki/</code>. The wiki is a<br />
+<strong>compounding artifact</strong> — cross-references, contradictions, and synthesis are built once and kept<br />
+current, not re-derived on every question (<a href="concepts/wiki-as-compounding-artifact.html">wiki-as-compounding-artifact</a>). Rules live in<br />
+<code>CLAUDE.md</code>; workflow mode is <strong>discuss-first</strong>.</p>
+<h2 id="how-it-operates">How it operates</h2>
+<p>Core operations — <a href="concepts/ingest-query-lint.html">ingest-query-lint</a>:<br />
+- <strong>Ingest:</strong> add a source → summarize, file, cross-link, log.<br />
+- <strong>Query:</strong> ask a question → answer from the wiki with citations; good answers get filed as syntheses.<br />
+- <strong>Lint:</strong> health-check for contradictions, orphans, stale claims, gaps.<br />
+- <strong>Scan / Bubble-watch</strong> (investing vertical, below): periodic radar updates + on-demand bubble-risk reads.</p>
+<h2 id="two-domains-of-knowledge">Two domains of knowledge</h2>
+<p><strong>1. Knowledge systems &amp; multi-agent simulation</strong> (the founding theme — <em>LLMs doing labor humans<br />
+won't</em>). The founding pattern (<a href="sources/the-llm-wiki-pattern.html">the-llm-wiki-pattern</a>, ancestor <a href="concepts/memex.html">memex</a> / <a href="entities/vannevar-bush.html">vannevar-bush</a>) uses<br />
+LLMs to <em>compile and maintain knowledge</em>; <a href="sources/mirofish.html">mirofish</a> uses many LLM agents to <em>simulate worlds and<br />
+predict outcomes</em> (usage: <a href="syntheses/mirofish-how-to-use-and-applications.html">mirofish-how-to-use-and-applications</a>). Both impose structure over raw<br />
+inputs — synthesis (<a href="concepts/wiki-as-compounding-artifact.html">wiki-as-compounding-artifact</a>) vs. simulation (<a href="concepts/multi-agent-simulation.html">multi-agent-simulation</a> /<br />
+<a href="concepts/swarm-intelligence.html">swarm-intelligence</a> / <a href="concepts/graphrag.html">graphrag</a>).</p>
+<p><strong>2. The "Futurist Investor" engine</strong> (<code>CLAUDE.md</code> §10) — the wiki's dominant active vertical:<br />
+long-term <strong>thematic</strong> investment research, <strong>insight-only, never buy/sell advice</strong>. Structured as<br />
+<strong>7 meta-forces → 28 theme pages</strong> (analyst-grade template with comparative player tables), governed<br />
+by three living hubs: <a href="syntheses/trend-radar.html">trend-radar</a> (conviction/stage table), <a href="syntheses/watchlist.html">watchlist</a> (triggers +<br />
+invalidations), <a href="syntheses/prediction-ledger.html">prediction-ledger</a> (dated falsifiable calls). Cross-theme dependencies in<br />
+<a href="syntheses/theme-linkage-map.html">theme-linkage-map</a>; macro overlay in <a href="syntheses/macro-regime.html">macro-regime</a>. A complementary bottom-up single-name<br />
+system, <strong><a href="concepts/mdaem-framework.html">mdaem-framework</a></strong> (with <a href="entities/seeking-alpha-quant.html">seeking-alpha-quant</a> calibration), is documented as the<br />
+operator's own tool — see <a href="syntheses/mdaem-vs-futurist-investor.html">mdaem-vs-futurist-investor</a>.</p>
+<h2 id="current-state-of-the-synthesis">Current state of the synthesis</h2>
+<ul>
+<li><strong>Valuation/positioning read (2026-06-28):</strong> US equities score <strong>extreme</strong> on structure (CAPE 2nd-<br />
+  highest ever, Buffett 219%, margin debt +54% YoY, Mag-7 ≈33%) but sentiment is <strong>fearful</strong>, not<br />
+  euphoric → stretched and fragile, not a blow-off top. See<br />
+<a href="syntheses/bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a>.</li>
+<li><strong>Thematic lean:</strong> the <strong>AI-capex demand engine</strong> is the market's central reflexive force <em>and</em> its<br />
+  correlated de-rating risk (<a href="syntheses/theme-linkage-map.html">theme-linkage-map</a>); preferred diversifiers = defense, gold,<br />
+  healthcare/aging, GLP-1, Japan. Idea ranking in <a href="syntheses/cross-theme-idea-ranking.html">cross-theme-idea-ranking</a>; dual-engine scoring in<br />
+<a href="syntheses/dual-model-shortlist-scorecard-2026-06-03.html">dual-model-shortlist-scorecard-2026-06-03</a> (models agree only on TSM + LLY).</li>
+<li>Nothing earns conviction 5; entry discipline (MDAEM) rejects several high-conviction themes.</li>
+</ul>
+<h2 id="map">Map</h2>
+<ul>
+<li>General-knowledge founding source: <a href="sources/the-llm-wiki-pattern.html">the-llm-wiki-pattern</a>; latest ingest: <a href="sources/mdaem-v34-framework.html">mdaem-v34-framework</a>.</li>
+<li>Investing radar: <a href="syntheses/trend-radar.html">trend-radar</a> → 7 meta-forces (Compute/AI, Energy, Reindustrialization, Health,<br />
+  Financial, Geographies, Real assets). Catalog of all pages: <code>index.md</code>. Timeline: <code>log.md</code>.</li>
+<li>Tooling environment: <a href="entities/obsidian.html">obsidian</a>.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

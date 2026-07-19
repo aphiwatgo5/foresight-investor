@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Power Grid &amp; Electrification</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Power Grid &amp; Electrification
+type: concept
+trend: true
+tags: [investing, trend, energy, power, grid, electrification, transformers, utilities, ai-power]
+sources: []
+date: 2026-06-01
+conviction: 4
+stage: accelerating
+horizon: 3-7y</div>
+<article>
+<h1 id="power-grid-electrification">Power Grid &amp; Electrification</h1>
+<p><strong>Definition:</strong> Utilities, grid equipment (transformers, switchgear, cables), electrical<br />
+distribution, and data-center power systems — the build-out and upgrade of the physical<br />
+electricity system, accelerated by AI data-center load. The most <strong>direct, cash-generative,<br />
+supply-constrained expression</strong> of the "AI needs power" thesis (<a href="ai-infrastructure.html">ai-infrastructure</a>). The<br />
+flagship sub-theme of <a href="energy-transition.html">energy-transition</a>. Conviction 4 on the <a href="../syntheses/trend-radar.html">trend-radar</a>.</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Figures tagged (fact)/(est.)/(inference) with<br />
+period + source. "n/f" = no reliable figure found.</p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>Generation owners (IPPs/utilities), transmission &amp; distribution equipment OEMs (transformers,<br />
+switchgear, cables), data-center power/thermal systems, and the EPC contractors that install them.<br />
+Links to <a href="ai-infrastructure.html">ai-infrastructure</a> (demand), <a href="natural-gas-lng.html">natural-gas-lng</a> (turbines), <a href="nuclear-uranium.html">nuclear-uranium</a><br />
+(baseload), <a href="critical-minerals.html">critical-minerals</a> (copper, grain-oriented electrical steel).</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global grid investment</td>
+<td><strong>~$400B/yr → must rise ~50% by 2030</strong></td>
+<td>2025 → 2030</td>
+<td>IEA (Electricity 2026 / WEI 2025)</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Global grid investment</td>
+<td><strong>could top $470B (a first)</strong></td>
+<td>2025</td>
+<td>BloombergNEF</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>US data-center electricity demand</td>
+<td><strong>183 TWh → &gt;250 TWh → 426 TWh (+133%)</strong></td>
+<td>2024 → 2026E → 2030</td>
+<td>IEA (Energy and AI)</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Global data-center demand</td>
+<td><strong>~doubles to ~945 TWh (~3% of world)</strong></td>
+<td>by 2030</td>
+<td>IEA; S&amp;P Global</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Large transformer lead times</td>
+<td><strong>up to 4 years (~2x since 2021); prices +~75% since 2019</strong></td>
+<td>2026</td>
+<td>IEA (Transmission Grid)</td>
+<td>(fact)</td>
+</tr>
+</tbody>
+</table>
+<p>Data centers ≈ ~50% of US electricity demand growth to 2030 (IEA, fact).</p>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand:</strong> AI/data-center load (AI-specific DC demand +~50% in 2025; total DC power +17% in 2025,<br />
+Vertiv/industry); electrification of transport/heat; reshoring load. <strong>Supply (bullish for<br />
+equipment pricing):</strong> transformer lead times up to 4 years, cables 2–3 years (both ~doubled since<br />
+2021); transformer prices +~75% since ~2019 — supply scarcity = pricing power and expanding<br />
+margins. Bottlenecks: permitting, transformer/cable supply chains.</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p>Raw materials (copper, grain-oriented electrical steel — <a href="critical-minerals.html">critical-minerals</a>) → transformer/<br />
+switchgear/cable OEMs (GE Vernova, Schneider, ABB, Siemens Energy, Eaton) → EPC/install (Quanta) →<br />
+data-center power/cooling (Vertiv, Eaton — <a href="data-center-cooling.html">data-center-cooling</a>) → power supply (Constellation,<br />
+Vistra, NextEra). This is the <strong>monetization layer of <a href="ai-infrastructure.html">ai-infrastructure</a></strong>: AI capex → power<br />
+demand → grid + on-site power. Ties to <a href="natural-gas-lng.html">natural-gas-lng</a> (GE Vernova gas-turbine backlog) and<br />
+<a href="reshoring-supply-chain.html">reshoring-supply-chain</a>/<a href="infrastructure-capex.html">infrastructure-capex</a> (the contractors).</p>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<p>Concentrated oligopoly in high-voltage equipment (GE Vernova, Siemens Energy, ABB, Schneider,<br />
+Hitachi) — long lead times + qualified-supplier lock-in = real moats and expanding margins.<br />
+Data-center power/thermal (Vertiv, Eaton) benefits from hyperscaler incumbency. IPPs with<br />
+nuclear/dispatchable fleets (Constellation, Vistra) hold scarce 24/7 clean power. EPC (Quanta) more<br />
+competitive but backlog-rich.</p>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps point-in-time (May 2026, est.). Other figures (fact) unless tagged. "n/f" = none found.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of)</th>
+<th>Revenue (period)</th>
+<th>Rev YoY</th>
+<th>Op/EBITDA margin</th>
+<th>Other</th>
+<th>Moat note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GE Vernova</td>
+<td>GEV</td>
+<td>US</td>
+<td>Power+grid equip, gas turbines</td>
+<td>$279.5B (8 May 26)</td>
+<td>$9.3B (Q1 26)</td>
+<td>+16%</td>
+<td>adj EBITDA 9.6%; Electrification 17.8%</td>
+<td>backlog $163B; gas backlog 100→110GW</td>
+<td>Scarce gas turbines + grid equip; pricing power</td>
+</tr>
+<tr>
+<td>Vertiv</td>
+<td>VRT</td>
+<td>US</td>
+<td>DC power &amp; thermal</td>
+<td>n/f</td>
+<td>$10.23B (FY25)</td>
+<td>+29% (Q3)</td>
+<td>adj op 20.4% (FY25)</td>
+<td>adj FCF $1.89B; backlog $15.0B</td>
+<td>Hyperscaler incumbency in DC power/cooling</td>
+</tr>
+<tr>
+<td>Eaton</td>
+<td>ETN</td>
+<td>US/IE</td>
+<td>Electrical components/systems</td>
+<td>~$148B (22 May 26)</td>
+<td>$7.5B (Q1 26, record)</td>
+<td>+17%</td>
+<td>Electrical Americas 25.6%</td>
+<td>backlog +44% YoY; DC orders +240%</td>
+<td>Broad electrical portfolio; spec-in oligopoly</td>
+</tr>
+<tr>
+<td>Quanta Services</td>
+<td>PWR</td>
+<td>US</td>
+<td>Grid/EPC install</td>
+<td>~$108.6B (25 May 26)</td>
+<td>$7.87B (Q1 26)</td>
+<td>+26.3%</td>
+<td>n/f</td>
+<td>record backlog $48.5B</td>
+<td>Skilled-labor EPC scarcity</td>
+</tr>
+<tr>
+<td>Constellation Energy</td>
+<td>CEG</td>
+<td>US</td>
+<td>Largest US power producer (nuclear+)</td>
+<td>$89.8B (22 May 26)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>adj op EPS $9.39 (FY25); closed Calpine</td>
+<td>Largest US nuclear fleet = scarce 24/7 clean power</td>
+</tr>
+<tr>
+<td>Vistra</td>
+<td>VST</td>
+<td>US</td>
+<td>IPP, nuclear+gas</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>2026 adj EBITDA guide $6.8–7.6B</td>
+<td>~3,800 MW AWS nuclear PPA</td>
+<td>Dispatchable + nuclear, AI PPAs</td>
+</tr>
+<tr>
+<td>Schneider Electric</td>
+<td>SU.PA</td>
+<td>FR</td>
+<td>Electrical/automation</td>
+<td>n/f</td>
+<td>€40B (FY25, record)</td>
+<td>+8.9% organic</td>
+<td>n/f</td>
+<td>backlog €25.4B +18%</td>
+<td>Global electrical+digital leader</td>
+</tr>
+<tr>
+<td>Siemens Energy</td>
+<td>ENR.DE</td>
+<td>DE</td>
+<td>Grid + gas + wind</td>
+<td>n/f</td>
+<td>€39.1B (FY25)</td>
+<td>+15.2% (orders +19.4%)</td>
+<td>n/f</td>
+<td>record backlog €138B</td>
+<td>HV grid oligopoly; Gamesa wind drag</td>
+</tr>
+<tr>
+<td>ABB</td>
+<td>ABBN.SW</td>
+<td>CH</td>
+<td>Electrification/automation</td>
+<td>~$194B (29 May 26)</td>
+<td>$33.2B (FY25)</td>
+<td>+9%</td>
+<td>18.2% op</td>
+<td>orders $36.8B record</td>
+<td>Robotics + electrification scale</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p><strong>Winning:</strong> GE Vernova is the standout — Q1'26 revenue +16%, Electrification orders +86% organic<br />
+(book-to-bill ~2.5), $163B backlog, segment EBITDA margin jumped to 17.8%; gas-turbine scarcity<br />
+(100GW backlog) gives multi-year pricing power. Vertiv (FY25 $10.23B, +29% Q3, 20.4% adj op) and<br />
+Eaton (Electrical Americas backlog +44%, DC orders +240%) are direct AI-DC beneficiaries with<br />
+incumbency. Schneider (record €40B) and Siemens Energy (record €138B backlog) ride the same<br />
+supply-constrained equipment cycle. Constellation/Vistra monetize scarce 24/7 clean power via<br />
+hyperscaler PPAs.</p>
+<p><strong>Watch:</strong> Quanta/EPC face labor-cost and execution risk; valuations are rich. GEV's Q1'26 net<br />
+margin was flattered by a $4.5B Prolec M&amp;A gain — the underlying 9.6% adj EBITDA is the real figure<br />
+(inference). Siemens Energy still carries wind (Gamesa) baggage.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li>AI-capex disappointment / data-center demand re-rate (correlated with the whole<br />
+<a href="ai-infrastructure.html">ai-infrastructure</a> complex; see <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>).</li>
+<li>Demand "air pocket" if hyperscaler power deals get cancelled/renegotiated.</li>
+<li>Supply-chain easing compresses the transformer/cable pricing power driving margins.</li>
+<li>Valuation: GEV at ~$280B prices in a lot; multiple-compression risk.</li>
+<li>Rate/permitting/interconnection delays slow utility capex realization (IEA bottlenecks, fact).</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li><strong>GRID</strong> (First Trust Nasdaq Clean Edge Smart Grid Infra) — AUM $4.75B, ER 0.56%, 121 holdings;<br />
+  top ABB 8.45%, Eaton 7.70%, Johnson Controls 7.09%, Schneider 7.07%, National Grid 6.81%.</li>
+<li><strong>PAVE</strong> (Global X US Infrastructure Dev) — net assets $13.54B, ER 0.47%; Quanta 4.33%, Eaton<br />
+  3.48%, Trane 3.41%.</li>
+<li>Representative securities: GEV, VRT, ETN, PWR, CEG, VST, SU.PA, ENR.DE, ABBN.SW.</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 4/5</strong> — strongest, most direct monetization of AI power demand with supply-<br />
+  constrained pricing power and visible backlogs. Held below 5 by rich valuations and AI-capex<br />
+  correlation.</li>
+<li><strong>Stage: accelerating. Horizon: 3–7 years.</strong></li>
+<li><strong>Invalidation:</strong> hyperscaler 2027 capex cut, OR GEV/Eaton backlog growth flattening YoY for 2+<br />
+  quarters, OR transformer lead times normalizing (signalling supply caught up).</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GRID</strong></td>
+<td>Pacer DC/grid</td>
+<td style="text-align: right;">$178.09</td>
+<td style="text-align: right;">$12B</td>
+<td style="text-align: right;">+25.4%</td>
+<td style="text-align: right;">0.8%</td>
+<td style="text-align: right;">n/f · 1.41</td>
+<td style="text-align: right;">-11.0%</td>
+<td>🟢 ADD 5%</td>
+</tr>
+<tr>
+<td><strong>PAVE</strong></td>
+<td>US infra</td>
+<td style="text-align: right;">$56.61</td>
+<td style="text-align: right;">$15B</td>
+<td style="text-align: right;">+23.5%</td>
+<td style="text-align: right;">0.7%</td>
+<td style="text-align: right;">n/f · 1.24</td>
+<td style="text-align: right;">-6.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GEV</strong></td>
+<td>Gas + DC power pure-play</td>
+<td style="text-align: right;">$1,046.80</td>
+<td style="text-align: right;">$281B</td>
+<td style="text-align: right;">42.5x</td>
+<td style="text-align: right;">16.3%</td>
+<td style="text-align: right;">23.8% · 0.94</td>
+<td style="text-align: right;">-12.5%</td>
+<td>🔴 REJECT / WATCH</td>
+</tr>
+<tr>
+<td><strong>VRT</strong></td>
+<td>DC power/cooling</td>
+<td style="text-align: right;">$290.33</td>
+<td style="text-align: right;">$112B</td>
+<td style="text-align: right;">32.7x</td>
+<td style="text-align: right;">30.1%</td>
+<td style="text-align: right;">14.4% · 2.03</td>
+<td style="text-align: right;">-23.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ETN</strong></td>
+<td>Electrical</td>
+<td style="text-align: right;">$401.12</td>
+<td style="text-align: right;">$156B</td>
+<td style="text-align: right;">25.4x</td>
+<td style="text-align: right;">16.8%</td>
+<td style="text-align: right;">14.0% · 1.18</td>
+<td style="text-align: right;">-8.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PWR</strong></td>
+<td>Grid builder</td>
+<td style="text-align: right;">$631.96</td>
+<td style="text-align: right;">$95B</td>
+<td style="text-align: right;">38.4x</td>
+<td style="text-align: right;">26.3%</td>
+<td style="text-align: right;">3.7% · 1.22</td>
+<td style="text-align: right;">-19.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CEG</strong></td>
+<td>Nuclear/DC utility</td>
+<td style="text-align: right;">$252.71</td>
+<td style="text-align: right;">$90B</td>
+<td style="text-align: right;">18.6x</td>
+<td style="text-align: right;">63.8%</td>
+<td style="text-align: right;">12.7% · 1.12</td>
+<td style="text-align: right;">-38.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VST</strong></td>
+<td>Texas power + DC PPAs</td>
+<td style="text-align: right;">$155.00</td>
+<td style="text-align: right;">$52B</td>
+<td style="text-align: right;">14.3x</td>
+<td style="text-align: right;">43.4%</td>
+<td style="text-align: right;">11.5% · 1.41</td>
+<td style="text-align: right;">-29.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>JCI</strong></td>
+<td>Building/grid controls</td>
+<td style="text-align: right;">$141.55</td>
+<td style="text-align: right;">$86B</td>
+<td style="text-align: right;">24.6x</td>
+<td style="text-align: right;">8.2%</td>
+<td style="text-align: right;">14.5% · 1.32</td>
+<td style="text-align: right;">-6.4%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Demand: <a href="ai-infrastructure.html">ai-infrastructure</a>. Meta-force: <a href="energy-transition.html">energy-transition</a>. Baseload: <a href="nuclear-uranium.html">nuclear-uranium</a>.<br />
+  Bridge fuel: <a href="natural-gas-lng.html">natural-gas-lng</a>. Cooling: <a href="data-center-cooling.html">data-center-cooling</a>. Materials: <a href="critical-minerals.html">critical-minerals</a>.<br />
+  Contractors: <a href="reshoring-supply-chain.html">reshoring-supply-chain</a>, <a href="infrastructure-capex.html">infrastructure-capex</a>. Master: <a href="../syntheses/trend-radar.html">trend-radar</a>.<br />
+  Linkage: <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>. Calls: P4 (<a href="../syntheses/prediction-ledger.html">prediction-ledger</a>).</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Is the cleanest expression power/grid <em>equities</em> (GEV, Eaton) rather than volatile fuel/uranium?</li>
+<li>Do transformer/cable lead times normalize before the AI demand peak, compressing pricing power?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>IEA (Electricity 2026, Energy and AI, World Energy Investment 2025, Transmission Grid);<br />
+BloombergNEF; S&amp;P Global; company 8-Ks/IR (GE Vernova, Vertiv, Eaton, Quanta, Constellation,<br />
+Vistra, Schneider, Siemens Energy, ABB); ETF data (First Trust, Global X); market caps<br />
+(stockanalysis/Macrotrends), 2026.</p>
+</article>
+</div>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Macro Regime</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Macro Regime
+type: synthesis
+tags: [investing, macro, rates, usd, inflation, liquidity, policy]
+sources: []
+date: 2026-06-01
+last_scan: 2026-07-14</div>
+<article>
+<h1 id="macro-regime">Macro Regime</h1>
+<p><strong>Bottom line:</strong> The cross-cutting overlay that conditions <strong>every</strong> theme on the <a href="trend-radar.html">trend-radar</a>.<br />
+Themes don't trade in a vacuum — rates, the dollar, inflation, liquidity, and policy decide <em>which<br />
+clusters lead and which de-rate</em> (see <a href="theme-linkage-map.html">theme-linkage-map</a>). As of mid-2026 the regime is one of<br />
+<strong>moderating-but-sticky inflation, a weakening dollar, still-elevated real rates, and a live<br />
+"end-of-US-exceptionalism" rotation</strong> — a backdrop that favors real assets, ex-US equities, and<br />
+diversification away from the crowded AI-capex complex. <strong>Insight only — not advice. Figures are<br />
+research-aggregated ~2026; verify live levels before use.</strong></p>
+<hr />
+<h2 id="1-the-five-macro-axes">1. The five macro axes</h2>
+<table>
+<thead>
+<tr>
+<th>Axis</th>
+<th>Mid-2026 read</th>
+<th>Direction</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>US rates / real yields</strong></td>
+<td>Still elevated vs 2010s; cuts debated, "higher-for-longer" lingering</td>
+<td>Sideways-to-easing (uncertain)</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td><strong>US dollar (DXY)</strong></td>
+<td><strong>Weakened ~−9.5% in 2025</strong>; soft into 2026</td>
+<td>Weakening</td>
+<td>(fact, 2025)</td>
+</tr>
+<tr>
+<td><strong>Inflation</strong></td>
+<td>Moderating but <strong>sticky</strong> above target; services/wages firm</td>
+<td>Disinflating slowly</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td><strong>Liquidity / risk appetite</strong></td>
+<td>Mixed — crypto ~45% off peak, but equity indices near highs</td>
+<td>Selective</td>
+<td>(inference)</td>
+</tr>
+<tr>
+<td><strong>Policy / fiscal / election</strong></td>
+<td>Large fiscal deficits; tariffs/industrial policy; debasement concern</td>
+<td>Reflationary/protectionist</td>
+<td>(inference)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-how-each-axis-routes-to-the-themes">2. How each axis routes to the themes</h2>
+<p><strong>Rates ↑ (or higher-for-longer) hurts:</strong><br />
+- Long-duration tech / <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a> (multiple compression at ~27–28x fwd)<br />
+- Rate-sensitive real assets: <a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a> (senior-housing REITs/Welltower),<br />
+<a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a> (regulated utilities), <a href="../concepts/renewables-storage.html">renewables-storage</a> (project economics)<br />
+- EM flows: <a href="../concepts/india-em-growth.html">india-em-growth</a>, <a href="../concepts/china-contrarian.html">china-contrarian</a>, <a href="../concepts/asean-thailand.html">asean-thailand</a> (USD/rate-driven outflows)<br />
+- Non-cash-generative <a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a> (higher opportunity cost)</p>
+<p><strong>Rates ↓ / easing helps:</strong> all of the above reverse; gold and EM tend to lead.</p>
+<p><strong>Weak USD (the current tilt) helps:</strong><br />
+- Ex-US equities: <a href="../concepts/india-em-growth.html">india-em-growth</a>, <a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a> (but erodes <em>unhedged</em> JPY<br />
+  returns — hedged-vs-unhedged is the key choice), <a href="../concepts/china-contrarian.html">china-contrarian</a>, <a href="../concepts/asean-thailand.html">asean-thailand</a><br />
+- <a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a> (gold inversely tracks USD) and <a href="../concepts/critical-minerals.html">critical-minerals</a><br />
+- The "US exceptionalism" rotation <em>away from</em> <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a></p>
+<p><strong>Sticky inflation / debasement fear helps:</strong><br />
+- <a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a> (the core debasement hedge — central-bank buying ~800t/yr)<br />
+- Real assets, <a href="../concepts/infrastructure-capex.html">infrastructure-capex</a>, <a href="../concepts/natural-gas-lng.html">natural-gas-lng</a> / <a href="../concepts/critical-minerals.html">critical-minerals</a> (real inputs)<br />
+- Hurts long-duration growth multiples if it forces rates higher</p>
+<p><strong>Risk-off / liquidity withdrawal hurts (most→least):</strong><br />
+- Speculative cluster: <a href="../concepts/space-economy.html">space-economy</a>, <a href="../concepts/quantum-computing.html">quantum-computing</a>, <a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a>,<br />
+  clinical-stage <a href="../concepts/biotech-genomics.html">biotech-genomics</a> (funding-window-dependent)<br />
+- Then the AI-capex complex (<a href="../concepts/ai-infrastructure.html">ai-infrastructure</a> et al. — see <a href="theme-linkage-map.html">theme-linkage-map</a> cluster 1)<br />
+- Defensive ballast holds up: <a href="../concepts/defense-security.html">defense-security</a>, <a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a>,<br />
+<a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a>, <a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a></p>
+<p><strong>Policy / fiscal / protectionism:</strong><br />
+- Tailwind: <a href="../concepts/defense-security.html">defense-security</a> (NATO 5%-GDP), <a href="../concepts/infrastructure-capex.html">infrastructure-capex</a> (IIJA), <a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a><br />
+  + <a href="../concepts/semiconductors.html">semiconductors</a> (CHIPS), <a href="../concepts/nuclear-uranium.html">nuclear-uranium</a> (DPA/grid security), <a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a><br />
+  (offset by 2027 Medicare price negotiation)<br />
+- Headwind: <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a> (antitrust), <a href="../concepts/china-contrarian.html">china-contrarian</a> (US-China tech restrictions),<br />
+<a href="../concepts/renewables-storage.html">renewables-storage</a> (IRA-rollback risk)</p>
+<h2 id="3-the-defining-2026-macro-question">3. The defining 2026 macro question</h2>
+<p><strong>Is 2025 the start of a regime change away from US-megacap leadership?</strong> The evidence: MSCI World<br />
+ex-US +31.8% vs S&amp;P +17.7% in 2025, a −9.5% dollar, gold +75% (2025) into a January-2026 record,<br />
+and EM/Japan re-rating. If this persists, the radar tilts toward <a href="../concepts/india-em-growth.html">india-em-growth</a>,<br />
+<a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a>, <a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a> and <em>away</em> from concentrated<br />
+<a href="../concepts/us-megacap-quality.html">us-megacap-quality</a> + the crowded AI-capex complex. If it's a pause, US megacap + AI resume<br />
+leadership. <strong>This is the single macro switch that most reorders the radar.</strong></p>
+<h2 id="4-regime-scenarios-scenario-not-forecast">4. Regime scenarios (scenario, not forecast)</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Trigger</th>
+<th>Themes that lead</th>
+<th>Themes that lag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Soft-landing / easing</strong></td>
+<td>Inflation cools, Fed cuts, USD soft</td>
+<td>EM, REITs, gold, rate-sensitive real assets, broadening beyond megacap</td>
+<td>Cash, defensives</td>
+</tr>
+<tr>
+<td><strong>Higher-for-longer</strong></td>
+<td>Sticky inflation, no cuts</td>
+<td>Defense, energy/real assets with pricing power, value</td>
+<td>Long-duration tech, REITs, EM, gold</td>
+</tr>
+<tr>
+<td><strong>Risk-off / AI-capex air-pocket</strong></td>
+<td>Hyperscaler capex cut / AI disappointment</td>
+<td>Defense, gold, healthcare/aging, water (defensives)</td>
+<td>The entire AI-capex complex; speculative cluster</td>
+</tr>
+<tr>
+<td><strong>Reflation / debasement</strong></td>
+<td>Fiscal dominance, weak USD, CB gold-buying</td>
+<td>Gold/real assets, commodities, infrastructure, ex-US</td>
+<td>Long-duration growth, bonds</td>
+</tr>
+</tbody>
+</table>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<ul>
+<li>Macro levels are research-aggregated ~2026; the 2025 USD (−9.5%) and ex-US/S&amp;P returns are the<br />
+  firmest (fact). Rate path and inflation trajectory are estimates — the live uncertainty.</li>
+<li>This overlay is <strong>directional/structural</strong>, sitting above <a href="theme-linkage-map.html">theme-linkage-map</a> and <a href="trend-radar.html">trend-radar</a>;<br />
+  it is not a market-timing tool. Valuation/leverage/sentiment read of the current regime:<br />
+<a href="bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a>.</li>
+<li>Next scan: refresh USD/rate/inflation prints and re-test the "regime change" question against<br />
+  fresh ex-US-vs-US performance data.</li>
+</ul>
+<blockquote>
+<p><strong>2026-07-14 scan note.</strong> Live reads now via <a href="signal-monitor.html">signal-monitor</a> (<code>scripts/refresh.py</code>): DXY 100.81<br />
+(fact, yfinance) vs the "−9.5% in 2025" structural read — USD drift continues modestly weaker;<br />
+10Y 4.57% (fact, yfinance ^TNX) — sticky-high, supporting the "higher-for-longer" axis tension;<br />
+VIX 16.41 calm. The "regime change away from US-megacap leadership" question (P22) is tracked to<br />
+2029; current cycle stance in <a href="regime-monitor.html">regime-monitor</a> = late-Act-1 (euphoria not yet completed; F&amp;G<br />
+43.6). BTC $64.7K warn-breach is a cross-asset risk-off wobble to watch.</p>
+</blockquote>
+</article>
+</div>
+</body>
+</html>

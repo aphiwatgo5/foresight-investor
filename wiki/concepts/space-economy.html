@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Space Economy</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Space Economy
+type: concept
+trend: true
+tags: [investing, trend, cross-cutting, space, satellites, launch, defense, frontier]
+sources: []
+date: 2026-06-01
+conviction: 2.5
+stage: emerging
+horizon: 7-10y</div>
+<article>
+<h1 id="space-economy">Space Economy</h1>
+<p><strong>Definition:</strong> The commercialization of space — launch (Rocket Lab, SpaceX-private), satellite<br />
+connectivity / direct-to-cell (AST SpaceMobile), Earth-observation/data (Planet Labs), lunar/<br />
+in-space services (Intuitive Machines), and satellite comms (Globalstar). A long-dated,<br />
+high-variance frontier theme with binary, momentum-driven stocks. Conviction 2.5 on the<br />
+<a href="../syntheses/trend-radar.html">trend-radar</a> — large eventual TAM, but early, speculative, and cash-burning at the edges.</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Figures tagged (fact)/(est.)/(inference) with<br />
+period + source. "n/f" = no reliable figure found. <strong>Market caps are momentum-driven and move<br />
+fast — re-verify before use.</strong></p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>(a) <strong>Launch</strong> — Rocket Lab (RKLB), SpaceX (private); (b) <strong>direct-to-cell / satellite connectivity</strong><br />
+— AST SpaceMobile (ASTS), Globalstar (GSAT); (c) <strong>Earth observation / geospatial data</strong> — Planet<br />
+Labs (PL); (d) <strong>lunar / in-space services</strong> — Intuitive Machines (LUNR). Spans defense<br />
+(<a href="defense-security.html">defense-security</a>), connectivity, and data — with returns highly dependent on execution<br />
+milestones and capital access.</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global space economy</td>
+<td><strong>~$1 trillion</strong></td>
+<td>by 2030–2040</td>
+<td>Morgan Stanley/Citi (range)</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Rocket Lab revenue</td>
+<td><strong>$200.3M (Q1'26, +63.5% YoY); backlog ~$2.2B</strong></td>
+<td>Q1 2026</td>
+<td>RKLB</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>AST SpaceMobile revenue</td>
+<td><strong>$14.73M (Q1'26 — missed est. by ~60%)</strong></td>
+<td>Q1 2026</td>
+<td>ASTS</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Planet Labs revenue</td>
+<td><strong>$307.7M (FY26, +26%)</strong></td>
+<td>FY2026</td>
+<td>PL</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Intuitive Machines</td>
+<td><strong>revenue ~5x guidance</strong> (lumpy, milestone-driven)</td>
+<td>2026</td>
+<td>LUNR</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>SpaceX valuation (narrative)</td>
+<td><strong>~$2T IPO chatter</strong> (UNVERIFIED rumor)</td>
+<td>2026</td>
+<td>press speculation</td>
+<td>(inference)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand:</strong> falling launch costs (reusability) opening new applications; satellite broadband +<br />
+<strong>direct-to-cell</strong> connectivity (closing coverage gaps); Earth-observation/geospatial data for<br />
+defense, climate, agriculture; lunar/government programs (NASA Artemis, defense). <strong>Supply:</strong><br />
+reusable launch (SpaceX) collapsing cost-to-orbit; smallsat manufacturing scale; private capital +<br />
+SPAC-era listings funding the build-out (with the attendant dilution/burn). Defense budgets<br />
+(<a href="defense-security.html">defense-security</a>) are a key anchor customer.</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p>Launch (RKLB, SpaceX put mass in orbit) → satellite manufacturers/operators (ASTS connectivity,<br />
+PL imaging, GSAT comms) → data/services (geospatial analytics, broadband, direct-to-cell) → end<br />
+users (defense, telecom, enterprise, government). Strong linkage to <a href="defense-security.html">defense-security</a><br />
+(government/military demand + ISR), <a href="networking-optical.html">networking-optical</a> (connectivity), and frontier-tech<br />
+sentiment. Capital-market access (<a href="../syntheses/macro-regime.html">macro-regime</a> risk appetite) is existential for the<br />
+cash-burning names.</p>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<p>Early, fragmented, and <strong>execution-binary</strong>: SpaceX (private) dominates launch + Starlink, dwarfing<br />
+public peers; Rocket Lab is the leading <em>public</em> launch + space-systems play (the relative quality<br />
+name); ASTS (direct-to-cell) and LUNR (lunar) are pre-scale, milestone-dependent, dilutive; Planet<br />
+Labs has a real recurring-data business. Moats are mostly <em>prospective</em> — first-mover, spectrum<br />
+rights (ASTS/GSAT), constellation scale, launch cadence. Most public names are not yet<br />
+self-funding.</p>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps momentum-driven (~May 2026, est.) — re-verify. Other figures (fact) unless tagged.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of)</th>
+<th>Revenue (period)</th>
+<th>Rev YoY</th>
+<th>Profitability</th>
+<th>Moat note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rocket Lab</td>
+<td>RKLB</td>
+<td>US</td>
+<td>Launch + space systems</td>
+<td>n/f (momentum)</td>
+<td>$200.3M (Q1'26)</td>
+<td>+63.5%</td>
+<td>not yet profitable; ~$2.2B backlog</td>
+<td>Leading public launch; Neutron optionality</td>
+</tr>
+<tr>
+<td>AST SpaceMobile</td>
+<td>ASTS</td>
+<td>US</td>
+<td>Direct-to-cell satellite</td>
+<td>n/f (momentum)</td>
+<td>$14.73M (Q1'26)</td>
+<td>missed ~60%</td>
+<td>cash-burning, pre-scale</td>
+<td>Direct-to-cell spectrum/first-mover (binary)</td>
+</tr>
+<tr>
+<td>Planet Labs</td>
+<td>PL</td>
+<td>US</td>
+<td>Earth observation/data</td>
+<td>n/f (momentum)</td>
+<td>$307.7M (FY26)</td>
+<td>+26%</td>
+<td>improving toward profitability</td>
+<td>Recurring geospatial-data model</td>
+</tr>
+<tr>
+<td>Intuitive Machines</td>
+<td>LUNR</td>
+<td>US</td>
+<td>Lunar / in-space services</td>
+<td>n/f (momentum)</td>
+<td>~5x guide (lumpy)</td>
+<td>n/f</td>
+<td>milestone-driven, lumpy</td>
+<td>NASA/lunar first-mover (binary)</td>
+</tr>
+<tr>
+<td>Globalstar</td>
+<td>GSAT</td>
+<td>US</td>
+<td>Satellite comms/spectrum</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>Spectrum + Apple connectivity deal</td>
+</tr>
+<tr>
+<td>SpaceX</td>
+<td>(private)</td>
+<td>US</td>
+<td>Launch + Starlink</td>
+<td>~$2T (rumored IPO — UNVERIFIED)</td>
+<td>n/f (private)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>Dominant launch + Starlink scale moat</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p>The space economy is a <strong>real, large, long-dated TAM (~$1T by 2030–2040) wrapped in early,<br />
+speculative, high-variance equities</strong>. The dominant asset — <strong>SpaceX</strong> — is private (the ~$2T IPO<br />
+figure is unverified rumor), so public investors are left with a thinner, riskier set. Among them,<br />
+<strong>Rocket Lab</strong> is the relative quality name: real revenue (+63.5% to $200.3M), a ~$2.2B backlog,<br />
+and Neutron-rocket optionality, though still unprofitable. <strong>Planet Labs</strong> has a genuine recurring<br />
+geospatial-data business (+26%). The edges — <strong>ASTS</strong> (direct-to-cell, missed Q1 by ~60%) and<br />
+<strong>LUNR</strong> (lunar, ultra-lumpy) — are binary, milestone-and-capital-dependent, and dilutive. These<br />
+are momentum stocks whose valuations swing on single launches/contracts and whose survival depends<br />
+on capital-market access. Net: a legitimate frontier worth a <em>small, speculative sleeve</em> (RKLB/PL<br />
+as the more investable core; ASTS/LUNR as lottery-ticket optionality) — but the early stage, cash<br />
+burn, and binary execution justify a 2.5, and the caps must be re-verified.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Execution/binary risk</strong> — single failed launches or missed milestones can halve a stock (ASTS, LUNR).</li>
+<li><strong>Cash burn + dilution</strong> — most public names aren't self-funding; capital-market access is existential.</li>
+<li><strong>Valuation/momentum</strong> — caps are sentiment-driven and volatile; data goes stale fast.</li>
+<li><strong>SpaceX dominance</strong> — the private leader could marginalize public peers in launch/broadband.</li>
+<li><strong>Regulatory/spectrum</strong> — licensing, orbital-debris, spectrum disputes.</li>
+<li><strong>Risk-appetite dependence</strong> — a risk-off macro (<a href="../syntheses/macro-regime.html">macro-regime</a>) shuts the funding window.</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li><strong>ARKX</strong> (ARK Space Exploration), <strong>UFO</strong> (Procure Space). <em>(ETFs + holdings UNVERIFIED — confirm<br />
+  AUM/holdings before use.)</em></li>
+<li>Representative securities: RKLB, PL (more investable core); ASTS, LUNR, GSAT (speculative optionality).</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 2.5/5</strong> — a genuine long-run frontier with a large eventual TAM and real defense/<br />
+  connectivity demand, but the public vehicles are early, cash-burning, binary, and momentum-priced,<br />
+  with the dominant player (SpaceX) private. A small speculative sleeve, not a core allocation.</li>
+<li><strong>Stage: emerging / high-variance. Horizon: 7–10+ years.</strong></li>
+<li><strong>Invalidation:</strong> a string of launch/program failures + a closed funding window, OR SpaceX so<br />
+  dominating launch/broadband that public peers can't reach scale economics.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ARKX</strong></td>
+<td>ARK space</td>
+<td style="text-align: right;">$30.45</td>
+<td style="text-align: right;">$934M</td>
+<td style="text-align: right;">+17.9%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f · 1.67</td>
+<td style="text-align: right;">-19.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>UFO</strong></td>
+<td>Procure space</td>
+<td style="text-align: right;">$43.88</td>
+<td style="text-align: right;">$851M</td>
+<td style="text-align: right;">+31.8%</td>
+<td style="text-align: right;">0.3%</td>
+<td style="text-align: right;">n/f · 1.86</td>
+<td style="text-align: right;">-35.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>RKLB</strong></td>
+<td>Rocket Lab</td>
+<td style="text-align: right;">$68.93</td>
+<td style="text-align: right;">$43B</td>
+<td style="text-align: right;">2297.5x</td>
+<td style="text-align: right;">63.5%</td>
+<td style="text-align: right;">-26.9% · 2.55</td>
+<td style="text-align: right;">-54.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ASTS</strong></td>
+<td>AST SpaceMobile</td>
+<td style="text-align: right;">$59.50</td>
+<td style="text-align: right;">$23B</td>
+<td style="text-align: right;">-290.0x</td>
+<td style="text-align: right;">19.52%</td>
+<td style="text-align: right;">0.0% · 2.68</td>
+<td style="text-align: right;">-55.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PL</strong></td>
+<td>Planet Labs</td>
+<td style="text-align: right;">$22.57</td>
+<td style="text-align: right;">$8B</td>
+<td style="text-align: right;">6777.8x</td>
+<td style="text-align: right;">42.1%</td>
+<td style="text-align: right;">-1.11% · 2.07</td>
+<td style="text-align: right;">-56.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>LUNR</strong></td>
+<td>Intuitive Machines</td>
+<td style="text-align: right;">$13.61</td>
+<td style="text-align: right;">$2B</td>
+<td style="text-align: right;">-272.2x</td>
+<td style="text-align: right;">1.99%</td>
+<td style="text-align: right;">-32.7% · 1.78</td>
+<td style="text-align: right;">-70.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GSAT</strong></td>
+<td>Globalstar</td>
+<td style="text-align: right;">$79.83</td>
+<td style="text-align: right;">$10B</td>
+<td style="text-align: right;">260.6x</td>
+<td style="text-align: right;">16.7%</td>
+<td style="text-align: right;">-3.1% · 1.54</td>
+<td style="text-align: right;">-5.7%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Defense/government demand: <a href="defense-security.html">defense-security</a>. Connectivity: <a href="networking-optical.html">networking-optical</a>. Risk<br />
+  appetite/funding: <a href="../syntheses/macro-regime.html">macro-regime</a>. Master: <a href="../syntheses/trend-radar.html">trend-radar</a>. Linkage: <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Does any public name (RKLB) reach durable profitability, or does SpaceX capture most of the value?</li>
+<li>Does direct-to-cell (ASTS) prove out commercially, or stay a perennial milestone story?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>Morgan Stanley/Citi (space-economy TAM range); company results (Rocket Lab, AST SpaceMobile,<br />
+Planet Labs, Intuitive Machines Q1/FY26); SpaceX IPO chatter (press speculation — unverified), 2026.</p>
+</article>
+</div>
+</body>
+</html>

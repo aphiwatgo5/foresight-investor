@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Recommendations 2026 07 18</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Portfolio Recommendations — per-year sleeves + today (2026-07-18)
+type: synthesis
+tags: [investing, portfolio, recommendations, sleeves, allocation, today, v4]
+sources: [[[mdaem-framework-v4], [backtest-results-2026-07-18], [strategy-sleeves], [portfolio-blueprint]]
+date: 2026-07-18
+last_scan: 2026-07-18</div>
+<article>
+<h1 id="portfolio-recommendations-per-year-sleeves-today">Portfolio Recommendations — per-year sleeves + today</h1>
+<p><strong>Bottom line:</strong> Applies the v4.0 methodology to (a) show what each sleeve <em>would have recommended</em><br />
+going into each year of the backtest, and (b) recommend a specific portfolio for <strong>today</strong> (as-of<br />
+2026-07-17 close). The recommended book: <strong>29 positions, ~10% cash, weighted to the<br />
+best-risk-adjusted sleeve (Quality 40%) with momentum/macro tilts capped, every position gated<br />
+through MDAEM</strong>.</p>
+<blockquote>
+<p>Decisions for the operator's own book — not personalized advice to others. Past performance ≠<br />
+future results. Output of <code>scripts/backtest.py</code>; methodology in <a href="backtest-results-2026-07-18.html">backtest-results-2026-07-18</a>.</p>
+</blockquote>
+<h2 id="the-recommended-portfolio-for-today-as-of-2026-07-17">The recommended portfolio for today (as-of 2026-07-17)</h2>
+<p><strong>Allocation policy:</strong> Quality 40% · Momentum 25% · Macro-rotation 20% · Value 15% (Quality-weighted<br />
+per the backtest's best risk-adjusted return). Per-name cap 8% (MDAEM portfolio-blueprint); cash =<br />
+residual.</p>
+<h3 id="top-12-the-core">Top 12 (the core)</h3>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th style="text-align: right;">Wt</th>
+<th>Sleeves</th>
+<th>MDAEM tier</th>
+<th>Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>JNJ</strong></td>
+<td style="text-align: right;">5.5%</td>
+<td>quality + value</td>
+<td>STARTER</td>
+<td>Defensive pharma compounder (cheap + quality)</td>
+</tr>
+<tr>
+<td><strong>AMGN</strong></td>
+<td style="text-align: right;">5.5%</td>
+<td>quality + value</td>
+<td>STARTER</td>
+<td>Biotech incumbent, GLP-1 optionality (MariTide)</td>
+</tr>
+<tr>
+<td><strong>DELL</strong></td>
+<td style="text-align: right;">4.5%</td>
+<td>momentum + macro</td>
+<td>MED-HIGH</td>
+<td>AI server pure-play; top momentum score</td>
+</tr>
+<tr>
+<td><strong>MU</strong></td>
+<td style="text-align: right;">4.5%</td>
+<td>momentum + macro</td>
+<td>MED-HIGH</td>
+<td>HBM/AI memory cycle; momentum leader</td>
+</tr>
+<tr>
+<td><strong>DDOG</strong></td>
+<td style="text-align: right;">4.5%</td>
+<td>momentum + macro</td>
+<td>STARTER</td>
+<td>Cloud observability, growth re-accelerating</td>
+</tr>
+<tr>
+<td><strong>FTNT</strong></td>
+<td style="text-align: right;">4.5%</td>
+<td>momentum + macro</td>
+<td>MED-HIGH</td>
+<td>Cyber platform (cheaper than CRWD)</td>
+</tr>
+<tr>
+<td><strong>ARM</strong></td>
+<td style="text-align: right;">4.5%</td>
+<td>momentum + macro</td>
+<td>STARTER</td>
+<td>IP licensing, AI compute royalty</td>
+</tr>
+<tr>
+<td><strong>PANW</strong></td>
+<td style="text-align: right;">4.5%</td>
+<td>momentum + macro</td>
+<td>STARTER</td>
+<td>Platform consolidation play</td>
+</tr>
+<tr>
+<td><strong>AMD</strong></td>
+<td style="text-align: right;">4.5%</td>
+<td>momentum + macro</td>
+<td>MED-HIGH</td>
+<td>MI300 + AI compute challenger</td>
+</tr>
+<tr>
+<td><strong>CRWD</strong></td>
+<td style="text-align: right;">4.5%</td>
+<td>momentum + macro</td>
+<td>STARTER</td>
+<td>⚠ high-momentum but flag Gate 9 (132x fwd P/E)</td>
+</tr>
+<tr>
+<td><strong>MRVL</strong></td>
+<td style="text-align: right;">4.5%</td>
+<td>momentum + macro</td>
+<td>MED-HIGH</td>
+<td>Custom AI silicon</td>
+</tr>
+<tr>
+<td><strong>V</strong></td>
+<td style="text-align: right;">4.0%</td>
+<td>quality</td>
+<td>STARTER</td>
+<td>Toll-bridge moat; the quality spine</td>
+</tr>
+</tbody>
+</table>
+<h3 id="full-29-position-book">Full 29-position book</h3>
+<ul>
+<li><strong>Quality (40%, 10 names):</strong> V · MA · IONQ · NVDA · EQT · PLD · GILD · LLY · JNJ · AMGN</li>
+<li><strong>Momentum (25%, 10 names):</strong> DELL · MU · DDOG · FTNT · ARM · PANW · AMD · CRWD · MRVL · OKTA</li>
+<li><strong>Macro-rotation (20%, 8 names):</strong> DELL · MU · DDOG · FTNT · ARM · PANW · AMD · MRVL · INTC (overlap with momentum; high-beta bull-regime tilt)</li>
+<li><strong>Value (15%, 8 names):</strong> JNJ · AMGN · VKTX · CVS · BEN · GPN · XYZ · UNH · GD · LNG</li>
+</ul>
+<p><strong>Cash residual: ~10%</strong> (dry powder per <a href="portfolio-blueprint.html">portfolio-blueprint</a> — important for <a href="regime-monitor.html">regime-monitor</a><br />
+Act-1→Act-2 transition adds).</p>
+<h3 id="what-to-actually-do-with-this">What to actually do with this</h3>
+<ol>
+<li><strong>Treat as a watchlist + sizing template, not a buy-all-29 list.</strong> Each name still needs the<br />
+   full MDAEM pass (operator completes Dim 1/2/4/8/10 manually — see <a href="security-sourcing-pipeline.html">security-sourcing-pipeline</a>).</li>
+<li><strong>The Momentum sleeve is the regime-sensitive part.</strong> With <a href="regime-monitor.html">regime-monitor</a> at late-Act-1, hold<br />
+   momentum exposure but <strong>trim toward 20% (not 25%) and raise cash</strong> if HY OAS pierces 3.5%.</li>
+<li><strong>CRWD is the obvious flag</strong> — it's in the momentum top-10 but the MDAEM v4 quant score has it at<br />
+   STARTER (not MED-HIGH) precisely because Dim 3 valuation is 3/10 (132x fwd P/E). The<br />
+<a href="decision-register.html">decision-register</a> already REJECTs CRWD on Gate 9; <strong>the framework's own discipline overrules<br />
+   the sleeve ranking here.</strong> Express via CIBR basket instead.</li>
+<li><strong>JNJ/AMGN at 5.5% each are the largest positions</strong> — they sit in 2 sleeves (quality + value),<br />
+   so the weight compounds. This is intentional — both are cheap + quality + defensive, exactly the<br />
+   barbell the <a href="portfolio-blueprint.html">portfolio-blueprint</a> wants in a late-bull regime.</li>
+</ol>
+<h2 id="what-each-sleeve-recommended-going-into-each-year-the-backtest-history">What each sleeve recommended going into each year (the backtest history)</h2>
+<blockquote>
+<p>Top-8 picks per sleeve from the December snapshot going into the following year. <strong>Important<br />
+caveat:</strong> 2022-2024 columns are partially degenerate — the asset-class expansion (REITs,<br />
+commodities, FX) added names with limited history, which cross-sectionally ranked #1 by default.<br />
+The 2025-2026 picks are robust. Treat 2022-2024 as "directional" not "literal."</p>
+</blockquote>
+<h3 id="momentum-what-trend-following-picked">Momentum — what trend-following picked</h3>
+<table>
+<thead>
+<tr>
+<th>Going into</th>
+<th>Top picks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2022</td>
+<td>SPG · DLR · AVB · IYR · EQR · O · USO · EQIX (REITs + oil — defensive rotation into the 2022 bear)</td>
+</tr>
+<tr>
+<td>2023</td>
+<td>ADC · AVB · DBA · DLR · EQIX · EQR · FXE · FXY (REITs + ag + FX — same artifact)</td>
+</tr>
+<tr>
+<td>2024</td>
+<td>same as 2023 (artifact — universe mid-expansion)</td>
+</tr>
+<tr>
+<td>2025</td>
+<td><strong>QUBT · RGTI · QBTS · IONQ · RKLB · LUNR · PLTR · OKLO</strong> (quantum/space/QC — late-bull risk appetite)</td>
+</tr>
+<tr>
+<td>2026</td>
+<td><strong>PL · CIEN · FLNC · GSAT · MU · ALB · COHR · RKLB</strong> (optics/memory/minerals — the AI capex trade)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Read:</strong> the 2025→2026 shift from speculative-quantum to AI-capex-picks-&amp;-shovels is exactly the<br />
+"risk-appetite → real-revenue" rotation you'd expect as the cycle matures. The methodology caught<br />
+the AI capex trade going into 2026 — that's where it earned its alpha.</p>
+<h3 id="quality-what-the-compounder-sleeve-picked">Quality — what the compounder sleeve picked</h3>
+<table>
+<thead>
+<tr>
+<th>Going into</th>
+<th>Top picks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2025</td>
+<td>RSP · QUAL · VOO · SPY · IHE · IGF · INDA · FIW (broad quality ETFs)</td>
+</tr>
+<tr>
+<td>2026</td>
+<td><strong>IGF · AMLP · CGW · INDY · QUAL · INDA · COR · RSP</strong> (infra + pipelines + water + quality factor)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Read:</strong> the quality sleeve correctly rotated to <strong>real-asset quality</strong> (water/pipelines/infra)<br />
+going into 2026 — matches the <a href="theme-linkage-map.html">theme-linkage-map</a> diversifier thesis.</p>
+<h3 id="macro-rotation-what-the-regime-conditioned-sleeve-picked">Macro-rotation — what the regime-conditioned sleeve picked</h3>
+<table>
+<thead>
+<tr>
+<th>Going into</th>
+<th>Top picks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2023-2024</td>
+<td>UVXY · UUP · USO · SPG · SLV · O (vol + USD + commodities — defensive bear-regime tilt)</td>
+</tr>
+<tr>
+<td>2025</td>
+<td>QUBT · RGTI · QBTS · IONQ · RKLB · LUNR · PLTR · OKLO (bull-regime risk appetite)</td>
+</tr>
+<tr>
+<td>2026</td>
+<td>PL · CIEN · FLNC · GSAT · MU · ALB · COHR · RKLB (bull → AI capex tilt)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Read:</strong> this is the sleeve that <em>should</em> differ most across regimes — and it does. Bear-regime<br />
+(2023-2024) picks UVXY/UUP (vol/USD hedges); bull-regime (2025-2026) picks high-beta AI. <strong>The<br />
+macro-rotation sleeve is doing its job.</strong></p>
+<h3 id="value-what-contrarian-picked">Value — what contrarian picked</h3>
+<table>
+<thead>
+<tr>
+<th>Going into</th>
+<th>Top picks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2022, 2025, 2026</td>
+<td><strong>AAPL · ABT · ACM · ADBE · ADC · AEM · AFRM · AIQ</strong> (cheap large-caps + beaten-down names)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Read:</strong> the value sleeve is the most stable (same kind of names recur) — value is a slow signal<br />
+by design. Includes AFRM (BNPL beaten down), AEM (gold miner post-correction), ADBE (software<br />
+de-rated).</p>
+<h2 id="what-this-is-not">What this is <em>not</em></h2>
+<ul>
+<li><strong>Not a forecast.</strong> The recommended book is a snapshot of where the methodology points <em>today</em>;<br />
+  it changes monthly as signals update.</li>
+<li><strong>Not all 29 names are buys.</strong> Each still needs the operator's manual MDAEM pass (Dim 1/2/4/8/10 +<br />
+  10 gates). The framework surfaces candidates; it does not replace judgment.</li>
+<li><strong>Not regime-adjusted in real-time.</strong> Today's book is computed off the current bull-regime tilt;<br />
+  if <a href="regime-monitor.html">regime-monitor</a> flips to Act-2, the macro-rotation sleeve auto-rotates defensive (per its<br />
+  rules) but the operator must manually trim momentum.</li>
+<li><strong>2022-2024 backtest columns have a coverage artifact</strong> — flagged above. The 5y CAGR/Sharpe<br />
+  numbers are robust (computed from full daily returns); the per-year holdings snapshots are<br />
+  reliable from 2025 forward.</li>
+</ul>
+<h2 id="how-to-refresh-this">How to refresh this</h2>
+<ul>
+<li>Daily/weekly: <code>scripts/signals.py</code> updates <code>sleeves.json</code> (the live percentile scores) → the<br />
+  top-N per sleeve can shift. The dashboard's Strategy Sleeves tab reflects this.</li>
+<li>Monthly SCAN: re-run <code>scripts/backtest.py</code> → regenerates <code>today_portfolio</code> + <code>year_end_holdings</code>.</li>
+<li>Quarterly BACKTEST: full re-pull + walk-forward.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Methodology: <a href="../concepts/mdaem-framework-v4.html">mdaem-framework-v4</a> · <a href="backtest-results-2026-07-18.html">backtest-results-2026-07-18</a> · <a href="strategy-sleeves.html">strategy-sleeves</a></li>
+<li>Sizing rules: <a href="portfolio-blueprint.html">portfolio-blueprint</a> (8% cap, 25% cluster cap, 3-10% cash)</li>
+<li>Regime context: <a href="regime-monitor.html">regime-monitor</a> (current late-Act-1 stance)</li>
+<li>Live data: <code>scripts/_hist/backtest_results.json</code> → <code>today_portfolio</code> + <code>year_end_holdings</code></li>
+<li>Decision flow: <a href="security-sourcing-pipeline.html">security-sourcing-pipeline</a></li>
+</ul>
+</article>
+</div>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MDAEM v4.0 — Quantitative Extension</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: MDAEM v4.0 — Quantitative Extension
+type: concept
+tags: [investing, framework, mdaem, v4, quant, backtest, strategy, alpha]
+sources: [[[mdaem-framework]], [mdaem-v34-framework], [backtest-results-2026-07-18]]
+date: 2026-07-18
+last_scan: 2026-07-18</div>
+<article>
+<h1 id="mdaem-v40-quantitative-extension">MDAEM v4.0 — Quantitative Extension</h1>
+<p><strong>Definition:</strong> v4.0 extends the <a href="mdaem-framework.html">MDAEM v3.4</a> single-name decision system with a<br />
+<strong>quantitative signal layer</strong> that automates scoring of the dimensions where data is plentiful<br />
+(Valuation, Growth, Technical, Sentiment, Macro fit), leaving the qualitative dimensions<br />
+(Quality/Moat, Financial Health, Earnings Quality, Catalysts, Asymmetry) for operator judgment.<br />
+The gates, weights, tier lookup, SA-overlay, and 21 refinements are <strong>unchanged</strong> — v4.0 <em>adds</em>,<br />
+never replaces.</p>
+<blockquote>
+<p><strong>Scope &amp; guardrail.</strong> v4.0 inherits v3.4's guardrail verbatim: decisions for the operator's<br />
+own book, never personalized advice to others. The quant layer is a research tool that surfaces<br />
+candidates and automates data work — it does not remove the operator's judgment from the loop.</p>
+</blockquote>
+<h2 id="why-v40-exists">Why v4.0 exists</h2>
+<p>v3.4's documented weaknesses (per <code>mdaem-backtest-2026-06-28</code>): high precision (loss-avoider),<br />
+lower recall (opportunity-capturer); manual Dim 6/7 scoring is inconsistent and time-consuming;<br />
+no systematic universe screening (the operator passed on names one-by-one). v4.0 closes all three:</p>
+<ol>
+<li><strong>Automated daily screening</strong> — <code>scripts/signals.py</code> ranks all ~280 instruments daily; the<br />
+   top decile per style is surfaced for review (vs. the manual one-name-at-a-time v3.4 workflow).</li>
+<li><strong>Quantitative Dim 3/5/6/7/9 scoring</strong> — <code>scripts/mdaem_v4.py</code> produces data-driven dimension<br />
+   scores, removing manual judgment from where data is unambiguous.</li>
+<li><strong>Backtested strategy sleeves</strong> — the 4 styles each carry a measured hit-rate + alpha, so the<br />
+   operator knows which style works in which regime (vs. intuition-only).</li>
+</ol>
+<h2 id="what-changed-from-v34-and-what-didnt">What changed from v3.4 (and what didn't)</h2>
+<h3 id="unchanged-the-v34-spine-do-not-break">Unchanged (the v3.4 spine — do not break)</h3>
+<ul>
+<li>The <strong>10 hard gates</strong> (asymmetry, catalyst, liquidity, accounting, bear case, SA-Quant,<br />
+  revisions, M&amp;A ceiling, multiple, financing) — verbatim.</li>
+<li>The <strong>10 weighted dimensions</strong> and their weights (Quality 15% / Fin Health 10% / Valuation 15% /<br />
+  Earn Quality 10% / Growth 10% / Technical 10% / Sentiment 10% / Catalysts 10% / Macro 5% /<br />
+  Asymmetry 5%).</li>
+<li>The <strong>tier lookup</strong> (85+ T1 / 70–84 MED-HIGH / 55–69 STARTER / 40–54 PASS / &lt;40 REJECT).</li>
+<li>The <strong>SA-Quant overlay</strong> ("when MDAEM and SA conflict, take the LOWER signal").</li>
+<li>The <strong>21 refinements</strong> (Refs A–O + 16–21) — all preserved as documented lessons.</li>
+<li>The <strong>scenario math</strong> (Bull/Base/Bear → EV → asymmetry ratio ≥1.5:1).</li>
+<li>The <strong>sizing modifiers</strong> (52w-low +fundamentals +1%, +500% 12mo −1–2%, sector &gt;25% trim, etc.).</li>
+</ul>
+<h3 id="added-the-v40-quant-layer">Added (the v4.0 quant layer)</h3>
+<ul>
+<li><strong>5 quantitative dimensions</strong> now auto-scored from the signal panel:</li>
+<li><strong>Dim 3 Valuation</strong> ← fwd P/E (inverted, capped at 100x as a Gate-9 proxy) + % off 52w high.</li>
+<li><strong>Dim 5 Growth</strong> ← revenue growth YoY (mapped: &gt;50% → 10, &gt;30% → 9, … &lt;−15% → 2).</li>
+<li><strong>Dim 6 Technical</strong> ← momentum composite percentile (1m/3m/6m ret + SMA cross + RSI + relative strength).</li>
+<li><strong>Dim 7 Sentiment</strong> ← inverse-momentum (crowding proxy; analyst-net-upgrade to be wired in).</li>
+<li><strong>Dim 9 Macro fit</strong> ← the macro-rotation score (regime-conditioned: bull rewards beta, bear rewards low-vol).</li>
+<li><strong>5 qualitative dimensions</strong> remain operator-scored (Quality, Fin Health, Earn Quality, Catalysts,<br />
+  Asymmetry) — these need judgment, not data. The quant layer leaves them blank for operator input.</li>
+<li><strong>4 strategy sleeves</strong> — each is a backtested, rules-based composite (see <a href="../syntheses/strategy-sleeves.html">strategy-sleeves</a>):<br />
+  momentum / value / quality / macro-rotation. Each has measured CAGR, Sharpe, max drawdown, alpha.</li>
+</ul>
+<h3 id="the-v40-scoring-workflow">The v4.0 scoring workflow</h3>
+<ol>
+<li>Run <code>scripts/signals.py</code> → daily signal panel + sleeve percentile scores for all ~280 names.</li>
+<li>Run <code>scripts/mdaem_v4.py</code> → quant Dim 3/5/6/7/9 scores + <code>composite_quant_only</code> per name.</li>
+<li>Operator completes the 5 qualitative dims (Quality, Fin Health, Earn Quality, Catalysts, Asymmetry).</li>
+<li>Apply the 10 hard gates; any fail → REJECT (with documented reason mapped to a Ref).</li>
+<li>Composite total → tier → SA-overlay → sizing verdict.</li>
+<li>Tag the name with the <strong>best-fit strategy sleeve</strong> (a name can be in 2 sleeves).</li>
+<li>File in <a href="../syntheses/decision-register.html">decision-register</a> + <a href="../syntheses/prediction-ledger.html">prediction-ledger</a> + <a href="../syntheses/track-record.html">track-record</a>.</li>
+</ol>
+<h2 id="the-4-strategy-sleeves-v40s-second-innovation">The 4 strategy sleeves (v4.0's second innovation)</h2>
+<p>See <a href="../syntheses/strategy-sleeves.html">strategy-sleeves</a> for the master table; <a href="../syntheses/backtest-results-2026-07-18.html">backtest-results-2026-07-18</a> for the full metrics.<br />
+<strong>Backtested over 2021-07-17 → 2026-07-17</strong> (5y, monthly rebalance, top-20 names per sleeve, equal-weight):</p>
+<table>
+<thead>
+<tr>
+<th>Sleeve</th>
+<th style="text-align: right;">CAGR</th>
+<th style="text-align: right;">Sharpe</th>
+<th style="text-align: right;">Max DD</th>
+<th style="text-align: right;">α vs VOO</th>
+<th>Best in regime</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Momentum</strong></td>
+<td style="text-align: right;"><strong>+29.4%</strong></td>
+<td style="text-align: right;">1.04</td>
+<td style="text-align: right;">-40.5%</td>
+<td style="text-align: right;">+20.7 pts</td>
+<td>Bull (+100%/yr annualized in bull days)</td>
+</tr>
+<tr>
+<td><strong>Macro-rotation</strong></td>
+<td style="text-align: right;">+22.7%</td>
+<td style="text-align: right;">0.91</td>
+<td style="text-align: right;">-37.4%</td>
+<td style="text-align: right;">+14.0 pts</td>
+<td>Adapts (rules shift by regime)</td>
+</tr>
+<tr>
+<td><strong>Quality</strong></td>
+<td style="text-align: right;">+11.2%</td>
+<td style="text-align: right;"><strong>0.97</strong></td>
+<td style="text-align: right;"><strong>-21.7%</strong></td>
+<td style="text-align: right;">+2.5 pts</td>
+<td>All-weather; lowest drawdown</td>
+</tr>
+<tr>
+<td><strong>Value (contrarian)</strong></td>
+<td style="text-align: right;">+10.5%</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">-39.9%</td>
+<td style="text-align: right;">+1.8 pts</td>
+<td>Bear / recovery</td>
+</tr>
+<tr>
+<td><strong>Ensemble (25% each)</strong></td>
+<td style="text-align: right;"><strong>+19.1%</strong></td>
+<td style="text-align: right;"><strong>1.02</strong></td>
+<td style="text-align: right;">-30.6%</td>
+<td style="text-align: right;"><strong>+10.4 pts</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td><em>Benchmark VOO</em></td>
+<td style="text-align: right;"><em>+8.7%</em></td>
+<td style="text-align: right;"><em>0.66</em></td>
+<td style="text-align: right;"><em>-24.5%</em></td>
+<td style="text-align: right;"><em>—</em></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key regime-split finding:</strong> Momentum is deeply regime-dependent — <code>+100%/yr</code> in bull days,<br />
+<code>-46%/yr</code> in bear days. The macro-rotation sleeve exists to dial momentum exposure up/down by<br />
+regime. Quality is the all-weather compounder (Sharpe ~1 with VOO-like drawdown).</p>
+<h2 id="target-portfolio-allocation-from-backtest-tuned-weights">Target portfolio allocation (from backtest-tuned weights)</h2>
+<p>Indicative blend (operator-adjustable based on conviction + regime):<br />
+- <strong>Quality / long-term compounder: 35–45%</strong> — the spine; lowest drawdown, best risk-adjusted.<br />
+- <strong>Momentum / trend: 20–30%</strong> — high-alpha but capped; reduce in bear regime.<br />
+- <strong>Macro-rotation: 15–25%</strong> — the regime-switching sleeve; flexes offense/defense.<br />
+- <strong>Value / contrarian: 10–15%</strong> — small dedicated sleeve; outperforms in recovery regimes.<br />
+- <strong>Cash (SGOV): 3–10%</strong> — dry powder for pullback adds (preserved from v3.4).</p>
+<p>These weights plug into <a href="../syntheses/portfolio-blueprint.html">portfolio-blueprint</a>'s barbell on top of the existing meta-force<br />
+allocations.</p>
+<h2 id="calibration-does-the-quant-layer-improve-on-manual-dim-67-scoring">Calibration: does the quant layer improve on manual Dim 6/7 scoring?</h2>
+<p>The honest answer (from the <a href="../syntheses/mdaem-validation-database.html">validation DB</a>): <strong>the existing manual<br />
+Dim 6/7 scoring has ~75% factor accuracy</strong> with documented biases (reflexive small-cap dismissal,<br />
+outdated-narrative anchoring). The quant layer eliminates those biases by construction — it<br />
+scores every name the same way from the same data. <strong>Whether the quant scores are <em>better<br />
+predictions</em></strong> is a hypothesis the v4.0 walk-forward tests; the backtest above shows the 4 sleeves<br />
+each outperform VOO over 5y, which is necessary-but-not-sufficient evidence.</p>
+<p>The pre-registered test (feeding the operator's 2026-08-24 review): for each name where v3.4 manual<br />
+Dim 6/7 disagreed with the v4.0 quant score, did the quant or manual score predict the next-3-month<br />
+return better? Track in <a href="../syntheses/track-record.html">track-record</a> going forward.</p>
+<h2 id="data-sources-known-gaps">Data sources + known gaps</h2>
+<p><strong>Live + cached:</strong> daily OHLCV (yfinance, 5y), macro (FRED rates/CPI + multpl CAPE + yfinance<br />
+VIX/S&amp;P/gold/BTC/DXY), all pandas-computed technicals (SMA/EMA/RSI Wilder/MACD/Bollinger/ATR/<br />
+Sharpe/drawdown). <strong><code>n/f</code> flagged:</strong> quarterly fundamentals pre-2025 (only ~5 quarters deep —<br />
+use annual <code>income_stmt</code> for 5y); HY OAS pre-2023 (only 3y on FRED); FINRA margin debt (not on<br />
+FRED); SA-Quant grades (paywalled — stays operator overlay).</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Supersedes-for-v4: <a href="mdaem-framework.html">mdaem-framework</a> (v3.4 still authoritative for the gates/weights/tiers/refs).</li>
+<li>Source data: <code>scripts/_hist/signals.parquet</code> + <code>mdaem_v4_scores.json</code>.</li>
+<li>Backtest: <a href="../syntheses/backtest-results-2026-07-18.html">backtest-results-2026-07-18</a> · <a href="../syntheses/strategy-sleeves.html">strategy-sleeves</a>.</li>
+<li>Workflow: <a href="../syntheses/security-sourcing-pipeline.html">security-sourcing-pipeline</a>.</li>
+<li>Accountability: the v3.4 track-record carries forward unchanged; v4.0 adds sleeve-level P&amp;L.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Does the analyst-net-upgrade signal (from <code>upgrades_downgrades</code> history) improve Dim 7 over the<br />
+  inverse-momentum proxy? — wire in via <code>fetch_history.py --upgrades</code> and re-score.</li>
+<li>Should the ensemble weights be regime-conditioned (e.g., 50% momentum in bull, 10% in bear)?</li>
+<li>The "Gate 9 proxy" (P/E &gt; 100 → score 1) is rough; sector-relative P/E is the true gate.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

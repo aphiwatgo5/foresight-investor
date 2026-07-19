@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cybersecurity</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Cybersecurity
+type: concept
+trend: true
+tags: [investing, trend, cybersecurity, cloud-security, identity, sase, zero-trust, endpoint]
+sources: []
+date: 2026-06-01
+conviction: 4
+stage: accelerating
+horizon: 3-7y</div>
+<article>
+<h1 id="cybersecurity">Cybersecurity</h1>
+<p><strong>Definition:</strong> Software, services, and platforms protecting enterprise IT/cloud/identity/<br />
+endpoints — endpoint/XDR, network/firewall + SASE/zero-trust, identity &amp; access, cloud security<br />
+(CSPM/CNAPP/CASB), and consolidating security platforms. Conviction 4 on the <a href="../syntheses/trend-radar.html">trend-radar</a>. Its<br />
+key attraction: near-non-discretionary demand that is <strong>structurally less AI-capex-cyclical</strong> than<br />
+the rest of the Compute &amp; AI stack — a diversifier from the shared AI engine<br />
+(see <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>).</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Figures tagged (fact)/(est.)/(inference) with<br />
+period + source. "n/f" = no reliable figure found.</p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>Pillars: endpoint/XDR (CrowdStrike, SentinelOne), network/firewall + SASE/zero-trust (Palo Alto,<br />
+Fortinet, Zscaler, Cloudflare), identity &amp; privileged access (Okta, CyberArk), cloud security —<br />
+CSPM/CNAPP/CASB (Palo Alto Prisma, Microsoft/Wiz, Zscaler), and consolidating platforms.<br />
+Increasingly intersects with <a href="ai-software-agents.html">ai-software-agents</a> via AI-driven detection and the new "AI-agent<br />
+identity" attack surface.</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Worldwide info-security end-user spend</td>
+<td><strong>$213B</strong> (vs $193B 2024)</td>
+<td>2025</td>
+<td>Gartner (2025-07-29)</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Worldwide info-security end-user spend</td>
+<td><strong>~$240–244B, +12.5–13.3% YoY</strong></td>
+<td>2026E</td>
+<td>Gartner (multiple updates)</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Long-run</td>
+<td><strong>~$322B, ~10.0% CAGR (cc)</strong></td>
+<td>2029 (2024–29)</td>
+<td>Gartner</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Fastest-growing — CSPM / CASB</td>
+<td><strong>~27.6–31% / ~26% CAGR</strong></td>
+<td>through 2029</td>
+<td>Gartner</td>
+<td>(fact)</td>
+</tr>
+</tbody>
+</table>
+<p>Gartner has multiple 2026 figures in circulation ($240B / $244.2B / $246.2B) from different update<br />
+cycles — recorded all three rather than picking one (per CLAUDE.md §8).</p>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand side:</strong> rising threat volume/sophistication; <strong>AI as both attacker and defender</strong> (Gartner<br />
+names GenAI — internal and adversarial — as a key growth driver); regulatory/compliance; cloud<br />
+migration creating new attack surfaces (drives CSPM/CNAPP); zero-trust mandates; cyber-insurance<br />
+requirements. <strong>Supply side:</strong> platform consolidation ("single-vendor SASE," vendor<br />
+platformization) raising switching costs; AI-native detection lowering analyst cost; identity<br />
+becoming the new perimeter. Spend is <strong>non-discretionary / counter-cyclical</strong> vs AI-software<br />
+capex — the key differentiator.</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p>A <strong>horizontal tax</strong> on all digital activity, including the AI buildout: more cloud + more AI<br />
+agents = more attack surface = more security spend. Direct linkage to <a href="ai-software-agents.html">ai-software-agents</a>: AI<br />
+agents need identities and privileged-access governance (CyberArk thesis); AI accelerates both<br />
+attacks and defenses. Linkage to <a href="ai-infrastructure.html">ai-infrastructure</a>: securing AI data-center/cloud workloads.<br />
+Less semiconductor-dependent than the rest of the stack — demand is threat/compliance-driven, not<br />
+GPU-capex-driven — which is why it offers diversification from the AI-cyclical engine.</p>
+<h2 id="5-competitive-landscape-consolidation-is-the-story">5. Competitive landscape — consolidation is the story</h2>
+<p>Structurally consolidating around platforms. <strong>Palo Alto's $25B acquisition of CyberArk</strong><br />
+(announced 2025-07-30, <strong>closed 2026-02-11</strong>; $45 cash + 2.2005 PANW shares per CyberArk share,<br />
+~26% premium, ~17.8x fwd revenue) added an <strong>identity pillar</strong> — one of the largest cyber deals<br />
+ever (fact). "Platformization" — customers consolidating point products onto fewer vendors (Palo<br />
+Alto, CrowdStrike, Microsoft, Fortinet). Moats/margins: Fortinet highest margin (owns ASIC<br />
+hardware); CrowdStrike/Zscaler/Cloudflare high-growth SaaS at premium multiples; identity (Okta,<br />
+now CyberArk-in-PANW) the contested high-value layer. AI-native detection is the new competitive<br />
+axis (Zscaler AI-security ARR +&gt;80% YoY, beat its $400M FY26 target three quarters early — fact).</p>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps as-of May 2026 (est.). Other figures (fact) unless tagged. "n/f" = none found.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of)</th>
+<th>Revenue (period)</th>
+<th>Rev YoY</th>
+<th>Profitability</th>
+<th>Valuation (EV/Sales)</th>
+<th>Moat / positioning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Palo Alto Networks</td>
+<td>PANW</td>
+<td>US</td>
+<td>Platform (net/cloud/SASE + identity)</td>
+<td>$138B (May 26)</td>
+<td>$11.28–11.31B guide (FY26)</td>
+<td>+22–23%; NGS ARR +33%</td>
+<td>non-GAAP profitable</td>
+<td>high</td>
+<td>Platformization leader; absorbed CyberArk → identity pillar</td>
+</tr>
+<tr>
+<td>CrowdStrike</td>
+<td>CRWD</td>
+<td>US</td>
+<td>Endpoint/XDR platform</td>
+<td>$132B (May 26)</td>
+<td>$1.17B (Q2 FY26)</td>
+<td>+21%</td>
+<td>non-GAAP NI $237M (record)</td>
+<td><strong>~20.6x</strong></td>
+<td>Falcon single-agent moat; AI detection</td>
+</tr>
+<tr>
+<td>Zscaler</td>
+<td>ZS</td>
+<td>US</td>
+<td>SASE / zero-trust (SSE)</td>
+<td>n/f</td>
+<td>$850.5M (Q3 FY26); ARR $3.525B</td>
+<td>+25%</td>
+<td>23% non-GAAP (record)</td>
+<td>~13.3x</td>
+<td>Zero-trust pure-play; AI-security ARR +80% YoY</td>
+</tr>
+<tr>
+<td>Fortinet</td>
+<td>FTNT</td>
+<td>US</td>
+<td>Firewall/network (owns ASICs)</td>
+<td>n/f</td>
+<td>n/f (TTM)</td>
+<td>n/f</td>
+<td>highest margin in group (HW)</td>
+<td>~10.3x</td>
+<td>Cost/margin leader via custom silicon; SASE push</td>
+</tr>
+<tr>
+<td>Cloudflare</td>
+<td>NET</td>
+<td>US</td>
+<td>Edge security + dev platform</td>
+<td>n/f</td>
+<td>rev +28% YoY</td>
+<td>+28%</td>
+<td>modest</td>
+<td><strong>~27.6x</strong> (richest in cyber)</td>
+<td>Edge network moat</td>
+</tr>
+<tr>
+<td>Okta</td>
+<td>OKTA</td>
+<td>US</td>
+<td>Identity &amp; access (IAM)</td>
+<td>~$15B (May 26)</td>
+<td>n/f (TTM)</td>
+<td>n/f</td>
+<td>improving</td>
+<td>low/moderate</td>
+<td>Independent identity leader; faces PANW-CyberArk pressure</td>
+</tr>
+<tr>
+<td>SentinelOne</td>
+<td>S</td>
+<td>US</td>
+<td>Endpoint/XDR (CRWD challenger)</td>
+<td>~$5.7B (May 26)</td>
+<td>n/f (TTM)</td>
+<td>n/f</td>
+<td>near breakeven</td>
+<td><strong>~4.6x</strong> (cheapest)</td>
+<td>AI-native endpoint; #2 to CRWD</td>
+</tr>
+<tr>
+<td>CyberArk</td>
+<td>(now PANW)</td>
+<td>IL/US</td>
+<td>Privileged identity (acquired)</td>
+<td>acquired ~$25B (closed 2026-02-11)</td>
+<td>$372.7M (Q4'25); NNARR $99M</td>
+<td>+19–20%</td>
+<td>profitable</td>
+<td>~17.8x at deal</td>
+<td>Privileged-access leader; PANW identity pillar</td>
+</tr>
+<tr>
+<td>Check Point</td>
+<td>CHKP</td>
+<td>IL</td>
+<td>Firewall/network (legacy)</td>
+<td>n/f</td>
+<td>n/f (TTM)</td>
+<td>slower-growth</td>
+<td>high (mature)</td>
+<td>low</td>
+<td>Mature/cash-generative; value profile</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p><strong>Winning:</strong> <strong>Palo Alto</strong> (platformization + CyberArk identity pillar = broadest stack),<br />
+<strong>CrowdStrike</strong> (endpoint platform leader, record profitability, but ~20x sales), and <strong>Zscaler</strong><br />
+(zero-trust pure-play with explosive AI-security ARR, record 23% margins). These three drove a 2026<br />
+cyber rally that <em>outran chips</em> — but one analysis frames it as a <strong>supply-consolidation rally, not<br />
+a pure demand story</strong> (record M&amp;A multiples), warranting caution. <strong>Pressured:</strong> Okta and<br />
+standalone identity players now face a much larger integrated PANW-CyberArk competitor; Check Point<br />
+and legacy network vendors are the value/low-growth cohort; SentinelOne is the cheap #2 endpoint<br />
+optionality play (~4.6x sales) but must prove it can close the gap with CrowdStrike. The demand<br />
+backdrop is the sector's best feature: near-non-discretionary spend growing low-teens regardless of<br />
+macro.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Valuation extremes:</strong> Cloudflare ~27.6x EV/Sales and CrowdStrike ~20.6x are priced for<br />
+  perfection — any growth slip or self-inflicted breach/outage (CrowdStrike-2024-style) de-rates<br />
+  sharply.</li>
+<li><strong>Consolidation = rally without demand:</strong> if the 2026 surge is M&amp;A-multiple-driven (CyberArk deal<br />
+  repricing peers) rather than spend-driven, multiples could mean-revert.</li>
+<li><strong>Platform consolidation cuts both ways:</strong> winners (PANW, CRWD) take share; point-product names<br />
+  (Okta, SentinelOne, Check Point) get squeezed.</li>
+<li><strong>AI disruption:</strong> could commoditize some detection layers; also raises attacker capability faster<br />
+  than defense (net demand-positive, but volatile).</li>
+<li><strong>FX / Israel-exposure</strong> (CHKP, ex-CyberArk) and government-budget sensitivity.</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li><strong>CIBR</strong> (First Trust NASDAQ Cybersecurity) — ER 0.58%, AUM ~$9.5B (largest cyber ETF), 38<br />
+  holdings; top-10 ~61% (Cisco, Infosys, Broadcom, CrowdStrike, Palo Alto). Primary broad proxy.<br />
+<em>(Already on <a href="../syntheses/watchlist.html">watchlist</a>.)</em></li>
+<li><strong>HACK</strong> (Amplify Cybersecurity) — ER 0.60%, AUM ~$1.8B, 61 holdings; broader/defense-tilted.</li>
+<li><strong>BUG</strong> (Global X Cybersecurity) — ER 0.50%, AUM ~$675M; more pure-play software-cyber tilt.</li>
+<li>Representative securities: PANW (platform + identity), CRWD (endpoint), ZS (zero-trust), FTNT<br />
+  (margin/value), NET (edge/high-multiple), OKTA/S (identity/endpoint optionality).</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 4/5</strong> (calibrated — strong, near-non-discretionary demand and diversification from<br />
+  the AI-capex cycle support it; rich leader multiples and "consolidation-rally" caution prevent a<br />
+  5).</li>
+<li><strong>Stage: accelerating</strong> (12.5–13% spend growth; cloud-security sub-segments 26–31% CAGR).</li>
+<li><strong>Horizon: 3–7+ years</strong> (secular, threat-driven demand is durable).</li>
+<li><strong>Invalidation:</strong> info-security spend growth falls below ~8% YoY (Gartner), OR leader multiples<br />
+  (CRWD/NET) compress <em>and</em> ARR growth decelerates below ~15% simultaneously, OR a major<br />
+  platform-vendor self-inflicted breach breaks the platformization trust premise.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CIBR</strong></td>
+<td>First Trust cyber</td>
+<td style="text-align: right;">$91.96</td>
+<td style="text-align: right;">$14B</td>
+<td style="text-align: right;">+26.1%</td>
+<td style="text-align: right;">0.4%</td>
+<td style="text-align: right;">n/f · 1.00</td>
+<td style="text-align: right;">-4.2%</td>
+<td>🟢 HOLD 5%</td>
+</tr>
+<tr>
+<td><strong>BUG</strong></td>
+<td>Global X cyber</td>
+<td style="text-align: right;">$40.60</td>
+<td style="text-align: right;">$1B</td>
+<td style="text-align: right;">+25.3%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f · 1.15</td>
+<td style="text-align: right;">-4.9%</td>
+<td>🟢 HOLD (basket)</td>
+</tr>
+<tr>
+<td><strong>HACK</strong></td>
+<td>ETFMG cyber</td>
+<td style="text-align: right;">$110.65</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">+30.6%</td>
+<td style="text-align: right;">0.1%</td>
+<td style="text-align: right;">n/f · 0.82</td>
+<td style="text-align: right;">-4.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PANW</strong></td>
+<td>Platform leader</td>
+<td style="text-align: right;">$361.58</td>
+<td style="text-align: right;">$295B</td>
+<td style="text-align: right;">87.7x</td>
+<td style="text-align: right;">31.1%</td>
+<td style="text-align: right;">7.9% · 0.91</td>
+<td style="text-align: right;">-2.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CRWD</strong></td>
+<td>Cloud-native leader</td>
+<td style="text-align: right;">$204.55</td>
+<td style="text-align: right;">$208B</td>
+<td style="text-align: right;">131.0x</td>
+<td style="text-align: right;">25.6%</td>
+<td style="text-align: right;">-0.6% · 1.24</td>
+<td style="text-align: right;">-6.0%</td>
+<td>🔴 REJECT (Gate 9)</td>
+</tr>
+<tr>
+<td><strong>ZS</strong></td>
+<td>SSE/ZIA</td>
+<td style="text-align: right;">$147.71</td>
+<td style="text-align: right;">$24B</td>
+<td style="text-align: right;">32.1x</td>
+<td style="text-align: right;">25.4%</td>
+<td style="text-align: right;">-2.4% · 0.96</td>
+<td style="text-align: right;">-56.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FTNT</strong></td>
+<td>Firewall incumbent</td>
+<td style="text-align: right;">$161.43</td>
+<td style="text-align: right;">$118B</td>
+<td style="text-align: right;">47.1x</td>
+<td style="text-align: right;">20.1%</td>
+<td style="text-align: right;">27.5% · 1.09</td>
+<td style="text-align: right;">-5.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NET</strong></td>
+<td>App security</td>
+<td style="text-align: right;">$275.60</td>
+<td style="text-align: right;">$98B</td>
+<td style="text-align: right;">174.6x</td>
+<td style="text-align: right;">33.5%</td>
+<td style="text-align: right;">-3.7% · 1.67</td>
+<td style="text-align: right;">-5.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>OKTA</strong></td>
+<td>Identity</td>
+<td style="text-align: right;">$147.71</td>
+<td style="text-align: right;">$26B</td>
+<td style="text-align: right;">34.5x</td>
+<td style="text-align: right;">11.2%</td>
+<td style="text-align: right;">8.2% · 0.77</td>
+<td style="text-align: right;">-5.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>S</strong></td>
+<td>Endpoint</td>
+<td style="text-align: right;">$19.39</td>
+<td style="text-align: right;">$7B</td>
+<td style="text-align: right;">39.3x</td>
+<td style="text-align: right;">20.8%</td>
+<td style="text-align: right;">-30.4% · 0.82</td>
+<td style="text-align: right;">-9.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CYBR</strong></td>
+<td>PAM (acq. by PANW)</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f · n/f</td>
+<td style="text-align: right;">n/f</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CHKP</strong></td>
+<td>Firewall incumbent</td>
+<td style="text-align: right;">$136.36</td>
+<td style="text-align: right;">$14B</td>
+<td style="text-align: right;">11.9x</td>
+<td style="text-align: right;">4.8%</td>
+<td style="text-align: right;">38.4% · 0.49</td>
+<td style="text-align: right;">-39.5%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>New attack surface from: <a href="ai-software-agents.html">ai-software-agents</a>. Workloads to secure: <a href="ai-infrastructure.html">ai-infrastructure</a>.</li>
+<li>Master table: <a href="../syntheses/trend-radar.html">trend-radar</a>. Linkage: <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>. Watchlist: <a href="../syntheses/watchlist.html">watchlist</a> (CIBR).<br />
+  Call: P3 (<a href="../syntheses/prediction-ledger.html">prediction-ledger</a>).</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Is the 2026 rally demand-driven or an M&amp;A-multiple repricing that mean-reverts?</li>
+<li>Does identity (post-CyberArk) become the decisive consolidation battleground?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>Gartner press releases (2025-07-29 spend; 2026 forecast updates; fastest-growing categories);<br />
+Palo Alto–CyberArk deal (PANW press release; TechInformed close 2026-02-11); Zscaler FY26 Q3 8-K<br />
+(SEC); CrowdStrike Q2 FY26; CyberArk Q4 2025 6-K (SEC); EV/Sales multiples (Channel Futures);<br />
+ETF data (OptimizedPortfolio); "cyber outran chips" (Yahoo Finance), 2026.</p>
+</article>
+</div>
+</body>
+</html>

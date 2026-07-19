@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Critical Minerals</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Critical Minerals
+type: concept
+trend: true
+tags: [investing, trend, critical-minerals, copper, lithium, rare-earths, gallium, germanium, defense, electrification]
+sources: []
+date: 2026-06-01
+conviction: 3.5
+stage: accelerating
+horizon: 3-10y</div>
+<article>
+<h1 id="critical-minerals">Critical Minerals</h1>
+<p><strong>Definition:</strong> The thesis that the materials needed for <strong>electrification, semiconductors, and<br />
+defense</strong> — copper, lithium, rare earths (NdPr, Dy, Tb), and minor metals like gallium/germanium —<br />
+face a structural <strong>supply bottleneck</strong> against demand pulled forward by the grid, EVs, AI data<br />
+centers, and re-armament, compounded by extreme <strong>geographic concentration</strong> (China). Insight only —<br />
+not advice (<a href="../syntheses/trend-radar.html">trend-radar</a>).</p>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<ul>
+<li><strong>Copper</strong> — the "metal of electrification": grids, motors, data centers, EVs<br />
+  (freeport-mcmoran, southern-copper, bhp, rio-tinto, glencore).</li>
+<li><strong>Lithium</strong> — battery cathode/energy storage (albemarle).</li>
+<li><strong>Rare earths</strong> — NdPr (magnets), Dy/Tb (heavy REE for high-temp magnets) for EV motors, wind,<br />
+  defense (mp-materials, lynas-rare-earths).</li>
+<li><strong>Minor / strategic metals</strong> — gallium, germanium (semis, optics, defense); antimony, graphite.</li>
+<li><strong>Scope note:</strong> "uranium-adjacent" overlaps <a href="energy-transition.html">energy-transition</a> (uranium/nuclear) — tracked there.</li>
+</ul>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<ul>
+<li><strong>Copper supply gap:</strong> IEA warns of a <strong>~30% supply deficit by 2035</strong> under Stated Policies, ~35%<br />
+  under Announced Pledges, <strong>&gt;40%</strong> under Net Zero (fact, IEA / S&amp;P Global, 2025). Refined demand<br />
+  projected to <strong>~33 Mt by 2035</strong> (StPS). Data-center copper use alone <strong>0.25–0.55 Mt/yr by 2030</strong><br />
+  (fact, IEA). Driver: falling ore grades + long mine lead times.</li>
+<li><strong>Rare-earth concentration:</strong> China <strong>~270,000 t REO</strong> mine production vs US 51,000, Australia<br />
+  29,000, Myanmar 22,000 — <strong>~69% of world total</strong> (fact, USGS Mineral Commodity Summaries 2026).<br />
+  China = <strong>~90% of refined/separated supply</strong> (fact, USGS). US imports of REE compounds/metals:<br />
+<strong>71% from China</strong> (fact, USGS 2026).</li>
+<li><strong>Heavy REE (Dy/Tb):</strong> lynas-rare-earths is the <strong>only separated-heavy-REE producer outside<br />
+  China</strong> (fact, 2025) — a structural choke point for high-temp NdFeB magnets.</li>
+<li><strong>Gallium/germanium:</strong> full Chinese export cut estimated to cut US GDP by <strong>~$3.4B</strong> (range<br />
+  $1.7–9.0B) if simultaneous (fact, USGS OFR 2024-1057). China <strong>suspended its US export ban</strong><br />
+  (gallium/germanium/antimony) <strong>until 27 Nov 2026</strong> — temporary easing of Dec-2024 controls (fact,<br />
+  Fastmarkets / Mining.com, 2026) — i.e. supply is a <em>policy switch</em>, not a market.</li>
+<li><strong>Lithium:</strong> recovering — albemarle Energy Storage net sales <strong>+70% YoY</strong> (Q1'26) on +51% price<br />
+  / +14% volume (fact); signals the post-glut price recovery.</li>
+</ul>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand side:</strong><br />
+- <strong>Electrification + grid</strong> — copper is the binding input for transmission/distribution build-out<br />
+  (<a href="energy-transition.html">energy-transition</a>).<br />
+- <strong>AI data centers</strong> — incremental copper (power distribution, busways) + the whole power chain.<br />
+- <strong>EVs / energy storage</strong> — lithium + NdPr magnets.<br />
+- <strong>Defense / re-armament</strong> — magnets, gallium/germanium, antimony for munitions, optics, radar.</p>
+<p><strong>Supply side:</strong><br />
+- <strong>Copper:</strong> declining ore grades, 10–15yr mine lead times, permitting, water — supply is slow.<br />
+- <strong>Rare earths / minor metals:</strong> <strong>policy-driven</strong> Chinese dominance (export controls as leverage);<br />
+  Western capacity (MP, Lynas) nascent and government-backed (US DoW/DoD offtake at MP).<br />
+- <strong>Lithium:</strong> previously oversupplied; supply discipline + demand now tightening prices.</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<ul>
+<li><strong>→ <a href="energy-transition.html">energy-transition</a> / <a href="ai-infrastructure.html">ai-infrastructure</a>:</strong> copper is the physical electron-carrier behind<br />
+  grids, data centers, EVs — the most direct overlap.</li>
+<li><strong>→ <a href="semiconductors.html">semiconductors</a>:</strong> gallium/germanium feed compound semis, optics, advanced packaging;<br />
+  supply is a Chinese policy lever.</li>
+<li><strong>→ defense / reshoring:</strong> rare-earth magnets + minor metals are dual-use; Western governments are<br />
+  subsidizing domestic supply (MP–US DoW agreement, ceased China sales July 2025).</li>
+<li><strong>Chain:</strong> mine → concentrate → smelt/refine/separate (the China-dominated choke point for REE) →<br />
+  magnets/cathodes/wire → end product (EV, grid, weapon, data center).</li>
+</ul>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<ul>
+<li><strong>Copper:</strong> consolidated majors with irreplaceable orebodies (decades-long moats):<br />
+  freeport-mcmoran (Grasberg + Americas), southern-copper (lowest-cost, Peru/Mexico),<br />
+  diversified bhp / rio-tinto / glencore (copper + iron ore + trading). M&amp;A heating up<br />
+  (BHP / Rio / Glencore circling) signals scarcity of tier-1 copper assets.</li>
+<li><strong>Lithium:</strong> albemarle is the integrated Western leader; cyclical, price-driven.</li>
+<li><strong>Rare earths:</strong> mp-materials (US mine-to-magnet, government-backed) and lynas-rare-earths<br />
+  (only ex-China heavy-REE separator) are the strategic Western champions — moats are <strong>policy +<br />
+  scarcity of non-China refining</strong>, not low cost.</li>
+<li><strong>Minor metals (Ga/Ge):</strong> no clean public pure-plays; exposure is geopolitical/embedded.</li>
+<li><strong>Margins/moats</strong> sit with lowest-cost copper (Southern Copper) and the policy-protected REE<br />
+  separators.</li>
+</ul>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — COMPARATIVE TABLE</h2>
+<p><em>Caps as of ~mid-to-late May 2026; financials Q1 2026 (CY) or latest fiscal half. "NRFF" = no<br />
+reliable figure found.</em></p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment / role</th>
+<th>Market cap (as-of)</th>
+<th>Revenue (period)</th>
+<th>Rev growth YoY</th>
+<th>Margin / profit</th>
+<th>FCF / EBITDA</th>
+<th>Net cash/(debt)</th>
+<th>Valuation</th>
+<th>Moat &amp; positioning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Freeport-McMoRan</td>
+<td>FCX</td>
+<td>US</td>
+<td>Copper + gold mining</td>
+<td>~$92.5B (Q1'26) (fact)</td>
+<td>$6.23B (Q1'26) (fact)</td>
+<td>NRFF</td>
+<td>Net income $881M, $0.61 EPS (Q1'26) (fact)</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>Grasberg + Americas; tier-1 copper-gold; leveraged to Cu price ($5.78/lb realized)</td>
+</tr>
+<tr>
+<td>Southern Copper</td>
+<td>SCCO</td>
+<td>US/Peru/Mex</td>
+<td>Copper (low-cost)</td>
+<td>~$149–161B (May 2026, range) (fact)</td>
+<td>$4.25B (Q1'26) (fact)</td>
+<td>NRFF</td>
+<td>Notable margin expansion (Q1'26) (fact)</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>Lowest-cost major; long reserve life; Grupo México control</td>
+</tr>
+<tr>
+<td>Albemarle</td>
+<td>ALB</td>
+<td>US</td>
+<td>Lithium</td>
+<td>~$20.5–23.7B (May 2026, range) (fact)</td>
+<td>$1.43B (Q1'26), +33% (fact); Energy Storage $891M +70% (fact)</td>
+<td>+33% total / +70% Li (Q1'26) (fact)</td>
+<td>Adj. EBITDA $664M, +148% (Q1'26) (fact)</td>
+<td>Cut $1.3B debt (Q1'26) (fact)</td>
+<td>NRFF (net debt)</td>
+<td>NRFF</td>
+<td>Integrated Western lithium leader; price-cyclical; recovering</td>
+</tr>
+<tr>
+<td>MP Materials</td>
+<td>MP</td>
+<td>US</td>
+<td>Rare earths (mine-to-magnet)</td>
+<td>~$9.8–11.5B (May 2026, range) (fact)</td>
+<td>$90.6M (Q1'26), +49% (fact)</td>
+<td>+49% (Q1'26) (fact)</td>
+<td>Adj. EBITDA $36.6M (vs −$2.7M); net loss persists (fact)</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>US mine-to-magnet; DoW/DoD price-protection + offtake; ceased China sales Jul'25</td>
+</tr>
+<tr>
+<td>Lynas Rare Earths</td>
+<td>LYC.AX</td>
+<td>Australia</td>
+<td>Rare earths (ex-China heavy-REE)</td>
+<td>~A$15B (2025) (fact)</td>
+<td>A$413.7M (H1 FY26) (fact)</td>
+<td>+63% (A$254.3M→413.7M H1) (fact)</td>
+<td>Net profit A$80.2M (vs A$5.9M) (fact)</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>ONLY ex-China separated heavy-REE (Dy/Tb) producer; structural choke point</td>
+</tr>
+<tr>
+<td>BHP Group</td>
+<td>BHP</td>
+<td>Australia</td>
+<td>Diversified (copper + iron ore)</td>
+<td>~$162B (2026 ref) (fact, approx)</td>
+<td>NRFF (Q-level)</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>Largest diversified miner; growing copper; M&amp;A optionality</td>
+</tr>
+<tr>
+<td>Rio Tinto</td>
+<td>RIO</td>
+<td>UK/Aus</td>
+<td>Diversified (copper + iron + Al)</td>
+<td>~$123.3B (May 29'26) (fact)</td>
+<td>NRFF (Q-level)</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>Iron-ore cash engine funding copper growth (Oyu Tolgoi); M&amp;A in play</td>
+</tr>
+<tr>
+<td>Glencore</td>
+<td>GLEN.L</td>
+<td>Switz/UK</td>
+<td>Copper + trading + coal</td>
+<td>~$56B (2025 ref) (fact, approx)</td>
+<td>NRFF (Q-level)</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>NRFF</td>
+<td>Mining + marketing/trading hybrid; copper growth; takeover speculation</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p><strong>Copper</strong> is the highest-conviction sub-theme: the IEA's ~30% deficit-by-2035 (StPS) is a<br />
+supply-side problem with no fast fix — ore grades fall, mines take 10–15 years, and the M&amp;A scramble<br />
+(BHP / rio-tinto / glencore) confirms how scarce tier-1 orebodies are. southern-copper<br />
+(lowest-cost, long-life) and freeport-mcmoran (tier-1 Grasberg, high price-leverage — $881M Q1<br />
+net income at $5.78/lb) are the cleanest pure-plays; the diversified majors (bhp, rio-tinto)<br />
+give copper growth funded by iron-ore cash but dilute the copper signal. The catch is these are<br />
+price-takers: the thesis is a bet on the <strong>copper price</strong>, and the equities have already run hard<br />
+(FCX +~100% in a year).</p>
+<p><strong>Rare earths</strong> are a different animal — the moat is <strong>policy and the scarcity of non-China<br />
+refining/separation</strong>, not cost. lynas-rare-earths (the <em>only</em> ex-China separated heavy-REE<br />
+producer; H1 FY26 revenue +63%, profit A$80.2M) and mp-materials (US mine-to-magnet, with DoW<br />
+price-protection that <em>stabilizes</em> earnings and an explicit ceasing of China sales) are strategic<br />
+assets whose value is underwritten by Western governments wanting supply-chain independence. But they<br />
+remain small, partly subsidy-dependent, and exposed to the <strong>policy switch</strong>: China's temporary lift<br />
+of the gallium/germanium/antimony ban (to Nov 2026) shows Beijing can turn Western pricing on and off.<br />
+<strong>Lithium</strong> (albemarle, +70% Energy Storage sales) is an earlier-cycle recovery play off the glut.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Copper price reversal</strong> — recession / China demand shock; equities are price-takers and have<br />
+  re-rated up sharply.</li>
+<li><strong>Rare-earth policy whipsaw</strong> — China easing exports (as in 2026) collapses Western pricing and<br />
+  undermines MP/Lynas economics; or substitution / thrifting reduces magnet REE intensity.</li>
+<li><strong>Subsidy dependence</strong> — MP's earnings lean on the DoW price-protection agreement; policy change is<br />
+  a single point of failure.</li>
+<li><strong>Lithium oversupply 2.0</strong> — supply could outrun the recovery again.</li>
+<li><strong>Demand disappointment</strong> — slower EV/grid/AI build cuts the demand pull.</li>
+<li><strong>Project execution / permitting / resource nationalism</strong> in mining jurisdictions.</li>
+<li><strong>Data quality:</strong> several Q-level revenue/margin and net-cash fields NRFF this pass (diversified<br />
+  miners report half-yearly).</li>
+</ul>
+<h2 id="9-investable-instruments">9. Investable instruments</h2>
+<ul>
+<li><strong>COPX</strong> — Global X Copper Miners ETF. ER <strong>0.65%</strong>, AUM <strong>~$7.9B</strong> (fact, 2026); top holdings ~5%<br />
+  each: KGHM, Teck Resources, Antofagasta, bhp, Hudbay. Largest critical-minerals ETF.</li>
+<li><strong>REMX</strong> — VanEck Rare Earth &amp; Strategic Metals ETF. ER <strong>0.53%</strong>, AUM <strong>~$2.6B</strong> (fact, 2026); 33<br />
+  holdings, top-10 ~61.7%; tilted to Ti/Mo plus REE producers (mp-materials, lynas-rare-earths).</li>
+<li><strong>LIT</strong> — Global X Lithium &amp; Battery Tech ETF. AUM <strong>~$1.8B</strong> (fact, 2026); ER/holdings NRFF this<br />
+  pass.</li>
+<li><strong>PAVE</strong> — Global X US Infrastructure Development (broad electrification/industrials, indirect).</li>
+<li><strong>Representative securities:</strong> freeport-mcmoran (FCX), southern-copper (SCCO),<br />
+  albemarle (ALB), mp-materials (MP), lynas-rare-earths (LYC.AX), bhp, rio-tinto<br />
+  (RIO), glencore (GLEN.L).</li>
+</ul>
+<h2 id="10-conviction-stage-horizon">10. Conviction, stage, horizon</h2>
+<ul>
+<li><strong>Conviction: 4/5</strong> (inference) for <strong>copper</strong> (structural deficit, slow supply, M&amp;A-confirmed<br />
+  scarcity); <strong>3/5</strong> for <strong>rare earths / minor metals</strong> (real strategic scarcity but policy-whipsaw<br />
+  and subsidy dependence cap conviction); <strong>3/5</strong> lithium (cyclical recovery). Blended <strong>~3.5</strong>, held<br />
+  below 4 overall by price-taker dynamics + re-rated equities.</li>
+<li><strong>Stage:</strong> copper accelerating; rare earths emerging→accelerating; lithium emerging recovery.</li>
+<li><strong>Horizon:</strong> 3–10 years (mine lead times make this the longest-dated of the three themes).</li>
+<li><strong>Invalidation:</strong> copper price sustained breakdown AND/OR China fully re-opens REE/minor-metal<br />
+  exports (collapsing Western pricing) → step copper to 3, rare earths to 2.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>COPX</strong></td>
+<td>Copper miners</td>
+<td style="text-align: right;">$73.71</td>
+<td style="text-align: right;">$7B</td>
+<td style="text-align: right;">+7.0%</td>
+<td style="text-align: right;">2.5%</td>
+<td style="text-align: right;">n/f · 1.49</td>
+<td style="text-align: right;">-26.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>REMX</strong></td>
+<td>Rare earths</td>
+<td style="text-align: right;">$72.17</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">+20.1%</td>
+<td style="text-align: right;">1.5%</td>
+<td style="text-align: right;">n/f · 1.36</td>
+<td style="text-align: right;">-35.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>LIT</strong></td>
+<td>Lithium</td>
+<td style="text-align: right;">$68.42</td>
+<td style="text-align: right;">$2B</td>
+<td style="text-align: right;">+20.5%</td>
+<td style="text-align: right;">0.6%</td>
+<td style="text-align: right;">n/f · 1.37</td>
+<td style="text-align: right;">-25.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FCX</strong></td>
+<td>Freeport copper</td>
+<td style="text-align: right;">$58.78</td>
+<td style="text-align: right;">$84B</td>
+<td style="text-align: right;">14.6x</td>
+<td style="text-align: right;">8.8%</td>
+<td style="text-align: right;">10.3% · 1.36</td>
+<td style="text-align: right;">-18.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SCCO</strong></td>
+<td>Southern Copper</td>
+<td style="text-align: right;">$175.53</td>
+<td style="text-align: right;">$146B</td>
+<td style="text-align: right;">24.4x</td>
+<td style="text-align: right;">36.2%</td>
+<td style="text-align: right;">34.1% · 1.12</td>
+<td style="text-align: right;">-20.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ALB</strong></td>
+<td>Lithium brine</td>
+<td style="text-align: right;">$120.28</td>
+<td style="text-align: right;">$14B</td>
+<td style="text-align: right;">9.2x</td>
+<td style="text-align: right;">32.7%</td>
+<td style="text-align: right;">-4.2% · 1.35</td>
+<td style="text-align: right;">-45.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MP</strong></td>
+<td>Rare earths (US)</td>
+<td style="text-align: right;">$44.70</td>
+<td style="text-align: right;">$8B</td>
+<td style="text-align: right;">44.9x</td>
+<td style="text-align: right;">1.19%</td>
+<td style="text-align: right;">-20.5% · 1.86</td>
+<td style="text-align: right;">-55.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BHP</strong></td>
+<td>Diversified miner</td>
+<td style="text-align: right;">$81.13</td>
+<td style="text-align: right;">$206B</td>
+<td style="text-align: right;">16.3x</td>
+<td style="text-align: right;">10.8%</td>
+<td style="text-align: right;">19.0% · 0.83</td>
+<td style="text-align: right;">-13.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>RIO</strong></td>
+<td>Diversified miner</td>
+<td style="text-align: right;">$90.73</td>
+<td style="text-align: right;">$148B</td>
+<td style="text-align: right;">10.3x</td>
+<td style="text-align: right;">14.6%</td>
+<td style="text-align: right;">17.3% · 0.65</td>
+<td style="text-align: right;">-19.4%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Related: <a href="energy-transition.html">energy-transition</a>, <a href="ai-infrastructure.html">ai-infrastructure</a>, <a href="semiconductors.html">semiconductors</a>, <a href="natural-gas-lng.html">natural-gas-lng</a>,<br />
+<a href="data-center-cooling.html">data-center-cooling</a>, <a href="../syntheses/trend-radar.html">trend-radar</a>, <a href="../syntheses/watchlist.html">watchlist</a>.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

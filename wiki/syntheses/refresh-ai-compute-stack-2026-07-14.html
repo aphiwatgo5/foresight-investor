@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Compute Stack — July 2026 Deep Refresh</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: AI Compute Stack — July 2026 Deep Refresh
+type: synthesis
+tags: [investing, refresh, ai-compute, semiconductors, cybersecurity, july-2026, live-data]
+sources: [[[ai-infrastructure]], [semiconductors], [cybersecurity], [networking-optical], [data-center-cooling], [ai-software-agents]]
+date: 2026-07-14
+last_scan: 2026-07-14</div>
+<article>
+<h1 id="ai-compute-stack-july-2026-deep-refresh">AI Compute Stack — July 2026 Deep Refresh</h1>
+<p><strong>Bottom line:</strong> The flagship cluster, live-refreshed 2026-07-14 (six weeks after the 2026-06-01<br />
+analyst-grade rebuild). <strong>2026 hyperscaler capex confirmed at ~$600–725B, +60–77% YoY</strong> — this<br />
+effectively clinches <strong>P1</strong> early (the threshold was ≥+50% YoY). The central reflexive engine is<br />
+<em>accelerating</em>, not stalling. All figures below are live-pulled this session with full provenance<br />
+(no training-data values); see <code>scripts/_provenance.csv</code>. For the operator's own book; not advice.</p>
+<blockquote>
+<p><strong>Coverage.</strong> Meta-force 1 (Compute &amp; AI stack) — <a href="../concepts/semiconductors.html">semiconductors</a> · <a href="../concepts/ai-infrastructure.html">ai-infrastructure</a> ·<br />
+<a href="../concepts/networking-optical.html">networking-optical</a> · <a href="../concepts/cybersecurity.html">cybersecurity</a> · <a href="../concepts/data-center-cooling.html">data-center-cooling</a> · <a href="../concepts/ai-software-agents.html">ai-software-agents</a>. This<br />
+refresh updates the player-table numbers, re-scores conviction/stage, and feeds <a href="signal-monitor.html">signal-monitor</a>,<br />
+<a href="decision-register.html">decision-register</a>, and <a href="regime-monitor.html">regime-monitor</a>.</p>
+</blockquote>
+<hr />
+<h2 id="the-macro-shift-since-the-2026-06-01-rebuild">The macro shift since the 2026-06-01 rebuild</h2>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>2026-06-01 read</th>
+<th>2026-07-14 read</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026 hyperscaler capex (Big-4 + ORCL)</td>
+<td>~$388–410B est.</td>
+<td><strong>~$600–725B, +60–77% YoY</strong> (fact, CNBC/Futurum/CreditSights, 2026-07-14)</td>
+<td><strong>P1 effectively confirmed early.</strong> The digestion narrative loses ground</td>
+</tr>
+<tr>
+<td>S&amp;P 500</td>
+<td>~7,542 (Jun-28)</td>
+<td>7,540 (fact, yfinance ^GSPC, 2026-07-14)</td>
+<td>Flat over 16 days — no breakout, no break</td>
+</tr>
+<tr>
+<td>VIX</td>
+<td>~18 (Jun-28)</td>
+<td>16.41 (fact, yfinance)</td>
+<td>Calm; slightly more complacent</td>
+</tr>
+<tr>
+<td>CNN F&amp;G</td>
+<td>25 (extreme fear)</td>
+<td>43.6 (fact, CNN, 2026-07-14)</td>
+<td>Normalizing off the depressed read</td>
+</tr>
+</tbody>
+</table>
+<h2 id="comparative-player-table-live-2026-07-14-the-core-deliverable">Comparative player table — live, 2026-07-14 (the core deliverable)</h2>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th style="text-align: right;">Mkt cap (as-of)</th>
+<th style="text-align: right;">Revenue YoY</th>
+<th style="text-align: right;">Gross margin</th>
+<th style="text-align: right;">Profit margin</th>
+<th style="text-align: right;">Fwd P/E</th>
+<th>Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NVIDIA</td>
+<td>NVDA</td>
+<td style="text-align: right;"><strong>$5.07T</strong></td>
+<td style="text-align: right;"><strong>+85.2%</strong></td>
+<td style="text-align: right;">74.1%</td>
+<td style="text-align: right;">63.0%</td>
+<td style="text-align: right;"><strong>16.4x</strong></td>
+<td>Cheap <em>on the growth</em>; the cheapest fwd P/E in the cluster. Bellwether intact (fact, yfinance)</td>
+</tr>
+<tr>
+<td>Alphabet</td>
+<td>GOOGL</td>
+<td style="text-align: right;">$4.34T</td>
+<td style="text-align: right;">+21.8%</td>
+<td style="text-align: right;">60.4%</td>
+<td style="text-align: right;">37.9%</td>
+<td style="text-align: right;">24.4x</td>
+<td>Hyperscaler w/ actual AI monetization; reasonable (fact, yfinance)</td>
+</tr>
+<tr>
+<td>Microsoft</td>
+<td>MSFT</td>
+<td style="text-align: right;">$2.86T</td>
+<td style="text-align: right;">+18.3%</td>
+<td style="text-align: right;">68.3%</td>
+<td style="text-align: right;">39.3%</td>
+<td style="text-align: right;">19.9x</td>
+<td>Capex leader; Azure AI monetization on track (fact, yfinance)</td>
+</tr>
+<tr>
+<td>Amazon</td>
+<td>AMZN</td>
+<td style="text-align: right;">$2.64T</td>
+<td style="text-align: right;">+16.6%</td>
+<td style="text-align: right;">50.6%</td>
+<td style="text-align: right;">12.2%</td>
+<td style="text-align: right;">24.8x</td>
+<td>AWS + capex &gt;$200B (largest spender) (fact, yfinance)</td>
+</tr>
+<tr>
+<td>TSMC</td>
+<td>TSM</td>
+<td style="text-align: right;">$2.19T</td>
+<td style="text-align: right;"><strong>+35.1%</strong></td>
+<td style="text-align: right;">61.9%</td>
+<td style="text-align: right;">46.5%</td>
+<td style="text-align: right;"><strong>20.8x</strong></td>
+<td><strong>Both-models-agree top pick</strong>; picks-&amp;-shovels with margin upside (fact, yfinance)</td>
+</tr>
+<tr>
+<td>Broadcom</td>
+<td>AVGO</td>
+<td style="text-align: right;">$1.88T</td>
+<td style="text-align: right;">+47.9%</td>
+<td style="text-align: right;">76.3%</td>
+<td style="text-align: right;">38.8%</td>
+<td style="text-align: right;">20.3x</td>
+<td>Custom AI silicon (Google/ByteDance); thriving (fact, yfinance)</td>
+</tr>
+<tr>
+<td>Meta</td>
+<td>META</td>
+<td style="text-align: right;">$1.67T</td>
+<td style="text-align: right;">+33.1%</td>
+<td style="text-align: right;">81.9%</td>
+<td style="text-align: right;">32.8%</td>
+<td style="text-align: right;">18.1x</td>
+<td>Hyperscaler + ad-AI flywheel; cheap for the growth (fact, yfinance)</td>
+</tr>
+<tr>
+<td>AMD</td>
+<td>AMD</td>
+<td style="text-align: right;">$914B</td>
+<td style="text-align: right;">+37.8%</td>
+<td style="text-align: right;">53.1%</td>
+<td style="text-align: right;">13.4%</td>
+<td style="text-align: right;">42.1x</td>
+<td>MI300 ramp; richer than NVDA but growth-backable (fact, yfinance)</td>
+</tr>
+<tr>
+<td>Palo Alto Networks</td>
+<td>PANW</td>
+<td style="text-align: right;">$286B</td>
+<td style="text-align: right;">+31.1%</td>
+<td style="text-align: right;">72.0%</td>
+<td style="text-align: right;">7.9%</td>
+<td style="text-align: right;"><strong>85.2x</strong></td>
+<td>Arr growth strong; multiple stretches Gate 9 — basket preferred (fact, yfinance)</td>
+</tr>
+<tr>
+<td>Arista Networks</td>
+<td>ANET</td>
+<td style="text-align: right;">$231B</td>
+<td style="text-align: right;">+35.1%</td>
+<td style="text-align: right;">63.5%</td>
+<td style="text-align: right;">38.3%</td>
+<td style="text-align: right;">41.2x</td>
+<td>AI back-end networking leader; scarce pure-play (fact, yfinance)</td>
+</tr>
+<tr>
+<td>CrowdStrike</td>
+<td>CRWD</td>
+<td style="text-align: right;">$210B</td>
+<td style="text-align: right;">+25.6%</td>
+<td style="text-align: right;">75.1%</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;"><strong>132.0x</strong></td>
+<td><strong>REJECT (Gate 9)</strong> — growth can't justify the multiple; hold via CIBR (fact, yfinance)</td>
+</tr>
+<tr>
+<td>Oracle</td>
+<td>ORCL</td>
+<td style="text-align: right;">$371B</td>
+<td style="text-align: right;">+20.6%</td>
+<td style="text-align: right;">65.8%</td>
+<td style="text-align: right;">25.4%</td>
+<td style="text-align: right;"><strong>11.8x</strong></td>
+<td>OCI + OpenAI/Stargate deals; <em>the stealth capex name</em> — cheapest fwd P/E (fact, yfinance)</td>
+</tr>
+<tr>
+<td>ASML</td>
+<td>ASML</td>
+<td style="text-align: right;">$686B</td>
+<td style="text-align: right;">+13.2%</td>
+<td style="text-align: right;">52.6%</td>
+<td style="text-align: right;">29.7%</td>
+<td style="text-align: right;">35.5x</td>
+<td>EUV monopoly; rev growth lagging (post-slump) but backlog real (fact, yfinance)</td>
+</tr>
+<tr>
+<td>Vertiv</td>
+<td>VRT</td>
+<td style="text-align: right;">$117B</td>
+<td style="text-align: right;">+30.1%</td>
+<td style="text-align: right;">37.2%</td>
+<td style="text-align: right;">14.4%</td>
+<td style="text-align: right;">34.2x</td>
+<td>DC cooling/power; most AI-capex-levered on % basis (fact, yfinance)</td>
+</tr>
+</tbody>
+</table>
+<p><em>All figures (fact), yfinance fundamentals, retrieved 2026-07-14T15:48Z. Market caps scale daily.</em></p>
+<h2 id="etf-levels-live-2026-07-14">ETF levels (live, 2026-07-14)</h2>
+<table>
+<thead>
+<tr>
+<th>ETF</th>
+<th style="text-align: right;">Price</th>
+<th>Theme</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QQQ</td>
+<td style="text-align: right;">$719.46</td>
+<td>Nasdaq-100</td>
+<td>Broad AI-proxy (fact, yfinance)</td>
+</tr>
+<tr>
+<td>SMH</td>
+<td style="text-align: right;">$600.29</td>
+<td>Semiconductors</td>
+<td>VanEck; the picks-&amp;-shovels vehicle (fact, yfinance)</td>
+</tr>
+<tr>
+<td>SOXX</td>
+<td style="text-align: right;">$570.24</td>
+<td>Semiconductors</td>
+<td>iShares alternative (fact, yfinance)</td>
+</tr>
+<tr>
+<td>CIBR</td>
+<td style="text-align: right;">$94.94</td>
+<td>Cybersecurity</td>
+<td>First Trust; basket approach to CRWD/PANW (fact, yfinance)</td>
+</tr>
+<tr>
+<td>BUG</td>
+<td style="text-align: right;">$42.07</td>
+<td>Cybersecurity</td>
+<td>Global X alt (fact, yfinance)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="re-scored-conviction-stage-changes-flagged">Re-scored conviction / stage (changes flagged)</h2>
+<table>
+<thead>
+<tr>
+<th>Theme</th>
+<th style="text-align: center;">Prior conv</th>
+<th style="text-align: center;">New conv</th>
+<th>Stage</th>
+<th>What changed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><strong>4</strong> (held)</td>
+<td>Accelerating</td>
+<td>Capex guide <em>up</em>, not down — digestion thesis weakened (P1 ✓)</td>
+</tr>
+<tr>
+<td><a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><strong>4</strong> (held)</td>
+<td>Accelerating</td>
+<td>NVDA fwdPE 16x on +85% rev — cheaper than feared; TSM the cleanest add</td>
+</tr>
+<tr>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><strong>4</strong> (held)</td>
+<td>Accelerating</td>
+<td>Leader multiples (CRWD 132x, PANW 85x) keep basket &gt; single-name</td>
+</tr>
+<tr>
+<td><a href="../concepts/networking-optical.html">networking-optical</a></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><strong>4</strong> (held)</td>
+<td>Accelerating</td>
+<td>ANET +35% rev at 41x — priced for the AI back-end build (fact, yfinance)</td>
+</tr>
+<tr>
+<td><a href="../concepts/data-center-cooling.html">data-center-cooling</a></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><strong>4</strong> (held)</td>
+<td>Accelerating</td>
+<td>VRT +30% rev; most capex-levered; cooling inflection intact</td>
+</tr>
+<tr>
+<td><a href="../concepts/ai-software-agents.html">ai-software-agents</a></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><strong>4</strong> (held)</td>
+<td>Emerging-accel</td>
+<td>Lived through to the "agentic" monetization layer</td>
+</tr>
+</tbody>
+</table>
+<p><strong>No conviction changes</strong> — the cluster was already at the 4 ceiling and the data confirms, not<br />
+breaks, the theses. The live refresh's value is <em>precision</em>, not re-rating.</p>
+<h2 id="what-this-changes-for-decisions-decision-register">What this changes for decisions (<a href="decision-register.html">decision-register</a>)</h2>
+<ul>
+<li><strong>NVDA fwdPE 16.4x on +85% rev</strong> — materially cheaper than the <a href="dual-model-shortlist-scorecard-2026-06-03.html">dual-model-shortlist-scorecard-2026-06-03</a><br />
+  assumed. Worth a fresh MDAEM pass; the asymmetry-gate math improves. <strong>Possible re-entry candidate<br />
+  even though it was a "reject via QQQM overlap" before.</strong></li>
+<li><strong>ORCL fwdPE 11.8x</strong> — the stealth AI-capex name (OCI + Stargate). Was not on the dual-model<br />
+  scorecard; candidate for the next ADD watch.</li>
+<li><strong>TSM at 20.8x fwdPE +35% rev</strong> — confirms D1 ADD (6–8% target). The both-models-agree call holds.</li>
+<li><strong>CRWD (132x) and PANW (85x)</strong> — reaffirm basket (CIBR/BUG) over single-name; D3 HOLD stands.</li>
+</ul>
+<h2 id="what-would-break-the-cluster-watchlist-invalidations">What would break the cluster (<a href="watchlist.html">watchlist</a> invalidations)</h2>
+<ul>
+<li>A hyperscaler guiding <strong>2027 capex down YoY</strong> (P20 trigger) — the single most important sensor.</li>
+<li>NVDA DC revenue declining sequentially 2+ quarters — digestion confirmed.</li>
+<li>HY OAS &gt;4.0% monthly close (P17) — credit cracks before equity; check <a href="signal-monitor.html">signal-monitor</a> weekly.</li>
+</ul>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<ul>
+<li><strong>Player-table data: high confidence</strong> — all 13 names live-pulled with fundamentals, single source<br />
+  (yfinance) — cross-check on close before final action. Market caps move daily; re-pull before any<br />
+  ADD.</li>
+<li><strong>Capex range ($600–725B): moderate confidence</strong> — varies by source methodology (Oracle incl/excl,<br />
+  leasing treatment). Direction (+60–77% YoY) is unanimous and that's what P1 needs.</li>
+<li><strong>Hyperscaler <em>forward</em> capex (2027)</strong>: unknown — this is P20's variable. Watch Q2/Q3 earnings calls.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Feeds: <a href="signal-monitor.html">signal-monitor</a> · <a href="decision-register.html">decision-register</a> · <a href="regime-monitor.html">regime-monitor</a> · <a href="portfolio-blueprint.html">portfolio-blueprint</a></li>
+<li>Theme pages refreshed: <a href="../concepts/ai-infrastructure.html">ai-infrastructure</a> · <a href="../concepts/semiconductors.html">semiconductors</a> · <a href="../concepts/cybersecurity.html">cybersecurity</a> ·<br />
+<a href="../concepts/networking-optical.html">networking-optical</a> · <a href="../concepts/data-center-cooling.html">data-center-cooling</a> · <a href="../concepts/ai-software-agents.html">ai-software-agents</a></li>
+<li>Prediction sensors: P1 (capex, ✓) · P2 (≥20% SMH drawdown) · P3 (cyber ARR ≥15%) · P15 (Mag-7 share)</li>
+<li>Methodology: <a href="../concepts/mdaem-framework.html">mdaem-framework</a> · <a href="dual-model-shortlist-scorecard-2026-06-03.html">dual-model-shortlist-scorecard-2026-06-03</a></li>
+</ul>
+</article>
+</div>
+</body>
+</html>

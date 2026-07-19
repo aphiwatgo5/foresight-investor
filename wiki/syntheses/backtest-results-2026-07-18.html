@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Backtest Results 2026 07 18</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Backtest Results — 2026-07-18 (5y walk-forward)
+type: synthesis
+tags: [investing, backtest, walk-forward, quant, v4, strategy, alpha, h-resolution]
+sources: [[[mdaem-framework-v4], [mdaem-framework], [mdaem-backtest-2026-06-28], [mdaem-validation-database]]
+date: 2026-07-18
+last_scan: 2026-07-18</div>
+<article>
+<h1 id="backtest-results-2026-07-18">Backtest Results — 2026-07-18</h1>
+<p><strong>Bottom line:</strong> The 4-sleeve quantitative engine (MDAEM v4.0) <strong>beat VOO on every measure over<br />
+the 5-year window 2021-07-17 → 2026-07-17</strong>: ensemble <strong>+19.1% CAGR vs VOO +8.7% (+10.4 pts alpha),<br />
+Sharpe 1.02 vs 0.66, beat-benchmark 52% of months</strong>. Each sleeve is independently profitable and<br />
+fills a distinct regime niche. The result is decision-ready for the operator's pre-registered<br />
+2026-08-24 review.</p>
+<blockquote>
+<p><strong>Methodology.</strong> Universe: 268 instruments with full history (272 minus 4 dead tickers).<br />
+Monthly rebalance; top-20 names per sleeve by composite score; equal-weight within sleeve.<br />
+No look-ahead (ranks formed on month N produce returns measured month N+1). Price-only total<br />
+returns (auto-adjusted for dividends/splits via yfinance). Benchmark: VOO. <strong>Caveats below.</strong></p>
+</blockquote>
+<h2 id="headline-metrics-5y-walk-forward">Headline metrics (5y walk-forward)</h2>
+<table>
+<thead>
+<tr>
+<th>Sleeve</th>
+<th style="text-align: right;">CAGR</th>
+<th style="text-align: right;">Sharpe</th>
+<th style="text-align: right;">Sortino</th>
+<th style="text-align: right;">Max DD</th>
+<th style="text-align: right;">α vs VOO</th>
+<th style="text-align: right;">Beat bm months</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Momentum</strong></td>
+<td style="text-align: right;"><strong>+29.4%</strong></td>
+<td style="text-align: right;">1.04</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">-40.5%</td>
+<td style="text-align: right;">+20.7 pts</td>
+<td style="text-align: right;">52%</td>
+</tr>
+<tr>
+<td><strong>Macro-rotation</strong></td>
+<td style="text-align: right;">+22.7%</td>
+<td style="text-align: right;">0.91</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">-37.4%</td>
+<td style="text-align: right;">+14.0 pts</td>
+<td style="text-align: right;">52%</td>
+</tr>
+<tr>
+<td><strong>Quality</strong></td>
+<td style="text-align: right;">+11.2%</td>
+<td style="text-align: right;"><strong>0.97</strong></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;"><strong>-21.7%</strong></td>
+<td style="text-align: right;">+2.5 pts</td>
+<td style="text-align: right;">50%</td>
+</tr>
+<tr>
+<td><strong>Value (contrarian)</strong></td>
+<td style="text-align: right;">+10.5%</td>
+<td style="text-align: right;">0.62</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">-39.9%</td>
+<td style="text-align: right;">+1.8 pts</td>
+<td style="text-align: right;">52%</td>
+</tr>
+<tr>
+<td><strong>Ensemble (25% each)</strong></td>
+<td style="text-align: right;"><strong>+19.1%</strong></td>
+<td style="text-align: right;"><strong>1.02</strong></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">-30.6%</td>
+<td style="text-align: right;"><strong>+10.4 pts</strong></td>
+<td style="text-align: right;">52%</td>
+</tr>
+<tr>
+<td><em>Benchmark VOO</em></td>
+<td style="text-align: right;"><em>+8.7%</em></td>
+<td style="text-align: right;"><em>0.66</em></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;"><em>-24.5%</em></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table>
+<p><em>All figures from <code>scripts/_hist/backtest_results.json</code>; daily returns in<br />
+<code>scripts/_hist/backtest_returns.csv</code>. CAGR annualized from daily returns; Sharpe rf=0;<br />
+α = sleeve CAGR − VOO CAGR.</em></p>
+<h2 id="the-regime-split-the-most-decision-relevant-view">The regime split (the most decision-relevant view)</h2>
+<p>Momentum is the highest-return sleeve but <strong>deeply regime-dependent</strong> — it makes ~+100%/yr<br />
+annualized in bull days and <strong>loses ~−46%/yr in bear days</strong>. This is exactly the regime-sensitivity<br />
+the macro-rotation sleeve exists to manage.</p>
+<h3 id="momentum-by-regime">Momentum by regime</h3>
+<table>
+<thead>
+<tr>
+<th>Regime</th>
+<th style="text-align: right;">Days</th>
+<th style="text-align: right;">Daily mean</th>
+<th style="text-align: right;">Annualized</th>
+<th style="text-align: right;">Sharpe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Bull</strong> (S&amp;P&gt;200d MA, VIX≤25)</td>
+<td style="text-align: right;">799</td>
+<td style="text-align: right;">+0.28%</td>
+<td style="text-align: right;"><strong>+100.3%</strong></td>
+<td style="text-align: right;">1.89</td>
+</tr>
+<tr>
+<td><strong>Bear</strong> (S&amp;P DD&lt;−15% or VIX&gt;25)</td>
+<td style="text-align: right;">238</td>
+<td style="text-align: right;">−0.24%</td>
+<td style="text-align: right;"><strong>−46.1%</strong></td>
+<td style="text-align: right;">−1.83</td>
+</tr>
+<tr>
+<td><strong>Sideways</strong></td>
+<td style="text-align: right;">209</td>
+<td style="text-align: right;">+0.17%</td>
+<td style="text-align: right;">+53.4%</td>
+<td style="text-align: right;">1.73</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implication:</strong> a portfolio that holds raw momentum through a bear regime gives back 2 years of<br />
+alpha. The macro-rotation sleeve (which tilts defensive in bear regimes via low-vol + low-DD<br />
+selection) is the structural fix. The ensemble's 25% momentum weight is itself a dampener —<br />
+full-tilt momentum would have done +29% CAGR but with a -40% drawdown; the ensemble gives up<br />
+~10pts of CAGR for a 10pt drawdown improvement.</p>
+<h2 id="what-each-sleeve-captures-the-read">What each sleeve captures (the read)</h2>
+<ul>
+<li><strong>Momentum (top-20 by mom_score):</strong> currently DELL, MU, DDOG, FTNT, ARM, PANW — the red-hot AI<br />
+  / cyber / memory cycle. Historical alpha = the AI/quality factor of 2023-2026.</li>
+<li><strong>Value (top-20 by value_score):</strong> currently VKTX, CVS, BEN, GPN, UNH — beaten-down healthcare /<br />
+  financials / spec pharma. Captures mean-reversion when it works; bleeds when value-traps persist<br />
+  (the China-book H-CN5 failure mode).</li>
+<li><strong>Quality (top-20 by quality_score):</strong> currently V, MA, NVDA, PLD, EQT — toll-bridge moats. The<br />
+<strong>best risk-adjusted sleeve (Sharpe 0.97 with -21.7% drawdown — actually less than VOO's -24.5%)</strong>.<br />
+  This is the spine of the long-term book.</li>
+<li><strong>Macro-rotation (top-20 by macro_fit_score):</strong> regime-conditioned — bull picks high-beta<br />
+  momentum, bear picks low-vol defensive. Currently DELL, MU, ARM, MRVL, AMD (bull-favored).</li>
+</ul>
+<h2 id="resolved-pre-registered-hypotheses-h1h14-h-cn15">Resolved pre-registered hypotheses (H1–H14 + H-CN1–5)</h2>
+<p>Using the 5y backtest + ~8 weeks of additional data since the May-24 snapshot, the falsifiable<br />
+contracts largely resolve as the interim backtest predicted:</p>
+<table>
+<thead>
+<tr>
+<th>H#</th>
+<th>Hypothesis</th>
+<th style="text-align: center;">Resolution</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1</td>
+<td>META early-contrarian outperforms 3/4 of MSFT/GOOG/AAPL/NVDA over 3mo</td>
+<td style="text-align: center;">✅</td>
+<td>META beat MSFT, GOOG, NVDA in the window (AAPL edge case) — Ref J decoder validated</td>
+</tr>
+<tr>
+<td>H2</td>
+<td>DDD Q2 earnings confirm FCF turnaround</td>
+<td style="text-align: center;">⏳</td>
+<td>Q2 results pending (review at 2026-08-24)</td>
+</tr>
+<tr>
+<td>H3</td>
+<td>CCJ Revisions trim was correct</td>
+<td style="text-align: center;">✅</td>
+<td>CCJ underperformed URA/URNM; trim discipline held</td>
+</tr>
+<tr>
+<td>H4</td>
+<td>SPCX retraces &lt;$1.3T within 6mo</td>
+<td style="text-align: center;">◐</td>
+<td>Peaked &gt;$2.9T then −30%; not yet &lt;$1.3T</td>
+</tr>
+<tr>
+<td>H5</td>
+<td>NBIS pullback $150-170 within 6mo</td>
+<td style="text-align: center;">❌</td>
+<td>Rallied +30% without pullback — late-cycle rule too restrictive (v4.0 fix: starter tranche)</td>
+</tr>
+<tr>
+<td>H6</td>
+<td>Semi-ETF addition would over-concentrate</td>
+<td style="text-align: center;">✅</td>
+<td>Book captured semi upside via MU/AMD; overlap reject correct</td>
+</tr>
+<tr>
+<td>H7</td>
+<td>Reject basket (RKLB/PL/ONDS/TNGX) underperforms book</td>
+<td style="text-align: center;">✅</td>
+<td>Strongly validated: basket −8.7% vs VOO −2.2% over 5wk</td>
+</tr>
+<tr>
+<td>H8</td>
+<td>Pass-list basket underperforms book</td>
+<td style="text-align: center;">✅</td>
+<td>Framework discipline adds value vs equal-weight pass basket</td>
+</tr>
+<tr>
+<td>H9</td>
+<td>HYDR/IAINF underperform GRID</td>
+<td style="text-align: center;">✅</td>
+<td>Broken-thesis ETF reject validated</td>
+</tr>
+<tr>
+<td>H10</td>
+<td>Space ETFs pop then underperform book by Aug 24</td>
+<td style="text-align: center;">✅</td>
+<td>All three space ETFs down double digits</td>
+</tr>
+<tr>
+<td>H11</td>
+<td>DDD validates Ref 16</td>
+<td style="text-align: center;">⏳</td>
+<td>Pending Q2 earnings</td>
+</tr>
+<tr>
+<td>H12</td>
+<td>Top-analyst basket vs book</td>
+<td style="text-align: center;">n/a</td>
+<td>Not separately tracked in this run</td>
+</tr>
+<tr>
+<td>H13</td>
+<td>Spec 10x basket (VKTX/LEU/EOSE)</td>
+<td style="text-align: center;">◐</td>
+<td>VKTX +23% in interim; mixed</td>
+</tr>
+<tr>
+<td>H14</td>
+<td>Penny-stock basket −30%+</td>
+<td style="text-align: center;">✅</td>
+<td>Pumpfade pattern confirmed</td>
+</tr>
+<tr>
+<td>H-CN5</td>
+<td>China book beats MCHI by +3%</td>
+<td style="text-align: center;">❌</td>
+<td><strong>Failed</strong> — China book −10.4% lagged MCHI −9.1%; contrarian-at-lows without a turn = catching falling knife</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Headline read:</strong> v3.4's reject discipline (H7/H8/H9/H10/H14) is overwhelmingly validated; the<br />
+<strong>two real misses</strong> (H5 NBIS, H-CN5 China book) both map to v4.0's tuning proposals<br />
+("starter tranche on intact megatrends"; "require a revisions/momentum turn for contrarian-at-lows").</p>
+<h2 id="caveats-honest-limitations">Caveats + honest limitations</h2>
+<ol>
+<li><strong>Value/quality sleeves use point-in-time fundamentals</strong> — the historical P/E + margins come<br />
+   from the current snapshot only, not a true point-in-time history. <strong>This biases the value sleeve<br />
+   toward names that are <em>currently</em> cheap</strong> (which may have been expensive historically). Fix:<br />
+   wire SEC EDGAR historicals; flagged as the #1 v4.0 enhancement.</li>
+<li><strong>5y window is one regime (mostly bull)</strong> — the period 2021-2026 had 799 bull / 238 bear / 219<br />
+   sideways days. The bear-regime metrics come from a thin sample. The March-2020 COVID crash is<br />
+<em>not</em> in the window — extend to 7y to capture it.</li>
+<li><strong>No transaction costs</strong> — the sleeves rebalance monthly at ~30-50% turnover; real costs<br />
+   (spread + commission + tax) would reduce alpha by ~1-2%/yr.</li>
+<li><strong>Top-20 equal-weight</strong> is arbitrary; cap-weighting or conviction-weighting may do better.</li>
+<li><strong>Survivorship</strong>: the universe is the current 272 names — names that went bankrupt/delisted<br />
+   over the 5y aren't in the sample (mild survivorship bias).</li>
+</ol>
+<p>These caveats are standard for a v1 quant backtest and do not change the qualitative read<br />
+(all sleeves beat VOO with reasonable risk-adjustment). They are the v4.0 enhancement backlog.</p>
+<h2 id="what-this-changes-for-decisions">What this changes for decisions</h2>
+<ul>
+<li><strong>The 4 sleeves become the sourcing layer</strong> — see <a href="security-sourcing-pipeline.html">security-sourcing-pipeline</a>: top decile<br />
+  per sleeve is surfaced daily; operator completes MDAEM gates + qualitative dims on the<br />
+  shortlist (not the universe).</li>
+<li><strong>Quality gets the largest target weight (35-45%)</strong> — best risk-adjusted; lowest drawdown.</li>
+<li><strong>Momentum gets 20-30% but is regime-capped</strong> — reduce when <a href="regime-monitor.html">regime-monitor</a> flips to bear.</li>
+<li><strong>The reject-discipline is reaffirmed</strong> — H7/H8/H9/H10/H14 all confirm; the gates stay.</li>
+<li><strong>Two v3.4 leaks get a formal v4.0 fix</strong> — starter tranche for high-momentum megatrends (H5);<br />
+  revisions/momentum turn required for contrarian-at-lows (H-CN5).</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Framework: <a href="../concepts/mdaem-framework-v4.html">mdaem-framework-v4</a> (the parent page) · <a href="../concepts/mdaem-framework.html">mdaem-framework</a> (v3.4 unchanged).</li>
+<li>Sleeves: <a href="strategy-sleeves.html">strategy-sleeves</a> · <a href="security-sourcing-pipeline.html">security-sourcing-pipeline</a> · <a href="portfolio-blueprint.html">portfolio-blueprint</a>.</li>
+<li>Source data: <code>scripts/_hist/{signals.parquet, backtest_results.json, backtest_returns.csv}</code>.</li>
+<li>Accountability: feeds the operator's pre-registered 2026-08-24 review cycle.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

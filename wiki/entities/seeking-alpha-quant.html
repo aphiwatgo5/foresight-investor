@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seeking Alpha Quant</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Seeking Alpha Quant
+type: entity
+entity_kind: tool
+tags: [investing, ratings, factor-model, mdaem, calibration]
+sources: [[[mdaem-v34-framework]]]</div>
+<article>
+<h1 id="seeking-alpha-quant">Seeking Alpha Quant</h1>
+<p><strong>What it is:</strong> A quantitative stock-rating system from Seeking Alpha that scores equities on five factor grades and rolls them into an overall rating (Strong Buy → Strong Sell). In <a href="../concepts/mdaem-framework.html">MDAEM v3.4</a> it is the external calibration anchor and a hard gate.</p>
+<h2 id="summary">Summary</h2>
+<p>SA Quant produces letter grades (A+ to F) across five factors and a composite rating. MDAEM uses it two ways: (1) as <strong>Hard Gate 6</strong> — a Sell or Strong Sell is an automatic reject — and (2) as a <strong>sizing overlay</strong> that caps MDAEM's own tier-based sizing, with the explicit rule that <strong>when MDAEM and SA conflict, take the lower signal</strong>. MDAEM also calibrates its own factor scoring against SA grades, tracking a "match rate" and "factor accuracy" over successive rounds (~75–85% in 2026; target &lt;10% factor error).</p>
+<h2 id="key-facts">Key facts</h2>
+<ul>
+<li>Five factor grades used by MDAEM: <strong>Valuation · Growth · Profitability · Momentum · Revisions</strong> (<a href="../sources/mdaem-v34-framework.html">mdaem-v34-framework</a>).</li>
+<li>The <strong>Revisions</strong> factor (EPS up/down revision counts) feeds MDAEM's Ref L hard gate: <strong>up:down ratio &lt;0.2 → REJECT</strong> (<a href="../sources/mdaem-v34-framework.html">mdaem-v34-framework</a>).</li>
+<li>Overall rating buckets: Strong Buy / Buy / Hold / Sell / Strong Sell.</li>
+<li>MDAEM treats a <strong>Hold</strong> as a sizing cap, not a disqualifier; <strong>Sell/Strong Sell</strong> disqualifies.</li>
+</ul>
+<h2 id="relationships">Relationships</h2>
+<ul>
+<li>Central input to <a href="../concepts/mdaem-framework.html">mdaem-framework</a> (gate 6 + overlay + calibration target).</li>
+<li>Appears throughout the <a href="../syntheses/mdaem-validation-database.html">mdaem-validation-database</a> entries (e.g., DDD upgraded to Strong Buy; QBTS/RGTI/IBM Hold; BABA Revisions 0:28).</li>
+</ul>
+<h2 id="notes-tensions">Notes &amp; tensions</h2>
+<ul>
+<li>It is a <em>third-party black-box factor model</em>; MDAEM uses it as a check and disconfirming signal, not as gospel — the framework rejected several SA Strong Buy names (ONDS, TNGX) on its own asymmetry gate (Ref 19).</li>
+<li>Distinct from this vault's own <a href="../syntheses/prediction-ledger.html">prediction-ledger</a> and <a href="../syntheses/trend-radar.html">trend-radar</a> conviction scores, which are internally derived and insight-only.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

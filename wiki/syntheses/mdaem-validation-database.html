@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MDAEM v3.4 Validation Database (May 2026 snapshot)</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: MDAEM v3.4 Validation Database (May 2026 snapshot)
+type: synthesis
+tags: [investing, mdaem, validation, predictions, book, portfolio]
+sources: [[[mdaem-v34-framework]]]
+date: 2026-06-03</div>
+<article>
+<h1 id="mdaem-v34-validation-database-may-2026-snapshot">MDAEM v3.4 Validation Database (May 2026 snapshot)</h1>
+<p><strong>Bottom line:</strong> The live empirical record of Aphiwat's <a href="../concepts/mdaem-framework.html">MDAEM v3.4</a> decisions as of <strong>2026-05-24/25</strong>, framed as falsifiable predictions with measurable 3-month criteria. Full review due <strong>2026-08-24</strong> (2-month flag 2026-07-24). This is the framework's "nervous system" — every ADD/REJECT/WATCHLIST is a scored bet. Source: <code>raw/mdaem-v34/v34_validation_database_May24_2026.md</code>.</p>
+<h2 id="snapshot-context-2026-05-24">Snapshot context (2026-05-24)</h2>
+<ul>
+<li>Capital: <strong>$83,209</strong> US book (Dime!) + <strong>~$40,000</strong> China/HK book = ~$123K combined.</li>
+<li>Market: S&amp;P 500 ~7,408–7,473 (−5% from ATH); VIX 16.7–18.4; Gold $4,523; BTC ~$76.9K.</li>
+<li>Framework version: v3.4 with Refinements A–O + 16–21.</li>
+</ul>
+<h2 id="the-us-book-15-positions-cash-100-83209">The US book (15 positions + cash, 100% / $83,209)</h2>
+<table>
+<thead>
+<tr>
+<th>Theme bucket</th>
+<th>Positions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Foundation</td>
+<td>VOO 19%</td>
+</tr>
+<tr>
+<td>Real-asset hedge</td>
+<td>YLG-GOLD 11% (<a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a>)</td>
+</tr>
+<tr>
+<td>AI compute/cloud</td>
+<td>MSFT 8%, GOOG 8%, MU 8%, AMD 6%, QQQM 5% (<a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="../concepts/semiconductors.html">semiconductors</a>)</td>
+</tr>
+<tr>
+<td>AI power</td>
+<td>GRID 8% (<a href="../concepts/power-grid-electrification.html">power-grid-electrification</a>)</td>
+</tr>
+<tr>
+<td>Cybersecurity</td>
+<td>CIBR 5% (<a href="../concepts/cybersecurity.html">cybersecurity</a>)</td>
+</tr>
+<tr>
+<td>Genomics/health</td>
+<td>IDNA 5% (<a href="../concepts/biotech-genomics.html">biotech-genomics</a>), CI 4% (<a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a>)</td>
+</tr>
+<tr>
+<td>New STARTERs</td>
+<td><strong>META 4%</strong> (early contrarian), <strong>DDD 3%</strong> (turnaround)</td>
+</tr>
+<tr>
+<td>Uranium</td>
+<td>CCJ 3% (trimmed on Revisions warning) (<a href="../concepts/nuclear-uranium.html">nuclear-uranium</a>)</td>
+</tr>
+<tr>
+<td>Buffer</td>
+<td>SGOV/cash 3%</td>
+</tr>
+</tbody>
+</table>
+<p>Two new adds this session — <strong>META</strong> (Mom C, Rev A- 46:2, PEG 0.9, P/E 18.79 = early contrarian) and <strong>DDD</strong> (Ref 16 reflexive-bias catch; SA Strong Buy, A&amp;D pivot). CCJ trimmed 4%→3% on Revisions C- (6:8). A separate <strong>China/HK book</strong> (~$40K, 11 names) leads with Tencent 18%, BYD 14%, MCHI 10%.</p>
+<h2 id="reject-calls-tracked-to-validate-discipline">Reject calls (tracked to validate discipline)</h2>
+<ul>
+<li><strong>Asymmetry-gate fails:</strong> RKLB (+472% YoY, target below price), PL (P/S 42x, +793%), ONDS (+1140%, NIM 252%), TNGX (+1253%, Rev C-). [Ref 19]</li>
+<li><strong>M&amp;A ceiling:</strong> KALV (capped at $27 Chiesi deal). [Ref 17]</li>
+<li><strong>Extreme valuation:</strong> QBTS (EV/S 207x sector), RGTI (P/S 212x) → hard reject; IONQ (26.5x) → spec watchlist only. [Ref 20] (<a href="../concepts/quantum-computing.html">quantum-computing</a>)</li>
+<li><strong>Pre-catalyst dilution:</strong> VKTX downgraded add→watchlist (runway ends before 2027 Phase 3). [Ref 21]</li>
+<li><strong>IPO valuation:</strong> SPCX rejected at ~$1.75–2T IPO target; watchlist &lt;$1.3T. (<a href="../concepts/space-economy.html">space-economy</a>)</li>
+<li><strong>Mandate fit / overlap:</strong> RLYB, NTST, RIG, GPRE, EZPW, TEM, AVGO, NVDA (captured via QQQM), penny basket (GNS/SNYR/HUBC/MASK…).</li>
+</ul>
+<h2 id="watchlist-deferred-with-triggers">Watchlist (deferred, with triggers)</h2>
+<p>NBIS (pullback $150–170), LEU ($130–150), VKTX (Phase-3 pullback, spec), VNM (MSCI upgrade), SHG, SMIN, TEM (&lt;$55 on FCF inflection), SPCX (&lt;$1.3T), LMT (&lt;$450), ONDS/TNGX (deep pullbacks, spec).</p>
+<h2 id="key-hypotheses-being-tested-h1h14">Key hypotheses being tested (H1–H14)</h2>
+<p>Each is falsifiable with a 3-month verdict, e.g.: <strong>H1</strong> META outperforms 3/4 of MSFT/GOOG/AAPL/NVDA; <strong>H2</strong> DDD Q2 confirms FCF turnaround; <strong>H4</strong> SPCX trades below IPO within 3–6mo; <strong>H7</strong> rejected basket (RKLB/PL/ONDS/TNGX) underperforms book; <strong>H14</strong> penny basket −30%+ as pumps fade. The meta-test (H8): does the framework's overall "pass" discipline add value vs an equal-weight pass-basket?</p>
+<h2 id="calibration-trajectory">Calibration trajectory</h2>
+<table>
+<thead>
+<tr>
+<th>Round</th>
+<th>SA match</th>
+<th>Factor accuracy</th>
+<th>Lesson</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>60%</td>
+<td>30%</td>
+<td>Too aggressive on quality</td>
+</tr>
+<tr>
+<td>2</td>
+<td>100%</td>
+<td>70%</td>
+<td>Memory-staleness gate critical</td>
+</tr>
+<tr>
+<td>3</td>
+<td>100%</td>
+<td>83%</td>
+<td>Late-cycle warnings work</td>
+</tr>
+<tr>
+<td>4–5</td>
+<td>100%</td>
+<td>~85%</td>
+<td>DDD reflexive bias caught</td>
+</tr>
+<tr>
+<td>This session</td>
+<td>60%</td>
+<td>~75%</td>
+<td>Reflexive small-cap dismissal pattern</td>
+</tr>
+</tbody>
+</table>
+<p>Self-identified biases: reflexive small-cap dismissal, outdated-narrative anchoring, reflexive REIT/income skip. Correct-call patterns: asymmetry gate catches extension traps; Revisions warnings; M&amp;A ceiling; ETF-overlap detection.</p>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<ul>
+<li>This is a <strong>2026-05 snapshot</strong>. An <strong>interim back-test (~5 weeks)</strong> now scores the calls →<br />
+<a href="mdaem-backtest-2026-06-28.html">mdaem-backtest-2026-06-28</a>: reject discipline strongly validated (basket −8.7% vs VOO −2.2%),<br />
+  leaks on high-momentum/defer calls (TNGX +55%, VKTX/TEM/NBIS rose). Full review still 2026-08-24.</li>
+<li>Treat all targets/prices as as-of dated, not live.</li>
+<li>The <strong>2026-08-24 review</strong> is the resolution point — when scored, update this page with hit-rate and any v3.5 refinements.</li>
+<li>Thematic overlaps with the vault (AI infra, uranium, quantum, gold, space) mean MDAEM single-name calls and <a href="trend-radar.html">trend-radar</a> convictions can be cross-checked for consistency.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Interim scoring: <a href="mdaem-backtest-2026-06-28.html">mdaem-backtest-2026-06-28</a> · Methodology: <a href="../concepts/mdaem-framework.html">mdaem-framework</a> · Source: <a href="../sources/mdaem-v34-framework.html">mdaem-v34-framework</a> · Calibration: <a href="../entities/seeking-alpha-quant.html">seeking-alpha-quant</a></li>
+<li>Vault parallel: <a href="prediction-ledger.html">prediction-ledger</a> (the insight-only thematic equivalent)</li>
+<li>Engine comparison: <a href="mdaem-vs-futurist-investor.html">mdaem-vs-futurist-investor</a></li>
+</ul>
+</article>
+</div>
+</body>
+</html>

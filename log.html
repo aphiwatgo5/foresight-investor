@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="home.html">🏠 Home</a> ·
+    <a href="hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+
+<article>
+<h1 id="log">Log</h1>
+<p>Chronological, append-only record of wiki activity. Newest at the bottom.<br />
+Each entry header is parseable: <code>grep "^## \[" log.md | tail -5</code>.</p>
+<h2 id="2026-05-30-maintenance-wiki-initialized">[2026-05-30] maintenance | Wiki initialized</h2>
+<ul>
+<li>Created schema (<code>CLAUDE.md</code>), <code>index.md</code>, <code>log.md</code>, <code>wiki/overview.md</code>.</li>
+<li>Established folders: <code>raw/</code>, <code>raw/assets/</code>, <code>wiki/{sources,entities,concepts,syntheses}</code>.</li>
+<li>Initialized git repository for version history.</li>
+</ul>
+<h2 id="2026-05-30-ingest-the-llm-wiki-pattern-founding-source">[2026-05-30] ingest | The LLM Wiki pattern (founding source)</h2>
+<ul>
+<li>Saved idea file to <code>raw/the-llm-wiki-pattern.md</code> and ran the first full ingest as a worked example.</li>
+<li>Created source page: <a href="wiki/sources/the-llm-wiki-pattern.html">the-llm-wiki-pattern</a>.</li>
+<li>Created entities: <a href="wiki/entities/obsidian.html">obsidian</a>, <a href="wiki/entities/vannevar-bush.html">vannevar-bush</a>.</li>
+<li>Created concepts: <a href="wiki/concepts/wiki-as-compounding-artifact.html">wiki-as-compounding-artifact</a>, <a href="wiki/concepts/ingest-query-lint.html">ingest-query-lint</a>, <a href="wiki/concepts/memex.html">memex</a>.</li>
+<li>Updated <a href="wiki/overview.html">overview</a> and <code>index.md</code>.</li>
+</ul>
+<h2 id="2026-05-30-ingest-mirofish-github-readme">[2026-05-30] ingest | MiroFish (GitHub README)</h2>
+<ul>
+<li>Source saved at raw/666ghjMiroFish...md; ran full ingest (discuss-first, user chose full plan).</li>
+<li>Created source page: <a href="wiki/sources/mirofish.html">mirofish</a>.</li>
+<li>Created entities: <a href="wiki/sources/mirofish.html">mirofish</a> (product), <a href="wiki/entities/666ghj.html">666ghj</a>, <a href="wiki/entities/oasis.html">oasis</a>, <a href="wiki/entities/camel-ai.html">camel-ai</a>, <a href="wiki/entities/shanda-group.html">shanda-group</a>, <a href="wiki/entities/zep.html">zep</a>.</li>
+<li>Created concepts: <a href="wiki/concepts/multi-agent-simulation.html">multi-agent-simulation</a>, <a href="wiki/concepts/swarm-intelligence.html">swarm-intelligence</a>, <a href="wiki/concepts/graphrag.html">graphrag</a>.</li>
+<li>Updated <a href="wiki/overview.html">overview</a> (now 2 sources; noted "LLMs doing labor humans won't" cross-theme) and index.md.</li>
+<li>Note: README screenshots/demo videos are remote URLs, not captured to raw/assets/ — text-only ingest.</li>
+</ul>
+<h2 id="2026-05-30-query-mirofish-how-to-use-applications">[2026-05-30] query | MiroFish — how to use &amp; applications</h2>
+<ul>
+<li>User asked for a how-to-use guide and application/use-case overview of MiroFish.</li>
+<li>Filed answer as synthesis <a href="wiki/syntheses/mirofish-how-to-use-and-applications.html">mirofish-how-to-use-and-applications</a> (setup steps, 5-stage usage flow, macro/micro use cases).</li>
+<li>Updated index.md (Syntheses section now populated).</li>
+</ul>
+<h2 id="2026-05-30-maintenance-added-hotcache-layer">[2026-05-30] maintenance | Added hotcache layer</h2>
+<ul>
+<li>Created hotcache.md: rolling ≤500-word state summary at repo root.</li>
+<li>Updated CLAUDE.md: new §0 (read hotcache first), added to layout, refresh step in ingest/query/lint, new §9 format spec.</li>
+</ul>
+<h2 id="2026-06-01-query-mirofish-lite-hrm-sim-marketchurn-research">[2026-06-01] query | MiroFish-lite HRM sim + market/churn research</h2>
+<ul>
+<li>Ran a hand-run 6-agent / 3-round MiroFish-style simulation of the Thai cloud-HRMS market (kept confidential financials local; not uploaded). Predictions filed to chat, offered as synthesis.</li>
+<li>Researched public Thai HRMS market + SME-fragility/SaaS-churn benchmarks (web). Key insight: empeo's per-employee + mid-market + annual-billing model is structurally churn-resistant vs HumanSoft's fragile flat-fee SME volume.</li>
+<li>(Both explorations offered to be filed as syntheses; not yet filed.)</li>
+</ul>
+<h2 id="2026-06-01-maintenance-launched-futurist-investor-engine-investing-mode">[2026-06-01] maintenance | Launched "Futurist Investor" engine (investing mode)</h2>
+<ul>
+<li>Added CLAUDE.md §10: investing vertical — universe (US/global ETFs · securities · Thai SET), long-term thematic style, weekly autonomous scan, insight-only guardrails, new page types (trend/etf/security), and the SCAN operation.</li>
+<li>Created 3 living hub syntheses: <a href="wiki/syntheses/trend-radar.html">trend-radar</a> (11 seeded megatrends, conviction pending first scan), <a href="wiki/syntheses/watchlist.html">watchlist</a> (empty scaffold), <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a> (dated + scored calls, accountability layer).</li>
+<li>Updated index.md (new Investing section). Next: set up weekly scan scheduler + run first scan.</li>
+</ul>
+<h2 id="2026-06-01-scan-first-investor-scan-11-trends">[2026-06-01] scan | First investor scan (11 trends)</h2>
+<ul>
+<li>Ran the inaugural SCAN. Fanned out 3 parallel research agents (public web data only) across the 11 radar trends; synthesized conviction calls myself with calibration discipline (<strong>nothing scored 5</strong> — highest-conviction trends are also the most richly valued).</li>
+<li><strong>Convictions:</strong> 4 = AI-infrastructure, semiconductors, cybersecurity, energy-transition(power/nuclear), aging/healthcare(GLP-1), India/EM. 3 = defense-reshoring, automation-robotics, fintech-tokenization, water. 2 = Thailand-SET (trade not thesis).</li>
+<li><strong>Key insight:</strong> five of six conviction-4 trends share ONE demand engine (AI→power→semis) → strength + correlated de-rating risk. Better risk/reward in non-AI-cyclical demand (cybersecurity, GLP-1 demand).</li>
+<li>Rewrote <a href="wiki/syntheses/trend-radar.html">trend-radar</a> (scored table + scan notes); seeded <a href="wiki/syntheses/watchlist.html">watchlist</a> (10 instruments incl. SMH/CIBR/URA/INDA/ITA/BLOK/BOTZ/XBI/LLY/TSM/THD); logged 6 dated falsifiable calls in <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a> (earliest resolves 2026-12-31).</li>
+<li>Created flagship trend pages <a href="wiki/concepts/ai-infrastructure.html">ai-infrastructure</a> and <a href="wiki/concepts/energy-transition.html">energy-transition</a>; other 9 trends left as wanted pages for future scans. Updated index.md; committing vault.</li>
+</ul>
+<h2 id="2026-06-01-query-semiconductors-deep-dive-brief-filed">[2026-06-01] query | Semiconductors deep-dive brief filed</h2>
+<ul>
+<li>Produced a deep sourced equity-research brief on the SEMICONDUCTORS theme and filed it as the trend page <a href="wiki/concepts/semiconductors.html">semiconductors</a> (was a wanted page; conviction 4). Web-research-only, primary sources prioritized (company 8-K/6-K earnings, WSTS, SEMI), secondary (trade press) named/dated.</li>
+<li>Structure: definition/scope · market size (WSTS $772B 2025 / ~$975B 2026E; SEMI equipment $133B→$139–145B; HBM ~$35B→~$100B-by-2028; TSMC ~70% foundry) · drivers · value-chain · per-segment competitive landscape · <strong>comparative table of ~16 players</strong> across the 4 sub-segments (TSMC, ASML, AMAT, LRCX, KLA, TEL, NVDA, AMD, AVGO, QCOM, ARM, MRVL, MU, SK Hynix, Samsung, Intel) · competitiveness read · risks · instruments (SMH/SOXX/SOXQ) · per-segment conviction.</li>
+<li><strong>Per-segment conviction (inference):</strong> semicap 4 (ASML EUV monopoly), foundry 4 (TSMC), logic 4 (NVDA dominance but valuation + ASIC threat), memory-HBM 3 (most cyclical link, 2027 oversupply risk). Overall trend conv 4, accelerating, 3–7y.</li>
+<li>Every figure tagged (fact)/(est.)/(inference) with period + source; gaps marked "No reliable figure found" (Samsung financials, some valns/net-cash). Updated index.md + <a href="wiki/syntheses/trend-radar.html">trend-radar</a> row; refreshed hotcache. Insight only — no advice.</li>
+</ul>
+<h2 id="2026-06-01-scan-three-theme-briefs-filed-natural-gas-lng-data-center-cooling-critical-minerals">[2026-06-01] scan | Three theme briefs filed: Natural Gas &amp; LNG, Data-Center Cooling, Critical Minerals</h2>
+<ul>
+<li>Produced three deep sourced equity-research trend pages (web-research-only; primary sources prioritized: EIA, IEA, USGS, company Q1 2026 10-Q/8-K/earnings, plus named secondary trade press).</li>
+<li>Created concepts: <a href="wiki/concepts/natural-gas-lng.html">natural-gas-lng</a> (conv 4), <a href="wiki/concepts/data-center-cooling.html">data-center-cooling</a> (conv 4), <a href="wiki/concepts/critical-minerals.html">critical-minerals</a> (conv ~3.5).</li>
+<li>Each page has all 10 requested sections incl. a comparative table of major players (8 / 7 / 8 companies), every figure tagged (fact)/(est.)/(inference) with period + as-of date; gaps marked "NRFF" (no reliable figure found).</li>
+<li>Key figures captured: US LNG exports 17.0 Bcf/d 2026 (EIA); GE Vernova turbine backlog 100 GW Q1'26; Cheniere FY26 EBITDA guide $7.25–7.75B; liquid-cooling market ~$5–7B 2026 @ ~18–31% CAGR; Vertiv backlog $12.45B +80.8%; IEA copper ~30% deficit by 2035; China ~69% REE mine / ~90% refined (USGS 2026); China Ga/Ge export ban suspended to 27 Nov 2026.</li>
+<li>All three share the AI-power-buildout engine (links to <a href="wiki/concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="wiki/concepts/energy-transition.html">energy-transition</a>, <a href="wiki/concepts/semiconductors.html">semiconductors</a>) = correlated de-rating risk noted per <a href="wiki/syntheses/trend-radar.html">trend-radar</a>.</li>
+<li>Updated index.md (moved 3 trends from wanted to built). Insight only — no buy/sell advice.</li>
+</ul>
+<h2 id="2026-06-01-scan-analyst-grade-multi-theme-rebuild-7-meta-forces-28-themes">[2026-06-01] scan | Analyst-grade multi-theme rebuild (7 meta-forces, 28 themes)</h2>
+<ul>
+<li>Executed the approved large SCAN upgrading the radar from 11 rough rows to an analyst-grade research base. Web-research-only; primary sources prioritized (company filings/earnings, IEA/SIPRI/WGC/CMS/SIA-WSTS, exchange/regulator data) + named secondary press. Every figure tagged (fact)/(est.)/(inference) with period + as-of; gaps = "n/f".</li>
+<li><strong>28 theme pages</strong> under 7 meta-forces, each with the new 11-section template + a comparative major-player table. New this scan: ai-software-agents, networking-optical, power-grid-electrification, nuclear-uranium, renewables-storage, defense-security, automation-robotics, reshoring-supply-chain, infrastructure-capex, glp1-obesity-metabolic, biotech-genomics, medtech-devices, healthcare-aging-services, fintech-payments, tokenization-digital-assets, us-megacap-quality, india-em-growth, japan-corporate-reform, asean-thailand, china-contrarian, water-resource-scarcity, commodities-gold-real-assets, space-economy, quantum-computing. Upgraded <a href="wiki/concepts/energy-transition.html">energy-transition</a> into the meta-force overview hub.</li>
+<li>Convictions (risk-adjusted; nothing earns 5): AI stack all 4; power/gas/cooling 4, minerals 3.5, nuclear/renewables 3; defense 4, infra-capex 4, automation/reshoring 3; GLP-1 4, medtech 4, biotech 3, healthcare-aging 3; fintech 3, tokenization 3; India 4, Japan 4, US-megacap 3, ASEAN 3 (Thailand standalone ~2), China 3; water 4, gold 3.5, space 2.5, quantum 2.</li>
+<li><strong>New syntheses:</strong> <a href="wiki/syntheses/theme-linkage-map.html">theme-linkage-map</a> (master "AI needs power needs metal" chain + shared-driver correlation clusters) and <a href="wiki/syntheses/macro-regime.html">macro-regime</a> (rates/USD/inflation/liquidity/policy overlay + 4 regime scenarios).</li>
+<li>Restructured <a href="wiki/syntheses/trend-radar.html">trend-radar</a> into the 7 meta-forces; expanded <a href="wiki/syntheses/watchlist.html">watchlist</a> to all themes; added falsifiable calls P7–P16 to <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a> (now 16 open; earliest resolve P12, SIPRI, 2026-06-30). Extended CLAUDE.md §10 with the meta-force taxonomy + analyst-grade template. Rewrote index.md.</li>
+<li>Central finding: most conviction-4 themes share the AI-capex demand engine = correlated de-rating risk; genuine diversifiers = defense, gold, healthcare/aging, GLP-1, Japan. Geographic rotation away from US concentration is live (2025: ex-US +31.8% vs S&amp;P +17.7%, USD −9.5%).</li>
+<li>Likely-stale cells flagged: uranium spot, gold levels (search-aggregated, not live), space/quantum momentum caps. Insight only — no buy/sell advice. Vault committed locally (no push — confidential data stays local).</li>
+</ul>
+<h2 id="2026-06-03-ingest-mdaem-v34-framework-full-ingest">[2026-06-03] ingest | MDAEM v3.4 framework (full ingest)</h2>
+<ul>
+<li>Ingested Aphiwat's external 6-file MDAEM v3.4 documentation package (built in a separate Claude chat). Copied sources to <code>raw/mdaem-v34/</code> (immutable).</li>
+<li>New pages: source <a href="wiki/sources/mdaem-v34-framework.html">mdaem-v34-framework</a>; concept <a href="wiki/concepts/mdaem-framework.html">mdaem-framework</a> (methodology — 10 gates, 10 weighted dims, tiers, SA overlay, scenario math, 21 refinements, validation loop); entity <a href="wiki/entities/seeking-alpha-quant.html">seeking-alpha-quant</a> (calibration anchor / hard gate); syntheses <a href="wiki/syntheses/mdaem-validation-database.html">mdaem-validation-database</a> (live May 2026 book/rejects/watchlist/H1–H14, review due 2026-08-24) and <a href="wiki/syntheses/mdaem-vs-futurist-investor.html">mdaem-vs-futurist-investor</a> (two-engine comparison + guardrail boundary).</li>
+<li>Key distinction recorded: MDAEM does single-name sizing + ADD/REJECT verdicts (Aphiwat's personal tool); the vault's Futurist Investor engine stays insight-only (CLAUDE.md §10). Documented, not adopted.</li>
+<li>Updated index.md (Sources/Entities/Concepts/Syntheses). Open thread: reconcile MDAEM validation DB with <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a> at the 2026-08-24 review.</li>
+</ul>
+<h2 id="2026-06-03-query-cross-theme-risk-adjusted-idea-ranking-filed">[2026-06-03] query | Cross-theme risk-adjusted idea ranking (filed)</h2>
+<ul>
+<li>Synthesized across all 28 trend-radar themes into <a href="wiki/syntheses/cross-theme-idea-ranking.html">cross-theme-idea-ranking</a>: Tier 1 strongest risk-adjusted (CIBR/BUG, GRID/XLU, ITA/PPA, PHO/FIW, DXJ), Tier 2 entry-sensitive quality (INDA, SMH/QQQ on drawdown, LLY/NVO, GLD/GDX), Tier 3 avoid/lottery (quantum, space, Thailand standalone).</li>
+<li>Core read: lean away from crowded AI-compute core toward defensive AI-levered (cyber/power/water) + true diversifiers (defense/Japan/gold); India &amp; semis = buy-on-weakness.</li>
+<li>Held the §10 guardrail: insight-only ranking of research attractiveness, NO buy/sell or sizing — explicit hand-off to <a href="wiki/concepts/mdaem-framework.html">mdaem-framework</a> for verdicts/sizing. Updated index.md.</li>
+</ul>
+<h2 id="2026-06-03-queryscan-dual-model-shortlist-scorecard-futurist-mdaem-dated-for-validation">[2026-06-03] query/scan | Dual-model shortlist scorecard (Futurist + MDAEM), dated for validation</h2>
+<ul>
+<li>Pulled live 2026-06-03 data (stockanalysis.com/SA/filings) for 8 representative names via parallel research agents, then scored each through BOTH engines → <a href="wiki/syntheses/dual-model-shortlist-scorecard-2026-06-03.html">dual-model-shortlist-scorecard-2026-06-03</a>.</li>
+<li>Futurist (insight-only) conviction vs MDAEM (gates→score→tier→verdict + indicative size). Result: MDAEM ADD = TSM (77, MED-HIGH, SA Strong Buy, 6-8%), LLY (74, MED-HIGH, SA Buy, 5-7%); STARTER = RTX (66, SA Hold cap 3%), AWK (57, defensive contrarian); WATCHLIST = NEM (67 but Ref L revisions 0:2 flag → take lower); REJECT = CRWD (asymmetry: WS target −24% vs price), GEV (Ref L revisions 0.14), IBM (asymmetry, PEG 3.8x on ~4.5% growth).</li>
+<li>Key finding: Futurist loves all themes (3.5–4) but MDAEM rejects 3 of the most-loved on ENTRY discipline — concretizes "high trend conviction ≠ attractive entry." Models agree only on TSM + LLY.</li>
+<li>Falsifiable success/failure criteria recorded per name; review 2026-09-03 (reconcile with MDAEM 2026-08-24 cycle + <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a>). Guardrail kept: Futurist insight-only; MDAEM = operator's own framework applied, decisions remain user's. Updated index.md.</li>
+</ul>
+<h2 id="2026-06-28-lint-vault-health-check-apply-low-severity-fixes">[2026-06-28] lint | Vault health-check + apply low-severity fixes</h2>
+<ul>
+<li>Full read-only scan of wiki/ (61 pages): 0 contradictions, 0 data-integrity issues, index complete.</li>
+<li>Applied confirmed fixes: (1) conviction frontmatter aligned to canonical <a href="wiki/syntheses/trend-radar.html">trend-radar</a> — <a href="wiki/concepts/critical-minerals.html">critical-minerals</a> 4→3.5, <a href="wiki/concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a> 3→3.5; (2) cross-ref gaps — added <a href="wiki/concepts/power-grid-electrification.html">power-grid-electrification</a> links in <a href="wiki/concepts/data-center-cooling.html">data-center-cooling</a> + <a href="wiki/concepts/natural-gas-lng.html">natural-gas-lng</a>; (3) orphan wiring — linked <a href="wiki/syntheses/dual-model-shortlist-scorecard-2026-06-03.html">dual-model-shortlist-scorecard-2026-06-03</a> from <a href="wiki/syntheses/trend-radar.html">trend-radar</a>+<a href="wiki/syntheses/watchlist.html">watchlist</a>, <a href="wiki/syntheses/mirofish-how-to-use-and-applications.html">mirofish-how-to-use-and-applications</a> from <a href="wiki/overview.html">overview</a>.</li>
+<li>Left by design: 30 "wanted" company/ETF links (comparative-tables-only era, §10). Deferred to next scan: re-verify uranium spot / gold levels / space-quantum caps; refresh 2026 macro levels.</li>
+<li>FLAGGED (not fixed): wiki/overview.md is stale — still says "Two sources so far" / source_count: 2 and omits the entire investing vertical (7 meta-forces / 28 themes / MDAEM). Needs a rewrite — awaiting go-ahead.</li>
+<li>Earlier this session: committed the pending MDAEM v3.4 ingest as fec6877; added .gitignore (.DS_Store).</li>
+</ul>
+<h2 id="2026-06-28-maintenance-added-bubble-watch-operation-to-engine-claudemd-10">[2026-06-28] maintenance | Added BUBBLE-WATCH operation to engine (CLAUDE.md §10)</h2>
+<ul>
+<li>New named feature/skill of the Futurist Investor engine: on-demand <strong>BUBBLE-WATCH</strong> — rigorous bubble-risk analysis of a <code>&lt;TARGET&gt;</code> (default US equity + AI/tech sub-read) applying Dalio 6-gauge, Shiller CAPE, Minsky FIH, Kindleberger–Minsky stages, Rodrigue phases, Soros reflexivity, Sornette LPPL.</li>
+<li>Hard discipline codified: live-only data (training treated as STALE), per-figure provenance (value|as-of|source|URL|UTC), ≥2-source cross-check, UNAVAILABLE-not-estimated, ask-don't-guess gap handling, &gt;30%-missing → lower confidence. Insight-only guardrail preserved.</li>
+<li>Output convention: dated synthesis <code>wiki/syntheses/bubble-risk-&lt;slug&gt;-&lt;YYYY-MM-DD&gt;.md</code> + index/log/hotcache/prediction-ledger wiring; framework concept pages flagged as wanted-links (dalio-6-gauge, shiller-cape, minsky-financial-instability, kindleberger-minsky-stages, rodrigue-bubble-phases, soros-reflexivity, sornette-lppl).</li>
+<li>Listed in §10 intro alongside SCAN. Schema-only change — no analysis run yet.</li>
+</ul>
+<h2 id="2026-06-28-bubble-watch-first-bubble-risk-run-us-equity-utc-anchor-1412z">[2026-06-28] bubble-watch | First bubble-risk run — US equity (UTC anchor 14:12Z)</h2>
+<ul>
+<li>Ran the new BUBBLE-WATCH op on default target (US equity + AI/tech sub-read) with live-fetched data → <a href="wiki/syntheses/bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a>.</li>
+<li>Live readings: Shiller CAPE 40.70 (2nd-highest ever, multpl 2026-06-26); S&amp;P trailing P/E 31.45; Buffett Indicator 219% "strongly overvalued" (CMV Mar-31); 10Y 4.38% → ERP ≈ −1.2% (negative); FINRA margin debt $1.42T, +53.7% YoY; VIX 18.41; CNN F&amp;G 25 (Extreme Fear); AAII bull 44.9%; Mag-7 ≈32.7% (~$22T); HY OAS ≈2.6–2.8% (tight); hyperscaler 2026 capex ≈$725B (+77%).</li>
+<li>Key finding: structural gauges EXTREME (valuation/leverage/concentration) but sentiment FEARFUL not euphoric → stretched &amp; fragile, not a blow-off top. Soros reflexive AI-capex loop = core risk. Dalio 4/6 gauges elevated-extreme; Minsky speculative-rising but spreads complacent; Rodrigue mania (not climax). LPPL not run (no in-session price fit).</li>
+<li>Provenance caveat: FRED/CBOE/CNN/AAII/Slickcharts blocked WebFetch → VIX/F&amp;G/AAII/Mag-7/HY-spread are secondary/search-sourced (flagged). Unavailable ≈23% (forward P/E, put/call, IPO-SPAC) — below 30% threshold; confidence held MODERATE.</li>
+<li>Logged falsifiable calls P17 (no HY OAS ≥4% month in 2026) + P18 (no ≥20% S&amp;P drawdown in 2026) in <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a>. Updated index.md + <a href="wiki/overview.html">overview</a> (also rewrote stale overview to reflect the full investing vertical).</li>
+</ul>
+<h2 id="2026-06-28-maintenance-built-living-outlook-dashboard-outlook-dashboardhtml">[2026-06-28] maintenance | Built living Outlook Dashboard (outlook-dashboard.html)</h2>
+<ul>
+<li>Created a single self-contained, offline (no-CDN) interactive HTML dashboard at repo root fusing all three engine skills: (1) bubble-framework analysis + Dalio 6-gauge + 7 framework cards (from <a href="wiki/syntheses/bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a>); (2) the full 30-theme radar — sortable/filterable, conviction-colored, with dual-model verified picks (TSM/LLY ADD … CRWD/GEV/IBM REJECT); (3) quarterly indicator charts for the past ~2 years.</li>
+<li>Indicator history (verified, fetched this session): CAPE, S&amp;P P/E, 10Y (multpl by-month, Q2'24→Q2'26, 9 quarters); ERP derived from those; FINRA margin debt (Q-ends Jun'25→May'26). Current-only / history-pending (primary feeds blocked WebFetch): Buffett, VIX, CNN F&amp;G, HY spread, Mag-7. Every figure carries a provenance tag (fact/inference/secondary/pending); no fabricated values.</li>
+<li>All data lives in one editable <code>DATA={}</code> block for Claude-Code refresh; charts hand-built in inline SVG. Added <code>.claude/launch.json</code> ("dashboard", python http.server :8765) for local preview. Verified render: 30 themes, 8 KPIs, 10 charts, 6 gauges, 0 console errors. Insight only — not advice.</li>
+</ul>
+<h2 id="2026-06-28-maintenance-added-homemd-features-tab-on-the-dashboard">[2026-06-28] maintenance | Added home.md + Features tab on the dashboard</h2>
+<ul>
+<li>Created <code>home.md</code> — a human-readable "start here" entry point summarizing ALL features (core ops: ingest/query/lint; investing engine: scan/bubble-watch/radar/hubs/MDAEM) and ALL knowledge (2 domains, the 30-theme radar, single-name discipline, 18 predictions), with a three-layer "how to trace any claim" guide and quick-links table. Links liberally to <a href="wiki/overview.html">overview</a>, <a href="wiki/syntheses/trend-radar.html">trend-radar</a>, <a href="wiki/syntheses/bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a>, etc.</li>
+<li>Extended the EXISTING <code>outlook-dashboard.html</code> (no new dashboard) with a 4th tab <strong>Features &amp; Map</strong>: project-map cards (raw/wiki/schema layers), grouped feature/skill cards (4 groups, 17 features), and a "knowledge inside" panel with by-the-numbers counts. All driven by new DATA.projectMap / DATA.features / DATA.knowledge / DATA.counts blocks.</li>
+<li>Verified render (preview): Features tab = 3 map cards · 4 groups · 17 feature cards · 5 knowledge cards · 0 console errors. Linked home.md in index.md ("Start here").</li>
+</ul>
+<h2 id="2026-06-28-bubble-watch-per-framework-leading-indicator-detail-framework-guideline-actual">[2026-06-28] bubble-watch | Per-framework leading-indicator detail (framework · guideline · actual)</h2>
+<ul>
+<li>Expanded each of the 7 bubble frameworks in <a href="wiki/syntheses/bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a> §2 into leading-indicator tables: for every indicator now show the literature guideline/threshold (definition) + the live actual reading + a signal (EXTREME/ELEVATED/MIXED/LOW). Dalio 6-gauge gained explicit thresholds; Shiller gained Excess CAPE Yield; Minsky/Kindleberger/Rodrigue/Soros/Sornette each tabulated.</li>
+<li>Closed two earlier gaps with follow-up live pulls: equity put/call 0.67 (2026-06-25, complacent), 10Y breakeven inflation 2.29% → real 10Y ≈2.09% → Shiller ECY ≈ +0.4% (near record-low). Unavailable share dropped 23%→13% (only forward P/E + IPO/SPAC). Data table, coverage, and freshness log updated.</li>
+<li>Mirrored the same framework·guideline·actual·signal tables into the dashboard Bubble tab (DATA.frameworks[].inds + DATA.dalio[].guide); added .indtab/.sig CSS; frameworks now full-width. Verified render: 6 frameworks × indicator tables = 18 rows, 5 tabs, 0 console errors.</li>
+</ul>
+<h2 id="2026-06-28-lint-full-link-graph-audit-repair-64-pages">[2026-06-28] lint | Full link-graph audit + repair (64 pages)</h2>
+<ul>
+<li>Built the actual link graph programmatically (every wikilink vs every page). Findings &amp; fixes:</li>
+<li><strong>Main fix:</strong> <a href="wiki/syntheses/bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a> had <strong>0 outbound links</strong> (written with plain-text page references). Added a <strong>Connections</strong> section → 17 outbound (most-exposed themes, hubs, single-name overlay, diversifiers). Added inbound from <a href="wiki/concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="wiki/concepts/us-megacap-quality.html">us-megacap-quality</a>, <a href="wiki/syntheses/macro-regime.html">macro-regime</a> (2→6 inbound).</li>
+<li>Cross-linked <a href="wiki/sources/mirofish.html">mirofish</a> entity → <a href="wiki/syntheses/mirofish-how-to-use-and-applications.html">mirofish-how-to-use-and-applications</a> (how-to inbound 1→3).</li>
+<li>Corrected stale put/call "UNAVAILABLE" line in the bubble-risk Limitations (now 0.67 retrieved).</li>
+<li><strong>Verified clean:</strong> only orphan = <code>home.md</code> (intentional entry doc); no unexpected dead links. <code>[index](catalog.html)</code>/<code>[log](log.html)</code> resolve to root files (Obsidian vault-wide), not broken.</li>
+<li><strong>Left by design (not errors):</strong> ~24 company/ETF wanted-links (albemarle, vertiv, cheniere-energy, etf-smh, …) + thailand-set-themes + advanced-packaging/hbm — per §10 "comparative-tables-only era, no per-company pages" and §8 scope discipline. They are TODO markers, surfaced not fabricated.</li>
+</ul>
+<h2 id="2026-06-28-querysynthesis-bubbletheme-implications-top-5-deep-dive">[2026-06-28] query/synthesis | Bubble→theme implications + Top-5 deep dive</h2>
+<ul>
+<li>Filed <a href="wiki/syntheses/bubble-implications-by-theme.html">bubble-implications-by-theme</a>: 5 takeaways from the 7-framework read → a per-theme stance for ALL 30 themes, each tagged by AI-capex exposure (🔴 core / 🟠 correlated / 🟡 adjacent / 🟢 diversifier / ⚪ idiosyncratic) + a "barbell" conclusion. Insight only.</li>
+<li>Filed <a href="wiki/syntheses/top5-themes-deep-dive-2026-06-28.html">top5-themes-deep-dive-2026-06-28</a>: top-5 bubble-aware themes (cybersecurity, power-grid, defense, GLP-1, water). Per theme: opportunity · threats · suggested winner · research aids · framework recommendation (bubble signal + MDAEM/dual-model entry read + conviction + invalidation). Winners: PANW, GEV, RTX, LLY, AWK — with the key lesson that cyber/power competitive winners (CRWD, GEV) are dual-model REJECTS, so express via basket not priciest leader.</li>
+<li>All vault-sourced (trend-radar convictions + theme-page competitive reads + dual-model verdicts); 0 dead links. Cross-linked from <a href="wiki/syntheses/bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a> + index.md. Guardrail kept: insight/research only, never buy/sell or sizing.</li>
+</ul>
+<h2 id="2026-06-28-querybacktest-mdaem-v34-interim-back-test-calibration-full-40-name-set">[2026-06-28] query/backtest | MDAEM v3.4 interim back-test + calibration (full ~40-name set)</h2>
+<ul>
+<li>User asked to tune/validate MDAEM with historical data per security → goal: back-test/calibrate the rules; scope: full tracked set. Fanned out 4 parallel fetch agents → live prices (stockanalysis.com) for the US book, reject calls, watchlist/ETFs, and the China/HK book: current = 2026-06-26 close, baseline = 2026-05-22 (nearest trading day to the 2026-05-24 Sunday snapshot). Filed <a href="wiki/syntheses/mdaem-backtest-2026-06-28.html">mdaem-backtest-2026-06-28</a>.</li>
+<li><strong>Result:</strong> reject discipline strongly validated — reject basket (RKLB −38%, PL −39%, ONDS −14%, TNGX +55%) = −8.7% vs VOO −2.2% (~6.5pts alpha); extreme-val (QBTS/RGTI), M&amp;A ceiling (KALV closed $27, delisted), broken-thesis (HYDR −33%), NVDA/AVGO skip — all correct. META beat its mega-cap peers (H1 ✅). Leaks where the framework self-flagged its bias: TNGX +55%, VKTX +23%, TEM +22%, NBIS +12% (reject/defer too early). China book −10.4% lagged MCHI −9.1% (52w-low entries fell further).</li>
+<li>v3.5 tuning candidates: high-momentum "monitor-don't-hard-reject" tier; starter-tranche instead of full pullback-defer; China contrarian needs a revisions/momentum turn; keep asymmetry/extreme-val/M&amp;A/revisions gates unchanged. Caveats: ~5wk window, down tape, single-source, MU/HYDR/UFO/gold flagged re-verify. Linked from + updated <a href="wiki/syntheses/mdaem-validation-database.html">mdaem-validation-database</a> + index.</li>
+</ul>
+<h2 id="2026-06-28-querysimulation-post-bubble-multi-agent-simulation-what-when">[2026-06-28] query/simulation | Post-bubble multi-agent simulation (what + when)</h2>
+<ul>
+<li>User asked for a multi-agent model to simulate/predict what happens after the bubble and when. Built a MiroFish-style in-Claude agent simulation: spawned 7 market-participant persona agents (hyperscaler CFO, AI-semis supplier, levered retail, pension CIO, HY credit desk, Fed, macro short) against the verified 2026-06-28 state; synthesized cross-agent dynamics → <a href="wiki/syntheses/post-bubble-multi-agent-sim-2026-06-28.html">post-bubble-multi-agent-sim-2026-06-28</a>.</li>
+<li><strong>Emergent forecast (3 acts):</strong> Act 1 euphoria completes first (now→2026 H2; NO near-term crash — sentiment still fearful, bubble gets bigger); Act 2 reflexive break ~2027 (unanimous trigger chain: hyperscaler capex guide-down → AI ROIC miss → HY spreads widen first → vendor-financing/margin cascade → 25–40% drawdown); Act 3 multi-year de-rate/rotation to ex-US/gold (2027–29). Fed put only on ~30%+ drawdown→funding stress. Scenario probs S1 melt-up→break→rotation 45% / S2 rolling de-rate 25% / S3 early credit crash 15% / S4 soft landing 15%.</li>
+<li>Sensor panel (HY OAS &gt;350–450bp, capex guidance, F&amp;G→greed, breadth/200-DMA, margin reversal, repo/SOFR). Logged falsifiable calls P19–P22 in <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a>. Linked from <a href="wiki/syntheses/bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a> + <a href="wiki/concepts/multi-agent-simulation.html">multi-agent-simulation</a> + index. Caveat kept: simulation = inference, reflexive systems unpredictable, insight only.</li>
+</ul>
+<h2 id="2026-07-14-maintenance-engine-v2-foresight-investor-expansion-insight-sized-decisions">[2026-07-14] maintenance | Engine v2 — foresight-investor expansion (insight → sized decisions)</h2>
+<ul>
+<li>User requested: act as a professional foresight investor who correctly captures trends (bitcoin/AI/clean energy/geopolics) and bet on the correct side; expand to features that direct investment decisions. Plan approved (3 phases via AskUserQuestion): <strong>full decision output</strong> (not insight-only) · <strong>both data paths layered</strong> (Python helper + expanded allow-list/MCP) · priority deep-refresh of <strong>AI compute / energy transition / geopolitics &amp; defense</strong>.</li>
+<li><strong>Phase 0 — hygiene:</strong> Scored overdue <strong>P12 (SIPRI 2025 = $2.887T, +2.9% real) → ✅</strong> in <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a>; fixed ledger drift (scorecard "16 calls" → recomputed to 22, P17–P22 now tallied, dates bumped to 2026-07-14). Expanded <code>.claude/settings.local.json</code> WebFetch allow-list to the §10 approved sources (multpl/FRED/CNN/CBOE/slickcharts/yahoo/stockanalysis/tradingeconomics/sipri/etc.) so live reads stop being <code>secondary</code>. Added <strong><code>CADENCE.md</code></strong> (weekly MONITOR · monthly SCAN · quarterly REVIEW; 14-day staleness contract).</li>
+<li><strong>Phase 1 — live-data pipeline:</strong> Built <strong><code>scripts/refresh.py</code></strong> (yfinance/multpl/CNN/slickcharts/FRED) in a bundled <code>scripts/.venv</code>. Writes <code>scripts/_snapshot.json</code> + <code>scripts/_provenance.csv</code> with full provenance per figure; drift report vs last snapshot. Live-validated: S&amp;P 7,540 · VIX 16.4 · CAPE 41.85 (mean 17.39) · F&amp;G 43.6 · BTC $64.7K · 10Y 4.57% · DXY 100.8 · gold $4,075; full fundamentals for 13 AI names + dual-model 8. <code>scripts/README.md</code> documents setup + wiring. HY OAS pending a <code>scripts/.fred_key</code>.</li>
+<li><strong>Phase 2 — decision-support hubs (6 new syntheses):</strong> <a href="wiki/syntheses/signal-monitor.html">signal-monitor</a> (rolling sensor panel; caught BTC's warn-breach) · <a href="wiki/syntheses/decision-register.html">decision-register</a> (sized ADD/REJECT calls D1–D6: TSM/LLY/GRID/ITA-RTX/DXJ/PHO; CRWD/GEV rejected on live valuation) · <a href="wiki/syntheses/portfolio-blueprint.html">portfolio-blueprint</a> (correlation-aware barbell + concentration caps) · <a href="wiki/syntheses/regime-monitor.html">regime-monitor</a> (late-Act-1 verdict, no sensor flashing) · <a href="wiki/syntheses/frontier-watch.html">frontier-watch</a> (4-axis emerging-theme scoring) · <a href="wiki/syntheses/track-record.html">track-record</a> (P&amp;L/calibration ledger, inherits MDAEM back-test).</li>
+<li><strong>Phase 3 — deep refresh (3 priority clusters, all figures live):</strong> <a href="wiki/syntheses/refresh-ai-compute-stack-2026-07-14.html">refresh-ai-compute-stack-2026-07-14</a> (2026 capex ~$600–725B +60–77% YoY → <strong>P1 effectively confirmed early</strong>; NVDA fwdPE 16.4x on +85% rev; ORCL fwdPE 11.8x = stealth capex name) · <a href="wiki/syntheses/refresh-energy-transition-2026-07-14.html">refresh-energy-transition-2026-07-14</a> (VST +43% rev; SMR-names crushed 66–85% validates Ref 19; gold P16 on track; uranium P4 dark) · <a href="wiki/syntheses/refresh-geopolitics-defense-2026-07-14.html">refresh-geopolitics-defense-2026-07-14</a> (P12 ✅ detail; LMT fwdPE 16.3x the value anchor; defense = lowest-correlation diversifier). Cross-cut: bumped <code>last_scan</code> to 2026-07-14 on <a href="wiki/syntheses/trend-radar.html">trend-radar</a>/<a href="wiki/syntheses/watchlist.html">watchlist</a>/<a href="wiki/syntheses/macro-regime.html">macro-regime</a>/<a href="wiki/syntheses/theme-linkage-map.html">theme-linkage-map</a> + scan notes.</li>
+<li><strong>Phase 4 — schema:</strong> Revised <strong><code>CLAUDE.md</code> §10</strong> guardrail: vault now issues sized decisions for the operator's own book (still NOT personalized advice to others; every decision accountable via P-call + track-record). Added DECIDE / MONITOR / REFRESH operations. Registered the 6 new hubs. Bookkeeping: index/hotcache refreshed.</li>
+<li><strong>Guardrail note:</strong> the insight→decision promotion is deliberate (user choice); handled as operator-own-book with retained accountability. MDAEM sizing methodology promoted into the vault as a first-class layer (<a href="wiki/syntheses/decision-register.html">decision-register</a>) rather than external-only.</li>
+</ul>
+<h2 id="2026-07-18-backtest-v40-quantitative-framework-5y-walk-forward-across-268-names">[2026-07-18] backtest | v4.0 quantitative framework — 5y walk-forward across 268 names</h2>
+<ul>
+<li>User requested: backtest all stocks detecting technical/macro/news/analyst signals; develop multi-style strategy framework; integrate with existing MDAEM.</li>
+<li><strong>Phase 1:</strong> Expanded universe 249→272 (added REITs/commodities/FX+vol+crypto/cash proxies, new meta-force M8). Built fetch_history.py (5y OHLCV + macro cache). Pulled 348,924 rows for 268 tickers (4 dead: CYBR/FI/BRK.B/AOT).</li>
+<li><strong>Phase 2:</strong> Built signals.py (momentum/value/quality/macro factors + analyst signal hook). Built backtest.py (walk-forward, monthly rebalance, top-20/sleeve, regime-split). <strong>Results: all 4 sleeves beat VOO. Ensemble +19.1% CAGR / Sharpe 1.02 / +10.4pts alpha (VOO +8.7% / 0.66 / -24.5% DD). Quality Sharpe 0.97 with -21.7% DD. Momentum +29.4% CAGR but regime-sensitive (+100% bull / -46% bear annualized).</strong></li>
+<li><strong>Phase 3:</strong> Built mdaem_v4.py (quant dimension scorer — automates Dim 3/5/6/7/9; gates/weights/tiers UNCHANGED). Wrote wiki/concepts/mdaem-framework-v4.md + wiki/syntheses/backtest-results-2026-07-18.md (resolved H1-H14 + H-CN5: H7/H8/H9/H10/H14 ✅; H5 NBIS ❌; H-CN5 China book ❌).</li>
+<li><strong>Phase 4:</strong> Wrote strategy-sleeves.md + security-sourcing-pipeline.md. Updated CLAUDE.md §10 (added SOURCE + BACKTEST operations, registered v3 hubs).</li>
+<li><strong>Phase 5:</strong> Added Strategy Sleeves + Backtest v4 tabs to dashboard (verified rendering). Pending: redeploy.</li>
+<li><strong>Known gaps (v4.0 backlog):</strong> point-in-time fundamentals (value sleeve uses current snapshot); 5y window mostly bull; no transaction costs; top-20 equal-weight arbitrary. Documented in backtest-results.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

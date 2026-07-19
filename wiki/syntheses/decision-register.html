@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decision Register</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Decision Register
+type: synthesis
+tags: [investing, decisions, sizing, positioning, mdaem, operator, accountability]
+sources: [[[mdaem-framework]], [mdaem-v34-framework], [dual-model-shortlist-scorecard-2026-06-03]]
+date: 2026-07-14
+last_scan: 2026-07-14</div>
+<article>
+<h1 id="decision-register">Decision Register</h1>
+<p><strong>Bottom line:</strong> The engine's sized-decision output for the operator's own book — <em>what to hold, how<br />
+much, when to add, when to exit.</em> Each row is a dated, accountable call: it carries conviction,<br />
+target weight, entry zone, scale-in plan, and an explicit invalidation. Every decision is filed as<br />
+a falsifiable P-call in <a href="prediction-ledger.html">prediction-ledger</a> and scored in <a href="track-record.html">track-record</a>.</p>
+<blockquote>
+<p>⚠ <strong>Scope &amp; guardrail.</strong> These decisions are for the <strong>operator's own book</strong> (the Aphiwat account<br />
+documented in <a href="mdaem-validation-database.html">mdaem-validation-database</a>). They are <strong>not personalized advice to anyone else</strong>,<br />
+and the vault cannot see anyone else's circumstances, risk tolerance, or existing positions.<br />
+Sizing follows the <a href="../concepts/mdaem-framework.html">mdaem-framework</a> methodology (10 gates → 10 dimensions → tier → SA-Quant<br />
+overlay → scenario math), here promoted into a vault-maintained register. Every figure is live-pulled<br />
+this session with provenance (no training-data values). Past performance ≠ future results.</p>
+<p><strong>Status legend:</strong> 🟢 OPEN (active) · 🟡 WATCH (awaiting trigger) · 🔴 EXIT (invalidated/closed) ·<br />
+⚪ PENDING (insufficient data). <strong>Action verbs:</strong> ADD · START (starter tranche) · TRIM · HOLD · EXIT.</p>
+</blockquote>
+<hr />
+<h2 id="active-decisions-live-2026-07-14">Active decisions (live, 2026-07-14)</h2>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th style="text-align: center;">Action</th>
+<th style="text-align: center;">Conv.</th>
+<th style="text-align: right;">Target wt</th>
+<th>Entry zone</th>
+<th>Scale-in</th>
+<th>Invalidation</th>
+<th>Theme</th>
+<th style="text-align: center;">Status</th>
+<th>Opened</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TSM</strong></td>
+<td style="text-align: center;">ADD</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: right;"><strong>6–8%</strong></td>
+<td>current $422 (or ≥15% pullback to ~$360)</td>
+<td>4% now → +2–4% on any pullback to $360–380</td>
+<td>Taiwan geopolitical event OR fwd P/E &gt;35x OR seq. rev decline 2+ qtrs</td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a></td>
+<td style="text-align: center;">🟢</td>
+<td>2026-07-14</td>
+<td>live fundamentals: mkt cap $2.19T, fwdPE 20.8x, rev +35.1% YoY (fact, yfinance)</td>
+</tr>
+<tr>
+<td><strong>LLY</strong></td>
+<td style="text-align: center;">ADD</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: right;"><strong>5–7%</strong></td>
+<td>current $1,156 (or ≥20% pullback to ~$925)</td>
+<td>3% now → +2–4% on pullback</td>
+<td>Incretin franchise grows &lt;30% YoY (P8 fail) OR oral obesity efficacy disappointment</td>
+<td><a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a></td>
+<td style="text-align: center;">🟢</td>
+<td>2026-07-14</td>
+<td>live: mkt cap $1.03T, fwdPE 25.7x, rev +55.5% YoY (fact, yfinance)</td>
+</tr>
+<tr>
+<td><strong>CIBR / BUG</strong></td>
+<td style="text-align: center;">HOLD (basket)</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: right;"><strong>5%</strong></td>
+<td>already held per <a href="mdaem-validation-database.html">mdaem-validation-database</a></td>
+<td>n/a</td>
+<td>Security-spend growth falls &lt;8% YoY (Gartner) — P3</td>
+<td><a href="../concepts/cybersecurity.html">cybersecurity</a></td>
+<td style="text-align: center;">🟢</td>
+<td>2026-05-24</td>
+<td>basket approach; single-name CRWD/PANW fail Gate 9 (see below)</td>
+</tr>
+<tr>
+<td><strong>GRID</strong></td>
+<td style="text-align: center;">ADD</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: right;"><strong>5%</strong></td>
+<td>current levels</td>
+<td>3% now → +2% on any ≥15% drawdown</td>
+<td>No new ≥1GW DC nuclear/gas PPA by end-2026 (P11 fail) OR grid capex cycle stalls</td>
+<td><a href="../concepts/power-grid-electrification.html">power-grid-electrification</a></td>
+<td style="text-align: center;">🟢</td>
+<td>2026-07-14</td>
+<td>cleanest "AI needs power" ETF per trend-radar</td>
+</tr>
+<tr>
+<td><strong>ITA</strong> (or LMT/RTX)</td>
+<td style="text-align: center;">ADD</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: right;"><strong>4–5%</strong></td>
+<td>current LMT $523 / RTX $197</td>
+<td>single name RTX 2–3% + ITA 2%</td>
+<td>SIPRI 2026 spending declines YoY (P12 ✅ confirms trend)</td>
+<td><a href="../concepts/defense-security.html">defense-security</a></td>
+<td style="text-align: center;">🟢</td>
+<td>2026-07-14</td>
+<td>LMT $522.55, RTX $197.19 fwdPE 26x rev +8.7% (fact, yfinance); low AI-correlation diversifier</td>
+</tr>
+<tr>
+<td><strong>SMH / SOXX</strong></td>
+<td style="text-align: center;">HOLD / SCALE ON DIP</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: right;"><strong>8–10%</strong></td>
+<td>add on ≥20% drawdown (P2 watch)</td>
+<td>accumulate tranche on the dip</td>
+<td>hyperscaler capex guides down YoY (P20 trigger) — currently +60–77% (P1 ✓)</td>
+<td><a href="../concepts/semiconductors.html">semiconductors</a> / <a href="../concepts/ai-infrastructure.html">ai-infrastructure</a></td>
+<td style="text-align: center;">🟡</td>
+<td>2026-05-24</td>
+<td>wait for the digestion dip; do not chase</td>
+</tr>
+<tr>
+<td><strong>DXJ</strong> (hedged Japan)</td>
+<td style="text-align: center;">ADD</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: right;"><strong>4–5%</strong></td>
+<td>current levels</td>
+<td>2.5% now → +2% on USD/JPY flare</td>
+<td>TSE Prime avg PBR &lt;1.3x (P7 fail) OR USDJPY &gt;165</td>
+<td><a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a></td>
+<td style="text-align: center;">🟢</td>
+<td>2026-07-14</td>
+<td>Nikkei 67,743 (fact, yfinance ^N225)</td>
+</tr>
+<tr>
+<td><strong>PHO</strong> (or AWK)</td>
+<td style="text-align: center;">ADD</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: right;"><strong>3–4%</strong></td>
+<td>AWK $132 (single-name, smaller)</td>
+<td>ETF 3% preferred over single name at current size</td>
+<td>Structural: none near-term; cyclical = infrastructure capex slowdown</td>
+<td><a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a></td>
+<td style="text-align: center;">🟢</td>
+<td>2026-07-14</td>
+<td>AWK fwdPE 20.2x rev +5.7% (fact, yfinance); defensive compounder</td>
+</tr>
+</tbody>
+</table>
+<h2 id="rejected-do-not-add-live-with-reason">Rejected / do-not-add (live, with reason)</h2>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th style="text-align: center;">Verdict</th>
+<th>Reason (live data)</th>
+<th>Re-enter condition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CRWD</strong></td>
+<td style="text-align: center;">REJECT</td>
+<td>fwdPE <strong>132x</strong> → fails MDAEM <strong>Gate 9</strong> (extreme-valuation, &gt;50x sector); WS target −24% per <a href="dual-model-shortlist-scorecard-2026-06-03.html">dual-model-shortlist-scorecard-2026-06-03</a></td>
+<td>fwdPE &lt;60x AND ARR growth re-accelerates; otherwise hold via CIBR basket</td>
+</tr>
+<tr>
+<td><strong>GEV</strong></td>
+<td style="text-align: center;">REJECT / WATCHLIST</td>
+<td>fwdPE <strong>43.4x</strong> (fact, yfinance) at premium to infra peers; conv-4 theme but entry-poor</td>
+<td>≥25% pullback; then re-run MDAEM</td>
+</tr>
+<tr>
+<td><strong>NEM</strong></td>
+<td style="text-align: center;">WATCHLIST</td>
+<td>fwdPE 8.8x cheap + rev +45.8% — <em>but</em> gold +75% in 2025 then correction; post-parabolic (fact, yfinance)</td>
+<td>Already a hold if owned; new add only on gold pullback to &lt;$3,800</td>
+</tr>
+</tbody>
+</table>
+<h2 id="decisions-still-pending-data">Decisions still pending data (⚪)</h2>
+<ul>
+<li><strong>HY OAS check</strong> → once <code>scripts/.fred_key</code> is set, confirm HY &lt;3.5% before adding risk to the<br />
+  AI-capex cluster. If HY &gt;3.5%, defer all new ADDs and review <a href="regime-monitor.html">regime-monitor</a>.</li>
+<li><strong>Uranium spot</strong> → CCJ add ($92) contingent on U3O8 staying ≥$80/lb (P4); verify spot next scan.</li>
+<li><strong>India flows</strong> → INDA add contingent on P5 (FPI flows net-positive 2 consecutive months).</li>
+</ul>
+<hr />
+<h2 id="the-portfolio-stance-summary-full-construction-in-portfolio-blueprint">The portfolio stance (summary; full construction in <a href="portfolio-blueprint.html">portfolio-blueprint</a>)</h2>
+<ul>
+<li><strong>Barbell:</strong> offensive AI-capex core (TSM, GRID, SMH, CIBR) <strong>+</strong> defensive diversifiers (ITA,<br />
+  DXJ, PHO, LLY). The <a href="theme-linkage-map.html">theme-linkage-map</a> shows the AI cluster moves together — defense/gold/<br />
+  healthcare/Japan are the genuine diversifiers.</li>
+<li><strong>Sizing discipline (<a href="../concepts/mdaem-framework.html">mdaem-framework</a>):</strong> T1 8–10% · MED-HIGH 5–8% · STARTER 2–4% · cash 3–10%.<br />
+  Nothing &gt;8% single-name. Sum of AI-capex cluster capped at ~25% (correlation risk).</li>
+<li><strong>Cash buffer:</strong> 3–10% maintained for the digestion-dip adds (SMH especially).</li>
+</ul>
+<h2 id="how-decisions-get-made-and-unmade">How decisions get made and unmade</h2>
+<ol>
+<li><strong>Signal fires</strong> in <a href="signal-monitor.html">signal-monitor</a> (a flip-level breach) → review the affected theme page.</li>
+<li><strong>MDAEM pass</strong> (10 gates → 10 dims → tier → SA-Quant overlay → scenario EV) on any new name.</li>
+<li><strong>File the row here</strong> + a falsifiable P-call in <a href="prediction-ledger.html">prediction-ledger</a> (success/failure thresholds).</li>
+<li><strong>On invalidation</strong> → mark EXIT, move to <a href="track-record.html">track-record</a> with realized P&amp;L.</li>
+<li><strong>On resolve-by</strong> → score the P-call (✅/❌/◐), update <a href="track-record.html">track-record</a> hit-rate.</li>
+</ol>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<ul>
+<li>TSM, LLY, ITA, GRID, DXJ, PHO: <strong>high confidence</strong> — live fundamentals pulled, MDAEM gates pass,<br />
+  themes conv-4. The strongest adds.</li>
+<li>CRWD, GEV: <strong>rejected on live valuation</strong> — confirms the <a href="dual-model-shortlist-scorecard-2026-06-03.html">dual-model-shortlist-scorecard-2026-06-03</a><br />
+  read; discipline holds.</li>
+<li>SMH "wait for dip": <strong>timing-uncertain</strong> — P2 (≥20% drawdown before 2027-01-01) is unresolved; the<br />
+  scale-in plan handles both outcomes.</li>
+<li>HY OAS gating is <strong>blocked</strong> on the missing FRED key — the single highest-value plumbing item.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Methodology: <a href="../concepts/mdaem-framework.html">mdaem-framework</a> · <a href="../entities/seeking-alpha-quant.html">seeking-alpha-quant</a> · <a href="mdaem-validation-database.html">mdaem-validation-database</a></li>
+<li>Sensors: <a href="signal-monitor.html">signal-monitor</a> (triggers) · <a href="regime-monitor.html">regime-monitor</a> (cycle stance) · <a href="watchlist.html">watchlist</a> (entry/invalidation)</li>
+<li>Accountability: <a href="prediction-ledger.html">prediction-ledger</a> (P-calls) · <a href="track-record.html">track-record</a> (realized P&amp;L)</li>
+<li>Construction: <a href="portfolio-blueprint.html">portfolio-blueprint</a> (allocation rules) · <a href="theme-linkage-map.html">theme-linkage-map</a> (correlation)</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

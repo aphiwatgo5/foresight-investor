@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>US Megacap Quality</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: US Megacap Quality
+type: concept
+trend: true
+tags: [investing, trend, geography, us, megacap, mag7, quality, concentration]
+sources: []
+date: 2026-06-01
+conviction: 3
+stage: mature-late
+horizon: 3-7y</div>
+<article>
+<h1 id="us-megacap-quality">US Megacap Quality</h1>
+<p><strong>Definition:</strong> The cohort of dominant US large-caps — the "Magnificent 7" (NVDA, MSFT, AAPL,<br />
+GOOGL, AMZN, META, plus TSLA) and high-quality compounders (BRK.B, V, COST) — that anchor the<br />
+S&amp;P 500 and global equity benchmarks. The thesis is <em>quality + scale + cash generation</em>; the<br />
+counter-thesis is <strong>concentration risk</strong> (Mag 7 ~34.8% of the S&amp;P 500) and a "peak US<br />
+exceptionalism" rotation toward ex-US markets. Conviction 3 on the <a href="../syntheses/trend-radar.html">trend-radar</a> — superb<br />
+businesses, but a stretched valuation/concentration setup caps risk-adjusted upside.</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Figures tagged (fact)/(est.)/(inference) with<br />
+period + source. "n/f" = no reliable figure found.</p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>(a) <strong>Mega-cap tech/AI</strong> — NVDA, MSFT, AAPL, GOOGL, AMZN, META (the AI-capex spenders +<br />
+beneficiaries — heavy overlap with <a href="ai-infrastructure.html">ai-infrastructure</a>, <a href="semiconductors.html">semiconductors</a>,<br />
+<a href="ai-software-agents.html">ai-software-agents</a>); (b) <strong>quality compounders</strong> — Berkshire (BRK.B), Visa (V), Costco<br />
+(COST). The cohort is defined less by sector than by <em>dominant scale, high returns on capital,<br />
+and benchmark weight</em> — which makes it the default passive-investor exposure and the central<br />
+concentration risk.</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mag 7 share of S&amp;P 500</td>
+<td><strong>~34.8%</strong> (near-record concentration)</td>
+<td>May 2026</td>
+<td>index data/Slickcharts</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>S&amp;P 500 forward P/E</td>
+<td><strong>~27–28x</strong> (well above ~16–17x long-run avg)</td>
+<td>May 2026</td>
+<td>FactSet/Yardeni</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>S&amp;P 500 2025 total return</td>
+<td><strong>~+17.7%</strong></td>
+<td>FY2025</td>
+<td>S&amp;P</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>MSCI World ex-US 2025 return</td>
+<td><strong>~+31.8%</strong> (outpaced US — "exceptionalism" question)</td>
+<td>FY2025</td>
+<td>MSCI</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>US dollar (DXY) 2025</td>
+<td><strong>~−9.5%</strong> (weakening — tailwind for ex-US)</td>
+<td>FY2025</td>
+<td>ICE/Reuters</td>
+<td>(fact)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand:</strong> passive/index flows mechanically concentrate capital into the largest names; AI-capex<br />
+cycle drives mega-cap tech earnings (NVDA/MSFT/GOOGL/AMZN/META); global investors treat US<br />
+megacaps as the world's reserve growth-equity. <strong>Supply (of returns):</strong> durable moats (network<br />
+effects, scale economies, switching costs), enormous free-cash-flow generation funding buybacks,<br />
+and balance-sheet fortresses. <strong>Counter-driver:</strong> 2025's ex-US outperformance (+31.8% vs +17.7%)<br />
++ a −9.5% USD raised the "end of US exceptionalism" debate — rotation, valuation mean-reversion,<br />
+and concentration unwind risk.</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p>This theme <em>is</em> the benchmark — it sits atop nearly every other theme: the AI names anchor<br />
+<a href="ai-infrastructure.html">ai-infrastructure</a>/<a href="semiconductors.html">semiconductors</a>/<a href="ai-software-agents.html">ai-software-agents</a>; their capex feeds<br />
+<a href="power-grid-electrification.html">power-grid-electrification</a> and <a href="data-center-cooling.html">data-center-cooling</a>. Concentration means a US-megacap<br />
+de-rating would transmit to global passive portfolios. Currency/rates linkage to<br />
+<a href="../syntheses/macro-regime.html">macro-regime</a> (USD direction is the swing factor for US-vs-ex-US). Direct rotation tension<br />
+with <a href="india-em-growth.html">india-em-growth</a>, <a href="japan-corporate-reform.html">japan-corporate-reform</a>, and <a href="china-contrarian.html">china-contrarian</a>.</p>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<p>The defining feature is <strong>dominance with concentration</strong>: a handful of firms with rare,<br />
+compounding moats command an outsized benchmark weight. Within the cohort, AI exposure varies —<br />
+NVDA (AI-cycle epicenter), MSFT/GOOGL/AMZN/META (cloud + AI capex + monetization), AAPL (slower<br />
+AI narrative, services moat), TSLA (auto + robotics optionality). The quality trio (BRK.B, V,<br />
+COST) provides lower-beta ballast. Moats are genuine and durable; the risk is <em>price</em>, not<br />
+business quality.</p>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps point-in-time (~May 2026, est.); ranges where sources diverge. Other figures (fact) unless tagged.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of)</th>
+<th>Rev growth</th>
+<th>Profitability</th>
+<th>Other</th>
+<th>Moat note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nvidia</td>
+<td>NVDA</td>
+<td>US</td>
+<td>AI compute (epicenter)</td>
+<td>n/f (mega-cap leader)</td>
+<td>very high (data-center)</td>
+<td>very high margin</td>
+<td>AI-cycle bellwether</td>
+<td>Dominant AI-accelerator moat (<a href="semiconductors.html">semiconductors</a>)</td>
+</tr>
+<tr>
+<td>Microsoft</td>
+<td>MSFT</td>
+<td>US</td>
+<td>Cloud + AI (Azure/OpenAI)</td>
+<td>n/f (mega-cap)</td>
+<td>double-digit</td>
+<td>high margin</td>
+<td>Copilot/Azure AI</td>
+<td>Enterprise + cloud moat (<a href="ai-software-agents.html">ai-software-agents</a>)</td>
+</tr>
+<tr>
+<td>Apple</td>
+<td>AAPL</td>
+<td>US</td>
+<td>Devices + services</td>
+<td>n/f (mega-cap)</td>
+<td>low-single-digit</td>
+<td>high margin</td>
+<td>services annuity</td>
+<td>Ecosystem/switching-cost moat; lagging AI narrative</td>
+</tr>
+<tr>
+<td>Alphabet</td>
+<td>GOOGL</td>
+<td>US</td>
+<td>Search + cloud + AI</td>
+<td>n/f (mega-cap)</td>
+<td>double-digit</td>
+<td>high margin</td>
+<td>Gemini, TPUs</td>
+<td>Search moat; AI capex spender</td>
+</tr>
+<tr>
+<td>Amazon</td>
+<td>AMZN</td>
+<td>US</td>
+<td>E-commerce + AWS</td>
+<td>n/f (mega-cap)</td>
+<td>double-digit</td>
+<td>improving</td>
+<td>AWS AI demand</td>
+<td>Cloud scale + logistics moat</td>
+</tr>
+<tr>
+<td>Meta</td>
+<td>META</td>
+<td>US</td>
+<td>Social + AI</td>
+<td>n/f (mega-cap)</td>
+<td>double-digit</td>
+<td>high margin</td>
+<td>AI capex/Llama</td>
+<td>Social network effects; ad data moat</td>
+</tr>
+<tr>
+<td>Berkshire Hathaway</td>
+<td>BRK.B</td>
+<td>US</td>
+<td>Diversified holding</td>
+<td>n/f (mega-cap)</td>
+<td>n/f</td>
+<td>very profitable</td>
+<td>huge cash pile</td>
+<td>Capital-allocation + float moat (low-beta ballast)</td>
+</tr>
+<tr>
+<td>Visa</td>
+<td>V</td>
+<td>Global/US</td>
+<td>Payment network</td>
+<td>~$552–621B (May 26)</td>
+<td>+14.6% (Q2-FY26)</td>
+<td>op margin ~65%</td>
+<td>toll-road economics</td>
+<td>Duopoly network moat (<a href="fintech-payments.html">fintech-payments</a>)</td>
+</tr>
+<tr>
+<td>Costco</td>
+<td>COST</td>
+<td>US</td>
+<td>Membership retail</td>
+<td>n/f (large-cap)</td>
+<td>mid-single-digit</td>
+<td>thin retail + fee</td>
+<td>membership renewal ~93%</td>
+<td>Membership/scale moat; premium multiple</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p>This is the <strong>highest business-quality cohort in global equities</strong> — durable moats, prodigious<br />
+cash generation, and AI-cycle leadership. The issue is not whether these are great companies<br />
+(they are) but <strong>what you pay and how much you own by default</strong>: at ~34.8% of the S&amp;P 500 and<br />
+~27–28x forward earnings, the index is effectively a concentrated AI/mega-cap bet. 2025's sharp<br />
+ex-US outperformance (MSCI World ex-US +31.8% vs S&amp;P +17.7%) and a −9.5% dollar are the first<br />
+real cracks in the "US exceptionalism" trade in years. Within the group, the AI-levered names<br />
+carry both the upside and the correlated de-rating risk (shared driver with the whole<br />
+<a href="ai-infrastructure.html">ai-infrastructure</a> complex); BRK.B/V/COST are the quality ballast. Net: own the quality, but<br />
+respect that concentration + valuation cap the risk-adjusted conviction, and diversification<br />
+toward ex-US (<a href="japan-corporate-reform.html">japan-corporate-reform</a>, <a href="india-em-growth.html">india-em-growth</a>) is the live rotation.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Concentration unwind</strong> — a Mag-7 de-rating transmits directly to passive portfolios globally.</li>
+<li><strong>AI-capex disappointment</strong> — the cohort's earnings lean heavily on the AI cycle holding.</li>
+<li><strong>Valuation mean-reversion</strong> — ~27–28x forward leaves little margin for error.</li>
+<li><strong>US-exceptionalism rotation</strong> — sustained ex-US/EM outperformance + weak USD (<a href="../syntheses/macro-regime.html">macro-regime</a>).</li>
+<li><strong>Regulatory/antitrust</strong> — big-tech scrutiny (GOOGL, AMZN, META, AAPL).</li>
+<li><strong>Rates</strong> — higher-for-longer pressures long-duration mega-cap multiples.</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li><strong>SPY/VOO/IVV</strong> (S&amp;P 500 — but ~35% is Mag 7), <strong>QQQ</strong> (Nasdaq-100, even more concentrated),<br />
+<strong>MAGS</strong> (Magnificent 7 direct). <em>(Verify ER/holdings.)</em></li>
+<li><strong>Diversifiers vs concentration:</strong> <strong>RSP</strong> (S&amp;P equal-weight), <strong>QUAL</strong> (quality factor).</li>
+<li>Representative securities: NVDA/MSFT/GOOGL/AMZN/META (AI-levered), BRK.B/V/COST (quality ballast).</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 3/5</strong> — the businesses individually merit 4–5, but as a <em>theme to add exposure to<br />
+  here</em> the setup is capped by record concentration (~34.8% of S&amp;P) and a stretched ~27–28x<br />
+  multiple, with the first genuine ex-US rotation in years underway. Quality is not the question;<br />
+  price and crowding are.</li>
+<li><strong>Stage: mature / late-cycle leadership. Horizon: 3–7 years.</strong></li>
+<li><strong>Invalidation:</strong> a durable regime of ex-US/EM leadership + sustained USD weakness, OR an<br />
+  AI-capex air-pocket that de-rates the mega-cap complex.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>SPY</strong></td>
+<td>S&amp;P 500</td>
+<td style="text-align: right;">$745.82</td>
+<td style="text-align: right;">$781B</td>
+<td style="text-align: right;">+10.2%</td>
+<td style="text-align: right;">1.0%</td>
+<td style="text-align: right;">n/f · 1.00</td>
+<td style="text-align: right;">-1.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>VOO</strong></td>
+<td>Vanguard S&amp;P 500</td>
+<td style="text-align: right;">$685.51</td>
+<td style="text-align: right;">$1.67T</td>
+<td style="text-align: right;">+10.2%</td>
+<td style="text-align: right;">1.1%</td>
+<td style="text-align: right;">n/f · 1.00</td>
+<td style="text-align: right;">-2.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>QQQ</strong></td>
+<td>Nasdaq-100</td>
+<td style="text-align: right;">$697.77</td>
+<td style="text-align: right;">$490B</td>
+<td style="text-align: right;">+20.2%</td>
+<td style="text-align: right;">0.4%</td>
+<td style="text-align: right;">n/f · 1.24</td>
+<td style="text-align: right;">-6.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MAGS</strong></td>
+<td>Mag-7</td>
+<td style="text-align: right;">$66.76</td>
+<td style="text-align: right;">$4B</td>
+<td style="text-align: right;">-2.5%</td>
+<td style="text-align: right;">1.5%</td>
+<td style="text-align: right;">n/f · 1.33</td>
+<td style="text-align: right;">-6.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>RSP</strong></td>
+<td>Equal-weight S&amp;P</td>
+<td style="text-align: right;">$214.07</td>
+<td style="text-align: right;">$94B</td>
+<td style="text-align: right;">+12.0%</td>
+<td style="text-align: right;">1.5%</td>
+<td style="text-align: right;">n/f · 0.85</td>
+<td style="text-align: right;">-1.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>QUAL</strong></td>
+<td>Quality factor</td>
+<td style="text-align: right;">$218.24</td>
+<td style="text-align: right;">$46B</td>
+<td style="text-align: right;">+11.1%</td>
+<td style="text-align: right;">0.9%</td>
+<td style="text-align: right;">n/f · 0.90</td>
+<td style="text-align: right;">-1.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NVDA</strong></td>
+<td>AI compute monopoly</td>
+<td style="text-align: right;">$204.70</td>
+<td style="text-align: right;">$4.96T</td>
+<td style="text-align: right;">16.0x</td>
+<td style="text-align: right;">85.2%</td>
+<td style="text-align: right;">63.0% · 2.21</td>
+<td style="text-align: right;">-13.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MSFT</strong></td>
+<td>Cloud incumbent</td>
+<td style="text-align: right;">$392.18</td>
+<td style="text-align: right;">$2.91T</td>
+<td style="text-align: right;">20.2x</td>
+<td style="text-align: right;">18.3%</td>
+<td style="text-align: right;">39.3% · 1.13</td>
+<td style="text-align: right;">-29.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AAPL</strong></td>
+<td>Ecosystem + services</td>
+<td style="text-align: right;">$332.96</td>
+<td style="text-align: right;">$4.89T</td>
+<td style="text-align: right;">34.5x</td>
+<td style="text-align: right;">16.6%</td>
+<td style="text-align: right;">27.2% · 1.10</td>
+<td style="text-align: right;">-0.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GOOGL</strong></td>
+<td>AI/search</td>
+<td style="text-align: right;">$347.43</td>
+<td style="text-align: right;">$4.24T</td>
+<td style="text-align: right;">23.7x</td>
+<td style="text-align: right;">21.8%</td>
+<td style="text-align: right;">37.9% · 1.25</td>
+<td style="text-align: right;">-15.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AMZN</strong></td>
+<td>Cloud + retail</td>
+<td style="text-align: right;">$248.27</td>
+<td style="text-align: right;">$2.67T</td>
+<td style="text-align: right;">25.1x</td>
+<td style="text-align: right;">16.6%</td>
+<td style="text-align: right;">12.2% · 1.46</td>
+<td style="text-align: right;">-10.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>META</strong></td>
+<td>Ads + Reality Labs</td>
+<td style="text-align: right;">$629.68</td>
+<td style="text-align: right;">$1.60T</td>
+<td style="text-align: right;">17.3x</td>
+<td style="text-align: right;">33.1%</td>
+<td style="text-align: right;">32.8% · 1.25</td>
+<td style="text-align: right;">-20.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>TSLA</strong></td>
+<td>EV/AI/energy</td>
+<td style="text-align: right;">$381.97</td>
+<td style="text-align: right;">$1.43T</td>
+<td style="text-align: right;">149.6x</td>
+<td style="text-align: right;">15.8%</td>
+<td style="text-align: right;">3.9% · 1.80</td>
+<td style="text-align: right;">-23.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>BRK.B</strong></td>
+<td>Berkshire conglomerate</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f · n/f</td>
+<td style="text-align: right;">n/f</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>V</strong></td>
+<td>Payments toll</td>
+<td style="text-align: right;">$358.61</td>
+<td style="text-align: right;">$682B</td>
+<td style="text-align: right;">24.1x</td>
+<td style="text-align: right;">17.1%</td>
+<td style="text-align: right;">51.7% · 0.75</td>
+<td style="text-align: right;">-1.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>COST</strong></td>
+<td>Quality retail</td>
+<td style="text-align: right;">$941.84</td>
+<td style="text-align: right;">$418B</td>
+<td style="text-align: right;">41.6x</td>
+<td style="text-align: right;">21.5%</td>
+<td style="text-align: right;">3.0% · 0.87</td>
+<td style="text-align: right;">-14.1%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>AI overlap: <a href="ai-infrastructure.html">ai-infrastructure</a>, <a href="semiconductors.html">semiconductors</a>, <a href="ai-software-agents.html">ai-software-agents</a>. Rotation<br />
+  tension: <a href="india-em-growth.html">india-em-growth</a>, <a href="japan-corporate-reform.html">japan-corporate-reform</a>, <a href="china-contrarian.html">china-contrarian</a>. Macro/USD:<br />
+<a href="../syntheses/macro-regime.html">macro-regime</a>. Master: <a href="../syntheses/trend-radar.html">trend-radar</a>. Linkage: <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>.</li>
+<li>Valuation/concentration risk read: <a href="../syntheses/bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a> (CAPE 40.7, Mag-7 ≈33%).</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Is 2025's ex-US outperformance the start of a regime change, or a pause in US leadership?</li>
+<li>Does the AI-capex cycle justify mega-cap multiples, or is concentration a fragility? See<br />
+<a href="../syntheses/bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a>.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>S&amp;P/MSCI 2025 returns; FactSet/Yardeni (S&amp;P forward P/E); Slickcharts (Mag 7 weight);<br />
+ICE/Reuters (DXY 2025); Visa Q2-FY26 8-K; company disclosures, 2026.</p>
+</article>
+</div>
+</body>
+</html>

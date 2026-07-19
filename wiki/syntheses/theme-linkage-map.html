@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Theme Linkage Map</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Theme Linkage Map
+type: synthesis
+tags: [investing, linkage, dependencies, correlation, systems]
+sources: []
+date: 2026-06-01
+last_scan: 2026-07-14</div>
+<article>
+<h1 id="theme-linkage-map">Theme Linkage Map</h1>
+<p><strong>Bottom line:</strong> The ~28 <a href="trend-radar.html">trend-radar</a> themes are <strong>not independent bets</strong> — they are nodes in a<br />
+dependency network driven by a handful of shared forces. This map traces the upstream→downstream<br />
+chains and, crucially, the <strong>shared-driver clusters</strong> that make supposedly-diversified themes move<br />
+together. The single most important takeaway: <strong>much of the radar is one trade — the AI-capex<br />
+trade — wearing several costumes.</strong> <strong>Insight only — not advice.</strong></p>
+<hr />
+<h2 id="1-the-master-chain-ai-needs-power-needs-metal">1. The master chain — "AI needs power needs metal"</h2>
+<p>The spine of the entire radar. Each arrow is a real demand-transmission link:</p>
+<pre><code>AI compute demand ([ai-infrastructure](ai-infrastructure.html))
+   → AI accelerators / foundry ([semiconductors](semiconductors.html))
+       → semicap equipment + back-end (→ [reshoring-supply-chain](reshoring-supply-chain.html), Tokyo Electron in [japan-corporate-reform](japan-corporate-reform.html))
+   → AI back-end bandwidth ([networking-optical](networking-optical.html))
+   → monetization layer ([ai-software-agents](ai-software-agents.html))
+   → data-center electricity load ([power-grid-electrification](power-grid-electrification.html))
+       → baseload generation ([natural-gas-lng](natural-gas-lng.html), [nuclear-uranium](nuclear-uranium.html), [renewables-storage](renewables-storage.html))
+       → thermal management ([data-center-cooling](data-center-cooling.html))
+           → cooling water ([water-resource-scarcity](water-resource-scarcity.html))
+       → grid build-out copper/transformers ([critical-minerals](critical-minerals.html), [infrastructure-capex](infrastructure-capex.html))
+   → security of the whole stack ([cybersecurity](cybersecurity.html))
+</code></pre>
+<p><strong>Why it matters:</strong> a demand impulse (or air-pocket) at the top propagates down the <em>entire</em> chain.<br />
+The hyperscaler capex line is the master valve. This is the radar's central <strong>correlated-de-rating<br />
+risk</strong>.</p>
+<h2 id="2-secondary-chains">2. Secondary chains</h2>
+<ul>
+<li><strong>Reindustrialization:</strong> geopolitics/fiscal → <a href="../concepts/defense-security.html">defense-security</a> → <a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a><br />
+  → <a href="../concepts/automation-robotics.html">automation-robotics</a> → <a href="../concepts/infrastructure-capex.html">infrastructure-capex</a> → <a href="../concepts/critical-minerals.html">critical-minerals</a>. Defense is the<br />
+<em>least</em> AI-correlated node here (diversifier).</li>
+<li><strong>Electrification of transport/industry:</strong> <a href="../concepts/critical-minerals.html">critical-minerals</a> (copper, lithium, rare earths)<br />
+  → <a href="../concepts/renewables-storage.html">renewables-storage</a> (batteries) → EV demand (BYD in <a href="../concepts/china-contrarian.html">china-contrarian</a>) →<br />
+<a href="../concepts/power-grid-electrification.html">power-grid-electrification</a>.</li>
+<li><strong>Health demographics:</strong> aging (<a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a>) → procedure/therapy demand<br />
+  (<a href="../concepts/medtech-devices.html">medtech-devices</a>, <a href="../concepts/biotech-genomics.html">biotech-genomics</a>) ; <a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a> cross-cuts all three<br />
+  (CGM tailwind for devices, capital spillover into biotech, cost-trend swing for managed care).</li>
+<li><strong>Financial rails:</strong> <a href="../concepts/fintech-payments.html">fintech-payments</a> (card networks, A2A) ⟷ <a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a><br />
+  (stablecoins/RWA threaten to disintermediate card rails) ; UPI/PromptPay tie to<br />
+<a href="../concepts/india-em-growth.html">india-em-growth</a> / <a href="../concepts/asean-thailand.html">asean-thailand</a>.</li>
+<li><strong>Geographic rotation:</strong> <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a> (concentration) ⟷ <a href="../concepts/india-em-growth.html">india-em-growth</a> /<br />
+<a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a> / <a href="../concepts/china-contrarian.html">china-contrarian</a> / <a href="../concepts/asean-thailand.html">asean-thailand</a> (the rotation away from US).</li>
+</ul>
+<h2 id="3-shared-driver-clusters-correlation-risk">3. Shared-driver clusters &amp; correlation risk</h2>
+<p>The diversification-killers. Themes in the same cluster <strong>rise and fall together</strong> regardless of<br />
+how different they look:</p>
+<table>
+<thead>
+<tr>
+<th>Cluster</th>
+<th>Shared driver</th>
+<th>Themes that move together</th>
+<th>Correlation-risk read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AI-capex complex</strong></td>
+<td>Hyperscaler capex / AI demand</td>
+<td><a href="../concepts/ai-infrastructure.html">ai-infrastructure</a>, <a href="../concepts/semiconductors.html">semiconductors</a>, <a href="../concepts/ai-software-agents.html">ai-software-agents</a>, <a href="../concepts/networking-optical.html">networking-optical</a>, <a href="../concepts/data-center-cooling.html">data-center-cooling</a>, <a href="../concepts/power-grid-electrification.html">power-grid-electrification</a>, <a href="../concepts/natural-gas-lng.html">natural-gas-lng</a>, parts of <a href="../concepts/critical-minerals.html">critical-minerals</a>, <a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a>, <a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a> (DC sub-theme)</td>
+<td><strong>Highest.</strong> A single AI-capex disappointment de-rates ~10 themes at once. The radar's dominant non-diversification.</td>
+</tr>
+<tr>
+<td><strong>Long-duration / rate-sensitive</strong></td>
+<td>Real rates, USD</td>
+<td><a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a> (REITs), <a href="../concepts/water-resource-scarcity.html">water-resource-scarcity</a> (utilities), <a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a>, <a href="../concepts/renewables-storage.html">renewables-storage</a>, <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a> (long-duration tech), EM (<a href="../concepts/india-em-growth.html">india-em-growth</a>, <a href="../concepts/china-contrarian.html">china-contrarian</a>)</td>
+<td>High on the rate axis — see <a href="macro-regime.html">macro-regime</a>. Rising real rates hit all simultaneously.</td>
+</tr>
+<tr>
+<td><strong>Fiscal/geopolitical capex</strong></td>
+<td>Govt spending, conflict, reshoring policy</td>
+<td><a href="../concepts/defense-security.html">defense-security</a>, <a href="../concepts/infrastructure-capex.html">infrastructure-capex</a>, <a href="../concepts/reshoring-supply-chain.html">reshoring-supply-chain</a>, <a href="../concepts/critical-minerals.html">critical-minerals</a></td>
+<td>Moderate. Less AI-tied — the radar's main <em>intentional</em> diversifier from cluster 1.</td>
+</tr>
+<tr>
+<td><strong>EM / USD-flow</strong></td>
+<td>USD direction, US rates, risk appetite</td>
+<td><a href="../concepts/india-em-growth.html">india-em-growth</a>, <a href="../concepts/china-contrarian.html">china-contrarian</a>, <a href="../concepts/asean-thailand.html">asean-thailand</a>, <a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a> (FX)</td>
+<td>High among themselves; a strong-USD regime hits all EM together.</td>
+</tr>
+<tr>
+<td><strong>Speculative / risk-appetite</strong></td>
+<td>Liquidity, momentum, funding window</td>
+<td><a href="../concepts/space-economy.html">space-economy</a>, <a href="../concepts/quantum-computing.html">quantum-computing</a>, <a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a>, clinical-stage <a href="../concepts/biotech-genomics.html">biotech-genomics</a></td>
+<td>Highest beta. First to fall in risk-off; survival depends on open funding windows.</td>
+</tr>
+<tr>
+<td><strong>Genuine diversifiers</strong></td>
+<td>Idiosyncratic / counter-cyclical</td>
+<td><a href="../concepts/defense-security.html">defense-security</a> (geopolitics), <a href="../concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a> (debasement hedge, low AI-correlation), <a href="../concepts/healthcare-aging-services.html">healthcare-aging-services</a> (demographics), <a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a> (drug-demand)</td>
+<td>Lowest correlation to cluster 1 — the actual portfolio ballast.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-key-disruption-tension-edges">4. Key disruption / tension edges</h2>
+<p>Where one theme is a <em>threat</em> to another (not just a feeder):<br />
+- <a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a> (stablecoins/A2A) → <strong>disrupts</strong> → <a href="../concepts/fintech-payments.html">fintech-payments</a> (card rails).<br />
+- <a href="../concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a> → <strong>debated headwind</strong> → <a href="../concepts/medtech-devices.html">medtech-devices</a> (bariatric/some cardiac/ortho)<br />
+  but <strong>tailwind</strong> for CGM — net effect unresolved.<br />
+- <a href="../concepts/ai-software-agents.html">ai-software-agents</a> → <strong>disrupts</strong> → legacy per-seat SaaS (within its own theme) and parts of<br />
+<a href="../concepts/fintech-payments.html">fintech-payments</a> (agentic commerce).<br />
+- <a href="../concepts/renewables-storage.html">renewables-storage</a> + <a href="../concepts/nuclear-uranium.html">nuclear-uranium</a> → <strong>compete</strong> for the same <a href="../concepts/power-grid-electrification.html">power-grid-electrification</a><br />
+  baseload demand (and policy/capital).<br />
+- <a href="../concepts/quantum-computing.html">quantum-computing</a> → <strong>long-tail threat</strong> → <a href="../concepts/cybersecurity.html">cybersecurity</a> (post-quantum cryptography) —<br />
+  also a demand <em>driver</em> for it.<br />
+- <a href="../concepts/china-contrarian.html">china-contrarian</a> (BYD, China AI) → <strong>competes with</strong> → <a href="../concepts/critical-minerals.html">critical-minerals</a> supply security,<br />
+<a href="../concepts/semiconductors.html">semiconductors</a> (export controls), <a href="../concepts/us-megacap-quality.html">us-megacap-quality</a> AI leadership.</p>
+<h2 id="5-practical-implications">5. Practical implications</h2>
+<ol>
+<li><strong>"Diversified across themes" can still be one bet.</strong> Holding ai-infrastructure + semis + power<br />
+   + gas + cooling is ~5 expressions of the <em>same</em> AI-capex thesis (cluster 1).</li>
+<li><strong>Real diversification</strong> comes from combining cluster 1 with the genuine diversifiers (defense,<br />
+   gold, healthcare/aging, GLP-1) and from the rate/USD-independent themes.</li>
+<li><strong>The macro switch</strong> (<a href="macro-regime.html">macro-regime</a>) sits above this map: rates/USD/liquidity decide which<br />
+   clusters lead. A rate shock hits cluster 2; a risk-off hits cluster 5; a USD spike hits cluster 4.</li>
+</ol>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<ul>
+<li>Linkages are structural/analytical (inference from the theme pages), not statistically estimated<br />
+  correlations — directional, not precise betas.</li>
+<li>All referenced themes have live pages (built 2026-06-01). <a href="macro-regime.html">macro-regime</a> is the companion overlay.</li>
+<li>Next scan: consider adding rough realized-correlation estimates if data becomes available.</li>
+</ul>
+<blockquote>
+<p><strong>2026-07-14 scan note.</strong> Linkage structure unchanged — the "AI needs power needs metal" master<br />
+chain remains the radar's central correlated-de-rating risk, and 2026 capex at ~$600–725B<br />
+(+60–77% YoY, P1 ✓) <em>deepens</em> the AI-capex cluster's shared-driver exposure. The cluster caps in<br />
+<a href="portfolio-blueprint.html">portfolio-blueprint</a> (AI-capex complex ≤25% total) are how this map becomes actionable. Realized<br />
+90d correlation estimates are now <em>computable</em> from <code>scripts/refresh.py</code> price history — candidate<br />
+enhancement for the next REVIEW.</p>
+</blockquote>
+</article>
+</div>
+</body>
+</html>

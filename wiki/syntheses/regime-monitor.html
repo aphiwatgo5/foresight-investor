@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regime Monitor</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Regime Monitor
+type: synthesis
+tags: [investing, regime, cycle, bubble, multi-agent-sim, macro, monitor]
+sources: [[[post-bubble-multi-agent-sim-2026-06-28]], [bubble-risk-us-equity-2026-06-28], [macro-regime], [signal-monitor]]
+date: 2026-07-14
+last_scan: 2026-07-14</div>
+<article>
+<h1 id="regime-monitor">Regime Monitor</h1>
+<p><strong>Bottom line:</strong> Where are we in the cycle, <em>right now</em>? Formalizes the <a href="post-bubble-multi-agent-sim-2026-06-28.html">post-bubble-multi-agent-sim-2026-06-28</a><br />
+3-act structure into a live regime-state verdict, with the sensor thresholds that mark each<br />
+transition and the per-regime portfolio stance. Extends <a href="macro-regime.html">macro-regime</a> (structural) with a<br />
+<strong>current-state</strong> read. For the operator's own book; not advice.</p>
+<blockquote>
+<p><strong>How to read.</strong> The sim proposed three acts. This page says which act we're in today, which<br />
+sensors would confirm a transition, and what the <a href="portfolio-blueprint.html">portfolio-blueprint</a> stance is in each. Updated<br />
+weekly (MONITOR) from <a href="signal-monitor.html">signal-monitor</a>.</p>
+</blockquote>
+<hr />
+<h2 id="current-verdict-2026-07-14">Current verdict — 2026-07-14</h2>
+<h3 id="act-1-late-euphoria-completing-not-yet-a-reflexive-break"><strong>Act 1 (late): Euphoria completing — NOT yet a reflexive break</strong></h3>
+<p>The bubble-watch read (<a href="bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a>) holds: <strong>structural extreme, sentiment<br />
+still fearful</strong>. Sixteen days on, the sensors say:</p>
+<ul>
+<li><strong>CAPE 41.85</strong> (2.41× mean) — still 2nd-highest ever; unchanged structurally.</li>
+<li><strong>F&amp;G 43.6</strong> ("Fear") — <em>rising off the depressed 25 read</em> of Jun-28, but nowhere near the <strong>&gt;75<br />
+  Extreme Greed</strong> that P19 / Act-1 completion requires. <strong>The greed-flip hasn't happened.</strong></li>
+<li><strong>VIX 16.41</strong> — calm; no stress signal.</li>
+<li><strong>HY OAS</strong> — UNAVAILABLE (FRED key gap); last ~2.6% (Jun-28), far from the <strong>4.0%</strong> flip (P17).</li>
+<li><strong>AI capex +60–77% YoY</strong> — P1 confirmed early; the reflexive engine is still accelerating, not<br />
+  guide-down (P20 trigger absent).</li>
+<li><strong>BTC $64.7K</strong> (warn-breached) — a <em>cross-asset</em> risk-off wobble since Jun-28, but not yet<br />
+  propagating to credit or AI-capex names.</li>
+</ul>
+<p><strong>Where this leaves us:</strong> late-Act-1, with the engine still running but the euphoria marker absent.<br />
+The <a href="post-bubble-multi-agent-sim-2026-06-28.html">post-bubble-multi-agent-sim-2026-06-28</a> timing (euphoria completes 2026 H2 → break ~2027)<br />
+remains the base case. <strong>Stance: hold the offensive barbell, cap the AI cluster, raise cash toward<br />
+the upper end as F&amp;G climbs.</strong></p>
+<h2 id="the-three-acts-transition-sensors">The three acts + transition sensors</h2>
+<table>
+<thead>
+<tr>
+<th>Act</th>
+<th>Defining condition</th>
+<th>Lead sensors (→ flip)</th>
+<th>Current read</th>
+<th>Portfolio stance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Euphoria completes</strong></td>
+<td>Greed returns after the May-26 pullback; CAPE pushes fresh highs</td>
+<td><strong>F&amp;G &gt;75</strong> (P19) · CAPE new ATH · retail inflows surge</td>
+<td>F&amp;G 43.6 — <strong>not there</strong>; climbing</td>
+<td>Hold offense; cap AI cluster ≤25%; start trimming leader-multiple names (CRWD-class)</td>
+</tr>
+<tr>
+<td><strong>2. Reflexive break</strong></td>
+<td>The AI-capex loop breaks; credit cracks first</td>
+<td><strong>HY OAS &gt;3.5–4.0%</strong> (P17/P21) · <strong>≥1 hyperscaler capex guide-down</strong> (P20) · VIX spike &gt;40</td>
+<td>HY ~2.6% (dark); capex +60–77% (no guide-down) — <strong>not there</strong></td>
+<td>Trim offense 5–10pts; raise cash to 10%; rotate to diversifiers (defense/gold/LLY/DXJ)</td>
+</tr>
+<tr>
+<td><strong>3. Multi-year rotation</strong></td>
+<td>Ex-US / real assets beat US mega-cap cumulatively</td>
+<td><strong>EAFE/EM cumulative &gt; S&amp;P</strong> (P22, 2026→2029) · USD structural decline</td>
+<td>Too early — P22 tracks to 2029</td>
+<td>Overweight ex-US + real assets; underweight Mag-7</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-composite-regime-scorecard">The composite regime scorecard</h2>
+<table>
+<thead>
+<tr>
+<th>Sensor (→ flip)</th>
+<th>Threshold</th>
+<th>Current</th>
+<th style="text-align: center;">Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNN F&amp;G (Act-1 completion)</td>
+<td>&gt;75</td>
+<td>43.6</td>
+<td style="text-align: center;">🟢</td>
+</tr>
+<tr>
+<td>HY OAS (Act-2 trigger, lead)</td>
+<td>≥4.0% monthly close</td>
+<td>UNAVAILABLE (~2.6% last)</td>
+<td style="text-align: center;">⚪</td>
+</tr>
+<tr>
+<td>Hyperscaler capex guide-down (Act-2 trigger)</td>
+<td>YoY decline by any Mag-7</td>
+<td>+60–77% (accelerating)</td>
+<td style="text-align: center;">🟢</td>
+</tr>
+<tr>
+<td>VIX (stress)</td>
+<td>&gt;40 (spike) or &gt;25 (warn)</td>
+<td>16.4</td>
+<td style="text-align: center;">🟢</td>
+</tr>
+<tr>
+<td>CAPE (structural, not timing)</td>
+<td>new ATH = frosh flag</td>
+<td>41.85 (2nd-highest)</td>
+<td style="text-align: center;">🟡</td>
+</tr>
+<tr>
+<td>USD structural decline (Act-3)</td>
+<td>DXY &lt;95 sustained</td>
+<td>100.8</td>
+<td style="text-align: center;">🟢</td>
+</tr>
+<tr>
+<td>Ex-US cumulative vs S&amp;P (P22)</td>
+<td>EAFE/EM &gt; S&amp;P 3yr</td>
+<td>TBA (2029 resolve)</td>
+<td style="text-align: center;">⚪</td>
+</tr>
+</tbody>
+</table>
+<p><strong>No act-2 sensor is flashing.</strong> The reflexive-break risk is <em>latent</em>, not active. This is the<br />
+single most important weekly check.</p>
+<h2 id="what-would-change-the-verdict">What would change the verdict</h2>
+<ul>
+<li><strong>Flip to Act-1-complete:</strong> F&amp;G pierces 75 with CAPE at fresh ATH and HY still &lt;3.5% → euphoria<br />
+  regime; tighten AI-cluster caps, take partial profits on leaders.</li>
+<li><strong>Flip to Act-2 (break):</strong> HY OAS prints &gt;3.5% (warn) or &gt;4.0% (flip) OR any Mag-7 guides 2027<br />
+  capex down YoY → defensive stance immediately; trim offense 5–10pts.</li>
+<li><strong>Flip to Act-3 (rotation):</strong> only on a multi-quarter read; track P22 quarterly.</li>
+</ul>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<ul>
+<li><strong>Verdict confidence: MODERATE-HIGH.</strong> Six independent sensors (CAPE/F&amp;G/VIX/capex/USD/BTC) all<br />
+  agree on late-Act-1. The dark sensor (HY OAS) is the lead indicator — until it's live, a<br />
+  credit-crack could begin unseen. <strong>Add <code>scripts/.fred_key</code>.</strong></li>
+<li>The <a href="post-bubble-multi-agent-sim-2026-06-28.html">post-bubble-multi-agent-sim-2026-06-28</a> is a <em>scenario model</em>, not a forecast; the acts are<br />
+  conditional on the sensors flipping, not dated certainties.</li>
+<li>BTC's July warn-breach is a useful <em>cross-asset</em> signal to watch — if crypto's risk-off propagates<br />
+  to credit/equity, it becomes an early Act-2 hint.</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Sensors: <a href="signal-monitor.html">signal-monitor</a> (live readings) · <a href="macro-regime.html">macro-regime</a> (structural axes)</li>
+<li>Construction: <a href="portfolio-blueprint.html">portfolio-blueprint</a> (per-regime stance) · <a href="decision-register.html">decision-register</a> (stance-driven rows)</li>
+<li>Origin: <a href="post-bubble-multi-agent-sim-2026-06-28.html">post-bubble-multi-agent-sim-2026-06-28</a> · <a href="bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a></li>
+<li>Accountability: <a href="prediction-ledger.html">prediction-ledger</a> P17/P18/P19/P20/P21/P22 (the regime calls)</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

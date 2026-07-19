@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fintech &amp; Payments</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Fintech &amp; Payments
+type: concept
+trend: true
+tags: [investing, trend, fintech, payments, card-networks, neobanks, bnpl, digital-payments]
+sources: []
+date: 2026-06-01
+conviction: 3
+stage: mature-accelerating
+horizon: 3-7y</div>
+<article>
+<h1 id="fintech-payments">Fintech &amp; Payments</h1>
+<p><strong>Definition:</strong> The end-to-end electronic movement of value — card networks (Visa, Mastercard),<br />
+processors/acquirers (Fiserv, Global Payments, Adyen, Stripe-private), digital wallets &amp; P2P (PayPal,<br />
+Block), BNPL (Affirm), and digitally-native banks/neobanks (Nubank) — with an AI-in-fintech overlay<br />
+(fraud, underwriting, agentic commerce). A barbell: a fortress duopoly at the center, a contested<br />
+periphery. Conviction 3 at the theme level on the <a href="../syntheses/trend-radar.html">trend-radar</a> (networks alone merit 4).</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Figures tagged (fact)/(est.)/(inference) with<br />
+period + source. "n/f" = no reliable figure found.</p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>(a) <strong>Card networks</strong> — Visa, Mastercard (toll-road economics, ~50–65% op margins); (b) <strong>processors/<br />
+acquirers</strong> — Fiserv, Global Payments, Adyen, Stripe (private); (c) <strong>wallets/P2P</strong> — PayPal, Block<br />
+(Cash App); (d) <strong>BNPL</strong> — Affirm; (e) <strong>neobanks</strong> — Nubank. AI-in-fintech is the cross-cutting driver<br />
+that most benefits the largest proprietary-data holders.</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global fintech market</td>
+<td><strong>~$461B → ~$1,760B (~18.2% CAGR)</strong></td>
+<td>2026 → 2034</td>
+<td>Fortune Business Insights</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Digital-payments transaction value</td>
+<td><strong>~$26.9T → ~$36.1T (~7.6% CAGR)</strong></td>
+<td>2026 → 2030</td>
+<td>Statista</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Digital-payments revenue pool</td>
+<td><strong>~$149.9B → ~$213.8B (~9.3% CAGR)</strong></td>
+<td>2026 → 2030</td>
+<td>Mordor/R&amp;M</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>AI-in-fintech sub-segment</td>
+<td><strong>~$45.5B → ~$241.7B (~23.2% CAGR)</strong></td>
+<td>2026 → 2034</td>
+<td>Fortune Business Insights</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Visa Q2-FY26 net revenue</td>
+<td><strong>$10.90B (+14.6% YoY)</strong></td>
+<td>qtr ~Mar 2026</td>
+<td>Visa 8-K</td>
+<td>(fact)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand:</strong> secular cash-to-digital shift (esp. EM — Latam/SE Asia); e-commerce + cross-border travel<br />
+(the highest-margin network volume); embedded finance / account-to-account; younger cohorts adopting<br />
+BNPL + neobanks (Nubank &gt;135M customers). <strong>Supply:</strong> real-time rails (FedNow, Pix, UPI) lowering<br />
+friction; AI underwriting/fraud cutting losses and expanding credit; value-added services (data,<br />
+security, loyalty) becoming the margin engine; stablecoin settlement emerging as a new low-cost rail<br />
+(<a href="tokenization-digital-assets.html">tokenization-digital-assets</a>).</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p>Consumer/merchant → acquirer/processor (Fiserv, GPN, Adyen, Stripe) → network rails (Visa, Mastercard)<br />
+→ issuer bank → interchange flows back. Wallets (PayPal, Cash App) + BNPL (Affirm) sit at the front-end,<br />
+often riding on top of the networks they nominally disrupt. Neobanks (Nubank) verticalize the whole<br />
+stack in one geography. Stablecoins (<a href="tokenization-digital-assets.html">tokenization-digital-assets</a>) threaten to disintermediate parts<br />
+of the chain over a multi-year horizon. Cross-border volumes tie to <a href="../syntheses/macro-regime.html">macro-regime</a> (travel, FX).</p>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<p>A <strong>barbell</strong>. At the center, <strong>Visa + Mastercard form a near-duopoly</strong> with extreme moats — global<br />
+two-sided network effects, regulatory entrenchment, 50%+ op margins — among the highest-quality<br />
+compounders in the market. The periphery (PayPal, Block, Adyen, Affirm, neobanks) is far more contested,<br />
+lower-margin, and exposed to competition, credit cycles, and disruption. Processors (Fiserv, GPN) are<br />
+scale-driven, mature, and decelerating. Moats range from durable (network effects, licenses) to fragile<br />
+(brand, UX).</p>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps point-in-time (~May 2026, est.); ranges where sources diverge. Other figures (fact) unless tagged.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of)</th>
+<th>Revenue (period)</th>
+<th>Rev YoY</th>
+<th>Profitability</th>
+<th>Other</th>
+<th>Moat note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Visa</td>
+<td>V</td>
+<td>Global/US</td>
+<td>Card network</td>
+<td>~$552–621B (May 26)</td>
+<td>$10.90B (Q2-FY26)</td>
+<td>+14.6%</td>
+<td>non-GAAP EPS $3.17; op margin ~65%</td>
+<td>Data Processing rev $5.54B +17%</td>
+<td>Strongest — global duopoly network</td>
+</tr>
+<tr>
+<td>Mastercard</td>
+<td>MA</td>
+<td>Global/US</td>
+<td>Card network</td>
+<td>~$437–445B (May 26)</td>
+<td>$8.4B (Q1-CY26)</td>
+<td>+16%</td>
+<td>net income $3.9B +18%; adj EPS $4.60 +23%</td>
+<td>value-added services growth</td>
+<td>Duopoly + faster services mix</td>
+</tr>
+<tr>
+<td>PayPal</td>
+<td>PYPL</td>
+<td>Global/US</td>
+<td>Wallet / P2P</td>
+<td>n/f</td>
+<td>$8.35B (Q1-CY26)</td>
+<td>+7%</td>
+<td>GAAP op margin 17.8%; adj EPS $1.34</td>
+<td>TPV $463.96B +11%</td>
+<td>Brand/scale eroding; reorg</td>
+</tr>
+<tr>
+<td>Block</td>
+<td>XYZ</td>
+<td>US</td>
+<td>Wallet/acquirer (Cash App, Square)</td>
+<td>n/f</td>
+<td>~$6.06B (Q1-CY26)</td>
+<td>gross profit +27%</td>
+<td>non-GAAP EPS $0.85; GAAP loss (restructuring)</td>
+<td>2026 guide $12.33B gross profit</td>
+<td>Cash App ecosystem; exec risk</td>
+</tr>
+<tr>
+<td>Nu Holdings</td>
+<td>NU</td>
+<td>Latam</td>
+<td>Neobank</td>
+<td>~$62–72B (May 26)</td>
+<td>$4.97B GAAP (Q1-CY26)</td>
+<td>net income +41%</td>
+<td>net income $871M; ROE 29%</td>
+<td>&gt;135M customers</td>
+<td>Low-cost digital bank; Latam scale</td>
+</tr>
+<tr>
+<td>Adyen</td>
+<td>ADYEN</td>
+<td>EU/Global</td>
+<td>Processor/acquirer</td>
+<td>n/f</td>
+<td>€2,364M net rev (FY25)</td>
+<td>+18% (+21% cc)</td>
+<td>EBITDA €1,245.7M, 53% margin</td>
+<td>FY26 guide 20–22% cc</td>
+<td>Single-platform tech; enterprise wins</td>
+</tr>
+<tr>
+<td>Affirm</td>
+<td>AFRM</td>
+<td>US</td>
+<td>BNPL</td>
+<td>~$22.5–24.5B (May 26)</td>
+<td>$1,123M (FQ2-FY26)</td>
+<td>+30%</td>
+<td>net income $49M (FQ2)</td>
+<td>GMV $13.8B +36%</td>
+<td>Underwriting data; credit-cycle exposed</td>
+</tr>
+<tr>
+<td>Fiserv</td>
+<td>FI</td>
+<td>US</td>
+<td>Processor/fintech infra</td>
+<td>~$31.5B (2026)</td>
+<td>$4.675B adj (Q1-CY26)</td>
+<td>−2%</td>
+<td>EPS beat amid margin pressure</td>
+<td>guidance held</td>
+<td>Scale/switching costs; growth stalled</td>
+</tr>
+</tbody>
+</table>
+<p><em>Stripe is private — no public cap/revenue verifiable (n/f).</em></p>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p>Investable quality is heavily concentrated in <strong>Visa and Mastercard</strong>: double-digit revenue growth on<br />
+~50–65% op margins, fortress balance sheets, and a structural toll on global commerce — compounders, not<br />
+turnarounds; their main risk is regulatory/disruption, not competition. <strong>Adyen and Nubank</strong> are the<br />
+highest-quality peripheral growers — Adyen for single-platform enterprise tech (53% EBITDA margin),<br />
+Nubank for category-leading neobank economics (29% ROE) and a long Latam/US runway (with EM-macro/credit<br />
+risk). The contested tier — <strong>PayPal, Block, Fiserv, GPN</strong> — shows the strain of maturity: PayPal grew<br />
+only 7% with compressing margins; Fiserv revenue shrank 2%. <strong>Affirm</strong> is a high-beta growth story (GMV<br />
++36%) turning profitable but structurally exposed to credit/rates. AI-in-fintech is the swing factor and<br />
+most benefits incumbents with the largest data sets.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Regulation</strong> — interchange caps, antitrust on the V/MA duopoly, BNPL/credit rules, neobank capital reqs.</li>
+<li><strong>Disintermediation</strong> — A2A rails (Pix, UPI, FedNow) and stablecoin settlement bypassing card rails.</li>
+<li><strong>Credit cycle</strong> — BNPL (Affirm) and neobank (Nubank) loan books exposed to defaults/EM macro.</li>
+<li><strong>Margin compression / maturity</strong> — PayPal, Fiserv, GPN decelerating or shrinking.</li>
+<li><strong>FX &amp; EM macro</strong> — Nubank, cross-border volumes, Adyen euro reporting.</li>
+<li><strong>Big Tech &amp; agentic-AI commerce</strong> reshaping front-end economics.</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li><strong>IPAY</strong> (payments-focused), <strong>FINX</strong> (Global X FinTech), <strong>ARKF</strong> (ARK Fintech Innovation). <em>(Verify AUM/holdings.)</em></li>
+<li>Representative securities: V, MA (quality core); ADYEN, NU (quality growth); PYPL, XYZ, FI, GPN<br />
+  (value/transition); AFRM (high-beta BNPL).</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 3/5 (theme overall)</strong> — Visa/Mastercard individually merit a 4 (rare moat + double-digit<br />
+  growth + high margins), but the contested, decelerating periphery and disintermediation risk pull the<br />
+  blended theme to 3.</li>
+<li><strong>Stage: mature-but-compounding (networks) / contested (periphery). Horizon: 3–7 years.</strong></li>
+<li><strong>Invalidation:</strong> material adverse interchange/antitrust ruling on V/MA, OR sustained stablecoin/A2A<br />
+  volume migration off card rails, OR a BNPL/neobank credit blowup.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>IPAY</strong></td>
+<td>Mobile payments</td>
+<td style="text-align: right;">$49.09</td>
+<td style="text-align: right;">$152M</td>
+<td style="text-align: right;">-11.2%</td>
+<td style="text-align: right;">0.9%</td>
+<td style="text-align: right;">n/f · 1.39</td>
+<td style="text-align: right;">-19.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FINX</strong></td>
+<td>Fintech</td>
+<td style="text-align: right;">$25.13</td>
+<td style="text-align: right;">$170M</td>
+<td style="text-align: right;">-15.9%</td>
+<td style="text-align: right;">0.9%</td>
+<td style="text-align: right;">n/f · 1.72</td>
+<td style="text-align: right;">-29.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ARKF</strong></td>
+<td>Fintech</td>
+<td style="text-align: right;">$40.40</td>
+<td style="text-align: right;">$724M</td>
+<td style="text-align: right;">-17.4%</td>
+<td style="text-align: right;">0.1%</td>
+<td style="text-align: right;">n/f · 2.16</td>
+<td style="text-align: right;">-31.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>V</strong></td>
+<td>Visa toll bridge</td>
+<td style="text-align: right;">$358.61</td>
+<td style="text-align: right;">$682B</td>
+<td style="text-align: right;">24.1x</td>
+<td style="text-align: right;">17.1%</td>
+<td style="text-align: right;">51.7% · 0.75</td>
+<td style="text-align: right;">-1.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>MA</strong></td>
+<td>Mastercard toll bridge</td>
+<td style="text-align: right;">$542.61</td>
+<td style="text-align: right;">$479B</td>
+<td style="text-align: right;">23.8x</td>
+<td style="text-align: right;">15.8%</td>
+<td style="text-align: right;">45.9% · 0.73</td>
+<td style="text-align: right;">-9.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>PYPL</strong></td>
+<td>Payments incumbent</td>
+<td style="text-align: right;">$56.37</td>
+<td style="text-align: right;">$50B</td>
+<td style="text-align: right;">9.8x</td>
+<td style="text-align: right;">7.2%</td>
+<td style="text-align: right;">15.0% · 1.33</td>
+<td style="text-align: right;">-29.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>XYZ</strong></td>
+<td>Block (Cash App)</td>
+<td style="text-align: right;">$79.48</td>
+<td style="text-align: right;">$47B</td>
+<td style="text-align: right;">15.7x</td>
+<td style="text-align: right;">4.9%</td>
+<td style="text-align: right;">3.3% · 2.54</td>
+<td style="text-align: right;">-5.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NU</strong></td>
+<td>Nu Holdings (Latam)</td>
+<td style="text-align: right;">$13.60</td>
+<td style="text-align: right;">$66B</td>
+<td style="text-align: right;">11.8x</td>
+<td style="text-align: right;">43.7%</td>
+<td style="text-align: right;">41.9% · 0.95</td>
+<td style="text-align: right;">-28.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>AFRM</strong></td>
+<td>BNPL</td>
+<td style="text-align: right;">$76.28</td>
+<td style="text-align: right;">$26B</td>
+<td style="text-align: right;">20.2x</td>
+<td style="text-align: right;">32.6%</td>
+<td style="text-align: right;">9.6% · 3.67</td>
+<td style="text-align: right;">-23.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FI</strong></td>
+<td>Fiserv</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f</td>
+<td style="text-align: right;">n/f · n/f</td>
+<td style="text-align: right;">n/f</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>GPN</strong></td>
+<td>Global Payments</td>
+<td style="text-align: right;">$78.38</td>
+<td style="text-align: right;">$21B</td>
+<td style="text-align: right;">4.9x</td>
+<td style="text-align: right;">63.1%</td>
+<td style="text-align: right;">-8.0% · 0.77</td>
+<td style="text-align: right;">-13.5%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Disruption risk from: <a href="tokenization-digital-assets.html">tokenization-digital-assets</a> (stablecoins). AI overlay: <a href="ai-software-agents.html">ai-software-agents</a>.<br />
+  Geographies: <a href="india-em-growth.html">india-em-growth</a> (UPI), <a href="asean-thailand.html">asean-thailand</a>. Macro: <a href="../syntheses/macro-regime.html">macro-regime</a>. Master:<br />
+<a href="../syntheses/trend-radar.html">trend-radar</a>. Linkage: <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Do stablecoins/A2A rails meaningfully erode card-network volume this decade, or stay complementary?</li>
+<li>Can any peripheral name (Adyen, Nubank) compound at network-like quality, or is the duopoly the only durable moat?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>Company results (Visa Q2-FY26 8-K, Mastercard, PayPal, Block, Nu Holdings, Adyen FY25, Affirm, Fiserv<br />
+Q1 2026); Fortune Business Insights (fintech/AI-fintech); Statista; Mordor Intelligence; market caps<br />
+(companiesmarketcap), 2026.</p>
+</article>
+</div>
+</body>
+</html>

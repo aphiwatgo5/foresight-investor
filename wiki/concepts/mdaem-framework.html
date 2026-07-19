@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MDAEM v3.4 (Multi-Dimensional Asset Evaluation Matrix)</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: MDAEM v3.4 (Multi-Dimensional Asset Evaluation Matrix)
+type: concept
+trend: false
+tags: [investing, framework, methodology, mdaem, decision-system, position-sizing]
+sources: [[[mdaem-v34-framework]]]
+date: 2026-06-03</div>
+<article>
+<h1 id="mdaem-v34-multi-dimensional-asset-evaluation-matrix">MDAEM v3.4 (Multi-Dimensional Asset Evaluation Matrix)</h1>
+<p><strong>Definition:</strong> A gated, weighted, scenario-driven decision system for evaluating <strong>individual securities</strong> against a MAX-RETURN / asymmetric-risk-reward mandate, calibrated to Seeking Alpha Quant ratings and iterated empirically every 3 months. Authored by Aphiwat (Thai retail investor, Dime! app) over multiple versions (<a href="../sources/mdaem-v34-framework.html">mdaem-v34-framework</a>).</p>
+<blockquote>
+<p><strong>Scope note (important):</strong> This page <em>documents Aphiwat's own decision tool</em>, which explicitly produces sizing and buy/sell verdicts. It is <strong>not</strong> a behavior this vault adopts — the <a href="../syntheses/trend-radar.html">Futurist Investor</a> engine remains insight-only (CLAUDE.md §10). See <a href="../syntheses/mdaem-vs-futurist-investor.html">mdaem-vs-futurist-investor</a>.</p>
+</blockquote>
+<h2 id="the-pipeline-decision-flow">The pipeline (decision flow)</h2>
+<pre><code>TICKER → Triage → Data pull → SA Quant pull
+   → 10 Hard Gates → Score 10 Dimensions
+   → MDAEM Total → Tier
+   → SA Overlay Cap → Refinements
+   → Scenario Math → Sizing
+   → Entry Plan → Validation Tracking
+</code></pre>
+<h2 id="1-triage-60-seconds">1. Triage (60 seconds)</h2>
+<p>Reject immediately unless: real company (not penny &lt;$1), in universe (US/HK/China/Thai/VN), adequate liquidity (avg daily volume × price &gt; $10M), and the surface story warrants investigation.</p>
+<h2 id="2-the-10-hard-gates-all-must-pass-any-fail-reject">2. The 10 Hard Gates (ALL must pass — any fail → REJECT)</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Gate</th>
+<th>Pass criterion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Asymmetry</td>
+<td>Dim 10 ≥5 (bull/bear return ratio ≥1.5:1)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Catalyst</td>
+<td>Specific value-unlock &lt;36 months</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Liquidity</td>
+<td>5-day exit at &lt;20% price impact</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Accounting</td>
+<td>No active SEC/restatement issues</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Bear case</td>
+<td>Articulable in 2–3 sentences</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SA Quant</td>
+<td>Not Sell or Strong Sell</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Revisions</td>
+<td>EPS up/down ratio ≥0.2 (Ref L)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>M&amp;A ceiling</td>
+<td>Not within ±5% of acquisition price (Ref 17)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Multiple</td>
+<td>P/S and EV/Sales &lt;50x sector (Ref 20)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Financing</td>
+<td>Cash runway past catalyst (Ref 21)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-the-10-weighted-dimensions-score-110-weight-100">3. The 10 Weighted Dimensions (score 1–10 × weight → /100)</h2>
+<table>
+<thead>
+<tr>
+<th>Dim</th>
+<th>Weight</th>
+<th>Question</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 Quality/Moat</td>
+<td>15%</td>
+<td>Durable competitive advantage?</td>
+</tr>
+<tr>
+<td>2 Financial Health</td>
+<td>10%</td>
+<td>Cash flow, debt, runway?</td>
+</tr>
+<tr>
+<td>3 Valuation</td>
+<td>15%</td>
+<td>Cheap vs sector &amp; history?</td>
+</tr>
+<tr>
+<td>4 Earnings Quality</td>
+<td>10%</td>
+<td>FCF tracks earnings?</td>
+</tr>
+<tr>
+<td>5 Growth</td>
+<td>10%</td>
+<td>Revenue + margin trajectory?</td>
+</tr>
+<tr>
+<td>6 Technical</td>
+<td>10%</td>
+<td>Trend and momentum?</td>
+</tr>
+<tr>
+<td>7 Sentiment</td>
+<td>10%</td>
+<td>Crowded or contrarian?</td>
+</tr>
+<tr>
+<td>8 Catalysts</td>
+<td>10%</td>
+<td>Specific events &lt;36mo?</td>
+</tr>
+<tr>
+<td>9 Macro</td>
+<td>5%</td>
+<td>Tailwind or headwind?</td>
+</tr>
+<tr>
+<td>10 Asymmetry</td>
+<td>5%</td>
+<td>Bull/Bear ratio?</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-tier-lookup">4. Tier lookup</h2>
+<table>
+<thead>
+<tr>
+<th>Score</th>
+<th>Tier</th>
+<th>Standalone sizing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>85–100</td>
+<td>T1</td>
+<td>8–10%</td>
+</tr>
+<tr>
+<td>70–84</td>
+<td>MED-HIGH</td>
+<td>5–8%</td>
+</tr>
+<tr>
+<td>55–69</td>
+<td>STARTER</td>
+<td>2–4%</td>
+</tr>
+<tr>
+<td>40–54</td>
+<td>PASS</td>
+<td>Watchlist</td>
+</tr>
+<tr>
+<td>&lt;40</td>
+<td>REJECT</td>
+<td>0%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-seeking-alpha-quant-overlay-caps-sizing">5. Seeking Alpha Quant overlay (caps sizing)</h2>
+<p>The MDAEM tier is cross-checked against the <a href="../entities/seeking-alpha-quant.html">seeking-alpha-quant</a> rating; the overlay <em>caps</em> sizing (e.g. T1 + SA Hold → cap 8%; any tier + SA Sell → REJECT). <strong>Rule: when MDAEM and SA conflict, take the LOWER signal.</strong></p>
+<h2 id="6-scenario-math-mandatory-before-sizing">6. Scenario math (mandatory before sizing)</h2>
+<p>Explicit Bull/Base/Bear with probabilities → <strong>Expected Value</strong> = Σ(prob × return); and <strong>Asymmetry ratio</strong> = |bull return| / |bear return| (must be ≥1.5:1 or the asymmetry gate fails). "If you can't state your variant view vs consensus, you don't have an edge — skip the trade."</p>
+<h2 id="7-sizing-modifiers-entry-plan">7. Sizing, modifiers, entry plan</h2>
+<p>Pre-modifier sizing from the overlay table, then modifiers (52-wk-low +fundamentals +1%; +500% 12mo −1–2%; sector &gt;25% −1–2%; VIX&gt;25 −1–2%; binary spec cap 2%). Then entry/stops/time-stops and a <strong>position category</strong> (Foundation 15–25% · scarcity hedge 8–12% · core compounder 8% · conviction satellite 5–7% · STARTER 3–4% · speculative 1–2% · cash 3–10%).</p>
+<h2 id="8-the-21-refinements-codified-lessons">8. The 21 Refinements (codified lessons)</h2>
+<p>Patterns-in-misses become numbered rules. Most-triggered (bold) and the 2026 cases that birthed them:<br />
+- <strong>Ref J — Momentum-Revisions Decoder:</strong> Mom C/D + Rev A = <em>early contrarian</em> (STARTER eligible); Mom A + Rev C/D = late-cycle danger (demote).<br />
+- <strong>Ref L — Revisions Ratio Decoder (hard gate):</strong> EPS up:down &lt;0.2 → REJECT.<br />
+- <strong>Ref K — Forward EPS Override:</strong> PEG &lt;0.5 + 50%+ growth → lift Valuation dim ≥6.<br />
+- <strong>Ref 16 — Reflexive Bias Check:</strong> pull current data before rejecting an old "broken" name → caught <strong>DDD</strong> turnaround.<br />
+- <strong>Ref 17 — M&amp;A Acquisition Ceiling:</strong> upside capped at deal price → <strong>KALV</strong> ($27 Chiesi).<br />
+- <strong>Ref 18 — NIM Quality Check:</strong> net margin &gt;50% must be verified (ONDS 252% suspect).<br />
+- <strong>Ref 19 — Late-Cycle Strong Buy Tension:</strong> apply asymmetry gate independently on +500%+ names → rejected <strong>ONDS</strong> (+1140%), <strong>TNGX</strong> (+1253%) despite SA Strong Buy.<br />
+- <strong>Ref 20 — Extreme Valuation Threshold:</strong> P/S or EV/Sales &gt;50x sector → HARD REJECT → <strong>QBTS</strong> (207x), <strong>RGTI</strong> (212x).<br />
+- <strong>Ref 21 — Pre-Catalyst Financing Gate:</strong> if a binary name must raise before its catalyst, it's a dilution trap → downgraded <strong>VKTX</strong>.<br />
+- Others (A–O): B PEG override, C speculative tier, D catalyst-window bonus, E/L revisions gate, F memory-staleness, G binary tail-risk (TSM), H ETF-overlap detection, I patent-cliff vs value-trap, M absolute-multiple outlier, N capex narrative tag, O mega-cap forward-growth reality. (A cancelled.)</p>
+<h2 id="9-the-validation-loop-the-engines-nervous-system">9. The validation loop (the engine's "nervous system")</h2>
+<p>Every decision logs measurable 3-month success/failure criteria into a validation database; quarterly review scores predictions, calculates alpha vs S&amp;P, and proposes new refinements. The live record: <a href="../syntheses/mdaem-validation-database.html">mdaem-validation-database</a>.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Source package: <a href="../sources/mdaem-v34-framework.html">mdaem-v34-framework</a></li>
+<li>Calibration anchor: <a href="../entities/seeking-alpha-quant.html">seeking-alpha-quant</a></li>
+<li>Live empirical record + book/rejects/hypotheses: <a href="../syntheses/mdaem-validation-database.html">mdaem-validation-database</a></li>
+<li>Relationship to the vault's thematic engine: <a href="../syntheses/mdaem-vs-futurist-investor.html">mdaem-vs-futurist-investor</a></li>
+<li>Methodological cousin in this vault: <a href="../syntheses/prediction-ledger.html">prediction-ledger</a> (both are falsifiable-prediction trackers)</li>
+</ul>
+<h2 id="notes-tensions">Notes &amp; tensions</h2>
+<ul>
+<li><strong>Sizing vs guardrails:</strong> MDAEM is a <em>personalized</em> sizing/verdict tool; the vault is insight-only. Kept strictly separate.</li>
+<li>The framework is <strong>alive</strong> — it explicitly expects to bump to v3.5/v4.0 after the 2026-08-24 review.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Outcome of the 2026-08-24 validation review (hit-rate, refinement survival, v3.5 deltas)?</li>
+<li>Should MDAEM single-name calls and vault thematic calls be reconciled when they touch the same name/theme?</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

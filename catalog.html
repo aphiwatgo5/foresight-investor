@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Index</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="home.html">🏠 Home</a> ·
+    <a href="hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+
+<article>
+<h1 id="index">Index</h1>
+<p>The content catalog of this wiki. Every page is listed here with a one-line summary.<br />
+Grouped by category. Updated on every ingest.</p>
+<h2 id="start-here">Start here</h2>
+<ul>
+<li><code>home.md</code> — human entry point: summarizes all features (operations + investing engine) and knowledge, and explains how to trace any claim. Read this or <code>hotcache.md</code> first.</li>
+</ul>
+<h2 id="overview">Overview</h2>
+<ul>
+<li><a href="wiki/overview.html">overview</a> — top-level orientation: the current state of knowledge in this wiki.</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><a href="wiki/sources/the-llm-wiki-pattern.html">the-llm-wiki-pattern</a> — the founding idea: LLMs incrementally build a persistent, interlinked wiki instead of re-deriving knowledge per query.</li>
+<li><a href="wiki/sources/mirofish.html">mirofish</a> — README for an open-source multi-agent swarm-intelligence engine that simulates digital worlds of LLM agents to predict the future.</li>
+<li><a href="wiki/sources/mdaem-v34-framework.html">mdaem-v34-framework</a> — Aphiwat's 6-file MDAEM v3.4 documentation package: a personal single-name stock-evaluation decision system (gates/dims/refinements/validation loop).</li>
+</ul>
+<h2 id="entities">Entities</h2>
+<ul>
+<li><a href="wiki/entities/obsidian.html">obsidian</a> — markdown knowledge-base app; the "IDE" the human browses the wiki in.</li>
+<li><a href="wiki/entities/vannevar-bush.html">vannevar-bush</a> — proposed the Memex (1945), the conceptual ancestor of this pattern.</li>
+<li><a href="wiki/sources/mirofish.html">mirofish</a> — open-source multi-agent prediction engine that builds a digital sandbox of thousands of LLM agents.</li>
+<li><a href="wiki/entities/666ghj.html">666ghj</a> — GitHub author/maintainer of MiroFish.</li>
+<li><a href="wiki/entities/oasis.html">oasis</a> — Open Agent Social Interaction Simulations; the engine powering MiroFish (by CAMEL-AI).</li>
+<li><a href="wiki/entities/camel-ai.html">camel-ai</a> — open-source team behind OASIS.</li>
+<li><a href="wiki/entities/shanda-group.html">shanda-group</a> — provides strategic support and incubation to MiroFish.</li>
+<li><a href="wiki/entities/zep.html">zep</a> — cloud memory service giving MiroFish's agents long-term memory.</li>
+<li><a href="wiki/entities/seeking-alpha-quant.html">seeking-alpha-quant</a> — quantitative 5-factor stock-rating tool; MDAEM's external calibration anchor and a hard gate.</li>
+</ul>
+<h2 id="concepts">Concepts</h2>
+<ul>
+<li><a href="wiki/concepts/wiki-as-compounding-artifact.html">wiki-as-compounding-artifact</a> — the core thesis: knowledge is compiled once and kept current, not rediscovered per query.</li>
+<li><a href="wiki/concepts/ingest-query-lint.html">ingest-query-lint</a> — the three core operations that keep the wiki alive.</li>
+<li><a href="wiki/concepts/memex.html">memex</a> — Bush's 1945 vision of a personal, associatively-linked knowledge store.</li>
+<li><a href="wiki/concepts/multi-agent-simulation.html">multi-agent-simulation</a> — modeling a system by letting many autonomous LLM agents interact so outcomes emerge.</li>
+<li><a href="wiki/concepts/swarm-intelligence.html">swarm-intelligence</a> — collective system-level behavior emerging from many individual agent interactions.</li>
+<li><a href="wiki/concepts/graphrag.html">graphrag</a> — retrieval-augmented generation organized over an entity/relationship knowledge graph.</li>
+<li><a href="wiki/concepts/mdaem-framework.html">mdaem-framework</a> — MDAEM v3.4 methodology: 10 hard gates → 10 weighted dimensions → tier → SA-Quant overlay → scenario math → sizing, iterated via 21 refinements. (Aphiwat's tool; vault stays insight-only.)</li>
+</ul>
+<h2 id="syntheses">Syntheses</h2>
+<ul>
+<li><a href="wiki/syntheses/mirofish-how-to-use-and-applications.html">mirofish-how-to-use-and-applications</a> — practical setup/run guide for MiroFish plus its macro (decision-maker) and micro (creative) use cases.</li>
+<li><a href="wiki/syntheses/mdaem-validation-database.html">mdaem-validation-database</a> — live empirical record of MDAEM's May 2026 book, rejects, watchlist &amp; falsifiable hypotheses (H1–H14); review due 2026-08-24.</li>
+<li><a href="wiki/syntheses/mdaem-backtest-2026-06-28.html">mdaem-backtest-2026-06-28</a> — interim (~5wk) back-test of the full ~40-name tracked set: reject discipline validated (basket −8.7% vs VOO −2.2%); leaks on momentum/defer calls (TNGX +55%); v3.5 tuning candidates. Insight only.</li>
+<li><a href="wiki/syntheses/mdaem-vs-futurist-investor.html">mdaem-vs-futurist-investor</a> — how the two investing systems fit: thematic insight-only engine (vault) vs single-name sized-decision tool (MDAEM); the guardrail boundary.</li>
+</ul>
+<h2 id="investing-futurist-investor-engine">Investing — "Futurist Investor" engine</h2>
+<p>Living hubs for long-term thematic trend/ETF/security research (see <code>CLAUDE.md</code> §10; cadence in <code>CADENCE.md</code>).<br />
+<strong>v2 (2026-07-14):</strong> the engine now issues <strong>sized decisions for the operator's own book</strong> — not personalized advice to others; every decision accountable via P-call + track-record.<br />
+Rebuilt <strong>analyst-grade</strong> on 2026-06-01: <strong>7 meta-forces → 28 themes</strong>, each with sourced figures + a comparative player table. Live data via <code>scripts/refresh.py</code> (<code>scripts/README.md</code>).<br />
+- <a href="wiki/syntheses/trend-radar.html">trend-radar</a> — master dashboard, now structured by 7 meta-forces (28 themes scored: conviction/stage/horizon/instruments).<br />
+- <a href="wiki/syntheses/theme-linkage-map.html">theme-linkage-map</a> — cross-theme dependency network + shared-driver clusters (the correlation-risk map).<br />
+- <a href="wiki/syntheses/macro-regime.html">macro-regime</a> — rates/USD/inflation/liquidity/policy overlay conditioning every theme; regime scenarios.<br />
+- <a href="wiki/syntheses/watchlist.html">watchlist</a> — instruments under watch across all 7 meta-forces: thesis, entry trigger, invalidation, key metric.<br />
+- <a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a> — dated, falsifiable calls + later-scored verdicts; 22 open calls (P1–P22); <strong>P12 (SIPRI) resolved ✅ 2026-07-14</strong>.<br />
+- <a href="wiki/syntheses/cross-theme-idea-ranking.html">cross-theme-idea-ranking</a> — risk-adjusted insight shortlist across all 28 themes (Tier 1–3) with confirm/break markers; hands off to MDAEM for sizing.<br />
+- <a href="wiki/syntheses/dual-model-shortlist-scorecard-2026-06-03.html">dual-model-shortlist-scorecard-2026-06-03</a> — 8 names scored by BOTH engines (Futurist conviction + MDAEM gates/score/verdict) with live 2026-06-03 data + falsifiable criteria; review 2026-09-03.</p>
+<h3 id="v2-decision-support-hubs-added-2026-07-14">v2 decision-support hubs (added 2026-07-14)</h3>
+<ul>
+<li><a href="wiki/syntheses/signal-monitor.html">signal-monitor</a> — <strong>rolling sensor panel</strong> (weekly MONITOR): one row per watched metric with warn/flip thresholds; catches regime shifts between scans. Live-fed by <code>scripts/refresh.py</code>.</li>
+<li><a href="wiki/syntheses/instrument-universe.html">instrument-universe</a> — <strong>master instrument table</strong>: every US-listed instrument (~250) across all 28 themes, with live market cap / fwd P/E / rev growth / margins / yield / beta / % off 52w high. Sortable; per-theme tables live on each concept page. Auto-refreshed weekly (Sunday 06:00) via <code>scripts/weekly_refresh.sh</code>.</li>
+<li><a href="wiki/syntheses/decision-register.html">decision-register</a> — <strong>the sized-decision output</strong> for the operator's own book: ticker · action · conviction · target weight · entry zone · scale-in · invalidation. D1–D6 opened 2026-07-14 (TSM/LLY/GRID/ITA-RTX/DXJ/PHO); CRWD/GEV rejected on live valuation.</li>
+<li><a href="wiki/syntheses/portfolio-blueprint.html">portfolio-blueprint</a> — <strong>correlation-aware construction</strong>: 7-meta-force target allocations, the barbell (AI-capex offense + defense/gold/healthcare diversifiers), position-category buckets, concentration caps (no ticker &gt;8%, AI cluster ≤25%).</li>
+<li><a href="wiki/syntheses/regime-monitor.html">regime-monitor</a> — <strong>current cycle-act verdict</strong> from the post-bubble sim: late-Act-1 (euphoria not yet complete; F&amp;G 43.6, no act-2 sensor flashing); per-regime portfolio stance + transition thresholds.</li>
+<li><a href="wiki/syntheses/track-record.html">track-record</a> — <strong>P&amp;L/calibration ledger</strong>: D-series decisions mark-to-market + inherited MDAEM back-test (reject discipline validated); the honest "does conviction predict outcomes?" read.</li>
+<li><a href="wiki/syntheses/frontier-watch.html">frontier-watch</a> — <strong>foresight/trend-capture skill</strong>: 4-axis scoring (adoption/substance/purity/time-to-liquid) of emerging themes (humanoid robotics, fusion, BCI, synbio, SMR, space, quantum, eVTOL, solid-state battery) with a promotion threshold to the radar.</li>
+</ul>
+<h3 id="v3-quantitative-layer-added-2026-07-18-mdaem-v40">v3 quantitative layer (added 2026-07-18 — MDAEM v4.0)</h3>
+<p>The engine promoted from manual-single-name to <strong>quantitative universe screening</strong> with backtested strategy sleeves. See <a href="wiki/concepts/mdaem-framework-v4.html">mdaem-framework-v4</a>.<br />
+- <a href="wiki/concepts/mdaem-framework-v4.html">mdaem-framework-v4</a> — extends MDAEM v3.4 with a quant signal layer (automates Dim 3/5/6/7/9). Gates/weights/tiers/refs UNCHANGED.<br />
+- <a href="wiki/syntheses/backtest-results-2026-07-18.html">backtest-results-2026-07-18</a> — 5y walk-forward backtest: <strong>4 sleeves all beat VOO; ensemble +19.1% CAGR / Sharpe 1.02 / +10.4pts alpha</strong>. Resolved H1-H14 + H-CN5.<br />
+- <a href="wiki/syntheses/strategy-sleeves.html">strategy-sleeves</a> — the 4 sleeves (Quality 35-45% / Momentum 20-30% / Macro-rotation 15-25% / Value 10-15%) with top holdings + entry/exit rules.<br />
+- <a href="wiki/syntheses/security-sourcing-pipeline.html">security-sourcing-pipeline</a> — the daily workflow: quant screen → MDAEM verdict → sleeve tag → file decision.</p>
+<h3 id="deep-refresh-syntheses-2026-07-14-all-figures-live-with-provenance">Deep-refresh syntheses (2026-07-14, all figures live with provenance)</h3>
+<ul>
+<li><a href="wiki/syntheses/refresh-ai-compute-stack-2026-07-14.html">refresh-ai-compute-stack-2026-07-14</a> — AI cluster live refresh: 2026 capex ~$600–725B (+60–77% YoY → <strong>P1 effectively confirmed early</strong>); 13-name player table (NVDA fwdPE 16.4x on +85% rev; ORCL fwdPE 11.8x = stealth capex name; CRWD 132x = Gate 9 reject).</li>
+<li><a href="wiki/syntheses/refresh-energy-transition-2026-07-14.html">refresh-energy-transition-2026-07-14</a> — Energy cluster: VST +43% rev at 14.8x fwdPE (cleanest power name); SMR/OKLO/LEU crushed 66–85% off highs (validates MDAEM Ref 19); gold $4,075 (P16 on track); uranium P4 sensor dark.</li>
+<li><a href="wiki/syntheses/refresh-geopolitics-defense-2026-07-14.html">refresh-geopolitics-defense-2026-07-14</a> — Defense cluster: <strong>P12 ✅ detail</strong> (SIPRI 2025 = $2.887T); LMT fwdPE 16.3x the value anchor; ITA + RTX = D4 ADD; defense = lowest-AI-correlation diversifier per <a href="wiki/syntheses/theme-linkage-map.html">theme-linkage-map</a>.</li>
+</ul>
+<h3 id="bubble-risk-simulations-2026-06-28">Bubble-risk + simulations (2026-06-28)</h3>
+<ul>
+<li><a href="wiki/syntheses/bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a> — first <strong>BUBBLE-WATCH</strong>: 7 frameworks applied to live data. Structure extreme (CAPE 40.7, Buffett 219%, margin debt +54% YoY) but sentiment fearful (F&amp;G 25) → stretched, not a blow-off top.</li>
+<li><a href="wiki/syntheses/bubble-implications-by-theme.html">bubble-implications-by-theme</a> — turns the bubble read into a per-theme investment stance for all 30 themes (exposure tag: core/correlated/adjacent/diversifier + the barbell).</li>
+<li><a href="wiki/syntheses/top5-themes-deep-dive-2026-06-28.html">top5-themes-deep-dive-2026-06-28</a> — top-5 bubble-aware themes (cyber/power/defense/GLP-1/water): opportunity · threats · suggested winner · research aids · framework recommendation + invalidation.</li>
+<li><a href="wiki/syntheses/post-bubble-multi-agent-sim-2026-06-28.html">post-bubble-multi-agent-sim-2026-06-28</a> — MiroFish-style 7-agent simulation of what happens AFTER the bubble + when: 3 acts (euphoria completes 2026 → reflexive break 2027 → multi-year rotation), scenario probabilities, sensor panel, calls P19–P22. Drives <a href="wiki/syntheses/regime-monitor.html">regime-monitor</a>.</li>
+<li><code>outlook-dashboard.html</code> (repo root) — <strong>living interactive dashboard</strong> fusing all engine skills: bubble frameworks + Dalio 6-gauge, the 30-theme radar (sortable, dual-model picks), and quarterly indicator charts (2y). Offline, no CDN; edit the <code>DATA</code> block to refresh. Preview via <code>.claude/launch.json</code> ("dashboard").</li>
+</ul>
+<h3 id="meta-force-1-compute-ai-stack">Meta-force 1 — Compute &amp; AI stack</h3>
+<ul>
+<li><a href="wiki/concepts/ai-infrastructure.html">ai-infrastructure</a> (conv 4) — flagship AI compute/DC/power buildout; digestion + circular-financing risk.</li>
+<li><a href="wiki/concepts/semiconductors.html">semiconductors</a> (conv 4) — picks-&amp;-shovels; foundry/semicap strongest; ~$975B 2026E (WSTS); ~16-player table.</li>
+<li><a href="wiki/concepts/ai-software-agents.html">ai-software-agents</a> (conv 4) — AI monetization/agentic layer; seat-model disruption risk.</li>
+<li><a href="wiki/concepts/networking-optical.html">networking-optical</a> (conv 4) — AI back-end bandwidth; co-packaged optics; scarce pure-plays.</li>
+<li><a href="wiki/concepts/cybersecurity.html">cybersecurity</a> (conv 4) — most non-discretionary demand (~11% CAGR); best risk-adjusted of the cluster.</li>
+</ul>
+<h3 id="meta-force-2-energy-power-materials">Meta-force 2 — Energy, power &amp; materials</h3>
+<ul>
+<li><a href="wiki/concepts/energy-transition.html">energy-transition</a> — meta-force overview/hub linking the six granular energy pages.</li>
+<li><a href="wiki/concepts/power-grid-electrification.html">power-grid-electrification</a> (conv 4) — cleanest "AI needs power" play; grid + gencos; PPAs real.</li>
+<li><a href="wiki/concepts/natural-gas-lng.html">natural-gas-lng</a> (conv 4) — bridge fuel + DC baseload; LNG export; gas-turbine oligopoly.</li>
+<li><a href="wiki/concepts/data-center-cooling.html">data-center-cooling</a> (conv 4) — liquid-cooling inflection (Vertiv); most AI-capex-levered.</li>
+<li><a href="wiki/concepts/critical-minerals.html">critical-minerals</a> (conv ~3.5) — copper deficit, rare-earth China concentration, lithium; supply weaponization.</li>
+<li><a href="wiki/concepts/nuclear-uranium.html">nuclear-uranium</a> (conv 3) — SMR optionality + utility under-contracting; spot stretched; 9-player table.</li>
+<li><a href="wiki/concepts/renewables-storage.html">renewables-storage</a> (conv 3) — storage is the bright spot; solar/wind policy-whipsawed.</li>
+</ul>
+<h3 id="meta-force-3-reindustrialization-defense">Meta-force 3 — Reindustrialization &amp; defense</h3>
+<ul>
+<li><a href="wiki/concepts/defense-security.html">defense-security</a> (conv 4) — NATO 5%-GDP re-rating; low AI-correlation diversifier; priced-in.</li>
+<li><a href="wiki/concepts/infrastructure-capex.html">infrastructure-capex</a> (conv 4) — IIJA + electrification; aggregates duopoly moat (Vulcan/Martin Marietta).</li>
+<li><a href="wiki/concepts/automation-robotics.html">automation-robotics</a> (conv 3) — industrial cycle soft; humanoid optionality hype-heavy.</li>
+<li><a href="wiki/concepts/reshoring-supply-chain.html">reshoring-supply-chain</a> (conv 3) — US mfg construction ~2x since 2021; electrical/engineering winners.</li>
+</ul>
+<h3 id="meta-force-4-health-demographics">Meta-force 4 — Health &amp; demographics</h3>
+<ul>
+<li><a href="wiki/concepts/glp1-obesity-metabolic.html">glp1-obesity-metabolic</a> (conv 4) — obesity TAM ~$95–200B by 2030; oral inflection; 2027 Medicare overhang.</li>
+<li><a href="wiki/concepts/medtech-devices.html">medtech-devices</a> (conv 4) — razor-and-blade franchises; ~85% recurring (Intuitive); GLP-1 overhang.</li>
+<li><a href="wiki/concepts/biotech-genomics.html">biotech-genomics</a> (conv 3) — ~$300B patent cliff drives M&A; editors binary; large-caps safe.</li>
+<li><a href="wiki/concepts/healthcare-aging-services.html">healthcare-aging-services</a> (conv 3) — senior-housing (Welltower) clean winner; managed care policy-whipsawed.</li>
+</ul>
+<h3 id="meta-force-5-financial-transformation">Meta-force 5 — Financial transformation</h3>
+<ul>
+<li><a href="wiki/concepts/fintech-payments.html">fintech-payments</a> (conv 3) — Visa/MA duopoly merits 4; contested periphery pulls theme to 3.</li>
+<li><a href="wiki/concepts/tokenization-digital-assets.html">tokenization-digital-assets</a> (conv 3) — GENIUS-Act inflection; crypto ~45% off peak (read as cyclical).</li>
+</ul>
+<h3 id="meta-force-6-geographies">Meta-force 6 — Geographies</h3>
+<ul>
+<li><a href="wiki/concepts/india-em-growth.html">india-em-growth</a> (conv 4) — cleanest multi-decade EM grower; 2026 pullback = entry debate.</li>
+<li><a href="wiki/concepts/japan-corporate-reform.html">japan-corporate-reform</a> (conv 4) — governance + reflation regime change; Berkshire-endorsed; FX decisive.</li>
+<li><a href="wiki/concepts/us-megacap-quality.html">us-megacap-quality</a> (conv 3) — superb businesses; ~35% S&amp;P concentration + ~27–28x cap the score.</li>
+<li><a href="wiki/concepts/asean-thailand.html">asean-thailand</a> (conv 3; TH ~2) — VN/ID growth + Indonesia banks; Thailand the regional laggard.</li>
+<li><a href="wiki/concepts/china-contrarian.html">china-contrarian</a> (conv 3) — deep value + AI re-rating vs deflation/property/geopolitics; tactical sleeve.</li>
+</ul>
+<h3 id="meta-force-7-cross-cutting-real-assets">Meta-force 7 — Cross-cutting / real assets</h3>
+<ul>
+<li><a href="wiki/concepts/water-resource-scarcity.html">water-resource-scarcity</a> (conv 4) — defensive compounder + AI-datacenter cooling-water growth kicker.</li>
+<li><a href="wiki/concepts/commodities-gold-real-assets.html">commodities-gold-real-assets</a> (conv 3.5) — debasement hedge + low AI-correlation; post-parabolic.</li>
+<li><a href="wiki/concepts/space-economy.html">space-economy</a> (conv 2.5) — ~$1T TAM but early/binary/cash-burning; SpaceX private.</li>
+<li><a href="wiki/concepts/quantum-computing.html">quantum-computing</a> (conv 2) — transformational optionality; extreme valuations; big-tech the safer hold.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Signal Monitor</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Signal Monitor
+type: synthesis
+tags: [investing, signals, monitor, sensors, regime, weekly]
+sources: []
+date: 2026-07-17
+last_scan: 2026-07-17</div>
+<article>
+<h1 id="signal-monitor">Signal Monitor</h1>
+<p><strong>Bottom line:</strong> The engine's rolling sensor panel — the early-warning layer that catches regime<br />
+shifts between scans. One row per metric the engine watches; each carries a <strong>warn</strong> level (attention)<br />
+and a <strong>flip</strong> level (thesis-changing). <strong>Updated every weekly MONITOR</strong> (<code>CADENCE.md</code>) from<br />
+<code>scripts/refresh.py</code>. <em>Insight &amp; decisions for the operator's own book — not personalized advice.</em></p>
+<blockquote>
+<p><strong>How to read.</strong> Status: 🟢 calm · 🟡 warn (watch) · 🔴 flip (act — check <a href="decision-register.html">decision-register</a> /<br />
+<a href="regime-monitor.html">regime-monitor</a>). The <strong>flip</strong> column is the level that changes a thesis; the <strong>warn</strong> column is<br />
+the level that prompts a closer look. Every reading is live-pulled with provenance — no training-data values.</p>
+</blockquote>
+<hr />
+<h2 id="macro-valuation-sentiment-bubble-sensors">Macro / valuation / sentiment (bubble sensors)</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th style="text-align: right;">Current</th>
+<th>As-of</th>
+<th>Warn</th>
+<th>Flip</th>
+<th style="text-align: center;">Status</th>
+<th>Source / note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shiller CAPE</td>
+<td style="text-align: right;"><strong>41.85</strong></td>
+<td>2026-07-14</td>
+<td>&gt;38</td>
+<td>—</td>
+<td style="text-align: center;">🟡</td>
+<td>2.41× the 17.39 mean; 2nd-highest ever. Structural, not a timing signal (fact, multpl.com) — see <a href="bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a></td>
+</tr>
+<tr>
+<td>CNN Fear &amp; Greed</td>
+<td style="text-align: right;"><strong>43.6</strong></td>
+<td>2026-07-14</td>
+<td>&lt;30 or &gt;65</td>
+<td><strong>&gt;75</strong></td>
+<td style="text-align: center;">🟢</td>
+<td>"Fear" zone. <strong>P19 trigger = Extreme Greed (&gt;75)</strong> — the missing euphoria flip is the sim's Act 1 completion (fact, CNN)</td>
+</tr>
+<tr>
+<td>VIX</td>
+<td style="text-align: right;"><strong>16.41</strong></td>
+<td>2026-07-14</td>
+<td>&gt;25</td>
+<td>&gt;40</td>
+<td style="text-align: center;">🟢</td>
+<td>Calm; complacent-adjacent (fact, yfinance ^VIX)</td>
+</tr>
+<tr>
+<td>S&amp;P 500</td>
+<td style="text-align: right;"><strong>7,539.82</strong></td>
+<td>2026-07-14</td>
+<td>—</td>
+<td><strong>−20% from peak = P18 fail</strong></td>
+<td style="text-align: center;">🟢</td>
+<td>Up from 7,542 Jun-28 baseline ≈ flat over 16 days (fact, yfinance ^GSPC)</td>
+</tr>
+<tr>
+<td>10Y Treasury yield</td>
+<td style="text-align: right;"><strong>4.57%</strong></td>
+<td>2026-07-14</td>
+<td>&gt;4.75 or &lt;3.75</td>
+<td>—</td>
+<td style="text-align: center;">🟡</td>
+<td>Sticky-high; pressures long-duration + Mag-7 (fact, yfinance ^TNX)</td>
+</tr>
+<tr>
+<td>US Dollar (DXY)</td>
+<td style="text-align: right;"><strong>100.81</strong></td>
+<td>2026-07-14</td>
+<td>&lt;95 or &gt;105</td>
+<td>—</td>
+<td style="text-align: center;">🟢</td>
+<td>Near flat vs the −9.5% 2025 read in <a href="macro-regime.html">macro-regime</a> (fact, yfinance)</td>
+</tr>
+<tr>
+<td>HY OAS (BAMLH0A0HYM2)</td>
+<td style="text-align: right;">UNAVAILABLE</td>
+<td>2026-07-14</td>
+<td>&gt;3.5%</td>
+<td><strong>≥4.0% monthly close = P17 fail</strong></td>
+<td style="text-align: center;">⚪</td>
+<td>Needs FRED key (<code>scripts/.fred_key</code>); last known ~2.6% (Jun-28). <strong>P17/P21 sensor</strong></td>
+</tr>
+<tr>
+<td>S&amp;P top-10 weight %</td>
+<td style="text-align: right;">PENDING</td>
+<td>2026-07-14</td>
+<td>—</td>
+<td>—</td>
+<td style="text-align: center;">⚪</td>
+<td>slickcharts scrape broken (parse noise); verify manually — last known ~35% (P15 sensor)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ai-capex-engine-the-central-reflexive-force">AI-capex engine (the central reflexive force)</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th style="text-align: right;">Current</th>
+<th>As-of</th>
+<th>Warn</th>
+<th>Flip</th>
+<th style="text-align: center;">Status</th>
+<th>Source / note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026 hyperscaler capex (Big-4 + ORCL)</td>
+<td style="text-align: right;"><strong>~$600–725B, +60–77% YoY</strong></td>
+<td>2026-07-14</td>
+<td>—</td>
+<td><strong>guide-down = P20 trigger</strong></td>
+<td style="text-align: center;">🟢</td>
+<td><strong>P1 effectively confirmed early</strong> (≥+50% YoY). CNBC/Futurum/CreditSights range; definitive read at FY results (web, 2026-07-14)</td>
+</tr>
+<tr>
+<td>NVDA</td>
+<td style="text-align: right;"><strong>$209.05</strong></td>
+<td>2026-07-14</td>
+<td>—</td>
+<td>seq. rev decline 2+ qtrs</td>
+<td style="text-align: center;">🟢</td>
+<td>AI-capex bellwether (fact, yfinance)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="crypto-digital-assets">Crypto / digital assets</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th style="text-align: right;">Current</th>
+<th>As-of</th>
+<th>Warn</th>
+<th>Flip</th>
+<th style="text-align: center;">Status</th>
+<th>Source / note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bitcoin (BTC)</td>
+<td style="text-align: right;"><strong>$64,746</strong></td>
+<td>2026-07-14</td>
+<td>&lt;$60K</td>
+<td>—</td>
+<td style="text-align: center;">🔴</td>
+<td><strong>Breached warn</strong> — was testing 21-mo lows ~$58–60K in late June with record ETF outflows; recovered to ~$65K. A regime shift since the Jun-28 bubble-watch that this monitor now exists to catch (fact, yfinance BTC-USD)</td>
+</tr>
+<tr>
+<td>Ethereum (ETH)</td>
+<td style="text-align: right;"><strong>$1,878</strong></td>
+<td>2026-07-14</td>
+<td>&lt;$1,700</td>
+<td>—</td>
+<td style="text-align: center;">🟡</td>
+<td>Near warn; well off highs (fact, yfinance ETH-USD)</td>
+</tr>
+<tr>
+<td>Stablecoin mkt cap</td>
+<td style="text-align: right;">PENDING</td>
+<td>—</td>
+<td>—</td>
+<td>&lt;$300K = P13 fail</td>
+<td style="text-align: center;">⚪</td>
+<td>Quarterly check; last ~$320B (May-26). P13 sensor (<a href="../concepts/tokenization-digital-assets.html">tokenization-digital-assets</a>)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="energy-transition-real-assets">Energy transition / real assets</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th style="text-align: right;">Current</th>
+<th>As-of</th>
+<th>Warn</th>
+<th>Flip</th>
+<th style="text-align: center;">Status</th>
+<th>Source / note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gold (futures, GC=F)</td>
+<td style="text-align: right;"><strong>$4,082.50</strong></td>
+<td>2026-07-14</td>
+<td>&lt;$4,000</td>
+<td>—</td>
+<td style="text-align: center;">🟢</td>
+<td><strong>P16 on track</strong> (ends 2026 ≥$4,000); debasement bid intact (fact, yfinance GC=F)</td>
+</tr>
+<tr>
+<td>Uranium spot (U3O8)</td>
+<td style="text-align: right;">PENDING</td>
+<td>—</td>
+<td>&lt;$80/lb</td>
+<td>—</td>
+<td style="text-align: center;">⚪</td>
+<td><strong>P4 sensor</strong> (stays ≥$80/lb through end-2026); re-pull next scan — last flagged search-aggregated</td>
+</tr>
+<tr>
+<td>≥1 GW DC nuclear/gas PPA announced</td>
+<td style="text-align: right;">TBA</td>
+<td>2026</td>
+<td>—</td>
+<td>—</td>
+<td style="text-align: center;">⚪</td>
+<td><strong>P11 sensor</strong>; check announcements each scan</td>
+</tr>
+</tbody>
+</table>
+<h2 id="geopolitics-defense">Geopolitics / defense</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th style="text-align: right;">Current</th>
+<th>As-of</th>
+<th>Warn</th>
+<th>Flip</th>
+<th style="text-align: center;">Status</th>
+<th>Source / note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global military spending (SIPRI, 2025)</td>
+<td style="text-align: right;"><strong>$2.887T</strong></td>
+<td>2026-04</td>
+<td>—</td>
+<td>—</td>
+<td style="text-align: center;">✅</td>
+<td><strong>P12 resolved ✅</strong> (+2.9% real vs 2024 $2.72T; 11th straight yr of growth) — see <a href="prediction-ledger.html">prediction-ledger</a> (fact, sipri.org)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="geographies">Geographies</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th style="text-align: right;">Current</th>
+<th>As-of</th>
+<th>Warn</th>
+<th>Flip</th>
+<th style="text-align: center;">Status</th>
+<th>Source / note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nikkei 225</td>
+<td style="text-align: right;"><strong>67,743</strong></td>
+<td>2026-07-14</td>
+<td>—</td>
+<td>TSE Prime PBR &lt;1.3 = P7 fail</td>
+<td style="text-align: center;">🟢</td>
+<td>Japan thesis (<a href="../concepts/japan-corporate-reform.html">japan-corporate-reform</a>) (fact, yfinance ^N225)</td>
+</tr>
+<tr>
+<td>BSE Sensex</td>
+<td style="text-align: right;"><strong>77,055</strong></td>
+<td>2026-07-14</td>
+<td>—</td>
+<td>ends 2026 &lt;23,548 = P10 fail</td>
+<td style="text-align: center;">🟢</td>
+<td>Well above P10 threshold (<a href="../concepts/india-em-growth.html">india-em-growth</a>) (fact, yfinance ^BSESN)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="what-moved-since-the-last-scan-2026-06-28-2026-07-14">What moved since the last scan (2026-06-28 → 2026-07-14)</h2>
+<ul>
+<li>🔴 <strong>BTC broke warn</strong> ($64.7K vs prior read; tested $58–60K late-June). A genuine regime shift the<br />
+  pre-monitor engine would have missed. Action: none forced (tokenization theme is conv-3, not in the<br />
+  priority clusters), but <strong>flagged for the next decision pass</strong> — if BTC closes a week &lt;$60K, the<br />
+  cyclical read hardens into a structural one.</li>
+<li>🟡 <strong>F&amp;G drifted 25 → 43.6</strong> (extreme fear → fear). Sentiment is <em>normalizing off the depressed<br />
+  Jun-28 read</em> — moves us closer to the Act-1 "euphoria completes" framing, not away.</li>
+<li>⚪ <strong>All structural reads unchanged</strong>: CAPE 40.70→41.85, S&amp;P ~flat, 10Y sticky at 4.57%. The<br />
+  "stretched but not blow-off" verdict from <a href="bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a> holds.</li>
+<li>✅ <strong>P1 effectively confirmed early</strong> (2026 capex +60–77% YoY, well past the ≥+50% threshold) — will<br />
+  formally resolve at FY results; no need to wait for the 2027-02-28 date.</li>
+<li>✅ <strong>P12 scored</strong> — SIPRI 2025 = $2.887T, exceeds 2024's $2.72T. See <a href="prediction-ledger.html">prediction-ledger</a>.</li>
+</ul>
+<h2 id="sensors-still-dark-need-plumbing-or-manual-check">Sensors still dark (need plumbing or manual check)</h2>
+<ul>
+<li><strong>HY OAS</strong> (P17/P21 sensor) — blocked on FRED key. Highest-value sensor still dark; this is the<br />
+<em>lead</em> indicator the multi-agent sim identified for the reflexive-break act. <strong>Add <code>scripts/.fred_key</code>.</strong></li>
+<li><strong>S&amp;P top-10 weight</strong> (P15 sensor) — slickcharts scrape noisy; verify manually next scan.</li>
+<li><strong>Uranium spot</strong> (P4 sensor) — needs a spot source (tradingeconomics/UxC); not in the refresh helper yet.</li>
+<li><strong>Stablecoin mkt cap</strong> (P13) — quarterly manual check.</li>
+</ul>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<ul>
+<li>Macro/valuation/sentiment: <strong>high confidence</strong> — multiple independent live sources (yfinance, multpl, CNN).</li>
+<li>HY OAS, top-10 weight, uranium spot: <strong>dark</strong> — see above. The HY OAS gap is the most consequential.</li>
+<li>All readings are point-in-time spot; the dashboard's quarterly history charts (CAPE/VIX/F&amp;G) still<br />
+  need backfill — a future enhancement to <code>scripts/refresh.py</code> (extend <code>_yf_history</code> period).</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Feeds: <a href="regime-monitor.html">regime-monitor</a> (cycle-act verdict) · <a href="decision-register.html">decision-register</a> (action triggers) · <a href="watchlist.html">watchlist</a> (entry/invalidation source) · <a href="prediction-ledger.html">prediction-ledger</a> (P-call sensors).</li>
+<li>Refreshed by: <code>scripts/refresh.py</code> per <code>CADENCE.md</code> MONITOR cadence.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

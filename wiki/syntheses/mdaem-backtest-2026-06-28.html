@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MDAEM v3.4 Back-Test &amp; Calibration — interim (2026-06-28)</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;MDAEM v3.4 Back-Test &amp; Calibration — interim (2026-06-28)&quot;
+type: synthesis
+tags: [investing, mdaem, backtest, calibration, validation, predictions]
+sources: [[[mdaem-v34-framework]]]
+date: 2026-06-28</div>
+<article>
+<h1 id="mdaem-v34-back-test-calibration-interim-2026-06-28">MDAEM v3.4 Back-Test &amp; Calibration — interim (2026-06-28)</h1>
+<p><strong>Bottom line:</strong> Scored every call in the <a href="mdaem-validation-database.html">2026-05-24 snapshot</a> against<br />
+live prices ~5 weeks later. <strong>The framework's <em>reject discipline</em> is working strongly</strong> — the<br />
+asymmetry / extreme-valuation / M&amp;A-ceiling / broken-thesis gates caught downside in aggregate<br />
+(reject basket <strong>−8.7%</strong> vs the book benchmark VOO <strong>−2.2%</strong> = ~6.5 pts of avoided loss). <strong>Where it<br />
+leaks is exactly where the framework already flagged its own bias:</strong> dismissing high-momentum<br />
+continuation and "waiting for a pullback" on megatrends — <strong>TNGX +55%, VKTX +23%, TEM +22%, NBIS +12%</strong><br />
+all rose after a reject/defer. Net: <strong>high precision (avoids losers), lower recall (misses runners).</strong></p>
+<blockquote>
+<p>⚠️ <strong>Read as interim, not a verdict.</strong> (1) Window is only <strong>~5 weeks</strong> (2026-05-22 → 2026-06-26);<br />
+the framework's own resolution is <strong>2026-08-24</strong>. (2) It was a <strong>down tape</strong> (mega-cap tech ≈ −10%,<br />
+China ≈ −10%, gold ≈ −9%) — so "avoiding" looks easy; the <em>relative</em> (basket vs benchmark) numbers<br />
+are the real signal, not the absolute drops. (3) Prices single-sourced (stockanalysis.com); <strong>MU,<br />
+HYDR, UFO, gold flagged for re-verify</strong>. <strong>Insight/validation of the operator's framework — not advice.</strong></p>
+</blockquote>
+<p><strong>Method:</strong> entry = <strong>2026-05-22 close</strong> (nearest trading day to the Sunday 2026-05-24 snapshot);<br />
+current = <strong>2026-06-26 close</strong> (last session before today). Benchmark = <strong>VOO −2.2%</strong> (the book's 19%<br />
+foundation). ✅ call working · ◐ developing · ❌ call wrong (so far).</p>
+<hr />
+<h2 id="1-the-book-holdings-new-adds">1. The book — holdings &amp; new adds</h2>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Verdict</th>
+<th style="text-align: right;">05-22</th>
+<th style="text-align: right;">06-26</th>
+<th style="text-align: right;">Return</th>
+<th style="text-align: right;">vs VOO</th>
+<th>Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VOO</td>
+<td>Foundation</td>
+<td style="text-align: right;">685.55</td>
+<td style="text-align: right;">670.26</td>
+<td style="text-align: right;"><strong>−2.2%</strong></td>
+<td style="text-align: right;">—</td>
+<td>benchmark</td>
+</tr>
+<tr>
+<td><strong>META</strong></td>
+<td><strong>ADD ★</strong></td>
+<td style="text-align: right;">610.26</td>
+<td style="text-align: right;">550.25</td>
+<td style="text-align: right;">−9.8%</td>
+<td style="text-align: right;">−7.6</td>
+<td>✅ <strong>H1</strong>: beat MSFT −10.9%, GOOG −11.8%, NVDA −10.6% — relative-contrarian thesis holds even down</td>
+</tr>
+<tr>
+<td><strong>DDD</strong></td>
+<td><strong>ADD ★</strong></td>
+<td style="text-align: right;">3.15</td>
+<td style="text-align: right;">3.04</td>
+<td style="text-align: right;">−3.5%</td>
+<td style="text-align: right;">−1.3</td>
+<td>◐ flat; −25% stop intact; H2 earnings ~Aug</td>
+</tr>
+<tr>
+<td>MSFT</td>
+<td>Hold</td>
+<td style="text-align: right;">418.57</td>
+<td style="text-align: right;">372.97</td>
+<td style="text-align: right;">−10.9%</td>
+<td style="text-align: right;">−8.7</td>
+<td>mega-cap tech de-rated</td>
+</tr>
+<tr>
+<td>GOOG</td>
+<td>Hold</td>
+<td style="text-align: right;">379.38</td>
+<td style="text-align: right;">334.69</td>
+<td style="text-align: right;">−11.8%</td>
+<td style="text-align: right;">−9.6</td>
+<td>"</td>
+</tr>
+<tr>
+<td>MU</td>
+<td>Hold (stop 680)</td>
+<td style="text-align: right;">751.00</td>
+<td style="text-align: right;">1132.33</td>
+<td style="text-align: right;"><strong>+50.8% ⚠</strong></td>
+<td style="text-align: right;">+53</td>
+<td>book's big winner — <strong>anomaly, re-verify split</strong></td>
+</tr>
+<tr>
+<td>AMD</td>
+<td>Hold (stop 200)</td>
+<td style="text-align: right;">467.51</td>
+<td style="text-align: right;">521.58</td>
+<td style="text-align: right;">+11.6%</td>
+<td style="text-align: right;">+13.8</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>GRID</td>
+<td>Hold</td>
+<td style="text-align: right;">192.50</td>
+<td style="text-align: right;">185.11</td>
+<td style="text-align: right;">−3.8%</td>
+<td style="text-align: right;">−1.6</td>
+<td>—</td>
+</tr>
+<tr>
+<td>QQQM</td>
+<td>Hold</td>
+<td style="text-align: right;">295.44</td>
+<td style="text-align: right;">290.95</td>
+<td style="text-align: right;">−1.5%</td>
+<td style="text-align: right;">+0.7</td>
+<td>beat VOO slightly</td>
+</tr>
+<tr>
+<td>CIBR</td>
+<td>Hold</td>
+<td style="text-align: right;">84.28</td>
+<td style="text-align: right;">85.36</td>
+<td style="text-align: right;">+1.3%</td>
+<td style="text-align: right;">+3.5</td>
+<td>✅ defensive AI-levered</td>
+</tr>
+<tr>
+<td>IDNA</td>
+<td>Hold</td>
+<td style="text-align: right;">29.45</td>
+<td style="text-align: right;">33.07</td>
+<td style="text-align: right;">+12.3%</td>
+<td style="text-align: right;">+14.5</td>
+<td>✅ genomics</td>
+</tr>
+<tr>
+<td>CI</td>
+<td>Hold</td>
+<td style="text-align: right;">286.24</td>
+<td style="text-align: right;">282.79</td>
+<td style="text-align: right;">−1.2%</td>
+<td style="text-align: right;">+1.0</td>
+<td>—</td>
+</tr>
+<tr>
+<td>CCJ</td>
+<td>TRIM −1%</td>
+<td style="text-align: right;">104.75</td>
+<td style="text-align: right;">104.49</td>
+<td style="text-align: right;">−0.2%</td>
+<td style="text-align: right;">+2.0</td>
+<td>◐ <strong>H3</strong>: flat; trim neither helped nor hurt yet</td>
+</tr>
+<tr>
+<td>YLG-GOLD</td>
+<td>Gold hedge</td>
+<td style="text-align: right;">~4500</td>
+<td style="text-align: right;">~4087</td>
+<td style="text-align: right;">≈−9.2% ⚠</td>
+<td style="text-align: right;">−7.0</td>
+<td>gold fell; hedge cost carry (re-verify)</td>
+</tr>
+<tr>
+<td>SGOV</td>
+<td>Cash</td>
+<td style="text-align: right;">100.63</td>
+<td style="text-align: right;">100.65</td>
+<td style="text-align: right;">+0.0%</td>
+<td style="text-align: right;">+2.2</td>
+<td>cash beat a down market</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pending/deferred that would have helped:</strong> IBM 253.84→271.63 <strong>+7.0%</strong> (13A pending add);<br />
+<strong>TEM 46.18→56.14 +21.6%</strong> (deferred via IDNA — a <em>miss</em>, see calibration).</p>
+<hr />
+<h2 id="2-reject-calls-the-discipline-test-h7-h8">2. Reject calls — the discipline test (H7, H8)</h2>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Reject reason</th>
+<th style="text-align: right;">05-22</th>
+<th style="text-align: right;">06-26</th>
+<th style="text-align: right;">Return</th>
+<th style="text-align: center;">Score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>RKLB</strong></td>
+<td>Asymmetry (Ref 19)</td>
+<td style="text-align: right;">135.76</td>
+<td style="text-align: right;">84.54</td>
+<td style="text-align: right;"><strong>−37.7%</strong></td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td><strong>PL</strong></td>
+<td>Asymmetry</td>
+<td style="text-align: right;">44.35</td>
+<td style="text-align: right;">27.07</td>
+<td style="text-align: right;"><strong>−39.0%</strong></td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td><strong>ONDS</strong></td>
+<td>Asymmetry + NIM (Ref 18)</td>
+<td style="text-align: right;">9.06</td>
+<td style="text-align: right;">7.83</td>
+<td style="text-align: right;">−13.6%</td>
+<td style="text-align: center;">◐ right way</td>
+</tr>
+<tr>
+<td><strong>TNGX</strong></td>
+<td>Asymmetry (Ref J/19)</td>
+<td style="text-align: right;">20.24</td>
+<td style="text-align: right;">31.47</td>
+<td style="text-align: right;"><strong>+55.5%</strong></td>
+<td style="text-align: center;">❌ <strong>the miss</strong></td>
+</tr>
+<tr>
+<td><strong>KALV</strong></td>
+<td>M&amp;A ceiling (Ref 17)</td>
+<td style="text-align: right;">26.79</td>
+<td style="text-align: right;">27.00→delisted</td>
+<td style="text-align: right;">+0.8%</td>
+<td style="text-align: center;">✅ capped at $27, deal closed 06-11</td>
+</tr>
+<tr>
+<td><strong>QBTS</strong></td>
+<td>Extreme val (Ref 20)</td>
+<td style="text-align: right;">29.40</td>
+<td style="text-align: right;">22.76</td>
+<td style="text-align: right;">−22.6%</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td><strong>RGTI</strong></td>
+<td>Extreme val (Ref 20)</td>
+<td style="text-align: right;">26.42</td>
+<td style="text-align: right;">18.36</td>
+<td style="text-align: right;">−30.5%</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td><strong>TEVA</strong></td>
+<td>Revisions/target (Ref 19)</td>
+<td style="text-align: right;">34.07</td>
+<td style="text-align: right;">33.21</td>
+<td style="text-align: right;">−2.5%</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td><strong>HYDR</strong></td>
+<td>Broken thesis (ETF)</td>
+<td style="text-align: right;">71.28</td>
+<td style="text-align: right;">47.80</td>
+<td style="text-align: right;">−32.9% ⚠</td>
+<td style="text-align: center;">✅ (H9)</td>
+</tr>
+<tr>
+<td>IONQ</td>
+<td>Spec-watch only</td>
+<td style="text-align: right;">63.64</td>
+<td style="text-align: right;">49.31</td>
+<td style="text-align: right;">−22.5%</td>
+<td style="text-align: center;">✅ caution right</td>
+</tr>
+<tr>
+<td><strong>VKTX</strong></td>
+<td>Downgrade→watch (Ref 21)</td>
+<td style="text-align: right;">30.89</td>
+<td style="text-align: right;">38.04</td>
+<td style="text-align: right;"><strong>+23.2%</strong></td>
+<td style="text-align: center;">❌ defer too early</td>
+</tr>
+<tr>
+<td>NVDA</td>
+<td>Skip direct (via QQQM)</td>
+<td style="text-align: right;">215.33</td>
+<td style="text-align: right;">192.53</td>
+<td style="text-align: right;">−10.6%</td>
+<td style="text-align: center;">✅ skip right</td>
+</tr>
+<tr>
+<td>AVGO</td>
+<td>Skip direct (via QQQM)</td>
+<td style="text-align: right;">414.14</td>
+<td style="text-align: right;">365.02</td>
+<td style="text-align: right;">−11.9%</td>
+<td style="text-align: center;">✅</td>
+</tr>
+<tr>
+<td>SPCX</td>
+<td>Reject IPO (Ref/H4)</td>
+<td style="text-align: right;">IPO $135 (06-12)</td>
+<td style="text-align: right;">153.23 / ~$2.02T</td>
+<td style="text-align: right;">n/a</td>
+<td style="text-align: center;">◐ peaked &gt;$2.9T 06-16 → −30%; not yet &lt; IPO</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Reject basket (RKLB/PL/ONDS/TNGX) = −8.7%</strong> vs VOO −2.2% → the gate added <strong>~6.5 pts</strong> even <em>with</em><br />
+the TNGX outlier. Add QBTS/RGTI/TEVA/HYDR and the discipline is overwhelmingly validated. <strong>H7/H8: the<br />
+"pass" discipline adds value.</strong> The asymmetry, extreme-valuation, M&amp;A-ceiling and broken-thesis gates<br />
+are the framework's strongest, most repeatable edge.</p>
+<hr />
+<h2 id="3-watchlist-sector-etfs">3. Watchlist &amp; sector ETFs</h2>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Call</th>
+<th style="text-align: right;">05-22</th>
+<th style="text-align: right;">06-26</th>
+<th style="text-align: right;">Return</th>
+<th>Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NBIS</td>
+<td>Watch (pullback $150-170)</td>
+<td style="text-align: right;">214.77</td>
+<td style="text-align: right;">240.30</td>
+<td style="text-align: right;"><strong>+11.9%</strong></td>
+<td>❌ <strong>H5</strong>: rallied, no pullback (late-cycle rule too restrictive)</td>
+</tr>
+<tr>
+<td>TEM</td>
+<td>Deferred (via IDNA)</td>
+<td style="text-align: right;">46.18</td>
+<td style="text-align: right;">56.14</td>
+<td style="text-align: right;"><strong>+21.6%</strong></td>
+<td>❌ standalone would have helped</td>
+</tr>
+<tr>
+<td>CRDO</td>
+<td>Watch (pullback $150-170)</td>
+<td style="text-align: right;">218.41</td>
+<td style="text-align: right;">238.00</td>
+<td style="text-align: right;">+9.0%</td>
+<td>extended further — pullback never came</td>
+</tr>
+<tr>
+<td>LEU</td>
+<td>Watch (pullback $130-150)</td>
+<td style="text-align: right;">179.36</td>
+<td style="text-align: right;">165.52</td>
+<td style="text-align: right;">−7.7%</td>
+<td>◐ moving toward trigger</td>
+</tr>
+<tr>
+<td>LMT</td>
+<td>Watch (&lt;$450)</td>
+<td style="text-align: right;">533.24</td>
+<td style="text-align: right;">507.40</td>
+<td style="text-align: right;">−4.8%</td>
+<td>◐ toward trigger</td>
+</tr>
+<tr>
+<td>TLN</td>
+<td>Watch</td>
+<td style="text-align: right;">372.45</td>
+<td style="text-align: right;">404.09</td>
+<td style="text-align: right;">+8.5%</td>
+<td>ran without entry</td>
+</tr>
+<tr>
+<td>SMH</td>
+<td>Reject (overlap)</td>
+<td style="text-align: right;">576.32</td>
+<td style="text-align: right;">611.61</td>
+<td style="text-align: right;">+6.1%</td>
+<td>semis up (H6)</td>
+</tr>
+<tr>
+<td>SOXX</td>
+<td>Reject (overlap)</td>
+<td style="text-align: right;">537.33</td>
+<td style="text-align: right;">589.94</td>
+<td style="text-align: right;">+9.8%</td>
+<td>semis up (H6)</td>
+</tr>
+<tr>
+<td>NUKZ</td>
+<td>Optional</td>
+<td style="text-align: right;">70.76</td>
+<td style="text-align: right;">67.86</td>
+<td style="text-align: right;">−4.1%</td>
+<td>✅ vs CCJ −0.2%</td>
+</tr>
+<tr>
+<td>ROKT / ARKX / UFO</td>
+<td>Skip (space)</td>
+<td style="text-align: right;">125.39 / 35.42 / 61.90</td>
+<td style="text-align: right;">112.61 / 31.93 / 46.19</td>
+<td style="text-align: right;">−10% / −10% / −25% ⚠</td>
+<td>✅ <strong>H10</strong>: space faded post-SPCX-IPO</td>
+</tr>
+</tbody>
+</table>
+<p><strong>H6 (semi-ETF concentration):</strong> SMH +6.1% / SOXX +9.8% beat VOO by ~10 pts — <em>would</em> trip the<br />
+"too restrictive" flag <strong>except</strong> the book captured semi upside via <strong>MU +50.8% &amp; AMD +11.6%</strong>, so the<br />
+<em>overlap</em> reject was right (held names did the work). H6 = <strong>framework OK</strong>, not too restrictive.</p>
+<hr />
+<h2 id="4-chinahk-book-h-cn">4. China/HK book (H-CN)</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th style="text-align: right;">05-22</th>
+<th style="text-align: right;">06-26</th>
+<th style="text-align: right;">Return</th>
+<th></th>
+<th>Name</th>
+<th style="text-align: right;">05-22</th>
+<th style="text-align: right;">06-26</th>
+<th style="text-align: right;">Return</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Tencent (0700)</td>
+<td style="text-align: right;">441.40</td>
+<td style="text-align: right;">411.80</td>
+<td style="text-align: right;">−6.7%</td>
+<td></td>
+<td>Xiaomi (1810)</td>
+<td style="text-align: right;">30.00</td>
+<td style="text-align: right;">21.42</td>
+<td style="text-align: right;"><strong>−28.6%</strong></td>
+</tr>
+<tr>
+<td>BYD (1211)</td>
+<td style="text-align: right;">91.60</td>
+<td style="text-align: right;">72.65</td>
+<td style="text-align: right;"><strong>−20.7%</strong></td>
+<td></td>
+<td>NetEase (NTES)</td>
+<td style="text-align: right;">116.55</td>
+<td style="text-align: right;">123.71</td>
+<td style="text-align: right;"><strong>+6.1%</strong></td>
+</tr>
+<tr>
+<td>MCHI (bench)</td>
+<td style="text-align: right;">55.54</td>
+<td style="text-align: right;">50.48</td>
+<td style="text-align: right;">−9.1%</td>
+<td></td>
+<td>SMIC (0981)</td>
+<td style="text-align: right;">79.85</td>
+<td style="text-align: right;">80.00</td>
+<td style="text-align: right;">+0.2%</td>
+</tr>
+<tr>
+<td>Baidu (BIDU)</td>
+<td style="text-align: right;">127.79</td>
+<td style="text-align: right;">104.22</td>
+<td style="text-align: right;">−18.4%</td>
+<td></td>
+<td>Trip.com (TCOM)</td>
+<td style="text-align: right;">46.37</td>
+<td style="text-align: right;">40.89</td>
+<td style="text-align: right;">−11.8%</td>
+</tr>
+<tr>
+<td>PDD</td>
+<td style="text-align: right;">94.52</td>
+<td style="text-align: right;">76.55</td>
+<td style="text-align: right;">−19.0%</td>
+<td></td>
+<td>ANTA (2020)</td>
+<td style="text-align: right;">75.15</td>
+<td style="text-align: right;">68.75</td>
+<td style="text-align: right;">−8.5%</td>
+</tr>
+<tr>
+<td></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td></td>
+<td>HSBC (0005)</td>
+<td style="text-align: right;">143.90</td>
+<td style="text-align: right;">147.70</td>
+<td style="text-align: right;">+2.6%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>China book ≈ −10.4%</strong> vs <strong>MCHI −9.1%</strong> → <strong>H-CN5 failing</strong> (book lagged the index). The<br />
+<strong>"buy the 52-week low" contrarian entries fell further</strong> (BYD −21%, Xiaomi −29%, PDD −19% on Q1<br />
+earnings). Only NetEase/HSBC/SMIC held. <strong>Calibration flag:</strong> contrarian-at-lows without a revisions/<br />
+momentum turn = catching a falling knife.</p>
+<hr />
+<h2 id="5-calibration-what-to-tune-v35-candidates">5. Calibration — what to tune (v3.5 candidates)</h2>
+<p><strong>Keep — robustly validated (no change):</strong><br />
+- <strong>Asymmetry gate</strong> (Ref 19) — RKLB/PL crushed; basket alpha ~6.5 pts.<br />
+- <strong>Extreme-valuation gate</strong> (Ref 20, &gt;50× sector) — QBTS −23%, RGTI −31%.<br />
+- <strong>M&amp;A ceiling</strong> (Ref 17) — KALV closed at exactly $27, delisted.<br />
+- <strong>Revisions / target-below-price</strong> (Ref 19) — TEVA flat-down; NVDA/AVGO skip correct.<br />
+- <strong>Broken-thesis ETF reject</strong> (H9) — HYDR −33%; space ETFs −10/−25% (H10).</p>
+<p><strong>Tune — the leaks (all are the framework's <em>own</em> pre-flagged bias: "reflexive small-cap dismissal /<br />
+late-cycle too cautious"):</strong><br />
+1. <strong>High-momentum rejects → add a "monitor, don't hard-reject" tier.</strong> TNGX +55% is the canonical<br />
+   miss (Section 9 pre-registered it). Precision is great; recall on momentum <em>continuation</em> is poor.<br />
+   Consider a tracking/partial sleeve for asymmetry-fails that still carry Revisions A/Strong-Buy.<br />
+2. <strong>"Wait for pullback" on megatrends → allow a starter tranche.</strong> NBIS +12%, TEM +22%, CRDO +9%<br />
+   never pulled back. A small starter beats a full defer when conviction is high and trend intact.<br />
+3. <strong>Pre-catalyst financing (Ref 21) — keep, but it's a <em>timing</em> gate.</strong> VKTX +23% this window; the<br />
+   dilution risk is real but lies in 2027 — the gate may still be right by 2026-08-24/2027.<br />
+4. <strong>China contrarian — require a turn, not just a low.</strong> Gate 52w-low entries behind a Revisions or<br />
+   3-month-momentum inflection (BYD/Xiaomi/PDD fell further from "cheap").</p>
+<p><strong>Meta-read:</strong> the framework is a strong <strong>loss-avoider</strong> (the gates that say <em>no</em> are accurate) and a<br />
+weaker <strong>opportunity-capturer</strong> (the rules that say <em>wait/defer</em> cost upside in an uptrend). In a<br />
+<em>down</em> tape (this window) that profile shines; in a rip-higher tape it would lag. Re-score at the<br />
+<strong>2026-08-24</strong> review when earnings (DDD H2, China Q2) and the 3-month criteria mature.</p>
+<h2 id="6-freshness-provenance">6. Freshness &amp; provenance</h2>
+<ul>
+<li>All prices fetched live <strong>2026-06-28</strong> from <strong>stockanalysis.com</strong> (single source): current =<br />
+  2026-06-26 close, baseline = 2026-05-22 close (2026-05-24 was a Sunday). Returns are price-only<br />
+  (ex-dividends/FX).</li>
+<li><strong>Re-verify before relying:</strong> <strong>MU</strong> (+50.8% — possible split/data anomaly), <strong>HYDR</strong> (−33%), <strong>UFO</strong><br />
+  (−25%), <strong>CRDO</strong> baseline; <strong>gold</strong> spot baseline (used ~$4,500; snapshot cited $4,523) and the exact<br />
+  S&amp;P 2026-05-22 close (used VOO as the dated benchmark proxy instead).</li>
+<li>SA-Quant factor grades (the gate inputs) are <strong>not re-pulled</strong> here — this back-test scores<br />
+<em>outcomes</em>, not the entry-time factor reads (those are in <a href="mdaem-validation-database.html">mdaem-validation-database</a>).</li>
+</ul>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Snapshot/entry data: <a href="mdaem-validation-database.html">mdaem-validation-database</a> · methodology: <a href="../concepts/mdaem-framework.html">mdaem-framework</a> · source:<br />
+<a href="../sources/mdaem-v34-framework.html">mdaem-v34-framework</a> · calibration anchor: <a href="../entities/seeking-alpha-quant.html">seeking-alpha-quant</a>.</li>
+<li>Engine comparison: <a href="mdaem-vs-futurist-investor.html">mdaem-vs-futurist-investor</a> · vault parallel: <a href="prediction-ledger.html">prediction-ledger</a>.</li>
+<li><strong>Not advice.</strong> Validation of the operator's own framework; decisions remain the user's.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

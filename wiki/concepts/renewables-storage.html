@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Renewables &amp; Storage</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../catalog.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-07-19</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Renewables &amp; Storage
+type: concept
+trend: true
+tags: [investing, trend, energy, solar, wind, battery-storage, bess, grid, ai-power]
+sources: []
+date: 2026-06-01
+conviction: 3
+stage: accelerating
+horizon: 3-10y</div>
+<article>
+<h1 id="renewables-storage">Renewables &amp; Storage</h1>
+<p><strong>Definition:</strong> Solar, wind, and — most importantly for the investment case — <strong>battery energy<br />
+storage systems (BESS)</strong>: the fastest-to-deploy, increasingly cost-competitive supply that helps<br />
+meet surging electricity demand (<a href="power-grid-electrification.html">power-grid-electrification</a>, <a href="ai-infrastructure.html">ai-infrastructure</a>). A core<br />
+sub-theme of <a href="energy-transition.html">energy-transition</a>, but <strong>policy- and rate-sensitive</strong> and exposed to Chinese<br />
+manufacturing oversupply. Conviction 3 on the <a href="../syntheses/trend-radar.html">trend-radar</a> — storage is the bright spot;<br />
+solar/wind economics are mixed.</p>
+<blockquote>
+<p>Research/insight only — no buy/sell advice. Figures tagged (fact)/(est.)/(inference) with<br />
+period + source. "n/f" = no reliable figure found.</p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>Three layers: (a) <strong>generation</strong> — utility-scale + distributed solar (First Solar, Enphase),<br />
+onshore/offshore wind (Vestas, Ørsted, GE Vernova wind); (b) <strong>storage</strong> — grid-scale BESS<br />
+(Tesla Megapack, Fluence) and residential storage (Enphase, Tesla Powerwall); (c) <strong>developers/<br />
+utilities</strong> with large renewable pipelines (NextEra). Storage is the highest-conviction layer — it<br />
+is the flexibility that makes the grid (and AI load) work and is growing fastest.</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Global battery-storage additions</td>
+<td><strong>record ~170+ GWh added</strong></td>
+<td>2025</td>
+<td>BloombergNEF / IEA</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Global renewable capacity additions</td>
+<td><strong>~660+ GW added (record; solar ~80% of it)</strong></td>
+<td>2025</td>
+<td>IEA (Renewables 2025)</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Battery pack prices</td>
+<td><strong>fell to ~$110–115/kWh (record low)</strong></td>
+<td>2025</td>
+<td>BloombergNEF</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>US BESS / grid-storage pipeline</td>
+<td><strong>storage = largest share of US interconnection queue</strong></td>
+<td>2025</td>
+<td>LBNL / EIA</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Global solar PV additions</td>
+<td><strong>~600 GW (record)</strong></td>
+<td>2025</td>
+<td>IEA</td>
+<td>(fact)</td>
+</tr>
+</tbody>
+</table>
+<p>Storage is the structural growth engine: falling battery costs + grid-flexibility need + AI demand<br />
+make BESS the fastest-scaling segment.</p>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand:</strong> electricity-demand surge (AI/data centers, electrification) needs both new generation<br />
+and flexibility; solar is the cheapest new generation in most markets; BESS solves intermittency and<br />
+provides grid services (frequency, capacity, arbitrage). <strong>Supply/cost:</strong> battery pack prices at<br />
+record lows (~$110/kWh) on Chinese overcapacity — great for storage <em>deployers</em>, brutal for<br />
+<em>manufacturers'</em> margins. <strong>Headwinds:</strong> US policy/IRA-credit uncertainty, tariffs on Chinese<br />
+cells/modules, high rates pressuring project IRRs, interconnection-queue delays.</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p><a href="critical-minerals.html">critical-minerals</a> (lithium, copper) → cells/modules (largely China: CATL, BYD) → BESS<br />
+integrators (Tesla, Fluence) / inverters (Enphase, SolarEdge) / panels (First Solar) → developers &amp;<br />
+utilities (NextEra) → <a href="power-grid-electrification.html">power-grid-electrification</a> → serves <a href="ai-infrastructure.html">ai-infrastructure</a> load. Complements<br />
+<a href="nuclear-uranium.html">nuclear-uranium</a> and <a href="natural-gas-lng.html">natural-gas-lng</a> (firm vs intermittent power mix). Tightly coupled to<br />
+interest rates and policy (<a href="../syntheses/macro-regime.html">macro-regime</a>).</p>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<p><strong>Solar manufacturing</strong> is brutal and commoditized — Chinese oversupply has crushed module prices<br />
+and margins; <strong>First Solar</strong> is the exception (US thin-film, IRA-advantaged, differentiated tech,<br />
+defensible US manufacturing). <strong>Inverters/residential</strong> (Enphase, SolarEdge) are cyclical and<br />
+rate-sensitive, having de-rated hard. <strong>Storage integration</strong> (Tesla Energy, Fluence) is the<br />
+healthiest layer — value sits in software/integration and offtake, not cells. <strong>Wind</strong> is<br />
+structurally challenged (Ørsted writedowns, Siemens Gamesa losses) outside select players.<br />
+<strong>Utilities/developers</strong> (NextEra) hold the scale, pipeline, and financing moat.</p>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps point-in-time (~late May 2026, est.). Other figures (fact) unless tagged. "n/f" = none found.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of)</th>
+<th>Revenue (period)</th>
+<th>Rev YoY</th>
+<th>Profitability</th>
+<th>Other</th>
+<th>Moat note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NextEra Energy</td>
+<td>NEE</td>
+<td>US</td>
+<td>Largest US renewables dev + utility</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>profitable</td>
+<td>huge renewables+storage backlog</td>
+<td>Scale, pipeline, low cost of capital</td>
+</tr>
+<tr>
+<td>First Solar</td>
+<td>FSLR</td>
+<td>US</td>
+<td>US thin-film solar manufacturer</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>profitable</td>
+<td>multi-year sold-out backlog; IRA credits</td>
+<td>US-made, tariff/IRA-advantaged, differentiated tech</td>
+</tr>
+<tr>
+<td>Tesla (Energy)</td>
+<td>TSLA</td>
+<td>US</td>
+<td>Megapack/Powerwall storage</td>
+<td>n/f (auto-dominated)</td>
+<td>Energy storage deploy record GWh</td>
+<td>growing fast</td>
+<td>Energy segment margin rising</td>
+<td>Megapack scale + software</td>
+<td>Storage brand + vertical integration</td>
+</tr>
+<tr>
+<td>Enphase Energy</td>
+<td>ENPH</td>
+<td>US</td>
+<td>Microinverters + residential storage</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>declining/recovering</td>
+<td>profitable but pressured</td>
+<td>rate-sensitive resi demand</td>
+<td>Microinverter tech moat; cyclical</td>
+</tr>
+<tr>
+<td>Fluence Energy</td>
+<td>FLNC</td>
+<td>US</td>
+<td>Grid-scale BESS integrator</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>thin/negative</td>
+<td>utility-scale storage backlog</td>
+<td>Pure-play storage integrator; competitive</td>
+</tr>
+<tr>
+<td>CATL</td>
+<td>300750.SZ</td>
+<td>CN</td>
+<td>World's largest battery maker</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>profitable, scale leader</td>
+<td>dominant global cell share</td>
+<td>Cost/scale leader; LFP &amp; grid storage</td>
+</tr>
+<tr>
+<td>Vestas Wind</td>
+<td>VWS.CO</td>
+<td>DK</td>
+<td>Onshore/offshore wind turbines</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>recovering</td>
+<td>large order backlog</td>
+<td>Wind OEM scale; margin-challenged</td>
+</tr>
+<tr>
+<td>Ørsted</td>
+<td>ORSTED.CO</td>
+<td>DK</td>
+<td>Offshore wind developer</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>impaired (writedowns)</td>
+<td>offshore pipeline troubled</td>
+<td>Offshore lead, but cost/rate damage</td>
+</tr>
+<tr>
+<td>GE Vernova (Wind)</td>
+<td>GEV</td>
+<td>US</td>
+<td>Wind turbines (part of GEV)</td>
+<td>$279.5B (8 May 26)</td>
+<td>n/f (wind segment)</td>
+<td>n/f</td>
+<td>wind drag on group</td>
+<td>onshore recovering, offshore weak</td>
+<td>Part of GEV power platform</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p>The <strong>storage layer is the high-conviction part</strong> of this theme: record-low battery costs plus the<br />
+flexibility the grid needs make BESS the fastest-growing energy segment, and it directly serves the<br />
+AI-load build-out (<a href="power-grid-electrification.html">power-grid-electrification</a>). <strong>First Solar</strong> stands out on the generation<br />
+side — IRA-advantaged US manufacturing, differentiated thin-film, sold-out backlog — a genuine moat<br />
+in an otherwise commoditized solar world. <strong>NextEra</strong> is the blue-chip way to own the whole<br />
+renewables+storage pipeline with a financing edge.</p>
+<p><strong>Weak/avoid:</strong> Chinese module oversupply has gutted solar-manufacturer economics; <strong>wind</strong> (Ørsted<br />
+impairments, Gamesa losses) remains structurally troubled; <strong>inverter/residential</strong> names (Enphase,<br />
+SolarEdge) are rate-sensitive and have de-rated. This is why the theme is conviction 3, not 4: the<br />
+demand is real but the equity quality is bifurcated and policy/rate-exposed.</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Policy:</strong> IRA tax-credit repeal/phase-down or tariff shifts reprice US project economics.</li>
+<li><strong>Rates:</strong> high interest rates compress renewable-project IRRs and developer valuations.</li>
+<li><strong>Chinese oversupply:</strong> continued module/cell glut keeps manufacturer margins depressed.</li>
+<li><strong>Interconnection bottlenecks:</strong> queue delays slow deployment (<a href="power-grid-electrification.html">power-grid-electrification</a>).</li>
+<li><strong>Commodity swings:</strong> lithium/copper price moves (<a href="critical-minerals.html">critical-minerals</a>) hit storage economics.</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li><strong>ICLN</strong> (iShares Global Clean Energy) — broad solar/wind/storage.</li>
+<li><strong>TAN</strong> (Invesco Solar) — solar-focused.</li>
+<li><strong>GRID</strong> (First Trust Smart Grid Infra) — grid + storage tilt (also in <a href="power-grid-electrification.html">power-grid-electrification</a>).</li>
+<li><strong>LIT</strong> (Global X Lithium &amp; Battery Tech) — battery supply chain.</li>
+<li>Representative securities: NEE, FSLR, TSLA, ENPH, FLNC, CATL, VWS.CO.</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 3/5</strong> — storage is a genuine high-growth, cost-curve-driven bright spot, but the<br />
+  theme overall is dragged down by commoditized solar manufacturing, troubled wind, and heavy<br />
+  policy/rate sensitivity. Held below the AI-equipment themes for those reasons.</li>
+<li><strong>Stage: accelerating (storage). Horizon: 3–10 years.</strong></li>
+<li><strong>Invalidation:</strong> US IRA credits repealed without replacement, OR battery-cost declines stall and<br />
+  storage-deployment growth flattens for 2+ quarters, OR sustained high rates freeze project pipelines.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ICLN</strong></td>
+<td>Clean energy</td>
+<td style="text-align: right;">$18.36</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">+25.5%</td>
+<td style="text-align: right;">0.9%</td>
+<td style="text-align: right;">n/f · 1.43</td>
+<td style="text-align: right;">-22.8%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>TAN</strong></td>
+<td>Solar</td>
+<td style="text-align: right;">$53.88</td>
+<td style="text-align: right;">$2B</td>
+<td style="text-align: right;">+20.1%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">n/f · 1.85</td>
+<td style="text-align: right;">-28.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>LIT</strong></td>
+<td>Battery supply chain</td>
+<td style="text-align: right;">$68.42</td>
+<td style="text-align: right;">$2B</td>
+<td style="text-align: right;">+20.5%</td>
+<td style="text-align: right;">0.6%</td>
+<td style="text-align: right;">n/f · 1.37</td>
+<td style="text-align: right;">-25.6%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NEE</strong></td>
+<td>Largest utility + renewables</td>
+<td style="text-align: right;">$89.56</td>
+<td style="text-align: right;">$187B</td>
+<td style="text-align: right;">20.3x</td>
+<td style="text-align: right;">7.3%</td>
+<td style="text-align: right;">29.4% · 0.67</td>
+<td style="text-align: right;">-9.3%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FSLR</strong></td>
+<td>Solar leader</td>
+<td style="text-align: right;">$208.46</td>
+<td style="text-align: right;">$22B</td>
+<td style="text-align: right;">8.9x</td>
+<td style="text-align: right;">23.6%</td>
+<td style="text-align: right;">30.7% · 1.73</td>
+<td style="text-align: right;">-35.1%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>ENPH</strong></td>
+<td>Inverters</td>
+<td style="text-align: right;">$41.34</td>
+<td style="text-align: right;">$5B</td>
+<td style="text-align: right;">17.1x</td>
+<td style="text-align: right;">-20.6%</td>
+<td style="text-align: right;">9.6% · 1.61</td>
+<td style="text-align: right;">-43.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>FLNC</strong></td>
+<td>Battery storage</td>
+<td style="text-align: right;">$14.12</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">72.3x</td>
+<td style="text-align: right;">7.7%</td>
+<td style="text-align: right;">-1.6% · 2.75</td>
+<td style="text-align: right;">-57.9%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>SEDG</strong></td>
+<td>Inverters</td>
+<td style="text-align: right;">$52.44</td>
+<td style="text-align: right;">$3B</td>
+<td style="text-align: right;">33.5x</td>
+<td style="text-align: right;">41.5%</td>
+<td style="text-align: right;">-28.6% · 1.45</td>
+<td style="text-align: right;">-35.5%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>TSLA</strong></td>
+<td>Storage/Mega-Pack</td>
+<td style="text-align: right;">$381.97</td>
+<td style="text-align: right;">$1.43T</td>
+<td style="text-align: right;">149.6x</td>
+<td style="text-align: right;">15.8%</td>
+<td style="text-align: right;">3.9% · 1.80</td>
+<td style="text-align: right;">-23.4%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Grid/demand: <a href="power-grid-electrification.html">power-grid-electrification</a>, <a href="ai-infrastructure.html">ai-infrastructure</a>. Meta-force: <a href="energy-transition.html">energy-transition</a>.<br />
+  Firm-power peers: <a href="nuclear-uranium.html">nuclear-uranium</a>, <a href="natural-gas-lng.html">natural-gas-lng</a>. Materials: <a href="critical-minerals.html">critical-minerals</a>.<br />
+  Macro: <a href="../syntheses/macro-regime.html">macro-regime</a>. Master: <a href="../syntheses/trend-radar.html">trend-radar</a>. Linkage: <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Does storage's growth decouple from solar/wind's policy drag enough to deserve its own higher<br />
+  conviction sub-score?</li>
+<li>Can any Western cell/module manufacturer (beyond First Solar) build a durable moat against Chinese<br />
+  oversupply?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>IEA (Renewables 2025); BloombergNEF (battery prices, storage additions); LBNL / EIA (interconnection<br />
+queue); company IR (NextEra, First Solar, Tesla, Enphase, Fluence, Ørsted, Vestas); ETF data<br />
+(iShares, Invesco, Global X), 2026.</p>
+</article>
+</div>
+</body>
+</html>
