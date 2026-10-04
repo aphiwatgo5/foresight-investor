@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Humanoid Robotics &amp; Physical AI</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-04</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Humanoid Robotics &amp; Physical AI
+type: concept
+trend: true
+tags: [investing, trend, reindustrialization, robotics, humanoid, embodied-ai, physical-ai, actuators, frontier]
+sources: []
+date: 2026-09-07
+last_scan: 2026-09-07
+conviction: 2.5
+stage: emerging
+horizon: 5-10y
+promoted_from: frontier-watch</div>
+<article>
+<h1 id="humanoid-robotics-physical-ai">Humanoid Robotics &amp; Physical AI</h1>
+<p><strong>Definition:</strong> General-purpose, human-form robots (and the "physical AI" stack that makes them<br />
+work) — the humanoid OEMs (Tesla Optimus, Figure, Agility, UBTech, Unitree, AgiBot), the<br />
+<strong>actuator / sensor / compute supply chain</strong> (strain-wave gears, motors, lidar, GPUs), and the<br />
+foundation models that give them dexterity. Split out of <a href="automation-robotics.html">automation-robotics</a> on 2026-09-07<br />
+when the theme cleared the <a href="../syntheses/frontier-watch.html">frontier-watch</a> promotion threshold (4-axis score 3.5): the<br />
+industry entered <em>early commercialization</em> in 2025–26 and liquid, dedicated ETFs now exist.<br />
+Conviction <strong>2.5</strong> on the <a href="../syntheses/trend-radar.html">trend-radar</a> — a real S-curve inflection, but hype-heavy,<br />
+China-led, and priced for perfection at the edges.</p>
+<blockquote>
+<p>Research/insight only — decisions for the operator's own book, never advice to others. Figures<br />
+tagged (fact)/(est.)/(inference) with period + source. "n/f" = no reliable figure found.<br />
+<strong>Market caps are momentum-driven and move fast — re-verify before use.</strong></p>
+</blockquote>
+<hr />
+<h2 id="1-definition-scope">1. Definition &amp; scope</h2>
+<p>(a) <strong>Humanoid OEMs</strong> — Tesla (Optimus, internal deployment), Figure (private), Agility (Digit,<br />
+private), Apptronik (private), UBTech (9880.HK), Unitree (STAR Market, listed 2026-08-19), AgiBot<br />
+(private); (b) <strong>actuators &amp; precision components</strong> — Harmonic Drive Systems (6324.T), Nidec<br />
+(6594.T), Leader Harmonious Drive, Allient; (c) <strong>perception &amp; sensing</strong> — Hesai (HSAI),<br />
+RoboSense, Hexagon; (d) <strong>compute &amp; models</strong> — NVIDIA (Isaac / GR00T), the embodied-AI labs.<br />
+Distinct from <a href="automation-robotics.html">automation-robotics</a> (fixed industrial robots, cobots, motion control — a<br />
+cash-generative, cyclical business); this page is the <em>general-purpose</em> frontier where the<br />
+unit economics are not yet proven. Feeds on <a href="ai-software-agents.html">ai-software-agents</a> (the "brain") and<br />
+<a href="semiconductors.html">semiconductors</a> (the compute); competes for the same labor-substitution budget as<br />
+<a href="reshoring-supply-chain.html">reshoring-supply-chain</a>.</p>
+<h2 id="2-market-size-growth">2. Market size &amp; growth</h2>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>Period / base</th>
+<th>Source</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Humanoid units shipped worldwide</td>
+<td><strong>13,000–18,000</strong> (~90% in China)</td>
+<td>2025</td>
+<td>Omdia / IDC via Cervo Technology stats (2026-07-17)</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>2026 shipment forecasts</td>
+<td><strong>50,000+</strong> (TrendForce) · <strong>50,000 China-only</strong> (Morgan Stanley) · <strong>90,000</strong> (Bank of America)</td>
+<td>2026E</td>
+<td>as named, via Cervo (2026-07-17)</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Commercial humanoids operational</td>
+<td><strong>~7,000–8,000</strong></td>
+<td>May 2026</td>
+<td>industry trackers (web, 2026-09-07)</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Humanoid market size</td>
+<td><strong>$2.9–6.2B</strong> (range across research firms)</td>
+<td>2026</td>
+<td>web aggregate (2026-09-07)</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Long-run TAM</td>
+<td><strong>$38B by 2035</strong> (Goldman, 2024) · <strong>$5T by 2050</strong> (Morgan Stanley, 2025) · <strong>$7T by 2050</strong> (Citi, 2024)</td>
+<td>2035–2050E</td>
+<td>as named, via Cervo</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Unit cost trajectory</td>
+<td><strong>$35k → &lt;$17k</strong> China-built (BofA, 2025→2030E); pilot-stage BOM <strong>$90–100k</strong>; actuators <strong>&gt;50% of BOM</strong></td>
+<td>2026</td>
+<td>BofA Global Research via Cervo</td>
+<td>(est.)</td>
+</tr>
+<tr>
+<td>Venture funding</td>
+<td><strong>$6.1B across 139 deals (+300% YoY)</strong></td>
+<td>2025</td>
+<td>PitchBook via Cervo</td>
+<td>(fact)</td>
+</tr>
+<tr>
+<td>Unitree revenue / gross margin</td>
+<td><strong>RMB 1.71B · 60.3% GM</strong></td>
+<td>FY2025</td>
+<td>Unitree IPO prospectus via Cervo</td>
+<td>(fact)</td>
+</tr>
+</tbody>
+</table>
+<p>The growth is genuine — shipments are on track to grow 3–5× in 2026 — but the <em>base</em> is tiny<br />
+(tens of thousands of units against ~540k industrial robots/yr) and revenue is still a rounding<br />
+error for every listed name except Unitree and UBTech. (inference)</p>
+<h2 id="3-key-structural-drivers">3. Key structural drivers</h2>
+<p><strong>Demand:</strong> labor scarcity and rising wages in manufacturing/logistics (<a href="reshoring-supply-chain.html">reshoring-supply-chain</a>);<br />
+a pre-built form factor that fits existing human workspaces (no retooling); robotics-as-a-service<br />
+contracts (Agility Digit at Amazon/GXO: 100,000+ totes moved by Nov 2025 — Agility via Cervo,<br />
+(fact)); Chinese industrial policy (humanoids named a strategic industry). <strong>Supply / enablers:</strong><br />
+vision-language-action foundation models (the <a href="ai-software-agents.html">ai-software-agents</a> spill-over); NVIDIA's<br />
+simulation + compute stack (<a href="semiconductors.html">semiconductors</a>); falling actuator costs; a Chinese supply chain that<br />
+already controls <strong>~63%</strong> of humanoid components (Morgan Stanley 2025 via Cervo, (est.)).<br />
+<strong>Headwinds:</strong> unproven unit economics and uptime; dexterity/manipulation still the bottleneck;<br />
+safety certification for human-proximate work; export controls cutting both ways; and a<br />
+speculative bid — Unitree rose <strong>542%</strong> on its Shanghai debut (CNBC, 2026-08-19, (fact)).</p>
+<h2 id="4-value-chain-linkage">4. Value-chain / linkage</h2>
+<p>Rare earths &amp; magnets (<a href="critical-minerals.html">critical-minerals</a>: MP Materials, Lynas — both KOID holdings) → motors<br />
+&amp; strain-wave gears (Nidec, Harmonic Drive) → sensors (Hesai, RoboSense, Hexagon) → compute<br />
+(NVIDIA, <a href="semiconductors.html">semiconductors</a>) → embodied-AI models (<a href="ai-software-agents.html">ai-software-agents</a>) → humanoid OEMs (Tesla,<br />
+Figure, UBTech, Unitree) → deployment in logistics/auto plants (<a href="reshoring-supply-chain.html">reshoring-supply-chain</a>,<br />
+<a href="automation-robotics.html">automation-robotics</a> customers). Downstream it is a <strong>labor substitute</strong>, so it is a long-run<br />
+tension edge for wage-driven EM manufacturing (<a href="asean-thailand.html">asean-thailand</a>, <a href="india-em-growth.html">india-em-growth</a>) — see<br />
+<a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a>.</p>
+<h2 id="5-competitive-landscape">5. Competitive landscape</h2>
+<p>Fragmented and <strong>China-led on volume</strong>: Unitree (~5,500 units, ~32% share) and AgiBot (~5,200)<br />
+shipped more in 2025 than every Western OEM combined; Figure (350+ Figure 03 by Apr 2026), Tesla<br />
+(~150 Optimus in 2025 per Omdia; 1,000+ Gen 3 internal in 2026 per press — (est.)), Agility<br />
+(~250 Digit) and Apptronik (~80) are Western pilots (all via Cervo, 2026-07-17). Moats today are<br />
+prospective — data flywheels from fleet deployments, actuator IP (Harmonic Drive's strain-wave<br />
+patents are the one <em>established</em> moat), and access to compute. The <strong>supply chain is the safer<br />
+seat</strong>: component makers sell to every OEM regardless of who wins, which is why both ETFs are<br />
+weighted toward suppliers rather than OEMs. Private leaders (Figure at a $39B Series C, Sep 2025)<br />
+keep the purest exposure off public markets. (inference)</p>
+<h2 id="6-major-global-players-comparative-table">6. Major global players — comparative table</h2>
+<p>Market caps from yfinance, as-of 2026-09-04/07 (fact); revenue growth = trailing YoY from yfinance<br />
+(fact). Operating data (units, funding) from Cervo Technology's 2026-07-17 compilation of Omdia/IDC,<br />
+TrendForce, company disclosures. "n/f" = none found.</p>
+<table>
+<thead>
+<tr>
+<th>Company</th>
+<th>Ticker</th>
+<th>Geo</th>
+<th>Segment/role</th>
+<th>Mkt cap (as-of 2026-09-07)</th>
+<th>Revenue (period)</th>
+<th>Rev YoY</th>
+<th>Profitability</th>
+<th>Other</th>
+<th>Moat note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>UBTech Robotics</td>
+<td>9880.HK</td>
+<td>HK/CN</td>
+<td>Humanoid OEM (Walker S)</td>
+<td>HK$43.1B</td>
+<td>n/f</td>
+<td>+104%</td>
+<td>loss-making (est.)</td>
+<td>Largest listed pure-play humanoid OEM; #1 HUMN holding</td>
+<td>Early industrial deployments (auto plants); scale in China</td>
+</tr>
+<tr>
+<td>Unitree Robotics</td>
+<td>STAR Market (ticker unverified)</td>
+<td>CN</td>
+<td>Quadruped + humanoid OEM</td>
+<td>n/f (IPO raised RMB 6.1B at ¥150.80; +542% debut 2026-08-19)</td>
+<td>RMB 1.71B (FY25)</td>
+<td>n/f</td>
+<td>60.3% GM (prospectus)</td>
+<td>~5,500 units 2025 (~32% share)</td>
+<td>Volume + cost leader; consumer/research channel</td>
+</tr>
+<tr>
+<td>Tesla</td>
+<td>TSLA</td>
+<td>US</td>
+<td>Optimus humanoid (internal)</td>
+<td>$1.40T</td>
+<td>n/f (auto/energy dominate)</td>
+<td>+25.5%</td>
+<td>profitable (auto)</td>
+<td>~150 units 2025; 1,000+ Gen 3 internal 2026 (est.)</td>
+<td>Vertical integration; fleet data; but humanoid is a small option on a $1.4T cap</td>
+</tr>
+<tr>
+<td>Figure AI</td>
+<td>private</td>
+<td>US</td>
+<td>Humanoid OEM</td>
+<td>$39B Series C (Sep 2025)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>350+ Figure 03 delivered by Apr 2026</td>
+<td>Best-funded Western pure-play; not investable publicly</td>
+</tr>
+<tr>
+<td>Agility Robotics</td>
+<td>private</td>
+<td>US</td>
+<td>Humanoid OEM (Digit, RaaS)</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>~250 Digit; RoboFab 10k/yr capacity</td>
+<td>First <em>commercial</em> humanoid deployment (Amazon, GXO)</td>
+</tr>
+<tr>
+<td>Harmonic Drive Systems</td>
+<td>6324.T</td>
+<td>JP</td>
+<td>Strain-wave gear actuators</td>
+<td>¥565B</td>
+<td>n/f</td>
+<td>+23.6%</td>
+<td>profitable (est.)</td>
+<td>#3 HUMN holding</td>
+<td>Patent + precision moat; sells to every OEM</td>
+</tr>
+<tr>
+<td>Nidec</td>
+<td>6594.T</td>
+<td>JP</td>
+<td>Motors / actuators</td>
+<td>¥3.22T</td>
+<td>n/f</td>
+<td>+2.9%</td>
+<td>profitable</td>
+<td>KOID top-10</td>
+<td>Scale motor maker; humanoid is a small option</td>
+</tr>
+<tr>
+<td>NVIDIA</td>
+<td>NVDA</td>
+<td>US</td>
+<td>Robotics compute (Isaac, GR00T)</td>
+<td>$5.42T (2026-08-12)</td>
+<td>n/f</td>
+<td>+85%</td>
+<td>63% net margin</td>
+<td>KOID top-10</td>
+<td>The compute + simulation standard; see <a href="semiconductors.html">semiconductors</a></td>
+</tr>
+<tr>
+<td>Hesai</td>
+<td>HSAI</td>
+<td>CN (ADR)</td>
+<td>Lidar / perception</td>
+<td>$23.7B</td>
+<td>n/f</td>
+<td>+21.9%</td>
+<td>n/f</td>
+<td>Perception supplier to robotics + auto</td>
+<td>Cost leadership in lidar</td>
+</tr>
+<tr>
+<td>Hexagon</td>
+<td>HEXA-B.ST</td>
+<td>SE</td>
+<td>Sensors / metrology / software</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>n/f</td>
+<td>profitable</td>
+<td>#1 KOID holding (2.63%)</td>
+<td>Measurement moat; diversified industrial</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-competitiveness-read">7. Competitiveness read</h2>
+<p>The theme has moved from prototype to <strong>early commercialization</strong>: real shipments (13–18k in<br />
+2025), real RaaS revenue (Agility), a real IPO (Unitree), and forecasts of 50–90k units in 2026.<br />
+But <strong>China owns the volume and most of the supply chain</strong>, the Western leaders (Figure, Agility)<br />
+are private, and Tesla's Optimus is a tiny option inside a $1.4T company — so the <em>investable</em><br />
+public exposure is diluted by construction. That is why both ETFs are supply-chain-heavy: KOID's<br />
+top-10 is Hexagon, Rainbow Robotics, Magna, MP Materials, NVIDIA, TE Connectivity, Amphenol,<br />
+Nidec, Keyence, Allient (KraneShares, 2026-09-04) — sensors, motors, magnets, connectors, compute.<br />
+The <strong>safer money is in the components</strong> (Harmonic Drive, Nidec, MP/Lynas via<br />
+<a href="critical-minerals.html">critical-minerals</a>); the OEMs are lottery tickets with a 542%-debut sentiment tape. Net: a<br />
+legitimate frontier worth a <em>small, ETF-expressed sleeve</em> — sized like <a href="space-economy.html">space-economy</a>, not like<br />
+<a href="automation-robotics.html">automation-robotics</a>. (inference)</p>
+<h2 id="8-risks-what-kills-the-thesis">8. Risks / what kills the thesis</h2>
+<ul>
+<li><strong>Unit economics never close</strong> — $90–100k pilot BOM vs. a labor-cost break-even that needs<br />
+  &lt;$30k and &gt;85% uptime; if 2026 shipments print well below the 50k+ forecasts, the S-curve claim fails.</li>
+<li><strong>Dexterity / safety wall</strong> — manipulation and human-proximate safety certification slip years.</li>
+<li><strong>Hype unwind</strong> — Unitree +542% debut, UBTech +104% growth on tiny revenue; a risk-off tape<br />
+  (<a href="../syntheses/macro-regime.html">macro-regime</a>) hits this cluster first (see <a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a> speculative cluster).</li>
+<li><strong>Purity dilution</strong> — the ETFs are ~30% China, supplier-heavy, and young ($333M / $94M AUM); a<br />
+  fund closure or index rejig changes the exposure overnight.</li>
+<li><strong>Geopolitics</strong> — export controls on compute (NVIDIA) or rare earths (China) can sever the chain<br />
+  in either direction.</li>
+<li><strong>Incumbent capture</strong> — NVIDIA/Tesla/BYD-scale players may take the value, leaving OEM equity<br />
+  holders with the losses (the <a href="space-economy.html">space-economy</a> / SpaceX pattern).</li>
+</ul>
+<h2 id="9-investable-instruments-candidates-not-recommendations">9. Investable instruments (candidates — not recommendations)</h2>
+<ul>
+<li><strong><a href="../entities/etf-koid.html">etf-koid</a></strong> — KraneShares Global Humanoid Robotics and Physical AI Index ETF. <strong>$332.5M AUM<br />
+  (2026-09-04) · 0.69% net ER · 61 holdings · index (MerQube) · inception 2025-06-04</strong> — the primary<br />
+  liquid expression; supplier-heavy, ~US/China/Japan. (KraneShares product page, 2026-09-04, (fact))</li>
+<li><strong>HUMN</strong> — Roundhill Humanoid Robotics ETF. <strong>$94.4M AUM · 0.75% ER · active · 47 holdings ·<br />
+  inception 2025-06-26</strong>; top-5 UBTech, Tesla, Harmonic Drive, Leader Harmonious Drive, Hyundai<br />
+  (2026-06-30); China 31% / US 25% / Japan 15% / Korea 14%. More OEM-tilted, smaller. (Roundhill<br />
+  factsheet + yfinance, 2026-09-07, (fact))</li>
+<li>Broader/cheaper adjacent: <strong>ROBO, BOTZ</strong> (<a href="automation-robotics.html">automation-robotics</a>) — $2–3B AUM, but &lt;10% humanoid exposure.</li>
+<li>Representative securities: 9880.HK, 6324.T, 6594.T, TSLA, HSAI (in the universe); Unitree<br />
+  (STAR, ticker to verify), HEXA-B.ST (not yet in the universe).</li>
+</ul>
+<h2 id="10-our-view-conviction-stage-horizon">10. Our view — conviction / stage / horizon</h2>
+<ul>
+<li><strong>Conviction 2.5/5</strong> — the adoption curve has genuinely inflected (3–5× unit growth, first<br />
+  commercial RaaS, first pure-play IPO) and there is finally a clean, liquid vehicle. Held to 2.5<br />
+  because unit economics are unproven, the volume and supply chain are China-led (geopolitical +<br />
+  purity risk), the Western leaders are private, and the sentiment tape is euphoric. A small<br />
+  speculative sleeve alongside <a href="space-economy.html">space-economy</a>; the <a href="../syntheses/portfolio-blueprint.html">portfolio-blueprint</a> speculative bucket<br />
+  cap applies.</li>
+<li><strong>Stage: emerging (early commercialization). Horizon: 5–10 years</strong> to mass adoption; 1–2 years to<br />
+  know whether 2026's 50k+ forecast was real.</li>
+<li><strong>Invalidation:</strong> the published 2026 global shipment count (Omdia/IDC/TrendForce) comes in<br />
+<strong>&lt; 25,000 units</strong> (below half the low forecast), OR KOID + HUMN combined AUM falls <strong>&lt; $200M</strong><br />
+  (the liquid vehicle fails), OR a flagship program (Optimus external sales, Figure) is cancelled.</li>
+<li><strong>Sensors:</strong> P30 (2026 shipments ≥ 40k) and P31 (KOID vs BOTZ, 12m) in <a href="../syntheses/prediction-ledger.html">prediction-ledger</a>.</li>
+<li><strong>Frontier-watch score at promotion (2026-09-07):</strong> adoption 3 · substance 3 · purity 4 ·<br />
+  time-to-liquid 4 = <strong>3.5</strong> (threshold ≥3.5, no axis = 1). Borderline — re-score at the quarterly REVIEW.</li>
+</ul>
+<!-- auto:instrument-table -->
+
+<h2 id="instruments-live-data-auto-refreshed">Instruments — live data (auto-refreshed)</h2>
+<blockquote>
+<p>Pulled by <code>scripts/refresh_instruments.py</code>. <code>n/f</code> = no reliable figure. Conviction tag links to <a href="../syntheses/decision-register.html">decision-register</a>.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>Role</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">Mkt cap / AUM</th>
+<th style="text-align: right;">Fwd P/E · YTD</th>
+<th style="text-align: right;">Rev YoY · Yld</th>
+<th style="text-align: right;">Profit · Beta</th>
+<th style="text-align: right;">Off 52wHi</th>
+<th>Conv</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>KOID</strong></td>
+<td>Humanoid &amp; physical-AI index (KraneShares)</td>
+<td style="text-align: right;">$36.74</td>
+<td style="text-align: right;">$334M</td>
+<td style="text-align: right;">+14.7%</td>
+<td style="text-align: right;">0.7%</td>
+<td style="text-align: right;">n/f · 0.00</td>
+<td style="text-align: right;">-15.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>HUMN</strong></td>
+<td>Humanoid robotics, active (Roundhill)</td>
+<td style="text-align: right;">$29.99</td>
+<td style="text-align: right;">$94M</td>
+<td style="text-align: right;">+1.2%</td>
+<td style="text-align: right;">0.4%</td>
+<td style="text-align: right;">n/f · 0.00</td>
+<td style="text-align: right;">-23.4%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>9880.HK</strong></td>
+<td>UBTech — humanoid OEM (Walker S)</td>
+<td style="text-align: right;">HK$73.50</td>
+<td style="text-align: right;">HK$37.0B</td>
+<td style="text-align: right;">51.8x</td>
+<td style="text-align: right;">104.2%</td>
+<td style="text-align: right;">-22.7% · 3.17</td>
+<td style="text-align: right;">-53.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>6324.T</strong></td>
+<td>Harmonic Drive — strain-wave actuators</td>
+<td style="text-align: right;">¥6,570</td>
+<td style="text-align: right;">¥622.0B</td>
+<td style="text-align: right;">86.8x</td>
+<td style="text-align: right;">23.6%</td>
+<td style="text-align: right;">4.7% · 1.03</td>
+<td style="text-align: right;">-28.2%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>6594.T</strong></td>
+<td>Nidec — motors/actuators</td>
+<td style="text-align: right;">¥2,117</td>
+<td style="text-align: right;">¥2.43T</td>
+<td style="text-align: right;">11.2x</td>
+<td style="text-align: right;">9.1%</td>
+<td style="text-align: right;">-20.8% · n/f</td>
+<td style="text-align: right;">-28.0%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>TSLA</strong></td>
+<td>Optimus humanoid</td>
+<td style="text-align: right;">$370.59</td>
+<td style="text-align: right;">$1.46T</td>
+<td style="text-align: right;">171.3x</td>
+<td style="text-align: right;">25.5%</td>
+<td style="text-align: right;">3.7% · 1.84</td>
+<td style="text-align: right;">-25.7%</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>HSAI</strong></td>
+<td>Hesai — lidar/perception</td>
+<td style="text-align: right;">$15.38</td>
+<td style="text-align: right;">$19.3B</td>
+<td style="text-align: right;">16.7x</td>
+<td style="text-align: right;">21.9%</td>
+<td style="text-align: right;">14.9% · 1.36</td>
+<td style="text-align: right;">-47.6%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<!-- auto:instrument-table -->
+
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Parent/adjacent: <a href="automation-robotics.html">automation-robotics</a> (industrial robots, cobots) · <a href="reshoring-supply-chain.html">reshoring-supply-chain</a><br />
+  (labor-substitution demand) · <a href="defense-security.html">defense-security</a> (dual-use). Enablers: <a href="ai-software-agents.html">ai-software-agents</a>,<br />
+<a href="semiconductors.html">semiconductors</a>, <a href="critical-minerals.html">critical-minerals</a>. Risk cluster: <a href="space-economy.html">space-economy</a>, <a href="quantum-computing.html">quantum-computing</a><br />
+  (<a href="../syntheses/theme-linkage-map.html">theme-linkage-map</a> speculative cluster). Origin: <a href="../syntheses/frontier-watch.html">frontier-watch</a>. Master: <a href="../syntheses/trend-radar.html">trend-radar</a>.<br />
+  Instruments: <a href="../syntheses/watchlist.html">watchlist</a>, <a href="../entities/etf-koid.html">etf-koid</a>. Calls: <a href="../syntheses/prediction-ledger.html">prediction-ledger</a>.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Is the durable public exposure the <strong>components</strong> (Harmonic Drive, Nidec, rare earths) rather than<br />
+  the OEMs — the "shovels" pattern from <a href="automation-robotics.html">automation-robotics</a>'s open question, now testable?</li>
+<li>What is Unitree's ticker and free float, and does it belong in the universe once 6 months of<br />
+  price history exist?</li>
+<li>Do the 2026 shipment counts (published ~Q1-2027) land nearer TrendForce's 50k or BofA's 90k?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<p>KraneShares KOID product page (AUM, holdings, ER; as-of 2026-09-04); Roundhill HUMN product page +<br />
+factsheet (2026-06-30 holdings); Cervo Technology "Humanoid Robot Market Statistics 2026"<br />
+(2026-07-17) compiling Omdia/IDC, TrendForce (Apr 2026), Morgan Stanley (2025), Goldman Sachs (2024),<br />
+Citi (2024), Bank of America (2026), PitchBook (2026), Unitree IPO prospectus, Figure and Agility<br />
+disclosures; CNBC "Unitree pops 542% in Shanghai debut" (2026-08-19); Shanghai Stock Exchange /<br />
+Global Times on Unitree pricing (2026-08-06); yfinance market caps and revenue growth<br />
+(retrieved 2026-09-07). Web lookups dated 2026-09-07.</p>
+</article>
+</div>
+</body>
+</html>

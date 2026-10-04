@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Architecture — Foresight Investor System</title>
+<style>
+  :root{
+    --bg:#0b0f17; --panel:#121826; --panel2:#0e1420; --line:#232c40; --ink:#dbe4f5; --dim:#8a93a8;
+    --blue:#5b9dff; --teal:#5fe0a8; --amber:#ffb673; --red:#ff5c6c; --violet:#b48cff; --gold:#ffd479;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font:13px/1.45 -apple-system,"SF Pro Text",Segoe UI,Roboto,sans-serif;padding:18px 20px 26px}
+  .wrap{max-width:1180px;margin:0 auto}
+  header{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+  h1{font-size:19px;letter-spacing:.2px}
+  h1 .sub{color:var(--dim);font-weight:400;font-size:12px;margin-left:10px}
+  .meta{color:var(--dim);font-size:11px;text-align:right}
+  .meta b{color:var(--teal);font-weight:600}
+  .grid{display:grid;grid-template-columns:218px 26px 1fr 26px 218px;grid-auto-rows:auto;row-gap:10px;align-items:stretch}
+  .rail{display:flex;flex-direction:column;gap:10px}
+  .rail.left{grid-column:1} .rail.right{grid-column:5}
+  .center{grid-column:3;display:flex;flex-direction:column;gap:10px}
+  .layer{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+  .layer h2{font-size:11.5px;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px;display:flex;gap:8px;align-items:center}
+  .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:7px}
+  .b{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:7px 9px}
+  .b .t{font-weight:600;font-size:12px;margin-bottom:2px}
+  .b .d{color:var(--dim);font-size:10.5px;line-height:1.35}
+  .b .d code{color:var(--blue);font-size:10px;font-family:ui-monospace,Menlo,monospace}
+  .arrow{ text-align:center;color:var(--dim);font-size:15px;line-height:1;padding:1px 0;user-select:none}
+  .arrow small{display:block;font-size:9.5px;letter-spacing:.8px;text-transform:uppercase;color:#5a6478}
+  .flow{display:flex;flex-direction:column;gap:8px}
+  .rb{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 10px;flex:1}
+  .rb .t{font-weight:600;font-size:11.5px;margin-bottom:3px;display:flex;align-items:center;gap:7px}
+  .rb .d{color:var(--dim);font-size:10.5px;line-height:1.4}
+  .rb .d b{color:var(--ink);font-weight:600}
+  .loop{border-color:#3a2f55}
+  .foot{margin-top:14px;color:var(--dim);font-size:10.5px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .foot a{color:var(--blue);text-decoration:none}
+  .qc .t{color:var(--teal)} .ops .t{color:var(--amber)} .acct .t{color:var(--violet)}
+  @media (max-width:960px){
+    .grid{grid-template-columns:1fr}
+    .rail{flex-direction:row;flex-wrap:wrap}
+    .rail .rb{min-width:240px}
+    .center{grid-column:1}
+    .rail.left{grid-column:1;grid-row:2}.rail.right{grid-column:1;grid-row:3}
+  }
+  @media print{body{background:#fff;color:#111}.layer,.rb,.b{background:#fafbfe;border-color:#ccc}.b .d,.rb .d,.arrow,.foot,.meta{color:#555}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Architecture — Foresight Investor System<span class="sub">one-page block diagram</span></h1>
+    <div class="meta">Built <b>2026-09-26</b> · data as-of <b>2026-09-25</b><br>
+      35 themes · 340 instruments · 435 wiki pages · 45+ modules<br>
+      <a href="ARCHITECTURE.html" style="color:var(--blue);text-decoration:none">full ARCHITECTURE.md</a> ·
+      <a href="SYSTEM-RESEARCH-LOG.html" style="color:var(--blue);text-decoration:none">research log</a> ·
+      <a href="analyst-workbench.html" style="color:var(--blue);text-decoration:none">workbench</a> ·
+      <a href="site-index.html" style="color:var(--blue);text-decoration:none">site map</a> ·
+      <a href="index.html" style="color:var(--blue);text-decoration:none">dashboard</a></div>
+  </header>
+
+  <div class="grid">
+
+    <!-- LEFT RAIL: QUALITY CONTROL -->
+    <div class="rail left">
+      <div class="rb qc"><div class="t">⨀ QUALITY CONTROL</div><div class="d">
+        <b>Provenance</b> on every figure — <code>value|source|url|as_of|utc</code><br>
+        <b>UNAVAILABLE &gt; fabricated</b> — never guess a number<br>
+        <b>Asset-class honesty</b> — non-equity = momentum-only grades<br>
+        <b>Cross-validation</b> — FFM × SA table; track-record scoring<br>
+        <b>Deploy pre-flight</b> — no source md · no secrets · confidential file hard-excluded<br>
+        <b>Vault lint</b> — frontmatter · links resolve · 0 orphans</div></div>
+      <div class="rb qc"><div class="t">🗄 DATA DISCIPLINE</div><div class="d">
+        <code>_hist/</code> point-in-time — append, never rewrite<br>
+        <code>raw/</code> immutable sources<br>
+        Staleness &gt;10 trading days = flagged, not used<br>
+        Weekend-safe date selection (broad coverage, not <code>max()</code>)</div></div>
+    </div>
+
+    <!-- CENTER FLOW -->
+    <div class="center">
+      <div class="layer">
+        <h2><span class="dot" style="background:var(--dim)"></span>1 · External sources — keyless</h2>
+        <div class="blocks">
+          <div class="b"><div class="t">yfinance</div><div class="d">340 global tickers · 14 currencies · prices/fundamentals</div></div>
+          <div class="b"><div class="t">World Bank API</div><div class="d">11 indicators × 19 countries</div></div>
+          <div class="b"><div class="t">FRED csv</div><div class="d">macro series (no key); HY-OAS dark w/o <code>.fred_key</code></div></div>
+          <div class="b"><div class="t">Seeking Alpha</div><div class="d">operator-auth browser scrape · ~8s pacing</div></div>
+          <div class="b"><div class="t">Human notes</div><div class="d"><code>wiki/research/human/</code></div></div>
+        </div>
+      </div>
+      <div class="arrow">▼<small>fetch weekly / on demand</small></div>
+
+      <div class="layer">
+        <h2><span class="dot" style="background:var(--blue)"></span>2 · Fetch layer</h2>
+        <div class="blocks">
+          <div class="b"><div class="t">refresh_instruments</div><div class="d">spot + fundamentals, currency-aware → <code>_instruments.json</code></div></div>
+          <div class="b"><div class="t">fetch_history</div><div class="d">5y + 10y price parquets · <code>--inc</code> incremental</div></div>
+          <div class="b"><div class="t">refresh --macro</div><div class="d">snapshot + provenance + <code>macro.csv</code></div></div>
+          <div class="b"><div class="t">sources/*</div><div class="d">analysts (Yahoo/SA/consensus) · econ · countries</div></div>
+        </div>
+      </div>
+      <div class="arrow">▼<small>cache to scripts/_hist (87 MB)</small></div>
+
+      <div class="layer">
+        <h2><span class="dot" style="background:var(--teal)"></span>3 · Engine layer</h2>
+        <div class="blocks">
+          <div class="b"><div class="t">FFM</div><div class="d">6 factors → A+…F grades → Strong Buy…Strong Sell · regime-weighted · 336 rated</div></div>
+          <div class="b"><div class="t">Sleeves ×6</div><div class="d">momentum · value · quality · macro-rot · contrarian · long-term</div></div>
+          <div class="b"><div class="t">MDAEM v4</div><div class="d">quant dims 3/5/6/7/9 + composite (10 gates upstream)</div></div>
+          <div class="b"><div class="t">Backtest</div><div class="d">walk-forward · top-20/sleeve · monthly rebalance</div></div>
+          <div class="b"><div class="t">QAE</div><div class="d">14 factors · rank-IC (NW-corrected) · inverse-vol 10% book</div></div>
+          <div class="b"><div class="t">Tournament</div><div class="d">39 strategies · split-sample gate · deflation N</div></div>
+          <div class="b"><div class="t">FFM×SA</div><div class="d">external calibration · 68% agreement / gaps table</div></div>
+        </div>
+      </div>
+      <div class="arrow">▼<small>signals → sized decisions</small></div>
+
+      <div class="layer">
+        <h2><span class="dot" style="background:var(--amber)"></span>4 · Decision layer — own book only</h2>
+        <div class="blocks">
+          <div class="b"><div class="t">Allocator</div><div class="d">3 risks × 6 lenses · caps: name 5–10% · theme 8–15% · AI 20–30% · cash floor · high-cash honest</div></div>
+          <div class="b"><div class="t">Recommend / Monitor</div><div class="d">T1 adds · threshold alerts · continuous research</div></div>
+          <div class="b"><div class="t">Book memos</div><div class="d"><code>book-rec-*</code> · <code>qae-book-*</code> · de-risk triggers</div></div>
+        </div>
+      </div>
+      <div class="arrow">▼<small>render & publish</small></div>
+
+      <div class="layer">
+        <h2><span class="dot" style="background:var(--violet)"></span>5 · Surface layer</h2>
+        <div class="blocks">
+          <div class="b"><div class="t">Analyst Workbench</div><div class="d">11 tabs · FFM grades · allocator · event-watch chips · <code>build_workbench → inject</code></div></div>
+          <div class="b"><div class="t">Outlook Dashboard</div><div class="d">themes × macro · public landing page</div></div>
+          <div class="b"><div class="t">Quant Desk</div><div class="d">QAE IC study + book + curriculum</div></div>
+          <div class="b"><div class="t">Wiki (Obsidian)</div><div class="d">435 pages · 336 auto research notes · accountability hubs</div></div>
+          <div class="b"><div class="t">GitHub Pages</div><div class="d"><code>build_web → deploy_web</code> · 430+ rendered pages · isolated push</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT RAIL: OPS + ACCOUNTABILITY -->
+    <div class="rail right">
+      <div class="rb ops"><div class="t">⏱ OPERATING CADENCE <span style="font-weight:400;color:var(--dim)">(CADENCE.md)</span></div><div class="d">
+        <b>MONITOR</b> weekly — <code>weekly_refresh.sh</code> full chain (launchd pending fix)<br>
+        <b>SOURCE</b> daily — signal screen → shortlist<br>
+        <b>ALPHA</b> monthly — <code>qae.py</code> → quant desk<br>
+        <b>SCAN</b> monthly — radar convictions + P-call scoring<br>
+        <b>TOURNAMENT / REVIEW</b> quarterly — backtest + deflation</div></div>
+      <div class="rb acct loop"><div class="t">🔁 ACCOUNTABILITY LOOP</div><div class="d">
+        <b>signal-monitor</b> sensors 🔴🟡🟢<br>→ <b>decision-register</b> sized ADD/TRIM/EXIT<br>→ <b>prediction-ledger</b> falsifiable P-calls + resolve-by<br>→ <b>track-record</b> scored hit-rate · calibration<br>
+        Wrong calls are kept, not hidden.</div></div>
+      <div class="rb acct"><div class="t">🧭 ONBOARDING CONTRACT</div><div class="d">
+        Read <b>hotcache → ARCHITECTURE → AGENTS</b> before touching anything.<br>
+        System research → append to <b>SYSTEM-RESEARCH-LOG</b> (dated, append-only).</div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div>Guardrails: decisions for the operator's own book only · never personalized advice · past performance ≠ future results.</div>
+    <div>Change protocol &amp; extension recipes: <b>ARCHITECTURE.md §9–10</b> · maintainer: operator + AI agent</div>
+  </div>
+</div>
+</body>
+</html>

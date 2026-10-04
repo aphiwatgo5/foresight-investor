@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotcache</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="index.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="home.html">🏠 Home</a> ·
+    <a href="hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-04</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+
+<article>
+<h1 id="hotcache">Hotcache</h1>
+<blockquote>
+<p>Rolling ~500-word summary of recent state. <strong>Read this first.</strong></p>
+</blockquote>
+<p><strong>Last updated:</strong> 2026-10-03 (night, session 2)</p>
+<h2 id="what-this-is">What this is</h2>
+<p><strong>Onboarding:</strong> read <code>hotcache.md</code> → <code>ARCHITECTURE.md</code> → <code>AGENTS.md</code>; system findings → <code>SYSTEM-RESEARCH-LOG.md</code>.<br />
+A personal LLM Wiki (Obsidian vault) with a <strong>foresight-investing engine</strong>. Decisions for the operator's own<br />
+book, never advice to others. Public site: <strong>aphiwatgo5.github.io/foresight-investor/</strong> (workbench<br />
+/analyst-workbench.html · quant desk /quant-desk.html · architecture /architecture-diagram.html).</p>
+<h2 id="current-state">Current state</h2>
+<ul>
+<li><strong>Pages:</strong> sources 5 · entities 10 · concepts 74 · syntheses 39 (+3 🔒 private- portfolio pages).</li>
+<li><strong>Universe:</strong> 347. Data fully refreshed 2026-10-03 (prices→signals→FFM→macro→recommend→monitor→archive→<strong>deployed</strong>).</li>
+<li><strong>Regime: FFM flipped bull → neutral</strong> (Mom 0.30→0.20, Val 0.10→0.20). 15 Strong Buy / 161 Sell.</li>
+<li><strong>NEW ⚡ Score Δ layer (2026-10-03):</strong> <code>scripts/score_changes.py</code> diffs current vs <code>.prev</code> baselines<br />
+  (FFM 2026-09-25, SA 2026-08-12) → <code>score_changes.json</code> → workbench <strong>⚡ Score Δ tab</strong> + Universe ▲/▼<br />
+  badges + Brief "what changed" card + Security grade history. 33 up / 56 down / 254 flat. Auto-warns<br />
+  when regime flips (a move under new weights ≠ per-name news).</li>
+<li><strong>SA re-scraped 2026-10-03:</strong> all 48 watchlist names (grades now/3M/6M, div grades, ranks) from<br />
+<code>/symbol/&lt;TK&gt;/ratings/quant-ratings</code>; ratings card lazy (TSM only) — mechanics in fetch_seekingalpha.py.</li>
+<li><strong>🩺 Health tab</strong> (concurrent session, complete): workbench tab reading healthcheck.json.</li>
+</ul>
+<h2 id="hot-topic-the-read-2026-10-02-scores-vs-09-25">Hot topic — the Δ read (2026-10-02 scores vs 09-25)</h2>
+<p><strong>10Y 5.28% = 19y high (&gt;5.00 flip trigger)</strong> — Fed restarted hikes (Sep), oil ~$99 Iran, term premium up.<br />
+F&amp;G 31 (fear), CAPE 41.4, gold −3.7%/1w. Big FFM moves: <strong>KLAC &amp; NBIS Strong Buy→Sell</strong> (−46/−45 composite);<br />
+MU #1/4291 SA rank; TSM SA quant StrongBuy→Hold (Mom A−→B+, Rev A→B) + FFM SB→Buy. LLY SA Revisions A→C+<br />
+(estimate cuts). Nuclear-uranium conviction <strong>3→2.5</strong> (SMR unwind, CCJ Q3 −19% y/y) — <a href="wiki/syntheses/trend-radar.html">trend-radar</a><br />
+scan notes 2026-10-03. AI cluster: 1m momentum +8–16% but FFM composites fell — size discipline.</p>
+<h2 id="standing-quant-read">Standing quant read</h2>
+<p><a href="wiki/syntheses/strategy-tournament-2026-09-06.html">strategy-tournament-2026-09-06</a> two-engine system (Sharpe 0.98). QAE book <a href="wiki/syntheses/qae-book-2026-09-25.html">qae-book-2026-09-25</a>.<br />
+Monitor now 16 alerts (IONQ macro-sleeve 91%→6%, DDOG/AOT.BK sleeve exits). Top ADDs: SMCI, CNC, FLEX, LRCX.</p>
+<h2 id="private-layer-local-only-redacted-for-public-render">🔒 Private layer (LOCAL-ONLY — redacted for public render)</h2>
+<p>8 portfolios consolidated; details in private-portfolio-register + private-portfolio-x-ray-2026-09-26<br />
++ portfolio-dashboard.html (:8765). 10 recs pending operator go. private- prefix never renders/deployes.</p>
+<h2 id="recent-activity">Recent activity</h2>
+<ul>
+<li>2026-10-03 PM: <strong>Δ layer + full refresh + 48-name SA re-scrape + trend-radar scan + deploy</strong> (this session).</li>
+<li>2026-10-03 AM: post-mortem #1 + Review tab; point-in-time archive layer; site map; concurrent: 🩺 Health tab.</li>
+</ul>
+<h2 id="open-offered">Open / offered</h2>
+<ul>
+<li>Operator go/no-go: 10 portfolio recs → decision-register + P-calls.</li>
+<li>SA ratings-card retry (slow second pass) next scrape; FRED key (HY-OAS dark); launchd exit-78;<br />
+  Binance cost basis; SET broker name; 4 tickers w/o history; sleeve re-weigh at Dec REVIEW.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Post Mortem 2026 10 03</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-04</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Post-mortem #1 — scoring the engine&#x27;s September calls (recorded 2026-10-03)
+type: synthesis
+tags: [post-mortem, review, calibration, own-book]
+sources: [[book-rec-2026-09-13]], [[book-rec-2026-09-25]], [[qae-book-2026-09-25]], [[thai-value-dividend-play-2026-09-26]], [[prediction-ledger]]
+date: 2026-10-03</div>
+<article>
+<h1 id="post-mortem-1-scoring-the-engines-september-calls-2026-10-03">Post-mortem #1 — scoring the engine's September calls (2026-10-03)</h1>
+<p><strong>Bottom line:</strong> The first full post-mortem under the new tracking layer. <strong>Wins:</strong> every QAE/T1 recommendation since 2026-09-25 beat SPY (P32 tranche <strong>+3.98% vs SPY −0.22%</strong> in week one; T1 adds FRO +9.7% · ECO +12.4% · PSX +4.4% · SMCI +4.6%); the FFM-confirmation filter added ~2.8pts over the momentum-only names; AMD (+22.8% in 3 weeks) was the best 09-13 call. <strong>Misses:</strong> the 09-13 memo's "route new risk to non-AI value" advice cost performance — diversifiers and ballast (BHP −1.2%, LMT −3.6%, <strong>GLD −4.7%</strong>, DBC −1.9%) all lagged while SMH ran +10.9%; the 10Y&gt;5% trim trigger fired three weeks early and would have cut the winners. <strong>Early warnings:</strong> Thai KBANK −6.4% in week one (P33 pressure); 10Y now 5.28% — one basis-point-march from the 5.5% flip trigger.</p>
+<h2 id="1-the-2026-09-13-memo-three-weeks-on-spy-095-qqq-496-smh-1092">1. The 2026-09-13 memo — three weeks on (SPY +0.95% · QQQ +4.96% · SMH +10.92%)</h2>
+<table>
+<thead>
+<tr>
+<th>Call</th>
+<th>Conv</th>
+<th style="text-align: right;">Result</th>
+<th style="text-align: right;">vs SPY</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AMD (offense)</td>
+<td>3.5</td>
+<td style="text-align: right;"><strong>+22.8%</strong></td>
+<td style="text-align: right;">+21.9</td>
+<td>✅ best call</td>
+</tr>
+<tr>
+<td>MU (scale in modestly)</td>
+<td>4</td>
+<td style="text-align: right;">+10.2%</td>
+<td style="text-align: right;">+9.3</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>TSM</td>
+<td>4</td>
+<td style="text-align: right;">+9.1%</td>
+<td style="text-align: right;">+8.2</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>AVGO</td>
+<td>4</td>
+<td style="text-align: right;">−1.9%</td>
+<td style="text-align: right;">−2.8</td>
+<td>❌ lagged its own cluster</td>
+</tr>
+<tr>
+<td>BHP / LMT (diversifiers)</td>
+<td>4/3.5</td>
+<td style="text-align: right;">−1.2% / −3.6%</td>
+<td style="text-align: right;">−2.2 / −4.5</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>GLD / DBC (ballast)</td>
+<td>4/4</td>
+<td style="text-align: right;"><strong>−4.7% / −1.9%</strong></td>
+<td style="text-align: right;">−5.6 / −2.8</td>
+<td>❌ gold's hawkish selloff</td>
+</tr>
+<tr>
+<td>"Route new risk to non-AI value"</td>
+<td>—</td>
+<td style="text-align: right;">non-AI basket ≈ −2.6%</td>
+<td style="text-align: right;">−3.5</td>
+<td>❌ <strong>structural miss</strong></td>
+</tr>
+<tr>
+<td>10Y&gt;5% trigger → trim long-duration</td>
+<td>—</td>
+<td style="text-align: right;">would have trimmed AMD/MU before +10-23%</td>
+<td style="text-align: right;">—</td>
+<td>❌ premature</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Lesson 1:</strong> in a momentum melt-up, the engine's <em>factor</em> reads (AMD/MU/TSM Strong Buy) were right while its <em>macro caution</em> (value rotation, gold ballast, rate-trigger trims) was a consistent drag. The allocator's caps prevented the reverse error (no underweight AI), which is why the book still worked — but the memo's <em>advice layer</em> was too bearish-tilted for this regime. Action: memos should separate the <strong>factor view</strong> (weight it) from the <strong>macro narrative</strong> (flag it, don't trade it) when breadth is deteriorating but price confirms momentum.</p>
+<h2 id="2-the-2026-09-25-qae-book-t1-adds-one-week-on-spy-022">2. The 2026-09-25 QAE book + T1 adds — one week on (SPY −0.22%)</h2>
+<p><strong>P32 tranche (FFM-confirmed: AMD·MU·MRVL·HPE·DELL·PANW·ECO):</strong> +0.57 · −0.64 · +2.03 · <strong>+8.24</strong> · −1.70 · <strong>+7.01</strong> · <strong>+12.36</strong> → equal-weight <strong>+3.98% vs SPY −0.22%</strong> → <strong>tracking +4.2pts, on pace to ✅</strong> (resolves 2026-12-24).<br />
+<strong>Momentum-only names the FFM check rejected:</strong> INTC −3.67 · ARKG +0.82 · ILMN −0.52 · CNC +0.32 · COPX −0.83 (COHR +12.71 was actually FFM-confirmed) → ≈ <strong>+1.2%</strong> — the <strong>FFM-confirmation filter added ~2.8pts</strong> in one week. That is the model doing exactly what it's for.<br />
+<strong>T1 adds (4 days, SPY +0.53%):</strong> FRO <strong>+9.65</strong> · ECO +12.36 · SMCI +4.57 · PSX +4.35 · SNDK +0.41 — all green ✅. The tanker/storage value cluster keeps paying.</p>
+<h2 id="3-ffm-vs-sa-disagreement-scoreboard-1-week-directional-only">3. FFM vs SA disagreement scoreboard (1 week — directional only)</h2>
+<p>SA-loved/FFM-sold: AMZN +0.74 · DDOG +3.39 · MA −2.71 (avg <strong>+0.47%</strong>) · FFM-loved/SA-sold: GOOGL −0.12 · MRVL +2.03 (avg <strong>+0.96%</strong>) — no verdict yet; MRVL the early FFM point.</p>
+<h2 id="4-thai-sleeve-p33-1-week-of-a-6-month-window">4. Thai sleeve P33 (1 week of a 6-month window)</h2>
+<p>PTTEP −1.68 · ADVANC 0.00 · <strong>KBANK −6.35</strong> → sleeve ≈ <strong>−2.68%</strong> (vs SET context). No thesis breach yet (no div cut, resolve 2027-03-31), but <strong>KBANK's one-week −6.4% needs a news check at the next MONITOR</strong> — NPL cycle or flow-driven? Invalidation watch: NPL&gt;4% or yield &lt;$3.8%.</p>
+<h2 id="5-trigger-board-as-of-2026-10-03">5. Trigger board (as-of 2026-10-03)</h2>
+<table>
+<thead>
+<tr>
+<th>Trigger</th>
+<th>Level</th>
+<th>Now</th>
+<th>State</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10Y &gt;5.5% (halve offense)</td>
+<td>5.5%</td>
+<td><strong>5.28%</strong></td>
+<td>🟡 22bp away — closest it's been</td>
+</tr>
+<tr>
+<td>RSP 3-month low (breadth break)</td>
+<td>—</td>
+<td>RSP −2.0% since 09-11</td>
+<td>🟡 deteriorating, not broken</td>
+</tr>
+<tr>
+<td>SMH −12% drawdown</td>
+<td>−12%</td>
+<td>SMH +10.9% 3wk</td>
+<td>🟢</td>
+</tr>
+<tr>
+<td>Brent &gt;$110</td>
+<td>$110</td>
+<td>$102.2</td>
+<td>🟡 back above $100 (warn)</td>
+</tr>
+<tr>
+<td>USD/JPY &lt;154</td>
+<td>154</td>
+<td>157.8</td>
+<td>🟢</td>
+</tr>
+</tbody>
+</table>
+<h2 id="what-this-changes">What this changes</h2>
+<ol>
+<li><strong>Memo format:</strong> factor-view and macro-view separated, macro explicitly non-trading during momentum-confirmed regimes.</li>
+<li><strong>P32/P33</strong> stay open (tracking +4.2 / −2.7).</li>
+<li><strong>December REVIEW input:</strong> value/quality sleeve decay (see <a href="model-review-2026-10-03.html">model-review-2026-10-03</a>) now has post-mortem corroboration — the regime pays momentum; re-weigh.</li>
+<li>The Review tab in the workbench now carries this table live (auto-refreshed from <code>postmortem_*.json</code>).</li>
+</ol>
+<p><em>All prices yfinance 2026-10-03; recommendation prices from the dated memos/QAE report/instruments snapshots (provenance in each). Past performance ≠ future results; own-book only.</em></p>
+</article>
+</div>
+</body>
+</html>

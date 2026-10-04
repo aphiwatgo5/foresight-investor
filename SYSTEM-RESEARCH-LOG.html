@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SYSTEM-RESEARCH-LOG — dated research record of the system itself</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="index.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="home.html">🏠 Home</a> ·
+    <a href="hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-04</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: SYSTEM-RESEARCH-LOG — dated research record of the system itself
+type: log
+purpose: Every session that studies, audits, or modifies this system appends a dated entry. Future builders review this to see what was learned, what was fixed, and what feedback exists on the mechanics. Append-only — never rewrite past entries.</div>
+<article>
+<h1 id="system-research-log">SYSTEM-RESEARCH-LOG</h1>
+<blockquote>
+<p><strong>How to use:</strong> after any research/audit/refactor of the system (not routine data refresh),<br />
+append <code>## [YYYY-MM-DD] &lt;topic&gt; | &lt;researcher&gt;</code> with: <strong>Studied → Found → Did → Open/feedback</strong>.<br />
+Entries feed the quarterly REVIEW of mechanics. Routine ops go to <code>log.md</code>; this file is for<br />
+<em>system-level</em> research, quality findings, and architectural decisions.</p>
+</blockquote>
+<hr />
+<h2 id="2026-09-26-full-vault-lint-architecture-mapping-zcode-glm-53-session-sess_f2423c46">[2026-09-26] Full-vault lint &amp; architecture mapping | ZCode (GLM-5.3) session sess_f2423c46</h2>
+<p><strong>Studied:</strong> entire vault — 45 root entries, 435 wiki pages, 45 scripts, _hist stores (87MB),<br />
+surfaces, launchd wiring — to establish the architecture record (<code>ARCHITECTURE.md</code>, written this<br />
+session) and repair schema drift left by multiple builder sessions.</p>
+<p><strong>Found (defects, all now fixed):</strong><br />
+1. <strong>Systemic <code>[</code> frontmatter bug</strong> — 368 spots / 367 files, from a template typo in<br />
+<code>ffm_research_note.py</code> (root cause: <code>sources: [[[name</code>). Symptom of the real disease:<br />
+<em>generated output was never link-audited</em>.<br />
+2. <strong>Research layer stale + orphaned</strong> — 326 per-ticker notes pinned to 2026-07-19 ratings<br />
+   (including a hardcoded fallback date in the generator masking the staleness) with zero<br />
+   inbound links. The layer existed but was unreachable and wrong.<br />
+3. <strong>Schema drift AGENTS↔CLAUDE</strong> — the whole v5 QAE layer (ALPHA/TOURNAMENT ops) lived only<br />
+   in CLAUDE.md; agents reading AGENTS.md didn't know the quant desk existed. Two sources of<br />
+   truth diverged silently.<br />
+4. <strong>Root sprawl</strong> — 11 screenshots outside <code>raw/assets/</code>, temp scripts, empty Untitled files,<br />
+   a duplicate <code>_hist/econ/</code> at root (a <code>parents[]</code> path bug's residue from Aug 10).<br />
+5. <strong>Deploy gap</strong> — <code>build_web.py</code> didn't copy <code>research-tab.js</code> + its JSON feeds → public-site<br />
+   Research tab 404 for weeks (caught by QC only when someone looked).<br />
+6. <strong>launchd weekly job has never fired</strong> (exit 78 since install 07-17; CloudStorage path<br />
+   blocks spawn) — the cadence contract existed on paper only.</p>
+<p><strong>Did:</strong> fixed all of the above (commits 36eaa88…32142c2); regenerated all 336 notes on 09-25<br />
+data; linked master table → notes; synced schemas; wrote <code>ARCHITECTURE.md</code> + this log; wired<br />
+mandatory reading into AGENTS §0.</p>
+<p><strong>Open / feedback to future mechanics:</strong><br />
+- <strong>Add a link-graph check to the weekly chain</strong> (the lint script used 2026-09-26 should become<br />
+<code>scripts/lint_wiki.py</code> in weekly_refresh.sh — catches class-1 bugs at generation time).<br />
+- <strong>Relocate launchd</strong> (LaunchAgents plist must point outside CloudStorage, or wrap in a<br />
+  script that rsyncs first); until then MONITOR is manual.<br />
+- <strong>Generator freshness guard:</strong> <code>ffm_research_note.py</code> should refuse to write notes when<br />
+<code>ffm_ratings.as_of</code> is older than the newest <code>signals.parquet</code> date (staleness cannot recur silently).<br />
+- <strong>Deploy QC should curl the public site</strong> for every runtime-fetched asset (research-tab class<br />
+  of bug), not just check the local build.<br />
+- <strong>Two-file schema</strong> (AGENTS+CLAUDE) will drift again; consider making CLAUDE.md a 3-line<br />
+  pointer to AGENTS.md at next Claude-Code compatibility check.</p>
+<h2 id="2026-09-26-dashboard-stale-chain-root-cause-fetch_history-blind-spot-zcode-session-evening">[2026-09-26] Dashboard stale-chain root cause + fetch_history blind spot | ZCode session (evening)</h2>
+<p><strong>Studied:</strong> why the public dashboard still showed 2026-07-14 despite full data refreshes.</p>
+<p><strong>Found:</strong> three independent gaps — (1) the dashboard's main DATA block (meta.asOf, bottomLine<br />
+narrative, headline KPIs) was hand-authored in July and belonged to <strong>no builder</strong>; (2)<br />
+<code>build_dashboard_ffm.py</code> wrote <code>_dashboard_ffm.js</code> but <strong>no injector consumed it</strong>; (3)<br />
+<code>build_dashboard_v4.py</code> was skipped in refresh chains and <code>backtest.py</code> (feeding the returns<br />
+chart via <code>backtest_returns.csv</code>) hadn't run since Aug 9. Also: <code>fetch_history.py --inc</code><br />
+short-circuits the whole price pull when the cache is hours-fresh — <strong>newly added universe<br />
+tickers are silently never fetched</strong> (Thai names confirmed).</p>
+<p><strong>Did:</strong> new <code>inject_dashboard_meta.py</code> (meta+headline+FFM injection, line-tolerant markers);<br />
+re-ran backtest/v4; manual 7-series append to prices.parquet; all validated live (asOf 09-26,<br />
+returns axis 09-25). ARCHITECTURE §9 change-protocol now implicitly covers these via the injector.</p>
+<p><strong>Open / feedback to future mechanics:</strong><br />
+- <strong>fetch_history --inc should diff the universe against cached tickers</strong> and fetch missing<br />
+  ones even when fresh (one-line fix candidate in its main()).<br />
+- <strong>Every builder needs a named injector</strong> (or self-injects); a builder-without-injector is a<br />
+  silent staleness bug. Candidate: lint rule — scan scripts/build_*.py for missing inject pairs.<br />
+- The dashboard's hand-written <code>bottomLine</code> narrative now carries a vintage banner; a future<br />
+  rewrite should make the whole DATA block generated, not patched.</p>
+<h2 id="2026-09-26-private-portfolio-layer-design-decisions">[2026-09-26] 🔒 Private portfolio layer — design decisions</h2>
+<ul>
+<li><strong>Privacy mechanics:</strong> <code>private-</code> filename prefix (not a folder) chosen because <code>build_web.py</code> already<br />
+  matched exact names in EXCLUDE_FILES — extending to a prefix rule was 2 lines; a folder would have required<br />
+  a new walk. Deploy leak-scan extended to <code>private-portfolio|holdings|_portfolio_data</code> so the public<br />
+<code>portfolio-blueprint.html</code> page is NOT false-flagged (first attempt blocked it — caught in verification).</li>
+<li><strong>Two denominators:</strong> investable (financial) book drives caps/HHI/stress/FX; the condo (user-stated ฿8.8M)<br />
+  enters only the balance sheet — mixing them would have diluted the BTC breach to 6.5% and hidden the real cap hit.</li>
+<li><strong>Look-through honesty:</strong> Thai fund holdings are JS-gated on every public page; recorded UNAVAILABLE with<br />
+  tried-sources rather than recalled (SET50 weights from memory would violate the no-fabrication rule).<br />
+  Vision transcription lesson: two passes on the SET table disagreed on rows; only the pass whose column sums<br />
+  reconciled exactly to the printed totals was accepted; per-row costs kept but flagged ±3% with statement<br />
+  totals as authoritative. CAIE/SM suspected-duplicate resolved as REAL distinct rows (app header "15 assets"</li>
+<li>exact column-sum reconciliation); actual duplicate was a scroll-overlap row, already de-duplicated.</li>
+<li><strong>Analyzer fields:</strong> dual net worth (total vs financial) + pct_total_nw on every stress row — leverage<br />
+  amplification reads differently once home equity is counted (user correctly insisted on the condo).</li>
+</ul>
+<h2 id="2026-10-03-temporal-integrity-audit-point-in-time-archive-layer-zcode-session">[2026-10-03] Temporal-integrity audit + point-in-time archive layer | ZCode session</h2>
+<p><strong>Studied:</strong> whether the system can reconstruct "what the model believed on date X" for<br />
+post-mortems. <strong>Found:</strong> no — 14 mutable engine outputs (ffm_ratings, sleeves, consensus,<br />
+sa_top_rated, recommendations, qae_*, backtest…) are overwritten every refresh; the Aug-12<br />
+SA screener vintage was already lost in place (survives only in git); 336 research notes are<br />
+regenerated wholesale; living hub pages edit convictions in place without changelogs.</p>
+<p><strong>Did:</strong> built <code>scripts/snapshot_archive.py</code> (append-only dated vintages + manifest with git<br />
+SHA + recommendation-journal.jsonl: T1 adds, FFM top-10, QAE longs, ledger calibration per<br />
+run); wired into weekly_refresh 3f; ARCHITECTURE §8.9 + §9 updated; first model-review<br />
+synthesis filed (<a href="wiki/syntheses/model-review-2026-10-03.html">model-review-2026-10-03</a>) with a full validation sweep and the<br />
+value/quality sleeve-decay finding (0.32/0.37 vs momentum 1.06 — December REVIEW decision).</p>
+<p><strong>Open / feedback:</strong> (1) pre-2026-10 history is git-only — accepted, documented;<br />
+(2) enforce Changelog-bullet convention on trend-radar/decision-register edits — needs a<br />
+lint check candidate; (3) sleeve re-weigh at quarterly REVIEW; (4) journal should eventually<br />
+capture allocator portfolios too (currently in workbench data only).</p>
+<h2 id="2026-10-03-score-change-layer-sa-scrape-mechanics-re-verified">[2026-10-03] score-change Δ layer + SA scrape mechanics (re-verified)</h2>
+<ul>
+<li><strong>SA symbol pages changed again:</strong> Factor Grades no longer on the symbol root — live at<br />
+<code>/symbol/&lt;TK&gt;/ratings/quant-ratings</code> with marker <code>FACTOR GRADES</code> (UPPERCASE in innerText).<br />
+  Ratings card (QUANT/SA/Wall St) is lazy (often absent 9–15s post-load); grades+div+ranks<br />
+  are reliable. IAB quirk: evaluate must be FUNCTION-form (string-form silently returns {}),<br />
+  eval() wrappers trip the read-only guard; webview dies every ~25–35 pages → tabs.new()<br />
+  recovery keeps the cookie. All in fetch_seekingalpha.py docstring.</li>
+<li><strong>Δ layer (score_changes.py):</strong> diff engine against <code>.prev</code> baselines (falls back to the<br />
+  newest archive with a different as_of). Powers workbench ⚡ Score Δ tab + Universe badges +<br />
+  Brief card + detail history. Key design: <strong>regime-flip warning generated automatically</strong><br />
+  when weights change — a rating move under a regime flip is partly model re-weighting, and<br />
+  the UI must say so before the operator acts on it.</li>
+<li><strong>Rating-diff honesty:</strong> ffm_vs_sa.py now skips null SA ratings instead of fabricating<br />
+  "Hold"; build_workbench disagreements filter likewise.</li>
+<li>Deploy note: public workbench carries the Δ tab (validated post-deploy via curl markers).</li>
+</ul>
+<h2 id="2026-10-03-injector-idempotency-lesson-dashboard-stale-as-of">[2026-10-03] injector idempotency lesson (dashboard stale as-of)</h2>
+<ul>
+<li>A regex injector whose REPLACEMENT changes the format its MATCH expects will pass silently<br />
+  forever after the first run (subn → 0, only visible in the n_meta print). Rule: injector<br />
+  regexes must match their own output (write the replacement, then re-match IT). The same run<br />
+  printed <code>meta:0</code> — read the counters, they are the smoke alarm.</li>
+<li>Banner-stamp pattern must be replace-not-prepend; otherwise banners accumulate per run.</li>
+<li>Public site serves the dashboard at <code>/</code> (index.html); <code>/outlook-dashboard.html</code> 404s.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

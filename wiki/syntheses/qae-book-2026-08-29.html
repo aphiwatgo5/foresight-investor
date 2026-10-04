@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qae Book 2026 08 29</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-04</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: QAE book — 2026-08-29 (data through 2026-08-27)
+type: synthesis
+tags: [quant, qae, book, opportunities, factor, momentum, decision-support]
+sources: [[quant-alpha-methodology]], [[quant-firm-anatomy]], [[foresight-factor-model]]
+date: 2026-08-29</div>
+<article>
+<h1 id="qae-book-2026-08-29">QAE book — 2026-08-29</h1>
+<p><strong>Bottom line:</strong> In a risk-on but historically expensive tape (SPY +9.1% above its 200dma,<br />
+VIX 14.5, CAPE 42.2), the cross-sectional engine produces a <strong>momentum book concentrated in<br />
+semis, cybersecurity and AI-software</strong>, of which only <strong>6 of 15 names carry independent<br />
+fundamental confirmation</strong>. At the engine's 10% volatility target the book is only <strong>22.5%<br />
+invested</strong> — the ranking's raw material is high-volatility names, and honouring the risk<br />
+target means most of the account stays in cash. That cash weight is the single most<br />
+important number on this page.</p>
+<blockquote>
+<p><strong>Scope.</strong> Decisions for the operator's own book — never advice to others. Every figure<br />
+below was computed this session by <code>scripts/qae.py</code> from live-pulled prices. Method:<br />
+<a href="../concepts/quant-alpha-methodology.html">quant-alpha-methodology</a>.</p>
+</blockquote>
+<hr />
+<h2 id="1-data-freshness-read-this-before-trusting-a-number">1. Data freshness (read this before trusting a number)</h2>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>As of</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price panel</td>
+<td><strong>2026-08-27</strong></td>
+<td>437,501 rows / 326 tickers, pulled 2026-08-29T13:38Z. Yahoo returned OHLV but <strong>no close</strong> for Fri 2026-08-28 for US listings, so the last complete cross-section is Thursday. <strong>The book is one session stale.</strong></td>
+</tr>
+<tr>
+<td>Macro (VIX, SPX, CAPE)</td>
+<td>2026-08-27 / 08-28</td>
+<td>VIX 14.51 · SPX 7,730.99 (08-27) · Shiller CAPE 42.17 (08-28)</td>
+</tr>
+<tr>
+<td>FFM fundamental grades</td>
+<td><strong>2026-08-12</strong></td>
+<td>17 days old — the fundamental cross-check is the stalest input here</td>
+</tr>
+<tr>
+<td>Eligible universe</td>
+<td>261 names</td>
+<td>177 stocks / 84 ETFs after liquidity, history, structural-decay and vol-collapse filters</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-regime-read">2. Regime read</h2>
+<ul>
+<li>SPY <strong>771.10</strong>, above both the 50dma and 200dma (<strong>+9.1%</strong> above the 200dma), <strong>−0.9%</strong> off its high.</li>
+<li>21-day realized market volatility <strong>11.5%</strong>; VIX <strong>14.51</strong>. Calm.</li>
+<li>Shiller CAPE <strong>42.17</strong> — the valuation backdrop <a href="bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a> flagged.</li>
+<li><strong>Engine label: risk-on.</strong> Momentum's historical edge is concentrated in exactly this<br />
+  regime — and so is its crash risk, which arrives when the regime turns (Daniel–Moskowitz).</li>
+</ul>
+<h2 id="3-the-book">3. The book</h2>
+<p>Two sizing columns. <code>w@10%vol</code> is what the engine actually recommends (the rest is cash);<br />
+<code>w@full</code> is the same ranking fully invested, which carries roughly <strong>3× the volatility</strong> and<br />
+was the version that drew a −32.8% max drawdown in backtest.</p>
+<p><strong>Tier A — momentum confirmed by independent fundamentals</strong> (composite score top-decile<br />
+<em>and</em> FFM composite ≥ 60). These get full engine weight.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">#</th>
+<th>Ticker</th>
+<th style="text-align: right;">Score</th>
+<th style="text-align: right;">w@10%vol</th>
+<th style="text-align: right;">w@full</th>
+<th style="text-align: right;">Price</th>
+<th>Stop (2.5×ATR)</th>
+<th style="text-align: right;">12-1 mom</th>
+<th style="text-align: right;">Off 52w high</th>
+<th>FFM</th>
+<th>Theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td><strong>DELL</strong></td>
+<td style="text-align: right;">2.94</td>
+<td style="text-align: right;">1.01%</td>
+<td style="text-align: right;">4.5%</td>
+<td style="text-align: right;">472.26</td>
+<td>400.00 (−15.3%)</td>
+<td style="text-align: right;">+209%</td>
+<td style="text-align: right;">−4.5%</td>
+<td>Strong Buy 77</td>
+<td>ai-infrastructure</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td><strong>AMD</strong></td>
+<td style="text-align: right;">2.51</td>
+<td style="text-align: right;">1.32%</td>
+<td style="text-align: right;">5.9%</td>
+<td style="text-align: right;">476.67</td>
+<td>406.41 (−14.7%)</td>
+<td style="text-align: right;">+190%</td>
+<td style="text-align: right;">−17.9%</td>
+<td>Strong Buy 80</td>
+<td>semis</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td><strong>MRVL</strong></td>
+<td style="text-align: right;">2.29</td>
+<td style="text-align: right;">0.84%</td>
+<td style="text-align: right;">3.7%</td>
+<td style="text-align: right;">241.45</td>
+<td>196.66 (−18.6%)</td>
+<td style="text-align: right;">+146%</td>
+<td style="text-align: right;">−23.7%</td>
+<td>Strong Buy 75.5</td>
+<td>semis / optical</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td><strong>MU</strong></td>
+<td style="text-align: right;">2.27</td>
+<td style="text-align: right;">0.97%</td>
+<td style="text-align: right;">4.3%</td>
+<td style="text-align: right;">935.39</td>
+<td>769.56 (−17.7%)</td>
+<td style="text-align: right;">+644%</td>
+<td style="text-align: right;">−22.9%</td>
+<td>Strong Buy 84.5</td>
+<td>semis</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td><strong>ILMN</strong></td>
+<td style="text-align: right;">2.16</td>
+<td style="text-align: right;">1.80%</td>
+<td style="text-align: right;">8.0%</td>
+<td style="text-align: right;">227.69</td>
+<td>206.33 (−9.4%)</td>
+<td style="text-align: right;">+106%</td>
+<td style="text-align: right;">0.0%</td>
+<td>Strong Buy 78</td>
+<td>biotech-genomics</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td><strong>PANW</strong></td>
+<td style="text-align: right;">2.15</td>
+<td style="text-align: right;">1.70%</td>
+<td style="text-align: right;">7.6%</td>
+<td style="text-align: right;">382.85</td>
+<td>340.93 (−10.9%)</td>
+<td style="text-align: right;">+74%</td>
+<td style="text-align: right;">−3.3%</td>
+<td>Strong Buy 75.5</td>
+<td>cybersecurity</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tier B — price momentum with no fundamental support</strong> (FFM composite &lt; 45). The engine<br />
+still ranks them; the fundamental model disagrees. Treat as <strong>shorter-leash trades, half<br />
+weight, tighter invalidation</strong> — not core holdings.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">#</th>
+<th>Ticker</th>
+<th style="text-align: right;">Score</th>
+<th style="text-align: right;">w@10%vol</th>
+<th style="text-align: right;">w@full</th>
+<th style="text-align: right;">Price</th>
+<th>Stop</th>
+<th style="text-align: right;">12-1 mom</th>
+<th style="text-align: right;">Off 52w high</th>
+<th>FFM</th>
+<th>Theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">3</td>
+<td>FTNT</td>
+<td style="text-align: right;">2.39</td>
+<td style="text-align: right;">1.80%</td>
+<td style="text-align: right;">8.0%</td>
+<td style="text-align: right;">172.78</td>
+<td>156.22 (−9.6%)</td>
+<td style="text-align: right;">+97%</td>
+<td style="text-align: right;">0.0%</td>
+<td><strong>Sell 30</strong></td>
+<td>cybersecurity</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>INTC</td>
+<td style="text-align: right;">2.21</td>
+<td style="text-align: right;">1.20%</td>
+<td style="text-align: right;">5.4%</td>
+<td style="text-align: right;">92.09</td>
+<td>76.07 (−17.4%)</td>
+<td style="text-align: right;">+267%</td>
+<td style="text-align: right;"><strong>−34.7%</strong></td>
+<td><strong>Sell 30</strong></td>
+<td>semis</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>CRWD</td>
+<td style="text-align: right;">1.97</td>
+<td style="text-align: right;">1.45%</td>
+<td style="text-align: right;">6.5%</td>
+<td style="text-align: right;">227.96</td>
+<td>200.72 (−12.0%)</td>
+<td style="text-align: right;">+75%</td>
+<td style="text-align: right;">0.0%</td>
+<td><strong>Sell 30</strong></td>
+<td>cyber / ai-software</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>USO</td>
+<td style="text-align: right;">1.97</td>
+<td style="text-align: right;">1.80%</td>
+<td style="text-align: right;">8.0%</td>
+<td style="text-align: right;">130.01</td>
+<td>118.59 (−8.8%)</td>
+<td style="text-align: right;">+71%</td>
+<td style="text-align: right;">−15.0%</td>
+<td>Sell 35</td>
+<td>commodities (oil)</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td>DDOG</td>
+<td style="text-align: right;">1.94</td>
+<td style="text-align: right;">1.39%</td>
+<td style="text-align: right;">6.2%</td>
+<td style="text-align: right;">242.93</td>
+<td>206.49 (−15.0%)</td>
+<td style="text-align: right;">+104%</td>
+<td style="text-align: right;">−15.7%</td>
+<td><strong>Sell 30</strong></td>
+<td>ai-software</td>
+</tr>
+<tr>
+<td style="text-align: right;">13</td>
+<td>CNC</td>
+<td style="text-align: right;">1.82</td>
+<td style="text-align: right;">1.80%</td>
+<td style="text-align: right;">8.0%</td>
+<td style="text-align: right;">65.33</td>
+<td>59.52 (−8.9%)</td>
+<td style="text-align: right;">+111%</td>
+<td style="text-align: right;">−4.9%</td>
+<td>Sell 44.5</td>
+<td>healthcare services</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tier C — mixed</strong> (FFM Hold): ECO 2.00 · SMH 1.79 · XBI 1.76. Index/basket expressions<br />
+(SMH, XBI) are the lower-idiosyncratic-risk way to hold the same exposure.</p>
+<p><strong>Book characteristics:</strong> long gross <strong>22.5%</strong> at the vol target · book beta <strong>0.30</strong> ·<br />
+theme exposure of the fully-invested version: semiconductors 27.2% · cybersecurity 22.1% ·<br />
+ai-infrastructure 18.4% · biotech-genomics 16.0% · commodities 16.0% · ai-software 12.7%.</p>
+<h3 id="the-concentration-problem-stated-plainly">The concentration problem, stated plainly</h3>
+<p>Even after the max-3-per-theme cap, <strong>semis + AI-infrastructure + AI-software ≈ 58%</strong> of the<br />
+fully-invested book. Against the <a href="portfolio-blueprint.html">portfolio-blueprint</a> rule <em>AI-capex cluster ≤ 25%</em>, this<br />
+book <strong>breaches the cap roughly 2×</strong>. That is not an engine error — it is what a momentum<br />
+screen returns in an AI-capex bull market, and it is exactly the failure mode<br />
+<a href="../concepts/quant-firm-anatomy.html">quant-firm-anatomy</a> §4 warns about: fifteen names that are one bet. Any real deployment<br />
+must either cut the cluster to the cap or accept the concentration knowingly.</p>
+<h2 id="4-what-not-to-do">4. What not to do</h2>
+<p>The bottom decile is an <strong>avoid / trim list</strong>, not a short book — the backtest is explicit<br />
+that shorting cost more than it earned in this regime (long/short Sharpe 0.56 vs long-only<br />
+1.11, <a href="../concepts/quant-alpha-methodology.html">quant-alpha-methodology</a> §2).</p>
+<p>Bottom-decile names where the fundamental model <strong>agrees</strong> with the weak price trend:<br />
+<strong>EIDO</strong> (Strong Sell 26) · <strong>SMR</strong> (Strong Sell 24.5) · <strong>KWEB</strong> (Strong Sell 29) ·<br />
+<strong>HDB</strong> (Sell 34) · <strong>ACM</strong> (Sell 30) · <strong>AVAV</strong> (Sell 30) · <strong>PNR</strong> (Sell 43.5).<br />
+Weak price trend but neutral fundamentals — no signal either way: BSX, ISRG, NOC (all FFM Hold ~50).</p>
+<p>Note <strong>SMR</strong> and <strong>AVAV</strong>: 92% and 84% annualized vol with the price trend against them.<br />
+High-vol names on the wrong side of the ranking are where books die.</p>
+<h2 id="5-falsifiable-calls-for-prediction-ledger">5. Falsifiable calls (for <a href="prediction-ledger.html">prediction-ledger</a>)</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Call</th>
+<th>Success</th>
+<th>Failure</th>
+<th>Resolve by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P-QAE-1</strong></td>
+<td>The QAE Tier-A basket (DELL, AMD, MRVL, MU, ILMN, PANW, equal-weight) outperforms SPY over the next 21 trading days</td>
+<td>Basket return &gt; SPY return</td>
+<td>Basket return &lt; SPY return</td>
+<td>2026-09-28</td>
+</tr>
+<tr>
+<td><strong>P-QAE-2</strong></td>
+<td>Tier A (FFM-confirmed) outperforms Tier B (momentum-only) over 63 trading days — i.e. the fundamental cross-check adds value</td>
+<td>Tier A &gt; Tier B</td>
+<td>Tier A ≤ Tier B</td>
+<td>2026-12-01</td>
+</tr>
+<tr>
+<td><strong>P-QAE-3</strong></td>
+<td>The bottom-decile avoid list underperforms SPY over 63 trading days</td>
+<td>Avoid basket &lt; SPY</td>
+<td>Avoid basket ≥ SPY</td>
+<td>2026-12-01</td>
+</tr>
+<tr>
+<td><strong>P-QAE-4</strong></td>
+<td><code>mom_12_1</code> 21-day rank IC stays positive on the next monthly re-run</td>
+<td>IC &gt; 0</td>
+<td>IC ≤ 0</td>
+<td>2026-09-28</td>
+</tr>
+</tbody>
+</table>
+<p>P-QAE-2 is the one worth watching: it is a direct test of whether combining the<br />
+price-momentum engine with <a href="../concepts/foresight-factor-model.html">foresight-factor-model</a> beats either alone.</p>
+<h2 id="6-confidence-gaps">6. Confidence &amp; gaps</h2>
+<p><strong>Confidence: low-to-moderate (2.5/5).</strong><br />
+- The signal evidence is thin: the best factor has a Newey–West t of 1.2 over 5 years, and<br />
+  with 14 factors tested a multiple-testing bar would demand ~3.0. Momentum is used because<br />
+  it is one of the most-replicated effects in the literature <em>and</em> its sign agrees here —<br />
+  not because this study proved it.<br />
+- Effective factor breadth is ~1: both surviving factors are momentum variants.<br />
+- The backtest window (~3y) is a single bull regime, and the universe is the list tracked<br />
+<em>today</em> (survivorship). Both flatter the result.<br />
+- The book is one trading session stale, and the fundamental overlay is 17 days stale.</p>
+<p><strong>What would change the read:</strong> SPY closing below its 200dma (momentum's regime support<br />
+gone) · <code>mom_12_1</code> rolling IC turning negative · the AI-capex cluster cracking, which would<br />
+hit ~58% of this book simultaneously.</p>
+<p><strong>Not yet filed to <a href="decision-register.html">decision-register</a>.</strong> These are engine candidates, not committed<br />
+positions — the register gets rows only when the operator decides to deploy against them.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Method: <a href="../concepts/quant-alpha-methodology.html">quant-alpha-methodology</a> · Theory: <a href="../concepts/quant-firm-anatomy.html">quant-firm-anatomy</a> · Learning: <a href="../concepts/quant-trader-curriculum.html">quant-trader-curriculum</a></li>
+<li>Cross-checks: <a href="../concepts/foresight-factor-model.html">foresight-factor-model</a> · <a href="strategy-sleeves.html">strategy-sleeves</a> · <a href="portfolio-blueprint.html">portfolio-blueprint</a></li>
+<li>Valuation backdrop: <a href="bubble-risk-us-equity-2026-06-28.html">bubble-risk-us-equity-2026-06-28</a> · <a href="macro-regime.html">macro-regime</a></li>
+</ul>
+<h2 id="data-freshness-log">Data freshness log</h2>
+<ul>
+<li><code>scripts/_hist/prices.parquet</code> — 437,501 rows, 326 tickers, 5y window, yfinance, retrieved 2026-08-29T13:38:55Z.</li>
+<li><code>scripts/_hist/macro.csv</code> — FRED + multpl.com, retrieved 2026-08-29T13:38Z (VIX/SPX 2026-08-27, CAPE 2026-08-28).</li>
+<li><code>scripts/_hist/ffm_ratings.json</code> — FFM 6-factor grades, as_of 2026-08-12.</li>
+<li><code>scripts/_hist/qae_ic.json</code>, <code>qae_backtest.json</code>, <code>qae_book.json</code> — generated 2026-08-29T14:0xZ.</li>
+</ul>
+<p>All price and macro figures retrieved live on 2026-08-29; no values drawn from model training.<br />
+Past performance ≠ future results. Insight and own-book decision support only.</p>
+</article>
+</div>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quant Firm Anatomy</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-04</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Anatomy of a Leading Quant Firm
+type: concept
+tags: [quant, trading, hedge-fund, market-structure, methodology, education]
+sources: [[quant-alpha-methodology]], [[quant-trader-curriculum]]
+date: 2026-08-29
+last_scan: 2026-08-29</div>
+<article>
+<h1 id="anatomy-of-a-leading-quant-firm">Anatomy of a Leading Quant Firm</h1>
+<p><strong>Definition:</strong> How the top systematic trading firms are actually organized — the four<br />
+business models, the six-stage production line every one of them runs, and the economics<br />
+(Sharpe, breadth, capacity, decay) that decide which strategies they can and cannot run.</p>
+<blockquote>
+<p><strong>Scope.</strong> Descriptive market-structure knowledge, assembled for the operator's own<br />
+methodology design. Firm-internal details are not public; everything below is either<br />
+cited, or marked <code>(industry knowledge)</code> where it is well-documented consensus rather<br />
+than a live-verified figure. No claim here is investment advice.</p>
+</blockquote>
+<hr />
+<h2 id="1-the-four-business-models">1. The four business models</h2>
+<p>They are all called "quant," but they make money in four structurally different ways.<br />
+Confusing them is the single most common beginner error — the risk, capital, latency and<br />
+skill requirements barely overlap.</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Firms</th>
+<th>Holding period</th>
+<th>Edge comes from</th>
+<th>Sharpe (typical)</th>
+<th>Capacity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Market making / HFT</strong></td>
+<td>Jane Street, Citadel Securities, Jump, HRT, Optiver, IMC, SIG</td>
+<td>microseconds → hours</td>
+<td>Spread capture + inventory management + speed</td>
+<td>very high (&gt;5)</td>
+<td>Low relative to AUM; limited by flow</td>
+</tr>
+<tr>
+<td><strong>Statistical arbitrage</strong></td>
+<td>Renaissance (Medallion), Two Sigma, DE Shaw, PDT, Voleon</td>
+<td>minutes → days</td>
+<td>Many weak, decaying, mean-reverting patterns, traded at huge breadth</td>
+<td>high (2–5+)</td>
+<td>Hard-capped; Medallion returns capital and is closed to outside money</td>
+</tr>
+<tr>
+<td><strong>Multi-manager "pod shops"</strong></td>
+<td>Millennium, Citadel, Point72, Balyasny, ExodusPoint</td>
+<td>days → months</td>
+<td><em>Diversification across many independent books</em> + brutal risk discipline; the alpha per pod is modest</td>
+<td>1–2 per pod, 3–5+ at fund level</td>
+<td>Very high — the model scales by adding pods</td>
+</tr>
+<tr>
+<td><strong>Systematic factor / macro / CTA</strong></td>
+<td>AQR, Man AHL, Winton, Dimensional, Bridgewater (systematic-discretionary)</td>
+<td>weeks → years</td>
+<td>Documented risk premia (value, momentum, carry, trend, quality) harvested cheaply at scale</td>
+<td>0.4–1.0</td>
+<td>Enormous — tens of billions</td>
+</tr>
+</tbody>
+</table>
+<p><strong>The relevant read for a single operator with daily data:</strong> you cannot compete in rows 1<br />
+or 2 (they are latency and infrastructure races) and you have no LP capital for row 3.<br />
+Row 4 — plus the slower, weekly-to-monthly end of row 2 — is the <em>only</em> space where an<br />
+individual can hold a real edge, because the edge there is behavioral and structural<br />
+rather than technological (inference). This is what <a href="quant-alpha-methodology.html">quant-alpha-methodology</a> targets.</p>
+<h3 id="renaissance-medallion-the-archetype-of-row-2">Renaissance / Medallion — the archetype of row 2</h3>
+<p>Executes very large numbers of short-horizon trades globally, driven by statistical<br />
+pattern detection rather than causal narrative; explicitly does not try to explain <em>why</em><br />
+a pattern exists, only that it is non-random and persistent<br />
+(web: quartr.com / Wikipedia RenTech overview, retrieved 2026-08-29). Inputs span prices,<br />
+volumes and order flow plus alternative data, over decades of history. Risk control is<br />
+structural, not discretionary: short holding periods limit exposure, and the book is run<br />
+close to market-neutral so index direction is not the bet.</p>
+<h3 id="the-pod-shops-the-archetype-of-row-3">The pod shops — the archetype of row 3</h3>
+<p>The defining feature is not signal quality, it is <strong>stop-loss culture</strong>. At Millennium the<br />
+documented thresholds are ~5% drawdown from a portfolio manager's peak triggering a halving<br />
+of capital and ~7.5% triggering termination of the pod; Citadel and Point72 use comparable<br />
+limits negotiated per PM rather than one firm-wide number<br />
+(web: youngandcalculated.substack.com / navnoorbawa.substack.com, retrieved 2026-08-29).<br />
+Millennium runs on the order of 330+ independent teams; Point72 185+ investing teams;<br />
+Citadel fewer pods with larger allocations each (same sources). Capital is re-allocated<br />
+<strong>daily</strong>, not quarterly. Risk sits in a group reporting to the CEO, independent of every<br />
+investment team.</p>
+<p><strong>The transferable lesson:</strong> these firms do not generate their headline Sharpe from<br />
+brilliant individual signals. They generate it from (a) <em>many</em> weakly-correlated books and<br />
+(b) <em>mechanical, pre-committed loss limits</em> that are enforced by someone who does not care<br />
+about the thesis. Both are copyable by a solo operator. Neither requires technology.</p>
+<hr />
+<h2 id="2-the-six-stage-production-line">2. The six-stage production line</h2>
+<p>Every serious systematic shop runs some version of this pipeline. The names differ; the<br />
+stages do not (industry knowledge).</p>
+<pre><code>1. DATA  →  2. ALPHA RESEARCH  →  3. SIGNAL COMBINATION  →
+4. PORTFOLIO CONSTRUCTION  →  5. EXECUTION  →  6. RISK &amp; ATTRIBUTION
+                    ↑______________ feedback ______________|
+</code></pre>
+<p><strong>1. Data engineering.</strong> Point-in-time correctness is the whole game. A price series that<br />
+has been retroactively adjusted, a fundamental that "knows" the restated number, an index<br />
+membership list without the delisted names — each silently manufactures alpha that does not<br />
+exist. Survivorship bias and look-ahead bias kill more backtests than bad ideas do.</p>
+<p><strong>2. Alpha research.</strong> One researcher, one hypothesis, one <em>measurable</em> prediction. The<br />
+industry-standard measurement is the <strong>information coefficient (IC)</strong> — the cross-sectional<br />
+rank correlation between a signal today and forward returns. Realistic IC for an equity<br />
+factor is <strong>0.02–0.06</strong>; anything above ~0.10 on a broad universe is a data error until<br />
+proven otherwise (industry knowledge). Signals are judged by IC <em>mean/std</em> (the information<br />
+ratio of the signal), by IC decay across horizons, and by whether the IC survives after<br />
+removing the obvious risk exposures.</p>
+<p><strong>3. Signal combination.</strong> Dozens to thousands of raw alphas are z-scored, winsorized,<br />
+orthogonalized against each other and against risk factors, then blended — weighted by<br />
+measured IR, not by conviction. Firms differ mostly in how they handle correlation between<br />
+alphas and how much they let a machine choose weights.</p>
+<p><strong>4. Portfolio construction.</strong> The signal says <em>what to rank</em>; construction decides <em>what to<br />
+own</em>. A mean-variance or risk-parity optimizer maximizes expected alpha minus a risk penalty<br />
+minus a transaction-cost penalty, subject to constraints: sector/theme caps, single-name<br />
+caps, beta and factor neutrality, liquidity limits, gross and net exposure. This stage is<br />
+where most of the realized Sharpe is created or destroyed.</p>
+<p><strong>5. Execution.</strong> Alpha is measured in basis points; so is slippage. Orders are sliced<br />
+(VWAP/TWAP/POV/implementation-shortfall), routed to minimize market impact, and measured<br />
+against arrival price. A strategy with 300% annual turnover and 15bps of round-trip cost<br />
+pays ~4.5% a year — enough to erase a good factor entirely.</p>
+<p><strong>6. Risk &amp; attribution.</strong> Daily: ex-ante risk model (factor + idiosyncratic), stress tests,<br />
+scenario shocks, VaR, and <em>attribution</em> — which factor, which sector, which name made or<br />
+lost the money. Attribution is what separates "we were right" from "we were lucky."</p>
+<hr />
+<h2 id="3-the-economics-that-decide-what-is-tradable">3. The economics that decide what is tradable</h2>
+<h3 id="the-fundamental-law-of-active-management-grinold">The Fundamental Law of Active Management (Grinold)</h3>
+<p>$$IR \approx IC \times \sqrt{Breadth}$$<br />
+Information ratio ≈ skill per bet × square root of the number of <em>independent</em> bets per year.</p>
+<p>This one equation explains the entire industry structure:<br />
+- Medallion has a modest IC and astronomic breadth (millions of bets) → extreme IR.<br />
+- A concentrated stock-picker may have a large IC on 10 positions a year → mediocre IR.<br />
+- A solo operator with a 300-name universe rebalanced monthly has breadth ≈ 300 × 12 = 3,600<br />
+<em>nominally</em>, but far less <strong>independently</strong> (the names are correlated) — realistically a few<br />
+  hundred. With IC = 0.03 that implies IR ≈ 0.03 × √300 ≈ 0.5 before costs (inference).<br />
+- <strong>Therefore:</strong> the fastest way for an individual to raise IR is not a cleverer signal — it<br />
+  is <em>more independent bets</em> (more names, more asset classes, more weakly-correlated factors)<br />
+  and <em>lower correlation between them</em>.</p>
+<h3 id="capacity-and-decay">Capacity and decay</h3>
+<p>Every alpha has a capacity (how much money it absorbs before its own market impact kills it)<br />
+and a half-life (how fast it is arbitraged away once published). Published academic anomalies<br />
+decay materially post-publication (well-documented in the factor literature, e.g. McLean–Pontiff<br />
+2016) (industry knowledge). This is why firms run rolling research: the portfolio of alphas is<br />
+replaced faster than any single alpha lasts.</p>
+<h3 id="costs-and-why-they-are-the-real-enemy">Costs, and why they are the real enemy</h3>
+<p>Round-trip cost ≈ half-spread + commission + market impact. Impact scales roughly with<br />
+√(order size / daily volume). The practical implication for a small book is <em>favorable</em>: a<br />
+solo operator trading $10k–$1M in liquid names has near-zero market impact and can harvest<br />
+capacity-constrained edges that a $50B fund physically cannot touch. <strong>Small size is the<br />
+one structural advantage an individual has over Citadel.</strong> Use it (inference).</p>
+<hr />
+<h2 id="4-what-the-top-firms-actually-agree-on">4. What the top firms actually agree on</h2>
+<p>Strip the marketing and the four models converge on five practices:</p>
+<ol>
+<li><strong>Diversify the bets, not the conviction.</strong> Many small, weakly-correlated positions beat<br />
+   a few large ones at the same expected return, because variance falls faster than return.</li>
+<li><strong>Size by risk, not by dollars.</strong> Position size ∝ 1/volatility, scaled to a portfolio<br />
+   volatility target. Equal-dollar weighting is an unmanaged bet on whichever name is most<br />
+   volatile.</li>
+<li><strong>Pre-commit the exit.</strong> Stops and de-grossing rules are set before entry and enforced<br />
+   mechanically. The pod-shop 5%/7.5% ladder is the industrial version of this.</li>
+<li><strong>Measure everything, especially the failures.</strong> Every call is scored. Hit rate, IC,<br />
+   attribution, and calibration are tracked continuously — the vault's <a href="../syntheses/prediction-ledger.html">prediction-ledger</a><br />
+   and <a href="../syntheses/track-record.html">track-record</a> are the retail equivalent.</li>
+<li><strong>Assume the edge is decaying.</strong> Re-validate signals on new data; retire what stops working.</li>
+</ol>
+<h2 id="5-what-they-do-that-a-solo-operator-should-not-copy">5. What they do that a solo operator should <em>not</em> copy</h2>
+<ul>
+<li><strong>Leverage.</strong> Pod shops run 4–8x gross because they are market- and factor-neutral with a<br />
+  professional risk overlay and prime-broker financing. Copying the leverage without the<br />
+  neutrality is how retail accounts die.</li>
+<li><strong>Shorting single names</strong> without borrow, margin discipline, and hard stops — unbounded<br />
+  loss, borrow-cost drag, and squeeze risk. Use the short list as an <em>avoid/trim</em> list<br />
+  instead (<a href="quant-alpha-methodology.html">quant-alpha-methodology</a> does exactly this).</li>
+<li><strong>Latency-sensitive signals.</strong> Anything with an intraday horizon is a fight you lose by<br />
+  construction.</li>
+<li><strong>Complex ML on small data.</strong> These firms have decades of tick data and dedicated<br />
+  infrastructure. On ~5y of daily bars for 300 names, a deep model will overfit; a small<br />
+  set of well-understood, economically-motivated factors will not.</li>
+</ul>
+<hr />
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Implemented for this vault as <a href="quant-alpha-methodology.html">quant-alpha-methodology</a> (the QAE engine).</li>
+<li>The learning path is <a href="quant-trader-curriculum.html">quant-trader-curriculum</a>.</li>
+<li>Complements <a href="foresight-factor-model.html">foresight-factor-model</a> (single-name grading) and <a href="../syntheses/strategy-sleeves.html">strategy-sleeves</a><br />
+  (long-only thematic sleeves) — QAE adds the cross-sectional/risk-sizing layer.</li>
+<li>Risk discipline feeds <a href="../syntheses/portfolio-blueprint.html">portfolio-blueprint</a> and <a href="../syntheses/decision-register.html">decision-register</a>.</li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Does the vault's 330-name universe give enough <em>independent</em> breadth, or does theme<br />
+  clustering (AI-capex especially) collapse effective breadth to ~5–10 bets?</li>
+<li>Can point-in-time fundamentals (SEC EDGAR) be added so value/quality factors become<br />
+  backtestable without look-ahead? (Standing v4 backlog item.)</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>web: quartr.com — "Renaissance Technologies and The Medallion Fund", retrieved 2026-08-29.</li>
+<li>web: en.wikipedia.org/wiki/Renaissance_Technologies, retrieved 2026-08-29.</li>
+<li>web: youngandcalculated.substack.com — "What Risk Managers at Pod Shops Actually Do All Day" /<br />
+  "How Multi-Manager Hedge Funds Actually Work Internally", retrieved 2026-08-29.</li>
+<li>web: navnoorbawa.substack.com — "How Millennium, Citadel &amp; Point72 Structure Pods", retrieved 2026-08-29.</li>
+<li>Grinold &amp; Kahn, <em>Active Portfolio Management</em> — Fundamental Law (definition, from knowledge).</li>
+<li>McLean &amp; Pontiff (2016), <em>Does Academic Research Destroy Stock Return Predictability?</em> (from knowledge).</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

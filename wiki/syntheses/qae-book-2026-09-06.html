@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qae Book 2026 09 06</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-04</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: System book — 2026-09-06 (data through 2026-09-04)
+type: synthesis
+tags: [quant, qae, book, momentum, dual-momentum, decision-support]
+sources: [[strategy-tournament-2026-09-06]], [[quant-alpha-methodology]], [[foresight-factor-model]]
+date: 2026-09-06</div>
+<article>
+<h1 id="system-book-2026-09-06">System book — 2026-09-06</h1>
+<p><strong>Bottom line:</strong> Under the tournament-selected two-engine system<br />
+(<a href="strategy-tournament-2026-09-06.html">strategy-tournament-2026-09-06</a> §6), today's book is <strong>15% in ten momentum names, 50% in a<br />
+single commodity ETF, and 35% in T-bills.</strong> The stock engine is at 30% gross because its ten<br />
+names run at 43–99% annualized volatility and the 15% vol target will not hold more of them.<br />
+The dual-momentum engine is in DBC because broad commodities (+40.5% trailing 12m) beat every<br />
+other candidate and T-bills. That single-ETF concentration is the engine's design, and its<br />
+weakest point — the 3-engine variant is listed for anyone who will not hold it.</p>
+<blockquote>
+<p><strong>Scope.</strong> Positions for the operator's own book, never advice to others. Signals computed<br />
+from prices through the last complete US session, <strong>2026-09-04</strong>. FFM fundamental grades are<br />
+as of 2026-08-12. Past performance ≠ future results.</p>
+</blockquote>
+<hr />
+<h2 id="regime">Regime</h2>
+<ul>
+<li>SPY trailing 12m <strong>+12.2%</strong> · QQQ +15.5% · <strong>DBC +40.5% · USO +107%</strong> — commodities and oil<br />
+  are the leadership in the cross-asset ranking.</li>
+<li>INDA −7.3%, GLD −2.4%, IEF −1.8%, TLT −3.4% over 12m: bonds and gold are not yet a<br />
+  defensive bid, which is why the dual-momentum leg's fallback would be BIL if equities<br />
+  rolled over today.</li>
+</ul>
+<h2 id="engine-a-momentum-10-vol-targeted-50-of-capital-30-gross-15-of-total">Engine A — Momentum-10, vol-targeted (50% of capital → 30% gross → 15% of total)</h2>
+<p>Ten names, each <strong>3.0% of the engine's capital = 1.5% of total</strong> (the 8% cap binds on all ten<br />
+before vol scaling, so the leg is ten equal weights at 30% gross). The other 70% of this<br />
+engine — 35% of total — sits in BIL.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">#</th>
+<th>Ticker</th>
+<th style="text-align: right;">Price</th>
+<th style="text-align: right;">12-1 mom</th>
+<th style="text-align: right;">Off 52w high</th>
+<th style="text-align: right;">Vol (63d)</th>
+<th style="text-align: right;">Stop (2.5×ATR)</th>
+<th>FFM</th>
+<th>Check</th>
+<th>Theme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td><strong>DELL</strong></td>
+<td style="text-align: right;">524.14</td>
+<td style="text-align: right;">+250%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">78%</td>
+<td style="text-align: right;">445.08 (−15.1%)</td>
+<td>Strong Buy 77</td>
+<td>confirmed</td>
+<td>ai-infrastructure</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td><strong>AMD</strong></td>
+<td style="text-align: right;">477.57</td>
+<td style="text-align: right;">+202%</td>
+<td style="text-align: right;">−17.8%</td>
+<td style="text-align: right;">73%</td>
+<td style="text-align: right;">415.18 (−13.1%)</td>
+<td>Strong Buy 80</td>
+<td>confirmed</td>
+<td>semis</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td><strong>MU</strong></td>
+<td style="text-align: right;">1,016.59</td>
+<td style="text-align: right;">+611%</td>
+<td style="text-align: right;">−16.2%</td>
+<td style="text-align: right;">99%</td>
+<td style="text-align: right;">867.25 (−14.7%)</td>
+<td>Strong Buy 84.5</td>
+<td>confirmed</td>
+<td>semis</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td><strong>ECO</strong></td>
+<td style="text-align: right;">71.43</td>
+<td style="text-align: right;">+148%</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;">51%</td>
+<td style="text-align: right;">65.56 (−8.2%)</td>
+<td>Hold 50</td>
+<td>mixed</td>
+<td>commodities</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td><strong>MRVL</strong></td>
+<td style="text-align: right;">223.55</td>
+<td style="text-align: right;">+229%</td>
+<td style="text-align: right;">−29.3%</td>
+<td style="text-align: right;">97%</td>
+<td style="text-align: right;">182.03 (−18.6%)</td>
+<td>Strong Buy 75.5</td>
+<td>confirmed</td>
+<td>semis / optical</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td><strong>INTC</strong></td>
+<td style="text-align: right;">95.80</td>
+<td style="text-align: right;">+306%</td>
+<td style="text-align: right;"><strong>−32.0%</strong></td>
+<td style="text-align: right;">80%</td>
+<td style="text-align: right;">81.46 (−15.0%)</td>
+<td><strong>Sell 30</strong></td>
+<td>momentum-only</td>
+<td>semis</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td><strong>SMH</strong></td>
+<td style="text-align: right;">567.01</td>
+<td style="text-align: right;">+98%</td>
+<td style="text-align: right;">−15.2%</td>
+<td style="text-align: right;">50%</td>
+<td style="text-align: right;">520.21 (−8.3%)</td>
+<td>Hold 50</td>
+<td>mixed</td>
+<td>semis (basket)</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td><strong>FTNT</strong></td>
+<td style="text-align: right;">156.29</td>
+<td style="text-align: right;">+110%</td>
+<td style="text-align: right;">−9.5%</td>
+<td style="text-align: right;">43%</td>
+<td style="text-align: right;">139.08 (−11.0%)</td>
+<td><strong>Sell 30</strong></td>
+<td>momentum-only</td>
+<td>cybersecurity</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td><strong>ILMN</strong></td>
+<td style="text-align: right;">218.22</td>
+<td style="text-align: right;">+98%</td>
+<td style="text-align: right;">−4.2%</td>
+<td style="text-align: right;">43%</td>
+<td style="text-align: right;">196.71 (−9.9%)</td>
+<td>Strong Buy 78</td>
+<td>confirmed</td>
+<td>biotech-genomics</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td><strong>XSD</strong></td>
+<td style="text-align: right;">491.45</td>
+<td style="text-align: right;">+82%</td>
+<td style="text-align: right;">−24.3%</td>
+<td style="text-align: right;">59%</td>
+<td style="text-align: right;">441.04 (−10.3%)</td>
+<td>Hold 50</td>
+<td>mixed</td>
+<td>semis (basket)</td>
+</tr>
+</tbody>
+</table>
+<p>Changes vs the <a href="qae-book-2026-08-29.html">qae-book-2026-08-29</a> top ten: <strong>XSD in</strong> (semiconductor ETF), <strong>PANW out</strong><br />
+(slipped below rank 10); ECO and SMH moved up. Five of ten carry independent fundamental<br />
+confirmation; INTC and FTNT are momentum the fundamental model rejects — the v1 rule applies<br />
+(half weight, tighter leash) if the operator wants the overlay.</p>
+<p><strong>Concentration, stated plainly:</strong> six of ten names are semiconductors or semiconductor<br />
+baskets. Within this 15% slice that is ~9% of total capital in one industry — inside the 12%<br />
+theme cap only because the vol target has shrunk the whole leg. The cap would be breached at<br />
+full investment.</p>
+<h2 id="engine-b-dual-momentum-with-defensive-leg-50-of-capital">Engine B — Dual momentum with defensive leg (50% of capital)</h2>
+<table>
+<thead>
+<tr>
+<th>Candidate</th>
+<th style="text-align: right;">12m return</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DBC</strong> (broad commodities)</td>
+<td style="text-align: right;"><strong>+40.5%</strong></td>
+<td><strong>held — 50% of total capital</strong></td>
+</tr>
+<tr>
+<td>QQQ</td>
+<td style="text-align: right;">+15.5%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>SPY</td>
+<td style="text-align: right;">+12.2%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>VNQ</td>
+<td style="text-align: right;">+10.2%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>GLD</td>
+<td style="text-align: right;">−2.4%</td>
+<td>—</td>
+</tr>
+<tr>
+<td>INDA</td>
+<td style="text-align: right;">−7.3%</td>
+<td>—</td>
+</tr>
+<tr>
+<td><em>T-bill hurdle (BIL 12m)</em></td>
+<td style="text-align: right;"><em>+2.5%</em></td>
+<td><em>cleared</em></td>
+</tr>
+</tbody>
+</table>
+<p>DBC: price 31.90 · 63d vol 21.6% · 2.5×ATR stop 30.79 (−3.5%) · at its 52-week high.<br />
+Note DBC's 3-month return is +20.1% against +3.5% over six months — the move is recent and<br />
+steep. Dual momentum does not care; the operator should at least know.</p>
+<h2 id="the-whole-book">The whole book</h2>
+<table>
+<thead>
+<tr>
+<th>Sleeve</th>
+<th style="text-align: right;">Weight of total capital</th>
+<th>Instruments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Engine A — momentum names</td>
+<td style="text-align: right;"><strong>15%</strong></td>
+<td>10 × 1.5% of total (3.0% of the engine's half)</td>
+</tr>
+<tr>
+<td>Engine A — T-bill remainder</td>
+<td style="text-align: right;">35%</td>
+<td>BIL (the vol target will not hold more names)</td>
+</tr>
+<tr>
+<td>Engine B — dual momentum</td>
+<td style="text-align: right;"><strong>50%</strong></td>
+<td>DBC</td>
+</tr>
+<tr>
+<td><strong>Risk assets / T-bills</strong></td>
+<td style="text-align: right;"><strong>65% / 35%</strong></td>
+<td>ex-ante book vol ≈ 12–14% · β to SPY ≈ 0.4</td>
+</tr>
+</tbody>
+</table>
+<h2 id="risk-averse-variant-3-engines-equal-thirds">Risk-averse variant (3 engines, equal thirds)</h2>
+<p>Engine A 33% → 10 names at 1.0% of total each + 23% BIL · Engine B 33% → DBC · Engine C 33% →<br />
+multi-asset trend, today (of total): HYG 9.8%, UUP 7.5%, SPY 3.1%, DBA 3.0%, VNQ 2.6%,<br />
+DBC 1.8%, EWJ 1.7%, QQQ 1.6%, GLD 1.5%, USO 0.8%, rest BIL. Backtest: Sharpe 0.92, max DD −21.4%,<br />
+2022 drawdown −7.6%.</p>
+<h2 id="what-would-change-this-book">What would change this book</h2>
+<ul>
+<li><strong>Engine A</strong> re-ranks in 21 trading days (2026-10-05). A name leaving the top quartile of<br />
+  the composite is sold regardless of P&amp;L. Any name through its 2.5×ATR stop is sold on the<br />
+  day.</li>
+<li><strong>Engine B</strong> flips only at the monthly check; the two names to watch are DBC (a 12m return<br />
+  below QQQ's hands the leg to QQQ) and BIL (if no candidate beats T-bills, the leg goes to the<br />
+  best of IEF/TLT/GLD/BIL — today that would be BIL, since all three others are negative<br />
+  over 12m).</li>
+<li><strong>System:</strong> a −15% peak-to-trough drawdown is treated as regime change<br />
+  (<a href="strategy-tournament-2026-09-06.html">strategy-tournament-2026-09-06</a> §6), not as an entry.</li>
+</ul>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<p><strong>Confidence 3/5 on the construction, 2/5 on the specific names.</strong> The system's evidence is<br />
+described honestly in <a href="strategy-tournament-2026-09-06.html">strategy-tournament-2026-09-06</a> §5: a +0.27 Sharpe edge inside a<br />
++1.01 luck band, a survivor-biased stock universe (mitigated by the +6.7%/yr alpha over that<br />
+universe's own equal weight), and a diversifier leg that is currently 100% in a commodity ETF<br />
+at its high. What this book <em>does</em> have that the 2026-08-29 book did not: a rule for every<br />
+exit, a documented reason for every weight, and nine years of the same rules applied to the<br />
+same universe with costs.</p>
+<p><strong>Not filed to <a href="decision-register.html">decision-register</a>.</strong> Engine candidates until the operator decides to run<br />
+the system.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>The system and its evidence: <a href="strategy-tournament-2026-09-06.html">strategy-tournament-2026-09-06</a> · v1 method: <a href="../concepts/quant-alpha-methodology.html">quant-alpha-methodology</a></li>
+<li>Prior book (v1, single engine): <a href="qae-book-2026-08-29.html">qae-book-2026-08-29</a> · Fundamental overlay: <a href="../concepts/foresight-factor-model.html">foresight-factor-model</a></li>
+<li>Caps: <a href="portfolio-blueprint.html">portfolio-blueprint</a> · Calls: <a href="prediction-ledger.html">prediction-ledger</a> (P27–P29)</li>
+</ul>
+<h2 id="data-freshness-log">Data freshness log</h2>
+<ul>
+<li><code>scripts/_hist/prices_10y.parquet</code> — through 2026-09-04, retrieved 2026-09-06T14:36Z (yfinance).</li>
+<li><code>scripts/_hist/tournament_results.json</code> — <code>current_weights</code> per strategy, generated 2026-09-06T14:44Z.</li>
+<li><code>scripts/_hist/system_book_2026-09-06.json</code> — prices, vols, ATR stops for the eleven instruments above.</li>
+<li><code>scripts/_hist/ffm_ratings.json</code> — as of 2026-08-12.</li>
+</ul>
+<p>All figures retrieved live on 2026-09-06; no values drawn from model training. Own-book decision support only.</p>
+</article>
+</div>
+</body>
+</html>
