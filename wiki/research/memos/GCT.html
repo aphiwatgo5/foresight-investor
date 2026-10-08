@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gct</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../../index.html">📊 Dashboard</a> ·
+    <a href="../../../site-index.html">📚 Site index</a> ·
+    <a href="../../../home.html">🏠 Home</a> ·
+    <a href="../../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;GCT — GigaCloud Technology | Investment Memo (100x-hunt sleeve)&quot;
+type: research
+ticker: GCT
+date: 2026-10-05
+conviction: MODERATE
+horizon: 8-10y
+sleeve: 100x-hunt
+rating: HOLD — ACCUMULATE AFTER NEXT PRINT
+pt_12m: &quot;$65-75 (10-11× FY27E EPS if margins hold under tariffs)&quot;
+tags: [research, memo, 100-bagger, marketplace, logistics]
+sources: [[qualified-100x-list-2026-10-05]], [[hundred-x-hunt-framework]]</div>
+<article>
+<h1 id="gct-gigacloud-technology-analyst-memo">GCT — GigaCloud Technology | Analyst Memo</h1>
+<p><strong>FFM Rating: Not Rated</strong> (outside 347 universe; SA quant Strong Buy)<br />
+<strong>Conviction</strong>: MODERATE (tariff-dependent) · <strong>Risk: high</strong> (China sourcing, US furniture cycle)<br />
+<strong>Sizing band</strong>: 0.3% only AFTER next earnings print confirms margin resilience<br />
+<strong>Invalidation</strong>: tariff escalation hitting GMV (&gt;10% volume decline); revenue growth &lt;15%; warehouse expansion misfires</p>
+<h2 id="1-recommendation">1. Recommendation</h2>
+<p><strong>HOLD — ACCUMULATE AFTER THE NEXT PRINT.</strong> Textbook category error + physical moat: a B2B marketplace<br />
+WITH vertically-integrated large-item fulfillment (port-proximate warehouses + last-mile) where<br />
+competitors are brokers. Q2-2026 EPS <strong>$1.16 vs $0.81 consensus (+43% surprise)</strong>, record 2025,<br />
+expanded buyback, ~10× trailing earnings. But the disconfirming evidence is binding: <strong>China-centric<br />
+sourcing tariff exposure</strong> (March-2026 US-China tensions) into a soft US furniture market. The<br />
+business has outperformed the bear narrative so far — we demand one clean print before committing.<br />
+<strong>100x-shape probability: low (&lt;5%).</strong> 12m fair value $65-75 conditional on margin resilience.</p>
+<h2 id="2-company-overview">2. Company overview</h2>
+<p>GigaCloud (LA HQ, China-rooted operations) runs the GigaCloud Marketplace for B2B large-parcel<br />
+commerce (furniture first): verified suppliers, standardized freight pricing, self-operated US/EU<br />
+warehouses, last-mile white-glove. ~$1.9B cap; profitable since 2022 (est.).</p>
+<h2 id="3-financial-summary-forecast">3. Financial summary &amp; forecast</h2>
+<p>Sourced: yfinance full statements ($M; fetched 2026-10-05 → <code>scripts/_hist/memo_fundamentals_v2.json</code>); guides from co. IR. n/d = not reported.</p>
+<p><strong>Annual P&amp;L</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>FY2025A</th>
+<th>FY2024A</th>
+<th>FY2023A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>1,289.9</td>
+<td>1,161.0</td>
+<td>703.8</td>
+</tr>
+<tr>
+<td>Gross profit</td>
+<td>300.7</td>
+<td>285.2</td>
+<td>188.6</td>
+</tr>
+<tr>
+<td>GM %</td>
+<td>23.3</td>
+<td>24.6</td>
+<td>26.8</td>
+</tr>
+<tr>
+<td>R&amp;D</td>
+<td>n/d</td>
+<td>n/d</td>
+<td>n/d</td>
+</tr>
+<tr>
+<td>SG&amp;A</td>
+<td>144.5</td>
+<td>143.8</td>
+<td>70.9</td>
+</tr>
+<tr>
+<td>Operating income</td>
+<td>145.1</td>
+<td>130.8</td>
+<td>113.3</td>
+</tr>
+<tr>
+<td>Op margin %</td>
+<td>11.2</td>
+<td>11.3</td>
+<td>16.1</td>
+</tr>
+<tr>
+<td>Net income</td>
+<td>137.4</td>
+<td>125.8</td>
+<td>94.1</td>
+</tr>
+<tr>
+<td>Net margin %</td>
+<td>10.6</td>
+<td>10.8</td>
+<td>13.4</td>
+</tr>
+<tr>
+<td>Diluted EPS</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Diluted shares (M)</td>
+<td>38.2</td>
+<td>41.2</td>
+<td>40.9</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quarterly trajectory (inflection check)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Revenue</th>
+<th>y/y</th>
+<th>q/q</th>
+<th>GM %</th>
+<th>Net income</th>
+<th>opCF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-06</td>
+<td>411.6</td>
+<td>27.6%</td>
+<td>14.5%</td>
+<td>25.6</td>
+<td>42.3</td>
+<td>48.4</td>
+</tr>
+<tr>
+<td>2026-03</td>
+<td>359.5</td>
+<td>n/d%</td>
+<td>-0.9%</td>
+<td>23.9</td>
+<td>38.1</td>
+<td>-21.7</td>
+</tr>
+<tr>
+<td>2025-12</td>
+<td>362.8</td>
+<td>n/d%</td>
+<td>9.1%</td>
+<td>22.9</td>
+<td>38.5</td>
+<td>64.4</td>
+</tr>
+<tr>
+<td>2025-09</td>
+<td>332.6</td>
+<td>n/d%</td>
+<td>3.1%</td>
+<td>23.2</td>
+<td>37.2</td>
+<td>78.2</td>
+</tr>
+<tr>
+<td>2025-06</td>
+<td>322.6</td>
+<td>n/d%</td>
+<td>n/d%</td>
+<td>23.8</td>
+<td>34.5</td>
+<td>38.6</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Balance sheet &amp; liquidity (FY2025A):</strong> cash+investments <strong>416.1</strong> · total debt 469.7 · <strong>net cash -53.6</strong> · equity 485.8</p>
+<h2 id="4-industry-outlook">4. Industry outlook</h2>
+<p>US furniture/large-item B2B commerce is a ~$100B+ fragmented pool (est./inference) still transacting<br />
+on phone+fax logistics; the large-item last-mile problem is the moat — broker-model competitors cannot<br />
+own port-proximate warehouses economically. Structural cross-currents: US housing softness + 5.28%<br />
+10Y (mortgage-sensitive end demand) vs reshoring/SE Asia sourcing diversification (GCT's multi-origin<br />
+optionality). Tariff regime is THE swing variable — a genuine two-sided risk, which is why entry is<br />
+gated on the next print.</p>
+<h2 id="5-valuation-scenarios-2031-est">5. Valuation &amp; scenarios (~2031, est.)</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>GMV CAGR</th>
+<th>Net margin</th>
+<th>Implied cap</th>
+<th>vs $1.9B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bull</td>
+<td>22% (détente + intl)</td>
+<td>12%</td>
+<td>~$3.5B</td>
+<td>~1.8×</td>
+</tr>
+<tr>
+<td>Base</td>
+<td>15%</td>
+<td>9%</td>
+<td>~$1.9B</td>
+<td>~1×</td>
+</tr>
+<tr>
+<td>Bear (tariff shock)</td>
+<td>−5%</td>
+<td>4%</td>
+<td>~$0.6B</td>
+<td>−68%</td>
+</tr>
+</tbody>
+</table>
+<p>At ~10× earnings, the market already charges for tariff fear — the bet is margin durability.</p>
+<h2 id="6-bull-case-catalysts-12-24m">6. Bull case / catalysts (12-24m)</h2>
+<ul>
+<li>Next 2 prints: growth ≥20% AND stable margins → thesis confirmed, add tranches</li>
+<li>Buyback execution at ~10×; tariff détente headlines</li>
+<li>Non-US marketplace expansion leverages warehouse network</li>
+</ul>
+<h2 id="7-bear-case-risks">7. Bear case / risks</h2>
+<ul>
+<li>Tariff escalation compresses GMV/margins simultaneously</li>
+<li>US furniture demand recession; insider selling accelerating</li>
+<li>Small-cap China discount persists structurally (valuation ceiling)</li>
+</ul>
+<h2 id="8-vault-context-review-hooks">8. Vault context &amp; review hooks</h2>
+<p>Reshoring-supply-chain theme (conviction 3) tangent. <strong>Decision gate: next earnings print</strong> — margin<br />
+stability under live tariffs is the falsifiable test; one bad tariff print → pass entirely (discipline<br />
+over narrative).</p>
+<h2 id="9-qc-red-flag-block-2026-10-05-pass">9. QC red-flag block (2026-10-05 pass)</h2>
+<ul>
+<li><strong>Momentum / discovered-ness (P5):</strong> 1m +6.4% / 12m +92.1% (short 15.1%)</li>
+<li><strong>RATING UNCHANGED: HOLD→ACCUMULATE after next print — but growth is ~11% not 15-20%; the bet is PURELY margin durability at ~10× earnings</strong></li>
+<li>Data vintage: FY annual statements lag quarterly prints — reconcile cash/runway against latest 10-Q before executing.</li>
+<li>Round-1 error corrected here is logged in <a href="../../syntheses/research-quality-review-2026-10-05.html">research-quality-review-2026-10-05</a>.</li>
+<li><strong>Neutral scorecard: 4/8</strong> (traj 2 · prof 1 · BS 1 — net debt −$53.6M warehouse-financed · disc 0). Q2-26 y/y +27.6% is better than the annual +11% — quarterly momentum beats the annual optics.</li>
+<li><strong>Dilution &amp; relative value (round 4):</strong> Dilution +16%/yr over 3y is skewed by a one-time 2023 step; recent count 41→41→38M is flat-to-shrinking (buyback). EV/S <strong>1.5×</strong> / P/S 1.5× on FY25 revenue vs universe median <strong>5.7×</strong> (n=215) — cheap.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

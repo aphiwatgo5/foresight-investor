@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Continuous Research — Foresight Factor</title>
+<style>
+  :root{
+    --bg:#0b0f1a; --panel:#121829; --panel2:#0e1422; --line:#1f2940;
+    --ink:#e6ebf5; --muted:#8b97b0; --dim:#5c6680;
+    --accent:#5b9dff; --accent2:#7c5cff;
+    --c1:#ff5c6c; --c2:#ff9f43; --c3:#ffd24a; --c4:#7bd88f; --c5:#3ddc97;
+    --radius:14px; --shadow:0 1px 0 rgba(255,255,255,.03), 0 8px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1200px 600px at 70% -10%,#16203a 0,var(--bg) 60%);
+    color:var(--ink);font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;padding:0 0 60px}
+  .wrap{max-width:1280px;margin:0 auto;padding:0 22px}
+  header.top{padding:30px 0 12px;border-bottom:1px solid var(--line);margin-bottom:22px;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+  .eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:11px;color:var(--accent);font-weight:700}
+  h1{margin:.25em 0 .15em;font-size:27px;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:13px}
+
+  /* Cards */
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin-bottom:18px;box-shadow:var(--shadow)}
+  .card h2{margin:0 0 12px;font-size:16px;color:var(--accent);display:flex;align-items:center;gap:10px}
+  .card h2 .count{background:var(--line);color:var(--muted);font-size:11px;padding:2px 8px;border-radius:999px;font-weight:600}
+
+  /* Rec table */
+  .rec-table{width:100%;border-collapse:collapse;font-size:13px}
+  .rec-table th{text-align:left;padding:8px 10px;color:var(--dim);font-weight:600;border-bottom:1px solid var(--line);white-space:nowrap}
+  .rec-table td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top}
+  .rec-table tr:hover td{background:rgba(91,157,255,.04)}
+  .rec-table .tk{font-weight:700;color:var(--accent);font-size:14px}
+  .rec-table .tk .book-tag{font-size:10px;color:var(--c2);margin-left:6px;font-weight:600}
+
+  /* Action badges */
+  .badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+  .badge-add{background:rgba(61,220,151,.12);color:var(--c5)}
+  .badge-start{background:rgba(123,216,143,.12);color:var(--c4)}
+  .badge-hold{background:rgba(91,157,255,.12);color:var(--accent)}
+  .badge-watch{background:rgba(139,151,176,.12);color:var(--muted)}
+  .badge-trim{background:rgba(255,159,67,.12);color:var(--c2)}
+  .badge-reject{background:rgba(255,92,108,.12);color:var(--c1)}
+
+  /* Confidence bar */
+  .conf-bar{height:4px;background:var(--line);border-radius:2px;margin-top:6px;overflow:hidden}
+  .conf-bar > div{height:100%;border-radius:2px}
+  .conf-high{background:var(--c5)}
+  .conf-med{background:var(--c3)}
+  .conf-low{background:var(--c1)}
+
+  /* Alert cards */
+  .alert-list{display:flex;flex-direction:column;gap:10px}
+  .alert-item{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;background:var(--panel2);border-radius:10px;border-left:3px solid var(--line)}
+  .alert-item.high{border-left-color:var(--c1)}
+  .alert-item.medium{border-left-color:var(--c2)}
+  .alert-item.low{border-left-color:var(--c4)}
+  .alert-sev{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;min-width:52px}
+  .alert-sev.high{color:var(--c1)}
+  .alert-sev.medium{color:var(--c2)}
+  .alert-sev.low{color:var(--c4)}
+  .alert-body{flex:1}
+  .alert-tk{font-weight:700;color:var(--accent);font-size:13px}
+  .alert-msg{color:var(--muted);font-size:12px;margin-top:2px}
+  .alert-type{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.05em;margin-top:4px}
+
+  /* Summary chips */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .chip{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:6px 12px;font-size:12px}
+  .chip b{color:var(--ink)}
+
+  /* Tier dots */
+  .tier{font-size:11px;color:var(--dim)}
+  .tier::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px}
+  .tier-T1::before{background:var(--c5)}
+  .tier-MED-HIGH::before{background:var(--c4)}
+  .tier-STARTER::before{background:var(--c3)}
+  .tier-PASS::before{background:var(--muted)}
+  .tier-REJECT::before{background:var(--c1)}
+
+  /* Layout */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:980px){.grid-2{grid-template-columns:1fr}}
+  .grid-1{max-width:900px}
+
+  .empty{color:var(--dim);font-style:italic;padding:20px;text-align:center}
+  .muted{color:var(--muted);font-size:12px}
+  .small{font-size:12px}
+  .mono{font-family:SFMono-Regular,Consolas,monospace}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Foresight Factor · Continuous Research</div>
+      <h1>Security Recommendations &amp; Alerts</h1>
+      <div class="sub">Auto-generated from the quant signal pipeline · <span id="asof">—</span></div>
+    </div>
+    <nav style="display:flex;gap:16px;align-items:center;font-size:13px;flex-wrap:wrap">
+      <a href="index.html" style="color:var(--accent);text-decoration:none;font-weight:600">⌂ Dashboard</a>
+      <a href="analyst-workbench.html" style="color:var(--ink,#e6ebf5);text-decoration:none">🛠 Workbench</a>
+      <a href="site-index.html" style="color:var(--ink,#e6ebf5);text-decoration:none">📚 Site Map</a>
+    </nav>
+  </header>
+
+  <div class="chips" id="summary-chips"></div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>Recommendations <span class="count" id="rec-count">0</span></h2>
+      <div id="rec-panel"><div class="empty">Loading…</div></div>
+    </div>
+    <div class="card">
+      <h2>Monitor Alerts <span class="count" id="alert-count">0</span></h2>
+      <div id="alert-panel"><div class="empty">Loading…</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Load data ───────────────────────────────────────────────────────────────
+// Try parent window WORKBENCH_DATA first (if iframe'd into dashboard), else fetch JSON
+let DATA = {recommendations:{meta:{},summary:{},top:[]}, monitor:{meta:{},summary:{},alerts:[]}};
+
+try {
+  if (window.parent && window.parent.WORKBENCH_DATA) {
+    DATA.recommendations = window.parent.WORKBENCH_DATA.recommendations || DATA.recommendations;
+    DATA.monitor = window.parent.WORKBENCH_DATA.monitor || DATA.monitor;
+  }
+} catch(e){}
+
+// Fallback: fetch local JSON (for standalone use)
+if (!DATA.recommendations.top.length) {
+  Promise.all([
+    fetch('../scripts/_hist/recommendations.json').then(r=>r.ok?r.json():{}).catch(()=>({})),
+    fetch('../scripts/_hist/monitor_alerts.json').then(r=>r.ok?r.json():{}).catch(()=>({}))
+  ]).then(([rec, mon]) => {
+    if (rec.recommendations) DATA.recommendations = {meta:rec.meta, summary:rec.summary, top:rec.recommendations.slice(0,15)};
+    if (mon.alerts) DATA.monitor = {meta:mon.meta, summary:mon.summary, alerts:[]};
+    // Flatten alerts
+    if (mon.alerts) {
+      ['high','medium','low'].forEach(sev => {
+        (mon.alerts[sev]||[]).forEach(a => DATA.monitor.alerts.push({...a, sev}));
+      });
+    }
+    render();
+  });
+} else {
+  render();
+}
+
+// ── Render ──────────────────────────────────────────────────────────────────
+function render() {
+  const rec = DATA.recommendations;
+  const mon = DATA.monitor;
+  document.getElementById('asof').textContent = (rec.meta.as_of || rec.meta.generated_utc || '—').slice(0,10);
+
+  // Summary chips
+  const s = rec.summary || {};
+  const chips = [];
+  if (s.add) chips.push(`<span class="chip"><b style="color:var(--c5)">${s.add}</b> ADD</span>`);
+  if (s.start) chips.push(`<span class="chip"><b style="color:var(--c4)">${s.start}</b> START</span>`);
+  if (s.hold) chips.push(`<span class="chip"><b style="color:var(--accent)">${s.hold}</b> HOLD</span>`);
+  if (s.watch) chips.push(`<span class="chip"><b style="color:var(--muted)">${s.watch}</b> WATCH</span>`);
+  if (s.trim) chips.push(`<span class="chip"><b style="color:var(--c2)">${s.trim}</b> TRIM</span>`);
+  if (s.reject) chips.push(`<span class="chip"><b style="color:var(--c1)">${s.reject}</b> REJECT</span>`);
+  const ms = mon.summary || {};
+  if (ms.high) chips.push(`<span class="chip"><b style="color:var(--c1)">${ms.high}</b> 🔴 alerts</span>`);
+  document.getElementById('summary-chips').innerHTML = chips.join('') || '<span class="chip">No data</span>';
+
+  // Recommendations table
+  const top = rec.top || [];
+  document.getElementById('rec-count').textContent = top.length;
+  if (!top.length) {
+    document.getElementById('rec-panel').innerHTML = '<div class="empty">Run <code>scripts/recommend.py</code> to generate recommendations.</div>';
+  } else {
+    const rows = top.map(r => {
+      const badgeClass = 'badge-' + r.action.toLowerCase();
+      const confPct = r.conf || 0;
+      const confColor = confPct >= 70 ? 'conf-high' : confPct >= 50 ? 'conf-med' : 'conf-low';
+      const bookTag = r.inBook ? '<span class="book-tag">[BOOK]</span>' : '';
+      const themes = (r.themes||[]).slice(0,3).join(', ');
+      return `<tr>
+        <td><span class="tk">${r.tk}${bookTag}</span><div class="tier tier-${r.tier}">${r.tier}</div></td>
+        <td><span class="badge ${badgeClass}">${r.action}</span></td>
+        <td>
+          <div style="font-weight:700">${confPct}/100</div>
+          <div class="conf-bar"><div class="${confColor}" style="width:${confPct}%"></div></div>
+        </td>
+        <td class="mono">${r.price ? '$'+r.price : '—'}</td>
+        <td class="mono">${r.fwdPe ? r.fwdPe+'x' : '—'}</td>
+        <td class="mono">${r.off52!=null ? (r.off52*100).toFixed(1)+'%' : '—'}</td>
+        <td class="small muted">${themes}</td>
+        <td class="small muted">${r.why || ''}</td>
+        <td class="small muted">${r.inv || ''}</td>
+      </tr>`;
+    }).join('');
+    document.getElementById('rec-panel').innerHTML = `
+      <table class="rec-table">
+        <thead><tr><th>Ticker</th><th>Action</th><th>Confidence</th><th>Price</th><th>Fwd P/E</th><th>Off 52w</th><th>Themes</th><th>Rationale</th><th>Invalidation</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>`;
+  }
+
+  // Alerts list
+  const alerts = mon.alerts || [];
+  document.getElementById('alert-count').textContent = alerts.length;
+  if (!alerts.length) {
+    document.getElementById('alert-panel').innerHTML = '<div class="empty">Run <code>scripts/monitor.py</code> to generate alerts.</div>';
+  } else {
+    const items = alerts.map(a => {
+      const tk = a.tk || a.ticker || '';
+      const typeLabel = (a.type||'').replace(/_/g,' ');
+      return `<div class="alert-item ${a.sev}">
+        <div class="alert-sev ${a.sev}">${a.sev}</div>
+        <div class="alert-body">
+          ${tk ? `<span class="alert-tk">${tk}</span> ` : ''}
+          <div class="alert-msg">${a.msg || a.message || ''}</div>
+          ${typeLabel ? `<div class="alert-type">${typeLabel}</div>` : ''}
+        </div>
+      </div>`;
+    }).join('');
+    document.getElementById('alert-panel').innerHTML = `<div class="alert-list">${items}</div>`;
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gral</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../../index.html">📊 Dashboard</a> ·
+    <a href="../../../site-index.html">📚 Site index</a> ·
+    <a href="../../../home.html">🏠 Home</a> ·
+    <a href="../../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;GRAL — GRAIL, Inc. | Investment Memo (100x-hunt sleeve)&quot;
+type: research
+ticker: GRAL
+date: 2026-10-05
+conviction: MODERATE
+horizon: 8-10y
+sleeve: 100x-hunt
+rating: ACCUMULATE (regulatory-catalyst live)
+pt_12m: &quot;$180-220 (event-driven: FDA approval + coverage milestones)&quot;
+tags: [research, memo, 100-bagger, diagnostics, mcde]
+sources: [[qualified-100x-list-2026-10-05]], [[hundred-x-hunt-framework]]</div>
+<article>
+<h1 id="gral-grail-inc-analyst-memo">GRAL — GRAIL, Inc. | Analyst Memo</h1>
+<p><strong>FFM Rating: Not Rated</strong> (outside 347 universe; SA quant Strong Buy)<br />
+<strong>Conviction</strong>: MODERATE (binary regulatory path) · <strong>Risk: high</strong> (approval/coverage binaries, burn)<br />
+<strong>Sizing band</strong>: 0.4% initial (restored — round-2's cut to 0.3% used a cash figure that excluded investments); ADD only after FDA approval prints<br />
+<strong>Invalidation</strong>: FDA denial or narrow label; Medicare coverage blocked &gt;24m post-approval; volume growth &lt;25%</p>
+<h2 id="1-recommendation">1. Recommendation</h2>
+<p><strong>ACCUMULATE (catalyst-live).</strong> GRAIL is creating the <strong>multi-cancer early-detection category</strong>:<br />
+Galleri screens ~50 cancers from one blood draw, the FDA advisory panel <strong>recommended approval<br />
+(Sep-2026)</strong>, and adoption already compounds PRE-approval on self-pay ($949 list): H1-2026 Galleri<br />
+revenue <strong>+30% to $82.5M, volume +42%</strong>. The sleeve's best genuine 100x-shape: a screening market of<br />
+100M+ US adults 50+ at &lt;1% penetration. <strong>100x-shape probability: moderate (10-15%).</strong> 12m fair value<br />
+$180-220 event-driven (approval + NCD progress). Position sizing must respect the binary — this is the<br />
+sleeve's largest single-event exposure.</p>
+<h2 id="2-company-overview">2. Company overview</h2>
+<p>GRAIL (Illumina spin-out, independent 2024) built Galleri on methylation-based MCED sequencing; PATHFINDER<br />
+trials anchor evidence; REACH = Medicare study. Pre-revenue-scale but commercially staffed; ~$6.4B cap.</p>
+<h2 id="3-financial-summary-forecast">3. Financial summary &amp; forecast</h2>
+<p>Sourced: yfinance full statements ($M; fetched 2026-10-05 → <code>scripts/_hist/memo_fundamentals_v2.json</code>); guides from co. IR. n/d = not reported.</p>
+<p><strong>Annual P&amp;L</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>FY2025A</th>
+<th>FY2024A</th>
+<th>FY2023A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>147.2</td>
+<td>125.6</td>
+<td>93.1</td>
+</tr>
+<tr>
+<td>Gross profit</td>
+<td>-62.6</td>
+<td>-78.0</td>
+<td>-95.6</td>
+</tr>
+<tr>
+<td>GM %</td>
+<td>-42.5</td>
+<td>-62.1</td>
+<td>-102.7</td>
+</tr>
+<tr>
+<td>R&amp;D</td>
+<td>n/d</td>
+<td>n/d</td>
+<td>n/d</td>
+</tr>
+<tr>
+<td>SG&amp;A</td>
+<td>275.8</td>
+<td>367.8</td>
+<td>362.6</td>
+</tr>
+<tr>
+<td>Operating income</td>
+<td>-534.2</td>
+<td>-768.2</td>
+<td>-796.9</td>
+</tr>
+<tr>
+<td>Op margin %</td>
+<td>-363.0</td>
+<td>-611.7</td>
+<td>-855.9</td>
+</tr>
+<tr>
+<td>Net income</td>
+<td>-408.4</td>
+<td>-2,027.0</td>
+<td>-1,465.7</td>
+</tr>
+<tr>
+<td>Net margin %</td>
+<td>-277.5</td>
+<td>-1,614.0</td>
+<td>-1,574.1</td>
+</tr>
+<tr>
+<td>Diluted EPS</td>
+<td>-0.00</td>
+<td>-0.00</td>
+<td>-0.00</td>
+</tr>
+<tr>
+<td>Diluted shares (M)</td>
+<td>36.8</td>
+<td>31.9</td>
+<td>31.1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quarterly trajectory (inflection check)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Revenue</th>
+<th>y/y</th>
+<th>q/q</th>
+<th>GM %</th>
+<th>Net income</th>
+<th>opCF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-06</td>
+<td>44.7</td>
+<td>25.7%</td>
+<td>9.6%</td>
+<td>-28.1</td>
+<td>-110.2</td>
+<td>-80.7</td>
+</tr>
+<tr>
+<td>2026-03</td>
+<td>40.8</td>
+<td>n/d%</td>
+<td>-6.5%</td>
+<td>-35.1</td>
+<td>-93.2</td>
+<td>-87.0</td>
+</tr>
+<tr>
+<td>2025-12</td>
+<td>43.6</td>
+<td>n/d%</td>
+<td>20.5%</td>
+<td>-25.6</td>
+<td>-99.2</td>
+<td>-63.8</td>
+</tr>
+<tr>
+<td>2025-09</td>
+<td>36.2</td>
+<td>n/d%</td>
+<td>1.8%</td>
+<td>-37.9</td>
+<td>-89.0</td>
+<td>-63.2</td>
+</tr>
+<tr>
+<td>2025-06</td>
+<td>35.5</td>
+<td>n/d%</td>
+<td>n/d%</td>
+<td>-50.0</td>
+<td>-114.0</td>
+<td>-77.0</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Balance sheet &amp; liquidity (FY2025A):</strong> cash+investments <strong>904.4</strong> · total debt 54.9 · <strong>net cash 849.6</strong> · equity 2,577.9</p>
+<h2 id="4-industry-outlook">4. Industry outlook</h2>
+<p>Cancer screening economics are asymmetric to treatment: late-stage oncology costs $150B+/yr in the US<br />
+(est./inference); a test finding cancers at Stage I-II re-prices the whole chain. Competitive field:<br />
+Exact Sciences (multi-cancer efforts), Natera (different modality), startups — but no one has Galleri's<br />
+evidence base + sequencing pedigree. The MCED category's 2030s TAM: tens of millions of tests/yr<br />
+globally (inference). Political/clinical risk: overdiagnosis debate; specificity discipline as volume<br />
+scales.</p>
+<h2 id="5-valuation-scenarios-2032-est">5. Valuation &amp; scenarios (~2032, est.)</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Tests/yr at scale</th>
+<th>ASP</th>
+<th>Revenue</th>
+<th>Multiple</th>
+<th>Implied cap</th>
+<th>vs $6.4B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bull</td>
+<td>6M (Medicare+int'l)</td>
+<td>$700</td>
+<td>~$4.2B</td>
+<td>5×</td>
+<td>~$21B</td>
+<td>~3.3×</td>
+</tr>
+<tr>
+<td>Base</td>
+<td>2.5M</td>
+<td>$800</td>
+<td>~$2.0B</td>
+<td>4×</td>
+<td>~$8B</td>
+<td>~1.3×</td>
+</tr>
+<tr>
+<td>Bear</td>
+<td>0.8M (label-limited)</td>
+<td>$949</td>
+<td>~$0.76B</td>
+<td>2.5×</td>
+<td>~$1.9B</td>
+<td>−70%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-bull-case-catalysts-12-24m">6. Bull case / catalysts (12-24m)</h2>
+<ul>
+<li>FDA approval decision (panel already positive — historically high follow-through)</li>
+<li>NCD/Medicare draft policy; MCED legislation progress</li>
+<li>PATHFINDER/REACH readouts; volume guide raises on self-pay alone</li>
+</ul>
+<h2 id="7-bear-case-risks">7. Bear case / risks</h2>
+<ul>
+<li>Narrow label (e.g., restricted to prior-cancer histories) collapses TAM math</li>
+<li>Medicare needs legislation — political timeline slippage</li>
+<li>Cash burn building commercial infra pre-coverage; overdiagnosis backlash</li>
+</ul>
+<h2 id="8-vault-context-review-hooks">8. Vault context &amp; review hooks</h2>
+<p>Healthcare-aging/biotech themes (conviction 3); ARK genomics pillar overlap. <strong>Event-driven review:<br />
+at approval</strong> — pass → conviction upgrade path to HIGH; narrow label → hold small, re-underwrite.<br />
+Volume &lt;25% growth on two consecutive prints = invalidation regardless of approvals.</p>
+<h2 id="9-qc-red-flag-block-2026-10-05-pass">9. QC red-flag block (2026-10-05 pass)</h2>
+<ul>
+<li><strong>Momentum / discovered-ness (P5):</strong> 1m +77.8% / 12m +118.6% (at 52w high; short 19.5%)</li>
+<li><strong>RATING DOWNGRADED-SIZED: ACCUMULATE but 0.4→0.3% — my earlier 'cash-rich (est.)' was WRONG; FY25 burn −$299M vs $250M cash = dilution risk into the FDA catalyst; +78%/1m post-panel already</strong></li>
+<li>Data vintage: FY annual statements lag quarterly prints — reconcile cash/runway against latest 10-Q before executing.</li>
+<li>Round-1 error corrected here is logged in <a href="../../syntheses/research-quality-review-2026-10-05.html">research-quality-review-2026-10-05</a>. <strong>Round-3 correction:</strong> net cash incl. investments is <strong>$849.6M</strong> (FY25) → ~3 years runway at the −$300M/yr FY25 burn (round-2 wrongly said ~10 months using cash-only). Financing risk downgraded but not gone; SBC $58M/yr still real.</li>
+<li><strong>Neutral scorecard: 4/8</strong> (traj 2 · prof 0 · BS 2 · disc 0) — weakest fundamentals in the sleeve; the position is a regulatory-catalyst bet, sized accordingly.</li>
+<li><strong>Dilution &amp; relative value (round 4):</strong> Dilution +5.8%/yr to date; a raise into the catalyst would reprice this line. EV/S <strong>37.7×</strong> / P/S 43.5× on FY25 revenue vs universe median <strong>5.7×</strong> (n=215) — premium.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

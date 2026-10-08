@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ARCHITECTURE — The Foresight Investor System</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="index.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="home.html">🏠 Home</a> ·
+    <a href="hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: ARCHITECTURE — The Foresight Investor System
+type: architecture
+date_updated: 2026-09-26
+owner: operator (product owner) · maintained by the AI agent</div>
+<article>
+<h1 id="architecture-the-foresight-investor-system">ARCHITECTURE — The Foresight Investor System</h1>
+<blockquote>
+<p><strong>READING CONTRACT — mandatory before any research or modification.</strong><br />
+Every builder (human or AI) must read, in order: <code>hotcache.md</code> → <strong>this file</strong> → <code>AGENTS.md</code> (schema<br />
+&amp; guardrails) → <code>CADENCE.md</code> (staleness contract) → the specific module docs below. Every session<br />
+that studies or changes the system <strong>must append a dated entry to <code>SYSTEM-RESEARCH-LOG.md</code></strong> —<br />
+that log is how future builders review what was learned and feed back into the mechanics.<br />
+Decisions produced by this system are for the <strong>operator's own book only</strong> — never advice to others.</p>
+<p><strong>One-page visual:</strong> <a href="architecture-diagram.html"><code>architecture-diagram.html</code></a> — block diagram of the whole system<br />
+(local: <a href="http://127.0.0.1:8765/architecture-diagram.html">127.0.0.1:8765/architecture-diagram.html</a> ·<br />
+public: <a href="https://aphiwatgo5.github.io/foresight-investor/architecture-diagram.html">aphiwatgo5.github.io/foresight-investor/architecture-diagram.html</a>).</p>
+</blockquote>
+<hr />
+<h2 id="1-what-this-system-is">1. What this system is</h2>
+<p>A personal <strong>global multi-asset research + allocation platform</strong> built as an Obsidian wiki<br />
+(the vault) driven by a Python quant engine (the scripts). It ingests market/economic/analyst<br />
+data from keyless public sources, computes independent factor ratings (FFM) and strategy<br />
+sleeves, runs backtests and tournaments, produces rule-based capped allocations, and publishes<br />
+everything to three interactive HTML surfaces + a rendered public website. One operator;<br />
+AI agents do the writing, filing, and bookkeeping per <code>AGENTS.md</code>.</p>
+<p><strong>Numbers at a glance (2026-09-26):</strong> 35 themes · 8 meta-forces · 347 instruments ·<br />
+~87 MB cached history (5y + 10y prices) · 438 wiki pages · 4 auto-refreshed HTML surfaces (3 public + 1 private) ·<br />
+~46 Python modules · 13-command CLI (<code>foresight</code>). There is also a <strong>🔒 PRIVATE portfolio layer</strong> (the operator's<br />
+actual book) — see §6a; it never deploys publicly.</p>
+<h2 id="2-system-map">2. System map</h2>
+<pre><code>                    ┌────────────────── EXTERNAL SOURCES (keyless) ──────────────────┐
+                    │ yfinance (global tickers, 14 currencies) · World Bank API      │
+                    │ FRED csv (no key needed) · SA (operator-auth browser scrape)   │
+                    │ human research notes (wiki/research/human/)                    │
+                    └──────────────┬─────────────────────────────────────────────────┘
+                                   ▼
+  ┌────────────────── FETCH LAYER ────────────────┐   scripts/refresh.py (macro/snapshot)
+  │ refresh_instruments.py  fetch_history.py      │   scripts/sources/{analysts,econ,countries}
+  │ fetch_fundamentals_history.py  fetch_seekingalpha.py             │
+  └──────────────┬────────────────────────────────┘
+                 ▼  scripts/_hist/  (point-in-time caches + provenance)
+  ┌────────────────── SIGNAL LAYER ───────────────┐
+  │ signals.py → signals.parquet + sleeves.json (6 sleeves)          │
+  │ ffm_signals.py → ffm_factors.json │ ffm_score.py → ffm_ratings   │
+  │ mdaem_v4.py → mdaem_v4_scores.json│ ffm_vs_sa.py (cross-check)   │
+  └──────────────┬────────────────────────────────┘
+                 ▼
+  ┌────────────────── DECISION LAYER ─────────────┐
+  │ alloc/{constraints,optimizer,correlation}.py  │
+  │ backtest.py (walk-forward) · qae.py (QAE book)│
+  │ tournament.py (split-sample) · recommend.py   │
+  │ monitor.py (alerts)                           │
+  └──────────────┬────────────────────────────────┘
+                 ▼
+  ┌────────────────── SURFACE LAYER ──────────────┐   wiki/ (435 pages, Obsidian)
+  │ analyst-workbench.html (11 tabs) · outlook-dashboard.html (site index)          │
+  │ quant-desk.html · continuous-research.html    │
+  │ build_web.py → web/ → deploy_web.sh → GitHub Pages (public site)               │
+  └───────────────────────────────────────────────┘
+</code></pre>
+<h2 id="3-data-layer-sources-stores-freshness">3. Data layer — sources, stores, freshness</h2>
+<p><strong>Fetch scripts (never fabricate; every figure carries provenance <code>value|source|url|as_of|retrieved_utc</code>):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Script</th>
+<th>Pulls</th>
+<th>Writes</th>
+<th>Cadence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refresh_instruments.py</code></td>
+<td>spot/fundamentals for all 340 (currency-aware)</td>
+<td><code>_instruments.json/csv</code></td>
+<td>weekly</td>
+</tr>
+<tr>
+<td><code>fetch_history.py</code></td>
+<td>5y prices (+<code>--inc</code> incremental; 10y via <code>--years 10 --out prices_10y.parquet</code>)</td>
+<td><code>prices.parquet</code>, <code>prices_10y.parquet</code></td>
+<td>weekly</td>
+</tr>
+<tr>
+<td><code>refresh.py</code></td>
+<td>macro/sentiment snapshot (<code>--macro</code>)</td>
+<td><code>_snapshot.json</code>, <code>_provenance.csv</code>, <code>macro.csv</code></td>
+<td>weekly</td>
+</tr>
+<tr>
+<td><code>fetch_fundamentals_history.py</code></td>
+<td>fundamentals panel</td>
+<td><code>fundamentals.parquet</code></td>
+<td>monthly</td>
+</tr>
+<tr>
+<td><code>sources/analysts/fetch_yahoo_analysts.py</code></td>
+<td>upgrades + estimates</td>
+<td><code>upgrades/</code>, <code>eps_estimates.csv</code></td>
+<td>weekly</td>
+</tr>
+<tr>
+<td><code>fetch_seekingalpha.py</code></td>
+<td>SA grades (operator-auth browser, ~8s pacing)</td>
+<td><code>sa_grades.json</code>, <code>sa_top_rated.json</code></td>
+<td>on demand</td>
+</tr>
+<tr>
+<td><code>sources/econ/fetch_worldbank.py</code></td>
+<td>11 indicators × 19 countries</td>
+<td><code>_hist/econ/</code></td>
+<td>monthly</td>
+</tr>
+<tr>
+<td><code>sources/countries/fetch_country.py</code></td>
+<td>15 country profiles</td>
+<td><code>_hist/countries/</code></td>
+<td>monthly</td>
+</tr>
+<tr>
+<td><code>sources/analysts/consensus.py</code></td>
+<td>merges estimates+SA+FFM</td>
+<td><code>consensus.json</code></td>
+<td>weekly</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Store conventions:</strong> everything lands in <code>scripts/_hist/</code> (point-in-time, never edited by hand).<br />
+Unavailable data is written <code>UNAVAILABLE</code> — <strong>never guessed</strong>. FRED-keyed series stay dark<br />
+without <code>scripts/.fred_key</code>. The 5y/10y parquets are append-only caches; signals derive from them.</p>
+<h2 id="4-engine-layer-what-computes-what">4. Engine layer — what computes what</h2>
+<table>
+<thead>
+<tr>
+<th>Engine</th>
+<th>Input → Output</th>
+<th>Consumed by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>FFM</strong> (<code>ffm_signals</code> → <code>ffm_score</code>)</td>
+<td>signals + fundamentals → 6 factor grades (Momentum/Value/Quality/Growth/CMA/Revisions, A+→F) → composite rating (Strong Buy…Strong Sell) with regime-dependent weights. Non-equity (fx/commodity/crypto/cash) = <strong>momentum-only</strong>, honestly labeled</td>
+<td>workbench Universe/Security tabs, research notes, consensus</td>
+</tr>
+<tr>
+<td><strong>Sleeves</strong> (<code>signals.py</code>)</td>
+<td>signals.parquet → 6 cross-sectional sleeves: momentum, value, quality, macro_rotation, contrarian (value+52w-off, gated by revisions), longterm (quality+drawdown+inv-vol)</td>
+<td>allocator, backtest, workbench</td>
+</tr>
+<tr>
+<td><strong>MDAEM v4</strong> (<code>mdaem_v4.py</code>)</td>
+<td>quant dims 3/5/6/7/9 + composite per candidate (operator completes 5 qualitative dims + 10 gates)</td>
+<td>sourcing pipeline, DECIDE op</td>
+</tr>
+<tr>
+<td><strong>Allocator</strong> (<code>alloc/</code>)</td>
+<td>sleeves+FFM+meta → capped portfolios (3 risk profiles × 6 lenses). Caps: name 5–10%, theme 8–15%, AI-cluster 20–30%, region 30–50%, cash floor. High-cash is the honest output when caps bind</td>
+<td>workbench Allocator tab, book memos</td>
+</tr>
+<tr>
+<td><strong>Backtest</strong> (<code>backtest.py</code>)</td>
+<td>walk-forward, top-20/sleeve monthly rebalance</td>
+<td>quarterly REVIEW</td>
+</tr>
+<tr>
+<td><strong>QAE</strong> (<code>qae.py</code>)</td>
+<td>14 price/volume factors → rank-IC (Newey-West) → IR-weighted composite → inverse-vol book (10% vol target)</td>
+<td>quant-desk, ALPHA op (monthly)</td>
+</tr>
+<tr>
+<td><strong>Tournament</strong> (<code>tournament.py</code>)</td>
+<td>every registered strategy, same days/costs, split-sample gate</td>
+<td>quarterly</td>
+</tr>
+<tr>
+<td><strong>recommend / monitor</strong></td>
+<td>sleeves+FFM → top-N adds (T1/MED tiers); price/volume alerts</td>
+<td>continuous-research, Research tab</td>
+</tr>
+<tr>
+<td><strong>ffm_vs_sa</strong></td>
+<td>FFM × SA ratings → agreement/disagreement table (external calibration)</td>
+<td>Sources tab</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5-decision-accountability-chain-the-vault-layer">5. Decision &amp; accountability chain (the vault layer)</h2>
+<p>Every call is falsifiable and dated: <strong><a href="wiki/syntheses/signal-monitor.html">signal-monitor</a></strong> (sensor thresholds) → <strong><a href="wiki/syntheses/decision-register.html">decision-register</a></strong><br />
+(sized ADD/TRIM/HOLD/EXIT) → <strong><a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a></strong> (P-calls with resolve-by) → <strong><a href="wiki/syntheses/track-record.html">track-record</a></strong><br />
+(scored outcomes). Book memos (<code>wiki/syntheses/book-rec-*.md</code>, <code>qae-book-*.md</code>) are the operator-facing<br />
+output — own-book only. Full protocol in <code>AGENTS.md</code> §10 (MONITOR/SCAN/DECIDE/REFRESH/SOURCE/BACKTEST/<br />
+BUBBLE-WATCH/ALPHA/TOURNAMENT operations).</p>
+<h2 id="6-surface-layer-what-renders-from-what">6. Surface layer — what renders from what</h2>
+<table>
+<thead>
+<tr>
+<th>Surface</th>
+<th>Fed by</th>
+<th>Built by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>analyst-workbench.html</code> (11 tabs: Brief·Universe·Baskets·Security·Scores·Allocator·Compare·Regions·Sources·Macro·Research)</td>
+<td><code>build_workbench.py</code> → <code>_workbench_data.js</code> → <code>inject_workbench.py</code> (idempotent marker-comment injection). Includes <strong>Event &amp; regime watch</strong> chips (10Y/USDJPY/Brent/VIX/gold/HY-OAS) from <code>_snapshot.json</code></td>
+<td>after every refresh</td>
+</tr>
+<tr>
+<td><code>outlook-dashboard.html</code> (public landing <code>index.html</code>)</td>
+<td><code>build_dashboard_{instruments,returns,ffm}.py</code> → <code>inject_dashboard_{instruments,v4}.py</code></td>
+<td>weekly</td>
+</tr>
+<tr>
+<td><code>quant-desk.html</code></td>
+<td><code>qae_*.json</code> (QAE outputs)</td>
+<td>monthly ALPHA</td>
+</tr>
+<tr>
+<td><code>continuous-research.html</code> + <code>research-tab.js</code></td>
+<td><code>recommendations.json</code>, <code>monitor_alerts.json</code> (runtime fetch)</td>
+<td>weekly</td>
+</tr>
+<tr>
+<td><code>web/</code> (public site, 430+ pages)</td>
+<td><code>build_web.py</code> renders wiki → isolated-repo push via <code>deploy_web.sh</code></td>
+<td>on deploy</td>
+</tr>
+<tr>
+<td>🔒 <code>portfolio-dashboard.html</code> (PRIVATE — never deployed)</td>
+<td><code>portfolio.py</code> → <code>_portfolio/_portfolio_data.js</code> (+ <code>lookthrough.json</code>)</td>
+<td>monthly / on trade</td>
+</tr>
+<tr>
+<td>wiki auto-pages</td>
+<td><code>build_instrument_tables.py</code> (master + 35 theme pages), <code>ffm_research_note.py --all</code> (336 per-ticker notes), country pages</td>
+<td>weekly</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Local server:</strong> <code>scripts/.venv/bin/python -m http.server 8765</code> from repo root.<br />
+<strong>Public site:</strong> https://aphiwatgo5.github.io/foresight-investor/</p>
+<h3 id="6a-the-private-portfolio-layer-added-2026-09-26-local-only">6a. 🔒 The private portfolio layer (added 2026-09-26 — LOCAL-ONLY)</h3>
+<p>The public engine tracks the <em>model</em> book; the private layer tracks the operator's <strong>actual</strong> cross-account book.<br />
+Pipeline: statements/PDFs/screenshots → <code>scripts/_portfolio/holdings.json</code> (hand-maintained ledger, per-row<br />
+provenance) → optional <code>scripts/_portfolio/lookthrough.json</code> (ETF/fund top-holdings, live-sourced) →<br />
+<code>scripts/portfolio.py</code> (2-level asset taxonomy, look-through aggregation, HHI, blueprint caps, dual net-worth<br />
+stress incl. real estate, FX look-through) → <code>scripts/_portfolio/_portfolio_data.js</code> →<br />
+<strong><code>portfolio-dashboard.html</code></strong> (7 tabs; served from :8765). Privacy gates: <code>private-*</code> markdown prefix is<br />
+excluded from <code>build_web.py</code> rendering AND flagged by <code>deploy_web.sh</code> leak scans (public <code>portfolio-blueprint</code><br />
+unaffected); raw statements live under <code>raw/statements/</code> (raw/ is never deployed).<br />
+Hub pages: private-portfolio-register · private-portfolio-x-ray-2026-09-26.<br />
+Discipline: unknown figures stay null/UNAVAILABLE (never guessed); every figure traces to a statement or a<br />
+cited live source; UNAVAILABLE funds are listed explicitly on the dashboard.</p>
+<h2 id="7-operating-cadence-contract-in-cadencemd">7. Operating cadence (contract in <code>CADENCE.md</code>)</h2>
+<table>
+<thead>
+<tr>
+<th>Rhythm</th>
+<th>When</th>
+<th>Chain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MONITOR</td>
+<td>weekly (Sun, launchd <code>com.foresight-investor.weekly-refresh</code>)</td>
+<td><code>weekly_refresh.sh</code>: macro → instruments → tables → dashboard → workbench → recommend → monitor → commit</td>
+</tr>
+<tr>
+<td>SOURCE</td>
+<td>daily/on demand</td>
+<td><code>signals.py</code> → <code>mdaem_v4.py</code> → shortlist</td>
+</tr>
+<tr>
+<td>ALPHA</td>
+<td>monthly</td>
+<td><code>qae.py</code> → <code>quant-desk</code></td>
+</tr>
+<tr>
+<td>SCAN</td>
+<td>monthly</td>
+<td>trend-radar convictions, watchlist, prediction scoring</td>
+</tr>
+<tr>
+<td>BACKTEST / TOURNAMENT / REVIEW</td>
+<td>quarterly</td>
+<td><code>fetch_history --inc</code> → signals → backtest / tournament</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Scheduled (LaunchAgents, installed 2026-10-03, /bin/bash wrapper — fixes the old exit-78):</strong><br />
+- <code>com.foresight-investor.monthly</code> — 1st of month 09:00 → <code>scripts/monthly_update.sh</code> (full data chain + QAE + econ/countries + archive + healthcheck + notification + auto-commit)<br />
+- <code>com.foresight-investor.quarterly</code> — 1st Jan/Apr/Jul/Oct 11:00 → <code>scripts/quarterly_update.sh</code> (monthly + fundamentals + 10y prices + backtest + tournament)<br />
+- <code>com.foresight-investor.weekly-refresh</code> — Sundays → <code>scripts/weekly_refresh.sh</code> (MONITOR)<br />
+<strong>Health:</strong> <code>scripts/healthcheck.py [--notify]</code> scores all 21 data modules (fresh/due/overdue)<br />
+→ <code>scripts/_hist/healthcheck.json</code> → workbench <strong>🩺 Health tab</strong> (each row shows its updater command).</p>
+<h2 id="8-quality-control-sustainability-non-negotiable">8. Quality control &amp; sustainability (non-negotiable)</h2>
+<ol>
+<li><strong>Provenance on every figure</strong> (<code>_provenance.csv</code>); <code>UNAVAILABLE</code> beats fabricated — always.</li>
+<li><strong>Asset-class honesty:</strong> non-equity gets momentum-only, never fake value/quality grades.</li>
+<li><strong>Cross-validation:</strong> FFM vs SA disagreement table; engine vs market in <code>track-record</code>.</li>
+<li><strong>Deploy pre-flight</strong> (<code>deploy_web.sh</code>): zero source markdown, zero confidential files<br />
+   (<code>scenario-hrm-competition.md</code> hard-excluded), zero key/token patterns, isolated push repo.</li>
+<li><strong>Vault lint</strong> (AGENTS §5 LINT): frontmatter, <code>links</code> resolve, orphans, wanted pages,<br />
+   stale claims — run after any mass edit (last full pass 2026-09-26: 435 pages, 0 orphans).</li>
+<li><strong>Staleness visibility:</strong> <code>hotcache.md</code> dates + CADENCE contract + <code>last_scan</code> frontmatter.<br />
+   Data older than 10 trading days = flag, don't silently use.</li>
+<li><strong>Generator hygiene:</strong> auto-pages are regenerated wholesale — hand-edits to generated pages<br />
+   are lost by design; put durable insight in the page's non-generated sections or a synthesis.</li>
+<li><strong>Point-in-time integrity (added 2026-10-03):</strong> every refresh archives the full engine<br />
+   state to <code>scripts/_hist/archive/&lt;date&gt;/</code> + appends <code>recommendation-journal.jsonl</code><br />
+   (<code>scripts/snapshot_archive.py</code>, wired into weekly_refresh) — post-mortems read the archive,<br />
+   never git archaeology. Living hub pages get a dated Changelog bullet on conviction changes.</li>
+<li><strong>Raw/ is immutable.</strong> <code>raw/assets/</code> is the home for source images. Never edit history in<br />
+<code>_hist/</code> — append/refresh, never rewrite.</li>
+</ol>
+<h2 id="9-change-protocol-touch-x-update-y">9. Change protocol — touch X, update Y</h2>
+<table>
+<thead>
+<tr>
+<th>If you change…</th>
+<th>You must also…</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>instrument_universe.py</code> (add/remove ticker)</td>
+<td>run refresh_instruments + fetch_history --inc + signals + ffm_signals + ffm_score + build_workbench + inject; research notes <code>--all</code>; commit</td>
+</tr>
+<tr>
+<td>A factor/weight in FFM</td>
+<td>re-run ffm_signals + ffm_score; note the change in <code>log.md</code>; expect rating distribution shifts (compare before/after)</td>
+</tr>
+<tr>
+<td>Allocator caps/profiles</td>
+<td>re-run optimizer for all 3 risks; update <code>[portfolio-blueprint](portfolio-blueprint.html)</code> + book memos</td>
+</tr>
+<tr>
+<td>A workbench tab's JS</td>
+<td>QC in browser (local 8765) before deploy: page boot, tab render, data as-of, console clean</td>
+</tr>
+<tr>
+<td><code>build_web.py</code> copy list</td>
+<td>verify every runtime-fetched asset serves 200 on the public site after deploy</td>
+</tr>
+<tr>
+<td>Schema/guardrails</td>
+<td>sync <code>AGENTS.md</code> ↔ <code>CLAUDE.md</code> (keep identical except self-reference line)</td>
+</tr>
+<tr>
+<td>Any mass wiki edit</td>
+<td>run the link-graph audit (lint) + append to <code>SYSTEM-RESEARCH-LOG.md</code></td>
+</tr>
+<tr>
+<td>Run any refresh chain</td>
+<td>run <code>scripts/snapshot_archive.py</code> after it (or rely on weekly_refresh 3f)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="10-extension-recipes">10. Extension recipes</h2>
+<ul>
+<li><strong>Add an instrument:</strong> append to the right theme in <code>instrument_universe.py</code> (<code>(ticker, note)</code>),<br />
+  non-US needs an <code>INSTRUMENT_META</code> entry (region/currency/exchange), then the refresh chain (§9 row 1).</li>
+<li><strong>Add a theme:</strong> new block in <code>UNIVERSE</code> (slug+meta+etfs+names), create <code>wiki/concepts/&lt;slug&gt;.md</code><br />
+  per the analyst-grade template (AGENTS §10), add to <code>trend-radar</code>, run tables.</li>
+<li><strong>Add a sensor/event-watch chip:</strong> row in <code>build_event_watch()</code> (<code>build_workbench.py</code>) —<br />
+  reading from <code>_snapshot.json</code> keys only; no snapshot key = no chip (never hardcode a value).</li>
+<li><strong>Add a strategy idea:</strong> register it in <code>tournament.py</code> <strong>as new</strong> (never edit a loser into a<br />
+  winner); it counts in the deflation N forever.</li>
+</ul>
+<h2 id="11-where-the-deep-docs-live">11. Where the deep docs live</h2>
+<p><code>AGENTS.md</code> (schema/guardrails/ops) · <code>CADENCE.md</code> (rhythms) · <code>hotcache.md</code> (state) ·<br />
+<code>index.md</code> (catalog) · <code>log.md</code> (activity) · <code>SYSTEM-RESEARCH-LOG.md</code> (dated system research) ·<br />
+wiki hubs: <code>[trend-radar](trend-radar.html)</code> <code>[watchlist](watchlist.html)</code> <code>[signal-monitor](signal-monitor.html)</code> <code>[decision-register](decision-register.html)</code><br />
+<code>[prediction-ledger](prediction-ledger.html)</code> <code>[track-record](track-record.html)</code> <code>[portfolio-blueprint](portfolio-blueprint.html)</code> <code>[regime-monitor](regime-monitor.html)</code><br />
+<code>[instrument-universe](instrument-universe.html)</code> <code>[strategy-sleeves](strategy-sleeves.html)</code> <code>[foresight-factor-model](foresight-factor-model.html)</code> <code>[quant-alpha-methodology](quant-alpha-methodology.html)</code>.</p>
+</article>
+</div>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atex</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../../index.html">📊 Dashboard</a> ·
+    <a href="../../../site-index.html">📚 Site index</a> ·
+    <a href="../../../home.html">🏠 Home</a> ·
+    <a href="../../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;ATEX — Anterix Inc. | Investment Memo (100x-hunt sleeve)&quot;
+type: research
+ticker: ATEX
+date: 2026-10-05
+conviction: MODERATE
+horizon: 10y
+sleeve: 100x-hunt
+rating: ACCUMULATE (slow-burn starter)
+pt_12m: &quot;$95-110 (NPV of spectrum + growing recurring base)&quot;
+tags: [research, memo, 100-bagger, spectrum, grid]
+sources: [[qualified-100x-list-2026-10-05]], [[hundred-x-hunt-framework]]</div>
+<article>
+<h1 id="atex-anterix-inc-analyst-memo">ATEX — Anterix Inc. | Analyst Memo</h1>
+<p><strong>FFM Rating: Not Rated</strong> (outside 347 universe; SA quant Strong Buy)<br />
+<strong>Conviction</strong>: MODERATE · <strong>Risk: medium</strong> (adoption pace, dilution history, FCC)<br />
+<strong>Sizing band</strong>: 0.3% starter (slow-burn); add per signed utility, not per quarter<br />
+<strong>Invalidation</strong>: major utility contract losses; FCC reallocates 900MHz; FY cash-proceeds guide &lt;$80M</p>
+<h2 id="1-recommendation">1. Recommendation</h2>
+<p><strong>ACCUMULATE (starter).</strong> The purest regulatory moat in the sleeve: Anterix holds the <strong>only<br />
+nationwide utility-focused 900MHz broadband spectrum (FCC-expanded to 10MHz)</strong>. Utilities digitizing<br />
+the grid (our conviction-4 <a href="../../concepts/power-grid-electrification.html">power-grid-electrification</a> theme, supercharged by AI-datacenter power<br />
+demand) need private LTE for distribution automation — Anterix is the spectrum land-lord with<br />
+utility-grade churn (zero). FY2026: revenue +41%, 92 counties licensed, ~$120M cash proceeds guided.<br />
+<strong>100x-shape probability: low (&lt;5%)</strong> — utility sales cycles (18-36m) cap the slope; this is a<br />
+duration play with a spectrum floor. 12m fair value $95-110.</p>
+<h2 id="2-company-overview">2. Company overview</h2>
+<p>Anterix (Woodland Park, CO) aggregated 900MHz narrowband spectrum nationwide, got FCC blessing to<br />
+refarm to 3×3+3MHz broadband, and licenses it to investor-owned utilities for private LTE — bundled<br />
+with network design and partner ecosystem (Cisco/Ericsson-class). ~$1.65B cap.</p>
+<h2 id="3-financial-summary-forecast">3. Financial summary &amp; forecast</h2>
+<p>Sourced: yfinance full statements ($M; fetched 2026-10-05 → <code>scripts/_hist/memo_fundamentals_v2.json</code>); guides from co. IR. n/d = not reported.</p>
+<p><strong>Annual P&amp;L</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>FY2026A</th>
+<th>FY2025A</th>
+<th>FY2024A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>6.5</td>
+<td>6.0</td>
+<td>4.2</td>
+</tr>
+<tr>
+<td>Gross profit</td>
+<td>n/d</td>
+<td>n/d</td>
+<td>n/d</td>
+</tr>
+<tr>
+<td>GM %</td>
+<td>n/d</td>
+<td>n/d</td>
+<td>n/d</td>
+</tr>
+<tr>
+<td>R&amp;D</td>
+<td>n/d</td>
+<td>n/d</td>
+<td>n/d</td>
+</tr>
+<tr>
+<td>SG&amp;A</td>
+<td>43.0</td>
+<td>48.8</td>
+<td>50.1</td>
+</tr>
+<tr>
+<td>Operating income</td>
+<td>-41.6</td>
+<td>-49.0</td>
+<td>-52.5</td>
+</tr>
+<tr>
+<td>Op margin %</td>
+<td>-640.5</td>
+<td>-813.1</td>
+<td>-1,252.3</td>
+</tr>
+<tr>
+<td>Net income</td>
+<td>90.6</td>
+<td>-11.4</td>
+<td>-9.1</td>
+</tr>
+<tr>
+<td>Net margin %</td>
+<td>1,394.5</td>
+<td>-188.6</td>
+<td>-217.9</td>
+</tr>
+<tr>
+<td>Diluted EPS</td>
+<td>0.00</td>
+<td>-0.00</td>
+<td>-0.00</td>
+</tr>
+<tr>
+<td>Diluted shares (M)</td>
+<td>18.8</td>
+<td>18.6</td>
+<td>18.8</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quarterly trajectory (inflection check)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Revenue</th>
+<th>y/y</th>
+<th>q/q</th>
+<th>GM %</th>
+<th>Net income</th>
+<th>opCF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-06</td>
+<td>2.0</td>
+<td>38.0%</td>
+<td>0.0%</td>
+<td>n/d</td>
+<td>0.2</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>2026-03</td>
+<td>2.0</td>
+<td>n/d%</td>
+<td>24.8%</td>
+<td>n/d</td>
+<td>18.5</td>
+<td>15.5</td>
+</tr>
+<tr>
+<td>2025-12</td>
+<td>1.6</td>
+<td>n/d%</td>
+<td>1.3%</td>
+<td>n/d</td>
+<td>-6.6</td>
+<td>-8.3</td>
+</tr>
+<tr>
+<td>2025-09</td>
+<td>1.6</td>
+<td>n/d%</td>
+<td>9.2%</td>
+<td>n/d</td>
+<td>53.5</td>
+<td>1.4</td>
+</tr>
+<tr>
+<td>2025-06</td>
+<td>1.4</td>
+<td>n/d%</td>
+<td>n/d%</td>
+<td>n/d</td>
+<td>25.2</td>
+<td>-3.1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Balance sheet &amp; liquidity (FY2026A):</strong> cash+investments <strong>98.5</strong> · total debt 4.4 · <strong>net cash 94.1</strong> · equity 262.3</p>
+<h2 id="4-industry-outlook">4. Industry outlook</h2>
+<p>Grid digitization is a forced-spend wave: distribution automation, DER interconnection (solar/EV/<br />
+batteries), and wildfire/fault isolation all require low-band private networks with deterministic<br />
+latency — exactly 900MHz physics. The AI-datacenter power squeeze (our M1-M2 theme linkage) makes<br />
+utility capex LESS deferrable, not more. Competitive alternatives: 3.5GHz CBRS (coverage-poor for<br />
+rural feeders), unlicensed (reliability-poor), fiber (capex-heavy). Spectrum scarcity is structural —<br />
+the FCC cannot mint more low-band. Small addressable base (~100 IOUs) but each contract is<br />
+seven-to-nine-figure and sticky.</p>
+<h2 id="5-valuation-scenarios-2035-est-deliberately-long">5. Valuation &amp; scenarios (~2035, est. — deliberately long)</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Utilities on-net</th>
+<th>Annual rev run-rate</th>
+<th>Value basis</th>
+<th>Implied cap</th>
+<th>vs $1.65B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bull</td>
+<td>25-30</td>
+<td>$400M+ recurring</td>
+<td>6× rev</td>
+<td>~$2.4B+</td>
+<td>1.5× + yield</td>
+</tr>
+<tr>
+<td>Base</td>
+<td>12-15</td>
+<td>~$180M</td>
+<td>5×</td>
+<td>~$0.9B</td>
+<td>−45%</td>
+</tr>
+<tr>
+<td>Bear</td>
+<td>&lt;10 stall</td>
+<td>~$60M</td>
+<td>spectrum floor</td>
+<td>~$0.7B</td>
+<td>−58%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-bull-case-catalysts-12-24m">6. Bull case / catalysts (12-24m)</h2>
+<ul>
+<li>Each new IOU license = step function + proof-point cascade to peers</li>
+<li>FCC proceedings favoring utility broadband; FERC/NERC reliability mandates</li>
+<li>First recurring-revenue inflection as networks go live</li>
+</ul>
+<h2 id="7-bear-case-risks">7. Bear case / risks</h2>
+<ul>
+<li>Dead-money risk: tiny revenue base, losses, dilution bridge</li>
+<li>Rate-case politics slow utility capex despite physics</li>
+<li>Technology horizon: 5G private networks eventually substitute</li>
+</ul>
+<h2 id="8-vault-context-review-hooks">8. Vault context &amp; review hooks</h2>
+<p>Power-grid-electrification conviction 4 — purest small-cap expression of the theme in the sleeve.<br />
+<strong>Annual review cadence</strong> (utility cycles are annual): count NET license additions; two consecutive<br />
+flat years = invalidation review.</p>
+<h2 id="9-qc-red-flag-block-2026-10-05-pass">9. QC red-flag block (2026-10-05 pass)</h2>
+<ul>
+<li><strong>Momentum / discovered-ness (P5):</strong> 1m −2.6% / 12m +274% (short 13.6%)</li>
+<li><strong>RATING UNCHANGED: ACCUMULATE — but framing corrected: a spectrum land-bank with lumpy license harvests, net-cash floor ~$94M vs $1.65B cap</strong></li>
+<li>Data vintage: FY annual statements lag quarterly prints — reconcile cash/runway against latest 10-Q before executing.</li>
+<li>Round-1 error corrected here is logged in <a href="../../syntheses/research-quality-review-2026-10-05.html">research-quality-review-2026-10-05</a>.</li>
+<li><strong>Neutral scorecard: 3/8 — LOWEST in the sleeve</strong> (traj 0 · prof 1 · BS 2): quarterly NI is license-gain lumpiness (25.2 / 53.5 / −6.6 / 18.5 / 0.2). Hold ONLY as the duration/spectrum-floor position (net cash $94.1M) — not a growth entry.</li>
+<li><strong>Dilution &amp; relative value (round 4):</strong> EV/S (239×) is meaningless for the land-bank model — value = spectrum NPV + net cash $94M. EV/S <strong>239.4×</strong> / P/S 253.8× on FY25 revenue vs universe median <strong>5.7×</strong> (n=215) — premium.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

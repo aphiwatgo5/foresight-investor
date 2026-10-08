@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security Recommendations — 2026-10-02</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Security Recommendations — 2026-10-02
+type: synthesis
+tags: [investing, recommendations, continuous, v4]
+date: 2026-10-02
+last_scan: 2026-10-02</div>
+<article>
+<h1 id="security-recommendations-2026-10-02">Security Recommendations — 2026-10-02</h1>
+<blockquote>
+<p><strong>Continuous research engine output.</strong> Auto-generated from the quant signal pipeline. Decisions for the operator's own book — not personalized advice to others.</p>
+</blockquote>
+<p><strong>As-of:</strong> 2026-10-02 · <strong>Universe:</strong> 343 instruments · <strong>Book:</strong> 44 positions · <strong>Generated:</strong> 2026-10-03</p>
+<h2 id="summary">Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ADD</strong> (high conviction, new entry)</td>
+<td style="text-align: right;">39</td>
+</tr>
+<tr>
+<td><strong>START</strong> (starter position)</td>
+<td style="text-align: right;">48</td>
+</tr>
+<tr>
+<td><strong>HOLD</strong> (maintain)</td>
+<td style="text-align: right;">36</td>
+</tr>
+<tr>
+<td><strong>WATCH</strong> (monitor for trigger)</td>
+<td style="text-align: right;">71</td>
+</tr>
+<tr>
+<td><strong>TRIM</strong> (reduce exposure)</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr>
+<td><strong>REJECT</strong> (failed gate)</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="top-recommendations">Top Recommendations</h2>
+<h3 id="add">ADD</h3>
+<h4 id="psx-t1-confidence-100100">PSX 🥇 T1 — confidence 100/100</h4>
+<p>fwd P/E 10.7x · rev growth 53% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=93%, qua=0%, mac=91%, val=0%, con=68%, lon=94%  |  <strong>Best fit:</strong> longterm</p>
+<p><strong>Themes:</strong> natural-gas-lng</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); cheap; T1</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 93%); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="smci-t1-confidence-100100">SMCI 🥇 T1 — confidence 100/100</h4>
+<p>fwd P/E 8.7x · rev growth 123% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=96%, qua=0%, mac=94%, val=0%, con=68%, lon=16%  |  <strong>Best fit:</strong> mom</p>
+<p><strong>Themes:</strong> ai-infrastructure, data-center-cooling</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); cheap; T1</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 96%); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="cnc-med-high-confidence-90100">CNC 🥈 MED-HIGH — confidence 90/100</h4>
+<p>fwd P/E 12.6x · rev growth 5% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=87%, qua=0%, mac=92%, val=0%, con=0%, lon=90%  |  <strong>Best fit:</strong> macro</p>
+<p><strong>Themes:</strong> healthcare-aging-services</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); cheap; MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 87%); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="flex-med-high-confidence-85100">FLEX 🥈 MED-HIGH — confidence 85/100</h4>
+<p>fwd P/E 18.1x · rev growth 21% · off 52w high -20.6%</p>
+<p><strong>Sleeves:</strong> mom=85%, qua=0%, mac=90%, val=0%, con=68%, lon=93%  |  <strong>Best fit:</strong> longterm</p>
+<p><strong>Themes:</strong> reshoring-supply-chain</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 85%); market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="lrcx-med-high-confidence-85100">LRCX 🥈 MED-HIGH — confidence 85/100</h4>
+<p>fwd P/E 28.3x · rev growth 30% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=86%, qua=0%, mac=86%, val=0%, con=68%, lon=94%  |  <strong>Best fit:</strong> longterm</p>
+<p><strong>Themes:</strong> semiconductors</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 86%); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="smh-med-high-confidence-81100">SMH 🥈 MED-HIGH — confidence 81/100</h4>
+<p>rev growth nan% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=87%, qua=0%, mac=89%, val=0%, con=68%, lon=91%  |  <strong>Best fit:</strong> longterm</p>
+<p><strong>Themes:</strong> ai-infrastructure, semiconductors, networking-optical</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 87%); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="soxq-med-high-confidence-81100">SOXQ 🥈 MED-HIGH — confidence 81/100</h4>
+<p>rev growth nan% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=89%, qua=0%, mac=90%, val=0%, con=68%, lon=92%  |  <strong>Best fit:</strong> longterm</p>
+<p><strong>Themes:</strong> semiconductors</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 89%); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="soxx-med-high-confidence-81100">SOXX 🥈 MED-HIGH — confidence 81/100</h4>
+<p>rev growth nan% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=90%, qua=0%, mac=91%, val=0%, con=68%, lon=94%  |  <strong>Best fit:</strong> longterm</p>
+<p><strong>Themes:</strong> semiconductors</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 90%); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="xsd-med-high-confidence-81100">XSD 🥈 MED-HIGH — confidence 81/100</h4>
+<p>rev growth nan% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=88%, qua=0%, mac=90%, val=0%, con=68%, lon=88%  |  <strong>Best fit:</strong> macro</p>
+<p><strong>Themes:</strong> networking-optical</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 88%); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="crdo-med-high-confidence-80100">CRDO 🥈 MED-HIGH — confidence 80/100</h4>
+<p>fwd P/E 29.7x · rev growth 157% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=93%, qua=0%, mac=95%, val=0%, con=68%, lon=81%  |  <strong>Best fit:</strong> macro</p>
+<p><strong>Themes:</strong> networking-optical</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 93%); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="now-med-high-confidence-80100">NOW 🥈 MED-HIGH — confidence 80/100</h4>
+<p>fwd P/E 24.6x · rev growth 24% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=86%, qua=0%, mac=85%, val=0%, con=0%, lon=15%  |  <strong>Best fit:</strong> mom</p>
+<p><strong>Themes:</strong> ai-software-agents</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 86%); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="s-med-high-confidence-80100">S 🥈 MED-HIGH — confidence 80/100</h4>
+<p>fwd P/E 45.2x · rev growth 21% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=95%, qua=0%, mac=94%, val=0%, con=68%, lon=81%  |  <strong>Best fit:</strong> mom</p>
+<p><strong>Themes:</strong> cybersecurity</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 95%); fwd P/E expands above 59x (now 45.2x); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="bug-med-high-confidence-76100">BUG 🥈 MED-HIGH — confidence 76/100</h4>
+<p>rev growth nan% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=93%, qua=0%, mac=93%, val=0%, con=68%, lon=75%  |  <strong>Best fit:</strong> macro</p>
+<p><strong>Themes:</strong> cybersecurity</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 93%); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="cibr-med-high-confidence-76100">CIBR 🥈 MED-HIGH — confidence 76/100</h4>
+<p>rev growth nan% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=91%, qua=0%, mac=92%, val=0%, con=68%, lon=77%  |  <strong>Best fit:</strong> macro</p>
+<p><strong>Themes:</strong> cybersecurity</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 91%); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="gold-med-high-confidence-76100">GOLD 🥈 MED-HIGH — confidence 76/100</h4>
+<p>fwd P/E 12.1x · rev growth 244% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=48%, qua=0%, mac=36%, val=0%, con=68%, lon=86%  |  <strong>Best fit:</strong> longterm</p>
+<p><strong>Themes:</strong> commodities-gold-real-assets</p>
+<p><strong>Why:</strong> top-longterm; cheap; MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="hack-med-high-confidence-76100">HACK 🥈 MED-HIGH — confidence 76/100</h4>
+<p>rev growth nan% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=90%, qua=0%, mac=91%, val=0%, con=68%, lon=80%  |  <strong>Best fit:</strong> macro</p>
+<p><strong>Themes:</strong> cybersecurity</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 90%); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="wcld-med-high-confidence-76100">WCLD 🥈 MED-HIGH — confidence 76/100</h4>
+<p>rev growth nan% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=89%, qua=0%, mac=89%, val=0%, con=0%, lon=60%  |  <strong>Best fit:</strong> mom</p>
+<p><strong>Themes:</strong> ai-software-agents</p>
+<p><strong>Why:</strong> multi-sleeve (mom, macro); MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); momentum score falls below 50th percentile (now 89%); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="afrm-med-high-confidence-75100">AFRM 🥈 MED-HIGH — confidence 75/100</h4>
+<p>fwd P/E 19.8x · rev growth 33% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=78%, qua=0%, mac=88%, val=0%, con=0%, lon=34%  |  <strong>Best fit:</strong> macro</p>
+<p><strong>Themes:</strong> fintech-payments</p>
+<p><strong>Why:</strong> top-macro; MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="ben-med-high-confidence-75100">BEN 🥈 MED-HIGH — confidence 75/100</h4>
+<p>fwd P/E 10.6x · rev growth 14% · off 52w high 0.0%</p>
+<p><strong>Sleeves:</strong> mom=77%, qua=0%, mac=84%, val=0%, con=0%, lon=84%  |  <strong>Best fit:</strong> macro</p>
+<p><strong>Themes:</strong> tokenization-digital-assets</p>
+<p><strong>Why:</strong> cheap; MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h4 id="bhp-med-high-confidence-75100">BHP 🥈 MED-HIGH — confidence 75/100</h4>
+<p>fwd P/E 18.6x · rev growth 11% · off 52w high -2.4%</p>
+<p><strong>Sleeves:</strong> mom=69%, qua=0%, mac=68%, val=0%, con=0%, lon=86%  |  <strong>Best fit:</strong> longterm</p>
+<p><strong>Themes:</strong> critical-minerals</p>
+<p><strong>Why:</strong> top-longterm; MED-HIGH</p>
+<p><strong>Invalidation:</strong> MDAEM composite drops below 55 (STARTER); price breaks below 200-day SMA; market regime flips to bear (VIX&gt;25 + SPX&lt;-15%)</p>
+<hr />
+<h2 id="methodology">Methodology</h2>
+<p>Recommendations are generated by <code>scripts/recommend.py</code> which combines:<br />
+1. <strong>Sleeve scores</strong> (<code>signals.py</code>) — momentum / value / quality / macro-rotation / contrarian / longterm.<br />
+2. <strong>MDAEM v4 scores</strong> (<code>mdaem_v4.py</code>) — 10-dimension quant scoring (5 auto + 5 manual).<br />
+3. <strong>Backtest portfolio</strong> (<code>backtest.py</code>) — current book for hold/trim context.<br />
+4. <strong>Fundamentals</strong> (<code>_instruments.json</code>) — valuation and growth filters.</p>
+<p><strong>Action logic:</strong> ADD = high conf + T1/MED-HIGH + not in book. START = moderate conf + STARTER+. HOLD = in book + stable signal. TRIM = in book + decaying signal or tier drop. WATCH = interesting but waiting for trigger. REJECT = failed MDAEM gate.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Pipeline: <a href="security-sourcing-pipeline.html">security-sourcing-pipeline</a> · <a href="strategy-sleeves.html">strategy-sleeves</a> · <a href="backtest-results-2026-07-18.html">backtest-results-2026-07-18</a></li>
+<li>Decisions: <a href="decision-register.html">decision-register</a> · <a href="prediction-ledger.html">prediction-ledger</a> · <a href="track-record.html">track-record</a></li>
+<li>Monitor: <a href="signal-monitor.html">signal-monitor</a> · <a href="regime-monitor.html">regime-monitor</a> · <a href="instrument-universe.html">instrument-universe</a></li>
+</ul>
+</article>
+</div>
+</body>
+</html>

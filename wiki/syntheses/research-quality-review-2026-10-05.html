@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research Quality Review 2026 10 05</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;Research Quality Review — grading the 100x-hunt work (self-audit, 2026-10-05)&quot;
+type: synthesis
+tags: [meta, quality-control, 100-bagger, process]
+sources: [[qualified-100x-list-2026-10-05]], [[sa-microcap-100x-screen-2026-10-04]], [[hundred-x-hunt-framework]]
+date: 2026-10-05</div>
+<article>
+<h1 id="research-quality-review-self-audit-of-the-100x-hunt-chain">Research Quality Review — Self-Audit of the 100x-Hunt Chain</h1>
+<p><strong>Bottom line:</strong> Operator asked: "evaluate the quality of your research; if too bad, improve it."<br />
+Honest verdict on round 1: <strong>C+ overall</strong> — process discipline was good, but the financial tables in<br />
+the 10 memos were materially wrong or thin on 5 of 10 names, validation leaned bullish, and the<br />
+"100x from today" framing understated how much this basket had already re-rated. This document grades<br />
+each layer, lists every error found, and records the fixes applied (round-2 memos now carry real<br />
+statements + red-flag blocks). Post-fix grade: <strong>B+</strong>; the residual gaps are named below.</p>
+<h2 id="grading-rubric-scores-round-1-post-fix">Grading rubric &amp; scores (round 1 → post-fix)</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>R1</th>
+<th>Post</th>
+<th>What was wrong / what changed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Data provenance &amp; labeling</td>
+<td>A−</td>
+<td>A−</td>
+<td>Sourced, dated, est.-tagged throughout — kept</td>
+</tr>
+<tr>
+<td><strong>Financial statement rigor</strong></td>
+<td><strong>C</strong></td>
+<td><strong>B+</strong></td>
+<td>Round-1 tables were guidance-plus-guesses with "n/d" everywhere. Fetched yfinance statements for all 10 → <strong>5 material errors found &amp; fixed</strong> (below)</td>
+</tr>
+<tr>
+<td>Validation balance</td>
+<td>C+</td>
+<td>B</td>
+<td>Searches were bullish-tilted (guidance raises, deal PRs); GCT was the only real red-flag probe. Round 2 added systematic checks: SBC vs revenue, opCF/FCF, cash runway, short interest, 12m momentum</td>
+</tr>
+<tr>
+<td>Screen construction</td>
+<td>B−</td>
+<td>B−</td>
+<td>Revenue filter never actually applied in the SA UI (menu fights); quant-descending sort biases toward names that already moved; only 100/246 rows captured</td>
+</tr>
+<tr>
+<td>Framework honesty</td>
+<td>B+</td>
+<td>A−</td>
+<td>100x-shape probabilities were already conservative; round 2 adds the discovered-ness verdict (6/10 names are mid-ride, not pre-rise)</td>
+</tr>
+<tr>
+<td>Portfolio integration</td>
+<td>B</td>
+<td>B</td>
+<td>Sizing/invalidations bound; but MDAEM 10-gate still not run per name; no EV-weighted ranking yet</td>
+</tr>
+</tbody>
+</table>
+<h2 id="errors-found-in-round-1-memos-all-corrected-in-round-2">Errors found in round-1 memos (all corrected in round 2)</h2>
+<ol>
+<li><strong>IOVA</strong>: FY2025 revenue stated "~$140M (est.)" — actual <strong>$263.5M</strong> (yfinance). 2026 guide = +57%, not +180%.</li>
+<li><strong>OABI</strong>: presented as an inflecting royalty platform — actuals show a <strong>3-year DECLINING revenue base</strong> ($59.1M '22 → $18.7M '25), SBC at <strong>84% of revenue</strong>, FY25 cash $25.5M (~8 months at burn). Rating cut BUY → ACCUMULATE-small (0.25%).</li>
+<li><strong>GRAL</strong>: asserted "cash-rich via spin (est.)" — actual FY2025 opCF <strong>−$299M vs $249.7M cash ≈ 10 months runway</strong> → dilution risk INTO the FDA catalyst; GM was −42.5% (allocation-heavy). Position sized 0.4→0.3%.</li>
+<li><strong>ATEX</strong>: FY2026 revenue estimated "~$11-12M" — actual <strong>$6.5M</strong>, and the +$90.6M NI is a one-off license-sale gain; the model is a lumpy spectrum land-bank (net cash ~$94M floor), not a growth-revenue line.</li>
+<li><strong>SEZL/DAVE/GCT scale errors</strong>: SEZL's FY2025 revenue is $450.3M (bigger than implied) with $133M NI and +$210M opCF — <em>reinforces</em> the thesis; GCT growth corrected 15-20% → <strong>+11% actual</strong>.</li>
+<li><strong>Framing error (the big one)</strong>: momentum audit shows <strong>IOVA +508%, NLST +444%, ATEX +274%, OABI +199%, GRAL +119%, ABCL +133% over 12m</strong> — six of ten names already re-rated. This is an <em>early-inflection</em> basket, not a <em>pre-rise</em> one; only SEZL (−43% off high, short 26%) and HTFL (+31%/12m) still resemble the framework's P5 mark. Entries must be staged/limit-based accordingly.</li>
+</ol>
+<h2 id="what-round-2-added-already-live-in-the-memos">What round 2 added (already live in the memos)</h2>
+<ul>
+<li>Real FY2022-26 statements (revenue, GM, NI, opCF, SBC, cash, debt) per memo §3 — source:<br />
+<code>scripts/_hist/memo_fundamentals.json</code> (yfinance pull 2026-10-05).</li>
+<li>§9 QC block per memo: short interest, SBC-vs-revenue, runway, discovered-ness, vintage caveats,<br />
+  and rating-change notes.</li>
+<li>Downgrades where the evidence demanded (OABI, GRAL sizing) — ratings now evidence-consistent.</li>
+</ul>
+<h2 id="residual-gaps-ranked-next-work-queue">Residual gaps (ranked; next-work queue)</h2>
+<ol>
+<li><strong>Comps tables per name</strong> (peer EV/S-growth-margin positioning) — not yet built.</li>
+<li><strong>MDAEM 10-gate run</strong> on each name (the vault's own decision protocol) — memos ≠ gates.</li>
+<li><strong>EV-weighted ranking</strong>: scenario probabilities × returns not yet formalized per name.</li>
+<li>Balance-sheet vintage lags (FY annuals vs 10-Q quarters) — reconcile before execution.</li>
+<li>Insider-selling/ownership audit systematic pass; ARK/13F cross-check still thematic only.</li>
+<li>The screen's remaining 146 rows + a true growth-filtered rebuild.</li>
+<li>Universe extension (these 10 aren't in the 347) so FFM momentum-confirmation can gate adds.</li>
+</ol>
+<h2 id="verdict-for-the-operator">Verdict for the operator</h2>
+<p>The <strong>qualitative theses largely survive</strong> the audit (SEZL/DAVE/GCT strengthened; IOVA/HTFL intact;<br />
+NLST unchanged as special situation) — but two names were downgraded (OABI, GRAL-sized) and the<br />
+entry framing shifted from "pre-rise discovery" to "staged early-inflection." Round-1 work was<br />
+<strong>usable as a screening layer, not executable as an initiation note</strong>; round 2 closes most of that<br />
+gap. Do not execute any D-series rows until gaps 1-3 are closed.</p>
+<hr />
+<h2 id="round-3-same-day-deeper-full-pl-quarterly-trajectory-neutral-scorecard">Round 3 (same day, deeper) — full-P&amp;L + quarterly trajectory + neutral scorecard</h2>
+<p>Operator pushed again ("financial summary not good enough; no bias"). Round-2 sections were<br />
+replaced with: <strong>full annual P&amp;L</strong> (revenue→COGS→GP→R&amp;D→SG&amp;A→op income→NI→EPS→shares),<br />
+<strong>5-quarter trajectory tables</strong> (rev y/y, q/q, GM, NI, opCF — the inflection evidence), and<br />
+<strong>net-cash positions incl. investments</strong> (<code>scripts/_hist/memo_fundamentals_v2.json</code>).</p>
+<p><strong>Round-2 contained its own errors (caught by round 3):</strong><br />
+- GRAL runway: cash-ONLY $249.7M was used → net cash incl. investments is <strong>$849.6M</strong> (~3y at FY25 burn). Sizing restored 0.3→0.4%.<br />
+- IOVA / ABCL net cash similarly understated ($247.5M / $390.6M corrected).<br />
+- New finding: <strong>SEZL carries net DEBT −$76.8M</strong> (facilities) — the sleeve's only leveraged book.</p>
+<p><strong>Neutral scorecard (no judgment inputs):</strong> traj(0-3, latest y/y &amp; q/q) + prof(0-2) + BS(0-2) + discovered-ness(0-2, 12m mom):</p>
+<table>
+<thead>
+<tr>
+<th>Rank</th>
+<th>Name</th>
+<th>traj</th>
+<th>prof</th>
+<th>BS</th>
+<th>disc</th>
+<th>Total</th>
+<th>Rating action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>HTFL</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td><strong>7</strong></td>
+<td>ACCUMULATE — best in sleeve</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SEZL</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>6</td>
+<td>ACCUMULATE (net-debt cap 0.5%)</td>
+</tr>
+<tr>
+<td>2</td>
+<td>DAVE</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>6</td>
+<td>ACCUMULATE</td>
+</tr>
+<tr>
+<td>2</td>
+<td>IOVA</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>6</td>
+<td>BUY kept — best trajectory, most discovered</td>
+</tr>
+<tr>
+<td>5</td>
+<td>NLST</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>5</td>
+<td>ACCUMULATE-SS (Samsung visible: 42→76→105→110)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>GRAL</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>4</td>
+<td>ACCUMULATE 0.4% — catalyst bet, weakest fundamentals</td>
+</tr>
+<tr>
+<td>6</td>
+<td>OABI</td>
+<td>0</td>
+<td>1*</td>
+<td>2</td>
+<td>0</td>
+<td>4</td>
+<td><strong>HOLD/WAIT</strong> — latest q/q −7.1%; NI narrowing; need 2 consecutive milestone quarters</td>
+</tr>
+<tr>
+<td>6</td>
+<td>GCT</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>4</td>
+<td>HOLD→ACCUM post-print</td>
+</tr>
+<tr>
+<td>9</td>
+<td>ABCL</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>3</td>
+<td>WAIT (agrees with numbers)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>ATEX</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>3</td>
+<td>Duration-only position (spectrum floor $94.1M net cash)</td>
+</tr>
+</tbody>
+</table>
+<p>*OABI prof reads 2 in the mechanical score (GM 95%+); overridden to 1 for negative NI.</p>
+<p><strong>Round-3 grade for the financial sections: A-</strong> (full statements + trajectory + net cash, all<br />
+source-logged). Remaining to reach A: per-name peer comps, driver-based unit forecasts (volume×ASP),<br />
+dilution modeling from share-count history, and reconciliation of balance-sheet vintage vs latest 10-Qs.</p>
+<h2 id="round-4-dilution-relative-value-gaps-1-3-closed">Round 4 — dilution + relative value (gaps 1 &amp; 3 closed)</h2>
+<p>Added per-memo: share-count history → dilution/yr, and EV/S vs the 347-name universe median<br />
+(5.7×, n=215). Material findings:<br />
+- <strong>IOVA dilution +30.9%/yr</strong> (159→357M shares, 3y) — now an explicit bear-case weight against its 3/3 trajectory score.<br />
+- <strong>GCT EV/S 1.5× vs median 5.7×</strong> — the only in-universe-cheap name; the value case is quantified, not asserted.<br />
+- Platform names run premium multiples (OABI 36×, GRAL 38×, ABCL 54×) — priced-for-perfection, sized small accordingly.<br />
+- HTFL share series has a 2025 restatement artifact (flagged, not used).</p>
+<p><strong>Financial-section grade: A</strong> (full P&amp;L + quarterly trajectory + net cash + dilution + relative<br />
+value, all source-logged). Remaining niceties: unit-driver forecasts per name and 10-Q reconciliations.</p>
+</article>
+</div>
+</body>
+</html>

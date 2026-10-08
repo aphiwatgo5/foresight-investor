@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quant Alpha Methodology</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: QAE — Quant Alpha Engine (methodology v1 → v2)
+type: concept
+trend: false
+tags: [quant, methodology, factor, alpha, portfolio-construction, risk, qae]
+sources: [[quant-firm-anatomy]], [[quant-trader-curriculum]], [[strategy-sleeves]]
+date: 2026-08-29
+last_scan: 2026-09-06</div>
+<article>
+<h1 id="qae-quant-alpha-engine-methodology-v1-v2">QAE — Quant Alpha Engine (methodology v1 → v2)</h1>
+<p><strong>Definition:</strong> The vault's cross-sectional alpha layer. QAE ranks every liquid instrument<br />
+in the universe by a blend of price/volume factors whose weights are set by <em>measured</em><br />
+predictive power (rank IC), then converts that ranking into a risk-sized book with a<br />
+volatility target, concentration caps, and pre-committed stops.</p>
+<blockquote>
+<p><strong>Scope.</strong> Decisions for the operator's own book, never advice to others. Every number<br />
+below is produced by <code>scripts/qae.py</code> from <code>scripts/_hist/prices.parquet</code>; nothing is<br />
+recalled from memory. Past performance ≠ future results.</p>
+</blockquote>
+<p><strong>Where it sits:</strong> <a href="../syntheses/strategy-sleeves.html">strategy-sleeves</a> answers <em>which theme</em>; <a href="foresight-factor-model.html">foresight-factor-model</a><br />
+answers <em>is this company good</em>; <a href="mdaem-framework-v4.html">mdaem-framework-v4</a> answers <em>should I own it</em>.<br />
+<strong>QAE answers a different question: given everything I can trade, what is the risk-optimal<br />
+ranked book today, and what is the measured evidence that the ranking predicts anything?</strong></p>
+<hr />
+<h2 id="1-the-six-stages-mirrors-quant-firm-anatomy-2">1. The six stages (mirrors <a href="quant-firm-anatomy.html">quant-firm-anatomy</a> §2)</h2>
+<h3 id="stage-1-universe">Stage 1 — Universe</h3>
+<p>From ~330 tracked instruments, admit a name only if all hold on the decision date:</p>
+<table>
+<thead>
+<tr>
+<th>Filter</th>
+<th>Threshold</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Asset class</td>
+<td>stock or ETF</td>
+<td>FX/crypto/futures have different return generating processes; ranking them against equities is a category error</td>
+</tr>
+<tr>
+<td>History</td>
+<td>≥ 400 trading days</td>
+<td>Every factor needs a 252d lookback</td>
+</tr>
+<tr>
+<td>Liquidity</td>
+<td>median 63d dollar volume ≥ $3M</td>
+<td>Below this, the spread eats the edge</td>
+</tr>
+<tr>
+<td>Price</td>
+<td>≥ $3</td>
+<td>Sub-$3 quotes are mostly spread</td>
+</tr>
+<tr>
+<td>Structural decay</td>
+<td>UVXY/VXX/leveraged ETFs excluded</td>
+<td>Their return is a roll-cost artefact, not alpha; they would permanently occupy the bottom of any ranking</td>
+</tr>
+<tr>
+<td><strong>Vol-collapse guard</strong></td>
+<td>63d vol ≥ 40% of 252d vol</td>
+<td>A collapsed vol on a name that has risen is the signature of an <strong>announced acquisition</strong>. Momentum + near-zero vol makes a pinned deal stock look like the perfect position; it is dead money with deal-break tail risk.</td>
+</tr>
+</tbody>
+</table>
+<p>The vol-collapse guard was added after the first live run put a 6.4% weight into a<br />
+deal-pinned satellite name purely because inverse-vol sizing loves a flatline. This is the<br />
+kind of failure only running the thing on real data surfaces.</p>
+<h3 id="stage-2-factors">Stage 2 — Factors</h3>
+<p>Fourteen price/volume factors, all defined so <strong>higher = better</strong>, all computable from data<br />
+available at time <code>t</code>:</p>
+<p><code>mom_12_1</code> · <code>mom_6_1</code> · <code>accel</code> · <code>trend_q</code> · <code>rev_5</code> · <code>rev_21</code> · <code>lowvol</code> · <code>ivol</code> ·<br />
+<code>bab</code> · <code>dist_high</code> · <code>dist_low</code> · <code>vol_accum</code> · <code>skew</code> · <code>illiq</code></p>
+<p>Each is cross-sectionally <strong>z-scored within its group</strong> (stocks against stocks, ETFs against<br />
+ETFs) using <strong>median/MAD</strong> rather than mean/std, and winsorized at ±3. Grouping matters: an<br />
+ETF is structurally lower-vol than a single stock, so a pooled z-score would turn every<br />
+volatility-linked factor into a "you are an ETF" dummy variable.</p>
+<h3 id="stage-3-ic-measurement-the-honest-part">Stage 3 — IC measurement (the honest part)</h3>
+<p>For every factor and horizon h ∈ {5, 21, 63} trading days:<br />
+1. Sample every 5 trading days across the whole history.<br />
+2. Compute the <strong>Spearman rank IC</strong> between the factor z-score and the forward<br />
+<em>group-relative</em> return (each name's forward return minus its group's mean, so the<br />
+   IC measures selection skill, not market direction).<br />
+3. Because 5-day sampling with a 21- or 63-day forward window <strong>overlaps</strong>, correct the<br />
+   t-statistic with <strong>Newey–West</strong> at lag = h/step. Skipping this step is the single most<br />
+   common way a factor study lies to you: overlapping windows inflate t by roughly √overlap.</p>
+<h3 id="stage-4-weights">Stage 4 — Weights</h3>
+<p>A factor is admitted only if:<br />
+- its <strong>mean t-stat across the three horizons</strong> ≥ 1.0 (the mean, not Stouffer's sum/√k —<br />
+  the horizons are highly correlated, so the mean is the conservative bound), <strong>and</strong><br />
+- its 21-day IC is <strong>positive</strong>.</p>
+<p>We never flip a factor's sign to exploit a negative IC. A negative IC is information about<br />
+the <em>regime</em>, not a tradable inversion, and flipping it is regime-fitting.</p>
+<p>Surviving factors are weighted <strong>50% equal / 50% proportional to combined t</strong>. Pure<br />
+t-weighting over-trusts point estimates from 5 years of data; pure equal-weighting discards<br />
+the only evidence available. The 50/50 shrinkage is an explicit, documented prior.</p>
+<h3 id="stage-5-portfolio-construction">Stage 5 — Portfolio construction</h3>
+<ol>
+<li>Rank by composite score.</li>
+<li><strong>Theme cap:</strong> at most 3 names per primary theme, walking down the ranking<br />
+   (<a href="../syntheses/portfolio-blueprint.html">portfolio-blueprint</a> rule). Without it the top decile in a capex boom is one trade<br />
+   priced fifteen ways.</li>
+<li><strong>Inverse-volatility sizing:</strong> <code>w ∝ 1/σ</code>, where σ is floored at 60% of the name's own<br />
+   1-year vol so a temporary vol collapse cannot inflate a weight.</li>
+<li><strong>Single-name cap 8%</strong>, with cap-and-redistribute so the fully-invested weights still<br />
+   sum to 100%.</li>
+<li><strong>Volatility target:</strong> scale gross exposure so ex-ante portfolio vol ≈ 10% annualized,<br />
+   using <code>σ_p ≈ √(Σwᵢ²σᵢ² + ρ·ΣΣwᵢwⱼσᵢσⱼ)</code> with ρ = 0.50. The remainder sits in cash.<br />
+   No leverage is ever applied — gross is capped at 100%.</li>
+</ol>
+<h3 id="stage-6-risk">Stage 6 — Risk</h3>
+<ul>
+<li><strong>Stop:</strong> 2.5 × ATR(20) below entry, so every position risks a comparable amount of<br />
+<em>volatility</em>, not a comparable percentage of price.</li>
+<li><strong>Invalidation:</strong> the name leaves the top quartile of the composite at the next rebalance.</li>
+<li><strong>Book-level ladder:</strong> −5% → cut gross 25%; −8% → cut 50%; −12% → flat and post-mortem<br />
+  (the retail translation of the pod-shop stop ladder, <a href="quant-firm-anatomy.html">quant-firm-anatomy</a> §1).</li>
+<li><strong>Rebalance:</strong> every 21 trading days, trading only the deltas.</li>
+<li><strong>Costs:</strong> 10 bps per side modelled explicitly in every backtest number.</li>
+</ul>
+<hr />
+<h2 id="2-what-the-measurement-actually-said-run-of-2026-08-29-data-through-2026-08-27">2. What the measurement actually said (run of 2026-08-29, data through 2026-08-27)</h2>
+<p><strong>Only 2 of 14 factors cleared the bar.</strong> That is the headline, and it should be.</p>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th style="text-align: right;">IC 21d</th>
+<th style="text-align: right;">NW t</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mom_12_1</code> (12-1 momentum)</td>
+<td style="text-align: right;">+0.030</td>
+<td style="text-align: right;">+1.2</td>
+<td><strong>admitted</strong>, 49.8% weight</td>
+</tr>
+<tr>
+<td><code>trend_q</code> (126d trend quality)</td>
+<td style="text-align: right;">+0.025</td>
+<td style="text-align: right;">+1.0</td>
+<td><strong>admitted</strong>, 50.2% weight</td>
+</tr>
+<tr>
+<td><code>accel</code></td>
+<td style="text-align: right;">+0.021</td>
+<td style="text-align: right;">+1.0</td>
+<td>positive but below the bar</td>
+</tr>
+<tr>
+<td><code>dist_high</code> · <code>illiq</code> · <code>vol_accum</code></td>
+<td style="text-align: right;">+0.013 · +0.011 · +0.008</td>
+<td style="text-align: right;">+0.5 → +0.7</td>
+<td>measured, not admitted</td>
+</tr>
+<tr>
+<td><code>mom_6_1</code> · <code>rev_5</code> · <code>skew</code> · <code>ivol</code></td>
+<td style="text-align: right;">−0.004 → −0.013</td>
+<td style="text-align: right;">−0.6 → −0.2</td>
+<td>negative IC — dropped</td>
+</tr>
+<tr>
+<td><code>rev_21</code> · <code>lowvol</code> · <code>dist_low</code> · <code>bab</code></td>
+<td style="text-align: right;">−0.037 · −0.040 · −0.049 · −0.051</td>
+<td style="text-align: right;">−1.8 → −1.0</td>
+<td><strong>negative IC — dropped, not flipped</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Three readings worth keeping:<br />
+1. <strong>Momentum is the only thing that survives on this data.</strong> Both admitted factors are<br />
+   momentum in different clothes, and their correlation is high — so the composite's<br />
+<em>effective</em> factor breadth is ~1, not 2. That is a real weakness of v1.<br />
+2. <strong>The low-volatility and betting-against-beta anomalies are inverted in this sample</strong><br />
+   (<code>lowvol</code> IC −0.040, <code>bab</code> IC −0.051). Over 2021–2026 the high-beta, high-vol megacap<br />
+   growth complex led the market. This is a <em>regime fact</em>, not a broken factor — and it is<br />
+   precisely why we do not flip signs on negative IC.<br />
+3. <strong>The t-stats are weak in absolute terms.</strong> With 14 factors tested, a multiple-testing<br />
+   correction (Harvey–Liu–Zhu) would demand t ≈ 3, not 1. Nothing here clears that bar.<br />
+   The composite is used because momentum is one of the most-replicated effects in the<br />
+   literature and its sign here matches theory — not because this study proved it.</p>
+<h3 id="backtest-walk-forward-weights-35-monthly-rebalances-3-years-costed">Backtest (walk-forward weights, 35 monthly rebalances ≈ 3 years, costed)</h3>
+<table>
+<thead>
+<tr>
+<th>Book</th>
+<th style="text-align: right;">CAGR</th>
+<th style="text-align: right;">Vol</th>
+<th style="text-align: right;">Sharpe</th>
+<th style="text-align: right;">MaxDD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Long/short decile (20×20)</td>
+<td style="text-align: right;">+24.6%</td>
+<td style="text-align: right;">44.1%</td>
+<td style="text-align: right;">0.56</td>
+<td style="text-align: right;">−31.4%</td>
+</tr>
+<tr>
+<td>Long-only top-20, equal weight</td>
+<td style="text-align: right;">+63.4%</td>
+<td style="text-align: right;">51.5%</td>
+<td style="text-align: right;">1.23</td>
+<td style="text-align: right;">−38.0%</td>
+</tr>
+<tr>
+<td>Long-only top-20, inverse-vol</td>
+<td style="text-align: right;">+44.0%</td>
+<td style="text-align: right;">39.7%</td>
+<td style="text-align: right;">1.11</td>
+<td style="text-align: right;">−32.4%</td>
+</tr>
+<tr>
+<td>… + theme cap (max 3/theme)</td>
+<td style="text-align: right;">+40.1%</td>
+<td style="text-align: right;">37.4%</td>
+<td style="text-align: right;">1.07</td>
+<td style="text-align: right;">−32.8%</td>
+</tr>
+<tr>
+<td>… + 10% vol target (cash buffer)</td>
+<td style="text-align: right;"><strong>+13.1%</strong></td>
+<td style="text-align: right;"><strong>10.4%</strong></td>
+<td style="text-align: right;"><strong>1.26</strong></td>
+<td style="text-align: right;"><strong>−6.9%</strong></td>
+</tr>
+<tr>
+<td><em>SPY (same window)</em></td>
+<td style="text-align: right;"><em>+21.9%</em></td>
+<td style="text-align: right;"><em>15.0%</em></td>
+<td style="text-align: right;"><em>1.46</em></td>
+<td style="text-align: right;"><em>−15.8%</em></td>
+</tr>
+</tbody>
+</table>
+<p><strong>The honest conclusion: QAE beat SPY on return but not on Sharpe over this window.</strong><br />
+Three things follow from that, and they are more valuable than a flattering number:<br />
+- The test window (≈2023-08 → 2026-08) was an exceptional bull run for SPY — a 1.46 Sharpe<br />
+  for a passive index is roughly double its long-run norm. Beating it risk-adjusted in<br />
+<em>this</em> window is a very high bar.<br />
+- <strong>The short leg destroys value in a bull market.</strong> Long/short Sharpe 0.56 vs long-only<br />
+  1.11. Confirms the <a href="quant-firm-anatomy.html">quant-firm-anatomy</a> §5 rule: for a solo operator without a<br />
+  professional risk overlay, the bottom decile is an <strong>avoid/trim list</strong>, not a short book.<br />
+- <strong>The vol-target overlay is the one construction change that actually improved the risk<br />
+  profile</strong>: realized vol 10.4% against a 10.0% target (the risk model is calibrated) and a<br />
+  −6.9% max drawdown against SPY's −15.8%. It costs a lot of return. Whether that trade is<br />
+  worth it is a preference, not a fact — but it is now measurable.</p>
+<p><strong>Known biases in the backtest</strong> (all disclosed, none fixed in v1):<br />
+- <strong>Survivorship / selection:</strong> the universe is the list of instruments tracked <em>today</em>.<br />
+  Names that were dropped or delisted are absent. This flatters results.<br />
+- <strong>Test window is short and one-regime</strong> (~3y, mostly bull). Momentum's crash risk<br />
+  (Daniel–Moskowitz 2016) is not represented in it.<br />
+- <strong>No borrow costs</strong> in the long/short line.<br />
+- <strong>No point-in-time fundamentals</strong> — QAE is deliberately price/volume-only, so this bias<br />
+  does not apply here, but it is why fundamental factors stayed out of v1.</p>
+<hr />
+<h2 id="3-how-to-run-it">3. How to run it</h2>
+<pre><code class="language-bash">scripts/.venv/bin/python scripts/fetch_history.py --years 5 --no-upgrades   # refresh prices
+scripts/.venv/bin/python scripts/qae.py                                    # full: IC + backtest + book
+scripts/.venv/bin/python scripts/qae.py --no-backtest                       # fast: IC + book only (~6s)
+</code></pre>
+<p>Outputs land in <code>scripts/_hist/</code>: <code>qae_ic.json</code> (factor evidence), <code>qae_backtest.json</code><br />
+(walk-forward results), <code>qae_book.json</code> (today's sized book), <code>qae_report.md</code> (the report<br />
+that feeds the wiki synthesis).</p>
+<hr />
+<h2 id="3b-v2-the-tournament-selected-system-2026-09-06">3b. v2 — the tournament-selected system (2026-09-06)</h2>
+<p>v1 measured <em>factors</em>. v2 ran 39 complete <em>systems</em> (signal + construction + risk overlay +<br />
+diversifier) over 10 years with a pre-registered split-sample gate — see<br />
+<a href="../syntheses/strategy-tournament-2026-09-06.html">strategy-tournament-2026-09-06</a>. The result replaces the v1 book construction:</p>
+<p><strong>Two engines, 50/50, rebalanced every 21 trading days.</strong><br />
+- <strong>Engine A — Momentum-10, vol-targeted.</strong> v1 composite (0.5 × z(12-1 momentum) + 0.5 × z(trend<br />
+  quality)), <strong>top 10</strong> (not 15–20), max 3 per theme, inverse-vol capped at 8%, whole leg scaled to a<br />
+<strong>15%</strong> ex-ante vol target, remainder in T-bills. Backtest 2017-09 → 2026-09: Sharpe <strong>1.03</strong>,<br />
+  max DD <strong>−18.6%</strong>, 2020 crash −5.5%, 2022 bear −0.4%.<br />
+- <strong>Engine B — Dual momentum with a defensive-momentum leg.</strong> Hold the best 12m performer of<br />
+  SPY/QQQ/INDA/GLD/DBC/VNQ if it beats T-bills; else the best 12m of IEF/TLT/GLD/BIL.<br />
+- <strong>Blend:</strong> CAGR +18.2% · vol 15.7% · Sharpe <strong>0.98</strong> · max DD <strong>−23.0%</strong> · β 0.51 · <strong>+9.6% in 2022</strong><br />
+  (SPY −18.2%) · half-1/half-2 Sharpe 0.99/0.98 · survives 25 bps costs (0.94).<br />
+  SPY over the same days: +15.1% · 18.8% · 0.71 · −33.7%.</p>
+<p>Three construction lessons that changed the spec: <strong>vol targeting</strong> was the biggest single<br />
+improvement (same names, drawdown −36% → −19%); <strong>concentration</strong> paid (top-10 &gt; top-20 &gt; top-30);<br />
+<strong>a second engine</strong> stabilised the Sharpe across halves more than any tweak to the first.<br />
+Three things that failed and were removed from consideration: theme-ETF rotation (negative alpha),<br />
+the 200-dma regime gate (whipsaw), and a walk-forward ridge model (no better than the hand blend).</p>
+<p>Caveats carried forward, unchanged: the +0.27 Sharpe edge sits inside a +1.01 multiple-testing<br />
+luck band; the stock universe is survivor-biased (~13 pts/yr vs RSP) so only the α-vs-EW-universe<br />
+column (+6.7%/yr) is trusted; the momentum crash tail is untested in this window.</p>
+<h2 id="4-our-view-v1">4. Our view (v1)</h2>
+<p><strong>Conviction 2/5</strong> on the composite as a standalone return engine — the evidence is weak<br />
+(t ≈ 1.2 on the best factor) and effective breadth is ~1 factor.<br />
+<strong>Conviction 3/5</strong> on the v2 two-engine <em>system</em> — it passed a split-sample gate and a cost<br />
+stress, and both engines are the most-replicated effects in the literature; it did not clear the<br />
+luck band.<br />
+<strong>Conviction 4/5</strong> on the <em>construction</em> layer: vol targeting, theme caps, vol-floored<br />
+inverse-vol sizing and ATR stops each demonstrably improved the risk profile, and they will<br />
+keep doing so regardless of which signal feeds them.</p>
+<p><strong>Invalidation for v1:</strong> if <code>mom_12_1</code> IC turns negative over a rolling 12-month window<br />
+(measured at the monthly re-run), the composite is switched off and the book goes to the<br />
+<a href="../syntheses/strategy-sleeves.html">strategy-sleeves</a> default until a new factor set clears the bar.</p>
+<p><strong>v2 backlog, in priority order</strong><br />
+1. <strong>Fix effective breadth.</strong> Two correlated momentum factors is one bet. Add genuinely<br />
+   orthogonal alphas — earnings-announcement drift, residual (beta-neutral) reversal,<br />
+   analyst-revision momentum from the existing <code>_hist/upgrades/</code> event logs.<br />
+2. <strong>Orthogonalize</strong> the composite against market beta and theme dummies so the ranking<br />
+   is not just "own more semis."<br />
+3. <strong>Regime-conditional weights</strong> — measure IC separately in SPY&gt;200dma vs &lt;200dma regimes<br />
+   rather than assuming one weight set works in both.<br />
+4. <strong>Extend the window to 7y</strong> to capture at least one real drawdown (the standing v4<br />
+   backlog item, still open).<br />
+5. <strong>Point-in-time fundamentals</strong> (SEC EDGAR) to let value/quality factors into the IC study<br />
+   without look-ahead.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Theory: <a href="quant-firm-anatomy.html">quant-firm-anatomy</a> · Learning path: <a href="quant-trader-curriculum.html">quant-trader-curriculum</a></li>
+<li>Complements <a href="../syntheses/strategy-sleeves.html">strategy-sleeves</a> (thematic long-only) and <a href="foresight-factor-model.html">foresight-factor-model</a> (single-name grades)</li>
+<li>Risk rules from <a href="../syntheses/portfolio-blueprint.html">portfolio-blueprint</a>; today's output filed as<br />
+<a href="../syntheses/qae-book-2026-08-29.html">qae-book-2026-08-29</a>; calls tracked in <a href="../syntheses/prediction-ledger.html">prediction-ledger</a> and <a href="../syntheses/track-record.html">track-record</a></li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Is the vol-target overlay's return give-up (+13.1% vs +40.1%) acceptable, or should the<br />
+  target be 15% rather than 10%?</li>
+<li>Does theme-capping on the <em>primary</em> theme only leave too much cluster risk when a name<br />
+  carries three overlapping tags?</li>
+</ul>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><code>scripts/qae.py</code> run 2026-08-29T13:58Z; prices <code>scripts/_hist/prices.parquet</code><br />
+  (437,501 rows, 326 tickers, 5y, retrieved 2026-08-29T13:38Z via yfinance).</li>
+<li>Jegadeesh &amp; Titman 1993 · Daniel &amp; Moskowitz 2016 · Frazzini &amp; Pedersen 2014 ·<br />
+  Amihud 2002 · Harvey, Liu &amp; Zhu 2016 · Newey &amp; West 1987 (definitions from knowledge).</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

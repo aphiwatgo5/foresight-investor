@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Book Rec 2026 09 13</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Operator book memo — post-SA-sweep allocation read (2026-09-13)
+type: synthesis
+tags: [allocation, decision-support, own-book]
+sources: [[sa-market-read-2026-09-12]], [[seeking-alpha-sweep-2026-09-12]], [[portfolio-blueprint]], [[strategy-sleeves]], [[qae-book-2026-09-06]]
+date: 2026-09-13</div>
+<article>
+<h1 id="operator-book-memo-post-sa-sweep-allocation-read-2026-09-13">Operator book memo — post-SA-sweep allocation read (2026-09-13)</h1>
+<p><strong>Bottom line:</strong> For the operator's own book only. Regime = policy hinge (FOMC Sep 16 ~89%-priced hike + BoJ Sep 17-18 + ¥2.35T yen carry) + war shock (Brent $104.6 live) + breadth deterioration (RSP −1.9% vs SPY −0.8% on the week). The engine's own allocator, run both longterm and momentum lenses, independently lands on the same shape: <strong>barbell — capped AI-hardware offense ~20-24%, hard-asset diversifiers ~23%, gold/oil ballast, and ~48% cash</strong> (caps bind; that is the disciplined output, not a bug). Live anchors pulled 2026-09-13: 10Y 4.97%, gold $4,409, USD/JPY 153.55, copper $6.55/lb COMEX.</p>
+<h2 id="engine-outputs-backing-this">Engine outputs backing this</h2>
+<ul>
+<li>Allocator <code>--risk aggressive --lens longterm</code>: 36 positions, 47.9% cash, AI cluster 19.6%, top picks BHP/AMGN/PLD/CRDO/PANW + ballast NEM/AEM/SPG/FRO.</li>
+<li>Allocator <code>--risk aggressive --lens momentum</code>: 25 positions, 48.0% cash, AI cluster 23.9%; ECO hit the 8% name cap (tanker war-premium — treat as trade, not holding), offense = DELL/MRVL/MU/AMD/CRDO/ARM.</li>
+<li>FFM (as-of 08-12, pre-war-week — refresh due): OKTA 86 · AVGO/MU 84.5 · CSCO 84 · LRCX 83.5 · ANET 83 · AMD/TSM/BHP/AMGN 80.</li>
+</ul>
+<h2 id="suggested-structure-conviction-15-own-book">Suggested structure (conviction 1–5, own book)</h2>
+<p><strong>Offense — AI capex hardware (cap ~24% total, per blueprint AI-cluster ≤25-30%):</strong><br />
+- AVGO (FFM 84.5) conv <strong>4</strong> — ASIC/custom-silicon leg; invalidation: hyperscaler capex guidance cut.<br />
+- MU (FFM 84.5 + SA-top-rated convergence) conv <strong>4</strong> but size modestly — this week −4.1% on the memory→server rotation SA flagged; scale in, invalidation: HBM pricing cracks or rotation extends &gt;3 wks.<br />
+- AMD (FFM 80, +8.1% wk) conv 3.5; DELL (Evercore PT$650) conv 3.5; TSM (FFM 80) conv 4 (geopolitics discount persists). INTC = speculative turnaround option (Northland PT$120), conv 2.5, no core sizing.<br />
+<strong>Diversifiers:</strong><br />
+- BHP (FFM 80, allocator pick in both lenses, copper 28→42 MMT thesis) conv <strong>4</strong>; SCCO/COPX conv 3.5 — note tariff-premium fragility (record $14,875/t LME then −3% on tariff-stall headline).<br />
+- LMT (UBS upgrade; missile ramp ~9% CAGR) conv 3.5. GLW (+7.8% wk, optical) conv 3.<br />
+- Software: OKTA is FFM #1 (86) but the McKinsey build-don't-buy number (32%/41%) is a structural headwind the model can't see — <strong>hold, don't add</strong>; revisit only after IGV makes a higher low. NVO: trim (MS UW, semaglutide 75% of sales, −7.6% wk).<br />
+<strong>Ballast / hedges:</strong><br />
+- Gold (GLD; GC=F $4,409 live; P16 on track) conv <strong>4</strong> — the consensus hedge across every SA regime piece (hike, hike-and-crash, yen-disorder all point here). NEM/AEM conv 3.<br />
+- DBC conv <strong>4</strong> (+4.0% wk; broad commodity incl. oil; QAE book already 50% here — that sleeve is being vindicated).<br />
+- FRO/ECO conv 3 as <strong>trades</strong> (war premium is event-driven; ECO capped at 8% by engine — honor the cap).<br />
+- Cash/BIL ~5% yield: the allocator's 48% is a feature with the 10Y at 4.97%.</p>
+<h2 id="event-risk-this-week-sep-16-18-de-risk-triggers">Event risk this week (Sep 16-18) — de-risk triggers</h2>
+<ol>
+<li>USD/JPY <strong>weekly close &lt;152</strong> → yen-disorder scenario live: cut offense to half, raise gold.</li>
+<li>10Y sustained <strong>&gt;5%</strong> post-FOMC → duration shock: trim long-duration growth (MU/AMD/AVGO first).</li>
+<li>Brent <strong>&gt;$120</strong> or Hormuz closure → growth shock: raise cash + DBC, cut cyclicals.</li>
+<li>Fed holds (15% tail) → melt-up risk to the upside: don't chase; let entries come to you.</li>
+</ol>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<p>FFM/signals data as-of 08-12 (pre-war week); prices/macro above are live 2026-09-13 (yfinance). A full REFRESH + FFM re-run after the FOMC/BoJ week is the next engine action. Not advice to anyone else; the vault sees only the operator's circumstances.</p>
+</article>
+</div>
+</body>
+</html>

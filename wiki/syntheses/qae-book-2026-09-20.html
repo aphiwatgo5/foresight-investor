@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qae Book 2026 09 20</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: QAE / system book — 2026-09-20 (data through 2026-09-18)
+type: synthesis
+tags: [quant, qae, book, momentum, dual-momentum, decision-support, alpha-op]
+sources: [[strategy-tournament-2026-09-06]], [[qae-book-2026-09-06]], [[qae-book-2026-08-29]], [[book-rec-2026-09-13]], [[sa-market-read-2026-09-12]], [[quant-alpha-methodology]], [[foresight-factor-model]]
+date: 2026-09-20</div>
+<article>
+<h1 id="qae-system-book-2026-09-20">QAE / system book — 2026-09-20</h1>
+<p><strong>Bottom line:</strong> The monthly ALPHA re-run on fully refreshed data (prices, fundamentals, signals,<br />
+FFM all rebuilt 2026-09-20, through the <strong>2026-09-18</strong> close). Three things matter. (1) <strong>The<br />
+engine's own invalidation did not trigger</strong> — <code>mom_12_1</code> 21-day rank IC is <strong>+0.0272</strong>, positive,<br />
+so Engine A stays on and <strong>P26 resolves ✅</strong>. (2) <strong>The month-ago book worked</strong>: the 08-29 Tier-A<br />
+basket is <strong>+12.0% vs SPY −0.5%</strong>, the avoid list is <strong>−3.2%</strong>, and the whole 09-06 system book is<br />
+<strong>+3.0% vs SPY −0.9%</strong>. (3) <strong>The fundamental overlay changed more than the price ranking did</strong> —<br />
+five names the momentum engine still likes tripped FFM knockout <strong>gates</strong>, including the 09-13<br />
+memo's two highest-conviction picks (<strong>AVGO Revisions F</strong>, <strong>BHP Growth D−</strong>). The stock selection<br />
+below is the intersection that survives both models: <strong>DELL · AMD · MU · MRVL</strong>.</p>
+<blockquote>
+<p><strong>Scope.</strong> For the operator's own book — never advice to others. Signals from the last complete<br />
+US session, 2026-09-18. Past performance ≠ future results.</p>
+</blockquote>
+<hr />
+<h2 id="1-data-freshness">1. Data freshness</h2>
+<table>
+<thead>
+<tr>
+<th>Input</th>
+<th>As of</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Price panel</td>
+<td><strong>2026-09-18</strong></td>
+<td>5y cache rebuilt 2026-09-20; 332 tickers.</td>
+</tr>
+<tr>
+<td>Fundamentals (<code>_instruments.json</code>)</td>
+<td><strong>2026-09-20</strong></td>
+<td>336 instruments, 4 known failures (BRK.B, CYBR, FI, VCB.HM).</td>
+</tr>
+<tr>
+<td>Signals / sleeves</td>
+<td><strong>2026-09-18</strong></td>
+<td>450,613 rows, 332 tickers.</td>
+</tr>
+<tr>
+<td><strong>FFM grades</strong></td>
+<td><strong>2026-09-18</strong></td>
+<td>Rebuilt — was 2026-08-12. This was the stalest input in every prior book; it is now current.</td>
+</tr>
+<tr>
+<td>Eligible universe</td>
+<td>261 names</td>
+<td>after liquidity / history / decay filters.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Still missing:</strong> IEF, TLT, SHY are <strong>not in the 5y cache</strong> (they were added only as <code>--extra</code> to<br />
+the 10y tournament cache). Engine B's defensive leg therefore cannot be evaluated from the<br />
+production panel. It does not bind today (DBC clears the hurdle by 28 points) but it is a real gap<br />
+— see §7.</p>
+<h2 id="2-what-the-sep-1618-event-window-actually-did">2. What the Sep 16–18 event window actually did</h2>
+<p><a href="book-rec-2026-09-13.html">book-rec-2026-09-13</a> wrote four de-risk triggers before the policy hinge. All four have now<br />
+resolved; <strong>two resolved against the memo's framing</strong>, which is the useful part.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Memo trigger</th>
+<th>Outcome (live 2026-09-18/20)</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>USD/JPY weekly close <strong>&lt;152</strong> → yen-disorder, cut offense to half</td>
+<td><strong>156.85</strong> — the yen went the <em>other</em> way (153.55 → 156.85, −2.2%)</td>
+<td><strong>Did not fire.</strong> BoJ hiked to <strong>1.25%</strong> (highest since 1995) on a <strong>split 7-2 vote</strong>; two dissents + Ueda's soft presser read dovish and the yen <em>weakened</em> into the hike (web: CNBC/Bloomberg, 2026-09-18). Carry is intact, not unwinding.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>10Y sustained <strong>&gt;5%</strong> → trim long-duration growth (MU/AMD/AVGO first)</td>
+<td><strong>5.00%</strong> exactly, from 4.97%</td>
+<td><strong>At the line, not through it.</strong> And the trade it prescribed would have been wrong: AMD <strong>+13.5%</strong>, MU <strong>+9.9%</strong>, INTC <strong>+11.7%</strong> since 09-12.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Brent <strong>&gt;$120</strong> → growth shock, raise cash + DBC</td>
+<td><strong>$99.29</strong>, −6.1% since 09-12</td>
+<td><strong>Resolved opposite.</strong> The war premium deflated.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Fed holds (15% tail) → melt-up, don't chase</td>
+<td>Fed <strong>hiked 25bp to 3.75–4.00%, 12-0</strong>; 16 of 18 dots see another (web: CNBC/Schwab/Fed presser, 2026-09-16)</td>
+<td><strong>Hiked as priced.</strong> Warsh: inflation "too high for too long."</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Read:</strong> the market absorbed a unanimous hawkish hike and a 31-year-high BoJ rate with <strong>VIX at<br />
+14.81 (−13% on the week)</strong> and SPY −1.8% off its high. The feared transmission channels (yen<br />
+disorder, oil spike) did not open; the one that did — the long end at 5.00% — has so far not hurt<br />
+the AI-hardware complex at all. That is information: this tape is being driven by the AI-capex<br />
+earnings cycle, not by the discount rate. It is also the standing risk, since that can reverse.</p>
+<h2 id="3-scoring-the-month-ago-research">3. Scoring the month-ago research</h2>
+<table>
+<thead>
+<tr>
+<th>Call</th>
+<th>Window</th>
+<th>Result</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P26</strong> — <code>mom_12_1</code> 21d rank IC stays positive on the next monthly re-run</td>
+<td>resolve 2026-09-28</td>
+<td><strong>IC +0.0272</strong> (t 1.05)</td>
+<td>✅ <strong>RESOLVED — passed.</strong> This run <em>is</em> the event.</td>
+</tr>
+<tr>
+<td><strong>P23 / P-QAE-1</strong> — 08-29 Tier-A basket beats SPY over 21 sessions</td>
+<td>resolve 2026-09-28</td>
+<td>Tier A <strong>+12.03%</strong> vs SPY <strong>−0.45%</strong></td>
+<td>⏳ ~15 of 21 sessions done; strongly ahead. Do not score early.</td>
+</tr>
+<tr>
+<td><strong>P24 / P-QAE-2</strong> — Tier A (FFM-confirmed) beats Tier B (momentum-only)</td>
+<td>resolve 2026-12-01</td>
+<td>Tier A <strong>+12.03%</strong> vs Tier B <strong>+6.14%</strong></td>
+<td>⏳ On track. The cross-check is adding value.</td>
+</tr>
+<tr>
+<td><strong>P25 / P-QAE-3</strong> — bottom-decile avoid list underperforms SPY</td>
+<td>resolve 2026-12-01</td>
+<td>Avoid <strong>−3.19%</strong> vs SPY <strong>−0.45%</strong></td>
+<td>⏳ Working.</td>
+</tr>
+</tbody>
+</table>
+<p>Per name since 2026-08-29 — Tier A: DELL +24.6 · AMD +18.9 · MRVL +15.4 · ILMN +12.2 · MU +6.0 ·<br />
+PANW −4.9. Tier B: INTC +21.3 · USO +15.0 · CRWD +2.9 · CNC +1.2 · FTNT −0.6 · DDOG −3.0.<br />
+Avoid list: SMR −10.8 · ACM −8.1 · PNR −7.5 · KWEB −3.8 · EIDO −2.0 · HDB +2.0 · AVAV +7.8.</p>
+<p>The <strong>09-06 system book</strong> since 2026-09-04: Engine A ten equal-weight <strong>+8.97%</strong>, DBC <strong>+3.23%</strong>,<br />
+BIL +0.11% → whole book at 15/50/35 = <strong>+3.00% vs SPY −0.86%</strong>. <strong>No stop was breached</strong> — the<br />
+closest is DBC at +7.0% above its 2.5×ATR stop; every equity name sits 10–35% above.</p>
+<h2 id="4-the-refreshed-factor-evidence">4. The refreshed factor evidence</h2>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th style="text-align: right;">IC (21d)</th>
+<th style="text-align: right;">t</th>
+<th style="text-align: right;">Weight</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accel</code></td>
+<td style="text-align: right;">0.0314</td>
+<td style="text-align: right;">1.53</td>
+<td style="text-align: right;">0%</td>
+<td>Highest 21d IC, but its 5d/63d ICs are ~0 and negative, so its <strong>mean t across horizons</strong> misses the admission bar. Not admitted — by rule, not by judgment.</td>
+</tr>
+<tr>
+<td><code>mom_12_1</code></td>
+<td style="text-align: right;">0.0272</td>
+<td style="text-align: right;">1.05</td>
+<td style="text-align: right;"><strong>49%</strong></td>
+<td>Admitted. The engine's survival condition.</td>
+</tr>
+<tr>
+<td><code>trend_q</code></td>
+<td style="text-align: right;">0.0246</td>
+<td style="text-align: right;">1.01</td>
+<td style="text-align: right;"><strong>51%</strong></td>
+<td>Admitted.</td>
+</tr>
+<tr>
+<td><code>rev_21</code></td>
+<td style="text-align: right;">−0.046</td>
+<td style="text-align: right;">−2.39</td>
+<td style="text-align: right;">0%</td>
+<td>Strongest signal in the table — and it is <em>negative</em>. Never sign-flipped (that would be fitting the regime).</td>
+</tr>
+<tr>
+<td><code>dist_low</code></td>
+<td style="text-align: right;">−0.049</td>
+<td style="text-align: right;">−1.62</td>
+<td style="text-align: right;">0%</td>
+<td>Same.</td>
+</tr>
+</tbody>
+</table>
+<p>Unchanged from 08-29: <strong>2 of 14 factors clear the bar</strong>, and the evidence remains thin (best t<br />
+≈ 1.05 against a ~3.0 multiple-testing bar). Momentum is used because it is among the most<br />
+replicated effects in the literature <em>and</em> its sign agrees here — not because this study proved it.</p>
+<h2 id="5-the-stock-selection">5. The stock selection</h2>
+<h3 id="5a-what-changed-in-the-fundamental-overlay-read-this-before-the-table">5a. What changed in the fundamental overlay — read this before the table</h3>
+<p>The FFM regime moved <strong>bull → neutral</strong> (Momentum weight 0.30→0.20, Value 0.10→0.20), but the<br />
+large moves are <strong>not</strong> reweighting. They are <strong>knockout gates</strong> firing:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th style="text-align: right;">Was (08-12)</th>
+<th style="text-align: right;">Now</th>
+<th>Gate that fired</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ILMN</strong></td>
+<td style="text-align: right;">78.0</td>
+<td style="text-align: right;"><strong>30 Sell</strong></td>
+<td><strong>Growth D− <em>and</em> Value D−</strong> (double gate)</td>
+</tr>
+<tr>
+<td><strong>AVGO</strong></td>
+<td style="text-align: right;">84.5</td>
+<td style="text-align: right;"><strong>50 Hold</strong></td>
+<td><strong>Revisions F</strong> — analyst revisions have collapsed</td>
+</tr>
+<tr>
+<td><strong>BHP</strong></td>
+<td style="text-align: right;">80.0</td>
+<td style="text-align: right;"><strong>50 Hold</strong></td>
+<td><strong>Growth D−</strong></td>
+</tr>
+<tr>
+<td><strong>PANW</strong></td>
+<td style="text-align: right;">75.5</td>
+<td style="text-align: right;"><strong>50 Hold</strong></td>
+<td>Growth D (also Quality D+, CMA F)</td>
+</tr>
+<tr>
+<td><strong>INTC</strong></td>
+<td style="text-align: right;">30.0</td>
+<td style="text-align: right;"><strong>50 Hold</strong></td>
+<td>Growth D — still gated, but <em>up</em> from Sell</td>
+</tr>
+</tbody>
+</table>
+<p>This is the single most actionable change of the month, and it hits <a href="book-rec-2026-09-13.html">book-rec-2026-09-13</a> hardest:<br />
+that memo's two <strong>conviction-4</strong> names were AVGO and BHP. Both are now gated. AVGO's gate<br />
+(Revisions F) is the one to respect — the memo's own invalidation for AVGO was "hyperscaler capex<br />
+guidance cut," and collapsing revisions is the leading edge of exactly that.</p>
+<h3 id="5b-confirmed-tier-momentum-and-fundamentals-agree-the-recommendation">5b. Confirmed tier — momentum <strong>and</strong> fundamentals agree (the recommendation)</h3>
+<p>QAE top-15 ∩ FFM ungated ≥ 68. These four are the book's core.</p>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th style="text-align: right;">QAE score</th>
+<th style="text-align: right;">12-1 mom</th>
+<th>FFM</th>
+<th style="text-align: right;">Price (09-18)</th>
+<th>Stop 2.5×ATR</th>
+<th style="text-align: right;">Vol</th>
+<th>Why it survives both models</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>MU</strong></td>
+<td style="text-align: right;">2.18</td>
+<td style="text-align: right;">+456%</td>
+<td><strong>Strong Buy 80.0</strong></td>
+<td style="text-align: right;">1,015.80</td>
+<td>881.47 (−13.2%)</td>
+<td style="text-align: right;">90%</td>
+<td>Mom A+ · Quality A+ · Growth A+ · Revisions A+. Only blemishes Value D+ / CMA D−. Highest-quality grade set in the book.</td>
+</tr>
+<tr>
+<td><strong>AMD</strong></td>
+<td style="text-align: right;">2.57</td>
+<td style="text-align: right;">+195%</td>
+<td><strong>Strong Buy 78.5</strong></td>
+<td style="text-align: right;">559.82</td>
+<td>496.85 (−11.2%)</td>
+<td style="text-align: right;">69%</td>
+<td>Mom A+ · Growth A · Revisions A+ · CMA B+. No gate.</td>
+</tr>
+<tr>
+<td><strong>DELL</strong></td>
+<td style="text-align: right;">2.70</td>
+<td style="text-align: right;">+235%</td>
+<td>Buy 72.5</td>
+<td style="text-align: right;">568.06</td>
+<td>486.33 (−14.4%)</td>
+<td style="text-align: right;">82%</td>
+<td>Rank #1 on price. Quality D+ is the soft spot — it is a box-mover, not a moat.</td>
+</tr>
+<tr>
+<td><strong>MRVL</strong></td>
+<td style="text-align: right;">2.33</td>
+<td style="text-align: right;">+220%</td>
+<td>Buy 68.5</td>
+<td style="text-align: right;">244.25</td>
+<td>205.81 (−15.7%)</td>
+<td style="text-align: right;">87%</td>
+<td>Mom A+ · Growth A · Rev A+; Quality D+. Weakest of the four.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Caveat that belongs on the same page:</strong> all four are the same trade. Semiconductors (26.6%) + AI<br />
+infrastructure (17.8%) = <strong>44.4%</strong> of the <em>fully-invested</em> QAE book. The vol target is what keeps<br />
+this inside <a href="portfolio-blueprint.html">portfolio-blueprint</a> caps — at 26.6% gross those two themes are ≈<strong>11.8%</strong> of total<br />
+capital, under the 25% AI-cluster cap. <strong>Fully invested, this book breaches that cap by ~1.8×.</strong> That is not an engine error; it is what a<br />
+momentum screen returns in an AI-capex bull market (<a href="../concepts/quant-firm-anatomy.html">quant-firm-anatomy</a> §4).</p>
+<h3 id="5c-momentum-only-half-weight-tighter-leash">5c. Momentum-only — half weight, tighter leash</h3>
+<p><strong>ILMN</strong> (Sell 30, double gate), <strong>FTNT</strong> (Sell 30), <strong>INTC</strong> (Hold 50, gated), <strong>CNC</strong> (Hold 45.5),<br />
+<strong>ARKG / XBI</strong> (Hold, gated on Growth), <strong>ECO / FRO / PSX</strong> (Hold, Revisions D−). The v1 rule<br />
+applies: the fundamental model disagrees, so these are trades, not holdings.</p>
+<p>Biotech is a genuinely <strong>new</strong> cluster this month — ARKG #4 and XBI #12 were absent on 08-29, and<br />
+biotech-genomics is now 23.8% of the fully-invested book. Every one of them is gated on Growth,<br />
+so the engine is buying a price move the fundamental model will not confirm.</p>
+<h3 id="5d-strong-fundamentals-the-momentum-engine-does-not-own">5d. Strong fundamentals the momentum engine does <strong>not</strong> own</h3>
+<p>Ungated FFM ≥ 73 outside the top-15 — the natural hunting ground if the operator wants names that<br />
+are not the AI-hardware trade: <strong>OKTA 81</strong> (still FFM #1; note the memo's structural McKinsey<br />
+build-vs-buy caveat stands — FFM cannot see it), <strong>CGNX 78</strong>, <strong>DXCM 77.5</strong>, <strong>LRCX 77</strong>,<br />
+<strong>NEM 76.5</strong>, <strong>GOOGL 76.5</strong>, <strong>CSCO 76</strong>, <strong>ANET 75.5</strong>, <strong>AMAT 74</strong>, <strong>TSM 73</strong>.<br />
+<strong>NEM</strong> is the interesting one: Strong Buy 76.5, ungated, and it is gold exposure — the only<br />
+name on this list that is not correlated to the AI-capex engine.</p>
+<h3 id="5e-avoid-trim-bottom-decile-fundamentals-agree">5e. Avoid / trim (bottom decile, fundamentals agree)</h3>
+<p><strong>BSX</strong> (Sell 43.5) · <strong>PNR</strong> (Sell 34.5) · <strong>ACM</strong> (Sell 44) · <strong>KWEB</strong> (Sell 37.5) ·<br />
+<strong>EIDO</strong> (Sell 37.5) · <strong>SMR</strong> (Sell 30) · <strong>MCHI</strong> (Sell 39.5) · NOC / PDD / <strong>HSAI</strong> (Hold).<br />
+Not a short book — the backtest is explicit that shorting cost more than it earned in this regime.<br />
+<strong>SMR</strong> appears again, now with the UBS Sell (PT $6) from <a href="sa-market-read-2026-09-12.html">sa-market-read-2026-09-12</a> agreeing —<br />
+the negative read-across for the SMR leg of <a href="../concepts/nuclear-uranium.html">nuclear-uranium</a> is holding.<br />
+<strong>HSAI</strong> entering the avoid list three weeks after <a href="../concepts/humanoid-robotics.html">humanoid-robotics</a> was promoted is worth a<br />
+note against P30 — the theme's <em>supply-chain</em> names are not yet working.</p>
+<h2 id="6-the-v2-system-book-the-standing-methodology">6. The v2 system book (the standing methodology)</h2>
+<p>Positions under <a href="strategy-tournament-2026-09-06.html">strategy-tournament-2026-09-06</a> §6. <strong>Next scheduled rebalance is ~2026-10-05</strong><br />
+(21 trading days from 09-04) — today's run is mid-cycle, so this is the <em>ranking</em>, not an<br />
+instruction to trade now.</p>
+<p><strong>Engine A — Momentum-10, vol-targeted (50% of capital).</strong> Raw-leg ex-ante vol 37.3% → scaled 0.40<br />
+to hit the 15% target → <strong>32% gross of the engine = 16% of total</strong>, ten equal names at ~1.6% each,<br />
+remainder <strong>BIL 34% of total</strong>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">#</th>
+<th>Ticker</th>
+<th style="text-align: right;">Score</th>
+<th>FFM</th>
+<th style="text-align: right;">#</th>
+<th>Ticker</th>
+<th style="text-align: right;">Score</th>
+<th>FFM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>DELL</td>
+<td style="text-align: right;">2.70</td>
+<td>Buy 72.5</td>
+<td style="text-align: right;">6</td>
+<td>INTC</td>
+<td style="text-align: right;">2.26</td>
+<td>Hold 50 (gated)</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>AMD</td>
+<td style="text-align: right;">2.57</td>
+<td>Strong Buy 78.5</td>
+<td style="text-align: right;">7</td>
+<td>MU</td>
+<td style="text-align: right;">2.18</td>
+<td>Strong Buy 80</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>ECO</td>
+<td style="text-align: right;">2.51</td>
+<td>Hold 50 (gated)</td>
+<td style="text-align: right;">8</td>
+<td>ILMN</td>
+<td style="text-align: right;">1.98</td>
+<td>Sell 30 (gated)</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>ARKG</td>
+<td style="text-align: right;">2.39</td>
+<td>Hold 50 (gated)</td>
+<td style="text-align: right;">9</td>
+<td>SMH</td>
+<td style="text-align: right;">1.88</td>
+<td>Hold 49.5</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>MRVL</td>
+<td style="text-align: right;">2.33</td>
+<td>Buy 68.5</td>
+<td style="text-align: right;">10</td>
+<td>CNC</td>
+<td style="text-align: right;">1.88</td>
+<td>Hold 45.5</td>
+</tr>
+</tbody>
+</table>
+<p>Changes vs the 09-06 ten: <strong>ARKG and CNC in · FTNT and XSD out</strong>.</p>
+<p><strong>Engine B — dual momentum (50% of capital): holds DBC, unchanged.</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">DBC</th>
+<th style="text-align: right;">QQQ</th>
+<th style="text-align: right;">GLD</th>
+<th style="text-align: right;">SPY</th>
+<th style="text-align: right;">VNQ</th>
+<th style="text-align: right;">INDA</th>
+<th style="text-align: right;">hurdle (BIL 12m)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;"><strong>+51.0%</strong></td>
+<td style="text-align: right;">+22.9%</td>
+<td style="text-align: right;">+19.1%</td>
+<td style="text-align: right;">+17.1%</td>
+<td style="text-align: right;">+4.8%</td>
+<td style="text-align: right;">−11.1%</td>
+<td style="text-align: right;">+3.7%</td>
+</tr>
+</tbody>
+</table>
+<p>DBC leads by <strong>28 points</strong> — nowhere near a flip, despite Brent falling 6% since 09-12 (DBC is<br />
+broad commodities, and copper +5.7% over the same stretch offset oil). DBC 3m +19.2%, 1m +7.1%:<br />
+the move is still accelerating, which is the concentration risk flagged on 09-06 and not resolved.</p>
+<p><strong>Whole book:</strong> Engine A names 16% · BIL 34% · DBC 50%. Risk assets 66% / T-bills 34%.</p>
+<h2 id="7-confidence-gaps">7. Confidence &amp; gaps</h2>
+<p><strong>Confidence: moderate (3/5)</strong> — up from 2.5 on 08-29, because the fundamental overlay is no longer<br />
+five weeks stale and because three of four live P-calls are now tracking in the engine's favour on<br />
+real out-of-sample data. Still capped by the thin factor evidence (§4).</p>
+<ul>
+<li><strong>Single-ETF risk unresolved:</strong> 50% of the book in DBC. The 3-engine variant exists for anyone<br />
+  who will not hold that (<a href="strategy-tournament-2026-09-06.html">strategy-tournament-2026-09-06</a> §6).</li>
+<li><strong>IEF/TLT/SHY missing from the 5y cache</strong> — Engine B's defensive leg is not computable from the<br />
+  production panel. Fix: add them to <code>fetch_history.py --extra</code> for the 5y run.</li>
+<li><strong>The QAE and FFM regime labels disagree</strong> (QAE "risk-on" on the 200dma; FFM "neutral"). Both are<br />
+  mechanical; the disagreement itself is the signal that this is a transition tape.</li>
+<li><strong>No live HY OAS</strong> (FRED key still absent) — credit is the sensor that would confirm or deny<br />
+  stress under a 5.00% 10Y. This remains the biggest blind spot in the whole engine.</li>
+<li><a href="signal-monitor.html">signal-monitor</a> is still on its <strong>2026-07-14</strong> panel. A full MONITOR pass is overdue and the<br />
+  10Y has now crossed its warn threshold decisively.</li>
+</ul>
+<h2 id="8-falsifiable-calls-prediction-ledger">8. Falsifiable calls → <a href="prediction-ledger.html">prediction-ledger</a></h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Call</th>
+<th>Resolve by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P32</strong></td>
+<td>The confirmed tier (DELL, AMD, MU, MRVL, equal-weight) beats the gated momentum-only tier (ILMN, FTNT, INTC, CNC, ARKG, equal-weight) over the 63 trading days from 2026-09-18.</td>
+<td>2026-12-21</td>
+</tr>
+<tr>
+<td><strong>P33</strong></td>
+<td><strong>The Revisions-F gate is informative:</strong> AVGO underperforms the confirmed tier over the 63 trading days from 2026-09-18.</td>
+<td>2026-12-21</td>
+</tr>
+</tbody>
+</table>
+<h2 id="connections">Connections</h2>
+<p>Method: <a href="../concepts/quant-alpha-methodology.html">quant-alpha-methodology</a> · <a href="../concepts/foresight-factor-model.html">foresight-factor-model</a> · system rules:<br />
+<a href="strategy-tournament-2026-09-06.html">strategy-tournament-2026-09-06</a>. Prior books: <a href="qae-book-2026-09-06.html">qae-book-2026-09-06</a>, <a href="qae-book-2026-08-29.html">qae-book-2026-08-29</a>.<br />
+Macro context: <a href="sa-market-read-2026-09-12.html">sa-market-read-2026-09-12</a>, <a href="book-rec-2026-09-13.html">book-rec-2026-09-13</a>. Caps:<br />
+<a href="portfolio-blueprint.html">portfolio-blueprint</a>. Sensors: <a href="signal-monitor.html">signal-monitor</a>. Nothing written to <a href="decision-register.html">decision-register</a>.</p>
+<h2 id="sources">Sources</h2>
+<p><code>scripts/qae.py</code>, <code>scripts/ffm_signals.py</code>, <code>scripts/ffm_score.py</code>, <code>scripts/signals.py</code>,<br />
+<code>scripts/fetch_history.py</code>, <code>scripts/refresh_instruments.py</code> — all re-run 2026-09-20, output in<br />
+<code>scripts/_hist/</code>. Macro/market levels via yfinance, retrieved 2026-09-20T15:49Z. FOMC: CNBC,<br />
+Schwab, Federal Reserve press-conference transcript (2026-09-16). BoJ: CNBC, Bloomberg, Japan<br />
+Times (2026-09-18). All figures retrieved live on 2026-09-20; no values drawn from model training.</p>
+</article>
+</div>
+</body>
+</html>

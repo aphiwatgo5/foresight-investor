@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Alpha Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+
+<style>
+:root{
+  --paper:#EDEFF2; --surface:#FAFBFC; --surface-2:#F2F4F7;
+  --ink:#12161C; --ink-2:#39424E; --muted:#5C6773;
+  --rule:#D3D9E0; --rule-soft:#E2E7EC;
+  --accent:#8F5F12; --accent-soft:#F0E6D3;
+  --pos:#1C6350; --neg:#98362A;
+  --shadow:0 1px 2px rgba(18,22,28,.06), 0 8px 24px rgba(18,22,28,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#0F1216; --surface:#161B21; --surface-2:#1C222A;
+    --ink:#E4E8EC; --ink-2:#C3CBD3; --muted:#8E9BA8;
+    --rule:#28313A; --rule-soft:#1F262E;
+    --accent:#D9A548; --accent-soft:#2A2216;
+    --pos:#48AE8D; --neg:#D2705E;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0F1216; --surface:#161B21; --surface-2:#1C222A;
+  --ink:#E4E8EC; --ink-2:#C3CBD3; --muted:#8E9BA8;
+  --rule:#28313A; --rule-soft:#1F262E;
+  --accent:#D9A548; --accent-soft:#2A2216;
+  --pos:#48AE8D; --neg:#D2705E;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 10px 30px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size:16px; line-height:1.62; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px; margin:0 auto; padding:0 28px}
+.col{max-width:70ch}
+
+/* ── top bar ── */
+.bar{
+  position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter:blur(8px); border-bottom:1px solid var(--rule);
+}
+.bar .wrap{display:flex; align-items:center; gap:20px; height:52px}
+.brand{font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:16px; letter-spacing:-.01em; white-space:nowrap}
+.brand span{color:var(--accent)}
+.navlinks{display:flex; gap:2px; overflow-x:auto; margin-left:auto; scrollbar-width:none}
+.navlinks::-webkit-scrollbar{display:none}
+.navlinks a{
+  font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.06em; text-transform:uppercase;
+  color:var(--muted); text-decoration:none; padding:6px 10px; border-radius:4px; white-space:nowrap;
+}
+.navlinks a:hover{color:var(--ink); background:var(--surface-2)}
+.navlinks a:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+/* ── hero ── */
+.hero{padding:64px 0 40px; border-bottom:1px solid var(--rule)}
+.eyebrow{
+  font-family:"IBM Plex Mono",monospace; font-size:11.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 18px;
+}
+h1{
+  font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:clamp(38px,6vw,60px);
+  line-height:1.04; letter-spacing:-.025em; margin:0 0 20px; text-wrap:balance;
+}
+.lede{font-size:19px; line-height:1.6; color:var(--ink-2); margin:0; max-width:64ch}
+.lede strong{color:var(--ink); font-weight:600}
+
+/* ── stat strip ── */
+.stats{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:8px;
+  overflow:hidden; margin:40px 0 0;
+}
+.stat{background:var(--surface); padding:16px 18px}
+.stat dt{
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--muted); margin:0 0 6px;
+}
+.stat dd{
+  margin:0; font-family:"IBM Plex Mono",monospace; font-weight:500; font-size:22px;
+  font-variant-numeric:tabular-nums; letter-spacing:-.02em;
+}
+.stat dd small{font-size:12px; color:var(--muted); font-weight:400; letter-spacing:0}
+
+/* ── sections ── */
+section{padding:64px 0; border-bottom:1px solid var(--rule)}
+.sec-head{display:flex; align-items:baseline; gap:14px; margin:0 0 8px}
+.sec-num{
+  font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--accent);
+  letter-spacing:.08em; padding-top:6px;
+}
+h2{
+  font-family:"Fraunces",Georgia,serif; font-weight:600; font-size:clamp(26px,3.4vw,34px);
+  letter-spacing:-.02em; line-height:1.15; margin:0; text-wrap:balance;
+}
+.sec-sub{color:var(--muted); margin:0 0 34px; font-size:15.5px; max-width:66ch}
+h3{
+  font-family:"IBM Plex Sans",sans-serif; font-weight:600; font-size:16px;
+  letter-spacing:.01em; margin:38px 0 12px;
+}
+h4{
+  font-family:"IBM Plex Mono",monospace; font-weight:500; font-size:11.5px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--muted); margin:30px 0 10px;
+}
+p{margin:0 0 16px}
+ul,ol{margin:0 0 16px; padding-left:20px}
+li{margin:0 0 7px}
+strong{font-weight:600}
+code{
+  font-family:"IBM Plex Mono",monospace; font-size:.88em; background:var(--surface-2);
+  padding:1px 5px; border-radius:3px; border:1px solid var(--rule-soft);
+}
+a{color:var(--accent)}
+
+/* ── tables ── */
+.scroller{overflow-x:auto; margin:0 0 20px; border:1px solid var(--rule); border-radius:8px; background:var(--surface)}
+table{border-collapse:collapse; width:100%; font-size:14px; min-width:520px}
+th,td{padding:9px 14px; text-align:left; border-bottom:1px solid var(--rule-soft); vertical-align:top}
+thead th{
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.09em;
+  text-transform:uppercase; color:var(--muted); font-weight:500;
+  background:var(--surface-2); border-bottom:1px solid var(--rule); white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none}
+.num{text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap}
+.tk{font-family:"IBM Plex Mono",monospace; font-weight:600; letter-spacing:.01em}
+.pos{color:var(--pos)} .neg{color:var(--neg)}
+tr.hl td{background:color-mix(in srgb, var(--accent-soft) 60%, transparent)}
+
+/* IC bar */
+.icbar{position:relative; width:104px; height:15px; background:var(--surface-2); border-radius:2px}
+.icbar::before{content:""; position:absolute; left:50%; top:0; bottom:0; width:1px; background:var(--rule)}
+.icbar i{position:absolute; top:3px; bottom:3px; border-radius:1px; display:block}
+
+/* ── callouts ── */
+.note{
+  border-left:2px solid var(--accent); background:var(--surface); padding:16px 20px;
+  margin:24px 0; border-radius:0 6px 6px 0; box-shadow:var(--shadow);
+}
+.note p:last-child{margin-bottom:0}
+.note-h{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--accent); margin:0 0 8px;
+}
+.warn{border-left-color:var(--neg)}
+.warn .note-h{color:var(--neg)}
+
+/* ── cards ── */
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(228px,1fr)); gap:16px; margin:0 0 8px}
+.card{
+  background:var(--surface); border:1px solid var(--rule); border-radius:8px;
+  padding:18px 20px; box-shadow:var(--shadow);
+}
+.card h5{
+  font-family:"Fraunces",Georgia,serif; font-size:17px; font-weight:600;
+  margin:0 0 4px; letter-spacing:-.01em;
+}
+.card .tagline{font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--muted); margin:0 0 12px; letter-spacing:.04em}
+.card p{font-size:14px; margin:0 0 10px; color:var(--ink-2)}
+.card p:last-child{margin:0}
+
+/* ── pipeline ── */
+.pipe{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 24px; align-items:stretch}
+.pipe .step{
+  flex:1 1 148px; background:var(--surface); border:1px solid var(--rule);
+  border-radius:6px; padding:12px 14px; position:relative;
+}
+.pipe .step b{display:block; font-size:13.5px; margin:0 0 3px}
+.pipe .step span{font-size:12.5px; color:var(--muted); line-height:1.45; display:block}
+.pipe .step em{
+  font-family:"IBM Plex Mono",monospace; font-style:normal; font-size:10px;
+  color:var(--accent); letter-spacing:.1em; display:block; margin:0 0 6px;
+}
+
+/* ── formula ── */
+.formula{
+  font-family:"IBM Plex Mono",monospace; font-size:17px; text-align:center;
+  padding:20px; background:var(--surface); border:1px solid var(--rule);
+  border-radius:8px; margin:0 0 8px; letter-spacing:.01em;
+}
+.formula-note{font-size:13.5px; color:var(--muted); text-align:center; margin:0 0 26px}
+
+/* ── curriculum ── */
+.progress-wrap{
+  display:flex; align-items:center; gap:14px; margin:0 0 28px; padding:14px 18px;
+  background:var(--surface); border:1px solid var(--rule); border-radius:8px;
+}
+.progress-bar{flex:1; height:6px; background:var(--surface-2); border-radius:3px; overflow:hidden}
+.progress-bar i{display:block; height:100%; background:var(--accent); width:0%; transition:width .28s ease}
+.progress-label{
+  font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--muted);
+  font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+.mod{
+  background:var(--surface); border:1px solid var(--rule); border-radius:8px;
+  padding:20px 22px; margin:0 0 14px;
+}
+.mod-head{display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; margin:0 0 4px}
+.mod-num{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; letter-spacing:.1em;
+  color:var(--accent); text-transform:uppercase;
+}
+.mod-head h3{margin:0; font-size:17px; font-family:"Fraunces",Georgia,serif; font-weight:600}
+.mod-weeks{
+  margin-left:auto; font-family:"IBM Plex Mono",monospace; font-size:11px; color:var(--muted);
+}
+.mod-goal{font-size:14.5px; color:var(--ink-2); margin:0 0 14px}
+.task{display:flex; gap:10px; align-items:flex-start; padding:7px 0; border-top:1px solid var(--rule-soft)}
+.task input{margin:4px 0 0; accent-color:var(--accent); width:15px; height:15px; flex:none; cursor:pointer}
+.task label{font-size:14px; cursor:pointer; color:var(--ink-2)}
+.task input:checked + label{color:var(--muted); text-decoration:line-through; text-decoration-color:var(--rule)}
+.task input:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+/* ── ladder ── */
+.ladder{display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:8px; overflow:hidden; margin:0 0 24px}
+.rung{display:flex; gap:16px; align-items:baseline; background:var(--surface); padding:13px 18px}
+.rung b{
+  font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums;
+  color:var(--neg); font-size:15px; min-width:52px;
+}
+.rung span{font-size:14.5px; color:var(--ink-2)}
+
+/* ── footer ── */
+footer{padding:48px 0 72px; color:var(--muted); font-size:13.5px}
+footer p{max-width:74ch}
+.freshness{
+  font-family:"IBM Plex Mono",monospace; font-size:12px; line-height:1.8;
+  background:var(--surface); border:1px solid var(--rule); border-radius:8px;
+  padding:16px 20px; margin:0 0 22px; overflow-x:auto;
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important; animation:none !important}}
+@media (max-width:640px){
+  .wrap{padding:0 18px}
+  .hero{padding:44px 0 32px}
+  section{padding:48px 0}
+  .navlinks{display:none}
+}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="wrap">
+    <div class="brand">The Alpha <span>Desk</span></div>
+    <nav class="navlinks">
+      <a href="#firms">Firms</a>
+      <a href="#method">Method</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#tournament">Tournament</a>
+      <a href="#book">Today's book</a>
+      <a href="#learn">Learning path</a>
+      <a href="./index.html" style="color:var(--accent)">← Dashboard</a>
+      <a href="analyst-workbench.html">🛠 Workbench</a>
+      <a href="site-index.html">📚 Site Map</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Foresight-Investor · QAE v1 → v2 · methodology 2026-09-06 · book refreshed 2026-09-25 (<a href="wiki/syntheses/qae-book-2026-09-25.html" style="color:inherit">current book</a>)</p>
+    <h1>How quant desks actually make money — and what one operator can copy.</h1>
+    <p class="lede">Four business models, one production line, and a working engine built on this
+      vault's own data. Factor by factor, <strong>only 2 of 14 cleared the bar</strong>. System by
+      system, 39 ran for ten years through one pre-registered gate and <strong>six passed — all
+      concentrated, vol-targeted momentum paired with dual momentum.</strong> The proposed system
+      beat SPY on Sharpe, halved its drawdown, and was up in 2022. Every caveat is quantified.</p>
+
+    <dl class="stats">
+      <div class="stat"><dt>Eligible universe</dt><dd>261 <small>of 330</small></dd></div>
+      <div class="stat"><dt>Factors admitted</dt><dd>2 <small>/ 14 tested</small></dd></div>
+      <div class="stat"><dt>Best factor IC (21d)</dt><dd>+0.030 <small>t 1.2</small></dd></div>
+      <div class="stat"><dt>Systems tested</dt><dd>39 <small>/ 6 passed</small></dd></div>
+      <div class="stat"><dt>v2 system Sharpe</dt><dd>0.98 <small>vs SPY 0.71</small></dd></div>
+      <div class="stat"><dt>v2 max drawdown</dt><dd>−23% <small>vs SPY −34%</small></dd></div>
+    </dl>
+  </div>
+</header>
+
+<section id="firms">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Four business models wearing one word</h2></div>
+    <p class="sec-sub">They are all called “quant.” The risk, capital, latency and skill
+      requirements barely overlap — and confusing them is the most expensive beginner error.</p>
+
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Model</th><th>Firms</th><th>Holding period</th><th>Where the edge is</th><th class="num">Sharpe</th><th>Capacity</th></tr></thead>
+        <tbody>
+          <tr><td><b>Market making / HFT</b></td><td>Jane Street, Citadel Securities, Jump, HRT, Optiver</td><td>µs → hours</td><td>Spread capture, inventory management, speed</td><td class="num">&gt;5</td><td>Low, flow-limited</td></tr>
+          <tr><td><b>Statistical arbitrage</b></td><td>Renaissance (Medallion), Two Sigma, DE Shaw, PDT</td><td>minutes → days</td><td>Many weak decaying patterns traded at enormous breadth</td><td class="num">2–5+</td><td>Hard-capped</td></tr>
+          <tr><td><b>Multi-manager pods</b></td><td>Millennium, Citadel, Point72, Balyasny</td><td>days → months</td><td>Diversification across many books + brutal stop-loss culture</td><td class="num">1–2 / pod</td><td>Very high</td></tr>
+          <tr class="hl"><td><b>Systematic factor / macro</b></td><td>AQR, Man AHL, Winton, Dimensional</td><td>weeks → years</td><td>Documented risk premia harvested cheaply at scale</td><td class="num">0.4–1.0</td><td>Enormous</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="col" style="font-size:14px;color:var(--muted)">The highlighted row is the only one a
+      solo operator can contest. Rows 1–2 are infrastructure races; row 3 needs LP capital and a
+      risk department. Row 4's edge is behavioural and structural, not technological.</p>
+
+    <h3>What the pod shops are really selling</h3>
+    <p class="col">Not signal quality — <strong>enforced loss limits</strong>. At Millennium the
+      documented ladder is roughly a 5% drawdown from a portfolio manager's peak halving their
+      capital and 7.5% ending the pod; Citadel and Point72 negotiate comparable limits per manager.
+      Millennium runs 330+ independent teams, Point72 185+, and capital is reallocated <em>daily</em>,
+      not quarterly. The headline Sharpe comes from many weakly-correlated books plus mechanical
+      exits enforced by someone with no attachment to the thesis.</p>
+    <p class="col">Both of those are copyable without any technology. That is the whole reason this
+      page exists.</p>
+
+    <h3>The equation that explains the industry</h3>
+    <div class="formula">IR ≈ IC × √Breadth</div>
+    <p class="formula-note">Grinold's Fundamental Law: skill per bet × the square root of independent bets.</p>
+    <p class="col">Medallion has a modest IC and astronomic breadth. A concentrated stock-picker has a
+      large IC across ten bets a year and a mediocre IR. A 300-name universe rebalanced monthly looks
+      like 3,600 bets but delivers a few hundred <em>independent</em> ones, because the names move
+      together. <strong>The fastest way to raise your IR is not a cleverer signal — it is more
+      genuinely independent bets.</strong></p>
+
+    <div class="note">
+      <p class="note-h">The one structural advantage you have</p>
+      <p>Market impact scales with the square root of order size over daily volume. A book trading
+        liquid names in five- and six-figure size has effectively none. That lets you hold
+        capacity-constrained positions a $50B fund physically cannot touch. Small size is the
+        advantage — not a handicap to be leveraged away.</p>
+    </div>
+
+    <h3>What not to copy</h3>
+    <div class="cards">
+      <div class="card"><h5>Leverage</h5><p class="tagline">4–8× gross</p><p>Pods run it because they are factor-neutral with a professional risk overlay and prime-broker financing. Copying the leverage without the neutrality is how accounts die.</p></div>
+      <div class="card"><h5>Short single names</h5><p class="tagline">unbounded loss</p><p>Borrow cost, squeeze risk, and no margin desk behind you. Use the bottom of the ranking as an avoid list instead — the backtest below says the same thing.</p></div>
+      <div class="card"><h5>Latency signals</h5><p class="tagline">intraday</p><p>A fight lost by construction before you place the first order.</p></div>
+      <div class="card"><h5>Deep ML on thin data</h5><p class="tagline">5y × 300 names</p><p>They have decades of tick data. On daily bars a large model memorises the regime; a small set of economically-motivated factors does not.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="method">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>The production line, and this vault's version of it</h2></div>
+    <p class="sec-sub">Every serious desk runs the same six stages. QAE — the Quant Alpha Engine in
+      <code>scripts/qae.py</code> — is one implementation of them, sized for a single operator with
+      daily bars.</p>
+
+    <div class="pipe">
+      <div class="step"><em>01</em><b>Data</b><span>Point-in-time correctness. Look-ahead and survivorship manufacture alpha that does not exist.</span></div>
+      <div class="step"><em>02</em><b>Alpha research</b><span>One hypothesis, one measurable prediction, judged by rank IC.</span></div>
+      <div class="step"><em>03</em><b>Combination</b><span>Z-score, winsorize, weight by measured information ratio — never by conviction.</span></div>
+      <div class="step"><em>04</em><b>Construction</b><span>Ranks become positions: risk sizing, caps, neutrality, cost penalty.</span></div>
+      <div class="step"><em>05</em><b>Execution</b><span>Alpha is measured in basis points; so is slippage.</span></div>
+      <div class="step"><em>06</em><b>Risk &amp; attribution</b><span>Which factor, which name, which cost made the money.</span></div>
+    </div>
+
+    <h3>Stage 1 — who gets into the universe</h3>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Filter</th><th>Threshold</th><th>Why</th></tr></thead>
+        <tbody>
+          <tr><td>Asset class</td><td class="num">stock or ETF</td><td>FX, crypto and futures have a different return process; ranking them against equities is a category error</td></tr>
+          <tr><td>History</td><td class="num">≥ 400 days</td><td>Every factor needs a 252-day lookback</td></tr>
+          <tr><td>Liquidity</td><td class="num">≥ $3M / day</td><td>Below this the spread eats the edge</td></tr>
+          <tr><td>Structural decay</td><td class="num">excluded</td><td>UVXY, VXX and leveraged ETFs return a roll-cost artefact, not alpha — they would permanently own the bottom of the ranking</td></tr>
+          <tr class="hl"><td><b>Vol-collapse guard</b></td><td class="num">63d vol ≥ 40% of 1y vol</td><td>A collapsed vol on a name that has risen is an <b>announced acquisition</b>. Momentum plus near-zero vol looks like the perfect position; it is dead money with deal-break tail risk</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <p class="note-h">Caught by running it, not by reading it</p>
+      <p>The first live run put a 6.4% weight into a deal-pinned satellite name whose 63-day
+        volatility had fallen to 14% against a 66% one-year figure — inverse-vol sizing loves a
+        flatline. The guard above, plus a sizing-volatility floor at 60% of each name's own one-year
+        volatility, was the fix. Removing that name and the decay ETFs raised every backtest metric.</p>
+    </div>
+
+    <h3>Stage 3 — measuring a signal honestly</h3>
+    <ol class="col">
+      <li>Define the factor only on data available at time <code>t</code>.</li>
+      <li>Cross-sectionally z-score <em>within group</em> — stocks against stocks, ETFs against ETFs — using median and MAD, winsorized at ±3. Pooling the two turns every volatility factor into a “you are an ETF” dummy.</li>
+      <li>Compute the Spearman rank IC against forward <em>group-relative</em> returns at 5, 21 and 63 days, so the number measures selection, not market direction.</li>
+      <li>Sample every 5 days for statistical power, then <strong>correct the t-statistic with Newey–West</strong> at lag = h/step. Overlapping windows inflate raw t by roughly √overlap; skipping this is the most common way a factor study lies to you.</li>
+    </ol>
+
+    <h3>Stages 4–6 — from a ranking to a book</h3>
+    <ul class="col">
+      <li><b>Admission:</b> mean t across the three horizons ≥ 1.0 <em>and</em> positive 21-day IC. A negative IC is never sign-flipped — that is fitting the regime, not measuring an effect.</li>
+      <li><b>Weights:</b> 50% equal / 50% proportional to combined t. Pure t-weighting over-trusts five years of noise; pure equal-weighting throws away the only evidence there is.</li>
+      <li><b>Theme cap:</b> at most 3 names per theme walking down the ranking.</li>
+      <li><b>Sizing:</b> inverse volatility, single name capped at 8%, cap-and-redistribute so weights still sum to 100%.</li>
+      <li><b>Vol target:</b> gross scaled so ex-ante portfolio volatility ≈ 10% annualized, remainder in cash, never levered.</li>
+      <li><b>Stops:</b> 2.5 × ATR(20) below entry — every position risks the same amount of <em>volatility</em>, not the same percentage of price.</li>
+    </ul>
+
+    <h4>Book-level drawdown ladder</h4>
+    <div class="ladder">
+      <div class="rung"><b>−5%</b><span>Review: factor decay or ordinary noise? Cut gross exposure 25%.</span></div>
+      <div class="rung"><b>−8%</b><span>Cut gross 50%. No new positions outside the top decile.</span></div>
+      <div class="rung"><b>−12%</b><span>Flat the systematic book. Post-mortem before re-entry, then re-enter at half size.</span></div>
+    </div>
+    <p class="col" style="font-size:14px;color:var(--muted)">The retail translation of the pod-shop
+      ladder. Its whole value is that it is written down before the drawdown, not during one.</p>
+  </div>
+</section>
+
+<section id="evidence">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>What the measurement actually said</h2></div>
+    <p class="sec-sub">Fourteen factors, five years of daily bars, 261 eligible names.
+      Two survived. The bars below are 21-day rank IC on a shared scale, zero at centre.</p>
+
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Factor</th><th>What it measures</th><th class="num">IC 21d</th><th>&nbsp;</th><th class="num">NW t</th><th class="num">IC 63d</th><th class="num">Weight</th></tr></thead>
+        <tbody id="ic-body"></tbody>
+      </table>
+    </div>
+
+    <div class="cards">
+      <div class="card"><h5>Momentum is all that survived</h5><p class="tagline">effective breadth ≈ 1</p><p>Both admitted factors are momentum in different clothes and correlate heavily. The composite has one bet, not two — the clearest weakness of v1.</p></div>
+      <div class="card"><h5>Low-vol is inverted here</h5><p class="tagline">lowvol −0.040 · bab −0.051</p><p>Across 2021–2026 the high-beta growth complex led. That is a regime fact, not a broken factor, and exactly why the engine drops negative-IC factors instead of flipping them.</p></div>
+      <div class="card"><h5>Nothing clears a multiple-testing bar</h5><p class="tagline">t 1.2 vs the ~3.0 required</p><p>With 14 factors tested, a Harvey–Liu–Zhu correction would demand t ≈ 3. Momentum is used because it is among the most-replicated effects in the literature and its sign agrees here — not because this study proved it.</p></div>
+    </div>
+
+    <h3>Backtest — 35 monthly rebalances, walk-forward weights, 10bps per side</h3>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Book construction</th><th class="num">CAGR</th><th class="num">Vol</th><th class="num">Sharpe</th><th class="num">Max DD</th></tr></thead>
+        <tbody>
+          <tr><td>Long-only top-20, equal weight</td><td class="num">+63.4%</td><td class="num">51.5%</td><td class="num">1.23</td><td class="num neg">−38.0%</td></tr>
+          <tr><td>… inverse-volatility weighted</td><td class="num">+44.0%</td><td class="num">39.7%</td><td class="num">1.11</td><td class="num neg">−32.4%</td></tr>
+          <tr><td>… + theme cap (max 3 per theme)</td><td class="num">+40.1%</td><td class="num">37.4%</td><td class="num">1.07</td><td class="num neg">−32.8%</td></tr>
+          <tr class="hl"><td>… + 10% volatility target (cash buffer)</td><td class="num">+13.1%</td><td class="num">10.4%</td><td class="num"><b>1.26</b></td><td class="num"><b>−6.9%</b></td></tr>
+          <tr><td>Long/short decile, 20 × 20</td><td class="num">+24.6%</td><td class="num">44.1%</td><td class="num">0.56</td><td class="num neg">−31.4%</td></tr>
+          <tr><td><em>SPY, same window</em></td><td class="num">+21.9%</td><td class="num">15.0%</td><td class="num"><b>1.46</b></td><td class="num">−15.8%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note warn">
+      <p class="note-h">The result, stated without spin</p>
+      <p><strong>QAE beat SPY on return and lost to it on Sharpe.</strong> Three things follow, and
+        they are worth more than a flattering number would be. The test window was an exceptional
+        bull run — a 1.46 Sharpe for a passive index is roughly double its long-run norm, so beating
+        it risk-adjusted <em>here</em> is a very high bar. The short leg destroyed value (0.56 against
+        1.11 long-only), which is why the bottom decile is an avoid list rather than a short book.
+        And the volatility-target overlay is the one construction change that genuinely improved the
+        risk profile: realized 10.4% against a 10.0% target — the risk model is calibrated — with a
+        −6.9% drawdown against SPY's −15.8%. It costs a great deal of return. Whether that trade is
+        worth making is a preference, not a fact, but it is now measurable.</p>
+    </div>
+
+    <h4>Biases still in these numbers</h4>
+    <ul class="col">
+      <li><b>Survivorship / selection.</b> The universe is the instrument list tracked <em>today</em>. Names dropped or delisted are absent. This flatters the result.</li>
+      <li><b>One regime.</b> Roughly three years, almost entirely bull. Momentum's crash risk is not represented in it.</li>
+      <li><b>No borrow costs</b> in the long/short line.</li>
+      <li><b>Two correlated factors.</b> Effective breadth of one is the reason conviction on the composite sits at 2 out of 5, while conviction on the construction layer sits at 4.</li>
+    </ul>
+    <p class="col" style="font-size:14px;color:var(--muted)">This was the v1 read on a 5-year window. The
+      tournament below re-ran the same signal inside complete systems on ten years of data, and the picture
+      changed: with a vol target, the same momentum book beat SPY on Sharpe.</p>
+  </div>
+</section>
+
+<section id="tournament">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>The tournament: 39 systems, ten years, one gate</h2></div>
+    <p class="sec-sub">Measuring factors one at a time found one honest signal. The next question is which
+      <em>system</em> — signal, construction, risk overlay, diversifier — so 39 complete systems ran on the same
+      days with the same costs, and a selection rule written before the results decided what counts.</p>
+
+    <div class="note">
+      <p class="note-h">The gate</p>
+      <p>A strategy is a winner only if it is <b>top-quartile by Sharpe in 2017-09 → 2022-03</b> and
+        <b>beats SPY on Sharpe in 2022-03 → 2026-09</b>, the half it was not selected on. Stock-picking
+        strategies must also beat the equal weight of their own universe in that second half, because the
+        universe is survivor-biased. Everything else is a candidate, not a result. Daily P&amp;L with weight
+        drift, signals through close <i>t</i>, fills at <i>t+1</i>, 10 bps per side, cash earns T-bills,
+        never levered.</p>
+    </div>
+
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Strategy</th><th class="num">CAGR</th><th class="num">Vol</th><th class="num">Sharpe</th><th class="num">Max DD</th><th class="num">β</th><th class="num">α vs EW-univ</th><th class="num">h1 → h2</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td><span class="tk">ens_R2_top10vt15+dualdef</span> — proposed</td><td class="num">+18.2%</td><td class="num">15.7%</td><td class="num"><b>0.98</b></td><td class="num"><b>−23.0%</b></td><td class="num">0.51</td><td class="num pos">+6.7%</td><td class="num">0.99 → 0.98</td><td class="pos">winner</td></tr>
+          <tr><td><span class="tk">xs_mom_top10_iv_vt15</span> — stock engine alone</td><td class="num">+16.9%</td><td class="num">13.6%</td><td class="num"><b>1.03</b></td><td class="num">−18.6%</td><td class="num">0.44</td><td class="num pos">+5.5%</td><td class="num">0.87 → 1.20</td><td class="pos">winner</td></tr>
+          <tr><td><span class="tk">ens_R2_top10vmm+dualdef+tsmom</span> — 3 engines</td><td class="num">+14.5%</td><td class="num">12.9%</td><td class="num">0.92</td><td class="num">−21.4%</td><td class="num">0.44</td><td class="num pos">+4.9%</td><td class="num">0.90 → 0.95</td><td class="pos">winner</td></tr>
+          <tr><td><span class="tk">xs_mom_top10_iv</span> — unmanaged</td><td class="num">+34.8%</td><td class="num">33.1%</td><td class="num">0.99</td><td class="num neg">−36.4%</td><td class="num">1.06</td><td class="num pos">+8.0%</td><td class="num">0.87 → 1.10</td><td class="pos">winner</td></tr>
+          <tr><td><span class="tk">dual_mom_broad_def</span> — diversifier alone</td><td class="num">+18.4%</td><td class="num">21.9%</td><td class="num">0.77</td><td class="num neg">−34.9%</td><td class="num">0.58</td><td class="num pos">+8.0%</td><td class="num">0.91 → 0.63</td><td>failed h2</td></tr>
+          <tr><td><span class="tk">ml_ridge_top20_iv</span></td><td class="num">+34.5%</td><td class="num">36.0%</td><td class="num">0.93</td><td class="num neg">−40.6%</td><td class="num">1.29</td><td class="num">+2.6%</td><td class="num">0.92 → 0.97</td><td>failed vs EW</td></tr>
+          <tr><td><span class="tk">theme_rot_top5_12m</span> — best theme rotation</td><td class="num">+12.5%</td><td class="num">29.6%</td><td class="num">0.46</td><td class="num neg">−37.5%</td><td class="num">1.00</td><td class="num neg">−7.8%</td><td class="num">0.65 → 0.29</td><td class="neg">—</td></tr>
+          <tr><td><span class="tk">tsmom_blend_vt10</span></td><td class="num">+5.8%</td><td class="num">7.9%</td><td class="num">0.44</td><td class="num">−14.5%</td><td class="num">0.20</td><td class="num">+2.1%</td><td class="num">0.65 → 0.22</td><td>—</td></tr>
+          <tr><td><span class="tk">ew_stocks</span> — universe equal weight</td><td class="num">+25.2%</td><td class="num">22.3%</td><td class="num">1.01</td><td class="num neg">−33.9%</td><td class="num">1.09</td><td class="num">0.0%</td><td class="num">0.94 → 1.08</td><td>control</td></tr>
+          <tr><td><span class="tk">rsp_bh</span> — true equal-weight S&amp;P 500</td><td class="num">+11.8%</td><td class="num">19.1%</td><td class="num">0.55</td><td class="num neg">−39.0%</td><td class="num">0.95</td><td class="num neg">−6.0%</td><td class="num">0.63 → 0.46</td><td>control</td></tr>
+          <tr><td><span class="tk">spy_bh</span></td><td class="num">+15.1%</td><td class="num">18.8%</td><td class="num"><b>0.71</b></td><td class="num neg">−33.7%</td><td class="num">1.00</td><td class="num neg">−3.5%</td><td class="num">0.72 → 0.71</td><td>benchmark</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>When it mattered</h3>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Period</th><th class="num">SPY</th><th class="num">Stock engine</th><th class="num">Diversifier</th><th class="num">Proposed system</th></tr></thead>
+        <tbody>
+          <tr><td>2018 Q4 sell-off</td><td class="num neg">−13.5%</td><td class="num neg">−9.6%</td><td class="num neg">−14.8%</td><td class="num neg">−12.1%</td></tr>
+          <tr><td>2020 COVID, Jan–Mar</td><td class="num neg">−19.5%</td><td class="num neg">−5.5%</td><td class="num neg">−15.3%</td><td class="num neg">−10.3%</td></tr>
+          <tr class="hl"><td>2022 bear, full year</td><td class="num neg">−18.2%</td><td class="num">−0.4%</td><td class="num pos">+19.3%</td><td class="num pos"><b>+9.6%</b></td></tr>
+          <tr><td>2023</td><td class="num pos">+26.2%</td><td class="num pos">+33.9%</td><td class="num pos">+13.7%</td><td class="num pos">+23.6%</td></tr>
+          <tr><td>2024</td><td class="num pos">+24.9%</td><td class="num pos">+30.3%</td><td class="num pos">+21.3%</td><td class="num pos">+26.0%</td></tr>
+          <tr><td>2025</td><td class="num pos">+17.7%</td><td class="num pos">+17.0%</td><td class="num pos">+60.3%</td><td class="num pos">+37.8%</td></tr>
+          <tr><td>2026 to 09-04</td><td class="num pos">+13.5%</td><td class="num pos">+16.3%</td><td class="num neg">−8.2%</td><td class="num pos">+4.0%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="cards">
+      <div class="card"><h5>Vol targeting is the biggest free lunch</h5><p class="tagline">same ten names</p><p>Unmanaged: Sharpe 0.99, drawdown −36%. Scaled to a 15% ex-ante vol: Sharpe 1.03, drawdown −18.6%, and the 2020 crash becomes −5.5%. Nothing about the selection changed.</p></div>
+      <div class="card"><h5>Concentration paid</h5><p class="tagline">top-10 &gt; top-20 &gt; top-30</p><p>Sharpe 0.99 → 0.87 → 0.74. The signal lives in the tail of the ranking; names 11–30 add beta, not alpha.</p></div>
+      <div class="card"><h5>Diversify across engines, not names</h5><p class="tagline">0.99 / 0.98 across halves</p><p>The blend has a lower Sharpe than the stock engine alone but a far steadier one, half the beta, and it was positive in 2022. Stability across regimes is what winning again requires.</p></div>
+      <div class="card"><h5>Theme rotation failed</h5><p class="tagline">α −8% to −16% vs universe</p><p>Buying last season's hot theme ETF at 9–13× turnover lost in every variant. The tactical version of thematic investing does not work — the most useful negative result here.</p></div>
+    </div>
+
+    <div class="note warn">
+      <p class="note-h">What is still wrong with these numbers</p>
+      <p><strong>Survivorship, quantified.</strong> The tracked universe's equal weight returned +25.2%/yr; the
+        equal-weight S&amp;P 500 ETF, which has no hindsight in it, returned +11.8%/yr. That ~13-point gap
+        inflates every stock strategy's absolute return — only the α-vs-universe column is trusted, and the
+        proposed system's +6.7%/yr survives it. <strong>Multiple testing.</strong> The best of 39 zero-skill
+        strategies would beat SPY's Sharpe by about +1.01 through luck alone; the system's edge is +0.27.
+        Nothing here clears that band. The split-sample gate is the mitigation; the defence is that both
+        engines are the most-replicated effects in the literature. <strong>Caught mid-build:</strong> the
+        realized-vol scaler was reading its own future curve. Its bugged ensemble had been a winner; it was
+        not once fixed. Run everything twice.</p>
+    </div>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Today's book under the v2 system</h2></div>
+    <p class="sec-sub">Signals through the last complete US session, 2026-09-04. Own-book decision support,
+      never advice to others. Fundamental grades are as of 2026-08-12.</p>
+
+    <div class="stats" style="margin:0 0 28px">
+      <div class="stat"><dt>Momentum names</dt><dd>15% <small>10 × 1.5%</small></dd></div>
+      <div class="stat"><dt>Dual momentum</dt><dd>50% <small>DBC</small></dd></div>
+      <div class="stat"><dt>T-bills</dt><dd>35% <small>BIL</small></dd></div>
+      <div class="stat"><dt>Ex-ante book vol</dt><dd>12–14% <small>β ≈ 0.4</small></dd></div>
+    </div>
+
+    <h3>Engine A — Momentum-10, vol-targeted (50% of capital, 30% gross)</h3>
+    <p class="col" style="font-size:14.5px">Ten names at 43–99% annualized volatility; the 15% vol target holds
+      30% of the engine in them and 70% in T-bills. The 8% cap binds on all ten, so the leg is ten equal
+      weights of 1.5% of total capital.</p>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Ticker</th><th class="num">Price</th><th class="num">12-1 mom</th><th class="num">Off high</th><th class="num">Vol</th><th class="num">Stop</th><th>FFM</th><th>Check</th><th>Theme</th></tr></thead>
+        <tbody>
+          <tr><td class="tk">DELL</td><td class="num">524.14</td><td class="num pos">+250%</td><td class="num">0.0%</td><td class="num">78%</td><td class="num">445.08</td><td class="pos">Strong Buy 77</td><td>confirmed</td><td>ai-infrastructure</td></tr>
+          <tr><td class="tk">AMD</td><td class="num">477.57</td><td class="num pos">+202%</td><td class="num">−17.8%</td><td class="num">73%</td><td class="num">415.18</td><td class="pos">Strong Buy 80</td><td>confirmed</td><td>semis</td></tr>
+          <tr><td class="tk">MU</td><td class="num">1,016.59</td><td class="num pos">+611%</td><td class="num">−16.2%</td><td class="num">99%</td><td class="num">867.25</td><td class="pos">Strong Buy 84.5</td><td>confirmed</td><td>semis</td></tr>
+          <tr><td class="tk">ECO</td><td class="num">71.43</td><td class="num pos">+148%</td><td class="num">0.0%</td><td class="num">51%</td><td class="num">65.56</td><td>Hold 50</td><td>mixed</td><td>commodities</td></tr>
+          <tr><td class="tk">MRVL</td><td class="num">223.55</td><td class="num pos">+229%</td><td class="num neg">−29.3%</td><td class="num">97%</td><td class="num">182.03</td><td class="pos">Strong Buy 75.5</td><td>confirmed</td><td>semis / optical</td></tr>
+          <tr><td class="tk">INTC</td><td class="num">95.80</td><td class="num pos">+306%</td><td class="num neg">−32.0%</td><td class="num">80%</td><td class="num">81.46</td><td class="neg">Sell 30</td><td>momentum-only</td><td>semis</td></tr>
+          <tr><td class="tk">SMH</td><td class="num">567.01</td><td class="num pos">+98%</td><td class="num">−15.2%</td><td class="num">50%</td><td class="num">520.21</td><td>Hold 50</td><td>mixed</td><td>semis basket</td></tr>
+          <tr><td class="tk">FTNT</td><td class="num">156.29</td><td class="num pos">+110%</td><td class="num">−9.5%</td><td class="num">43%</td><td class="num">139.08</td><td class="neg">Sell 30</td><td>momentum-only</td><td>cybersecurity</td></tr>
+          <tr><td class="tk">ILMN</td><td class="num">218.22</td><td class="num pos">+98%</td><td class="num">−4.2%</td><td class="num">43%</td><td class="num">196.71</td><td class="pos">Strong Buy 78</td><td>confirmed</td><td>biotech-genomics</td></tr>
+          <tr><td class="tk">XSD</td><td class="num">491.45</td><td class="num pos">+82%</td><td class="num">−24.3%</td><td class="num">59%</td><td class="num">441.04</td><td>Hold 50</td><td>mixed</td><td>semis basket</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Engine B — Dual momentum with a defensive leg (50% of capital)</h3>
+    <p class="col">Hold the best trailing-12-month performer of SPY, QQQ, INDA, GLD, DBC, VNQ if it beats
+      T-bills; otherwise the best of IEF, TLT, GLD, BIL. Today: <span class="tk">DBC</span> at +40.5%
+      (QQQ +15.5%, SPY +12.2%, VNQ +10.2%; GLD −2.4%, INDA −7.3%; T-bill hurdle +2.5%). Price 31.90, stop
+      30.79. The 3-month return is +20.1% against +3.5% over six — the move is recent and steep. Dual momentum
+      does not care; the operator should at least know.</p>
+
+    <div class="note warn">
+      <p class="note-h">Read before acting</p>
+      <p>Six of the ten momentum names are semiconductors or semiconductor baskets — about 9% of total
+        capital in one industry, inside the theme cap only because the vol target has shrunk the leg. The
+        diversifier is 100% in one commodity ETF at its 52-week high; that concentration is the engine's
+        design and its weakest point. A 3-engine variant (adds multi-asset trend, equal thirds) traded
+        ~4 points of CAGR for a −7.6% drawdown in 2022. Nothing here is filed to the decision register.</p>
+    </div>
+
+    <h4>Filed as falsifiable calls</h4>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>ID</th><th>Call</th><th>Resolves</th></tr></thead>
+        <tbody>
+          <tr class="hl"><td class="tk">P27</td><td>The v2 system beats SPY on Sharpe over the 12 months from 2026-09-08, same rules and costs</td><td class="num">2027-09-15</td></tr>
+          <tr><td class="tk">P28</td><td>Its max drawdown over those 12 months is smaller than SPY's</td><td class="num">2027-09-15</td></tr>
+          <tr><td class="tk">P29</td><td>Theme-ETF rotation underperforms SPY again — the negative result is structural</td><td class="num">2027-09-15</td></tr>
+          <tr><td class="tk">P23–P26</td><td>The 2026-08-29 v1 book's calls (Tier A vs SPY, Tier A vs Tier B, avoid list, momentum IC stays positive)</td><td class="num">2026-09-28 / 12-01</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="learn">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Learning path</h2></div>
+    <p class="sec-sub">Six modules, roughly 24 weeks, each ending in something committed to the repo.
+      Progress is kept in this browser only. Advance on evidence, never on having read the module.</p>
+
+    <div class="progress-wrap">
+      <span class="progress-label" id="plabel">0 / 12 done</span>
+      <div class="progress-bar"><i id="pbar"></i></div>
+      <span class="progress-label">L0 → L5</span>
+    </div>
+
+    <div id="modules"></div>
+
+    <h3>The skill ladder</h3>
+    <div class="scroller">
+      <table>
+        <thead><tr><th>Level</th><th>You can…</th><th>Evidence you are here</th></tr></thead>
+        <tbody>
+          <tr><td class="tk">L0</td><td>Form a thesis, size by conviction, track outcomes</td><td>The vault today — decision register and track record</td></tr>
+          <tr><td class="tk">L1</td><td>Compute a factor, z-score it cross-sectionally, plot its IC</td><td>You can read and change <code>qae.py</code>'s factor block</td></tr>
+          <tr><td class="tk">L2</td><td>Design a falsifiable signal test free of look-ahead</td><td>You built a factor, measured its IC, and killed it at t &lt; 2</td></tr>
+          <tr><td class="tk">L3</td><td>Turn ranks into a risk-sized book with costs and stops</td><td>Your book's realized volatility matches your target</td></tr>
+          <tr><td class="tk">L4</td><td>Run the monthly loop: rescore, rebalance, attribute, retire</td><td>Six months of attribution showing where the P&amp;L came from</td></tr>
+          <tr><td class="tk">L5</td><td>Add genuinely new, weakly-correlated alphas</td><td>A new factor raises composite IR, not just in-sample IC</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>Reference shelf</h3>
+    <div class="cards">
+      <div class="card"><h5>Books, in order</h5><p>Chan, <em>Quantitative Trading</em> · Grinold &amp; Kahn, <em>Active Portfolio Management</em> · Ilmanen, <em>Expected Returns</em> · Ang, <em>Asset Management</em> · López de Prado, <em>Advances in Financial Machine Learning</em> · Narang, <em>Inside the Black Box</em>.</p></div>
+      <div class="card"><h5>Papers to read, not cite</h5><p>Jegadeesh–Titman 1993 · Fama–French 1993 &amp; 2015 · Carhart 1997 · Asness–Frazzini–Pedersen 2014 · Frazzini–Pedersen 2014 · Daniel–Moskowitz 2016 · McLean–Pontiff 2016 · Harvey–Liu–Zhu 2016.</p></div>
+      <div class="card"><h5>Maths you actually need</h5><p>Regression and its assumptions · covariance and correlation · z-scores and ranks · Spearman versus Pearson · t-stats and multiple testing · log returns · the variance of a weighted sum. That is genuinely most of it.</p></div>
+      <div class="card"><h5>Skip until L4</h5><p>Stochastic calculus, options pricing theory, deep learning. None of it helps a daily-bar cross-sectional book, and all of it is a procrastination magnet.</p></div>
+    </div>
+
+    <div class="note">
+      <p class="note-h">Three rules that outrank the syllabus</p>
+      <p><b>1.</b> Write the invalidation before the entry. Every time.<br>
+         <b>2.</b> Measure before you believe. A factor without an IC number is a story.<br>
+         <b>3.</b> Your edge is size and patience, not speed or complexity.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h4>Data freshness</h4>
+    <div class="freshness">
+      prices_10y.parquet — 896,729 rows · 332 tickers · 10y · yfinance · retrieved 2026-09-06T14:36Z · complete through <b>2026-09-04</b><br>
+      tournament_results.json — 39 strategies · 10 bps (canonical) and 25 bps (stress) · generated 2026-09-06T14:44Z<br>
+      prices.parquet — 437,501 rows · 326 tickers · 5y · the v1 factor study, retrieved 2026-08-29T13:38Z<br>
+      macro.csv — FRED + multpl.com · VIX &amp; SPX as of 2026-08-27 · Shiller CAPE as of 2026-08-28<br>
+      ffm_ratings.json — fundamental grades as of <b>2026-08-12</b> (17 days old — the stalest input here)<br>
+      qae_ic.json / qae_backtest.json / qae_book.json — regenerated 2026-09-26T10:22Z (prices through 2026-09-25)
+    </div>
+    <p>All price and macro figures were retrieved live on 2026-08-29, 2026-09-06 and 2026-09-26; no values are drawn from model
+      training. Past performance is not indicative of future results. This page documents an
+      engine's output for its operator's own book — it is not personalized investment advice, and
+      nothing here accounts for anyone else's circumstances, risk tolerance or existing positions.</p>
+  </div>
+</footer>
+
+<script>
+const IC = [
+  ["mom_12_1","12-month momentum, skipping the last month",0.0303,1.16,0.0542,"50%",true],
+  ["trend_q","126-day trend quality — return per unit of path volatility",0.0249,1.03,0.0608,"50%",true],
+  ["accel","Momentum acceleration — last month vs the average month",0.0214,0.96,-0.0095,"0%",false],
+  ["dist_high","Proximity to the 252-day high",0.0132,0.49,-0.0103,"0%",false],
+  ["illiq","Amihud illiquidity — the capacity-constrained premium",0.0110,0.69,0.0192,"0%",false],
+  ["vol_accum","Volume accumulation — 21d vs 252d dollar volume",0.0078,0.41,0.0250,"0%",false],
+  ["mom_6_1","6-month momentum, skipping the last month",-0.0042,-0.16,0.0470,"0%",false],
+  ["rev_5","5-day short-term reversal",-0.0071,-0.52,-0.0161,"0%",false],
+  ["skew","Negative return skew — lottery names score low",-0.0096,-0.62,0.0064,"0%",false],
+  ["ivol","Low idiosyncratic volatility",-0.0132,-0.43,-0.0566,"0%",false],
+  ["rev_21","1-month reversal",-0.0366,-1.78,-0.0115,"0%",false],
+  ["lowvol","Low realized volatility",-0.0402,-1.00,-0.0870,"0%",false],
+  ["dist_low","Proximity to the 252-day low",-0.0493,-1.62,-0.0891,"0%",false],
+  ["bab","Betting against beta",-0.0511,-1.08,-0.0911,"0%",false]
+];
+const MAX_IC = 0.06;
+document.getElementById("ic-body").innerHTML = IC.map(function(r){
+  const ic=r[2], w=Math.min(Math.abs(ic)/MAX_IC,1)*50;
+  const bar = ic>=0
+    ? '<i style="left:50%;width:'+w+'%;background:var(--pos)"></i>'
+    : '<i style="right:50%;width:'+w+'%;background:var(--neg)"></i>';
+  const cls = ic>=0 ? "pos" : "neg";
+  return '<tr'+(r[6]?' class="hl"':'')+'>'
+    + '<td class="tk">'+r[0]+'</td>'
+    + '<td style="color:var(--muted);font-size:13px">'+r[1]+'</td>'
+    + '<td class="num '+cls+'">'+(ic>=0?"+":"")+ic.toFixed(4)+'</td>'
+    + '<td><span class="icbar">'+bar+'</span></td>'
+    + '<td class="num">'+(r[3]>=0?"+":"")+r[3].toFixed(2)+'</td>'
+    + '<td class="num '+(r[4]>=0?"pos":"neg")+'">'+(r[4]>=0?"+":"")+r[4].toFixed(4)+'</td>'
+    + '<td class="num"><b>'+r[5]+'</b></td></tr>';
+}).join("");
+
+const MODULES = [
+  {n:"Module 1",w:"weeks 1–2",t:"The mental model",g:"Stop thinking in stories, start thinking in distributions. Expectancy over accuracy; variance as the binding constraint; IR ≈ IC × √breadth as the map of everything you will do next.",
+   tasks:["Compute the expectancy of your last 20 real trades: hit rate, average win, average loss. If expectancy is positive but P&L is not, the gap is size and costs — not signal.",
+          "Compute your effective breadth: how many genuinely independent bets did you make last year? Five AI-capex names are closer to one bet than five."]},
+  {n:"Module 2",w:"weeks 3–4",t:"Data hygiene",g:"Be able to prove your backtest is not lying. Look-ahead, survivorship, restatement, overfitting — in that order of how often they fool people.",
+   tasks:["List every ticker in the price cache that stopped trading during the window, and quantify the survivorship tilt with and without them.",
+          "Audit one existing factor for look-ahead and write the audit note into the wiki. The highest-value exercise in the whole curriculum."]},
+  {n:"Module 3",w:"weeks 5–9",t:"Factors and the IC discipline",g:"Measure whether a signal predicts anything. A real equity factor has an IC of roughly 0.02–0.06 at 21 days; anything above 0.10 on a broad universe is a bug until proven otherwise.",
+   tasks:["Run the engine's IC study and write one sentence per factor explaining why it should work economically. Any factor you cannot explain is a deletion candidate.",
+          "Add one new factor, measure its IC, and delete it if t < 2. Deleting your own idea on evidence is the actual skill."]},
+  {n:"Module 4",w:"weeks 10–14",t:"Portfolio construction",g:"Turn a ranking into a book whose risk you control. Note that portfolio volatility floors at σ̄√ρ no matter how many names you add — which is why diversification stops helping around 20–30 names.",
+   tasks:["Compute today's book's ex-ante volatility, beta and theme concentration. Fix any cap breach by constraint, not by re-ranking.",
+          "Re-run the backtest at 10, 20 and 40 names per leg and plot Sharpe against n. Find where diversification stops paying for the turnover."]},
+  {n:"Module 5",w:"weeks 15–18",t:"Risk, stops and the drawdown ladder",g:"Pre-commit to how you lose. A stop is a price event; an invalidation is a thesis event. Both are written before entry.",
+   tasks:["For every position in the current book, write both the stop price and the invalidation condition. Any position whose invalidation you cannot state should not be on.",
+          "Backtest the drawdown ladder itself against the equity curve. It usually costs return and buys survival — know which trade you are making."]},
+  {n:"Module 6",w:"weeks 19–24",t:"Running the loop",g:"Operate the system, not the ideas. Refresh, score, monitor, rebalance the deltas, file the calls, attribute the P&L, retire what decayed.",
+   tasks:["Build a one-page monthly attribution note: market beta, factor contribution, residual, turnover cost, biggest winner and loser with the reason.",
+          "At month six, compute realized IC and calibration — do your 4/5-conviction calls actually beat the 2/5 ones?"]}
+];
+
+const KEY = "alphadesk.progress.v1";
+let done = {};
+try { done = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { done = {}; }
+
+let total = 0;
+document.getElementById("modules").innerHTML = MODULES.map(function(m,mi){
+  const tasks = m.tasks.map(function(t,ti){
+    const id = "t"+mi+"_"+ti; total++;
+    return '<div class="task"><input type="checkbox" id="'+id+'" data-k="'+id+'"'
+      + (done[id]?" checked":"") + '><label for="'+id+'">'+t+'</label></div>';
+  }).join("");
+  return '<div class="mod"><div class="mod-head"><span class="mod-num">'+m.n+'</span>'
+    + '<h3>'+m.t+'</h3><span class="mod-weeks">'+m.w+'</span></div>'
+    + '<p class="mod-goal">'+m.g+'</p>'+tasks+'</div>';
+}).join("");
+
+function refresh(){
+  const n = Object.keys(done).filter(function(k){return done[k]}).length;
+  document.getElementById("pbar").style.width = (total? (n/total*100):0)+"%";
+  document.getElementById("plabel").textContent = n+" / "+total+" done";
+}
+document.getElementById("modules").addEventListener("change", function(e){
+  const k = e.target.getAttribute("data-k");
+  if(!k) return;
+  done[k] = e.target.checked;
+  try { localStorage.setItem(KEY, JSON.stringify(done)); } catch (err) {}
+  refresh();
+});
+refresh();
+</script>
+</body>
+</html>

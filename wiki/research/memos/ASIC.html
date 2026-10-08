@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Asic</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../../index.html">📊 Dashboard</a> ·
+    <a href="../../../site-index.html">📚 Site index</a> ·
+    <a href="../../../home.html">🏠 Home</a> ·
+    <a href="../../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;ASIC — Ategrity Specialty Insurance | Investment Memo (100x-hunt sleeve, batch 3)&quot;
+type: research
+ticker: ASIC
+date: 2026-10-05
+conviction: MODERATE-HIGH
+horizon: 8-10y
+sleeve: 100x-hunt
+rating: ACCUMULATE
+tags: [research, memo, 100-bagger]
+sources: [[qualified-100x-list-2026-10-05]], [[hundred-x-hunt-framework]], [[sa-microcap-100x-screen-2026-10-04]]</div>
+<article>
+<h1 id="asic-ategrity-specialty-insurance-analyst-memo-batch-3">ASIC — Ategrity Specialty Insurance | Analyst Memo (batch 3)</h1>
+<p><strong>FFM Rating: Not Rated</strong> (outside 347 universe; SA quant Strong Buy)<br />
+<strong>Conviction</strong>: MODERATE-HIGH · <strong>Sizing band</strong>: 0.4% initial, staged<br />
+<strong>Invalidation</strong>: Growth &lt;25%; combined ratio &gt;95%; reserve development turns adverse; E&amp;S pricing cycle turns</p>
+<h2 id="1-recommendation">1. Recommendation</h2>
+<p><strong>ACCUMULATE.</strong> Ategrity is a specialty E&amp;S (excess &amp; surplus) insurer compounding at rare quality: revenue $241M → $344M → <strong>$424M</strong> (+23%/yr) with <strong>+45.9% y/y in Q2-26</strong>, net income $10M → $47M → <strong>$74M</strong> (17.4% margin), <strong>net cash $274.7M, zero debt, share count shrinking</strong> (buybacks). Scorecard <strong>8/9</strong>. The catch is cyclical: E&amp;S pricing cycles turn, and insurers deserve cycle-discounted multiples — hence ACCUMULATE not BUY.</p>
+<h2 id="2-company-overview">2. Company overview</h2>
+<p>Ategrity Specialty Insurance (2021 startup, IPO 2024) underwrites E&amp;S lines for SMEs — casualty/property/transport — via MGAs and direct; asset-light growth funded by underwriting profit, not leverage.</p>
+<h2 id="3-financial-summary-forecast">3. Financial summary &amp; forecast</h2>
+<p>Sourced: yfinance full statements ($M; 2026-10-05 → <code>scripts/_hist/memo_fundamentals_batch3.json</code>).</p>
+<p><strong>Annual</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>2025A</th>
+<th>2024A</th>
+<th>2023A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>424.34</td>
+<td>343.83</td>
+<td>241.32</td>
+</tr>
+<tr>
+<td>Net income</td>
+<td>74.0</td>
+<td>47.09</td>
+<td>10.05</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quarterly trajectory</strong></p>
+<table>
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Revenue</th>
+<th>y/y</th>
+<th>q/q</th>
+<th>GM %</th>
+<th>Net income</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-06</td>
+<td>148.48</td>
+<td>45.9%</td>
+<td>15.1%</td>
+<td>n/d</td>
+<td>33.45</td>
+</tr>
+<tr>
+<td>2026-03</td>
+<td>128.96</td>
+<td>None%</td>
+<td>5.4%</td>
+<td>n/d</td>
+<td>25.47</td>
+</tr>
+<tr>
+<td>2025-12</td>
+<td>122.32</td>
+<td>None%</td>
+<td>4.5%</td>
+<td>n/d</td>
+<td>25.25</td>
+</tr>
+<tr>
+<td>2025-09</td>
+<td>117.0</td>
+<td>None%</td>
+<td>15.0%</td>
+<td>n/d</td>
+<td>22.66</td>
+</tr>
+<tr>
+<td>2025-06</td>
+<td>101.78</td>
+<td>None%</td>
+<td>None%</td>
+<td>n/d</td>
+<td>17.62</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Balance sheet (FY2025A):</strong> cash+investments <strong>274.7</strong> · debt 0 · <strong>net cash 274.7</strong></p>
+<h2 id="4-industry-outlook">4. Industry outlook</h2>
+<p>E&amp;S market: ~$75-90B premium pool growing faster than admitted market as capacity shifts to specialty (est./inference). Hard-market pricing 2021-26 built the franchise; the test is holding discipline as pricing softens. Competitors: Kinsley/RenRe-backed startups, Markel/RLI incumbents. Reserve adequacy is THE risk line to monitor quarterly.</p>
+<h2 id="5-valuation-scenarios">5. Valuation &amp; scenarios</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Rev 2031</th>
+<th>Combined ratio</th>
+<th>Implied earnings</th>
+<th>P/E</th>
+<th>Cap</th>
+<th>vs $1.25B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bull</td>
+<td>$900M</td>
+<td>88%</td>
+<td>$140M</td>
+<td>12×</td>
+<td>~$1.7B</td>
+<td>~1.4×</td>
+</tr>
+<tr>
+<td>Base</td>
+<td>$650M</td>
+<td>92%</td>
+<td>$80M</td>
+<td>10×</td>
+<td>~$0.8B</td>
+<td>−36%</td>
+</tr>
+<tr>
+<td>Bear (soft market)</td>
+<td>$450M</td>
+<td>100%+</td>
+<td>$20M</td>
+<td>7×</td>
+<td>~$0.14B+cash</td>
+<td>−75%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>100x-shape probability: very low</strong> — insurance economics cap it; this is a quality compounder diversifier for the sleeve.</p>
+<h2 id="6-bull-case-catalysts-12-24m">6. Bull case / catalysts (12-24m)</h2>
+<ul>
+<li>Combined ratio discipline prints quarterly</li>
+<li>Buybacks accelerating (shrinking count)</li>
+<li>Net cash earning 5%+ in this rate environment</li>
+</ul>
+<h2 id="7-bear-case-risks">7. Bear case / risks</h2>
+<ul>
+<li>E&amp;S pricing cycle turns (the history of the sector)</li>
+<li>Reserve development risk on casualty lines</li>
+<li>Startup insurer tail risk (one bad accident year)</li>
+</ul>
+<h2 id="8-vault-context-review-hooks">8. Vault context &amp; review hooks</h2>
+<p>Batch-3 (post 541-name expansion). Review quarterly combined ratio; exit discipline at CR &gt;95% for 2 consecutive quarters.</p>
+</article>
+</div>
+</body>
+</html>

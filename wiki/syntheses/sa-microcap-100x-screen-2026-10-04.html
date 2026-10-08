@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sa Microcap 100X Screen 2026 10 04</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;SA Micro-Cap 100x Screen — 2026-10-04 (100 names, ≤$10B, Quant Strong Buy)&quot;
+type: synthesis
+tags: [investing, screen, microcap, 100-bagger, seeking-alpha, own-book]
+sources: [[hundred-x-hunt-framework]], [[frontier-watch]], [[trend-radar]]
+date: 2026-10-04</div>
+<article>
+<h1 id="sa-micro-cap-100x-screen-2026-10-04">SA Micro-Cap 100x Screen — 2026-10-04</h1>
+<p><strong>Bottom line:</strong> Built a saved SA screener on the operator's account — <strong>Market Cap ≤$10B (micro+small+mid)<br />
+× Quant Rating Strong Buy</strong> → 246 matches; captured the <strong>top 100 by quant score</strong> (table caps at 100).<br />
+Raw data + provenance: <code>scripts/_hist/sa_microcap_screen.json</code>. After framework-proxy scoring<br />
+(<a href="hundred-x-hunt-framework.html">hundred-x-hunt-framework</a>: size + growth + quant), <strong>~21 names are flagged cyclical traps</strong><br />
+(shipping/refining at peak margins — excluded), leaving a genuine hunting list where <strong>Tier A = 19 names</strong><br />
+for MDAEM deep-dives. Research list for the operator's own book — not advice.</p>
+<h2 id="method-fact-live-sa-screener-2026-10-04">Method (fact: live SA screener, 2026-10-04)</h2>
+<ul>
+<li>Screener: <code>seekingalpha.com/screeners/940c1c1d6486-Micro-Small-Mid-Cap-Quant-Strong-Buy</code> (saved to the<br />
+  operator account as "Micro-Small-Mid Cap Quant Strong Buy").</li>
+<li>Filters: Market Cap ∈ {Micro &lt;300M, Small 300M-2B, Mid 2-10B} · Quant Rating = Strong Buy. 246 results;<br />
+  columns captured: Rank · Symbol · Name · Price · Chg% · <strong>Mkt Cap · Quant score · Revenue YoY</strong>.</li>
+<li>Framework-proxy score = size(0-2, smaller better) + growth(0-2, revYoY) + quant(0-1). (inference)</li>
+<li>Red-flag filter: cyclical cluster (tankers/bulkers/refiners/energy retail) = quant Strong Buy at PEAK<br />
+  margins — the classic 100x trap (framework §3): EDRY, ECO, PXS, GLBS, DHT, SB, INSW, SHIP, DSX, SBLK,<br />
+  NMM, NAT, PBF, DK, PARR, KOS, WKC, PAGP, UGP, BKEAY, ASAIY — <strong>21 names excluded</strong> from the hunt list.</li>
+</ul>
+<h2 id="tier-a-framework-fit-hunting-list-19-analyst-overlay-on-the-proxy-scores">Tier A — framework-fit hunting list (19, analyst overlay on the proxy scores)</h2>
+<p>Ranked by proxy score then qualitative pillar fit. All ≤$10B, Quant Strong Buy (4.8-5.0), revenue growing.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Ticker</th>
+<th>Cap</th>
+<th>Rev YoY</th>
+<th>Quant</th>
+<th>fx</th>
+<th>100x-lens read (inference)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>OABI</strong> OmniAb</td>
+<td>$708M</td>
+<td>+67%</td>
+<td>4.98</td>
+<td>4.63</td>
+<td>Antibody-platform royalty engine (category error: "CDMO"); recurring royalties on approved drugs</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>NLST</strong> Netlist</td>
+<td>$2.1B</td>
+<td>+129%</td>
+<td>4.98</td>
+<td>4.23</td>
+<td>Memory-module IP + HBM-cycle; litigation win unlocked; binary-ish but quant top-3</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>PAYS</strong> Paysign</td>
+<td>$803M</td>
+<td>+47%</td>
+<td>4.96</td>
+<td>4.17</td>
+<td>Healthcare payments niche (patient affordability cards); asset-light, high-margin compounding</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>BDSX</strong> Biodesix</td>
+<td>$292M</td>
+<td>+34%</td>
+<td>4.93</td>
+<td>3.97</td>
+<td>Lung-cancer blood diagnostics; recurring test volume; small-cap diagnostics platform</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>ABCL</strong> AbCellera</td>
+<td>$4.5B</td>
+<td>+101%</td>
+<td>4.90</td>
+<td>3.57</td>
+<td>AI antibody discovery engine; milestone+royalty model; cash-rich post-reset</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>HTFL</strong> HeartFlow</td>
+<td>$4.3B</td>
+<td>+43%</td>
+<td>4.87</td>
+<td>3.30</td>
+<td>AI coronary-CT diagnostics monopoly-in-disguise; FFRct standard-of-care push</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>SIMO</strong> Silicon Motion</td>
+<td>$9.5B</td>
+<td>+71%</td>
+<td>4.95</td>
+<td>3.15</td>
+<td>NAND controller near-duopoly (w/ Marvel); storage supercycle S-curve</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>MXL</strong> MaxLinear</td>
+<td>$9.6B</td>
+<td>+51%</td>
+<td>4.98</td>
+<td>3.15</td>
+<td>Optical/5G SoCs; the +15% day says estimate momentum turning</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>AXTI</strong> AXT</td>
+<td>$5.5B</td>
+<td>+46%</td>
+<td>4.94</td>
+<td>3.05</td>
+<td>GaAs/InP compound substrates — AI-optics + RF bottleneck input</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>OSCR</strong> Oscar Health</td>
+<td>$9.5B</td>
+<td>+43%</td>
+<td>4.93</td>
+<td>3.05</td>
+<td>Insurtech to profitability inflection; ML-driven underwriting</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>DAVE</strong> Dave</td>
+<td>$4.4B</td>
+<td>+49%</td>
+<td>4.81</td>
+<td>2.95</td>
+<td>Neo-bank cash-advance engine; unit economics inflected</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>ZETA</strong> Zeta Global</td>
+<td>$8.2B</td>
+<td>+36%</td>
+<td>4.82</td>
+<td>2.85</td>
+<td>Data+AI marketing cloud; direct-listing compounding</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>SEZL</strong> Sezzle</td>
+<td>$3.6B</td>
+<td>+43%</td>
+<td>4.81</td>
+<td>2.85</td>
+<td>Profitable BNPL micro-lender (already 89× case-study member — 2nd ride)</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>GRAL</strong> GRAIL</td>
+<td>$6.4B</td>
+<td>+23%</td>
+<td>4.83</td>
+<td>2.75</td>
+<td>Multi-cancer early-detection quasi-monopoly (Illumina spin)</td>
+</tr>
+<tr>
+<td>15</td>
+<td><strong>GCT</strong> GigaCloud</td>
+<td>$1.9B</td>
+<td>+23%</td>
+<td>4.83</td>
+<td>2.95</td>
+<td>Niche B2B furniture marketplace w/ logistics moat — textbook category error</td>
+</tr>
+<tr>
+<td>16</td>
+<td><strong>ATEX</strong> Anterix</td>
+<td>$1.7B</td>
+<td>+19%</td>
+<td>4.91</td>
+<td>2.90</td>
+<td>900MHz spectrum for utilities (regulatory moat); grid-digitization play</td>
+</tr>
+<tr>
+<td>17</td>
+<td><strong>ECOR</strong> electroCore</td>
+<td>$91M</td>
+<td>+33%</td>
+<td>4.82</td>
+<td>3.60</td>
+<td>Neurostim (migraine) razor-blade; micro-cap optionality</td>
+</tr>
+<tr>
+<td>18</td>
+<td><strong>IOVA</strong> Iovance</td>
+<td>$6.4B</td>
+<td>+35%</td>
+<td>4.98</td>
+<td>2.85</td>
+<td>TIL-cell therapy ramp (Amtagvi) — commercial inflection</td>
+</tr>
+<tr>
+<td>19</td>
+<td><strong>OESX</strong> Orion Energy</td>
+<td>$124M</td>
+<td>+16%</td>
+<td>4.97</td>
+<td>3.70</td>
+<td>LED/controls efficiency retrofits (AI-DC adjacent)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tier-b-watch-11-peng-ai-dc-memoryservers-cohu-semi-test-fsly-edge-cdn-estc-search-ai">Tier B — watch (11): PENG (AI DC memory/servers), COHU (semi test), FSLY (edge CDN), ESTC (search-AI</h2>
+<p>infra), SDGR (comp-bio software), APPN (low-code), LFST (mental-health telehealth), AVAH, TKNO, RCEL<br />
+(regenerative skin), PLSE (nano-pulse) — solid quant, weaker 100x-math (size or slope).</p>
+<h2 id="excluded-cyclical-peak-21-the-shippingrefiningenergy-retail-cluster-listed-above-sas-quant">Excluded — cyclical peak (21): the shipping/refining/energy-retail cluster listed above. SA's quant</h2>
+<p>loves them because trailing numbers are at cycle-peak; the framework §3 treats them as round-trip risks,<br />
+not 100x candidates. (Revisit only with a cycle-trough entry framework.)</p>
+<h2 id="what-this-is-not">What this is NOT</h2>
+<p>Not a buy list. SA quant Strong Buy is a <em>point-in-time momentum/quality</em> read — the 100x math needs the<br />
+<a href="hundred-x-hunt-framework.html">hundred-x-hunt-framework</a> pillars checked name-by-name (operator alignment, moat durability, funding<br />
+runway, category-error). <strong>Next step: run the MDAEM 10-gate pipeline on Tier A</strong> (deepest first: OABI,<br />
+GCT, ATEX, HTFL, PAYS), file research notes, and only then consider watchlist/D-series rows — operator's<br />
+own book, sized per <a href="portfolio-blueprint.html">portfolio-blueprint</a> (0.25-0.5% per name in a lottery sleeve).</p>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<p>Coverage: top 100 of 246 by quant score (table render limit) — the remaining 146 are lower-quant Strong<br />
+Buys. No fundamentals beyond rev-growth in this pass (gross margin, R&amp;D intensity, founder ownership need<br />
+per-name work — that's the MDAEM layer). Data as-of 2026-10-04 close (Post prices visible in raw capture).</p>
+</article>
+</div>
+</body>
+</html>

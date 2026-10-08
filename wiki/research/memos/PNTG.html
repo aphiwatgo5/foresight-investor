@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pntg</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../../index.html">📊 Dashboard</a> ·
+    <a href="../../../site-index.html">📚 Site index</a> ·
+    <a href="../../../home.html">🏠 Home</a> ·
+    <a href="../../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;PNTG — The Pennant Group | Investment Memo (100x-hunt sleeve, batch 3)&quot;
+type: research
+ticker: PNTG
+date: 2026-10-05
+conviction: MODERATE
+horizon: 8-10y
+sleeve: 100x-hunt
+rating: ACCUMULATE (small)
+tags: [research, memo, 100-bagger]
+sources: [[qualified-100x-list-2026-10-05]], [[hundred-x-hunt-framework]]</div>
+<article>
+<h1 id="pntg-the-pennant-group-analyst-memo-batch-3">PNTG — The Pennant Group | Analyst Memo (batch 3)</h1>
+<p><strong>FFM Rating: Not Rated</strong> (outside 347 universe; SA quant Strong Buy)<br />
+<strong>Conviction</strong>: MODERATE · <strong>Sizing band</strong>: 0.3% — leverage caps size<br />
+<strong>Invalidation</strong>: Home-health reimbursement cuts (Medicare rates); debt service stress; growth &lt;15%</p>
+<h2 id="1-recommendation">1. Recommendation</h2>
+<p><strong>ACCUMULATE (small).</strong> Pennant runs home-health/hospice agencies compounding through M&amp;A: revenue $545M → $695M → <strong>$948M</strong> (+35.8% y/y latest quarter), NI $13.4M → $22.6M → <strong>$29.6M</strong> with ~$9M/quarter run-rate. But <strong>net debt −$436M</strong> (lease+debt-financed rollup) and 14% gross margins cap position size. Scorecard 6/9 (traj 3 · prof 2 · BS 0 · disc 1).</p>
+<h2 id="2-company-overview">2. Company overview</h2>
+<p>The Pennant Group: 300+ home-health/hospice agencies across 30+ states — consolidation of a fragmented, demographic-tailwind industry. Model: acquire small agencies, plug into shared back-office; Medicare Pay-For-Performance alignment.</p>
+<h2 id="3-financial-summary-forecast">3. Financial summary &amp; forecast</h2>
+<p>Sourced: yfinance full statements ($M; 2026-10-05 → <code>scripts/_hist/memo_fundamentals_batch3.json</code>).</p>
+<p><strong>Annual</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>2025A</th>
+<th>2024A</th>
+<th>2023A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>947.71</td>
+<td>695.24</td>
+<td>544.89</td>
+</tr>
+<tr>
+<td>Net income</td>
+<td>29.58</td>
+<td>22.56</td>
+<td>13.38</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quarterly trajectory</strong></p>
+<table>
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Revenue</th>
+<th>y/y</th>
+<th>q/q</th>
+<th>GM %</th>
+<th>Net income</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-06</td>
+<td>297.98</td>
+<td>35.8%</td>
+<td>4.4%</td>
+<td>14.1</td>
+<td>9.08</td>
+</tr>
+<tr>
+<td>2026-03</td>
+<td>285.36</td>
+<td>None%</td>
+<td>-1.4%</td>
+<td>13.9</td>
+<td>8.52</td>
+</tr>
+<tr>
+<td>2025-12</td>
+<td>289.32</td>
+<td>None%</td>
+<td>26.3%</td>
+<td>13.6</td>
+<td>8.64</td>
+</tr>
+<tr>
+<td>2025-09</td>
+<td>229.04</td>
+<td>None%</td>
+<td>4.3%</td>
+<td>13.8</td>
+<td>6.08</td>
+</tr>
+<tr>
+<td>2025-06</td>
+<td>219.5</td>
+<td>None%</td>
+<td>None%</td>
+<td>13.8</td>
+<td>7.08</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Balance sheet (FY2025A):</strong> cash+investments <strong>17.0</strong> · debt 453.2 · <strong>net cash -436.1</strong></p>
+<h2 id="4-industry-outlook">4. Industry outlook</h2>
+<p>Home health &amp; hospice: Medicare-driven demand with demographic certainty (80+ cohort growth); policy rate cuts are the perennial overhang. Fragmented supply (10K+ agencies) = M&amp;A runway. Competitors: Amedisys/Enhabit (stalled — Pennant takes share), Addus. Margin ceiling is structural (caregiver labor).</p>
+<h2 id="5-valuation-scenarios">5. Valuation &amp; scenarios</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Rev 2031</th>
+<th>Net margin</th>
+<th>Multiple</th>
+<th>Cap</th>
+<th>vs $1.37B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bull</td>
+<td>$2.2B</td>
+<td>5%</td>
+<td>15×</td>
+<td>~$1.65B</td>
+<td>~1.2×</td>
+</tr>
+<tr>
+<td>Base</td>
+<td>$1.7B</td>
+<td>4%</td>
+<td>12×</td>
+<td>~$0.82B</td>
+<td>−40%</td>
+</tr>
+<tr>
+<td>Bear</td>
+<td>$1.2B + rate cut</td>
+<td>2%</td>
+<td>8×</td>
+<td>~$0.2B</td>
+<td>−85%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>100x-shape probability: very low</strong> — leveraged services rollup, not a platform. Sleeve role: demographic compounder, sized small for leverage.</p>
+<h2 id="6-bull-case-catalysts-12-24m">6. Bull case / catalysts (12-24m)</h2>
+<ul>
+<li>Demographic demand certainty (80+ cohort)</li>
+<li>Taking share while larger peers are distracted</li>
+<li>Consistent NI growth through M&amp;A</li>
+</ul>
+<h2 id="7-bear-case-risks">7. Bear case / risks</h2>
+<ul>
+<li>Medicare rate-settling risk (annual)</li>
+<li>−$436M net debt + labor-cost inflation squeeze</li>
+<li>Integration risk in rollups</li>
+</ul>
+<h2 id="8-vault-context-review-hooks">8. Vault context &amp; review hooks</h2>
+<p>Batch-3 (post 541-name expansion). Review annually after each Medicare rule cycle; debt/EBITDA trend is the trip-wire.</p>
+</article>
+</div>
+</body>
+</html>

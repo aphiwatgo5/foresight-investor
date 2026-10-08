@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fenc</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../../index.html">📊 Dashboard</a> ·
+    <a href="../../../site-index.html">📚 Site index</a> ·
+    <a href="../../../home.html">🏠 Home</a> ·
+    <a href="../../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;FENC — Fennec Pharmaceuticals | Investment Memo (100x-hunt sleeve, batch 3)&quot;
+type: research
+ticker: FENC
+date: 2026-10-05
+conviction: HIGH (batch-best discovery)
+horizon: 8-10y
+sleeve: 100x-hunt
+rating: BUY
+tags: [research, memo, 100-bagger]
+sources: [[qualified-100x-list-2026-10-05]], [[hundred-x-hunt-framework]], [[sa-microcap-100x-screen-2026-10-04]]</div>
+<article>
+<h1 id="fenc-fennec-pharmaceuticals-analyst-memo-batch-3">FENC — Fennec Pharmaceuticals | Analyst Memo (batch 3)</h1>
+<p><strong>FFM Rating: Not Rated</strong> (outside 347 universe; SA quant Strong Buy)<br />
+<strong>Conviction</strong>: HIGH (batch-best discovery) · <strong>Sizing band</strong>: 0.4% initial, staged thirds; candidate for conviction upgrade after 2 more profitable quarters<br />
+<strong>Invalidation</strong>: FENC Otividex quarterly revenue declines; label/reimbursement setbacks; dilution resumption</p>
+<h2 id="1-recommendation">1. Recommendation</h2>
+<p><strong>BUY — the cleanest pre-discovery inflection found in the entire 541-name screen.</strong> Otividex (intratympanic dexamethasone for Ménière's disease vertigo) is compounding: quarterly revenue 9.7 → 12.5 → 13.8 → 15.1 → <strong>17.9 ($M, +85.2% y/y)</strong>, GM 96%, <strong>net income positive 2 consecutive quarters</strong>, net cash $36.8M with zero debt, minimal dilution (26→29M over 3y) — and the stock is <strong>flat over 12 months (+3.6%), −21% off highs, 1.8% short</strong>. The market has not noticed the commercial inflection at all: textbook <a href="../../syntheses/hundred-x-hunt-framework.html">hundred-x-hunt-framework</a> P4+P5 convergence. <strong>Scorecard 9/9 — highest in the program.</strong></p>
+<h2 id="2-company-overview">2. Company overview</h2>
+<p>Fennec Pharmaceuticals commercializes Otividex, the first FDA-approved drug for Ménière's vertigo attacks (approved 2024-08): primary-care/ENT administered, self-pay + building reimbursement, US-first with EU optionality. Small-cap specialty pharma, no debt, lean commercial infrastructure.</p>
+<h2 id="3-financial-summary-forecast">3. Financial summary &amp; forecast</h2>
+<p>Sourced: yfinance full statements ($M; 2026-10-05 → <code>scripts/_hist/memo_fundamentals_batch3.json</code>).</p>
+<p><strong>Annual</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>2025A</th>
+<th>2024A</th>
+<th>2023A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>44.64</td>
+<td>47.54</td>
+<td>21.25</td>
+</tr>
+<tr>
+<td>Net income</td>
+<td>-9.74</td>
+<td>-0.44</td>
+<td>-16.05</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quarterly trajectory</strong></p>
+<table>
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Revenue</th>
+<th>y/y</th>
+<th>q/q</th>
+<th>GM %</th>
+<th>Net income</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-06</td>
+<td>17.87</td>
+<td>85.2%</td>
+<td>18.3%</td>
+<td>96.0</td>
+<td>1.97</td>
+</tr>
+<tr>
+<td>2026-03</td>
+<td>15.11</td>
+<td>None%</td>
+<td>9.7%</td>
+<td>96.2</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>2025-12</td>
+<td>13.78</td>
+<td>None%</td>
+<td>10.6%</td>
+<td>87.2</td>
+<td>-4.79</td>
+</tr>
+<tr>
+<td>2025-09</td>
+<td>12.46</td>
+<td>None%</td>
+<td>29.1%</td>
+<td>94.7</td>
+<td>-0.64</td>
+</tr>
+<tr>
+<td>2025-06</td>
+<td>9.65</td>
+<td>None%</td>
+<td>None%</td>
+<td>90.1</td>
+<td>-3.15</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Balance sheet (FY2025A):</strong> cash+investments <strong>36.8</strong> · debt 0 · <strong>net cash 36.8</strong></p>
+<h2 id="4-industry-outlook">4. Industry outlook</h2>
+<p>Ménière's: ~600K US diagnosed patients (est.) with no approved pharmacologic alternative until Otividex (betahistine never FDA-approved). Chronic recurring condition = refill economics. Competitors: off-label steroids/betahistine (gray), diuretics (weak evidence); device (SonoTree etc.) early. The category is Fennec's to own for years (inference).</p>
+<h2 id="5-valuation-scenarios">5. Valuation &amp; scenarios</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Rev 2030</th>
+<th>Net margin</th>
+<th>Multiple</th>
+<th>Implied cap</th>
+<th>vs $0.36B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bull</td>
+<td>$180M (US+EU+refill)</td>
+<td>35%</td>
+<td>8×</td>
+<td>~$1.4B</td>
+<td>~4×</td>
+</tr>
+<tr>
+<td>Base</td>
+<td>$110M</td>
+<td>30%</td>
+<td>6×</td>
+<td>~$0.66B</td>
+<td>~1.8×</td>
+</tr>
+<tr>
+<td>Bear</td>
+<td>$60M (reimbursement stall)</td>
+<td>15%</td>
+<td>3×</td>
+<td>~$0.18B</td>
+<td>−50%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>100x-shape probability: 10-15%</strong> — small base ($0.36B cap) + monopoly category + profitable inflection; the rarest configuration in the sleeve.</p>
+<h2 id="6-bull-case-catalysts-12-24m">6. Bull case / catalysts (12-24m)</h2>
+<ul>
+<li>Two more profitable quarters → conviction HIGH path</li>
+<li>EU filing/approval optionality</li>
+<li>Refill-rate data proving chronic-use economics</li>
+</ul>
+<h2 id="7-bear-case-risks">7. Bear case / risks</h2>
+<ul>
+<li>Reimbursement/reimbursement coding delays</li>
+<li>Single-product</li>
+<li>Commercial execution scale-up risk (small salesforce)</li>
+</ul>
+<h2 id="8-vault-context-review-hooks">8. Vault context &amp; review hooks</h2>
+<p>Batch-3 (post 541-name expansion). Review 2027-04-05: quarterly revenue ≥$20M run-rate and NI sustained → upgrade; any loss-quarter → hold and re-check.</p>
+</article>
+</div>
+</body>
+</html>

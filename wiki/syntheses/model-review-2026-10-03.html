@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Review 2026 10 03</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Model review — engine state &amp; validation record (recorded 2026-10-03, data as-of 2026-09-25)
+type: synthesis
+tags: [model-review, validation, post-mortem-substrate, own-book]
+sources: [[foresight-factor-model]], [[quant-alpha-methodology]], [[strategy-sleeves]], [[prediction-ledger]], [[track-record]]
+date: 2026-10-03</div>
+<article>
+<h1 id="model-review-engine-state-validation-record-2026-10-03">Model review — engine state &amp; validation record (2026-10-03)</h1>
+<p><strong>Bottom line:</strong> First entry in the model-review series — the point-in-time substrate future post-mortems will read. All engines validated healthy on 2026-09-25 data (343 names, zero missing composites, fresh prices/signals). One <strong>new finding</strong>: the value and quality sleeves' walk-forward Sharpes have collapsed (0.32 / 0.37) versus momentum-family sleeves (0.96–1.06) — a momentum-regime signature now on record for the quarterly REVIEW to weigh. From this date forward, every refresh archives the full engine state (<code>scripts/_hist/archive/&lt;date&gt;/</code> + recommendation journal) — <strong>"what did the model believe on date X" is now a one-directory lookup, not git archaeology.</strong></p>
+<h2 id="validation-sweep-all-figures-engine-internal-data-as-of-2026-09-25">Validation sweep (all figures engine-internal, data as-of 2026-09-25)</h2>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>State</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FFM ratings</td>
+<td>343 tickers (320 full 6-factor · 23 momentum-only) · 0 missing composites · regime bull</td>
+<td>✅ healthy</td>
+</tr>
+<tr>
+<td>Sleeves</td>
+<td>343 tickers, 6 sleeves, as-of 09-25</td>
+<td>✅ healthy</td>
+</tr>
+<tr>
+<td>Prices cache</td>
+<td>359 series, all with last bar ≥ 09-24, 488,959 rows</td>
+<td>✅ fresh</td>
+</tr>
+<tr>
+<td>Signals</td>
+<td>343 tickers through 09-25</td>
+<td>✅ fresh</td>
+</tr>
+<tr>
+<td>QAE IC</td>
+<td><code>mom_12_1</code> 21d IC +0.030 (hit 60.5%, t 1.18) · <code>trend_q</code> +0.029 — composite stays ON</td>
+<td>✅ invalidation nowhere near</td>
+</tr>
+<tr>
+<td>Backtest (re-run 09-26)</td>
+<td>momentum 1.06 · longterm 1.05 · contrarian 1.05 · macro-rot 0.96 · <strong>value 0.32 · quality 0.37</strong></td>
+<td>⚠️ see finding</td>
+</tr>
+<tr>
+<td>Consensus</td>
+<td>191 tickers</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Prediction ledger</td>
+<td>34 calls: 32 open (⏳) · 2 scored (✅ P12 SIPRI, P26) — most resolve 2027</td>
+<td>✅ no scoring backlog</td>
+</tr>
+<tr>
+<td>Staleness</td>
+<td>data 09-25 vs record date 10-03 = 6 trading days</td>
+<td>🟡 inside the 10-day flag line; refresh due</td>
+</tr>
+</tbody>
+</table>
+<h2 id="finding-of-the-record-valuequality-sleeve-decay">Finding of the record — value/quality sleeve decay</h2>
+<p>Walk-forward Sharpes: momentum 1.06 · contrarian 1.05 · longterm 1.05 · macro_rotation 0.96 · quality 0.37 · value 0.32. The 2023–2026 window pays momentum and punishes the value/quality factors our contrarian sleeve leans on. <strong>Action for the quarterly REVIEW (due ~2026-12):</strong> re-weigh the ensemble in <a href="strategy-sleeves.html">strategy-sleeves</a> (value/quality weight down or gated by regime), and check whether the QAE composite (momentum-tilted by IC weights) should absorb more of the allocation. Recorded here first so the December decision has a dated trail.</p>
+<h2 id="the-point-in-time-layer-built-2026-10-03">The point-in-time layer (built 2026-10-03)</h2>
+<ul>
+<li><strong><code>scripts/snapshot_archive.py</code></strong> — after every refresh: copies all 14 mutable engine outputs (FFM ratings/factors, sleeves, recommendations, SA grades/screener, consensus, QAE book/IC, backtest, MDAEM) into <code>scripts/_hist/archive/&lt;YYYY-MM-DD&gt;/</code> — <strong>append-only</strong> (same-day reruns never overwrite an earlier vintage) + a manifest with git SHA.</li>
+<li><strong><code>recommendation-journal.jsonl</code></strong> — every run appends machine-readable rows (top-20 T1 adds with conviction/PE, FFM top-10, QAE longs with stops, ledger calibration counts). Post-mortem queries become one-line filters.</li>
+<li>Wired into <code>weekly_refresh.sh</code> (step 3f) — the archive grows automatically on every MONITOR.</li>
+<li>First vintage: <code>archive/2026-10-03/</code> (14 files, 45 journal rows, git 9cb36cb).</li>
+</ul>
+<h2 id="honest-gaps-known-tracked">Honest gaps (known, tracked)</h2>
+<ol>
+<li><strong>History starts today.</strong> Pre-2026-10-03 engine states exist only in git (7 commits of ffm_ratings.json) — recoverable but coarse. The sa_top_rated Aug-12 vintage was overwritten in place earlier (lesson learned; now archived going forward).</li>
+<li><strong>Living pages edit in place</strong> — trend-radar convictions and decision-register rows change without a changelog line. Suggested convention (not yet enforced): a dated <code>## Changelog</code> bullet whenever a conviction/stage changes, so the radar itself becomes a post-mortem source.</li>
+<li>Value/quality decay (above) — December REVIEW decision.</li>
+<li>FRED key still missing → HY-OAS sensor dark; ledger's P17 (no credit-stress) can only be scored on "no news" until the key exists.</li>
+</ol>
+<h2 id="next-model-review">Next model review</h2>
+<p><strong>2026-11-01</strong> (or next quarterly REVIEW): re-run this sweep, diff FFM top-10 vs the journal vintage, score any matured P-calls, and act on the sleeve re-weigh question.</p>
+<p><em>Engine-internal figures from <code>scripts/_hist/*</code> validated 2026-10-03; no values from model training. Own-book decision support only.</em></p>
+</article>
+</div>
+</body>
+</html>

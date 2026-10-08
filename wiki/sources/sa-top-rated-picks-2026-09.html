@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SA Top-Rated-Stocks screener (id 96793299) — 2026-08/09 vintages</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: SA Top-Rated-Stocks screener (id 96793299) — 2026-08/09 vintages
+type: source
+source_file: scripts/_hist/sa_top_rated.json
+source_kind: web
+author: Seeking Alpha (quant + SA authors + Wall Street composite)
+date_published: 2026-08-12 / 2026-09-25
+date_ingested: 2026-09-26
+tags: [seeking-alpha, screener, quant-ratings, consensus]</div>
+<article>
+<h1 id="sa-top-rated-stocks-screener-id-96793299-2026-0809-vintages">SA Top-Rated-Stocks screener (id 96793299) — 2026-08/09 vintages</h1>
+<p><strong>One-line:</strong> Seeking Alpha's official "Top Rated Stocks" screener output — the names where SA's quant model, SA authors, and Wall Street all converge — scraped from the operator's authenticated session on 2026-08-12 (25 names) and re-scraped 2026-09-25 (24 names).</p>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li><strong>2026-09-25 vintage:</strong> MU is <strong>#1</strong> (quant 4.99, $1,079.72) — the sole name where SA's top list and our FFM (Strong Buy 84.5+) already agreed has become the platform's flagship pick.</li>
+<li>The list remains a <strong>value/quality island</strong>: shipping (EDRY, ECO #5, FRO, DSX, SBLK), oil/refining (PARR, PBR, IPOOF), healthcare value (IRWD, HRMY, HCSG, OHI) — very little overlap with the AI-momentum cohort the tape rewards.</li>
+<li>New entrants vs August: <strong>NLST</strong> (Netlist — memory-IP, #4), <strong>CLS</strong> (Celestica — optical modules, also in our universe), <strong>FTRE</strong>, <strong>STRL</strong>; <strong>SNDK fell out of the top-24</strong> after its August run.</li>
+<li>14 of the August names were added to the Foresight universe on 2026-08-12 (commit 8d2b402) and FFM-cross-referenced: MU agreed Strong Buy; CNC/F/SEZL disagreed (FFM Sell).</li>
+</ul>
+<h2 id="summary">Summary</h2>
+<p>Scrape method: authenticated in-app-browser read of <code>https://seekingalpha.com/screeners/96793299-Top-Rated-Stocks</code> (~8s pacing, table rows extracted from the DOM; parser splits rank/ticker from the front, the five factor grades from the back, price at the % index). Stored as <code>scripts/_hist/sa_top_rated.json</code> with per-row provenance (rank, ticker, price, change, quant/SA-authors/Wall-St ratings, grades). Feeds <code>scripts/ffm_vs_sa.py</code> → the ffm-vs-sa disagreement table and the workbench Sources tab. The two vintages are kept for drift analysis: composition shifted toward shipping + memory-IP between August and September while the platform's software picks vanished.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Supports / extends: <a href="../entities/seeking-alpha-quant.html">seeking-alpha-quant</a>, <a href="../concepts/foresight-factor-model.html">foresight-factor-model</a> (external calibration), <a href="../syntheses/sa-market-read-2026-09-12.html">sa-market-read-2026-09-12</a></li>
+<li>Related: <a href="../syntheses/book-rec-2026-09-25.html">book-rec-2026-09-25</a> (engine T1 adds overlap the ECO/FRO cluster), <a href="../syntheses/instrument-universe.html">instrument-universe</a></li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Does the SA value-cohort concentration keep outperforming when breadth is this narrow (RSP 4-6 straight down weeks)?</li>
+<li>SNDK's fall from the list — rating decay or just price-run indigestion?</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

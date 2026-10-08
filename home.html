@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home — Start Here</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="index.html">📊 Dashboard</a> ·
+    <a href="site-index.html">📚 Site index</a> ·
+    <a href="home.html">🏠 Home</a> ·
+    <a href="hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Home — Start Here
+type: home
+date_updated: 2026-10-03</div>
+<article>
+<h1 id="home-start-here">🏠 Home — Start Here</h1>
+<p><strong>A personal, LLM-maintained knowledge wiki (an Obsidian vault) with a global multi-asset<br />
+foresight-investing engine on top.</strong> The human curates and decides; the <strong>agent does all the<br />
+writing, filing, analysis, and bookkeeping</strong>. This page is the human entry point.</p>
+<blockquote>
+<p>🔒 Local vault, git-committed; only rendered HTML deploys publicly.<br />
+📈 Decisions for the <strong>operator's own book only</strong> — never personalized advice to others.<br />
+Every call is dated, falsifiable, archived, and scored (<a href="wiki/syntheses/prediction-ledger.html">prediction-ledger</a> · <a href="wiki/syntheses/track-record.html">track-record</a>).</p>
+</blockquote>
+<hr />
+<h2 id="quick-links">⚡ Quick links</h2>
+<table>
+<thead>
+<tr>
+<th>You want to…</th>
+<th>Go to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Current-state summary (read first)</td>
+<td><code>hotcache.md</code></td>
+</tr>
+<tr>
+<td><strong>The system map — read before modifying</strong></td>
+<td><code>ARCHITECTURE.md</code> (+ one-page <code>architecture-diagram.html</code>)</td>
+</tr>
+<tr>
+<td>Dated system-research record</td>
+<td><code>SYSTEM-RESEARCH-LOG.md</code></td>
+</tr>
+<tr>
+<td>The full catalog of every page</td>
+<td><code>index.md</code> · public site map: <code>site-index.html</code></td>
+</tr>
+<tr>
+<td>The "state of knowledge" narrative</td>
+<td><a href="wiki/overview.html">overview</a></td>
+</tr>
+<tr>
+<td>What to buy/hold/exit + sizing</td>
+<td><a href="wiki/syntheses/decision-register.html">decision-register</a> · <a href="wiki/syntheses/book-rec-2026-09-25.html">book-rec-2026-09-25</a></td>
+</tr>
+<tr>
+<td>Live sensors &amp; event triggers</td>
+<td><a href="wiki/syntheses/signal-monitor.html">signal-monitor</a> (workbench Event-watch chips)</td>
+</tr>
+<tr>
+<td><strong>Scored post-mortems of our calls</strong></td>
+<td><a href="wiki/syntheses/post-mortem-2026-10-03.html">post-mortem-2026-10-03</a> (workbench 🧾 Review tab)</td>
+</tr>
+<tr>
+<td>Where we are in the cycle</td>
+<td><a href="wiki/syntheses/regime-monitor.html">regime-monitor</a> · <a href="wiki/syntheses/macro-regime.html">macro-regime</a></td>
+</tr>
+<tr>
+<td>Interactive surfaces</td>
+<td><code>outlook-dashboard.html</code> · <code>analyst-workbench.html</code> (11 tabs) · <code>quant-desk.html</code></td>
+</tr>
+<tr>
+<td>The rules the agent follows</td>
+<td><code>AGENTS.md</code> (<code>CLAUDE.md</code> mirror) · cadence <code>CADENCE.md</code></td>
+</tr>
+<tr>
+<td>What happened, when</td>
+<td><code>log.md</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="how-its-built-layers-how-to-trace-anything">🧱 How it's built — layers (how to trace anything)</h2>
+<ol>
+<li><strong><code>raw/</code></strong> — source of truth, immutable. Every claim traces to a file here, a dated web lookup,<br />
+   or is tagged <code>(inference)</code>.</li>
+<li><strong><code>wiki/</code></strong> — agent-owned: <code>sources/</code> · <code>entities/</code> · <code>concepts/</code> (35 investment themes) ·<br />
+<code>syntheses/</code> (decisions, memos, post-mortems, accountability hubs) · <code>research/</code><br />
+   (<strong>347 per-ticker FFM notes</strong>, auto-refreshed, linked from <a href="wiki/syntheses/instrument-universe.html">instrument-universe</a>).</li>
+<li><strong>Engines</strong> (<code>scripts/</code>): FFM 6-factor ratings · 6 strategy sleeves · MDAEM v4 · QAE quant desk ·<br />
+   walk-forward backtest · tournament · rule-based allocator (caps) · snapshot archive<br />
+   (<code>scripts/_hist/archive/&lt;date&gt;/</code> = "what the model believed on date X").</li>
+<li><strong>Surfaces</strong>: dashboard (public landing) · workbench · quant desk · rendered wiki →<br />
+<a href="https://aphiwatgo5.github.io/foresight-investor/">GitHub Pages</a>.</li>
+</ol>
+<p>Full module map, data flows, QC gates, and extension recipes: <strong><code>ARCHITECTURE.md</code></strong>.</p>
+<hr />
+<h2 id="current-read-2026-10-03-data-as-of-2026-09-25">📊 Current read (2026-10-03 — data as-of 2026-09-25)</h2>
+<p><strong>Regime: momentum melt-up under rate stress.</strong> 10Y <strong>5.28%</strong> (22bp from the 5.5% flip trigger) ·<br />
+VIX 15.3 calm · F&amp;G 37.8 "Fear" (sentiment/market divergence) · Brent back &gt;$100 · USD/JPY 157.8<br />
+calm · breadth deteriorating (RSP −2.0% since 09-11 vs SMH +10.9%). The engine's AI-hardware<br />
+convictions are winning (post-mortem #1: QAE FFM-confirmed tranche <strong>+3.98% vs SPY −0.22%</strong> in week<br />
+one; AMD +22.8% since 09-13) while its macro-caution layer lagged (gold −4.7%) — both recorded.<br />
+New sleeves: <strong>Thai income</strong> (PTTEP/ADVANC/KBANK, P33) · value/quality sleeve decay flagged for the<br />
+December REVIEW.</p>
+<p><strong>By the numbers (2026-10-03):</strong> 4 sources · 10 entities · 74 concepts (35 themes) · 39 syntheses ·<br />
+347 tracked instruments (8 meta-forces) · 343 FFM-rated · 33 predictions (P1–P33, 2 scored) ·<br />
+435+ wiki pages · point-in-time archive running.</p>
+<hr />
+<h2 id="operations-short-full-protocol-agentsmd-10">🛠️ Operations (short — full protocol <code>AGENTS.md</code> §10)</h2>
+<p>Weekly <strong>MONITOR</strong> (<code>weekly_refresh.sh</code> → data → dashboards → <strong>snapshot archive</strong>) · monthly<br />
+<strong>SCAN</strong> (radar convictions, P-call scoring) + <strong>ALPHA</strong> (QAE book) · quarterly <strong>BACKTEST /<br />
+TOURNAMENT / REVIEW</strong> · on-demand: <strong>DECIDE</strong> (sized calls), <strong>SOURCE</strong> (screen → shortlist →<br />
+MDAEM), <strong>BUBBLE-WATCH</strong> (live-data frameworks), <strong>REFRESH</strong>, plus the new <strong>post-mortem op</strong><br />
+(score past calls → <code>postmortem_*.json</code> → workbench Review tab).</p>
+<hr />
+<p><em>Maintained by the agent under <code>AGENTS.md</code> + <code>CADENCE.md</code>. Fast answers: <code>hotcache.md</code>.<br />
+Decisions for the operator's own book — never advice to others.</em></p>
+</article>
+</div>
+</body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rely</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../../index.html">📊 Dashboard</a> ·
+    <a href="../../../site-index.html">📚 Site index</a> ·
+    <a href="../../../home.html">🏠 Home</a> ·
+    <a href="../../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;RELY — Remitly Global | Investment Memo (100x-hunt sleeve, batch 2)&quot;
+type: research
+ticker: RELY
+date: 2026-10-05
+conviction: MODERATE-HIGH
+horizon: 8-10y
+sleeve: 100x-hunt
+rating: ACCUMULATE (staged)
+tags: [research, memo, 100-bagger]
+sources: [[qualified-100x-list-2026-10-05]], [[hundred-x-hunt-framework]], [[sa-microcap-100x-screen-2026-10-04]]</div>
+<article>
+<h1 id="rely-remitly-global-analyst-memo-batch-2">RELY — Remitly Global | Analyst Memo (batch 2)</h1>
+<p><strong>FFM Rating: Not Rated</strong> (outside 347 universe; SA quant Strong Buy)<br />
+<strong>Conviction</strong>: MODERATE-HIGH · <strong>Sizing band</strong>: 0.5% initial, staged thirds<br />
+<strong>Invalidation</strong>: send-volume growth &lt;15%; take-rate compression below 2.5%; NI regression to loss</p>
+<h2 id="1-recommendation">1. Recommendation</h2>
+<p><strong>ACCUMULATE (staged).</strong> The strongest NEW fundamental profile in the batch: remittances network scaling into profitability — revenue $944M → $1,264M → <strong>$1,635M</strong> (+29%/yr), FY2025 first annual profit ($68M), Q2-26 NI $206M (verify one-time components — flag), GM 62%, net cash $350M, dilution a contained +9%/yr. Cross-border payments is the ARK 'fintech innovation' wave's most durable lane (remittances are non-discretionary). Scorecard: <strong>7/8</strong> (traj 2 · prof 2 · BS 2 · disc 1).</p>
+<h2 id="2-company-overview">2. Company overview</h2>
+<p>Remitly is a digital-first remittance platform for immigrant corridors (US→LatAm/Asia/Philippines etc.): app-based send, local cash-pickup + bank + mobile-wallet rails, take-rate ~2.9% on ~$50B+ annualized send volume (est.). Newer layers: Remitly Circle, banking features.</p>
+<h2 id="3-financial-summary-forecast">3. Financial summary &amp; forecast</h2>
+<p>Sourced: yfinance full statements ($M; 2026-10-05 → <code>scripts/_hist/memo_fundamentals_batch2.json</code>). n/d = not reported.</p>
+<p><strong>Annual P&amp;L</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>2025A</th>
+<th>2024A</th>
+<th>2023A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>1635.15</td>
+<td>1263.96</td>
+<td>944.28</td>
+</tr>
+<tr>
+<td>GM %</td>
+<td>60.2</td>
+<td>59.2</td>
+<td>56.4</td>
+</tr>
+<tr>
+<td>Net income</td>
+<td>67.93</td>
+<td>-36.98</td>
+<td>-117.84</td>
+</tr>
+<tr>
+<td>Diluted shares (M)</td>
+<td>168 (2022) — 218 (2025)</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quarterly trajectory (inflection check)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Revenue</th>
+<th>y/y</th>
+<th>q/q</th>
+<th>GM %</th>
+<th>Net income</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-06</td>
+<td>495.16</td>
+<td>20.2%</td>
+<td>9.4%</td>
+<td>62.1</td>
+<td>205.91</td>
+</tr>
+<tr>
+<td>2026-03</td>
+<td>452.8</td>
+<td>None%</td>
+<td>2.4%</td>
+<td>62.1</td>
+<td>49.05</td>
+</tr>
+<tr>
+<td>2025-12</td>
+<td>442.18</td>
+<td>None%</td>
+<td>5.4%</td>
+<td>62.7</td>
+<td>41.22</td>
+</tr>
+<tr>
+<td>2025-09</td>
+<td>419.49</td>
+<td>None%</td>
+<td>1.9%</td>
+<td>58.7</td>
+<td>8.83</td>
+</tr>
+<tr>
+<td>2025-06</td>
+<td>411.85</td>
+<td>None%</td>
+<td>None%</td>
+<td>59.0</td>
+<td>6.54</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Balance sheet (FY2025A):</strong> cash+investments <strong>542.4</strong> · debt 192.1 · <strong>net cash 350.3</strong></p>
+<h2 id="4-industry-outlook">4. Industry outlook</h2>
+<p>Global remittances ≈ $800-900B/yr flows (est./inference), still 60%+ offline at initiation; digital share compounding. Unit economics: transaction-scale + corridor density = the moat (Western Union's decay is the proof). Competitors: Wise (different FX model), Western Union/MoneyGram (legacy), Zelle-ish domestic rails. Watch FX volatility as a revenue line.</p>
+<h2 id="5-valuation-scenarios">5. Valuation &amp; scenarios</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Rev 2031</th>
+<th>Net margin</th>
+<th>Multiple</th>
+<th>Implied cap</th>
+<th>vs $4.6B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bull</td>
+<td>$4.5B</td>
+<td>12%</td>
+<td>20×</td>
+<td>~$11B</td>
+<td>~2.4×</td>
+</tr>
+<tr>
+<td>Base</td>
+<td>$3.2B</td>
+<td>8%</td>
+<td>15×</td>
+<td>~$3.8B</td>
+<td>~0.8×</td>
+</tr>
+<tr>
+<td>Bear</td>
+<td>$2.0B</td>
+<td>3%</td>
+<td>8×</td>
+<td>~$0.5B</td>
+<td>−90%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>100x-shape probability: low (&lt;5%)</strong> — a payments network compounder (5-10× bull path), not a small-base 100x.</p>
+<h2 id="6-bull-case-catalysts-12-24m">6. Bull case / catalysts (12-24m)</h2>
+<h2 id="-">- -</h2>
+<ul>
+<li>P</li>
+<li>r</li>
+<li>o</li>
+<li>f</li>
+<li>i</li>
+<li>t</li>
+<li>a</li>
+<li>b</li>
+<li>i</li>
+<li>l</li>
+<li>i</li>
+<li>t</li>
+<li>y</li>
+<li></li>
+<li>i</li>
+<li>n</li>
+<li>f</li>
+<li>l</li>
+<li>e</li>
+<li>c</li>
+<li>t</li>
+<li>i</li>
+<li>o</li>
+<li>n</li>
+<li></li>
+<li>p</li>
+<li>r</li>
+<li>i</li>
+<li>n</li>
+<li>t</li>
+<li>e</li>
+<li>d</li>
+<li></li>
+<li>(</li>
+<li>F</li>
+<li>Y</li>
+<li>2</li>
+<li>5</li>
+<li></li>
+<li>N</li>
+<li>I</li>
+<li></li>
+<li>+</li>
+<li>$</li>
+<li>6</li>
+<li>8</li>
+<li>M</li>
+<li>,</li>
+<li></li>
+<li>a</li>
+<li>c</li>
+<li>c</li>
+<li>e</li>
+<li>l</li>
+<li>e</li>
+<li>r</li>
+<li>a</li>
+<li>t</li>
+<li>i</li>
+<li>n</li>
+<li>g</li>
+<li></li>
+<li>q</li>
+<li>u</li>
+<li>a</li>
+<li>r</li>
+<li>t</li>
+<li>e</li>
+<li>r</li>
+<li>l</li>
+<li>y</li>
+<li>)</li>
+<li></li>
+</ul>
+<h2 id="-_1">- -</h2>
+<ul>
+<li>N</li>
+<li>e</li>
+<li>t</li>
+<li></li>
+<li>c</li>
+<li>a</li>
+<li>s</li>
+<li>h</li>
+<li></li>
+<li>+</li>
+<li></li>
+<li>s</li>
+<li>e</li>
+<li>l</li>
+<li>f</li>
+<li>-</li>
+<li>f</li>
+<li>u</li>
+<li>n</li>
+<li>d</li>
+<li>i</li>
+<li>n</li>
+<li>g</li>
+<li></li>
+<li>n</li>
+<li>o</li>
+<li>w</li>
+<li></li>
+</ul>
+<h2 id="-_2">- -</h2>
+<ul>
+<li>C</li>
+<li>o</li>
+<li>r</li>
+<li>r</li>
+<li>i</li>
+<li>d</li>
+<li>o</li>
+<li>r</li>
+<li></li>
+<li>d</li>
+<li>e</li>
+<li>n</li>
+<li>s</li>
+<li>i</li>
+<li>t</li>
+<li>y</li>
+<li></li>
+<li>e</li>
+<li>c</li>
+<li>o</li>
+<li>n</li>
+<li>o</li>
+<li>m</li>
+<li>i</li>
+<li>c</li>
+<li>s</li>
+<li>:</li>
+<li></li>
+<li>e</li>
+<li>a</li>
+<li>c</li>
+<li>h</li>
+<li></li>
+<li>n</li>
+<li>e</li>
+<li>w</li>
+<li></li>
+<li>c</li>
+<li>o</li>
+<li>r</li>
+<li>r</li>
+<li>i</li>
+<li>d</li>
+<li>o</li>
+<li>r</li>
+<li></li>
+<li>m</li>
+<li>a</li>
+<li>r</li>
+<li>g</li>
+<li>i</li>
+<li>n</li>
+<li>-</li>
+<li>a</li>
+<li>c</li>
+<li>c</li>
+<li>r</li>
+<li>e</li>
+<li>t</li>
+<li>i</li>
+<li>v</li>
+<li>e</li>
+</ul>
+<h2 id="7-bear-case-risks">7. Bear case / risks</h2>
+<h2 id="-_3">- -</h2>
+<ul>
+<li>Q</li>
+<li>2</li>
+<li>-</li>
+<li>2</li>
+<li>6</li>
+<li></li>
+<li>N</li>
+<li>I</li>
+<li></li>
+<li>$</li>
+<li>2</li>
+<li>0</li>
+<li>6</li>
+<li>M</li>
+<li></li>
+<li>n</li>
+<li>e</li>
+<li>e</li>
+<li>d</li>
+<li>s</li>
+<li></li>
+<li>d</li>
+<li>e</li>
+<li>c</li>
+<li>o</li>
+<li>m</li>
+<li>p</li>
+<li>o</li>
+<li>s</li>
+<li>i</li>
+<li>t</li>
+<li>i</li>
+<li>o</li>
+<li>n</li>
+<li></li>
+<li>—</li>
+<li></li>
+<li>i</li>
+<li>f</li>
+<li></li>
+<li>t</li>
+<li>a</li>
+<li>x</li>
+<li>-</li>
+<li>o</li>
+<li>n</li>
+<li>e</li>
+<li>-</li>
+<li>o</li>
+<li>f</li>
+<li>f</li>
+<li>,</li>
+<li></li>
+<li>r</li>
+<li>u</li>
+<li>n</li>
+<li>-</li>
+<li>r</li>
+<li>a</li>
+<li>t</li>
+<li>e</li>
+<li></li>
+<li>s</li>
+<li>m</li>
+<li>a</li>
+<li>l</li>
+<li>l</li>
+<li>e</li>
+<li>r</li>
+<li></li>
+<li>t</li>
+<li>h</li>
+<li>a</li>
+<li>n</li>
+<li></li>
+<li>h</li>
+<li>e</li>
+<li>a</li>
+<li>d</li>
+<li>l</li>
+<li>i</li>
+<li>n</li>
+<li>e</li>
+<li></li>
+</ul>
+<h2 id="-_4">- -</h2>
+<ul>
+<li>F</li>
+<li>X</li>
+<li>/</li>
+<li>m</li>
+<li>a</li>
+<li>c</li>
+<li>r</li>
+<li>o</li>
+<li></li>
+<li>s</li>
+<li>e</li>
+<li>n</li>
+<li>s</li>
+<li>i</li>
+<li>t</li>
+<li>i</li>
+<li>v</li>
+<li>i</li>
+<li>t</li>
+<li>y</li>
+<li></li>
+<li>o</li>
+<li>f</li>
+<li></li>
+<li>m</li>
+<li>i</li>
+<li>g</li>
+<li>r</li>
+<li>a</li>
+<li>n</li>
+<li>t</li>
+<li></li>
+<li>f</li>
+<li>l</li>
+<li>o</li>
+<li>w</li>
+<li>s</li>
+<li></li>
+<li>i</li>
+<li>n</li>
+<li></li>
+<li>a</li>
+<li></li>
+<li>r</li>
+<li>e</li>
+<li>c</li>
+<li>e</li>
+<li>s</li>
+<li>s</li>
+<li>i</li>
+<li>o</li>
+<li>n</li>
+<li></li>
+</ul>
+<h2 id="-_5">- -</h2>
+<ul>
+<li>T</li>
+<li>a</li>
+<li>k</li>
+<li>e</li>
+<li>-</li>
+<li>r</li>
+<li>a</li>
+<li>t</li>
+<li>e</li>
+<li></li>
+<li>c</li>
+<li>o</li>
+<li>m</li>
+<li>p</li>
+<li>r</li>
+<li>e</li>
+<li>s</li>
+<li>s</li>
+<li>i</li>
+<li>o</li>
+<li>n</li>
+<li></li>
+<li>r</li>
+<li>i</li>
+<li>s</li>
+<li>k</li>
+<li></li>
+<li>f</li>
+<li>r</li>
+<li>o</li>
+<li>m</li>
+<li></li>
+<li>c</li>
+<li>o</li>
+<li>m</li>
+<li>p</li>
+<li>e</li>
+<li>t</li>
+<li>i</li>
+<li>t</li>
+<li>i</li>
+<li>o</li>
+<li>n</li>
+<li>/</li>
+<li>r</li>
+<li>e</li>
+<li>g</li>
+<li>u</li>
+<li>l</li>
+<li>a</li>
+<li>t</li>
+<li>i</li>
+<li>o</li>
+<li>n</li>
+</ul>
+<h2 id="8-vault-context-review-hooks">8. Vault context &amp; review hooks</h2>
+<p>Batch-2 expansion (2026-10-05) after operator push for wider coverage — captured 192/246 screener names via 3 sort-slices. Review 2027-04-05: volume growth ≥20% and clean NI run-rate. Decompose Q2-26 NI before sizing up.</p>
+</article>
+</div>
+</body>
+</html>

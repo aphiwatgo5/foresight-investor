@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nlst</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../../index.html">📊 Dashboard</a> ·
+    <a href="../../../site-index.html">📚 Site index</a> ·
+    <a href="../../../home.html">🏠 Home</a> ·
+    <a href="../../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;NLST — Netlist, Inc. | Investment Memo (100x-hunt sleeve — special situation)&quot;
+type: research
+ticker: NLST
+date: 2026-10-05
+conviction: MODERATE
+horizon: 3-8y
+sleeve: 100x-hunt
+rating: ACCUMULATE (special situation — trim rule applies)
+pt_12m: &quot;$8-11 (contracted royalties + Micron optionality)&quot;
+tags: [research, memo, 100-bagger, memory, ip-royalty]
+sources: [[qualified-100x-list-2026-10-05]], [[hundred-x-hunt-framework]], [[scan-recap-2026-10-03]]</div>
+<article>
+<h1 id="nlst-netlist-inc-analyst-memo-special-situation">NLST — Netlist, Inc. | Analyst Memo (special situation)</h1>
+<p><strong>FFM Rating: Not Rated</strong> (outside 347 universe; SA quant Strong Buy)<br />
+<strong>Conviction</strong>: MODERATE (litigation-levered, high variance) · <strong>Risk: very high</strong> (appeal/PTAB binaries)<br />
+<strong>Sizing band</strong>: 0.25-0.4% initial quarters; add ONLY on ITC milestones (not price). <strong>Trim half at 2× (rule exception: special situations are not coffee-can names)</strong><br />
+<strong>Invalidation</strong>: Micron wins appeal ($445M overturned); patents invalidated at PTAB; Samsung royalties miss schedule</p>
+<h2 id="1-recommendation">1. Recommendation</h2>
+<p><strong>ACCUMULATE (special situation).</strong> Netlist is a royalty engine on the memory supercycle priced at<br />
+~2.4× just one signed contract: Samsung's 5-year license is worth <strong>up to $897M</strong> ($239M upfront +<br />
+up to $32.9M/qtr) against a $2.14B cap; a <strong>$445M Micron verdict</strong> sits on appeal; live ITC actions<br />
+(2026-09-29) seek import bans on Micron chips used in Google/NVIDIA AI systems. Every AI datacenter<br />
+built expands the royalty base. <strong>100x-shape probability: very low as a multiple; unique as a<br />
+cash-yield shape.</strong> 12m fair value $8-11 (contracted royalties + settlement optionality, net of<br />
+litigation-risk discount).</p>
+<h2 id="2-company-overview">2. Company overview</h2>
+<p>Netlist (Irvine, CA) invented and patents high-density memory-module data/power architectures that<br />
+read on <strong>HBM/DDR5-essential</strong> designs; business model pivoted from manufacturing to licensing/<br />
+litigation. Prior wins: $303M Samsung jury verdict, ~$40M SK hynix cross-license — the enforcement<br />
+record is real, not theoretical.</p>
+<h2 id="3-financial-summary-forecast-royalty-realization-model">3. Financial summary &amp; forecast (royalty-realization model)</h2>
+<p>Sourced: yfinance full statements ($M; fetched 2026-10-05 → <code>scripts/_hist/memo_fundamentals_v2.json</code>); guides from co. IR. n/d = not reported.</p>
+<p><strong>Annual P&amp;L</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>FY2025A</th>
+<th>FY2024A</th>
+<th>FY2023A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>188.6</td>
+<td>147.1</td>
+<td>69.2</td>
+</tr>
+<tr>
+<td>Gross profit</td>
+<td>11.4</td>
+<td>2.9</td>
+<td>2.4</td>
+</tr>
+<tr>
+<td>GM %</td>
+<td>6.1</td>
+<td>2.0</td>
+<td>3.5</td>
+</tr>
+<tr>
+<td>R&amp;D</td>
+<td>n/d</td>
+<td>n/d</td>
+<td>n/d</td>
+</tr>
+<tr>
+<td>SG&amp;A</td>
+<td>33.5</td>
+<td>50.0</td>
+<td>55.0</td>
+</tr>
+<tr>
+<td>Operating income</td>
+<td>-25.5</td>
+<td>-55.2</td>
+<td>-61.8</td>
+</tr>
+<tr>
+<td>Op margin %</td>
+<td>-13.5</td>
+<td>-37.5</td>
+<td>-89.2</td>
+</tr>
+<tr>
+<td>Net income</td>
+<td>-24.8</td>
+<td>-53.9</td>
+<td>-60.4</td>
+</tr>
+<tr>
+<td>Net margin %</td>
+<td>-13.2</td>
+<td>-36.6</td>
+<td>-87.3</td>
+</tr>
+<tr>
+<td>Diluted EPS</td>
+<td>-0.00</td>
+<td>-0.00</td>
+<td>-0.00</td>
+</tr>
+<tr>
+<td>Diluted shares (M)</td>
+<td>286.6</td>
+<td>259.9</td>
+<td>244.1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quarterly trajectory (inflection check)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Revenue</th>
+<th>y/y</th>
+<th>q/q</th>
+<th>GM %</th>
+<th>Net income</th>
+<th>opCF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-06</td>
+<td>109.8</td>
+<td>163.3%</td>
+<td>4.7%</td>
+<td>20.8</td>
+<td>1.4</td>
+<td>3.3</td>
+</tr>
+<tr>
+<td>2026-03</td>
+<td>104.9</td>
+<td>n/d%</td>
+<td>38.5%</td>
+<td>21.3</td>
+<td>8.6</td>
+<td>-21.8</td>
+</tr>
+<tr>
+<td>2025-12</td>
+<td>75.7</td>
+<td>n/d%</td>
+<td>79.3%</td>
+<td>9.1</td>
+<td>-2.2</td>
+<td>13.3</td>
+</tr>
+<tr>
+<td>2025-09</td>
+<td>42.2</td>
+<td>n/d%</td>
+<td>1.2%</td>
+<td>4.4</td>
+<td>-7.0</td>
+<td>-10.3</td>
+</tr>
+<tr>
+<td>2025-06</td>
+<td>41.7</td>
+<td>n/d%</td>
+<td>n/d%</td>
+<td>3.3</td>
+<td>-6.1</td>
+<td>-7.7</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Balance sheet &amp; liquidity (FY2025A):</strong> cash+investments <strong>31.8</strong> · total debt 1.8 · <strong>net cash 30.0</strong> · equity -5.2</p>
+<h2 id="4-industry-outlook">4. Industry outlook</h2>
+<p>Memory is in a validated supercycle (our <a href="../../syntheses/scan-recap-2026-10-03.html">scan-recap-2026-10-03</a> + Citi data): NAND undersupply<br />
+(supply +16.5% vs demand +21.4%), 2026 ASP forecasts raised (DRAM +88%, NAND +74%), HBM ~$54.6B<br />
+market crowding out conventional wafer capacity. IP-licensing is the de-levered way to own it: no<br />
+capex, no cycle-earnings risk — royalty rates ride volume, and every HBM capacity addition (SK hynix<br />
+record profits, +405% op) grows the base. The ITC's import-ban lever against Micron products feeding<br />
+AI datacenters is settlement pressure with a clock (16-18m typical investigations).</p>
+<h2 id="5-valuation-scenarios">5. Valuation &amp; scenarios</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Realized value 5y</th>
+<th>Net to equity</th>
+<th>Implied vs $2.1B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bull</td>
+<td>Samsung $897M + Micron ~$1.2B settlement + new licensees</td>
+<td>~$1.5B+ + go-forward annuity</td>
+<td>2-4×</td>
+</tr>
+<tr>
+<td>Base</td>
+<td>Samsung on schedule + Micron partial</td>
+<td>~$1.0B</td>
+<td>1.5-2×</td>
+</tr>
+<tr>
+<td>Bear</td>
+<td>Appeal loss / PTAB invalidation</td>
+<td>contract残余 only</td>
+<td>−60-80%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-bull-case-catalysts-12-24m">6. Bull case / catalysts (12-24m)</h2>
+<ul>
+<li>ITC institution/initial determinations vs Micron; appellate affirmations</li>
+<li>New licensee signings (every major memory maker unprotected = upside)</li>
+<li>Quarterly Samsung royalty prints establishing the annuity</li>
+<li>HBM capacity additions keep raising the base</li>
+</ul>
+<h2 id="7-bear-case-risks">7. Bear case / risks</h2>
+<ul>
+<li>One appellate/PTAB ruling can reset the equity toward contract残余 value</li>
+<li>±14-58% single-day litigation volatility — sizing is the only defense</li>
+<li>Management capital-allocation history (litigation spend) weaker than operating names</li>
+<li>Memory cycle turn → renegotiation leverage shifts</li>
+</ul>
+<h2 id="8-vault-context-review-hooks">8. Vault context &amp; review hooks</h2>
+<p>Vault tie: AI-compute cluster momentum (semis +15.7%/1m) with FFM cooling on chip names — NLST is the<br />
+IP-levered alternative with different earnings mechanics. <strong>Review: per ruling</strong> (event calendar, not<br />
+dates). Discipline: trim half at 2×; do not let a special situation silently become 3% of book.</p>
+<h2 id="9-qc-red-flag-block-2026-10-05-pass">9. QC red-flag block (2026-10-05 pass)</h2>
+<ul>
+<li><strong>Momentum / discovered-ness (P5):</strong> 1m +9.5% / 12m +444% (short 7.0%)</li>
+<li><strong>RATING UNCHANGED: ACCUMULATE special-situation; +444%/12m = already re-rated — entries at levels, trim-at-2× rule binding</strong></li>
+<li>Data vintage: FY annual statements lag quarterly prints — reconcile cash/runway against latest 10-Q before executing.</li>
+<li>Round-1 error corrected here is logged in <a href="../../syntheses/research-quality-review-2026-10-05.html">research-quality-review-2026-10-05</a>.</li>
+<li><strong>Neutral scorecard: 5/8</strong> (traj 2 · prof 1 · BS 2). The Samsung step-up is VISIBLE in the quarterlies: 42 → 76 → 105 → 110 ($M) with GM 3%→21%; NI positive 2 straight quarters.</li>
+<li><strong>Dilution &amp; relative value (round 4):</strong> Dilution +7.4%/yr (litigation funding era). EV/S <strong>11.2×</strong> / P/S 11.3× on FY25 revenue vs universe median <strong>5.7×</strong> (n=215) — premium.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

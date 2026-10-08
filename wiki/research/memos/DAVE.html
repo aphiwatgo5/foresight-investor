@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dave</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../../index.html">📊 Dashboard</a> ·
+    <a href="../../../site-index.html">📚 Site index</a> ·
+    <a href="../../../home.html">🏠 Home</a> ·
+    <a href="../../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;DAVE — Dave Inc. | Investment Memo (100x-hunt sleeve)&quot;
+type: research
+ticker: DAVE
+date: 2026-10-05
+conviction: HIGH
+horizon: 8-10y
+sleeve: 100x-hunt
+rating: ACCUMULATE (staged)
+pt_12m: &quot;$420-450 (24-25× FY26E EPS, growth-adjusted)&quot;
+tags: [research, memo, 100-bagger, fintech, neobank]
+sources: [[qualified-100x-list-2026-10-05]], [[hundred-x-hunt-framework]]</div>
+<article>
+<h1 id="dave-dave-inc-analyst-memo">DAVE — Dave Inc. | Analyst Memo</h1>
+<p><strong>FFM Rating: Not Rated</strong> (outside 347 universe; SA quant Strong Buy)<br />
+<strong>Conviction</strong>: HIGH (sleeve-relative) · <strong>Risk: high</strong> (subprime-adjacent credit, partnership model)<br />
+<strong>Sizing band</strong>: 0.5% initial, staged thirds; cap 1.0%<br />
+<strong>Invalidation</strong>: ExtraCash originations &lt;15% growth; CashAI credit deterioration; bank-partnership capital constraints; EPS guide cut from $17+</p>
+<h2 id="1-recommendation">1. Recommendation</h2>
+<p><strong>ACCUMULATE (staged thirds).</strong> Dave is the sleeve's second profitable ballast: a neobank for the<br />
+~150M paycheck-to-paycheck US mass market, <strong>already earning $17+ guided EPS</strong> (~20× forward) while<br />
+growing revenue 30%. The AI-underwritten cash-advance flywheel (CashAI v5.5) is a genuine<br />
+category-error: the market files "cash-advance app"; the machine is a data-underwritten consumer bank<br />
+without branches. <strong>100x-shape probability: low (&lt;5%).</strong> 12m fair value $420-450 (24-25× FY26E;<br />
+justified by growth, capped by credit-cycle beta).</p>
+<h2 id="2-company-overview">2. Company overview</h2>
+<p>Dave (founder-CEO Jason Wilk) offers banking-lite + ExtraCash advances (up to ~$1B/q origination<br />
+capacity) to members the banking system prices out; monetization via tips/fees + subscription + float.<br />
+10M+ members (est.). Capital-light via bank partnership.</p>
+<h2 id="3-financial-summary-forecast">3. Financial summary &amp; forecast</h2>
+<p>Sourced: yfinance full statements ($M; fetched 2026-10-05 → <code>scripts/_hist/memo_fundamentals_v2.json</code>); guides from co. IR. n/d = not reported.</p>
+<p><strong>Annual P&amp;L</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>FY2025A</th>
+<th>FY2024A</th>
+<th>FY2023A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>554.2</td>
+<td>347.1</td>
+<td>259.1</td>
+</tr>
+<tr>
+<td>Gross profit</td>
+<td>480.4</td>
+<td>282.0</td>
+<td>197.7</td>
+</tr>
+<tr>
+<td>GM %</td>
+<td>86.7</td>
+<td>81.2</td>
+<td>76.3</td>
+</tr>
+<tr>
+<td>R&amp;D</td>
+<td>n/d</td>
+<td>n/d</td>
+<td>n/d</td>
+</tr>
+<tr>
+<td>SG&amp;A</td>
+<td>169.3</td>
+<td>159.2</td>
+<td>150.0</td>
+</tr>
+<tr>
+<td>Operating income</td>
+<td>186.6</td>
+<td>34.6</td>
+<td>-42.2</td>
+</tr>
+<tr>
+<td>Op margin %</td>
+<td>33.7</td>
+<td>10.0</td>
+<td>-16.3</td>
+</tr>
+<tr>
+<td>Net income</td>
+<td>195.9</td>
+<td>57.9</td>
+<td>-48.5</td>
+</tr>
+<tr>
+<td>Net margin %</td>
+<td>35.3</td>
+<td>16.7</td>
+<td>-18.7</td>
+</tr>
+<tr>
+<td>Diluted EPS</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>-0.00</td>
+</tr>
+<tr>
+<td>Diluted shares (M)</td>
+<td>14.5</td>
+<td>13.8</td>
+<td>11.9</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quarterly trajectory (inflection check)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Revenue</th>
+<th>y/y</th>
+<th>q/q</th>
+<th>GM %</th>
+<th>Net income</th>
+<th>opCF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-06</td>
+<td>170.8</td>
+<td>29.6%</td>
+<td>7.8%</td>
+<td>87.1</td>
+<td>6.7</td>
+<td>68.4</td>
+</tr>
+<tr>
+<td>2026-03</td>
+<td>158.4</td>
+<td>n/d%</td>
+<td>-3.2%</td>
+<td>86.9</td>
+<td>57.9</td>
+<td>82.0</td>
+</tr>
+<tr>
+<td>2025-12</td>
+<td>163.7</td>
+<td>n/d%</td>
+<td>8.6%</td>
+<td>87.9</td>
+<td>65.9</td>
+<td>93.3</td>
+</tr>
+<tr>
+<td>2025-09</td>
+<td>150.7</td>
+<td>n/d%</td>
+<td>14.4%</td>
+<td>86.8</td>
+<td>92.1</td>
+<td>83.2</td>
+</tr>
+<tr>
+<td>2025-06</td>
+<td>131.8</td>
+<td>n/d%</td>
+<td>n/d%</td>
+<td>86.9</td>
+<td>9.0</td>
+<td>68.2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Balance sheet &amp; liquidity (FY2025A):</strong> cash+investments <strong>121.3</strong> · total debt 75.2 · <strong>net cash 46.1</strong> · equity 352.7</p>
+<h2 id="4-industry-outlook">4. Industry outlook</h2>
+<p>US neobanking for underbanked consumers is a structural multi-decade pool (inference: ~$10T consumer<br />
+banking revenue ex-traded to incumbents; subprime-adjacent served worse). The <strong>profitable small-cap<br />
+fintech rotation</strong> is the 2026 tape's feature as mega-cap fatigue sets in (small-cap earnings +44-61%<br />
+projected into 2026). Competitors: SoFi/PayPal (mainstream), EarnIn/Varo (direct); Dave's wedge is<br />
+underwriting depth, not marketing spend. Regulation: bank-partnership scrutiny is the structural risk.</p>
+<h2 id="5-valuation-scenarios-2031-est">5. Valuation &amp; scenarios (~2031, est.)</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Rev CAGR</th>
+<th>EPS 2031</th>
+<th>Multiple</th>
+<th>Implied cap</th>
+<th>vs $4.4B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bull</td>
+<td>28%</td>
+<td>~$70</td>
+<td>18×</td>
+<td>~$16B</td>
+<td>~3.6×</td>
+</tr>
+<tr>
+<td>Base</td>
+<td>22%</td>
+<td>~$46</td>
+<td>15×</td>
+<td>~$9B</td>
+<td>~2×</td>
+</tr>
+<tr>
+<td>Bear (credit cycle)</td>
+<td>8%</td>
+<td>~$25</td>
+<td>8×</td>
+<td>~$3B</td>
+<td>−30%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-bull-case-catalysts-12-24m">6. Bull case / catalysts (12-24m)</h2>
+<ul>
+<li>EPS beats vs $17 guide; originations +49% momentum; product attach (banking, tax, gigs)</li>
+<li>Rates &gt;5% → float income tailwind</li>
+<li>Index inclusion as profitability compounds</li>
+</ul>
+<h2 id="7-bear-case-risks">7. Bear case / risks</h2>
+<ul>
+<li>Recession at 5.28% 10Y hits subprime first — loss curves are the whole thesis</li>
+<li>Bank-partnership model under regulatory spotlight (revenue-recognition history)</li>
+<li>One-product concentration; CAC inflation</li>
+</ul>
+<h2 id="8-vault-context-review-hooks">8. Vault context &amp; review hooks</h2>
+<p>Regime-neutral → staged thirds; profitable-now weighting per the 10-03 flip. <strong>Review 2027-04-05:</strong><br />
+originations growth &gt;25%, EPS ≥ guide. Pair discipline: SEZL+DAVE together ≤1.0% (same credit-factor<br />
+cluster — correlation control per <a href="../../syntheses/portfolio-blueprint.html">portfolio-blueprint</a>).</p>
+<h2 id="9-qc-red-flag-block-2026-10-05-pass">9. QC red-flag block (2026-10-05 pass)</h2>
+<ul>
+<li><strong>Momentum / discovered-ness (P5):</strong> 1m −7.0% / 12m +70.4% (short 20.2%)</li>
+<li><strong>RATING UNCHANGED: ACCUMULATE — fortress actuals (86.7% GM, +$290M opCF)</strong></li>
+<li>Data vintage: FY annual statements lag quarterly prints — reconcile cash/runway against latest 10-Q before executing.</li>
+<li>Round-1 error corrected here is logged in <a href="../../syntheses/research-quality-review-2026-10-05.html">research-quality-review-2026-10-05</a>.</li>
+<li><strong>Neutral scorecard: 6/8</strong> (traj 2 · prof 2 · BS 2 — net cash $46.1M · disc 0 (+70%/12m)). GM rock-stable 86.8-87.9% across 5 quarters.</li>
+<li><strong>Dilution &amp; relative value (round 4):</strong> Dilution moderate +7.1%/yr. EV/S <strong>7.9×</strong> / P/S 8.0× on FY25 revenue vs universe median <strong>5.7×</strong> (n=215) — in-line.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

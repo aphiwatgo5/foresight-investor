@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gold Timing Strategy 2026 10 06</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;Gold — 10-Year Study, Drivers, Correlations &amp; Fee-Aware Timing Strategy (2026-10-06)&quot;
+type: synthesis
+tags: [investing, gold, timing, backtest, strategy, own-book]
+sources: [[commodities-gold-real-assets]], [[trend-radar]], [[macro-regime]]
+date: 2026-10-06
+conviction: 3.5</div>
+<article>
+<h1 id="gold-10-year-study-fee-aware-timing-strategy">Gold — 10-Year Study &amp; Fee-Aware Timing Strategy</h1>
+<p><strong>Bottom line:</strong> Over 2016-09→2026-09 gold returned <strong>+232% (12.7% CAGR, maxDD −25%)</strong> — and <strong>no<br />
+timing rule we tested beat buy-and-hold on CAGR</strong> this decade, because gold's bear years were shallow<br />
+(−2.1%, −3.5%, −0.4%) inside a structural supercycle driven by <strong>central-bank buying &gt;1,000t/yr<br />
+(2022-24) + ETF re-entry (~600t in 2025)</strong> (web: WGC/Reuters/Morgan Stanley, 2026-10-06). What timing<br />
+DOES buy is drawdown control: the best overlay cuts maxDD −23%→−17% for ~3.5pts of CAGR. The<br />
+mechanical recommendation: <strong>core = buy-and-hold; risk overlay = 3m&amp;12m momentum (or TIP real-rate<br />
+filter) checked MONTHLY (fee-efficient); never fund leverage via GDX (−46/−55% maxDD)</strong>. Full engine:<br />
+<code>scripts/gold_timing.py</code>; raw results <code>scripts/_hist/gold_strategy_report.json</code>. Own-book research,<br />
+not advice.</p>
+<h2 id="1-the-10-year-tape-fact-prices_10yparquet">1. The 10-year tape (fact: prices_10y.parquet)</h2>
+<table>
+<thead>
+<tr>
+<th>Year</th>
+<th>Return</th>
+<th></th>
+<th>Year</th>
+<th>Return</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2017</td>
+<td>+13.6%</td>
+<td></td>
+<td>2022</td>
+<td>−0.4%</td>
+</tr>
+<tr>
+<td>2018</td>
+<td>−2.1%</td>
+<td></td>
+<td>2023</td>
+<td>+13.3%</td>
+</tr>
+<tr>
+<td>2019</td>
+<td>+18.9%</td>
+<td></td>
+<td>2024</td>
+<td><strong>+27.5%</strong></td>
+</tr>
+<tr>
+<td>2020</td>
+<td>+24.6%</td>
+<td></td>
+<td>2025</td>
+<td><strong>+64.5%</strong></td>
+</tr>
+<tr>
+<td>2021</td>
+<td>−3.5%</td>
+<td></td>
+<td>2026 YTD</td>
+<td>+3.5% (post-peak wobble; −3.7% w/w at our 10-06 snapshot)</td>
+</tr>
+</tbody>
+</table>
+<p>Cumulative +232% · CAGR 12.7% · maxDD −25.1% · drawdowns &gt;12% in 7 of 10 years (choppy inside uptrend).</p>
+<h2 id="2-key-drivers-data-web">2. Key drivers (data + web)</h2>
+<ol>
+<li><strong>Central-bank demand (structural, dominant 2022-26):</strong> &gt;1,000t/yr 2022-2024 (1,082/1,037/1,045t),<br />
+   863t in 2025 — de-dollarization reserve shift; BRICS+ &gt;50% of purchases (web: WGC/Reuters 2026-10-06).</li>
+<li><strong>ETF flows (marginal price-setter):</strong> absent in 2024, then ~600t IN in 2025 as Western investors<br />
+   re-entered — the accelerant behind +64.5% (web: Morgan Stanley/WGC).</li>
+<li><strong>Real rates (weakened link):</strong> historical corr −0.7 → only −0.2/−0.3 in 2024-26 (web: Wealthion);<br />
+   in OUR data TIP (real-rate bond price) explains most of the monthly variance alongside silver:<br />
+   regression gold ~ TIP+TLT+SPY+SI → <strong>TIP beta +0.68, SI +0.35, R² 0.64</strong> — direction intact<br />
+   (falling real yields lift gold) but magnitude dominated by flows since 2022.</li>
+<li><strong>Dollar &amp; risk events:</strong> COVID crash (gold −9.3% in a week, liquidity squeeze) then QE surge;<br />
+   2022 rate shock chopped (−0.4% year); geopolitical shocks = episodic spikes.</li>
+<li><strong>Momentum structure:</strong> monthly autocorrelation only <strong>+0.09</strong> — trends exist at QUARTER/YEAR<br />
+   scale, not month scale → rules must be slow (this explains why fast filters bleed fees).</li>
+</ol>
+<h2 id="3-correlations-fact-daily-returns-full-period">3. Correlations (fact: daily returns, full period)</h2>
+<table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>ρ(gold)</th>
+<th>Read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Silver</td>
+<td><strong>+0.79</strong></td>
+<td>Same trade, higher beta</td>
+</tr>
+<tr>
+<td>TIP</td>
+<td>+0.27</td>
+<td>Real-yield channel (price↑=yields↓)</td>
+</tr>
+<tr>
+<td>TLT</td>
+<td>+0.20</td>
+<td>Nominal-rate channel, weaker</td>
+</tr>
+<tr>
+<td>HYG</td>
+<td>+0.17</td>
+<td>Mild risk-on linkage</td>
+</tr>
+<tr>
+<td>SPY / QQQ</td>
+<td>+0.11</td>
+<td><strong>Genuine diversifier to equities</strong></td>
+</tr>
+<tr>
+<td>BTC</td>
+<td>+0.09</td>
+<td>NOT a gold substitute/hedge pair</td>
+</tr>
+<tr>
+<td>Oil</td>
+<td>+0.07</td>
+<td>Unrelated</td>
+</tr>
+<tr>
+<td>T-bills</td>
+<td>+0.01</td>
+<td>Cash-neutral</td>
+</tr>
+</tbody>
+</table>
+<p>Portfolio use: gold is the vault's best equity-diversifier among liquid assets; silver is leveraged<br />
+gold (use only as a tactical satellite).</p>
+<h2 id="4-timing-strategy-backtests-weeklymonthly-2016-092026-09-fees-per-side">4. Timing-strategy backtests (weekly/monthly, 2016-09→2026-09, fees per side)</h2>
+<table>
+<thead>
+<tr>
+<th>Strategy</th>
+<th>Gross CAGR</th>
+<th>Sharpe</th>
+<th>maxDD</th>
+<th>Net @10bps</th>
+<th>Net @25bps</th>
+<th>Trades/10y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>S0 Buy &amp; hold</strong></td>
+<td><strong>12.9%</strong></td>
+<td>0.81</td>
+<td>−23.3%</td>
+<td>12.8%</td>
+<td>12.8%</td>
+<td>1</td>
+</tr>
+<tr>
+<td>S1 200DMA trend (weekly)</td>
+<td>9.3%</td>
+<td>0.68</td>
+<td>−22.1%</td>
+<td>8.8%</td>
+<td>8.2%</td>
+<td>42</td>
+</tr>
+<tr>
+<td>S2 12m momentum</td>
+<td>10.0%</td>
+<td>0.69</td>
+<td>−25.0%</td>
+<td>9.6%</td>
+<td>9.2%</td>
+<td>29</td>
+</tr>
+<tr>
+<td><strong>S3 3m&amp;12m combo</strong></td>
+<td>9.9%</td>
+<td><strong>0.78</strong></td>
+<td><strong>−18.0%</strong></td>
+<td>9.4%</td>
+<td>8.7%</td>
+<td>46</td>
+</tr>
+<tr>
+<td><strong>S4 real-rate (TIP&gt;50d)</strong></td>
+<td>9.1%</td>
+<td>0.76</td>
+<td><strong>−17.0%</strong></td>
+<td>8.2%</td>
+<td>6.8%</td>
+<td>88</td>
+</tr>
+<tr>
+<td>S5 dual (trend+real-rate)</td>
+<td>7.6%</td>
+<td>0.68</td>
+<td>−21.8%</td>
+<td>6.7%</td>
+<td>5.4%</td>
+<td>84</td>
+</tr>
+<tr>
+<td>S6 GDX 200DMA (leverage)</td>
+<td>7.7%</td>
+<td>0.25</td>
+<td><strong>−54.6%</strong></td>
+<td>7.3%</td>
+<td>6.6%</td>
+<td>42</td>
+</tr>
+<tr>
+<td>S8 GDX via gold combo</td>
+<td>9.6%</td>
+<td>0.34</td>
+<td>−45.8%</td>
+<td>9.1%</td>
+<td>8.4%</td>
+<td>46</td>
+</tr>
+<tr>
+<td>S7 monthly 200DMA</td>
+<td>9.0%</td>
+<td>0.70</td>
+<td>−30.8%</td>
+<td>8.8%</td>
+<td>8.5%</td>
+<td><strong>18</strong></td>
+</tr>
+</tbody>
+</table>
+<p>(No lookahead — signals act on next bar. Cash = T-bills while out.)</p>
+<h2 id="5-the-strategy-mechanical-fee-aware">5. The strategy (mechanical, fee-aware)</h2>
+<p><strong>Core (the return engine): 80% of the gold sleeve = buy-and-hold.</strong> This decade it beat every rule;<br />
+the supercycle drivers (CB buying, de-dollarization) are still active (<a href="trend-radar.html">trend-radar</a> conviction 3.5).</p>
+<p><strong>Risk overlay (the insurance): 20% tactical, S3 3m&amp;12m momentum checked MONTHLY</strong> (monthly ≈ weekly<br />
+performance at 1/3 the trades → at 25bps/side costs only ~0.1%/yr in fees). Enter the tactical sleeve<br />
+only when both 3m AND 12m returns &gt;0; exit to T-bills when 12m turns negative.</p>
+<p><strong>Optional regime gauge (for sizing the whole sleeve): TIP &gt; 50-day MA</strong> — the real-rate filter had<br />
+the best drawdown (−17%); use it to scale core 100%→60% when real yields surge (TIP below MA), not<br />
+to day-trade.</p>
+<p><strong>What NOT to do (tested, rejected):</strong> GDX/miner "leverage" — both variants halved Sharpe and<br />
+delivered −46/−55% drawdowns; fast weekly single-MA switching — 42 trades × fees with no CAGR edge;<br />
+holding silver as a separate position — ρ 0.79 means it's the same trade with more noise.</p>
+<p><strong>Fee mechanics:</strong> at 10-25bps/side (typical broker+spread on gold ETFs/futures), monthly-cadence<br />
+rules retain ~97% of gross; weekly cadence ~93%; daily would be fee-destroyed. Thai access adds<br />
+spread — use the lowest-TER vehicle (e.g., GLDM/IAU class vs GLD; local gold funds for THB lines).</p>
+<h2 id="6-anatomy-of-the-2025-26-blow-off-crash-weeklymonthly-dissection-added-2026-10-06">6. Anatomy of the 2025-26 blow-off &amp; crash — weekly/monthly dissection (added 2026-10-06)</h2>
+<p>Correcting the record with the full tape (cache to 09-04 + live snapshot 10-03):</p>
+<table>
+<thead>
+<tr>
+<th>Phase</th>
+<th>Window</th>
+<th>Price path</th>
+<th>Monthly returns</th>
+<th>What happened</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Parabolic</strong></td>
+<td>2025-11 → 2026-02</td>
+<td>3,982 → <strong>5,318 peak (29-Jan)</strong> → 5,230 close-Feb</td>
+<td>+5.9, +2.5, +9.0, <strong>+11.0</strong></td>
+<td>ETF ~600t inflows + CB bids; silver DOUBLED 2025 then +50% in Jan alone (BIS: leveraged retail)</td>
+</tr>
+<tr>
+<td><strong>Crash I</strong></td>
+<td>2026-03</td>
+<td>5,230 → 4,648</td>
+<td><strong>−11.1</strong></td>
+<td>Week of 03-20: −9.5%; liquidity deleveraging, real yields to 19y highs, USD surge, <strong>forced liquidation of leveraged specs</strong> — $400B paper value erased in minutes (web: WisdomTree/Morningstar/BIS/Yahoo, 2026-10-06)</td>
+</tr>
+<tr>
+<td>Grind</td>
+<td>2026-04→05</td>
+<td>4,648 → 4,560</td>
+<td>−0.7, −1.2</td>
+<td>Failed rallies; corr gold↔SPY jumped to +0.36 (liquidation-style co-movement)</td>
+</tr>
+<tr>
+<td><strong>Crash II</strong></td>
+<td>2026-06</td>
+<td>4,560 → 4,023</td>
+<td><strong>−11.8</strong></td>
+<td>Fed re-hike cycle; 10Y → 5.28%; real-yield headwind reasserting</td>
+</tr>
+<tr>
+<td>Trough</td>
+<td>2026-07-16</td>
+<td><strong>3,984 = −25.1% from peak</strong></td>
+<td>+0.7</td>
+<td>Silver −42% from peak vs gold −16% (the leveraged side blew out, as always)</td>
+</tr>
+<tr>
+<td>Dead-cat</td>
+<td>2026-08</td>
+<td>→ 4,624</td>
+<td>+9.4</td>
+<td>Short-covering bounce; BTC only −18% peak-to-trough (gold ≠ risk asset in this flush)</td>
+</tr>
+<tr>
+<td>Fade</td>
+<td>2026-09→10-03</td>
+<td>4,477 → <strong>4,162</strong></td>
+<td>+1.0 → live</td>
+<td>Failed to hold 4,600; still −21.7% below peak</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key structural reads from the episode:</strong><br />
+1. It was a <strong>speculative flush, not a fundamentals break</strong> (Morningstar/BIS attribution): CB/ETF demand<br />
+   intact through it — our drivers (§2) unchanged.<br />
+2. <strong>Silver is the tell</strong>: silver −42% vs gold −16% — the parabolic leg was leveraged-money-led; when<br />
+   silver goes vertical (+50%/month), the complex is in blow-off (BIS warning realized).<br />
+3. <strong>Correlation regime shifted during the crash</strong>: gold↔SPY 0.11 full-period → <strong>+0.36 in the slide</strong><br />
+   (deleveraging binds everything); gold↔BTC +0.31. Diversification FAILED exactly when needed — in<br />
+   liquidity events, only cash and the dollar hedge.<br />
+4. <strong>The mechanical overlay worked as designed</strong>: S3 (3m&amp;12m) went flat May→Jul — sidestepping the<br />
+   June −11.8% month entirely — re-entered Aug (+9.4%), and with live $4,162 the 3m leg is negative<br />
+   (−1.3%) → <strong>S3 is FLAT NOW</strong> (12m still +14.1%). 2026 YTD: S3 −2.5% vs B&amp;H −1.2% — no return edge,<br />
+   but the drawdown path avoided the −25% trough ride.</p>
+<h2 id="6b-current-positioning-read-updated-2026-10-06-supersedes-prior-6">6b. Current positioning read (updated 2026-10-06, supersedes prior §6)</h2>
+<ul>
+<li><strong>Tactical (S3): FLAT</strong> — 3m −1.3%, 12m +14.1% (live splice 10-03 $4,162). Prior text claiming<br />
+  "tactical holds" used cache-only data — corrected.</li>
+<li><strong>Core (80%)</strong>: hold, but the TIP real-rate gauge is OFF (real yields surging with 10Y 5.28%) →<br />
+  scale core toward the 60% floor per §5. Add back only on: TIP reclaiming 50dma OR S3 re-firing<br />
+  (3m&gt;0 AND 12m&gt;0).</li>
+<li><strong>Blow-off trip-wire added to the framework</strong>: if silver rises &gt;40% in any rolling month again,<br />
+  treat the whole precious complex as late-cycle — tighten tactical to 12m-only and pre-set trailing<br />
+  exits. (Silver's Jan-2026 +50% was the warning the 2026 crash validated.)</li>
+<li>Invalidation unchanged: WGC CB demand &lt;600t annualized, or 12m momentum &lt;0 → tactical out<br />
+  mechanically (it nearly fired: watch it).</li>
+</ul>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<p>Single decade, one supercycle — trend rules' CAGR deficit is regime-specific (in 2011-2015-style<br />
+bears they massively beat B&H; we lack that in-window). TIP-as-real-rate-proxy is US-centric. Costs<br />
+modeled per-side bps only (no roll/contango for futures, no TER differences). No leverage vehicles<br />
+tested beyond miners. Next hardening: extend to 20y via spot+proxy splice; add DXY when added to the<br />
+price cache; walk-forward the S3 parameters.</p>
+</article>
+</div>
+</body>
+</html>

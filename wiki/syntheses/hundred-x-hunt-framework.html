@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hundred X Hunt Framework</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;The 100x Hunt — A Framework for Finding the Next Decade&#x27;s 100-Baggers&quot;
+type: synthesis
+tags: [investing, framework, 100-bagger, frontier, own-book]
+sources: [[foresight-factor-model]], [[frontier-watch]], [[trend-radar]], [[portfolio-blueprint]]
+date: 2026-10-03
+conviction: 4</div>
+<article>
+<h1 id="the-100x-hunt-a-framework-for-finding-the-next-decades-100-baggers">The 100x Hunt — A Framework for Finding the Next Decade's 100-Baggers</h1>
+<p><strong>Bottom line:</strong> 100x in 10 years = <strong>58.5% CAGR</strong> — it is a power-law lottery ticket that must be<br />
+<em>bought structurally, not found by luck</em>: tiny base + category-error mislabeling + proven unit<br />
+economics + monopoly-in-disguise + owner-operator + funded runway, held coffee-can style in a<br />
+20-30 name basket where 1-2 survivors carry everything. Below: the evidence from our own 10-year<br />
+price data, the pre-rise signature (ช่วงที่หุ้นยังไม่ขึ้น), the masters' lenses, the 5-pillar<br />
+scoring rubric, and today's (2026-10-03) scored candidate basket. <strong>Own-book discipline: this is<br />
+a research framework, never advice; the sleeve it justifies is small and loss-tolerant.</strong></p>
+<h2 id="1-the-math-nobody-escapes">1. The math nobody escapes</h2>
+<table>
+<thead>
+<tr>
+<th>Horizon</th>
+<th>100x requires</th>
+<th>Real-world shape</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10y</td>
+<td>58.5%/yr</td>
+<td>almost always starts &lt; $3B cap</td>
+</tr>
+<tr>
+<td>12y</td>
+<td>47%/yr</td>
+<td>start &lt; $5B typical</td>
+</tr>
+<tr>
+<td>15y</td>
+<td>35%/yr</td>
+<td>quality compounder can do it from $10-20B (rare)</td>
+</tr>
+<tr>
+<td>20y</td>
+<td>26%/yr</td>
+<td>the Buffett/Mayer path — the <em>easy</em> 100x is just TIME × ROIC</td>
+</tr>
+</tbody>
+</table>
+<p>Decomposition — a 100x needs <strong>all three factors visible ex-ante</strong>:<br />
+<code>100x ≈ Revenue 25–50× (TAM capture) × Margin 3–6× (operating leverage: 5%→30%+ op margin) × Multiple 1.5–2× (at most)</code><br />
+(inference — arithmetic identity applied to historical cases). If your candidate needs the<br />
+<em>multiple</em> to do 10x of the work, it is a bubble bet, not a 100x bet.</p>
+<h2 id="2-the-evidence-our-own-universe-2016-09-2026-09-fact-prices_10yparquet">2. The evidence — our own universe, 2016-09 → 2026-09 (fact: prices_10y.parquet)</h2>
+<table>
+<thead>
+<tr>
+<th>Ticker</th>
+<th>×from 10y-low</th>
+<th>Low date</th>
+<th>What it was at the low</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>QUBT</td>
+<td><strong>534×</strong></td>
+<td>2018-07</td>
+<td>microcap quantum, pre-revenue, years of nothing</td>
+</tr>
+<tr>
+<td>NVDA</td>
+<td><strong>158×</strong></td>
+<td>2016-09</td>
+<td>"gaming GPU maker", $8B cap, datacenter still minority</td>
+</tr>
+<tr>
+<td>LEU</td>
+<td><strong>121×</strong></td>
+<td>2018-12</td>
+<td>near-bankruptcy post-ENW/centrifuge failure; only US enricher</td>
+</tr>
+<tr>
+<td>CLS (Celestica)</td>
+<td><strong>110×</strong></td>
+<td>2020-03</td>
+<td>"boring contract manufacturer" at $0.5B; AI-server mix shift</td>
+</tr>
+<tr>
+<td>SEZL (Sezzle)</td>
+<td>89×</td>
+<td>2023-10</td>
+<td>microcap BNPL, profitable, hated sector</td>
+</tr>
+<tr>
+<td>DELTA.BK</td>
+<td>88×</td>
+<td>2020-03</td>
+<td>Thai power-supply maker → the AI-cooling/power play</td>
+</tr>
+<tr>
+<td>AMD</td>
+<td>83×</td>
+<td>2016-09</td>
+<td>$2, near-death, Zen just launching, Lisa Su 2 years in</td>
+</tr>
+<tr>
+<td>MU / ENPH / VRT / SK Hynix</td>
+<td>50-63×</td>
+<td>2016-20</td>
+<td>cycle-trough + structural role</td>
+</tr>
+</tbody>
+</table>
+<p>Plus the classics outside our cache (book knowledge, tagged (b)): Apple 2003, Monster/Hansen,<br />
+Priceline 2008 (−98% first!), Domino's 2009 (debt-crisis pizza), Constellation Software, Tesla<br />
+2010/2019, Netflix 2011-12, Amazon 2001, Axon 2010 (taser→SaaS). Chris Mayer's 365-case study<br />
+(1962-2014) (b) puts medians at: start cap &lt;$500M, ROE ~20%, EPS CAGR 15-20%, <strong>26 years median</strong><br />
+— the 10-year cohort is the extreme tail of his distribution.</p>
+<h2 id="3-the-pre-rise-signature-7-marks">3. The pre-rise signature (ลายเซ็น "ช่วงหุ้นยังไม่ขึ้น") — 7 marks</h2>
+<p>Every case above shows most of these <strong>before</strong> the liftoff:</p>
+<ol>
+<li><strong>Category error (ถูกจัดหมวกผิด).</strong> The market prices the OLD business while the new engine is<br />
+   quietly becoming the majority: NVDA "gaming" (datacenter % climbing), CLS "contract mfg" (AI<br />
+   servers), Axon "taser" (evidence.com SaaS), DELTA.BK "Thai electronics" (AI power/cooling).<br />
+   This is the single richest tell — the 100x is priced as a 2x.</li>
+<li><strong>Small &amp; unwatched.</strong> Start &lt;$3B (10y) or &lt;$10B (15y); &lt;10 analysts; institutional ownership<br />
+   low; no index forced-buying. QUBT/SEZL/LEU all fit. (Bessembinder (b): ~4% of listed stocks<br />
+   create ALL net equity wealth — the tail IS the market.)</li>
+<li><strong>Business inflects before the price.</strong> Revenue accelerating 30%+ at small base, or margin<br />
+   inflecting (AMD Zen, ENPH IQ7), gross margin ≥40% and stable-to-rising, R&amp;D ≥15% of sales —<br />
+   the <em>operating leverage is loaded but unreleased</em> (opex growth &lt;&lt; revenue growth).</li>
+<li><strong>Monopoly in disguise.</strong> ≥40% niche share; network/data/switching-cost/regulatory moat the<br />
+   market models as commodity; today's TAM looks small but is on a 10-100× S-curve &lt;10%<br />
+   penetrated (Thiel's "secret" — true but not consensus).</li>
+<li><strong>Owner-operator + reflexive fuel.</strong> Founder-led with ≥10% skin (Jensen, Musk, Su, Mark<br />
+   Leonard), proven capital allocation, and the Soros loop available: rising price → cheap<br />
+   equity currency → faster compounding. The pre-rise window usually contains <strong>one near-death<br />
+   scare</strong> that washed out weak hands (Tesla '08/'18, NFLX '11, AMD '15, LEU '18, Priceline '01).</li>
+<li><strong>Funded to the inflection.</strong> Net cash or ≥3y runway; burn buys measurable share/S-curve<br />
+   progress. (Not pre-revenue story paper — that's a lottery option, sized differently.)</li>
+<li><strong>Price hasn't told the story.</strong> A 12-36 month flat/down base — often −50-75% drawdown — while<br />
+   fundamentals improve underneath (the divergence); EV/S materially below growth-matched peers.</li>
+</ol>
+<p><strong>What a 100x is NOT:</strong> cyclical peak margins (2021 shipping = 10x round-trip), levered balance<br />
+sheets, story SPACs without unit economics, and — hardest — the <em>already-discovered</em> theme<br />
+darling up 30x (the second 10x is easy; the second 100x isn't).</p>
+<h2 id="4-the-masters-one-line-each-what-each-lens-contributes">4. The masters, one line each (what each lens contributes)</h2>
+<ul>
+<li><strong>Buffett/Munger:</strong> quality × runway × time. You cannot screen for 100x; you screen for<br />
+  durable compounding and <em>let</em> it become 100x. ("Our holding period is forever" = the math above.)</li>
+<li><strong>Dalio:</strong> the paradigm machine — 100x ride the NEXT paradigm while consensus extrapolates the<br />
+  current one. Candidates for 2026-2036: AI physicalization (robotics/autonomy), energy abundance<br />
+  (nuclear/grid), longevity bio, sovereign digital rails, space economy. (<a href="macro-regime.html">macro-regime</a> overlay.)</li>
+<li><strong>Soros:</strong> reflexivity + "first survive." Prefer companies that can USE a rising price as fuel<br />
+  (equity currency, talent magnetism) — and size so no single zero kills you.</li>
+<li><strong>Lynch:</strong> the earnings line — a 10y 100x needs a credible EPS path of 35%+/yr; go see the unit<br />
+  economics (scuttlebutt), not the slide deck.</li>
+<li><strong>Thiel:</strong> monopoly + secret. Contrarian AND right — one without the other is a value trap or a bubble.</li>
+<li><strong>Marks:</strong> cycle position. The best entries feel awful (base/drawdown, "it will never work");<br />
+  if it feels comfortable, you're late.</li>
+<li><strong>Bessembinder (the academic):</strong> power-law outcomes → basket construction, not conviction<br />
+  concentration, at ENTRY.</li>
+</ul>
+<h2 id="5-the-framework-gate-0-five-pillars-score-each-012-pass-710">5. THE FRAMEWORK — Gate 0 + five pillars (score each 0/1/2; pass ≥7/10)</h2>
+<p><strong>Gate 0 (structural, all must pass):</strong> market cap &lt;$10B (hard cap $20B for 15y horizon) ·<br />
+non-biotech OR explicitly sized as a binary option · net cash or ≥3y funded runway · liquid<br />
+enough for the sleeve (&gt;$25M daily $).</p>
+<table>
+<thead>
+<tr>
+<th>Pillar</th>
+<th>0 pts</th>
+<th>2 pts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>P1 S-curve regime (Dalio)</strong></td>
+<td>end-of-cycle demand</td>
+<td>sits on a &lt;10%-penetrated $100B+ forced-spend wave (AI-physical, nuclear, longevity, space, digital rails); wave timing NOW (capex confirmed, revenue not)</td>
+</tr>
+<tr>
+<td><strong>P2 Monopoly in disguise (Thiel/Buffett)</strong></td>
+<td>commodity share</td>
+<td>≥40% niche share or credible path; moat (data/network/switching/regulatory) still priced as commodity; GM ≥50% or +500bps/yr</td>
+</tr>
+<tr>
+<td><strong>P3 Operator + reflexive fuel (Soros)</strong></td>
+<td>hired gun, &lt;2% ownership</td>
+<td>founder ≥10% + proven allocator + equity-currency loop available; survived a near-death event</td>
+</tr>
+<tr>
+<td><strong>P4 Pre-inflection financials (Lynch)</strong></td>
+<td>flat revenue, no margin path</td>
+<td>revenue ≥30%/yr at small base (or margin inflection visible); GM ≥40%; R&amp;D ≥15% sales; opex growth &lt;&lt; revenue growth; unit economics proven at small scale</td>
+</tr>
+<tr>
+<td><strong>P5 Obscurity + category error (Marks)</strong></td>
+<td>crowded consensus name</td>
+<td>&lt;10 analysts; the market files it in the OLD bucket while new engine grows; 12-36m base or −50%+ drawdown with intact fundamentals</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Portfolio rules (the part that actually generates the 100x):</strong><br />
+20-30 names · <strong>0.25-0.5% each at entry</strong> (sleeve 5-8% of book max, inside <a href="portfolio-blueprint.html">portfolio-blueprint</a><br />
+caps) · expect 60-80% of names to round-trip to ~0 · the math only needs 1×100x + a few 3-10x ·<br />
+<strong>pre-commit: never trim the winner before year 8</strong> unless thesis breaks or &gt;70% of addressable<br />
+TAM captured · quarterly re-score; add only on P-score improvement, not price · every name carries<br />
+a written invalidation.</p>
+<h2 id="6-todays-screen-2026-10-03-our-universe-scores-are-inference-from-live-fundamentals">6. Today's screen — 2026-10-03 (our universe; scores are (inference) from live fundamentals)</h2>
+<p>Candidates from the live sub-$60B scan (fact: _instruments.json as-of 2026-10-03), scored on the<br />
+rubric. <strong>This is the hunting list for deep MDAEM work — NOT buy instructions.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Candidate</th>
+<th>Cap</th>
+<th>P1</th>
+<th>P2</th>
+<th>P3</th>
+<th>P4</th>
+<th>P5</th>
+<th>Total</th>
+<th>One-line thesis &amp; invalidation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PL</strong> Planet Labs</td>
+<td>$6.4B</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td><strong>7</strong></td>
+<td>Daily-Earth data moat; defense/intel + ag demand; "satellite co" mislabel. Inval: gov backlog stalls 4+ qtrs</td>
+</tr>
+<tr>
+<td><strong>LUNR</strong> Intuitive Machines</td>
+<td>$2.4B</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td><strong>7</strong></td>
+<td>Near-monopoly commercial lunar (CLPS); small but contracted. Inval: loses flagship NASA tail</td>
+</tr>
+<tr>
+<td><strong>QBTS</strong> D-Wave</td>
+<td>$6.0B</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td><strong>7</strong></td>
+<td>Annealing revenue NOW vs "science project" label; GM 64%. Inval: commercial rev stalls &lt;2y growth</td>
+</tr>
+<tr>
+<td><strong>LEU</strong> Centrus</td>
+<td>$2.8B</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td><strong>6</strong></td>
+<td>Only US HALEU; 2nd ride (121× already). Inval: HALEU contract flow slips</td>
+</tr>
+<tr>
+<td><strong>HSAI</strong> Hesai</td>
+<td>$19.3B</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td><strong>7</strong></td>
+<td>Lidar cost-curve leader, robotaxi volume wave. Inval: ADAS design losses to incumbents</td>
+</tr>
+<tr>
+<td><strong>HIMS</strong> Hims &amp; Hers</td>
+<td>$6.8B</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td><strong>7</strong></td>
+<td>Vertical telehealth compounder, GM 70%. Inval: GLP-1 compounding ban bites</td>
+</tr>
+<tr>
+<td><strong>CRCL</strong> Circle</td>
+<td>$22.1B</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td><strong>6</strong></td>
+<td>Stablecoin rails post-GENIUS; reflexive + regulatory moat; big already. Inval: fee compression to ~0</td>
+</tr>
+<tr>
+<td><strong>ASTS</strong> AST SpaceMobile</td>
+<td>$22.7B</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td><strong>5</strong></td>
+<td>D2D broadband near-monopoly; already re-rated hard. Inval: constellation funding/cadence slips</td>
+</tr>
+<tr>
+<td><strong>UEC</strong> Uranium Energy</td>
+<td>$4.6B</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td><strong>5</strong></td>
+<td>US ISR uranium, non-dilution claim. Inval: spot &lt;$60 sustained</td>
+</tr>
+<tr>
+<td><strong>MP</strong> MP Materials</td>
+<td>$8.4B</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td><strong>6</strong></td>
+<td>Magnets + heavy-REE policy moat. Inval: China price war resumes</td>
+</tr>
+<tr>
+<td><strong>VKTX</strong> Viking</td>
+<td>$3.8B</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td><strong>5</strong></td>
+<td>Oral GLP-1 binary — OPTION sizing only. Inval: Phase-3 oral misses</td>
+</tr>
+<tr>
+<td><strong>BEAM/NTLA</strong></td>
+<td>$2.5B/$1.7B</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+<td><strong>5</strong></td>
+<td>Gene editing left-for-deep-value post-drawdown. Inval: platform proof fails 2y</td>
+</tr>
+</tbody>
+</table>
+<p>Deliberately <strong>excluded</strong>: already-discovered 30-50× darlings (SMCI, MOD, CRDO, CLS-2nd-ride,<br />
+IONQ at $17.7B post-re-rate), commodity cyclicals at peak (FRO/SBLK), and REITs/utilities (math<br />
+forbids). QUBT (534× done) is the case study, not the candidate.</p>
+<h2 id="7-behavior-the-frameworks-real-edge">7. Behavior — the framework's real edge</h2>
+<p>Mayer's data (b): the median 100x took <strong>26 years</strong> and &gt;50% of holders earned &lt;10x on the same<br />
+stock by trading it. The rubric finds <em>candidates</em>; <strong>the coffee-can creates the 100x</strong>. Rules:<br />
+entries are small and boring; adds only on score improvement; no price-based trimming of winners;<br />
+annual re-read of the thesis, not the chart.</p>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<p>Case statistics lean on our 347-name universe (survivor-biased toward themes we already track —<br />
+the true hunt needs a microcap scanner extension to <a href="instrument-universe.html">instrument-universe</a>). Historical<br />
+analogies are (b)=book knowledge, not live-sourced. P-scores are single-analyst inference — each<br />
+Tier-A name needs the full MDAEM pipeline (10 gates + scenario math) before any D-series row.<br />
+Biotech entries violate P4 by design — they ride as options, not compounders.</p>
+<p><strong>Standing offer:</strong> extend the universe with a microcap feed (sub-$3B, &lt;10 analysts) and automate<br />
+this rubric monthly as <code>scripts/hundredx_screen.py</code> — the natural quant companion to<br />
+<a href="../concepts/foresight-factor-model.html">foresight-factor-model</a> (which measures the <em>present</em>) by measuring the <em>possible</em>.</p>
+</article>
+</div>
+</body>
+</html>

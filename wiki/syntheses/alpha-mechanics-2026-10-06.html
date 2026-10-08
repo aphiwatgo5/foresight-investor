@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alpha Mechanics 2026 10 06</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;Alpha Mechanics — Leading Indicators, L/S Rules &amp; the Leverage Math of a 100% CAGR Goal (2026-10-06)&quot;
+type: synthesis
+tags: [investing, alpha, leading-indicators, long-short, leverage, own-book]
+sources: [[quant-alpha-methodology]], [[strategy-tournament-2026-09-06]], [[gold-timing-strategy-2026-10-06]], [[ic-book-2026-10-05]]
+date: 2026-10-06</div>
+<article>
+<h1 id="alpha-mechanics-leading-indicators-the-100-cagr-question">Alpha Mechanics — Leading Indicators &amp; the 100% CAGR Question</h1>
+<p><strong>Bottom line:</strong> Tested on our own 10y cache (332 names, costs 10bps/side, borrow 5.3%): the alpha<br />
+lives in the <strong>LONG cross-sectional book</strong> (12-1 momentum top decile: 39.3% CAGR / Sharpe 1.29;<br />
+QAE invvol book: 52.2% / 1.44), the <strong>leading macro composite (TIP + HYG + SPY-200dma + gold/silver<br />
+ratio, score≥2)</strong> is a tail-cutter (same CAGR, maxDD −35%→−14%), and <strong>shorting momentum losers<br />
+outright destroys alpha</strong> (+17.9% = the shorts drifted UP; L/S spread Sharpe only 0.56). On the goal:<br />
+<strong>100% CAGR needs ~1.8× leverage on the QAE book → 67% vol → P(&gt;50% drawdown in 3y) ≈ 92%</strong> — that<br />
+is ruin math, not a portfolio. The honest ceiling this data supports: <strong>55-75% CAGR at Sharpe ~1.3</strong><br />
+(long factor book + composite gate + ≤1.5× leverage) with the 100x sleeve as the right tail leverage<br />
+can't buy. Engine: <code>scripts/alpha_mechanics.py</code>; results <code>scripts/_hist/alpha_mechanics_report.json</code>.<br />
+Own-book research — not advice.</p>
+<h2 id="1-the-measured-results-2016-09-2026-09-net-of-costs">1. The measured results (2016-09 → 2026-09, net of costs)</h2>
+<p><strong>A. Cross-sectional 12-1 momentum deciles (monthly):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Leg</th>
+<th>CAGR</th>
+<th>Vol</th>
+<th>Sharpe</th>
+<th>maxDD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Long top decile</strong></td>
+<td><strong>39.3%</strong></td>
+<td>30.4%</td>
+<td><strong>1.29</strong></td>
+<td>−24.5%</td>
+</tr>
+<tr>
+<td>Short bottom decile (net borrow)</td>
+<td>+17.9%</td>
+<td>23.6%</td>
+<td>0.76</td>
+<td>−30.5%</td>
+</tr>
+<tr>
+<td>L/S spread</td>
+<td>15.9%</td>
+<td>28.4%</td>
+<td>0.56</td>
+<td>−30.9%</td>
+</tr>
+<tr>
+<td>Universe EW</td>
+<td>22.4%</td>
+<td>17.0%</td>
+<td>1.32</td>
+<td>−19.8%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Finding 1: the short leg LOST money in absolute terms</strong> — momentum losers still drifted up in this<br />
+bull decade. Shorting is a hedge tool, not an alpha engine here.</p>
+<p><strong>B. Leading macro composite → QQQ (weekly):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Rule</th>
+<th>CAGR</th>
+<th>Vol</th>
+<th>Sharpe</th>
+<th>maxDD</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Buy &amp; hold QQQ</td>
+<td>20.9%</td>
+<td>20.4%</td>
+<td>1.03</td>
+<td>−35.1%</td>
+</tr>
+<tr>
+<td><strong>score ≥ 2 of 4</strong></td>
+<td><strong>20.4%</strong></td>
+<td><strong>15.5%</strong></td>
+<td><strong>1.32</strong></td>
+<td><strong>−14.1%</strong></td>
+</tr>
+<tr>
+<td>score ≥ 3 of 4</td>
+<td>14.8%</td>
+<td>12.3%</td>
+<td>1.20</td>
+<td>−13.6%</td>
+</tr>
+</tbody>
+</table>
+<p>Composite = TIP&gt;50dma (real yields falling) + HYG&gt;50dma (credit calm) + SPY&gt;200dma (trend) +<br />
+gold/silver ratio falling (risk appetite). <strong>Finding 2: identical CAGR, drawdown cut 60%</strong> — the<br />
+leading indicator's job is tail control, freeing leverage budget. <strong>Current score: 3/4 (risk-on,<br />
+as of 2026-09-04).</strong></p>
+<p><strong>C. Leverage ladder (QAE invvol book 52.2% CAGR / 36.3% vol, financing 5.3%):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Leverage</th>
+<th>CAGR</th>
+<th>Vol</th>
+<th>P(DD&gt;50% in 3y)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0×</td>
+<td>52.2%</td>
+<td>36%</td>
+<td>73%</td>
+</tr>
+<tr>
+<td>1.5×</td>
+<td>75.6%</td>
+<td>55%</td>
+<td>87%</td>
+</tr>
+<tr>
+<td><strong>2.0×</strong></td>
+<td><strong>99.1%</strong></td>
+<td>73%</td>
+<td><strong>92%</strong></td>
+</tr>
+<tr>
+<td>3.0×</td>
+<td>145.9%</td>
+<td>109%</td>
+<td>97%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Finding 3: 100% CAGR = 92% probability of a &gt;50% drawdown within 3 years.</strong> No position-sizing<br />
+discipline survives that; even Medallion's ~66% gross is the celebrated ceiling.</p>
+<h2 id="2-the-mechanic-stack-what-to-actually-run">2. The mechanic stack (what to actually run)</h2>
+<p><strong>Layer 1 — Alpha core (LONG only):</strong> QAE book (monthly, invvol-weighted) or the simpler 12-1<br />
+momentum top decile. Both live-validated in-repo; run monthly, cost ~10bps × 0.33 turnover.</p>
+<p><strong>Layer 2 — Leading-indicator gate:</strong> composite ≥2 → full risk-on; ≤1 → cut book to 50% and raise<br />
+cash (T-bills 4.3% pays you to wait). This converts −35% tails into −14% tails at zero CAGR cost —<br />
+it is what makes modest leverage survivable.</p>
+<p><strong>Layer 3 — Leverage ≤1.5×</strong> (futures/margin, financing 5.3%): realistic outcome band <strong>55-75% CAGR,<br />
+maxDD ~40-50%</strong> — the highest survivable gear this data supports. 2×+ = ruin math.</p>
+<p><strong>Layer 4 — Right tail the leverage can't buy:</strong> the <a href="ic-book-2026-10-05.html">ic-book-2026-10-05</a> 100x sleeve (14 names,<br />
+≤0.5% each) — convexity from 9/9-scored microcaps (FENC/ASIC tier), not from leverage.</p>
+<p><strong>Layer 5 — Shorts, correctly used:</strong> never naked momentum-losers (tested: they drift up). Only<br />
+(a) index/beta shorts when composite ≤1 (hedging Layer 1), (b) event-driven single-name shorts on<br />
+Δ-layer invalidations (e.g., GRAL denial-type binaries), sized ≤1% each with borrow 5.3% priced in.</p>
+<h2 id="3-leading-indicator-catalog-measured-vs-event-based">3. Leading-indicator catalog (measured vs event-based)</h2>
+<table>
+<thead>
+<tr>
+<th>Indicator</th>
+<th>Type</th>
+<th>Lead behavior</th>
+<th>Where it lives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TIP vs 50dma</td>
+<td>macro, weekly</td>
+<td>real-yield turn → 1-3m risk shift</td>
+<td>composite (measured 1.32 Sharpe)</td>
+</tr>
+<tr>
+<td>HYG vs 50dma</td>
+<td>credit, weekly</td>
+<td>stress early-warning</td>
+<td>composite</td>
+</tr>
+<tr>
+<td>SPY vs 200dma</td>
+<td>trend</td>
+<td>regime floor</td>
+<td>composite</td>
+</tr>
+<tr>
+<td>Gold/silver ratio slope</td>
+<td>risk-appetite</td>
+<td>silver leads blow-offs (2026 proof)</td>
+<td>composite + gold trip-wire</td>
+</tr>
+<tr>
+<td>12-1 momentum rank</td>
+<td>cross-sectional</td>
+<td>1m predictive (our IC study)</td>
+<td>QAE/sleeves</td>
+</tr>
+<tr>
+<td>Δ-layer rating flips</td>
+<td>event</td>
+<td>FFM re-scores on fresh data</td>
+<td>workbench ⚡ tab (journal since 10-03)</td>
+</tr>
+<tr>
+<td>SA quant re-grades</td>
+<td>event</td>
+<td>external validation flips</td>
+<td>sa_grades.json (48 names, monthly)</td>
+</tr>
+<tr>
+<td>Monitor alerts</td>
+<td>event</td>
+<td>sleeve-exit/entry triggers</td>
+<td>monitor_alerts.json (weekly)</td>
+</tr>
+<tr>
+<td>WGC CB demand</td>
+<td>fundamental, monthly</td>
+<td>structural gold bid</td>
+<td>manual (web), monthly</td>
+</tr>
+<tr>
+<td>Silver +40%/mo</td>
+<td>blow-off</td>
+<td>crash precursor (validated 2026)</td>
+<td>gold strategy trip-wire</td>
+</tr>
+</tbody>
+</table>
+<h2 id="4-the-honest-expectation-ladder">4. The honest expectation ladder</h2>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Expected CAGR (this regime)</th>
+<th>Ruin risk</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Index B&amp;H QQQ</td>
+<td>~20%</td>
+<td>low</td>
+</tr>
+<tr>
+<td>+ composite gate</td>
+<td>~20% @ half the tail</td>
+<td>low</td>
+</tr>
+<tr>
+<td>Momentum decile long</td>
+<td>~39%</td>
+<td>moderate (−25% DDs)</td>
+</tr>
+<tr>
+<td>QAE invvol book</td>
+<td>~52%</td>
+<td>high (−45% historical-type DDs)</td>
+</tr>
+<tr>
+<td>+ gate + 1.25-1.5×</td>
+<td><strong>55-75%</strong></td>
+<td>high-but-survivable</td>
+</tr>
+<tr>
+<td>2× on anything</td>
+<td>~100% nominal</td>
+<td><strong>92% chance of &gt;50% DD — rejected</strong></td>
+</tr>
+<tr>
+<td>100x sleeve (0.5% × 14)</td>
+<td>0-500%+, power-law</td>
+<td>sleeve-bounded</td>
+</tr>
+</tbody>
+</table>
+<p>Goal calibration: <strong>100%/yr compounded = 1,024× per decade</strong> — no audited fund has done it. The<br />
+mechanic stack above targets the highest <em>repeatable</em> number (55-75%) + lottery convexity, with the<br />
+compound curve doing the rest.</p>
+<h2 id="confidence-gaps">Confidence &amp; gaps</h2>
+<p>Decade includes the 2025-26 supercycle (inflates all CAGRs); tournament walk-forward Sharpe was<br />
+0.98 two-engine — treat Layer-1 numbers as regime-optimistic. Composite tested on QQQ only; shorts<br />
+untested event-driven (journal too young); borrow/financing assumed flat 5.3%; no options convexity<br />
+modeled (a calls-overlay variant is the natural next test — replaces leverage with defined-risk).</p>
+<hr />
+<h2 id="5-full-stack-10-year-backtest-added-2026-10-06-with-the-honesty-ledger">5. Full-stack 10-year backtest (added 2026-10-06) — with the honesty ledger</h2>
+<p>Engine: <code>scripts/backtest_mechanic_stack.py</code> (monthly 12-1 momentum top-decile book × weekly<br />
+composite gate × leverage variants + hedge-short; costs 10bps/side, borrow 5.3%, cash 4.3%).<br />
+<strong>QC during the run caught and fixed a 12m-momentum look-ahead (now 12-1); the survivorship bias<br />
+below could NOT be fixed and is priced in the read.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Variant</th>
+<th>CAGR</th>
+<th>Vol</th>
+<th>Sharpe</th>
+<th>maxDD</th>
+<th>Worst year</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>V1 book raw 1×</td>
+<td>48.6%</td>
+<td>34.9%</td>
+<td>1.39</td>
+<td>−27.8%</td>
+<td>−16.8%</td>
+</tr>
+<tr>
+<td>V2 book + gate 1×</td>
+<td>57.1%</td>
+<td>31.3%</td>
+<td>1.83</td>
+<td>−19.5%</td>
+<td>+6.1%</td>
+</tr>
+<tr>
+<td><strong>V3 + hedge-short 1×</strong></td>
+<td><strong>71.9%</strong></td>
+<td>29.3%</td>
+<td><strong>2.46</strong></td>
+<td><strong>−14.3%</strong></td>
+<td><strong>+7.9%</strong></td>
+</tr>
+<tr>
+<td>V4 gate 1.25×</td>
+<td>71.1%</td>
+<td>39.1%</td>
+<td>1.82</td>
+<td>−24.4%</td>
+<td>+5.8%</td>
+</tr>
+<tr>
+<td>V5 gate 1.5×</td>
+<td>85.3%</td>
+<td>46.9%</td>
+<td>1.82</td>
+<td>−29.1%</td>
+<td>+5.3%</td>
+</tr>
+<tr>
+<td>SPY</td>
+<td>14.8%</td>
+<td>16.1%</td>
+<td>0.92</td>
+<td>−23.9%</td>
+<td>−18.2%</td>
+</tr>
+<tr>
+<td>QQQ</td>
+<td>19.8%</td>
+<td>19.9%</td>
+<td>0.99</td>
+<td>−32.6%</td>
+<td>−32.6%</td>
+</tr>
+<tr>
+<td><strong>EW universe</strong></td>
+<td><strong>22.4%</strong></td>
+<td>17.0%</td>
+<td>1.32</td>
+<td>−19.8%</td>
+<td>−14.1%</td>
+</tr>
+</tbody>
+</table>
+<p>Yearly (V3 / SPY): 2018 <strong>+36.7/−4.6</strong> · 2019 +42.4/+31.2 · 2020 +129.9/+18.3 · 2021 +47.4/+28.7 ·<br />
+2022 <strong>+62.8/−18.2</strong> · 2023 +43.4/+26.2 · 2024 +117.2/+24.9 · 2025 +90.6/+17.7 · 2026 YTD +82.6/+13.5.</p>
+<h3 id="the-honesty-ledger-read-before-believing-any-number-above">The honesty ledger (read before believing any number above)</h3>
+<ol>
+<li><strong>Survivorship bias, quantified:</strong> the 332-name universe was selected in 2026 from themes that<br />
+   already won — EW universe beats SPY by <strong>+7.6%/yr for free</strong>. That artifact flows into every<br />
+   variant (momentum concentrates the fastest winners inside a winner-picked pool → 2020/2024's<br />
+   +118-130% years are fantasy-adjacent). <strong>Deflated expectation: subtract ≥8-15pts from every CAGR</strong><br />
+   → realistic book+gate ≈ <strong>35-50%</strong>, V3 ≈ <strong>50-60%</strong>, V5 ≈ <strong>65-75%</strong> — IF the factor edge itself<br />
+   survives outside the biased pool.</li>
+<li><strong>What IS bias-robust (level-independent):</strong> the DELTAS. Gate vs no-gate: +8.5pts CAGR and maxDD<br />
+   −27.8→−19.5 at lower vol. Hedge-short vs no hedge in bear years: 2018 +36.7 vs V2's +13ish, 2022<br />
+   +62.8 — defensive structure works regardless of universe. The ordering V3&gt;V2&gt;V1 and the gate's<br />
+   tail-cutting are the transferable findings.</li>
+<li>Look-ahead audit: 12m→12-1 fix lowered V1 by 2.6pts only (the study's other numbers unchanged);<br />
+   monthly signals act on next bar; no same-bar fills.</li>
+<li>Regime note: even unbiased, the window contains the 2025-26 supercycle.</li>
+</ol>
+<h3 id="verdict-on-the-100-goal-final">Verdict on the 100% goal, final</h3>
+<p>V5 (1.5×) printed 85.3% raw / ~65-75% bias-adjusted with −29% maxDD — the closest survivable<br />
+configuration to the 100% goal this data supports. Anything past that needs the lottery sleeve, not<br />
+leverage. The stack to run (pending operator go): <strong>V3 at 1× as the core gear, V5 as the aggressive<br />
+gear, both gated; shorts only as the hedge leg.</strong></p>
+<h2 id="6-2026-action-log-what-the-indicators-actually-said-dated-replayed">6. 2026 action log — what the indicators actually said (dated, replayed)</h2>
+<p><strong>Gate (exposure) switches:</strong> CUT 01-02→FULL baseline… <strong>03-13 score 1/4 CUT</strong> (one week BEFORE the<br />
+03-20 gold/market crash week) → FULL 04-10 (4/4) → <strong>06-05 CUT</strong> (at the June slide's start) → FULL<br />
+06-12 → CUT 07-24 (pre-trough) → FULL 08-07 → FULL since (last reading 09-04: 3/4).</p>
+<p><strong>Momentum book rebalances (top decile, monthly) — key rotates:</strong> Feb IN uranium complex (URA/CCJ/<br />
+UEC/DNN), OUT AI mega-caps · Apr IN SNDK/VRT/DELTA.BK · <strong>May: SOLD ALL precious-metals names (GDX/<br />
+GDXJ/NEM/SLV/SI=F) + IN semis (AMAT/AMD/INTC/CRDO)</strong> — the engine exited metals a month BEFORE gold's<br />
+June −11.8% · Jun IN ARM/DELL/MRVL/SOXX/XSD · Sep IN cyber (CRWD/PANW/FTNT) + PSX/SCCO (energy) ·<br />
+Oct IN CAT/KLAC/VRT, OUT miners again (NEM/COPX/GDXJ). Current book (33 names): semis+AI hardware<br />
+core (AMAT AMD ASML KLAC LRCX MU MRVL DELL SNDK INTC SOXX SOXQ), cyber (CRWD FTNT PANW), energy<br />
+(ECO PSX SCCO GOLD), healthcare picks (CNC ILMN IRWD), GSAT/PL/LUNR-adjacent.</p>
+<p><strong>Gold tactical S3:</strong> SELL 03-27 → BUY 04-03 → SELL 04-24 (out for the entire June crash) → BUY<br />
+08-21 → SELL 08-28 → BUY 09-04 → <strong>FLAT on live splice 10-03</strong> (3m −1.3%).</p>
+<p><strong>Standing orders (as of latest data, 09-04 cache + 10-03 live):</strong> exposure FULL (gate 3/4 — but<br />
+10Y 5.28% argues respect the Oct read); book = the 33 names above; gold tactical FLAT; hedge-short<br />
+disarmed (score ≥2). Re-check weekly; V3 rules bind.</p>
+</article>
+</div>
+</body>
+</html>

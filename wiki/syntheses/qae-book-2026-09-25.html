@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qae Book 2026 09 25</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: QAE book — 2026-09-25 (vol-targeted momentum, regime risk-on)
+type: synthesis
+tags: [quant, qae, book, own-book]
+sources: [[quant-alpha-methodology]], [[strategy-tournament-2026-09-06]], [[qae-book-2026-09-06]]
+date: 2026-09-26</div>
+<article>
+<h1 id="qae-book-2026-09-25-vol-targeted-momentum-regime-risk-on">QAE book — 2026-09-25 (vol-targeted momentum, regime risk-on)</h1>
+<p><strong>Bottom line:</strong> Own-book decision support. Monthly ALPHA refresh of the QAE v2 system (vol-targeted 15%-momentum + dual-momentum engine). Regime <strong>risk-on</strong> (SPY 771, +7.9% above 200dma, VIX 14.9). Composite stays <strong>ON</strong>: <code>mom_12_1</code> rank-IC +0.030 (t=1.18, 63d IC +0.045) and <code>trend_q</code> +0.029 — the engine's own invalidation (rolling-negative mom_12_1) is nowhere near firing. Long gross <strong>24%</strong> at the 10% vol target, book beta 0.42 — the system stays small because 21d realized vol is low and it sizes inversely.</p>
+<h2 id="the-book-top-15-ranked-longs">The book (top-15 ranked longs)</h2>
+<p>FFM-<strong>confirmed</strong> (both engines agree): <strong>AMD 1.4% · MU 1.3% · MRVL 1.2% · HPE 1.5% · ECO 1.9% · DELL 1.2% · PANW 1.6%</strong> — an AI-capex + tanker-core book. Momentum-only (QAE likes, FFM doesn't): ARKG, ILMN, INTC, FTNT, XBI, COPX, COHR(mixed→Buy). Full sizing/stops in <code>scripts/_hist/qae_report.md</code>; every position carries a 2.5×ATR stop (−6.8% to −18.4% below market).</p>
+<p>Theme exposure of the fully-invested ranking: biotech 24% · semis 22% · AI-infra 17% · cyber 15% — the cap engine trims these to ≤3/theme in the sized book.</p>
+<h2 id="backtest-note-honest">Backtest note (honest)</h2>
+<p>This window's costed walk-forward: vol-targeted book <strong>Sharpe 1.505 / MaxDD −3.8%</strong> vs <strong>SPY Sharpe 2.018 / −5.9%</strong> — the S&amp;P beat the system on Sharpe over 2021-2026's epic bull. The system's edge is drawdown control (−3.8% vs SPY's −5.9% here; −23% tournament-system worst), not bull-market outperformance. Keep expectations calibrated; see <a href="strategy-tournament-2026-09-06.html">strategy-tournament-2026-09-06</a> luck band.</p>
+<h2 id="p-call-filed-to-prediction-ledger">P-call (filed to <a href="prediction-ledger.html">prediction-ledger</a>)</h2>
+<p><strong>P32:</strong> The 2026-09-25 QAE book's FFM-confirmed tranche (AMD/MU/MRVL/HPE/DELL/PANW/ECO) beats SPY total return over the next 63 trading days. <em>Fail:</em> tranche return &lt; SPY − 2pts. <em>Resolve-by:</em> 2026-12-24.</p>
+<h2 id="signals-to-watch">Signals to watch</h2>
+<ul>
+<li>Flip to defensive: SPY &lt; 200dma (currently +7.9% above) or VIX &gt; 25.</li>
+<li>Engine invalidation: <code>mom_12_1</code> 12m-rolling IC &lt; 0 → composite OFF (not close: +0.030 now).</li>
+<li>Stop cascade: 3+ names hitting 2.5×ATR stops in one week = regime break, halve gross.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

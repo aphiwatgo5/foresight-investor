@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sezl</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../../index.html">📊 Dashboard</a> ·
+    <a href="../../../site-index.html">📚 Site index</a> ·
+    <a href="../../../home.html">🏠 Home</a> ·
+    <a href="../../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: &quot;SEZL — Sezzle Inc. | Investment Memo (100x-hunt sleeve)&quot;
+type: research
+ticker: SEZL
+date: 2026-10-05
+conviction: HIGH
+horizon: 8-10y
+sleeve: 100x-hunt
+rating: ACCUMULATE (staged)
+pt_12m: &quot;$130-145 (17-19× FY27E adj-EPS)&quot;
+tags: [research, memo, 100-bagger, fintech]
+sources: [[qualified-100x-list-2026-10-05]], [[hundred-x-hunt-framework]], [[sa-microcap-100x-screen-2026-10-04]]</div>
+<article>
+<h1 id="sezl-sezzle-inc-analyst-memo">SEZL — Sezzle Inc. | Analyst Memo</h1>
+<p><strong>FFM Rating: Hold</strong> <em>(in-universe auto-note reads Sell under the 10-02 re-score — tension documented §8)</em><br />
+<strong>Conviction</strong>: HIGH (sleeve-relative) · <strong>Risk: medium-high</strong> (consumer credit, regulation)<br />
+<strong>Sizing band</strong>: 0.5% initial, staged thirds over 8 weeks; cap 1.0% until re-acceleration confirms<br />
+<strong>Invalidation</strong>: subscriber growth &lt;20% y/y; credit losses &gt;150bps above guide; adj-NI guide cut; late-fee regulation re-emerges</p>
+<h2 id="1-recommendation">1. Recommendation</h2>
+<p><strong>ACCUMULATE (staged thirds).</strong> Sezzle is the sleeve's profitable ballast: a BNPL micro-lender that<br />
+already delivers the fintech triple — ~30-35% guided revenue growth, ~27% net margin, positive GAAP<br />
+earnings — at ~20× guided adj-earnings. Vault-history honesty: Sezzle is one of our own <strong>89× case<br />
+studies</strong> (2023-10 low); this is explicitly a <em>second-ride</em> entry underwritten as a 5-10× compounder,<br />
+not another 89×. <strong>100x-shape probability: low (&lt;5%).</strong> 12-month fair value $130-145 (17-19× FY27E<br />
+adj-EPS of ~$7.6 base case, est.).</p>
+<h2 id="2-company-overview">2. Company overview</h2>
+<p>Minneapolis-based BNPL platform targeting underbanked US consumers; monetizes through <strong>merchant fees<br />
++ consumer subscriptions</strong> (premium tiers) rather than merchant-subsidized growth. ~4.5M+ active<br />
+users (est.); the subscription mix shift is the margin engine. SA quant: Strong Buy 4.81.</p>
+<h2 id="3-financial-summary-forecast">3. Financial summary &amp; forecast</h2>
+<p>Sourced: yfinance full statements ($M; fetched 2026-10-05 → <code>scripts/_hist/memo_fundamentals_v2.json</code>); guides from co. IR. n/d = not reported.</p>
+<p><strong>Annual P&amp;L</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>FY2025A</th>
+<th>FY2024A</th>
+<th>FY2023A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Revenue</td>
+<td>450.3</td>
+<td>271.1</td>
+<td>159.4</td>
+</tr>
+<tr>
+<td>Gross profit</td>
+<td>315.5</td>
+<td>154.2</td>
+<td>73.8</td>
+</tr>
+<tr>
+<td>GM %</td>
+<td>70.1</td>
+<td>56.9</td>
+<td>46.3</td>
+</tr>
+<tr>
+<td>R&amp;D</td>
+<td>n/d</td>
+<td>n/d</td>
+<td>n/d</td>
+</tr>
+<tr>
+<td>SG&amp;A</td>
+<td>49.0</td>
+<td>21.1</td>
+<td>20.6</td>
+</tr>
+<tr>
+<td>Operating income</td>
+<td>162.8</td>
+<td>68.5</td>
+<td>22.2</td>
+</tr>
+<tr>
+<td>Op margin %</td>
+<td>36.1</td>
+<td>25.3</td>
+<td>13.9</td>
+</tr>
+<tr>
+<td>Net income</td>
+<td>133.1</td>
+<td>78.5</td>
+<td>7.1</td>
+</tr>
+<tr>
+<td>Net margin %</td>
+<td>29.6</td>
+<td>29.0</td>
+<td>4.5</td>
+</tr>
+<tr>
+<td>Diluted EPS</td>
+<td>0.00</td>
+<td>0.00</td>
+<td>0.00</td>
+</tr>
+<tr>
+<td>Diluted shares (M)</td>
+<td>35.7</td>
+<td>35.9</td>
+<td>34.1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Quarterly trajectory (inflection check)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Quarter</th>
+<th>Revenue</th>
+<th>y/y</th>
+<th>q/q</th>
+<th>GM %</th>
+<th>Net income</th>
+<th>opCF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026-06</td>
+<td>149.7</td>
+<td>51.7%</td>
+<td>10.4%</td>
+<td>74.1</td>
+<td>40.8</td>
+<td>52.2</td>
+</tr>
+<tr>
+<td>2026-03</td>
+<td>135.5</td>
+<td>n/d%</td>
+<td>4.4%</td>
+<td>73.3</td>
+<td>51.3</td>
+<td>89.0</td>
+</tr>
+<tr>
+<td>2025-12</td>
+<td>129.9</td>
+<td>n/d%</td>
+<td>11.2%</td>
+<td>71.9</td>
+<td>42.7</td>
+<td>154.3</td>
+</tr>
+<tr>
+<td>2025-09</td>
+<td>116.8</td>
+<td>n/d%</td>
+<td>18.3%</td>
+<td>69.5</td>
+<td>26.7</td>
+<td>-19.9</td>
+</tr>
+<tr>
+<td>2025-06</td>
+<td>98.7</td>
+<td>n/d%</td>
+<td>n/d%</td>
+<td>73.7</td>
+<td>27.6</td>
+<td>23.1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Balance sheet &amp; liquidity (FY2025A):</strong> cash+investments <strong>64.0</strong> · total debt 140.8 · <strong>net cash -76.8</strong> · equity 169.8</p>
+<h2 id="4-industry-outlook">4. Industry outlook</h2>
+<p>BNPL global GMV is a ~$100B+ pool growing double-digits (est./inference), but the profitable tier is<br />
+narrowing: subsidy-model players consolidated while subscription/lender-economics models (Sezzle) took<br />
+share. Post-regime-flip tape (10Y 5.28%, F&amp;G 31) rewards <strong>earnings-now fintechs</strong> — the profitable<br />
+small-cap fintech rotation (SEZL/DAVE cited vs PayPal/SoFi). Regulatory watch: CFPB late-fee rules are<br />
+the structural overhang; Sezzle's subscription model is partially insulated.</p>
+<h2 id="5-valuation-scenarios-2031-est">5. Valuation &amp; scenarios (~2031, est.)</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Rev CAGR</th>
+<th>Net margin</th>
+<th>Multiple</th>
+<th>Implied cap</th>
+<th>vs $3.6B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bull</td>
+<td>28%</td>
+<td>30%</td>
+<td>22×</td>
+<td>~$14B</td>
+<td>~4×</td>
+</tr>
+<tr>
+<td>Base</td>
+<td>22%</td>
+<td>26%</td>
+<td>17×</td>
+<td>~$7B</td>
+<td>~2×</td>
+</tr>
+<tr>
+<td>Bear</td>
+<td>10%</td>
+<td>18%</td>
+<td>10×</td>
+<td>~$2B</td>
+<td>−45%</td>
+</tr>
+</tbody>
+</table>
+<p>At ~20× 2026E adj-earnings for 30%+ growth, base-case IRR ~15%/yr — a compounder with margin of<br />
+safety at the bear multiple (10× on $180M NI ≈ $1.8B = −50%; hence staged entries, not lump).</p>
+<h2 id="6-bull-case-catalysts-12-24m">6. Bull case / catalysts (12-24m)</h2>
+<ul>
+<li>Two guidance raises in 2026; adj-NI ~$180M target ≈ 20× for 30%+ growth</li>
+<li>Subscription mix = recurring, capital-light, credit-dilutive revenue</li>
+<li>First buyback / small-cap index inclusion; premium ARPU expansion</li>
+<li>Management compounded through one full credit cycle already (89× alumni)</li>
+</ul>
+<h2 id="7-bear-case-risks">7. Bear case / risks</h2>
+<ul>
+<li>FFM momentum reads Sell post-regime-flip — near-term tape disagrees (respect the 10-03 memo rule:<br />
+  factor view tradeable, narrative flag-only)</li>
+<li>Late-fee regulation compresses the model; consumer credit cycle turns at 5%+ rates</li>
+<li>Second-ride statistics: post-89× bases rarely repeat; GMV growth deceleration</li>
+</ul>
+<h2 id="8-vault-context-review-hooks">8. Vault context &amp; review hooks</h2>
+<p>6-month vault knowledge bound in: regime flip bull→neutral (10-03) → staged entries; blueprint caps<br />
+(name ≤8%, sleeve ≤8%) comfortably respected at 0.5%; post-mortem #1 lesson — add tranches only on FFM<br />
+confirmation if it flips Buy. <strong>Review 2027-04-05:</strong> subscribers &gt;25%? guidance trajectory? If credit<br />
+losses rise with unemployment claims, exit discipline overrides thesis.</p>
+<h2 id="9-qc-red-flag-block-2026-10-05-pass">9. QC red-flag block (2026-10-05 pass)</h2>
+<ul>
+<li><strong>Momentum / discovered-ness (P5):</strong> 1m −11.6% / 12m +25.6% (−43% off high; short 26.4% — closest to 'pre-rise' in the sleeve)</li>
+<li><strong>RATING UNCHANGED: ACCUMULATE — actuals REINFORCE (70% GM, 21% FCF margin)</strong></li>
+<li>Data vintage: FY annual statements lag quarterly prints — reconcile cash/runway against latest 10-Q before executing.</li>
+<li>Round-1 error corrected here is logged in <a href="../../syntheses/research-quality-review-2026-10-05.html">research-quality-review-2026-10-05</a>.</li>
+<li><strong>Round-3 flag: net DEBT −$76.8M</strong> (cash+inv $64.0M vs debt $140.8M — credit/receivable facilities) — the sleeve's only leveraged balance sheet; profitable every quarter (opCF+ in 4 of 5) offsets, but caps position at 0.5%.</li>
+<li><strong>Neutral scorecard: 6/8</strong> (traj 2 · prof 2 · BS 1 · disc 1 — second-least-discovered name).</li>
+<li><strong>Dilution &amp; relative value (round 4):</strong> Dilution mild +2.3%/yr. EV/S <strong>8.2×</strong> / P/S 8.0× on FY25 revenue vs universe median <strong>5.7×</strong> (n=215) — in-line.</li>
+</ul>
+</article>
+</div>
+</body>
+</html>

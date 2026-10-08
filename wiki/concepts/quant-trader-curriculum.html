@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quant Trader Curriculum</title>
+<style>
+  :root { --fg:#1a1a1a; --muted:#666; --bg:#fafafa; --card:#fff; --accent:#0366d6; --border:#e1e4e8; --code:#f6f8fa; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+         line-height: 1.6; color: var(--fg); background: var(--bg); margin: 0; padding: 0; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 32px 24px 80px; }
+  header { border-bottom: 1px solid var(--border); padding: 16px 0; margin-bottom: 28px;
+            font-size: 13px; color: var(--muted); }
+  header a { color: var(--accent); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+  h1 { font-size: 1.9em; border-bottom: 1px solid var(--border); padding-bottom: .3em; margin-top: 0; }
+  h2 { font-size: 1.4em; margin-top: 1.6em; border-bottom: 1px solid var(--border); padding-bottom: .2em; }
+  h3 { font-size: 1.15em; margin-top: 1.4em; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 14px;
+           display: block; overflow-x: auto; }
+  th, td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--code); font-weight: 600; }
+  tr:nth-child(even) { background: #fbfbfb; }
+  code { background: var(--code); padding: 2px 5px; border-radius: 4px; font-size: 0.88em;
+          font-family: "SF Mono", Menlo, Consolas, monospace; }
+  pre { background: var(--code); padding: 14px; border-radius: 6px; overflow-x: auto;
+         border: 1px solid var(--border); }
+  pre code { background: none; padding: 0; }
+  blockquote { border-left: 4px solid var(--accent); margin: 1em 0; padding: 6px 16px;
+                color: var(--muted); background: var(--code); border-radius: 0 4px 4px 0; }
+  a { color: var(--accent); }
+  .fm { background: var(--code); border: 1px solid var(--border); border-radius: 4px;
+         padding: 8px 12px; font-size: 12px; color: var(--muted); margin-bottom: 20px;
+         font-family: "SF Mono", Menlo, monospace; white-space: pre-wrap; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+  .toc { background: var(--card); border: 1px solid var(--border); border-radius: 6px;
+          padding: 12px 20px; margin-bottom: 24px; font-size: 13px; }
+  .toc a { display: block; padding: 2px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a href="../../index.html">📊 Dashboard</a> ·
+    <a href="../../site-index.html">📚 Site index</a> ·
+    <a href="../../home.html">🏠 Home</a> ·
+    <a href="../../hotcache.html">⚡ Hotcache</a> ·
+    <span style="float:right">Foresight-Investor Wiki · updated 2026-10-08</span>
+  </header>
+  <!-- NB: the bare hrefs above (index.html, site-index.html, home.html, hotcache.html) get
+       rewritten to correct relative paths by fix_internal_links() for subdirectory pages. -->
+<div class="fm">title: Quant Trader Curriculum — the knowledge center
+type: concept
+tags: [quant, education, curriculum, learning-path, methodology]
+sources: [[quant-firm-anatomy]], [[quant-alpha-methodology]]
+date: 2026-08-29
+last_scan: 2026-08-29</div>
+<article>
+<h1 id="quant-trader-curriculum-the-knowledge-center">Quant Trader Curriculum — the knowledge center</h1>
+<p><strong>Definition:</strong> A 6-module, ~24-week learning path that takes the operator from<br />
+"thematic investor with a data pipeline" to "systematic trader who can build, measure,<br />
+and retire signals." Every module ends in an artifact committed to this repo — you learn<br />
+by shipping code that touches real data, not by reading.</p>
+<blockquote>
+<p><strong>Scope.</strong> Skills education for the operator's own book. Nothing here is advice to others.<br />
+The syllabus is opinionated: it teaches the <em>slow</em> quant discipline (daily bars,<br />
+cross-sectional factors, risk sizing) because that is the only quant space a solo<br />
+operator can actually win in — see <a href="quant-firm-anatomy.html">quant-firm-anatomy</a> §1.</p>
+</blockquote>
+<hr />
+<h2 id="the-skill-ladder-what-good-looks-like-at-each-level">The skill ladder (what "good" looks like at each level)</h2>
+<table>
+<thead>
+<tr>
+<th>Level</th>
+<th>You can…</th>
+<th>Evidence you're here</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>L0 Investor</strong></td>
+<td>Form a thesis, size by conviction, track outcomes</td>
+<td>The vault today: <a href="../syntheses/decision-register.html">decision-register</a>, <a href="../syntheses/track-record.html">track-record</a></td>
+</tr>
+<tr>
+<td><strong>L1 Signal literate</strong></td>
+<td>Compute a factor, z-score it cross-sectionally, plot its IC</td>
+<td>You can read <code>scripts/qae.py</code> §Factors and change it</td>
+</tr>
+<tr>
+<td><strong>L2 Researcher</strong></td>
+<td>Design a falsifiable signal test that avoids look-ahead and survivorship</td>
+<td>You built a factor, measured IC, and <em>killed</em> it when t&lt;2</td>
+</tr>
+<tr>
+<td><strong>L3 Portfolio builder</strong></td>
+<td>Turn ranks into a risk-sized book with costs, caps, and stops</td>
+<td>Your book's realized vol ≈ your target vol</td>
+</tr>
+<tr>
+<td><strong>L4 Systematic operator</strong></td>
+<td>Run a monthly loop: rescore → rebalance → attribute → retire</td>
+<td>6+ months of attribution showing where P&amp;L came from</td>
+</tr>
+<tr>
+<td><strong>L5 Alpha engineer</strong></td>
+<td>Add genuinely new, weakly-correlated alphas that survive out-of-sample</td>
+<td>New factor raises composite IR, not just in-sample IC</td>
+</tr>
+</tbody>
+</table>
+<p>Progression is gated by evidence, not by time. Do not advance on having <em>read</em> the module.</p>
+<hr />
+<h2 id="module-1-the-mental-model-week-12">Module 1 — The mental model (week 1–2)</h2>
+<p><strong>Goal:</strong> stop thinking in stories, start thinking in distributions.</p>
+<p>Core ideas to internalize:<br />
+1. <strong>Expectancy, not accuracy.</strong> <code>E = p·avg_win − (1−p)·avg_loss</code>. A 35%-hit-rate system with<br />
+   3:1 payoff beats a 65%-hit-rate system with 1:2. Most retail intuition optimizes the wrong term.<br />
+2. <strong>Variance is the constraint.</strong> Two strategies with identical CAGR and different vol are not<br />
+   the same strategy — one is investable, the other is not survivable.<br />
+3. <strong>The Fundamental Law:</strong> <code>IR ≈ IC × √Breadth</code> (<a href="quant-firm-anatomy.html">quant-firm-anatomy</a> §3). Everything you do<br />
+   is either raising IC or raising independent breadth.<br />
+4. <strong>Edge decays.</strong> Assume every signal you find has a half-life. Plan the replacement.<br />
+5. <strong>Costs are an alpha.</strong> Turnover × spread is a guaranteed negative return; it is the easiest<br />
+   part of the P&amp;L to improve.</p>
+<p><strong>Exercise 1.1</strong> — Write down the expectancy of your last 20 real trades from<br />
+<a href="../syntheses/track-record.html">track-record</a>: hit rate, average win, average loss, expectancy per trade. If expectancy is<br />
+positive but P&amp;L is not, the gap is size/costs, not signal.</p>
+<p><strong>Exercise 1.2</strong> — Compute your effective breadth: how many <em>genuinely independent</em> bets did<br />
+you make last year? (Hint: five AI-capex names is closer to one bet than five.)</p>
+<p><strong>Read:</strong> Grinold &amp; Kahn <em>Active Portfolio Management</em> ch.1–6 · Ernie Chan <em>Quantitative<br />
+Trading</em> (whole book, it is short) · <a href="quant-firm-anatomy.html">quant-firm-anatomy</a>.</p>
+<hr />
+<h2 id="module-2-data-hygiene-week-34">Module 2 — Data hygiene (week 3–4)</h2>
+<p><strong>Goal:</strong> be able to prove your backtest is not lying to you.</p>
+<p>The four killers, in order of how often they fool people:<br />
+| Bias | What it is | How to detect it |<br />
+|---|---|---|<br />
+| <strong>Look-ahead</strong> | Using data you could not have had at decision time | Shift every fundamental by its actual report lag; check that no factor uses <code>t</code> to predict <code>t</code> |<br />
+| <strong>Survivorship</strong> | Universe contains only names that still exist | Count delisted tickers in your history. If zero → you have it |<br />
+| <strong>Restatement</strong> | Fundamentals show the <em>revised</em> number | Requires point-in-time data (SEC EDGAR filings by filing date) |<br />
+| <strong>Overfitting</strong> | 200 backtests, report the best one | Track how many variants you tried; demand out-of-sample |</p>
+<p><strong>Exercise 2.1</strong> — In this repo: <code>scripts/_hist/prices.parquet</code> has ~330 tickers. List which<br />
+ones stopped trading during the window and quantify the survivorship tilt (compare universe<br />
+mean return with and without the dead names).</p>
+<p><strong>Exercise 2.2</strong> — Audit one factor in <code>signals.py</code> for look-ahead. Write the audit note into<br />
+the wiki. This is the single highest-value exercise in the whole curriculum.</p>
+<p><strong>Read:</strong> Marcos López de Prado <em>Advances in Financial Machine Learning</em> ch.1–7 (especially<br />
+the section on backtest overfitting and the deflated Sharpe ratio).</p>
+<hr />
+<h2 id="module-3-factors-and-the-ic-discipline-week-59">Module 3 — Factors and the IC discipline (week 5–9)</h2>
+<p><strong>Goal:</strong> measure whether a signal predicts anything, honestly.</p>
+<p>The workflow, which is exactly what <code>scripts/qae.py</code> implements:<br />
+1. Define the factor as a formula on data you had at time <code>t</code>.<br />
+2. Cross-sectionally <strong>z-score within a comparable group</strong> (stocks vs ETFs) and winsorize at ±3.<br />
+3. Compute <strong>rank IC</strong> = Spearman(signal at <code>t</code>, forward return <code>t→t+h</code>) for h ∈ {5, 21, 63} days.<br />
+4. Report <code>IC mean</code>, <code>IC std</code>, <code>IR = mean/std</code>, <code>t-stat = mean/(std/√n)</code>, hit rate.<br />
+5. <strong>Decision rule:</strong> keep only if IC &gt; 0 and |t| ≥ 2 across a decay curve that makes economic<br />
+   sense. Reject a factor whose IC is high at 5d and negative at 63d unless you can trade at 5d<br />
+   after costs.<br />
+6. Check correlation to existing factors. A new factor that correlates 0.8 with momentum is<br />
+   not a new factor.</p>
+<p><strong>Benchmarks for sanity:</strong> a real, tradable equity factor has IC of roughly <strong>0.02–0.06</strong> at a<br />
+21-day horizon. IC &gt; 0.10 on a broad universe means you have a bug (usually look-ahead)<br />
+until you prove otherwise (<a href="quant-firm-anatomy.html">quant-firm-anatomy</a> §2).</p>
+<p><strong>Exercise 3.1</strong> — Run <code>scripts/.venv/bin/python scripts/qae.py --no-backtest</code> and read<br />
+<code>scripts/_hist/qae_ic.json</code>. For each factor, write one sentence on <em>why</em> it should work<br />
+economically. Any factor you cannot explain is a candidate for deletion.</p>
+<p><strong>Exercise 3.2</strong> — Add one new factor to <code>build_factors()</code> (candidates: 52-week-high proximity<br />
+already there — try earnings-announcement drift, residual reversal, or downside-beta). Measure<br />
+its IC. <strong>Delete it if t &lt; 2.</strong> Deleting your own idea on evidence is the actual skill.</p>
+<p><strong>Read:</strong> Jegadeesh &amp; Titman (1993) momentum · Fama &amp; French (2015) five-factor · Asness,<br />
+Frazzini &amp; Pedersen (2014) <em>Quality Minus Junk</em> · Daniel &amp; Moskowitz (2016) <em>Momentum Crashes</em>.<br />
+The vault already applies these in <a href="foresight-factor-model.html">foresight-factor-model</a>.</p>
+<hr />
+<h2 id="module-4-portfolio-construction-week-1014">Module 4 — Portfolio construction (week 10–14)</h2>
+<p><strong>Goal:</strong> turn a ranking into a book whose risk you actually control.</p>
+<ol>
+<li><strong>Sizing.</strong> Inverse-volatility (<code>w ∝ 1/σ</code>) is the 80/20 of risk parity. Scale the whole<br />
+   book so ex-ante portfolio vol hits a target (10–15% annualized for a long book).<br />
+   Portfolio vol with <code>n</code> names, avg vol <code>σ̄</code>, avg correlation <code>ρ</code>:<br />
+<code>σ_p ≈ σ̄ · √(1/n + ρ(1−1/n))</code> — note it floors at <code>σ̄√ρ</code> no matter how many names you add.<br />
+   That floor is why diversification stops helping around 20–30 names in a correlated market.</li>
+<li><strong>Constraints.</strong> Single name ≤ 8%, theme ≤ 12%, AI-capex cluster ≤ 25%, cash ≥ 3%<br />
+   (the <a href="../syntheses/portfolio-blueprint.html">portfolio-blueprint</a> rules). Constraints beat optimizers for small books.</li>
+<li><strong>Neutrality.</strong> Decide explicitly what you are <em>not</em> betting on. Beta-neutral? Theme-neutral?<br />
+   If you are not neutral to it, you are betting on it whether you meant to or not.</li>
+<li><strong>Rebalancing.</strong> Bands (trade only when weight drifts &gt;X%) cut turnover ~40% versus calendar<br />
+   rebalancing at similar returns (industry knowledge; verify on your own data).</li>
+<li><strong>Costs.</strong> Model them or you will import fake alpha: <code>cost = turnover × (spread/2 + fees)</code>.</li>
+</ol>
+<p><strong>Exercise 4.1</strong> — Take today's QAE book and compute its ex-ante vol, beta, and theme<br />
+concentration. Does it breach any <a href="../syntheses/portfolio-blueprint.html">portfolio-blueprint</a> cap? Fix it by <em>constraint</em>, not by<br />
+re-ranking.</p>
+<p><strong>Exercise 4.2</strong> — Re-run the QAE backtest at 10, 20 and 40 names per leg. Plot Sharpe vs n.<br />
+Find where diversification stops paying for the added turnover.</p>
+<p><strong>Read:</strong> Grinold &amp; Kahn ch.14 (portfolio construction) · Ang <em>Asset Management</em> ch.1–5.</p>
+<hr />
+<h2 id="module-5-risk-stops-and-the-drawdown-ladder-week-1518">Module 5 — Risk, stops, and the drawdown ladder (week 15–18)</h2>
+<p><strong>Goal:</strong> pre-commit to how you lose, before you lose.</p>
+<p>Adopt the pod-shop ladder, scaled to a personal book (<a href="quant-firm-anatomy.html">quant-firm-anatomy</a> §1):</p>
+<table>
+<thead>
+<tr>
+<th>Book drawdown from peak</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>−5%</td>
+<td>Review: is this factor decay or normal noise? Cut gross exposure 25%.</td>
+</tr>
+<tr>
+<td>−8%</td>
+<td>Cut gross exposure 50%. No new positions outside the top-decile score.</td>
+</tr>
+<tr>
+<td>−12%</td>
+<td>Flat the systematic book. Full post-mortem before re-entry. Re-enter at half size.</td>
+</tr>
+</tbody>
+</table>
+<p>Per-position: stop at <strong>2.5 × ATR(20)</strong> below entry — a volatility-scaled stop, so a 60%-vol<br />
+name gets a wider stop than a 15%-vol name and both risk the same dollars. A fixed-percentage<br />
+stop is a hidden bet that all your names are equally volatile.</p>
+<p><strong>Invalidation ≠ stop.</strong> A stop is a price event. An invalidation is a <em>thesis</em> event<br />
+(the score leaves the top quartile; the factor's IC turns negative; the theme's driver breaks).<br />
+Both must be written down before entry — this is already the vault's <a href="../syntheses/decision-register.html">decision-register</a> rule.</p>
+<p><strong>Exercise 5.1</strong> — For each position in the current book, write the stop price AND the<br />
+invalidation condition. Any position where you cannot state the invalidation should not be on.</p>
+<p><strong>Exercise 5.2</strong> — Backtest the drawdown ladder itself: apply it to the QAE equity curve.<br />
+Does de-grossing improve or hurt terminal wealth? (It usually costs return and buys survival —<br />
+know which trade you are making.)</p>
+<hr />
+<h2 id="module-6-running-the-loop-week-1924-then-forever">Module 6 — Running the loop (week 19–24, then forever)</h2>
+<p><strong>Goal:</strong> operate the system, not the ideas.</p>
+<p>The monthly cycle:</p>
+<pre><code>Sun/Mon   REFRESH   scripts/fetch_history.py --inc  → prices through Friday
+          SCORE     scripts/qae.py                  → IC, weights, today's book
+          MONITOR   scripts/monitor.py              → threshold breaches
+Rebalance REVIEW    diff new book vs held book; trade only the deltas
+          FILE      decision-register rows + prediction-ledger P-calls
+Quarterly BACKTEST  re-run walk-forward; retire factors whose IC decayed
+</code></pre>
+<p><strong>Attribution is the point.</strong> Each month answer: how much P&amp;L came from (a) the market,<br />
+(b) each factor, (c) name-specific luck, (d) costs? A month you cannot attribute is a month<br />
+you learned nothing.</p>
+<p><strong>Exercise 6.1</strong> — Build a one-page monthly attribution note. Template:<br />
+market beta contribution · factor contribution · residual · turnover cost · biggest winner<br />
+and loser with the reason.</p>
+<p><strong>Exercise 6.2</strong> — At month 6, compute your realized IC (were the top-ranked names actually<br />
+your winners?) and your calibration (do 4/5-conviction calls actually beat 2/5 calls?).<br />
+<a href="../syntheses/track-record.html">track-record</a> is where this lives.</p>
+<hr />
+<h2 id="reference-shelf">Reference shelf</h2>
+<p><strong>Books, in reading order</strong><br />
+1. Ernie Chan — <em>Quantitative Trading</em> (the fastest orientation; do the code)<br />
+2. Grinold &amp; Kahn — <em>Active Portfolio Management</em> (the theory that matters)<br />
+3. Antti Ilmanen — <em>Expected Returns</em> (why risk premia exist at all)<br />
+4. Andrew Ang — <em>Asset Management: A Systematic Approach to Factor Investing</em><br />
+5. López de Prado — <em>Advances in Financial Machine Learning</em> (read defensively — it is<br />
+   mostly a catalogue of how backtests lie)<br />
+6. Narang — <em>Inside the Black Box</em> (structure of a quant firm, plain language)</p>
+<p><strong>Papers to actually read (not cite)</strong><br />
+Jegadeesh–Titman 1993 · Fama–French 1993 &amp; 2015 · Carhart 1997 · Asness–Frazzini–Pedersen<br />
+2014 (QMJ) · Frazzini–Pedersen 2014 (betting against beta) · Daniel–Moskowitz 2016 ·<br />
+McLean–Pontiff 2016 (alpha decay) · Harvey–Liu–Zhu 2016 (…and the Cross-Section of Expected<br />
+Returns — the multiple-testing critique that should make you delete half your ideas).</p>
+<p><strong>Math you actually need</strong> (and the parts you can skip)<br />
+- <em>Needed:</em> linear regression and its assumptions · covariance/correlation · z-scores and<br />
+  ranks · Spearman vs Pearson · t-stats and multiple-testing · compounding and log returns ·<br />
+  variance of a weighted sum. That is genuinely most of it.<br />
+- <em>Useful later:</em> PCA (factor orthogonalization) · Kalman filters (time-varying beta) ·<br />
+  convex optimization (mean-variance with constraints).<br />
+- <em>Skip until L4:</em> stochastic calculus, options pricing theory, deep learning. None of it<br />
+  helps a daily-bar cross-sectional book, and all of it is a procrastination magnet.</p>
+<p><strong>Tools in this repo, mapped to modules</strong><br />
+| Module | Script | What it teaches |<br />
+|---|---|---|<br />
+| 2 | <code>scripts/fetch_history.py</code> | Data plumbing, coverage, missing-data handling |<br />
+| 3 | <code>scripts/qae.py</code> (factors + IC) | Factor construction and honest measurement |<br />
+| 3 | <code>scripts/ffm_signals.py</code> | Fundamental factor grading (<a href="foresight-factor-model.html">foresight-factor-model</a>) |<br />
+| 4 | <code>scripts/qae.py</code> (book) | Risk sizing, caps, stops |<br />
+| 4/6 | <code>scripts/backtest.py</code>, <code>qae.py --backtest</code> | Walk-forward evaluation |<br />
+| 5/6 | <code>scripts/monitor.py</code>, <code>recommend.py</code> | Threshold discipline and the operating loop |</p>
+<hr />
+<h2 id="the-three-rules-that-matter-more-than-the-syllabus">The three rules that matter more than the syllabus</h2>
+<ol>
+<li><strong>Write the invalidation before the entry.</strong> Every time. No exceptions.</li>
+<li><strong>Measure before you believe.</strong> A factor without an IC number is a story.</li>
+<li><strong>Your edge is size and patience, not speed or complexity.</strong> You can hold a<br />
+   capacity-constrained position that a $50B fund cannot. That is the whole advantage<br />
+   (<a href="quant-firm-anatomy.html">quant-firm-anatomy</a> §3).</li>
+</ol>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Theory: <a href="quant-firm-anatomy.html">quant-firm-anatomy</a> · Implementation: <a href="quant-alpha-methodology.html">quant-alpha-methodology</a></li>
+<li>Applies to: <a href="../syntheses/strategy-sleeves.html">strategy-sleeves</a>, <a href="foresight-factor-model.html">foresight-factor-model</a>, <a href="../syntheses/portfolio-blueprint.html">portfolio-blueprint</a></li>
+<li>Accountability: <a href="../syntheses/prediction-ledger.html">prediction-ledger</a>, <a href="../syntheses/track-record.html">track-record</a>, <a href="../syntheses/decision-register.html">decision-register</a></li>
+</ul>
+<h2 id="open-questions">Open questions</h2>
+<ul>
+<li>Should Module 3 add an explicit multiple-testing correction (Harvey–Liu–Zhu style<br />
+  deflated t-thresholds) given how many factor variants the engine will try over time?</li>
+<li>Where does options exposure (covered calls / puts as stops) enter the ladder, if at all?</li>
+</ul>
+</article>
+</div>
+</body>
+</html>
